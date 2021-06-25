@@ -1,4 +1,4 @@
-BINK API 2.0
+# BINK API 2.0
 
 This is a framework design in Python for the test automation of Bink's APIs.
 The framework has been designed using the Pytest-BDD plugin to implement  the BDD approach.
@@ -7,7 +7,7 @@ This framework will provide a Regression testing suite for all available API end
 Smoke testing & In- Sprint testing for all channels & merchants.
 
 
-Set Up
+# Set Up
 This project requires an up-to-date version of Python 3 (Currently using Python 3.9)
 It also uses pipenv to manage packages.
 To set up this project on your local machine:
@@ -20,12 +20,16 @@ To set up this project on your local machine:
     `brew install azure-cli`
     `az login`
 
-Running Tests
+# Running Tests
 
-Running Allure Reports
+In progress..⌛️
+
+# Running Allure Reports
+
+In progress..⌛️
 
 
-Running inside Kubernetes
+# Running inside Kubernetes
 The project requires the following Environment Variables to function correctly:
 
 
