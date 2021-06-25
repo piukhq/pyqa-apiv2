@@ -1,0 +1,28 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+requests = "*"
+pytest = "*"
+pytest-bdd = "*"
+logger = "*"
+jsonpath = "*"
+faker = "*"
+psycopg2-binary = "*"
+json-diff = "*"
+arrow = "*"
+pyjwt = "*"
+apscheduler = "*"
+azure-storage-blob = "*"
+azure-identity = "*"
+azure-keyvault-secrets = "*"
+
+[dev-packages]
+flake8 = "*"
+isort = "*"
+black = "==20.8b1"
+
+[requires]
+python_version = "3.9"
