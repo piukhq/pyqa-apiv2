@@ -6,7 +6,9 @@ default:
 
 test:style:
   stage: test
-  before_script: *setup
+  before_script: &setup
+    - pipenv install --dev --system --deploy --ignore-pipfile
+    - pip freeze
   script:
     - flake8
     - black --line-length 120 --check .
