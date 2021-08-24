@@ -1,9 +1,9 @@
 import logging
 
 import pytest
+
 from faker import Faker
 from pytest_bdd import given
-
 from tests_qa import config
 from tests_qa.tests.api.base import Endpoint
 from tests_qa.tests.helpers import constants

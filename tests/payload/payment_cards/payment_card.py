@@ -1,11 +1,12 @@
 import json
 import logging
+
 from random import randint
+
+import tests_qa.tests.api as api
 
 from faker import Faker
 from shared_config_storage.credentials.encryption import RSACipher
-
-import tests_qa.tests.api as api
 from tests_qa import config
 from tests_qa.tests.api.base import Endpoint
 from tests_qa.tests.helpers import constants

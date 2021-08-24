@@ -1,9 +1,11 @@
 import json
 import logging
 import time
+
 from enum import Enum
 
 import requests
+
 from azure.core.exceptions import HttpResponseError, ResourceNotFoundError, ServiceRequestError
 from azure.identity import DefaultAzureCredential
 from azure.keyvault.secrets import SecretClient
