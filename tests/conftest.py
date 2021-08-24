@@ -4,12 +4,12 @@ import pytest
 
 from faker import Faker
 from pytest_bdd import given
-from tests_qa import config
-from tests_qa.tests.api.base import Endpoint
-from tests_qa.tests.helpers import constants
-from tests_qa.tests.helpers.test_context import TestContext
-from tests_qa.tests.helpers.test_data_utils import TestDataUtils
-from tests_qa.tests.requests.service import CustomerAccount
+import config
+from tests.api.base import Endpoint
+from tests.helpers import constants
+from tests.helpers.test_context import TestContext
+from tests.helpers.test_data_utils import TestDataUtils
+from tests.requests.service import CustomerAccount
 
 
 def pytest_bdd_step_error(request, feature, scenario, step, step_func, step_func_args, exception):

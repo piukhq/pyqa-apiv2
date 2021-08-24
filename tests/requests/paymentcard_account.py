@@ -3,11 +3,11 @@ import time
 
 from json import JSONDecodeError
 
-from tests_qa.tests import api
-from tests_qa.tests.api.base import Endpoint
-from tests_qa.tests.helpers import constants
-from tests_qa.tests.helpers.test_helpers import PaymentCardTestData
-from tests_qa.tests.payload.payment_cards.payment_card import PaymentCardDetails
+from tests import api
+from tests.api.base import Endpoint
+from tests.helpers import constants
+from tests.helpers.test_helpers import PaymentCardTestData
+from tests.payload.payment_cards.payment_card import PaymentCardDetails
 
 
 class PaymentCards(Endpoint):

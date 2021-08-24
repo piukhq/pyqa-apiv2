@@ -1,4 +1,4 @@
-from tests_qa.tests.helpers.test_data_utils import TestDataUtils
+from tests.helpers.test_data_utils import TestDataUtils
 
 
 class PaymentCardTestData:

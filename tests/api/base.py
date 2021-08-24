@@ -2,7 +2,7 @@ import json
 
 import requests
 
-from tests_qa import config
+import config
 
 
 class Endpoint:

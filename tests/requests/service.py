@@ -1,8 +1,8 @@
-from tests_qa import config
-from tests_qa.tests import api
-from tests_qa.tests.api.base import Endpoint
-from tests_qa.tests.helpers.test_context import TestContext
-from tests_qa.tests.payload.service.customer_accounts import UserDetails
+import config
+from tests import api
+from tests.api.base import Endpoint
+from tests.helpers.test_context import TestContext
+from tests.payload.service.customer_accounts import UserDetails
 
 
 class CustomerAccount:

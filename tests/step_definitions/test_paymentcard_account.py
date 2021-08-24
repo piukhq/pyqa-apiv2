@@ -6,12 +6,12 @@ from json import JSONDecodeError
 
 from pytest_bdd import scenarios, then, when
 from requests.exceptions import HTTPError
-from tests_qa.tests import api
-from tests_qa.tests.api.base import Endpoint
-from tests_qa.tests.helpers import constants
-from tests_qa.tests.helpers.test_context import TestContext
-from tests_qa.tests.helpers.test_helpers import PaymentCardTestData
-from tests_qa.tests.requests.paymentcard_account import PaymentCards
+from tests import api
+from tests.api.base import Endpoint
+from tests.helpers import constants
+from tests.helpers.test_context import TestContext
+from tests.helpers.test_helpers import PaymentCardTestData
+from tests.requests.paymentcard_account import PaymentCards
 
 scenarios("payment_accounts/")
 

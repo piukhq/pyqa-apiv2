@@ -3,17 +3,17 @@ import logging
 
 from random import randint
 
-import tests_qa.tests.api as api
+import tests.api as api
 
 from faker import Faker
 from shared_config_storage.credentials.encryption import RSACipher
-from tests_qa import config
-from tests_qa.tests.api.base import Endpoint
-from tests_qa.tests.helpers import constants
-from tests_qa.tests.helpers.test_context import TestContext
-from tests_qa.tests.helpers.test_helpers import PaymentCardTestData
-from tests_qa.tests.helpers.vault import channel_vault
-from tests_qa.tests.helpers.vault.channel_vault import KeyType
+import config
+from tests.api.base import Endpoint
+from tests.helpers import constants
+from tests.helpers.test_context import TestContext
+from tests.helpers.test_helpers import PaymentCardTestData
+from tests.helpers.vault import channel_vault
+from tests.helpers.vault.channel_vault import KeyType
 
 
 class PaymentCardDetails:
