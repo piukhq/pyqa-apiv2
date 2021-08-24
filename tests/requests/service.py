@@ -1,4 +1,5 @@
 import config
+
 from tests import api
 from tests.api.base import Endpoint
 from tests.helpers.test_context import TestContext

@@ -3,11 +3,12 @@ import logging
 
 from random import randint
 
-import tests.api as api
-
 from faker import Faker
 from shared_config_storage.credentials.encryption import RSACipher
+
 import config
+import tests.api as api
+
 from tests.api.base import Endpoint
 from tests.helpers import constants
 from tests.helpers.test_context import TestContext

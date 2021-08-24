@@ -4,7 +4,9 @@ import pytest
 
 from faker import Faker
 from pytest_bdd import given
+
 import config
+
 from tests.api.base import Endpoint
 from tests.helpers import constants
 from tests.helpers.test_context import TestContext

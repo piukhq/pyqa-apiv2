@@ -6,6 +6,7 @@ from json import JSONDecodeError
 
 from pytest_bdd import scenarios, then, when
 from requests.exceptions import HTTPError
+
 from tests import api
 from tests.api.base import Endpoint
 from tests.helpers import constants
