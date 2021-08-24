@@ -1,0 +1,20 @@
+stages:
+  - test
+
+default:
+  image: ghcr.io/binkhq/python:3.9
+
+test:style:
+  stage: test
+  before_script: *setup
+  script:
+    - flake8
+    - black --line-length 120 --check .
+    - isort --check --line-length 120 --profile black .
+
+#type-check:
+#  stage: tests
+#  before_script: *setup
+#  script:
+#    - mypy --config-file .mypy.ini app tests
+
