@@ -100,7 +100,6 @@ class PaymentCardDetails:
         )
         return payload
 
-
     @staticmethod
     def enrol_existing_payment_card_into_another_wallet(card_provider):
         payload = {
@@ -128,9 +127,10 @@ class PaymentCardDetails:
         )
         return payload
 
-
     @staticmethod
-    def existing_payment_card_payload_unencrypted(card_provider, expiry_month, expiry_year, name_on_card, card_nickname):
+    def existing_payment_card_payload_unencrypted(
+        card_provider, expiry_month, expiry_year, name_on_card, card_nickname
+    ):
         payload = {
             "expiry_month": expiry_month,
             "expiry_year": expiry_year,

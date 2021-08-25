@@ -43,8 +43,9 @@ class PaymentCards(Endpoint):
     def add_existing_payment_card(token, card_provider, expiry_month, expiry_year, name_on_card, card_nickname):
         url = PaymentCards.get_url()
         header = Endpoint.request_header(token)
-        payload = PaymentCardDetails.existing_payment_card_payload_unencrypted(card_provider, expiry_month, expiry_year,
-                                                                               name_on_card, card_nickname)
+        payload = PaymentCardDetails.existing_payment_card_payload_unencrypted(
+            card_provider, expiry_month, expiry_year, name_on_card, card_nickname
+        )
         return Endpoint.call(url, header, "POST", payload)
 
     @staticmethod
