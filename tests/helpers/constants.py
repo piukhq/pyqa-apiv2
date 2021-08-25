@@ -5,6 +5,8 @@ EMAIL_TEMPLATE = "pytest_2.0_regression_email@bink.com"
 UID = "uid"
 PWD = "pwd"
 USER_DETAIL = "user_detail"
+USER_DETAIL2 = "user_detail2"
+
 
 """ Payment Cards Constant"""
 FIRST_SIX_DIGITS = "first_six_digits"
@@ -17,7 +19,9 @@ CURRENCY_CODE = "currency_code"
 COUNTRY = "country"
 TYPE = "type"
 TOKEN_2 = "token_2"
+TOKEN_PREFIX = "token_prefix"
 PAYMENT_CARD_STATUS = "status"
+
 
 # PAYMENT_CARD_STATUS = "status"
 # ACTIVE_LINK = "active_link"
