@@ -1,9 +1,9 @@
 import json
 import logging
-import time
 
 from json import JSONDecodeError
 
+import config
 from pytest_bdd import scenarios, then, when
 from requests.exceptions import HTTPError
 
@@ -11,7 +11,9 @@ from tests import api
 from tests.api.base import Endpoint
 from tests.helpers import constants
 from tests.helpers.test_context import TestContext
+from tests.helpers.test_data_utils import TestDataUtils
 from tests.helpers.test_helpers import PaymentCardTestData
+from tests.helpers.vault.channel_vault import create_bearer_token
 from tests.requests.paymentcard_account import PaymentCards
 
 scenarios("payment_accounts/")
@@ -19,11 +21,17 @@ scenarios("payment_accounts/")
 """Step definitions - Add Payment Account """
 
 
+def setup_token():
+    TestContext.token = create_bearer_token(sub=TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.USER_DETAIL),
+                                            channel=config.BINK.bundle_id)
+    return TestContext.token
+
+
 @when('I perform POST request to add a new "<payment_card_provider>" payment card to wallet')
 def add_payment_account(payment_card_provider="master"):
-    response = PaymentCards.add_new_payment_card(
-        PaymentCardTestData.get_data(payment_card_provider).get(constants.TOKEN_2), payment_card_provider
-    )
+    setup_token()
+    response = PaymentCards.add_new_payment_card(TestContext.token, payment_card_provider)
+    TestContext.response_status_code = response.status_code
     assert response.status_code == 201, f"Payment card addition for '{payment_card_provider}' is not successful"
     response_json = response_to_json(response)
     logging.info(
@@ -86,19 +94,13 @@ def verify_payment_account_added_in_wallet(payment_card_provider):
 
 @then('I perform DELETE request to delete "<payment_card_provider>" the payment card')
 def delete_payment_card(payment_card_provider):
-    response = PaymentCards.delete_payment_card(
-        PaymentCardTestData.get_data(payment_card_provider).get(constants.TOKEN_2), TestContext.current_payment_card_id
-    )
+    response = PaymentCards.delete_payment_card(TestContext.token, TestContext.current_payment_card_id)
+    assert response.status_code == 202
     TestContext.response = response
-    logging.info(TestContext.response)
-    time.sleep(2)
-
     try:
-        if response.status_code == 200:
+        if response.status_code == 202:
             logging.info("Payment card is deleted successfully")
         elif response.status_code == 404:
-            logging.info("Payment card is already  deleted")
-
+            logging.info("Could not find this account")
     except HTTPError as network_response:
-
         assert network_response.response.status_code == 404 or 400, "Payment card deletion is not successful"

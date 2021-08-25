@@ -10,7 +10,7 @@ class UserDetails:
     def bink_login_user_payload(client_id, bundle_id):
         """Login for Bink user"""
         payload = {
-            "email": TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.USER_ID),
+            "email": TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.UID),
             "password": TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.PWD),
             "client_id": client_id,
             "bundle_id": bundle_id,

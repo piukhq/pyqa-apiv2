@@ -51,4 +51,4 @@ class PaymentCards(Endpoint):
         if payment_card_id is None:
             return Endpoint.BASE_URL + api.ENDPOINT_PAYMENT_ACCOUNTS
         else:
-            return Endpoint.BASE_URL + api.ENDPOINT_PAYMENT_ACCOUNTS.format(payment_card_id)
+            return Endpoint.BASE_URL + api.ENDPOINT_PAYMENT_ACCOUNT.format(payment_card_id)

@@ -7,7 +7,8 @@ class TestContext:
     card_nickname = ""
     finger_print = ""
     response_json = ""
-
+    response_status_code = ""
+    token = ""
     """Variable that decides encryption is required / not"""
     flag_encrypt = ""
     channel_name = ""

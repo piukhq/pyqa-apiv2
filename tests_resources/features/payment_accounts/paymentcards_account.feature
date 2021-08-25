@@ -14,8 +14,10 @@ Feature: As a Bink User
     Then I verify the paymentcard "<payment_card_provider>" been added into my wallet
     And I perform DELETE request to delete "<payment_card_provider>" the payment card
 
-  Examples:
-    | payment_card_provider |
-    | master                |
-    | amex                  |
-    | visa                  |
+    Examples:
+      | payment_card_provider |
+      | master                |
+#    | amex                  |
+#    | visa                  |
+
+  

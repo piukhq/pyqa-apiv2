@@ -18,7 +18,7 @@ class Endpoint:
             "Accept": "application/vnd.bink+json;v={}".format(version),
             "Content-Type": "application/json",
         }
-        headers["Authorization"] = "bearer " + token
+        headers["Authorization"] = token
         return headers
 
     @staticmethod

@@ -14,7 +14,6 @@ visa_payment_card = {
     "country": "GB",
     "currency_code": "GBP",
     "status": "active",
-    "token_2": "",
 }
 
 amex_payment_card = {
@@ -32,7 +31,6 @@ amex_payment_card = {
     "country": "GB",
     "currency_code": "GBP",
     "status": "active",
-    "token_2": "",
 }
 
 master_payment_card = {
@@ -50,7 +48,6 @@ master_payment_card = {
     "country": "GB",
     "currency_code": "GBP",
     "status": "active",
-    "token_2": "",
 }
 
 # ---------------------------------------------USER ACCOUNTS ---------------------------------------------------- #
@@ -58,4 +55,5 @@ master_payment_card = {
 bink_user_accounts = {
     "uid": "pytest_2.0_staging_auto@bink.com",
     "pwd": "Password1",
+    "user_detail": "27925"
 }

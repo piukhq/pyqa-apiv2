@@ -2,8 +2,9 @@
 EMAIL_TEMPLATE = "pytest_2.0_regression_email@bink.com"
 
 """Channel User Details"""
-USER_ID = "uid"
+UID = "uid"
 PWD = "pwd"
+USER_DETAIL = "user_detail"
 
 """ Payment Cards Constant"""
 FIRST_SIX_DIGITS = "first_six_digits"
