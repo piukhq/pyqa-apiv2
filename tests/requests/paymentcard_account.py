@@ -19,6 +19,35 @@ class PaymentCards(Endpoint):
         return Endpoint.call(url, header, "POST", payload)
 
     @staticmethod
+    def add_second_payment_card(token, card_provider):
+        url = PaymentCards.get_url()
+        header = Endpoint.request_header(token)
+        payload = PaymentCardDetails.enrol_existing_payment_card_into_another_wallet(card_provider)
+        return Endpoint.call(url, header, "POST", payload)
+
+    @staticmethod
+    def add_payment_card_with_optional_field(token, card_provider):
+        url = PaymentCards.get_url()
+        header = Endpoint.request_header(token)
+        payload = PaymentCardDetails.without_optional_field(card_provider)
+        return Endpoint.call(url, header, "POST", payload)
+
+    @staticmethod
+    def add_payment_card_with_mandatory_field(token, card_provider):
+        url = PaymentCards.get_url()
+        header = Endpoint.request_header(token)
+        payload = PaymentCardDetails.without_mandatory_field(card_provider)
+        return Endpoint.call(url, header, "POST", payload)
+
+    @staticmethod
+    def add_existing_payment_card(token, card_provider, expiry_month, expiry_year, name_on_card, card_nickname):
+        url = PaymentCards.get_url()
+        header = Endpoint.request_header(token)
+        payload = PaymentCardDetails.existing_payment_card_payload_unencrypted(card_provider, expiry_month, expiry_year,
+                                                                               name_on_card, card_nickname)
+        return Endpoint.call(url, header, "POST", payload)
+
+    @staticmethod
     def get_payment_card(token, payment_card_id):
         url = PaymentCards.get_url(payment_card_id)
         header = Endpoint.request_header(token)
@@ -52,3 +81,10 @@ class PaymentCards(Endpoint):
             return Endpoint.BASE_URL + api.ENDPOINT_PAYMENT_ACCOUNTS
         else:
             return Endpoint.BASE_URL + api.ENDPOINT_PAYMENT_ACCOUNT.format(payment_card_id)
+
+    @staticmethod
+    def empty_json(token):
+        url = PaymentCards.get_url()
+        header = Endpoint.request_header(token)
+        payload = PaymentCardDetails.empty_payload()
+        return Endpoint.call(url, header, "POST", payload)

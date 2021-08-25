@@ -70,8 +70,10 @@ class PaymentCardDetails:
         faker = Faker()
         TestContext.name_on_payment_card = faker.first_name()
         TestContext.card_nickname = faker.last_name()
-        TestContext.expiry_month = str(randint(1, 24))
-        TestContext.expiry_year = str(randint(1, 12))
+        TestContext.expiry_month = str(randint(1, 12))
+        TestContext.expiry_year = str(randint(2999, 3999))
+        TestContext.payment_card_token = constants.TOKEN + "_pytest" + str(faker.random_int(100, 999999))
+        TestContext.finger_print = constants.FINGERPRINT + "_pytest" + str(faker.random_int(100, 999999))
 
         payload = {
             "expiry_month": TestContext.expiry_month,
@@ -79,10 +81,10 @@ class PaymentCardDetails:
             "name_on_card": TestContext.name_on_payment_card,
             "card_nickname": TestContext.card_nickname,
             "issuer": PaymentCardTestData.get_data(card_provider).get(constants.ISSUER),
-            "token": constants.TOKEN + "_pytest" + str(faker.random_int(100, 999999)),
+            "token": TestContext.payment_card_token,
             "last_four_digits": PaymentCardTestData.get_data(card_provider).get(constants.LAST_FOUR_DIGITS),
             "first_six_digits": PaymentCardTestData.get_data(card_provider).get(constants.FIRST_SIX_DIGITS),
-            "fingerprint": constants.FINGERPRINT + "_pytest" + str(faker.random_int(100, 999999)),
+            "fingerprint": TestContext.finger_print,
             "provider": PaymentCardTestData.get_data(card_provider).get(constants.PROVIDER),
             "type": PaymentCardTestData.get_data(card_provider).get(constants.TYPE),
             "country": PaymentCardTestData.get_data(card_provider).get(constants.COUNTRY),
@@ -91,6 +93,108 @@ class PaymentCardDetails:
 
         logging.info(
             "The Request to enrol new payment card is : \n\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_PAYMENT_ACCOUNTS
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+
+    @staticmethod
+    def enrol_existing_payment_card_into_another_wallet(card_provider):
+        payload = {
+            "expiry_month": TestContext.expiry_month,
+            "expiry_year": TestContext.expiry_year,
+            "name_on_card": TestContext.name_on_payment_card,
+            "card_nickname": TestContext.card_nickname,
+            "issuer": PaymentCardTestData.get_data(card_provider).get(constants.ISSUER),
+            "token": TestContext.payment_card_token,
+            "last_four_digits": PaymentCardTestData.get_data(card_provider).get(constants.LAST_FOUR_DIGITS),
+            "first_six_digits": PaymentCardTestData.get_data(card_provider).get(constants.FIRST_SIX_DIGITS),
+            "fingerprint": TestContext.finger_print,
+            "provider": PaymentCardTestData.get_data(card_provider).get(constants.PROVIDER),
+            "type": PaymentCardTestData.get_data(card_provider).get(constants.TYPE),
+            "country": PaymentCardTestData.get_data(card_provider).get(constants.COUNTRY),
+            "currency_code": PaymentCardTestData.get_data(card_provider).get(constants.CURRENCY_CODE),
+        }
+
+        logging.info(
+            "The Request to enrol new payment card is : \n\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_PAYMENT_ACCOUNTS
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+
+    @staticmethod
+    def existing_payment_card_payload_unencrypted(card_provider, expiry_month, expiry_year, name_on_card, card_nickname):
+        payload = {
+            "expiry_month": expiry_month,
+            "expiry_year": expiry_year,
+            "name_on_card": name_on_card,
+            "card_nickname": card_nickname,
+            "issuer": PaymentCardTestData.get_data(card_provider).get(constants.ISSUER),
+            "token": TestContext.payment_card_token,
+            "last_four_digits": PaymentCardTestData.get_data(card_provider).get(constants.LAST_FOUR_DIGITS),
+            "first_six_digits": PaymentCardTestData.get_data(card_provider).get(constants.FIRST_SIX_DIGITS),
+            "fingerprint": TestContext.finger_print,
+            "provider": PaymentCardTestData.get_data(card_provider).get(constants.PROVIDER),
+            "type": PaymentCardTestData.get_data(card_provider).get(constants.TYPE),
+            "country": PaymentCardTestData.get_data(card_provider).get(constants.COUNTRY),
+            "currency_code": PaymentCardTestData.get_data(card_provider).get(constants.CURRENCY_CODE),
+        }
+
+        logging.info(
+            "The Request to existing payment card is : \n\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_PAYMENT_ACCOUNTS
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
+    def empty_payload():
+        payload = {}
+        return payload
+
+    @staticmethod
+    def without_optional_field(card_provider):
+        faker = Faker()
+
+        payload = {
+            "expiry_month": str(randint(1, 12)),
+            "expiry_year": str(randint(2999, 3999)),
+            "token": constants.TOKEN + "_pytest" + str(faker.random_int(100, 999999)),
+            "last_four_digits": PaymentCardTestData.get_data(card_provider).get(constants.LAST_FOUR_DIGITS),
+            "first_six_digits": PaymentCardTestData.get_data(card_provider).get(constants.FIRST_SIX_DIGITS),
+            "fingerprint": constants.FINGERPRINT + "_pytest" + str(faker.random_int(100, 999999)),
+        }
+
+        logging.info(
+            "The Request to enrol new payment card without optional field is : \n\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_PAYMENT_ACCOUNTS
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
+    def without_mandatory_field(card_provider):
+        faker = Faker()
+        payload = {
+            "name_on_card": faker.first_name(),
+            "card_nickname": faker.last_name(),
+            "issuer": PaymentCardTestData.get_data(card_provider).get(constants.ISSUER),
+            "last_four_digits": PaymentCardTestData.get_data(card_provider).get(constants.LAST_FOUR_DIGITS),
+            "first_six_digits": PaymentCardTestData.get_data(card_provider).get(constants.FIRST_SIX_DIGITS),
+        }
+        logging.info(
+            "The Request to enrol new payment card without mandatory field is : \n\n"
             + Endpoint.BASE_URL
             + api.ENDPOINT_PAYMENT_ACCOUNTS
             + "\n\n"

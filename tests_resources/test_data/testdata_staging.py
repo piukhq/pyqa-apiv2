@@ -14,6 +14,7 @@ visa_payment_card = {
     "country": "GB",
     "currency_code": "GBP",
     "status": "active",
+    "token_2": "eyJhbGciOiJIU.eyJ1c2VyX2lkIjoyMzg3NywiY2hhbm.FCqWWGbD3jOTJfEe2tQHt-PlwTGqQg8YuS7V5fPo23Yz",
 }
 
 amex_payment_card = {
@@ -31,6 +32,7 @@ amex_payment_card = {
     "country": "GB",
     "currency_code": "GBP",
     "status": "active",
+    "token_2": "eyJhbGciOiJIU.eyJ1c2VyX2lkIjoyMzg3NywiY2hhbm.FCqWWGbD3jOTJfEe2tQHt-PlwTGqQg8YuS7V5fPo23Yz",
 }
 
 master_payment_card = {
@@ -48,8 +50,10 @@ master_payment_card = {
     "country": "GB",
     "currency_code": "GBP",
     "status": "active",
+    "token_2": "eyJhbGciOiJIU.eyJ1c2VyX2lkIjoyMzg3NywiY2hhbm.FCqWWGbD3jOTJfEe2tQHt-PlwTGqQg8YuS7V5fPo23Yz",
+    "token_prefix": "bearer eyJhbGciOiJIU.eyJ1c2VyX2lkIjoyMzg3NywiY2hhbm.FCqWWGbD3jOTJfEe2tQHt-PlwTGqQg8YuS7V5fPo23Yz"
 }
 
 # ---------------------------------------------USER ACCOUNTS ---------------------------------------------------- #
 
-bink_user_accounts = {"uid": "pytest_2.0_staging_auto@bink.com", "pwd": "Password1", "user_detail": "27925"}
+bink_user_accounts = {"uid": "pytest_2.0_staging_auto@bink.com", "pwd": "Password1", "user_detail": "27925", "user_detail2": "1168"}
