@@ -3,9 +3,10 @@ import logging
 
 from json import JSONDecodeError
 
-import config
 from pytest_bdd import scenarios, then, when
 from requests.exceptions import HTTPError
+
+import config
 
 from tests import api
 from tests.api.base import Endpoint
@@ -22,8 +23,9 @@ scenarios("payment_accounts/")
 
 
 def setup_token():
-    TestContext.token = create_bearer_token(sub=TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.USER_DETAIL),
-                                            channel=config.BINK.bundle_id)
+    TestContext.token = create_bearer_token(
+        sub=TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.USER_DETAIL), channel=config.BINK.bundle_id
+    )
     return TestContext.token
 
 

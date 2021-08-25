@@ -12,7 +12,7 @@ from azure.core.exceptions import HttpResponseError, ResourceNotFoundError, Serv
 from azure.identity import DefaultAzureCredential
 from azure.keyvault.secrets import SecretClient
 
-from settings import CHANNEL_SECRET_NAME, LOCAL_CHANNELS, LOCAL_SECRETS_PATH, VAULT_URL, ACCESS_SECRET_NAME
+from settings import ACCESS_SECRET_NAME, CHANNEL_SECRET_NAME, LOCAL_CHANNELS, LOCAL_SECRETS_PATH, VAULT_URL
 
 logger = logging.getLogger(__name__)
 loaded = False

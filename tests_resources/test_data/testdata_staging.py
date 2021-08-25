@@ -52,8 +52,4 @@ master_payment_card = {
 
 # ---------------------------------------------USER ACCOUNTS ---------------------------------------------------- #
 
-bink_user_accounts = {
-    "uid": "pytest_2.0_staging_auto@bink.com",
-    "pwd": "Password1",
-    "user_detail": "27925"
-}
+bink_user_accounts = {"uid": "pytest_2.0_staging_auto@bink.com", "pwd": "Password1", "user_detail": "27925"}
