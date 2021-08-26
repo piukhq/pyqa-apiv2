@@ -43,10 +43,10 @@ Feature: As a Bink User
       | status_code_returned | error_message             | error_slug             |
       | 422                  | Could not validate fields | FIELD_VALIDATION_ERROR |
 
-  @sending_wrong_token
-  Scenario Outline: Sending wrong token header
+  @sending_invalid_token
+  Scenario Outline: Sending invalid token header
 #    Given I am a Bink user
-    When I perform POST <payment_card_provider> payment_account request with wrong token
+    When I perform POST <payment_card_provider> payment_account request with invalid token
     Then I see a <status_code_returned> status code
     And I verify "<error_message> <error_slug>" of payment_account response
 
@@ -54,10 +54,10 @@ Feature: As a Bink User
       | payment_card_provider | status_code_returned | error_message                                        | error_slug    |
       | master                | 401                  | Access Token must be in 2 parts separated by a space | INVALID_TOKEN |
 
-  @sending_wrong_token2
-  Scenario Outline: Sending wrong token with bearer prefix in header
+  @sending_invalid_token2
+  Scenario Outline: Sending invalid token with bearer prefix in header
 #    Given I am a Bink user
-    When I perform POST <payment_card_provider> payment_account request with wrong token and bearer prefix
+    When I perform POST <payment_card_provider> payment_account request with invalid token and bearer prefix
     Then I see a <status_code_returned> status code
     And I verify "<error_message> <error_slug>" of payment_account response
 
