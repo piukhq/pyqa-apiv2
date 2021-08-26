@@ -38,7 +38,7 @@ def setup_second_token():
 
 
 @when('I perform POST request to add a new "<payment_card_provider>" payment card to wallet')
-def add_payment_account(payment_card_provider="master"):
+def add_payment_account(payment_card_provider):
     setup_token()
     response = PaymentCards.add_new_payment_card(TestContext.token, payment_card_provider)
     TestContext.response_status_code = response.status_code
@@ -89,7 +89,6 @@ def verify_get_payment_account_added(payment_card_provider="master"):
 
 @then('I verify the paymentcard "<payment_card_provider>" been added into my wallet')
 def verify_payment_account_added_in_wallet(payment_card_provider):
-    logging.info(TestContext.response_json)
     assert (
         TestContext.current_payment_card_id == TestContext.response_json.get("id")
         and TestContext.name_on_payment_card == TestContext.response_json.get("name_on_card")
@@ -102,14 +101,17 @@ def verify_payment_account_added_in_wallet(payment_card_provider):
 
 
 @then('I perform DELETE request to delete "<payment_card_provider>" the payment card')
-def delete_payment_card(payment_card_provider):
+@then("I perform DELETE request to delete the payment card which is already deleted")
+def delete_payment_card(payment_card_provider="master"):
     response = PaymentCards.delete_payment_card(TestContext.token, TestContext.current_payment_card_id)
-    assert response.status_code == 202
-    TestContext.response = response
+    TestContext.response_status_code = response.status_code
     try:
         if response.status_code == 202:
             logging.info("Payment card is deleted successfully")
         elif response.status_code == 404:
+            response_json = response_to_json(response)
+            TestContext.error_message = response_json["error_message"]
+            TestContext.error_slug = response_json["error_slug"]
             logging.info("Could not find this account")
     except HTTPError as network_response:
         assert network_response.response.status_code == 404 or 400, "Payment card deletion is not successful"
@@ -186,11 +188,13 @@ def verify_empty_json():
 
 @then('I verify "<error_message> <error_slug>" of payment_account response')
 def verify_error_message(error_message, error_slug):
-    assert TestContext.error_message == error_message and TestContext.error_slug == error_slug, "server error"
+    assert (
+        TestContext.error_message == error_message and TestContext.error_slug == error_slug
+    ), "error message didnt appeared in response"
 
 
-@when("I perform POST <payment_card_provider> payment_account request with wrong token")
-def verify_wrong_token(payment_card_provider):
+@when("I perform POST <payment_card_provider> payment_account request with invalid token")
+def verify_incorrect_token(payment_card_provider):
     response = PaymentCards.add_new_payment_card(
         PaymentCardTestData.get_data(payment_card_provider).get(constants.TOKEN_2), payment_card_provider
     )
@@ -210,8 +214,8 @@ def verify_wrong_token(payment_card_provider):
     return response
 
 
-@when("I perform POST <payment_card_provider> payment_account request with wrong token and bearer prefix")
-def verify_wrong_token_bearer_prefix(payment_card_provider):
+@when("I perform POST <payment_card_provider> payment_account request with invalid token and bearer prefix")
+def verify_invalid_token_bearer_prefix(payment_card_provider):
     response = PaymentCards.add_new_payment_card(
         PaymentCardTestData.get_data(payment_card_provider).get(constants.TOKEN_PREFIX), payment_card_provider
     )
@@ -325,3 +329,58 @@ def verify_different_detail(payment_card_provider, expiry_month, expiry_year, na
 
     TestContext.response_status_code = response.status_code
     return TestContext.second_payment_card_id
+
+
+@then('I see the paymentcard been deleted and status_code "<status_code>" appeared')
+def verify_delete_status_code(status_code):
+    assert TestContext.response_status_code == int(status_code), "Delete payment_account status not appeared"
+
+
+@then('I perform DELETE request to delete "<payment_card_provider>" the payment card with invalid token')
+def verify_invalid_token_for_delete_call(payment_card_provider):
+    response = PaymentCards.delete_payment_card(
+        PaymentCardTestData.get_data(payment_card_provider).get(constants.TOKEN_2), TestContext.current_payment_card_id
+    )
+    TestContext.response_status_code = response.status_code
+    response_json = response.json()
+    logging.info(response_json)
+    logging.info(
+        "The response of POST/PaymentCards with invalid token is: \n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_PAYMENT_ACCOUNT.format(TestContext.current_payment_card_id)
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    TestContext.error_message = response_json.get("error_message")
+    TestContext.error_slug = response_json.get("error_slug")
+
+    assert response.status_code == 401, "Receiving wrong data"
+    return response
+
+
+@then(
+    'I perform DELETE request to delete "<payment_card_provider>" the payment card '
+    "with invalid token and bearer prefix"
+)
+def verify_invalid_token_with_bearer_prefix_delete_call(payment_card_provider):
+    response = PaymentCards.delete_payment_card(
+        PaymentCardTestData.get_data(payment_card_provider).get(constants.TOKEN_PREFIX),
+        TestContext.current_payment_card_id,
+    )
+    logging.info(response)
+    time.sleep(3)
+    TestContext.response_status_code = response.status_code
+    response_json = response.json()
+    logging.info(response_json)
+    logging.info(
+        "The response of POST/PaymentCards with invalid token is: \n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_PAYMENT_ACCOUNT.format(TestContext.current_payment_card_id)
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    TestContext.error_message = response_json.get("error_message")
+    TestContext.error_slug = response_json.get("error_slug")
+
+    assert response.status_code == 401, "Receiving wrong data"
+    return response
