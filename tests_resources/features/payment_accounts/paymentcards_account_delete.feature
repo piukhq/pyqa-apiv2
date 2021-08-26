@@ -1,5 +1,5 @@
 # Created by rupalpatel at 26/08/2021
-@paymentcard_account
+@paymentcard_account_delete
 Feature: As a Bink User
   I want to be able to delete my payment card account to my bink wallet
   So that I can start verify its deleted from my wallet

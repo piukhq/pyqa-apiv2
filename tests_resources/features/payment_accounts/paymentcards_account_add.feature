@@ -1,5 +1,5 @@
 # Created by rupalpatel at 16/07/2021
-@paymentcard_account
+@paymentcard_account_add
 Feature: As a Bink User
   I want to be able to add my payment card account to my bink wallet
   So that I can start to earn rewards when I use my payment card
