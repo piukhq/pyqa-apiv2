@@ -72,8 +72,8 @@ class PaymentCardDetails:
         TestContext.card_nickname = faker.last_name()
         TestContext.expiry_month = str(randint(1, 12))
         TestContext.expiry_year = str(randint(2999, 3999))
-        TestContext.payment_card_token = constants.TOKEN + "_pytest" + str(faker.random_int(100, 999999))
-        TestContext.finger_print = constants.FINGERPRINT + "_pytest" + str(faker.random_int(100, 999999))
+        TestContext.payment_card_token = constants.TOKEN + "_pytest_api2_" + str(faker.random_int(100, 999999))
+        TestContext.finger_print = constants.FINGERPRINT + "_pytest_api2_" + str(faker.random_int(100, 999999))
 
         payload = {
             "expiry_month": TestContext.expiry_month,
