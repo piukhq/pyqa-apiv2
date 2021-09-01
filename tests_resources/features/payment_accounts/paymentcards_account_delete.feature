@@ -5,7 +5,7 @@ Feature: As a Bink User
   So that I can start verify its deleted from my wallet
 
 
-  @delete_new_paymentcard
+  @delete_new_paymentcard @bink_regression
   Scenario Outline: Delete new payment card
 #    Given I am a Bink user
     When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
@@ -21,7 +21,7 @@ Feature: As a Bink User
       | amex                  | 202         |
       | visa                  | 202         |
 
-  @already_deleted_paymentcard
+  @already_deleted_paymentcard @bink_regression
   Scenario Outline: Delete already deleted payment card
 #    Given I am a Bink user
     When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
@@ -38,7 +38,7 @@ Feature: As a Bink User
       | amex                  | 202         | 404                  | Could not find this account or card | NOT_FOUND  |
       | visa                  | 202         | 404                  | Could not find this account or card | NOT_FOUND  |
 
-  @invalid_token
+  @invalid_token @bink_regression
   Scenario Outline: Client does not have valid token
 #    Given I am a Bink user
     When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
@@ -54,7 +54,7 @@ Feature: As a Bink User
       | visa                  | 401                  | Access Token must be in 2 parts separated by a space | INVALID_TOKEN |
 
 
-  @invalid_token_with_prefix
+  @invalid_token_with_prefix @bink_regression
   Scenario Outline: Sending invalid token with bearer prefix in header for delete payment card
 #    Given I am a Bink user
     When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
