@@ -43,7 +43,7 @@ def run_test():
         print("SCHEDULER - sending teams notification")
         resp = post(teams_webhook, status, url)
         if resp.status_code > 299:
-            print("SCHEDULER - teams webhook failed {resp.body}")
+            print(f"SCHEDULER - teams webhook failed {resp.body}")
 
 
 def upload(filename):
