@@ -22,6 +22,17 @@ TOKEN_2 = "token_2"
 TOKEN_PREFIX = "token_prefix"
 PAYMENT_CARD_STATUS = "status"
 
+"""Base Path of expected membership plans and membership plans used for comparison in json_diff"""
+EXPECTED_MEMBERSHIP_PLANS_PATH = "tests_resources/test_data/membership_plan"
+EXPECTED_MEMBERSHIP_PLANS_PATH_DEV = "tests_resources/test_data/membership_plan/membership_plan_dev"
+EXPECTED_MEMBERSHIP_PLANS_PATH_STAGING = "tests_resources/test_data/membership_plan/membership_plan_staging"
+
+JSON_DIFF_EXPECTED_JSON = "tests_resources/test_data/membership_plan/json_diff_comparator/expected_membership_plan.json"
+JSON_DIFF_ACTUAL_JSON = "tests_resources/test_data/membership_plan/json_diff_comparator/actual_membership_plan.json"
+
+MEMBERSHIP_CARD_PATH = "tests_resources/test_data/membership_card"
+MEMBERSHIP_CARD_DEV = "tests_resources/test_data/membership_card/membership_card_dev"
+MEMBERSHIP_CARD_STAGING = "tests_resources/test_data/membership_card/membership_card_staging"
 
 # PAYMENT_CARD_STATUS = "status"
 # ACTIVE_LINK = "active_link"
