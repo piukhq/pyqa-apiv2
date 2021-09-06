@@ -1,6 +1,5 @@
 import json
 import logging
-import time
 
 from json import JSONDecodeError
 from json_diff import Comparator
@@ -9,22 +8,13 @@ from json_diff import Comparator
 from pytest_bdd import (
     scenarios,
     then,
-    when,
     parsers
 )
-from requests.exceptions import HTTPError
 
-import config
-
-from tests import api
-from tests.api.base import Endpoint
 from tests.helpers import constants
 from tests.helpers.test_context import TestContext
-from tests.helpers.test_data_utils import TestDataUtils
-from tests.helpers.test_helpers import PaymentCardTestData, TestData
-from tests.helpers.vault.channel_vault import create_bearer_token
+from tests.helpers.test_helpers import TestData
 from tests.requests.membership_plans import MembershipPlans
-from tests.requests.paymentcard_account import PaymentCards
 
 scenarios("membership_plans/")
 
