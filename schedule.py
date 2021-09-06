@@ -29,28 +29,37 @@ def run_test():
     print(process.stdout.decode())
     alert = False
     if process.returncode == 0:
+        print("SCHEDULER - run success")
         status = "Success"
         if alert_on_success:
             alert = True
     else:
+        print("SCHEDULER - run failed")
         status = "Failure"
         if alert_on_failure:
             alert = True
     url = upload("report.html")
     if alert:
-        post(teams_webhook, status, url)
+        print("SCHEDULER - sending teams notification")
+        resp = post(teams_webhook, status, url)
+        if resp.status_code > 299:
+            print("SCHEDULER - teams webhook failed {resp.body}")
 
 
 def upload(filename):
-    suffix = "".join(random.choice(string.ascii_lowercase + string.digits) for _ in range(6))
-    blob = BlobClient.from_connection_string(
-        conn_str=blob_storage_dsn,
-        container_name="qareports",
-        blob_name=f"pytest_report/apiv2-{datetime.now().strftime('%Y%m%d-%H%M')}-{suffix}.html",
-    )
-    with open(filename, "rb") as f:
-        blob.upload_blob(f, content_settings=ContentSettings(content_type="text/html"))
-    return blob.url
+    try:
+        suffix = "".join(random.choice(string.ascii_lowercase + string.digits) for _ in range(6))
+        blob = BlobClient.from_connection_string(
+            conn_str=blob_storage_dsn,
+            container_name="qareports",
+            blob_name=f"pytest_report/apiv2-{datetime.now().strftime('%Y%m%d-%H%M')}-{suffix}.html",
+        )
+        with open(filename, "rb") as f:
+            blob.upload_blob(f, content_settings=ContentSettings(content_type="text/html"))
+        return blob.url
+    except Exception as err:
+        print(f"SCHEDULER - failed to upload {err}")
+        raise
 
 
 def post(webhook, status, url):
