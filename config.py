@@ -10,11 +10,19 @@ class EnvironmentDetails:
 
 
 if "KUBERNETES_SERVICE_HOST" in environ:
-    DEV = EnvironmentDetails(base_url="http://hermes-api", test_data=testdata_dev)
-    STAGING = EnvironmentDetails(base_url="http://hermes-api", test_data=testdata_staging)
+    DEV = EnvironmentDetails(
+        base_url="http://angelia-api",
+        test_data=testdata_dev)
+    STAGING = EnvironmentDetails(
+        base_url="http://angelia-api",
+        test_data=testdata_staging)
 else:
-    DEV = EnvironmentDetails(base_url="https://api.dev.gb.bink.com", test_data=testdata_dev)
-    STAGING = EnvironmentDetails(base_url="https://api.staging.gb.bink.com", test_data=testdata_staging)
+    DEV = EnvironmentDetails(
+        base_url="https://api.dev.gb.bink.com",
+        test_data=testdata_dev)
+    STAGING = EnvironmentDetails(
+        base_url="https://api.staging.gb.bink.com",
+        test_data=testdata_staging)
 
 
 class ChannelDetails:

@@ -24,10 +24,6 @@ To set up this project on your local machine:
 
 In progress..⌛️
 
-# Running Allure Reports
-
-In progress..⌛️
-
 
 # Running inside Kubernetes
 The project requires the following Environment Variables to function correctly:
@@ -35,7 +31,7 @@ The project requires the following Environment Variables to function correctly:
 
 NAME - The Human Readable Name which should be sent with reports
 
-Example: Dev - Barclays
+Example: Staging - Barclays
 
 
 
@@ -49,18 +45,16 @@ TEAMS_WEBHOOK - The Location to Alert to on Success/Failure
 
 SCHEDULE - Uses Cron Syntax, use crontab guru for help
 
-Run at 22:05: 5 22 * * *
+Run at 22:30: 5 22 * * *
 
-Run at 22:00 on Mondays: 0 22 * * 1
-
-
+Run at 22:30 on Mondays: 0 22 * * 1
 
 
 COMMAND - The command to run
 
-Barclays dev run: pytest --html report.html --self-contained-html -s -m dev --channel barclays
+Barclays dev run: pytest --html report.html --self-contained-html -s -m bink_regression --channel barclays
 
-Bink dev run: pytest --html report.html --self-contained-html -s -m dev --channel bink --env dev
+Bink dev run: pytest --html report.html --self-contained-html -s -m bink_regression --channel bink --env staging
 
 
 
