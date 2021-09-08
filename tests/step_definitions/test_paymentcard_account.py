@@ -105,6 +105,7 @@ def verify_payment_account_added_in_wallet(payment_card_provider):
 @then("I perform DELETE request to delete the payment card which is already deleted")
 def delete_payment_card(payment_card_provider="master"):
     response = PaymentCards.delete_payment_card(TestContext.token, TestContext.current_payment_card_id)
+    time.sleep(2)
     TestContext.response_status_code = response.status_code
     try:
         if response.status_code == 202:

@@ -22,7 +22,7 @@ Feature: As a Bink User
       | visa                  | 202         |
 
   @already_deleted_paymentcard @bink_regression
-  Scenario Outline: Delete already deleted payment card
+  Scenario Outline: Delete payment card which is already deleted from the wallet
 #    Given I am a Bink user
     When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
     Then I verify the paymentcard "<payment_card_provider>" been added into my wallet
