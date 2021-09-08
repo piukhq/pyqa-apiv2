@@ -42,6 +42,7 @@ def add_payment_account(payment_card_provider):
     setup_token()
     response = PaymentCards.add_new_payment_card(TestContext.token, payment_card_provider)
     TestContext.response_status_code = response.status_code
+    time.sleep(2)
     assert response.status_code == 201, f"Payment card addition for '{payment_card_provider}' is not successful"
     response_json = response_to_json(response)
     logging.info(
@@ -131,6 +132,7 @@ def verify_replace_value(payment_card_provider, expiry_month, expiry_year, name_
         TestContext.token, payment_card_provider, expiry_month, expiry_year, name_on_card, card_nickname
     )
     response_json = response_to_json(response)
+    time.sleep(2)
     assert (
         response.status_code == 200
         and TestContext.current_payment_card_id == response_json.get("id")
