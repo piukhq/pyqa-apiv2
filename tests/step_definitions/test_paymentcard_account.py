@@ -2,39 +2,20 @@ import json
 import logging
 import time
 
-from json import JSONDecodeError
-
 from pytest_bdd import parsers, scenarios, then, when
 from requests.exceptions import HTTPError
-
-import config
+from tests.conftest import setup_token, response_to_json, setup_second_token
 
 from tests import api
 from tests.api.base import Endpoint
 from tests.helpers import constants
 from tests.helpers.test_context import TestContext
-from tests.helpers.test_data_utils import TestDataUtils
 from tests.helpers.test_helpers import PaymentCardTestData
-from tests.helpers.vault.channel_vault import create_bearer_token
 from tests.requests.paymentcard_account import PaymentCards
 
 scenarios("payment_accounts/")
 
 """Step definitions - Add Payment Account """
-
-
-def setup_token():
-    TestContext.token = create_bearer_token(
-        sub=TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.USER_DETAIL), channel=config.BINK.bundle_id
-    )
-    return TestContext.token
-
-
-def setup_second_token():
-    TestContext.second_token = create_bearer_token(
-        sub=TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.USER_DETAIL2), channel=config.BINK.bundle_id
-    )
-    return TestContext.second_token
 
 
 @when('I perform POST request to add a new "<payment_card_provider>" payment card to wallet')
@@ -55,14 +36,6 @@ def add_payment_account(payment_card_provider):
     TestContext.current_payment_card_id = response_json.get("id")
     TestContext.response_json = response_json
     return TestContext.current_payment_card_id
-
-
-def response_to_json(response):
-    try:
-        response_json = response.json()
-    except JSONDecodeError or Exception:
-        raise Exception(f"Empty response and the response Status Code is {str(response.status_code)}")
-    return response_json
 
 
 @when(
@@ -159,7 +132,7 @@ def verify_existing_payment_account(payment_card_provider):
         "id"
     ), f"Payment card replacement '{payment_card_provider}' is not successful"
     logging.info(
-        f"The response of POST/PaymentCard '{payment_card_provider}' is: \n\n"
+        f"The response of POST/PaymentCards '{payment_card_provider}' is: \n\n"
         + Endpoint.BASE_URL
         + api.ENDPOINT_PAYMENT_ACCOUNTS
         + "\n\n"

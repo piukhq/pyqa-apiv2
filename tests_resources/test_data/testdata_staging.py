@@ -56,6 +56,16 @@ master_payment_card = {
     "token_prefix": "bearer eyJhbGciOiJIU.eyJ1c2VyX2lkIjoyMzg3NywiY2hhbm.FCqWWGbD3jOTJfEe2tQHt-PlwTGqQg8YuS7V5fPo23Yz",
 }
 
+# ----------------------------------------MEMBERSHIP PLAN IDs   ----------------------------------------------- #
+
+membership_plan_id = {
+    "fat_face": 246,
+    "harvey_nichols": 124,
+    "iceland": 105,
+    "whsmith": 280,
+    "wasabi": 281,
+}
+
 # ---------------------------------------------USER ACCOUNTS ---------------------------------------------------- #
 
 bink_user_accounts = {
