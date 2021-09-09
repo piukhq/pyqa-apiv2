@@ -4,10 +4,10 @@ import time
 
 from pytest_bdd import parsers, scenarios, then, when
 from requests.exceptions import HTTPError
-from tests.conftest import setup_token, response_to_json, setup_second_token
 
 from tests import api
 from tests.api.base import Endpoint
+from tests.conftest import response_to_json, setup_second_token, setup_token
 from tests.helpers import constants
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_helpers import PaymentCardTestData

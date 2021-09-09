@@ -1,4 +1,5 @@
 import logging
+
 from json import JSONDecodeError
 
 import pytest
@@ -12,8 +13,8 @@ from tests.api.base import Endpoint
 from tests.helpers import constants
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
-from tests.requests.service import CustomerAccount
 from tests.helpers.vault.channel_vault import create_bearer_token
+from tests.requests.service import CustomerAccount
 
 
 def pytest_bdd_step_error(request, feature, scenario, step, step_func, step_func_args, exception):

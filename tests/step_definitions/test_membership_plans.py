@@ -4,7 +4,7 @@ import logging
 from json_diff import Comparator
 from pytest_bdd import scenarios, when
 
-from tests.conftest import setup_token, response_to_json
+from tests.conftest import response_to_json, setup_token
 from tests.helpers import constants
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_helpers import MembershipCardTestData
