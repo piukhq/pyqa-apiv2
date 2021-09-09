@@ -45,7 +45,7 @@ class PaymentCardDetails:
         logging.info(
             "The Request to enrol encrypted new payment card is : \n\n"
             + Endpoint.BASE_URL
-            + api.ENDPOINT_PAYMENT_CARDS
+            + api.ENDPOINT_PAYMENT_ACCOUNTS
             + "\n\n"
             + json.dumps(payload, indent=4)
         )

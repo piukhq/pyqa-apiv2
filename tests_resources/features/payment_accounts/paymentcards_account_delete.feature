@@ -34,9 +34,9 @@ Feature: As a Bink User
 
     Examples:
       | payment_card_provider | status_code | status_code_returned | error_message                       | error_slug |
-      | master                | 202         | 404                  | Could not find this account or card | NOT_FOUND  |
-      | amex                  | 202         | 404                  | Could not find this account or card | NOT_FOUND  |
-      | visa                  | 202         | 404                  | Could not find this account or card | NOT_FOUND  |
+      | master                | 202         | 404                  | Could not find this account or card | RESOURCE_NOT_FOUND  |
+      | amex                  | 202         | 404                  | Could not find this account or card | RESOURCE_NOT_FOUND  |
+      | visa                  | 202         | 404                  | Could not find this account or card | RESOURCE_NOT_FOUND  |
 
   @invalid_token @bink_regression
   Scenario Outline: Client does not have valid token

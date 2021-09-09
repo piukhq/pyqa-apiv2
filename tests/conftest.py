@@ -1,5 +1,7 @@
 import logging
 
+from json import JSONDecodeError
+
 import pytest
 
 from faker import Faker
@@ -11,6 +13,7 @@ from tests.api.base import Endpoint
 from tests.helpers import constants
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
+from tests.helpers.vault.channel_vault import create_bearer_token
 from tests.requests.service import CustomerAccount
 
 
@@ -97,3 +100,25 @@ def login_user(channel, env):
                 return TestContext.token
             except Exception as e:
                 logging.info(f"Gateway Timeout error :{e}")
+
+
+def setup_token():
+    TestContext.token = create_bearer_token(
+        sub=TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.USER_DETAIL), channel=config.BINK.bundle_id
+    )
+    return TestContext.token
+
+
+def setup_second_token():
+    TestContext.second_token = create_bearer_token(
+        sub=TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.USER_DETAIL2), channel=config.BINK.bundle_id
+    )
+    return TestContext.second_token
+
+
+def response_to_json(response):
+    try:
+        response_json = response.json()
+    except JSONDecodeError or Exception:
+        raise Exception(f"Empty response and the response Status Code is {str(response.status_code)}")
+    return response_json
