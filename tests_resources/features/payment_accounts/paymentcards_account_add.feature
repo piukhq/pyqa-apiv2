@@ -5,7 +5,7 @@ Feature: As a Bink User
   So that I can start to earn rewards when I use my payment card
 
 
-  @enrol_new_paymentcard @bink_regression
+  @enrol_new_paymentcard @bink_regression_api2
   Scenario Outline: Enrol new payment card
 #    Given I am a Bink user
     When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
@@ -21,7 +21,7 @@ Feature: As a Bink User
       | amex                  | 201                  |
       | visa                  | 201                  |
 
-  @enrol_existing_paymentcard @bink_regression
+  @enrol_existing_paymentcard @bink_regression_api2
   Scenario Outline: Replace expiry_month,expiry_year,name_on_card,card_nickname into payment card
 #    Given I am a Bink user
     When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
@@ -33,7 +33,7 @@ Feature: As a Bink User
       | payment_card_provider | expiry_month | expiry_year | name_on_card | card_nickname | status_code_returned |
       | master                | 12           | 2999        | Mr AutoBink  | qa_automation | 200                  |
 
-  @empty_payload @bink_regression
+  @empty_payload @bink_regression_api2
   Scenario Outline: Sending empty payload
 #    Given I am a Bink user
     When I perform POST payment_account request with empty json payload
@@ -43,7 +43,7 @@ Feature: As a Bink User
       | status_code_returned | error_message             | error_slug             |
       | 422                  | Could not validate fields | FIELD_VALIDATION_ERROR |
 
-  @sending_invalid_token @bink_regression
+  @sending_invalid_token @bink_regression_api2
   Scenario Outline: Sending invalid token header
 #    Given I am a Bink user
     When I perform POST <payment_card_provider> payment_account request with invalid token
@@ -54,7 +54,7 @@ Feature: As a Bink User
       | payment_card_provider | status_code_returned | error_message                                        | error_slug    |
       | master                | 401                  | Access Token must be in 2 parts separated by a space | INVALID_TOKEN |
 
-  @sending_invalid_token2 @bink_regression
+  @sending_invalid_token2 @bink_regression_api2
   Scenario Outline: Sending invalid token with bearer prefix in header
 #    Given I am a Bink user
     When I perform POST <payment_card_provider> payment_account request with invalid token and bearer prefix
@@ -66,7 +66,7 @@ Feature: As a Bink User
       | master                | 401                  | Supplied token is invalid | INVALID_TOKEN |
 
 
-  @optional_field @field_verify @bink_regression
+  @optional_field @field_verify @bink_regression_api2
   Scenario Outline: Remove name_on_card,card_nickname,issuer,provider,type,country,currency_code from the payload
 #    Given I am a Bink user
     When I perform POST request to add a new payment card by removing "optional" field to wallet
@@ -77,7 +77,7 @@ Feature: As a Bink User
       | payment_card_provider | status_code_returned |
       | master                | 201                  |
 
-  @mandatory_field @field_verify @bink_regression
+  @mandatory_field @field_verify @bink_regression_api2
   Scenario Outline: Remove expiry_month,expiry_year,token,last_four_digits,first_six_digits,fingerprint from the payload
 #    Given I am a Bink user
     When I perform POST request to add a new payment card by removing "mandatory" field to wallet
@@ -88,7 +88,7 @@ Feature: As a Bink User
       | status_code_returned | error_message             | error_slug             |
       | 422                  | Could not validate fields | FIELD_VALIDATION_ERROR |
 
-  @multiplewallet @bink_regression
+  @multiplewallet @bink_regression_api2
   Scenario Outline: Successfully add existing payment card to second wallet, same details
 #    Given I am a Bink user
     When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
@@ -104,7 +104,7 @@ Feature: As a Bink User
       | amex                  | 201                  | 200                          |
       | visa                  | 201                  | 200                          |
 
-  @multiplewallet_different_detail @bink_regression
+  @multiplewallet_different_detail @bink_regression_api2
   Scenario Outline: Successfully add existing payment card to second wallet, different details
 #    Given I am a Bink user
     When I perform POST request to add a new "<payment_card_provider>" payment card to wallet

@@ -15,6 +15,7 @@ from tests.requests.paymentcard_account import PaymentCards
 
 scenarios("payment_accounts/")
 
+
 """Step definitions - Add Payment Account """
 
 
@@ -94,7 +95,7 @@ def delete_payment_card(payment_card_provider="master"):
 
 @then("I see a <status_code_returned> status code")
 def verify_status_code(status_code_returned):
-    assert TestContext.response_status_code == int(status_code_returned), "Payment_account is not successful"
+    assert TestContext.response_status_code == int(status_code_returned), "journey is not successful"
 
 
 @when(
@@ -158,7 +159,7 @@ def verify_empty_json():
     TestContext.error_message = response_json.get("error_message")
     TestContext.error_slug = response_json.get("error_slug")
 
-    assert response.status_code == 422, "Receiving wrong data"
+    assert response.status_code == 422, "Receiving invalid data"
     return response
 
 
@@ -177,7 +178,7 @@ def verify_incorrect_token(payment_card_provider):
     TestContext.response_status_code = response.status_code
     response_json = response.json()
     logging.info(
-        "The response of POST/PaymentCards with wrong token is: \n\n"
+        "The response of POST/PaymentCards with invalid token is: \n\n"
         + Endpoint.BASE_URL
         + api.ENDPOINT_PAYMENT_ACCOUNTS.format(TestContext.current_payment_card_id)
         + "\n\n"
@@ -186,7 +187,7 @@ def verify_incorrect_token(payment_card_provider):
     TestContext.error_message = response_json.get("error_message")
     TestContext.error_slug = response_json.get("error_slug")
 
-    assert response.status_code == 401, "Receiving wrong data"
+    assert response.status_code == 401, "Receiving invalid data"
     return response
 
 
@@ -198,7 +199,7 @@ def verify_invalid_token_bearer_prefix(payment_card_provider):
     TestContext.response_status_code = response.status_code
     response_json = response.json()
     logging.info(
-        "The response of POST/PaymentCards with wrong token is: \n\n"
+        "The response of POST/PaymentCards with invalid token is: \n\n"
         + Endpoint.BASE_URL
         + api.ENDPOINT_PAYMENT_ACCOUNTS.format(TestContext.current_payment_card_id)
         + "\n\n"
@@ -207,7 +208,7 @@ def verify_invalid_token_bearer_prefix(payment_card_provider):
     TestContext.error_message = response_json.get("error_message")
     TestContext.error_slug = response_json.get("error_slug")
 
-    assert response.status_code == 401, "Receiving wrong data"
+    assert response.status_code == 401, "Receiving invalid data"
     return response
 
 
@@ -330,7 +331,7 @@ def verify_invalid_token_for_delete_call(payment_card_provider):
     TestContext.error_message = response_json.get("error_message")
     TestContext.error_slug = response_json.get("error_slug")
 
-    assert response.status_code == 401, "Receiving wrong data"
+    assert response.status_code == 401, "Receiving invalid data"
     return response
 
 
@@ -358,5 +359,5 @@ def verify_invalid_token_with_bearer_prefix_delete_call(payment_card_provider):
     TestContext.error_message = response_json.get("error_message")
     TestContext.error_slug = response_json.get("error_slug")
 
-    assert response.status_code == 401, "Receiving wrong data"
+    assert response.status_code == 401, "Receiving invalid data"
     return response
