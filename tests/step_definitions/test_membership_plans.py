@@ -2,7 +2,7 @@ import json
 import logging
 
 from json_diff import Comparator
-from pytest_bdd import scenarios, when, then
+from pytest_bdd import scenarios, then, when
 
 from tests.conftest import response_to_json, setup_token
 from tests.helpers import constants
