@@ -56,7 +56,7 @@ class MembershipCardTestData:
             "FatFace": "fat_face",
             "Wasabi": "wasabi",
             "WHSmith": "whsmith",
-            "Merchant_not_exists": "merchant_not_exists"
+            "Merchant_not_exists": "merchant_not_exists",
         }
         return switcher.get(merchant)
 

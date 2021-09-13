@@ -45,7 +45,9 @@ def json_compare(actual_membership_plan_journey_field, expected_membership_plan_
 
 @then('I can see the journey fields of that merchant "<loyalty_scheme>"')
 def verify_journey_field_type(loyalty_scheme):
-    difference = json_compare(TestContext.actual_membership_plan_journey_field, TestContext.expected_membership_plan_journey_field)
+    difference = json_compare(
+        TestContext.actual_membership_plan_journey_field, TestContext.expected_membership_plan_journey_field
+    )
     if json.dumps(difference) != "{}":
         logging.info(
             "The expected and actual membership plan of "
@@ -60,7 +62,7 @@ def verify_journey_field_type(loyalty_scheme):
         logging.info("The expected and actual membership plan of " + loyalty_scheme + " journey fields is same")
 
 
-@then('I verify the <status_code> for journey field appeared')
+@then("I verify the <status_code> for journey field appeared")
 def verify_success_journey_field(status_code):
     assert TestContext.response_status_code == int(status_code), "Journey field value didnt match"
 
@@ -68,7 +70,8 @@ def verify_success_journey_field(status_code):
 @when('I perform GET request to view journey field for "<loyalty_scheme>" for invalid token')
 def verify_journey_field_invalid_token(loyalty_scheme):
     response = MembershipPlans.get_membership_plan_journey_field(
-        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN), loyalty_scheme)
+        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN), loyalty_scheme
+    )
 
     TestContext.response_status_code = response.status_code
     response_json = response.json()
@@ -83,8 +86,8 @@ def verify_journey_field_invalid_token(loyalty_scheme):
 @then('I verify "<error_message> <error_slug>" in loyalty scheme response')
 def verify_plan_response_error_slug_and_error_message(error_message, error_slug):
     assert (
-            TestContext.error_message == error_message and TestContext.error_slug == error_slug), \
-        "error message didnt appeared in response"
+        TestContext.error_message == error_message and TestContext.error_slug == error_slug
+    ), "error message didnt appeared in response"
 
 
 @when('I perform GET request to view journey field for "<loyalty_scheme>" for invalid resource')
