@@ -56,6 +56,14 @@ master_payment_card = {
     "token_prefix": "bearer eyJhbGciOiJIU.eyJ1c2VyX2lkIjoyMzg3NywiY2hhbm.FCqWWGbD3jOTJfEe2tQHt-PlwTGqQg8YuS7V5fPo23Yz",
 }
 
+invalid_token = {
+    "invalid_token1": "bearer invalid_token",
+    "expired_token": "bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6ImFjY2Vzcy1zZWNyZXQtMSJ9.eyJ1c2VyX2lkIjoy"
+    "Mzg3NywiY2hhbm5lbCI6ImNvbS5iYXJjbGF5cy5ibWIiLCJzdWIiOjIzODc3LCJleHAiOjE2MzEyOTE3MjYsImlhdCI6M"
+    "TYzMTI5MDgyNX0.2LfB5dNuweArdz5j-ecXds4mepaeG65h3JA0vC-Mfeilv6C0IWVnfEK_K9_xrJDUhLD7f094rC1L7th"
+    "5g4vJoQ",
+}
+
 # ----------------------------------------MEMBERSHIP PLAN IDs   ----------------------------------------------- #
 
 membership_plan_id = {
@@ -64,6 +72,7 @@ membership_plan_id = {
     "iceland": 105,
     "whsmith": 280,
     "wasabi": 281,
+    "merchant_not_exists": 0000,
 }
 
 # ---------------------------------------------USER ACCOUNTS ---------------------------------------------------- #

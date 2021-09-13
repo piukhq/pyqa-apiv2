@@ -52,9 +52,9 @@ Run at 22:30 on Mondays: 0 22 * * 1
 
 COMMAND - The command to run
 
-Barclays dev run: pytest --html report.html --self-contained-html -s -m bink_regression --channel barclays
+Barclays dev run: pytest --html report.html --self-contained-html -s -m bink_regression_api2 --channel barclays
 
-Bink dev run: pytest --html report.html --self-contained-html -s -m bink_regression --channel bink --env staging
+Bink dev run: pytest --html report.html --self-contained-html -s -m bink_regression_api2 --channel bink --env staging
 
 
 
