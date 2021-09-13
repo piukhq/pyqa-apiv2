@@ -15,6 +15,8 @@ class TestContext:
     second_token = ""
     error_message = ""
     error_slug = ""
+    expected_membership_plan_journey_field = ""
+    actual_membership_plan_journey_field = ""
     """Variable that decides encryption is required / not"""
     flag_encrypt = ""
     channel_name = ""

@@ -1,0 +1,115 @@
+{
+  "loyalty_plan_id": 124,
+  "join_fields": {
+    "credentials": [
+      {
+        "order": 0,
+        "display_label": "Title",
+        "validation": "^(Mr|Mrs|Miss|Ms|Dame|Sir|Doctor|Professor|Lord|Lady)$",
+        "description": "Select title",
+        "credential_slug": "title",
+        "type": "choice",
+        "is_sensitive": false,
+        "choice": [
+          "Mr",
+          "Mrs",
+          "Miss",
+          "Ms",
+          "Dame",
+          "Sir",
+          "Doctor",
+          "Professor",
+          "Lord",
+          "Lady"
+        ]
+      },
+      {
+        "order": 1,
+        "display_label": "First name",
+        "validation": "^(((?=.{1,255}$)[A-Za-z\\-\\u00C0-\\u00FF])+\\s*){1,4}$",
+        "description": "Enter first name",
+        "credential_slug": "first_name",
+        "type": "text",
+        "is_sensitive": false
+      },
+      {
+        "order": 2,
+        "display_label": "Last name",
+        "validation": "^(((?=.{1,255}$)[A-Za-z\\-\\u00C0-\\u00FF])+\\s*){1,4}$",
+        "description": "Enter last name",
+        "credential_slug": "last_name",
+        "type": "text",
+        "is_sensitive": false
+      },
+      {
+        "order": 3,
+        "display_label": "Email",
+        "validation": "^(?=[^@]{1,64}@)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
+        "description": "example@mydomain.com",
+        "credential_slug": "email",
+        "type": "text",
+        "is_sensitive": false
+      },
+      {
+        "order": 4,
+        "display_label": "Password",
+        "validation": "^([A-z0-9!\"#$£%&'()*+,\\-./:;<=>?@\\[\\\\\\]^_`{|}~]){7,255}$",
+        "description": "Password (min 7 characters)",
+        "credential_slug": "password_2",
+        "type": "sensitive",
+        "is_sensitive": true
+      },
+      {
+        "order": 5,
+        "display_label": "Mobile number",
+        "validation": "^(?:0|\\+?44)(?:\\d-?\\s?){9,15}$",
+        "description": "01234 123456",
+        "credential_slug": "phone",
+        "type": "text",
+        "is_sensitive": false
+      }
+    ],
+    "plan_documents": [
+      {
+        "name": "Retailer terms and conditions",
+        "url": "https://policies.staging.gb.bink.com/hn/tc.html",
+        "description": "I accept the"
+      },
+      {
+        "name": "Harvey Nichols privacy policy",
+        "url": "https://policies.staging.gb.bink.com/hn/pp.html",
+        "description": "Please read the"
+      }
+    ],
+    "consents": [
+      {
+        "order": 0,
+        "consent_slug": "email_optin",
+        "is_acceptance_required": false,
+        "description": "Check this box for email marketing from Harvey Nichols - if you change your mind, you can opt out anytime via the retailer."
+      }
+    ]
+  },
+  "authorise_fields": {
+    "credentials": [
+      {
+        "order": 3,
+        "display_label": "Email",
+        "validation": "^(?=[^@]{1,64}@)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
+        "description": "example@mydomain.com",
+        "credential_slug": "email",
+        "type": "text",
+        "is_sensitive": false
+      },
+      {
+        "order": 4,
+        "display_label": "Password",
+        "validation": "^([A-z0-9!\"#$£%&'()*+,\\-./:;<=>?@\\[\\\\\\]^_`{|}~]){6,255}$",
+        "description": "Password (min 6 characters)",
+        "credential_slug": "password",
+        "type": "sensitive",
+        "is_sensitive": true
+      }
+    ]
+  }
+}
