@@ -3,6 +3,10 @@
 report/
 report.html
 
+tests_resources/test_data/membership_plan/journey_type_diff_comparator/actual_membership_plan.json
+tests_resources/test_data/membership_plan/journey_type_diff_comparator/expected_membership_plan.json
+
+.idea
 # Created by https://www.toptal.com/developers/gitignore/api/macos,linux,code,python,pycharm
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,linux,code,python,pycharm
 
