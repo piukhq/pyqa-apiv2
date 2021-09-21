@@ -36,18 +36,15 @@ class HarveyNicholsCard:
 
         payload = {
             "account": {
-                "authorise_fields": [
-                    {"column": "Email",
-                     "value": value
-                     },
-                    {
-                        "column": "Password",
-                        "value": password
-                    }
-                ]
+                "authorise_fields": [{"column": "Email", "value": value}, {"column": "Password", "value": password}]
             },
             "membership_plan": TestDataUtils.TEST_DATA.membership_plan_id.get("harvey_nichols"),
         }
-        logging.info("The Request for Add_field only with :\n"
-                     + Endpoint.BASE_URL + api.ENDPOINT_MEMBERSHIP_CARDS + "\n\n" + json.dumps(payload, indent=4))
+        logging.info(
+            "The Request for Add_field only with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
         return payload

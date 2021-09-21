@@ -69,8 +69,9 @@ def verify_success_journey_field(status_code):
 
 @when('I perform GET request to view journey field for "<loyalty_scheme>" for invalid token')
 def verify_journey_field_invalid_token(loyalty_scheme):
-    response = MembershipPlans.get_membership_plan_journey_field\
-        (TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN), loyalty_scheme)
+    response = MembershipPlans.get_membership_plan_journey_field(
+        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN), loyalty_scheme
+    )
 
     TestContext.response_status_code = response.status_code
     response_json = response.json()

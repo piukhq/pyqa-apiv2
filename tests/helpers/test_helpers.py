@@ -24,27 +24,29 @@ class PaymentCardTestData:
 #     """Below functions read test data as "object" from test_data_sheet
 #      and retrieve the data from object inside the test class"""
 
-    # @staticmethod
-    # def get_membership_card_status_states():
-    #     return TestDataUtils.TEST_DATA.membership_card_status_states
-    #
-    # @staticmethod
-    # def get_membership_card_status_reason_codes():
-    #     return TestDataUtils.TEST_DATA.membership_card_status_reason_codes
+# @staticmethod
+# def get_membership_card_status_states():
+#     return TestDataUtils.TEST_DATA.membership_card_status_states
+#
+# @staticmethod
+# def get_membership_card_status_reason_codes():
+#     return TestDataUtils.TEST_DATA.membership_card_status_reason_codes
 
-    # @staticmethod
-    # def get_data(merchant):
-    #     switcher = {
-    #         "Iceland": TestDataUtils.TEST_DATA.iceland_membership_card,
-    #         "HarveyNichols": TestDataUtils.TEST_DATA.harvey_nichols_membership_card,
-    #         "Wasabi": TestDataUtils.TEST_DATA.wasabi_membership_card,
-    #         "WHSmith": TestDataUtils.TEST_DATA.whsmith_membership_card,
-    #         "FatFace": TestDataUtils.TEST_DATA.fat_face_membership_card,
-    #     }
-    #     return switcher.get(merchant)
+# @staticmethod
+# def get_data(merchant):
+#     switcher = {
+#         "Iceland": TestDataUtils.TEST_DATA.iceland_membership_card,
+#         "HarveyNichols": TestDataUtils.TEST_DATA.harvey_nichols_membership_card,
+#         "Wasabi": TestDataUtils.TEST_DATA.wasabi_membership_card,
+#         "WHSmith": TestDataUtils.TEST_DATA.whsmith_membership_card,
+#         "FatFace": TestDataUtils.TEST_DATA.fat_face_membership_card,
+#     }
+#     return switcher.get(merchant)
+
 
 class TestData:
     """Functions used to supply expected data to pytest test_ classes"""
+
     """Below functions read test data as "object" from test_data_sheet
      and retrieve the data from object inside the test class"""
 
@@ -115,4 +117,3 @@ class Merchant:
             "Wasabi": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM),
         }
         return switcher.get(merchant)
-

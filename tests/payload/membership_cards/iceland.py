@@ -17,21 +17,25 @@ class IcelandCard:
             payload = {
                 "account": {
                     "add_fields": {
-                        "credentials":
-                            [
-                                {
-                                    "credential_slug": "card_number",
-                                    "value": TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.CARD_NUM)
-                                             + str(random.randint(10, 999999)),
-                                }
-                            ]
+                        "credentials": [
+                            {
+                                "credential_slug": "card_number",
+                                "value": TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.CARD_NUM)
+                                + str(random.randint(10, 999999)),
+                            }
+                        ]
                     }
                 },
                 "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("iceland"),
             }
 
-        logging.info("The Request for Add_field only with :\n"
-                     + Endpoint.BASE_URL + api.ENDPOINT_MEMBERSHIP_CARDS + "\n\n" + json.dumps(payload, indent=4))
+        logging.info(
+            "The Request for Add_field only with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
         return payload
 
     @staticmethod
@@ -39,18 +43,22 @@ class IcelandCard:
         payload = {
             "account": {
                 "add_fields": {
-                    "credentials":
-                        [
-                            {
-                                "credential_slug": "card_number",
-                                "value": TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.CARD_NUM),
-                            }
-                        ]
+                    "credentials": [
+                        {
+                            "credential_slug": "card_number",
+                            "value": TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.CARD_NUM),
+                        }
+                    ]
                 }
             },
             "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("iceland"),
         }
 
-        logging.info("The Request for Add_field only with :\n"
-                     + Endpoint.BASE_URL + api.ENDPOINT_MEMBERSHIP_CARDS + "\n\n" + json.dumps(payload, indent=4))
+        logging.info(
+            "The Request for Add_field only with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
         return payload
