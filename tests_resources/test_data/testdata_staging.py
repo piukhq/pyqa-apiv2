@@ -63,6 +63,30 @@ invalid_token = {
     "TYzMTI5MDgyNX0.2LfB5dNuweArdz5j-ecXds4mepaeG65h3JA0vC-Mfeilv6C0IWVnfEK_K9_xrJDUhLD7f094rC1L7th"
     "5g4vJoQ",
 }
+# ----------------------------------------LOYALTY CARDs    --------------------------------------------------- #
+iceland_membership_card = {
+    "card_num": "6332040000300000003",
+    "barcode": "6332040000300000003",
+    "last_name": "hundred",
+    "postcode": "rg2 2aa",
+    "points": 205.02,
+    "currency": "GBP",
+    "description": "Placeholder Balance Description",
+    "transactions": "3",
+    "transaction_status": "active",
+    "transaction_currency": "GBP",
+}
+
+wasabi_membership_card = {
+    "card_num": "1048175295",
+    "email": "binktestuser19@wasabi.com",
+    "points": 5,
+    "currency": "stamps",
+    "description": "",
+    "transactions": "",
+    "transaction_status": "active",
+    "transaction_currency": "stamps",
+}
 
 # ----------------------------------------MEMBERSHIP PLAN IDs   ----------------------------------------------- #
 
@@ -73,6 +97,20 @@ membership_plan_id = {
     "whsmith": 280,
     "wasabi": 281,
     "merchant_not_exists": 0000,
+}
+
+scheme_status = {
+    "wallet_only": 10,
+}
+
+# ------------------------------------------ DB DETAILS ---------------------------------------------------- #
+
+db_details = {
+    "user": "common@bink-uksouth-staging-common",
+    "password": "",
+    "host": "127.0.0.1",
+    "port": "5432",
+    "database": "hermes",
 }
 
 # ---------------------------------------------USER ACCOUNTS ---------------------------------------------------- #
