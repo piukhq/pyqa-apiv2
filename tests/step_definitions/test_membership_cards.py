@@ -1,7 +1,7 @@
 import json
 import logging
 
-from pytest_bdd import scenarios, when, parsers, then
+from pytest_bdd import parsers, scenarios, then, when
 
 from tests import api
 from tests.api.base import Endpoint

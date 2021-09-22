@@ -1,10 +1,11 @@
+import datetime
 import logging
+
+from dataclasses import dataclass
 
 from rsa import decrypt
 
 import tests.helpers.database.setupdb as db
-from dataclasses import dataclass
-import datetime
 
 
 @dataclass
