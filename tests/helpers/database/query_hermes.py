@@ -43,47 +43,6 @@ class QueryHermes:
         db.clear_db(connection)
         return scheme_account_record
 
-    @staticmethod
-    def fetch_credential_ans(merchant, scheme_account_id):
-        """Query all credential answers for the current scheme"""
-        connection = db.connect_db()
-        query_credential_ans = (
-            """SELECT * FROM hermes.public.scheme_schemeaccountcredentialanswer
-         where scheme_account_id='%s'"""
-            % scheme_account_id
-        )
-        record = db.execute_query_fetch_all(connection, query_credential_ans)
-
-        if record is None:
-            raise Exception(f"Credential answers are not saved in DB for scheme account '{scheme_account_id}'")
-        else:
-            logging.info(
-                merchant + " Scheme Account  Credential Answers are:"
-                "\n.............................................................................."
-            )
-
-            # fields_to_verify = ("card_number", "email", "last_name", "postcode", "merchant_identifier", "date_of_birth")
-            # fields_to_decrypt = ("last_name", "postcode", "date_of_birth")
-
-            for row in record:
-                credential_qn_label = get_credential_qn_label(row[3], connection)
-                question = credential_qn_label[0]
-                answer = row[1]
-
-                logging.info(f" '{question}' is '{answer}'")
-
-                # if question in fields_to_verify:
-                #     if question in fields_to_decrypt:
-                #         answer = decrypt(answer)
-                #         logging.info(f"Decrypted value of {question} is '{answer}'")
-
-                setattr(CredentialAns, question, answer)
-
-            logging.info("..............................................................................")
-
-            db.clear_db(connection)
-            return record
-
 
 def get_credential_qn_label(qn_id, connection):
     """The label for each credential answer has been fetched using the unique question_id
