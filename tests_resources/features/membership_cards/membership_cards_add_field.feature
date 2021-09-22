@@ -31,17 +31,30 @@ Feature: Add a loyalty card
       | Iceland  | Add_field    | 200         |
       | Wasabi   | Add_field    | 200         |
 
+  @invalid_field_bad_request @bink_regression_api2
+  Scenario Outline: Add field journey with Bad request
+#    Given I am a Bink user
+    When I perform POST request to add "<merchant>" membership card with "<request_payload>" with "<status_code>"
+#    And I perform GET request to verify the "<merchant>" membership card is added to the wallet
+    Then I see a "<error_message>" error message
+    And I see a "<error_slug>" error slug
+#    And I perform DELETE request to delete the "<merchant>" membership card
+    Examples:
+      | merchant | error_message | error_slug        | request_payload | status_code |
+      | Iceland  | Invalid JSON  | MALFORMED_REQUEST | invalid_json    | 400         |
+      | Wasabi   | Invalid JSON  | MALFORMED_REQUEST | invalid_json    | 400         |
+
   @invalid_field @bink_regression_api2
   Scenario Outline: Add field journey with Unprocessable entity
 #    Given I am a Bink user
-    When I perform POST request to add "<merchant>" membership card with "<invalid_request>" with "<status_code>"
+    When I perform POST request to add "<merchant>" membership card with "<request_payload>" with "<status_code>"
 #    And I perform GET request to verify the "<merchant>" membership card is added to the wallet
     Then I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
 
 #    And I perform DELETE request to delete the "<merchant>" membership card
     Examples:
-      | merchant | error_message             | error_slug             | invalid_request | status_code |
+      | merchant | error_message             | error_slug             | request_payload | status_code |
       | Iceland  | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
       | Wasabi   | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
 

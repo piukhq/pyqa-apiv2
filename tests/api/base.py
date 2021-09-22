@@ -24,3 +24,7 @@ class Endpoint:
     @staticmethod
     def call(url, headers, method="GET", body=None):
         return requests.request(method, url, headers=headers, data=json.dumps(body))
+
+    @staticmethod
+    def call_payload(url, headers, method="GET", body=None):
+        return requests.request(method, url, headers=headers, data=body)

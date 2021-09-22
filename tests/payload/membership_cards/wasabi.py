@@ -63,3 +63,27 @@ class WasabiCard:
             + json.dumps(payload, indent=4)
         )
         return payload
+
+    @staticmethod
+    def add_field_only_membership_card_with_invalid_json():
+        payload = {
+            "account": {
+                "add_fields": {
+                    "credentials": [
+                        {
+                            "credential_slug": "'card_number'",
+                            "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM),
+                        }
+                    ]
+                }
+            },
+            "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi"),
+        }
+        logging.info(
+            "The Request for Add_field only with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload

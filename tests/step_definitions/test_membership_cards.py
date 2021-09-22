@@ -77,15 +77,21 @@ def verify_memebrship_card_added_already(merchant, status_code):
     assert response.status_code == 200, "Add existing membership card for " + merchant + " failed"
 
 
-@when('I perform POST request to add "<merchant>" membership card with "<invalid_request>" with "<status_code>"')
-def verify_invalid_request(merchant, invalid_request, status_code):
+@when('I perform POST request to add "<merchant>" membership card with "<request_payload>" with "<status_code>"')
+def verify_invalid_request(merchant, request_payload, status_code):
     setup_token()
-    response = MembershipCards.add_field_only_card(TestContext.token, merchant, invalid_request)
-    response_json = response_to_json(response)
-
-    TestContext.response_status_code = response.status_code
-    TestContext.error_message = response_json["error_message"]
-    TestContext.error_slug = response_json["error_slug"]
+    if request_payload == "invalid_request":
+        response = MembershipCards.add_field_only_card(TestContext.token, merchant, request_payload)
+        response_json = response_to_json(response)
+        TestContext.response_status_code = response.status_code
+        TestContext.error_message = response_json["error_message"]
+        TestContext.error_slug = response_json["error_slug"]
+    elif request_payload == "invalid_json":
+        response = MembershipCards.add_field_with_invalid_json(TestContext.token, merchant)
+        response_json = response_to_json(response)
+        TestContext.response_status_code = response.status_code
+        TestContext.error_message = response_json["error_message"]
+        TestContext.error_slug = response_json["error_slug"]
 
     logging.info(
         "The response of Invalid json Journey (POST) for Add field:\n \n"
