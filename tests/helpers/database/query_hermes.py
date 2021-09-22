@@ -3,8 +3,6 @@ import logging
 
 from dataclasses import dataclass
 
-from rsa import decrypt
-
 import tests.helpers.database.setupdb as db
 
 
@@ -64,8 +62,8 @@ class QueryHermes:
                 "\n.............................................................................."
             )
 
-            fields_to_verify = ("card_number", "email", "last_name", "postcode", "merchant_identifier", "date_of_birth")
-            fields_to_decrypt = ("last_name", "postcode", "date_of_birth")
+            # fields_to_verify = ("card_number", "email", "last_name", "postcode", "merchant_identifier", "date_of_birth")
+            # fields_to_decrypt = ("last_name", "postcode", "date_of_birth")
 
             for row in record:
                 credential_qn_label = get_credential_qn_label(row[3], connection)
@@ -74,10 +72,10 @@ class QueryHermes:
 
                 logging.info(f" '{question}' is '{answer}'")
 
-                if question in fields_to_verify:
-                    if question in fields_to_decrypt:
-                        answer = decrypt(answer)
-                        logging.info(f"Decrypted value of {question} is '{answer}'")
+                # if question in fields_to_verify:
+                #     if question in fields_to_decrypt:
+                #         answer = decrypt(answer)
+                #         logging.info(f"Decrypted value of {question} is '{answer}'")
 
                 setattr(CredentialAns, question, answer)
 
