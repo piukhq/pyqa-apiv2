@@ -24,6 +24,13 @@ class MembershipCards(Endpoint):
         return Endpoint.call(url, header, "POST", payload)
 
     @staticmethod
+    def add_field_with_invalid_json(token, merchant):
+        url = MembershipCards.get_url()
+        header = Endpoint.request_header(token)
+        payload = Merchant.get_merchant(merchant).add_field_only_membership_card_with_invalid_json()
+        return Endpoint.call_payload(url, header, "POST", payload)
+
+    @staticmethod
     def get_url(scheme_account_id=None):
         """Return URL for membership_cards and
         membership_card/scheme_account_id"""
