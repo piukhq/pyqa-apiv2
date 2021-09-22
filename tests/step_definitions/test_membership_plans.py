@@ -8,7 +8,7 @@ from tests.conftest import response_to_json, setup_token
 from tests.helpers import constants
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
-from tests.helpers.test_helpers import MembershipCardTestData
+from tests.helpers.test_helpers import TestData
 from tests.requests.membership_plans import MembershipPlans
 
 scenarios("membership_plans/")
@@ -24,7 +24,7 @@ def verify_journey_field(loyalty_scheme, env, channel):
         "The Membership plan for " + loyalty_scheme + " is: \n" + json.dumps(response_to_json(response), indent=4)
     )
 
-    with open(MembershipCardTestData.get_expected_membership_plan_json(loyalty_scheme, env, channel)) as json_file:
+    with open(TestData.get_expected_membership_plan_json(loyalty_scheme, env, channel)) as json_file:
         json_data = json.load(json_file)
 
     stored_json = json.dumps(json_data)

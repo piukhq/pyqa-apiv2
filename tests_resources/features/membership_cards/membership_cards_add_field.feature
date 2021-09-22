@@ -1,0 +1,59 @@
+# Created by rupalpatel at 20/09/2021
+@membership_card
+Feature: Add a loyalty card
+  As a Bink user
+  I want to store a loyalty card in my wallet
+  so that I can display the barcode in-store, and (if applicable) authorise the loyalty card at a later stage
+
+  @add_field @bink_regression_api2
+  Scenario Outline: Add field journey only
+#    Given I am a Bink user
+    When I perform POST request to add "<merchant>" membership card
+    Then I see a <status_code_returned>
+#    And I perform GET request to verify the "<merchant>" membership card is added to the wallet
+    And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+#    And I perform DELETE request to delete the "<merchant>" membership card
+    Examples:
+      | merchant | journey_type | status_code_returned |
+      | Iceland  | Add_field    | 201                  |
+      | Wasabi   | Add_field    | 201                  |
+
+  @add_existing_field @bink_regression_api2
+  Scenario Outline: Add existing card again into wallet
+#    Given I am a Bink user
+    When I perform POST request to add "<merchant>" membership card
+    And I perform POST request again to verify the "<merchant>" membership card is already added with "<status_code>"
+#    And I perform GET request to verify the "<merchant>" membership card is added to the wallet
+    Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+#    And I perform DELETE request to delete the "<merchant>" membership card
+    Examples:
+      | merchant | journey_type | status_code |
+      | Iceland  | Add_field    | 200         |
+      | Wasabi   | Add_field    | 200         |
+
+  @invalid_field @bink_regression_api2
+  Scenario Outline: Add field journey with Unprocessable entity
+#    Given I am a Bink user
+    When I perform POST request to add "<merchant>" membership card with "<invalid_request>" with "<status_code>"
+#    And I perform GET request to verify the "<merchant>" membership card is added to the wallet
+    Then I see a "<error_message>" error message
+    And I see a "<error_slug>" error slug
+
+#    And I perform DELETE request to delete the "<merchant>" membership card
+    Examples:
+      | merchant | error_message             | error_slug             | invalid_request | status_code |
+      | Iceland  | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
+      | Wasabi   | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
+
+  @sending_invalid_token3 @bink_regression_api2
+  Scenario Outline: Sending invalid token with bearer prefix in header for add journey (Unauthorized)
+#    Given I am a Bink user
+    When I perform POST <merchant> membership_card request with invalid token and bearer prefix
+    Then I see a <status_code_returned>
+    And I see a "<error_message>" error message
+    And I see a "<error_slug>" error slug
+
+    Examples:
+      | merchant | status_code_returned | error_message             | error_slug    |
+      | Iceland  | 401                  | Supplied token is invalid | INVALID_TOKEN |
+      | Wasabi   | 401                  | Supplied token is invalid | INVALID_TOKEN |

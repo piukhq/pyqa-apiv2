@@ -7,6 +7,14 @@ PWD = "pwd"
 USER_DETAIL = "user_detail"
 USER_DETAIL2 = "user_detail2"
 
+""" Contants for Add journey"""
+ID = "id"
+LAST_NAME = "last_name"
+POSTCODE = "postcode"
+CARD_NUM = "card_num"
+EMAIL = "email"
+WALLET_ONLY = "wallet_only"
+
 
 """ Payment Cards Constant"""
 FIRST_SIX_DIGITS = "first_six_digits"
