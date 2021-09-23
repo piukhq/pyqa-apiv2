@@ -1,5 +1,5 @@
 # Created by rupalpatel at 20/09/2021
-@membership_card
+@membership_card_add
 Feature: Add a loyalty card
   As a Bink user
   I want to store a loyalty card in my wallet
