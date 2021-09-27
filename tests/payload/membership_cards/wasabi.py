@@ -5,6 +5,7 @@ import random
 from tests import api
 from tests.api.base import Endpoint
 from tests.helpers import constants
+from tests.helpers.test_context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
 
 
@@ -14,14 +15,16 @@ class WasabiCard:
         if invalid_data:
             payload = {}
         else:
+            TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.CARD_NUM) + str(
+                random.randint(10, 999999)
+            )
             payload = {
                 "account": {
                     "add_fields": {
                         "credentials": [
                             {
                                 "credential_slug": "card_number",
-                                "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM)
-                                + str(random.randint(10, 999999)),
+                                "value": TestContext.card_number,
                             }
                         ]
                     }
@@ -31,7 +34,7 @@ class WasabiCard:
         logging.info(
             "The Request for Add_field only with :\n"
             + Endpoint.BASE_URL
-            + api.ENDPOINT_MEMBERSHIP_CARDS
+            + api.ENDPOINT_MEMBERSHIP_CARDS_ADD
             + "\n\n"
             + json.dumps(payload, indent=4)
         )
@@ -48,7 +51,7 @@ class WasabiCard:
                         "credentials": [
                             {
                                 "credential_slug": "card_number",
-                                "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM),
+                                "value": TestContext.card_number,
                             }
                         ]
                     }
@@ -58,7 +61,7 @@ class WasabiCard:
         logging.info(
             "The Request for Add_field only with :\n"
             + Endpoint.BASE_URL
-            + api.ENDPOINT_MEMBERSHIP_CARDS
+            + api.ENDPOINT_MEMBERSHIP_CARDS_ADD
             + "\n\n"
             + json.dumps(payload, indent=4)
         )
@@ -82,7 +85,115 @@ class WasabiCard:
         logging.info(
             "The Request for Add_field only with :\n"
             + Endpoint.BASE_URL
-            + api.ENDPOINT_MEMBERSHIP_CARDS
+            + api.ENDPOINT_MEMBERSHIP_CARDS_ADD
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
+    def add_and_authorise_membership_card_payload(invalid_request=None):
+        TestContext.card_number = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM) + str(
+            random.randint(10, 999999)
+        )
+        TestContext.email = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.EMAIL) + str(
+            random.randint(10, 999999)
+        )
+        if invalid_request:
+            payload = {}
+        else:
+            payload = {
+                "account": {
+                    "add_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "card_number",
+                                "value": TestContext.card_number,
+                            }
+                        ]
+                    },
+                    "authorise_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "email",
+                                "value": TestContext.email,
+                            }
+                        ]
+                    },
+                },
+                "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi"),
+            }
+
+        logging.info(
+            "The Request for Add_and_Auth journey with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_AUTHORISE
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
+    def add_and_authorise_existing_membership_card_payload():
+        payload = {
+            "account": {
+                "add_fields": {
+                    "credentials": [
+                        {
+                            "credential_slug": "card_number",
+                            "value": TestContext.card_number,
+                        }
+                    ]
+                },
+                "authorise_fields": {
+                    "credentials": [
+                        {
+                            "credential_slug": "email",
+                            "value": TestContext.email,
+                        }
+                    ]
+                },
+            },
+            "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi"),
+        }
+
+        logging.info(
+            "The Request for Add_and_Auth with existing scheme journey with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_AUTHORISE
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
+    def add_and_auth_field_only_membership_card_with_invalid_json():
+        payload = {
+            "account": {
+                "add_fields": {
+                    "credentials": [
+                        {
+                            "credential_slug": "'card_number'",
+                            "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM),
+                        }
+                    ]
+                },
+                "authorise_fields": {
+                    "credentials": [
+                        {
+                            "credential_slug": "'email'",
+                            "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.EMAIL),
+                        }
+                    ]
+                },
+            },
+            "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi"),
+        }
+
+        logging.info(
+            "The Request for Add_and_Auth journey with invalid json:\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_AUTHORISE
             + "\n\n"
             + json.dumps(payload, indent=4)
         )
