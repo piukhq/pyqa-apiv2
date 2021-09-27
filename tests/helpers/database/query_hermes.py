@@ -52,11 +52,10 @@ def get_credential_qn_label(qn_id, connection):
 
 def get_query(journey_type, scheme_account_id):
 
-    if journey_type == "Add_field":
+    if journey_type == "Add_field" or journey_type == "add_and_authorise":
         query_scheme_account = (
             """SELECT id,status,scheme_id,link_date,main_answer
                  FROM hermes.public.scheme_schemeaccount WHERE id='%s'"""
             % scheme_account_id
         )
-
     return query_scheme_account

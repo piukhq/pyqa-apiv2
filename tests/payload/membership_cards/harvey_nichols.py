@@ -43,7 +43,7 @@ class HarveyNicholsCard:
         logging.info(
             "The Request for Add_field only with :\n"
             + Endpoint.BASE_URL
-            + api.ENDPOINT_MEMBERSHIP_CARDS
+            + api.ENDPOINT_MEMBERSHIP_CARDS_ADD
             + "\n\n"
             + json.dumps(payload, indent=4)
         )

@@ -1,5 +1,5 @@
 # Created by rupalpatel at 20/09/2021
-@membership_card
+@membership_card_add
 Feature: Add a loyalty card
   As a Bink user
   I want to store a loyalty card in my wallet
@@ -58,7 +58,7 @@ Feature: Add a loyalty card
       | Iceland  | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
       | Wasabi   | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
 
-  @sending_invalid_token3 @bink_regression_api2
+  @sending_invalid_token @bink_regression_api2
   Scenario Outline: Sending invalid token with bearer prefix in header for add journey (Unauthorized)
 #    Given I am a Bink user
     When I perform POST <merchant> membership_card request with invalid token and bearer prefix

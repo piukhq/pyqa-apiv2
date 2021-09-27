@@ -24,7 +24,7 @@ def pytest_bdd_step_error(request, feature, scenario, step, step_func, step_func
 
 def pytest_html_report_title(report):
     """Customized title for html report"""
-    report.title = "Automation Result_PytestBDD API2.0"
+    report.title = "BANK API 2.0 Automation Result_Pytest_BDD"
 
 
 @pytest.fixture(scope="session", autouse=True)
