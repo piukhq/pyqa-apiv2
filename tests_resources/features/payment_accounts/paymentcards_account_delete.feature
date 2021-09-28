@@ -29,7 +29,7 @@ Feature: As a Bink User
     And I perform DELETE request to delete "<payment_card_provider>" the payment card
     And I see the paymentcard been deleted and status_code "<status_code>" appeared
     And I perform DELETE request to delete the payment card which is already deleted
-    And I see a <status_code_returned> status code
+    Then I see a "<status_code_returned>" status code for payment account
     And I verify "<error_message> <error_slug>" of payment_account response
 
     Examples:
@@ -43,7 +43,7 @@ Feature: As a Bink User
 #    Given I am a Bink user
     When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
     Then I perform DELETE request to delete "<payment_card_provider>" the payment card with invalid token
-    And I see a <status_code_returned> status code
+    Then I see a "<status_code_returned>" status code for payment account
     And I verify "<error_message> <error_slug>" of payment_account response
     And I perform DELETE request to delete "<payment_card_provider>" the payment card
 
@@ -59,7 +59,7 @@ Feature: As a Bink User
 #    Given I am a Bink user
     When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
     Then I perform DELETE request to delete "<payment_card_provider>" the payment card with invalid token and bearer prefix
-    And I see a <status_code_returned> status code
+    Then I see a "<status_code_returned>" status code for payment account
     And I verify "<error_message> <error_slug>" of payment_account response
     And I perform DELETE request to delete "<payment_card_provider>" the payment card
 

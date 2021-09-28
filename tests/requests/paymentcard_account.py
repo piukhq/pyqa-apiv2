@@ -19,10 +19,17 @@ class PaymentCards(Endpoint):
         return Endpoint.call(url, header, "POST", payload)
 
     @staticmethod
-    def update_payment_card(token, card_provider, update_field, payment_card_id):
+    def update_payment_card(token, card_provider, update_field=None, payment_card_id=None):
         url = PaymentCards.get_url(payment_card_id)
         header = Endpoint.request_header(token)
         payload = PaymentCardDetails.update_payment_card_payload(card_provider, update_field)
+        return Endpoint.call(url, header, "PATCH", payload)
+
+    @staticmethod
+    def update_all_payment_card(token, card_provider, payment_card_id=None):
+        url = PaymentCards.get_url(payment_card_id)
+        header = Endpoint.request_header(token)
+        payload = PaymentCardDetails.enrol_payment_card_payload_unencrypted(card_provider)
         return Endpoint.call(url, header, "PATCH", payload)
 
     @staticmethod
@@ -91,8 +98,15 @@ class PaymentCards(Endpoint):
             return Endpoint.BASE_URL + api.ENDPOINT_PAYMENT_ACCOUNT.format(payment_card_id)
 
     @staticmethod
-    def empty_json(token):
-        url = PaymentCards.get_url()
+    def empty_json(token, call, payment_card_id=None):
+        url = PaymentCards.get_url(payment_card_id)
         header = Endpoint.request_header(token)
         payload = PaymentCardDetails.empty_payload()
-        return Endpoint.call(url, header, "POST", payload)
+        return Endpoint.call(url, header, call, payload)
+
+    @staticmethod
+    def null_json(token, call, payment_card_id=None):
+        url = PaymentCards.get_url(payment_card_id)
+        header = Endpoint.request_header(token)
+        payload = PaymentCardDetails.empty_payload()
+        return Endpoint.call_payload(url, header, call, payload)
