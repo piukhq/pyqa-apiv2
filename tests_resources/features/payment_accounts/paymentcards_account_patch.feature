@@ -37,6 +37,8 @@ Feature: As a Bink User
     Examples:
       | payment_card_provider | status_code_returned | error_message                                        | error_slug    |
       | master                | 401                  | Access Token must be in 2 parts separated by a space | INVALID_TOKEN |
+      | visa                  | 401                  | Access Token must be in 2 parts separated by a space | INVALID_TOKEN |
+      | amex                  | 401                  | Access Token must be in 2 parts separated by a space | INVALID_TOKEN |
 
   @sending_invalid_token2_patch @bink_regression_api2
   Scenario Outline: Sending invalid token with bearer prefix in header
@@ -48,6 +50,8 @@ Feature: As a Bink User
     Examples:
       | payment_card_provider | status_code_returned | error_message             | error_slug    |
       | master                | 401                  | Supplied token is invalid | INVALID_TOKEN |
+      | amex                  | 401                  | Supplied token is invalid | INVALID_TOKEN |
+      | visa                  | 401                  | Supplied token is invalid | INVALID_TOKEN |
 
   @empty_payload_patch @bink_regression_api2
   Scenario Outline: Sending empty payload to patch payment_account
@@ -59,6 +63,8 @@ Feature: As a Bink User
     Examples:
       | payment_card_provider | request_call | status_code_returned | error_message             | error_slug             |
       | master                | PATCH        | 422                  | Could not validate fields | FIELD_VALIDATION_ERROR |
+      | amex                  | PATCH        | 422                  | Could not validate fields | FIELD_VALIDATION_ERROR |
+      | visa                  | PATCH        | 422                  | Could not validate fields | FIELD_VALIDATION_ERROR |
 
   @empty_null_payload_patch @bink_regression_api2
   Scenario Outline: Sending null payload to patch payment_account
@@ -70,6 +76,8 @@ Feature: As a Bink User
     Examples:
       | payment_card_provider | request_call | status_code_returned | error_message | error_slug        |
       | master                | PATCH        | 400                  | Invalid JSON  | MALFORMED_REQUEST |
+      | amex                  | PATCH        | 400                  | Invalid JSON  | MALFORMED_REQUEST |
+      | visa                  | PATCH        | 400                  | Invalid JSON  | MALFORMED_REQUEST |
 
   @resource_not_found_patch @bink_regression_api2
   Scenario Outline: Resource not found to patch payment_account
@@ -83,6 +91,8 @@ Feature: As a Bink User
     Examples:
       | payment_card_provider | status_code_returned | update_field | error_message                       | error_slug         |
       | master                | 404                  | expiry_month | Could not find this account or card | RESOURCE_NOT_FOUND |
+      | amex                  | 404                  | expiry_month | Could not find this account or card | RESOURCE_NOT_FOUND |
+      | visa                  | 404                  | expiry_month | Could not find this account or card | RESOURCE_NOT_FOUND |
 
   @patch_with_all_credential @bink_regression_api2
   Scenario Outline: Patch call with giving all add credential
@@ -97,3 +107,5 @@ Feature: As a Bink User
     Examples:
       | payment_card_provider | status_code_returned | error_message             | error_slug             |
       | master                | 422                  | Could not validate fields | FIELD_VALIDATION_ERROR |
+      | amex                  | 422                  | Could not validate fields | FIELD_VALIDATION_ERROR |
+      | visa                  | 422                  | Could not validate fields | FIELD_VALIDATION_ERROR |
