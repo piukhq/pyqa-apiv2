@@ -88,12 +88,11 @@ def delete_payment_card(payment_card_provider="master"):
             response_json = response_to_json(response)
             TestContext.error_message = response_json["error_message"]
             TestContext.error_slug = response_json["error_slug"]
-            logging.info("Could not find this account")
     except HTTPError as network_response:
         assert network_response.response.status_code == 404 or 400, "Payment card deletion is not successful"
 
 
-@then("I see a <status_code_returned> status code for payment account")
+@then('I see a "<status_code_returned>" status code for payment account')
 def verify_payment_account_status_code(status_code_returned):
     assert TestContext.response_status_code == int(status_code_returned), "journey is not successful"
 
@@ -143,14 +142,14 @@ def verify_existing_payment_account(payment_card_provider):
     return TestContext.current_payment_card_id
 
 
-@when("I perform POST payment_account request with empty json payload")
-def verify_empty_json():
+@when('I perform "<request_call>" payment_account request with empty json payload')
+def verify_empty_json(request_call):
     setup_token()
-    response = PaymentCards.empty_json(TestContext.token)
+    response = PaymentCards.empty_json(TestContext.token, request_call)
     TestContext.response_status_code = response.status_code
     response_json = response.json()
     logging.info(
-        "The response of GET/PaymentCard/id is: \n\n"
+        "The response of " + request_call + "PaymentCard is: \n\n"
         + Endpoint.BASE_URL
         + api.ENDPOINT_PAYMENT_ACCOUNTS.format(TestContext.current_payment_card_id)
         + "\n\n"
@@ -369,19 +368,24 @@ def update_payment_account(update_field, payment_card_provider):
         TestContext.token, payment_card_provider, update_field, TestContext.current_payment_card_id
     )
     TestContext.response_status_code = response.status_code
-    logging.info(TestContext.response_status_code)
     time.sleep(2)
-    assert response.status_code == 200, f"Payment card updation for '{update_field}' is not successful"
-    response_json = response_to_json(response)
-    logging.info(
-        f"The response of PATCH/PaymentCard '{update_field}' is: \n\n"
-        + Endpoint.BASE_URL
-        + api.ENDPOINT_PAYMENT_ACCOUNTS
-        + "\n\n"
-        + json.dumps(response_json, indent=4)
-    )
-    TestContext.current_payment_card_id = response_json.get("id")
-    TestContext.response_json = response_json
+    if response.status_code == 200:
+        assert response.status_code == 200, f"Payment card updation for '{update_field}' is not successful"
+        response_json = response_to_json(response)
+        logging.info(
+            f"The response of PATCH/PaymentCard '{update_field}' is: \n\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_PAYMENT_ACCOUNTS
+            + "\n\n"
+            + json.dumps(response_json, indent=4)
+        )
+        TestContext.current_payment_card_id = response_json.get("id")
+        TestContext.response_json = response_json
+    elif response.status_code == 404:
+        response_json = response_to_json(response)
+        TestContext.error_message = response_json["error_message"]
+        TestContext.error_slug = response_json["error_slug"]
+
     return TestContext.current_payment_card_id
 
 
@@ -413,3 +417,122 @@ def verify_update_field_payment_account(payment_card_provider, update_field):
             and TestContext.expiry_month == TestContext.response_json.get("expiry_month")
             and TestContext.expiry_year == TestContext.response_json.get("expiry_year")
         )
+
+
+@when("I perform PATCH <payment_card_provider> payment_account request with invalid token")
+def verify_patch_payment_account_with_invalid_token(payment_card_provider):
+    response = PaymentCards.update_payment_card(
+        PaymentCardTestData.get_data(payment_card_provider).get(constants.TOKEN_2), payment_card_provider
+    )
+    TestContext.response_status_code = response.status_code
+    response_json = response.json()
+    logging.info(
+        "The response of PATCH/PaymentCards with invalid token is: \n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_PAYMENT_ACCOUNTS.format(TestContext.current_payment_card_id)
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    TestContext.error_message = response_json.get("error_message")
+    TestContext.error_slug = response_json.get("error_slug")
+
+    assert response.status_code == 401, "Token is incorrect"
+    return response
+
+
+@when('I perform "<request_call>" payment_account request with null json in payload')
+def verify_null_json_with_request_call(request_call):
+    setup_token()
+    response = PaymentCards.null_json(TestContext.token, request_call)
+    TestContext.response_status_code = response.status_code
+    response_json = response.json()
+    logging.info(
+        "The response of "+ request_call +"/PaymentCard/id with empty request is: \n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_PAYMENT_ACCOUNTS.format(TestContext.current_payment_card_id)
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    TestContext.error_message = response_json.get("error_message")
+    TestContext.error_slug = response_json.get("error_slug")
+
+    assert response.status_code == 400, "Receiving invalid data"
+    return response
+
+
+@when('I perform "<request_call>" payment_account request with empty_json payload')
+def verify_patch_empty_json_payload(request_call):
+    response = PaymentCards.empty_json(TestContext.token, request_call, TestContext.current_payment_card_id)
+    TestContext.response_status_code = response.status_code
+    response_json = response.json()
+    logging.info(
+        "The response of " + request_call + "/PaymentCard/id is: \n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_PAYMENT_ACCOUNTS.format(TestContext.current_payment_card_id)
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    TestContext.error_message = response_json.get("error_message")
+    TestContext.error_slug = response_json.get("error_slug")
+
+    assert response.status_code == 422, "Receiving invalid data"
+    return response
+
+
+@when('I perform "<request_call>" payment_account request with null_json payload')
+def verify_null_json_with_request_call_with_patch(request_call):
+    response = PaymentCards.null_json(TestContext.token, request_call, TestContext.current_payment_card_id)
+    TestContext.response_status_code = response.status_code
+    response_json = response.json()
+    logging.info(
+        "The response of "+ request_call +"/PaymentCard/id with empty request is: \n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_PAYMENT_ACCOUNTS.format(TestContext.current_payment_card_id)
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    TestContext.error_message = response_json.get("error_message")
+    TestContext.error_slug = response_json.get("error_slug")
+
+    assert response.status_code == 400, "Receiving invalid data"
+    return response
+
+
+@when("I perform PATCH <payment_card_provider> payment_account request with invalid token and bearer prefix")
+def verify_invalid_token_bearer_prefix_patch(payment_card_provider):
+    response = PaymentCards.update_payment_card(
+        PaymentCardTestData.get_data(payment_card_provider).get(constants.TOKEN_PREFIX), payment_card_provider,
+        TestContext.current_payment_card_id)
+    TestContext.response_status_code = response.status_code
+    response_json = response.json()
+    logging.info(
+        "The response of PATCH/PaymentCards with invalid token is: \n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_PAYMENT_ACCOUNTS.format(TestContext.current_payment_card_id)
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    TestContext.error_message = response_json.get("error_message")
+    TestContext.error_slug = response_json.get("error_slug")
+
+    assert response.status_code == 401, "Receiving invalid data"
+    return response
+
+
+@when('I perform PATCH request to update "<payment_card_provider>" payment card with add credential')
+def verify_patch_with_add_credential(payment_card_provider):
+    response = PaymentCards.update_all_payment_card(TestContext.token, payment_card_provider, TestContext.current_payment_card_id)
+    TestContext.response_status_code = response.status_code
+    response_json = response.json()
+    logging.info(
+        "The response of PATCH/PaymentCards with all field to update is: \n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_PAYMENT_ACCOUNTS.format(TestContext.current_payment_card_id)
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    TestContext.error_message = response_json.get("error_message")
+    TestContext.error_slug = response_json.get("error_slug")
+
+    assert response.status_code == 422, "Receiving invalid data"
+    return response

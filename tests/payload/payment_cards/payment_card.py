@@ -92,7 +92,7 @@ class PaymentCardDetails:
         }
 
         logging.info(
-            "The Request to enrol new payment card is : \n\n"
+            "The Request to new payment card is : \n\n"
             + Endpoint.BASE_URL
             + api.ENDPOINT_PAYMENT_ACCOUNTS
             + "\n\n"
@@ -248,7 +248,8 @@ class PaymentCardDetails:
                 "issuer": PaymentCardTestData.get_data(card_provider).get(constants.ISSUER),
             }
             logging.info(
-                "The New Request to update existing payment card is : \n\n"
+                "The New Request to update expiry_month, expiry_year, name_on_card, card_nickname, issuer to "
+                "existing payment card is : \n\n"
                 + Endpoint.BASE_URL
                 + api.ENDPOINT_PAYMENT_ACCOUNTS
                 + "\n\n"
