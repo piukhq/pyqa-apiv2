@@ -73,12 +73,14 @@
       {
         "name": "Retailer terms and conditions",
         "url": "https://policies.staging.gb.bink.com/hn/tc.html",
-        "description": "I accept the"
+        "description": "I accept the",
+        "is_acceptance_required": true
       },
       {
         "name": "Harvey Nichols privacy policy",
         "url": "https://policies.staging.gb.bink.com/hn/pp.html",
-        "description": "Please read the"
+        "description": "Please read the",
+        "is_acceptance_required": false
       }
     ],
     "consents": [

@@ -43,12 +43,14 @@
       {
         "name": "Retailer terms and conditions",
         "url": "https://policies.staging.gb.bink.com/wasabi/tc.html",
-        "description": "I accept the"
+        "description": "I accept the",
+        "is_acceptance_required": true
       },
       {
         "name": "Wasabi privacy policy",
         "url": "https://policies.staging.gb.bink.com/wasabi/pp.html",
-        "description": "Please read the"
+        "description": "Please read the",
+        "is_acceptance_required": false
       }
     ],
     "consents": [

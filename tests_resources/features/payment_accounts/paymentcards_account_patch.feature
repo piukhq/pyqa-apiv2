@@ -1,23 +1,28 @@
 # Created by rupalpatel at 27/07/2021
 @paymentcard_account_add
 Feature: As a Bink User
-  I want to be able to add my payment card account to my bink wallet
-  So that I can start to earn rewards when I use my payment card
+  I want to be able update some details on my payment account
+  so that I can keep my account upto date and customize it.
 
 
-  @enrol_new_paymentcard @bink_regression_api2
-  Scenario Outline: Enrol new payment card
+  @patch_payment_account @bink_regression_api2
+  Scenario Outline: update payment card
 #    Given I am a Bink user
     When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
-#    GET is not implemented
-#    And I perform the GET request to verify the new payment card "<payment_card_provider>" has been added successfully to the wallet
-    Then I verify the paymentcard "<payment_card_provider>" been added into my wallet
-    And I see a <status_code_returned> status code
+    And I perform PATCH request to update "<update_field>" and "<payment_card_provider>" payment card to wallet
+
+    Then I verify the paymentcard "<payment_card_provider>" been updated with "<update_field>"
+    And I see a <status_code_returned> status code for payment account
     And I perform DELETE request to delete "<payment_card_provider>" the payment card
 
     Examples:
-      | payment_card_provider | status_code_returned |
-      | master                | 201                  |
+      | payment_card_provider | status_code_returned | update_field  |
+      | master                | 200                  | expiry_month  |
+      | master                | 200                  | expiry_year   |
+      | master                | 200                  | name_on_card  |
+      | master                | 200                  | card_nickname |
+      | master                | 200                  | issuer        |
+
 #      | amex                  | 201                  |
 #      | visa                  | 201                  |
 #
