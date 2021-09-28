@@ -172,7 +172,7 @@ def verify_invalid_token_bearer_prefix_for_membership_card(merchant):
 
 
 @then("I see a <status_code_returned>")
-def verify_status_code(status_code_returned):
+def verify_memebrship_card_status_code(status_code_returned):
     assert TestContext.response_status_code == int(status_code_returned)
 
 

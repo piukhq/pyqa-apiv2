@@ -16,7 +16,7 @@ from tests.requests.paymentcard_account import PaymentCards
 scenarios("payment_accounts/")
 
 
-"""Step definitions - Add Payment Account """
+"""Step definitions - Add Payment Account/Delete Payment Account/ Patch Payment Account """
 
 
 @when('I perform POST request to add a new "<payment_card_provider>" payment card to wallet')
@@ -93,8 +93,8 @@ def delete_payment_card(payment_card_provider="master"):
         assert network_response.response.status_code == 404 or 400, "Payment card deletion is not successful"
 
 
-@then("I see a <status_code_returned> status code")
-def verify_status_code(status_code_returned):
+@then("I see a <status_code_returned> status code for payment account")
+def verify_payment_account_status_code(status_code_returned):
     assert TestContext.response_status_code == int(status_code_returned), "journey is not successful"
 
 
@@ -361,3 +361,55 @@ def verify_invalid_token_with_bearer_prefix_delete_call(payment_card_provider):
 
     assert response.status_code == 401, "Receiving invalid data"
     return response
+
+
+@when('I perform PATCH request to update "<update_field>" and "<payment_card_provider>" payment card to wallet')
+def update_payment_account(update_field, payment_card_provider):
+    response = PaymentCards.update_payment_card(
+        TestContext.token, payment_card_provider, update_field, TestContext.current_payment_card_id
+    )
+    TestContext.response_status_code = response.status_code
+    logging.info(TestContext.response_status_code)
+    time.sleep(2)
+    assert response.status_code == 200, f"Payment card updation for '{update_field}' is not successful"
+    response_json = response_to_json(response)
+    logging.info(
+        f"The response of PATCH/PaymentCard '{update_field}' is: \n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_PAYMENT_ACCOUNTS
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    TestContext.current_payment_card_id = response_json.get("id")
+    TestContext.response_json = response_json
+    return TestContext.current_payment_card_id
+
+
+@then('I verify the paymentcard "<payment_card_provider>" been updated with "<update_field>"')
+def verify_update_field_payment_account(payment_card_provider, update_field):
+    assert TestContext.current_payment_card_id == TestContext.response_json.get("id"), "Payment card is not updated"
+    if update_field == "expiry_month":
+        assert TestContext.expiry_month == TestContext.response_json.get("expiry_month"), "Expiry month not updating"
+    elif update_field == "expiry_year":
+        assert TestContext.expiry_year == TestContext.response_json.get("expiry_year"), "Expiry year not updating"
+    elif update_field == "name_on_card":
+        assert TestContext.name_on_payment_card == TestContext.response_json.get(
+            "name_on_card"
+        ), "Name on card not updating"
+    elif update_field == "card_nickname":
+        assert TestContext.card_nickname == TestContext.response_json.get(
+            "card_nickname"
+        ), "Nick name on card not updating"
+    elif update_field == "issuer":
+        assert PaymentCardTestData.get_data(payment_card_provider).get(
+            constants.ISSUER_UPDATED
+        ) == TestContext.response_json.get("issuer"), "Issuer for payment account not updating"
+    else:
+        assert (
+            TestContext.name_on_payment_card == TestContext.response_json.get("name_on_card")
+            and TestContext.card_nickname == TestContext.response_json.get("card_nickname")
+            and PaymentCardTestData.get_data(payment_card_provider).get(constants.ISSUER)
+            == TestContext.response_json.get("issuer")
+            and TestContext.expiry_month == TestContext.response_json.get("expiry_month")
+            and TestContext.expiry_year == TestContext.response_json.get("expiry_year")
+        )
