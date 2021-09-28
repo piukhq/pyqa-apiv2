@@ -201,3 +201,52 @@ class PaymentCardDetails:
             + json.dumps(payload, indent=4)
         )
         return payload
+
+    @staticmethod
+    def update_payment_card_payload(card_provider, update_field):
+        faker = Faker()
+        if update_field == "expiry_month":
+            TestContext.expiry_month = str(randint(1, 12))
+            payload = { "expiry_month": TestContext.expiry_month,
+                        }
+        elif update_field == "expiry_year":
+            logging.info(update_field)
+            TestContext.expiry_year = str(randint(2999, 3999))
+            payload = { "expiry_year": TestContext.expiry_year,
+                        }
+            logging.info(payload)
+
+        elif update_field == "name_on_card":
+            TestContext.name_on_payment_card = faker.first_name()
+            payload = { "name_on_card": TestContext.name_on_payment_card,
+                        }
+        elif update_field == "card_nickname":
+            TestContext.card_nickname = faker.last_name()
+            payload = { "card_nickname": TestContext.card_nickname,
+                        }
+        elif update_field == "issuer":
+            payload = { "issuer": PaymentCardTestData.get_data(card_provider).get(constants.ISSUER_UPDATED),
+                        }
+        else:
+            TestContext.name_on_payment_card = faker.first_name()
+            TestContext.card_nickname = faker.last_name()
+            TestContext.expiry_month = str(randint(1, 12))
+            TestContext.expiry_year = str(randint(2999, 3999))
+            TestContext.payment_card_token = constants.TOKEN + "_pytest_api2_" + str(faker.random_int(100, 999999))
+            TestContext.finger_print = constants.FINGERPRINT + "_pytest_api2_" + str(faker.random_int(100, 999999))
+
+            payload = {
+                "expiry_month": TestContext.expiry_month,
+                "expiry_year": TestContext.expiry_year,
+                "name_on_card": TestContext.name_on_payment_card,
+                "card_nickname": TestContext.card_nickname,
+                "issuer": PaymentCardTestData.get_data(card_provider).get(constants.ISSUER),
+            }
+            logging.info(
+                "The New Request to update existing payment card is : \n\n"
+                + Endpoint.BASE_URL
+                + api.ENDPOINT_PAYMENT_ACCOUNTS
+                + "\n\n"
+                + json.dumps(payload, indent=4)
+            )
+        return payload
