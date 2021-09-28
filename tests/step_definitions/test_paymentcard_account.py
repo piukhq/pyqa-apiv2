@@ -149,7 +149,9 @@ def verify_empty_json(request_call):
     TestContext.response_status_code = response.status_code
     response_json = response.json()
     logging.info(
-        "The response of " + request_call + "PaymentCard is: \n\n"
+        "The response of "
+        + request_call
+        + "PaymentCard is: \n\n"
         + Endpoint.BASE_URL
         + api.ENDPOINT_PAYMENT_ACCOUNTS.format(TestContext.current_payment_card_id)
         + "\n\n"
@@ -447,7 +449,9 @@ def verify_null_json_with_request_call(request_call):
     TestContext.response_status_code = response.status_code
     response_json = response.json()
     logging.info(
-        "The response of "+ request_call +"/PaymentCard/id with empty request is: \n\n"
+        "The response of "
+        + request_call
+        + "/PaymentCard/id with empty request is: \n\n"
         + Endpoint.BASE_URL
         + api.ENDPOINT_PAYMENT_ACCOUNTS.format(TestContext.current_payment_card_id)
         + "\n\n"
@@ -466,7 +470,9 @@ def verify_patch_empty_json_payload(request_call):
     TestContext.response_status_code = response.status_code
     response_json = response.json()
     logging.info(
-        "The response of " + request_call + "/PaymentCard/id is: \n\n"
+        "The response of "
+        + request_call
+        + "/PaymentCard/id is: \n\n"
         + Endpoint.BASE_URL
         + api.ENDPOINT_PAYMENT_ACCOUNTS.format(TestContext.current_payment_card_id)
         + "\n\n"
@@ -485,7 +491,9 @@ def verify_null_json_with_request_call_with_patch(request_call):
     TestContext.response_status_code = response.status_code
     response_json = response.json()
     logging.info(
-        "The response of "+ request_call +"/PaymentCard/id with empty request is: \n\n"
+        "The response of "
+        + request_call
+        + "/PaymentCard/id with empty request is: \n\n"
         + Endpoint.BASE_URL
         + api.ENDPOINT_PAYMENT_ACCOUNTS.format(TestContext.current_payment_card_id)
         + "\n\n"
@@ -501,8 +509,10 @@ def verify_null_json_with_request_call_with_patch(request_call):
 @when("I perform PATCH <payment_card_provider> payment_account request with invalid token and bearer prefix")
 def verify_invalid_token_bearer_prefix_patch(payment_card_provider):
     response = PaymentCards.update_payment_card(
-        PaymentCardTestData.get_data(payment_card_provider).get(constants.TOKEN_PREFIX), payment_card_provider,
-        TestContext.current_payment_card_id)
+        PaymentCardTestData.get_data(payment_card_provider).get(constants.TOKEN_PREFIX),
+        payment_card_provider,
+        TestContext.current_payment_card_id,
+    )
     TestContext.response_status_code = response.status_code
     response_json = response.json()
     logging.info(
@@ -521,7 +531,9 @@ def verify_invalid_token_bearer_prefix_patch(payment_card_provider):
 
 @when('I perform PATCH request to update "<payment_card_provider>" payment card with add credential')
 def verify_patch_with_add_credential(payment_card_provider):
-    response = PaymentCards.update_all_payment_card(TestContext.token, payment_card_provider, TestContext.current_payment_card_id)
+    response = PaymentCards.update_all_payment_card(
+        TestContext.token, payment_card_provider, TestContext.current_payment_card_id
+    )
     TestContext.response_status_code = response.status_code
     response_json = response.json()
     logging.info(

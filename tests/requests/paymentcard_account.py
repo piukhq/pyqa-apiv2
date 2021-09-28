@@ -19,7 +19,7 @@ class PaymentCards(Endpoint):
         return Endpoint.call(url, header, "POST", payload)
 
     @staticmethod
-    def update_payment_card(token, card_provider, update_field= None, payment_card_id=None):
+    def update_payment_card(token, card_provider, update_field=None, payment_card_id=None):
         url = PaymentCards.get_url(payment_card_id)
         header = Endpoint.request_header(token)
         payload = PaymentCardDetails.update_payment_card_payload(card_provider, update_field)
