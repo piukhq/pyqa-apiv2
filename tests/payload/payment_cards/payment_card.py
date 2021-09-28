@@ -207,26 +207,31 @@ class PaymentCardDetails:
         faker = Faker()
         if update_field == "expiry_month":
             TestContext.expiry_month = str(randint(1, 12))
-            payload = { "expiry_month": TestContext.expiry_month,
-                        }
+            payload = {
+                "expiry_month": TestContext.expiry_month,
+            }
         elif update_field == "expiry_year":
             logging.info(update_field)
             TestContext.expiry_year = str(randint(2999, 3999))
-            payload = { "expiry_year": TestContext.expiry_year,
-                        }
+            payload = {
+                "expiry_year": TestContext.expiry_year,
+            }
             logging.info(payload)
 
         elif update_field == "name_on_card":
             TestContext.name_on_payment_card = faker.first_name()
-            payload = { "name_on_card": TestContext.name_on_payment_card,
-                        }
+            payload = {
+                "name_on_card": TestContext.name_on_payment_card,
+            }
         elif update_field == "card_nickname":
             TestContext.card_nickname = faker.last_name()
-            payload = { "card_nickname": TestContext.card_nickname,
-                        }
+            payload = {
+                "card_nickname": TestContext.card_nickname,
+            }
         elif update_field == "issuer":
-            payload = { "issuer": PaymentCardTestData.get_data(card_provider).get(constants.ISSUER_UPDATED),
-                        }
+            payload = {
+                "issuer": PaymentCardTestData.get_data(card_provider).get(constants.ISSUER_UPDATED),
+            }
         else:
             TestContext.name_on_payment_card = faker.first_name()
             TestContext.card_nickname = faker.last_name()
