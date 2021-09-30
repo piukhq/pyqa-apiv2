@@ -93,9 +93,7 @@ harvey_nichols_membership_card = {
     "transaction_currency": "Points",
 }
 
-harvey_nichols_invalid_data = {
-    "id": "fail@unknown.com"
-}
+harvey_nichols_invalid_data = {"id": "fail@unknown.com"}
 
 wasabi_membership_card = {
     "card_num": "1048175295",

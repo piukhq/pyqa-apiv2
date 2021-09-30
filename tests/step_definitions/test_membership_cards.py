@@ -3,6 +3,7 @@ import logging
 import time
 
 from pytest_bdd import parsers, scenarios, then, when
+from requests.exceptions import HTTPError
 
 from tests import api
 from tests.api.base import Endpoint
@@ -13,9 +14,6 @@ from tests.helpers.test_context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
 from tests.helpers.test_helpers import TestData
 from tests.requests.membership_cards import MembershipCards
-
-from requests.exceptions import HTTPError
-
 
 scenarios("membership_cards/")
 
@@ -242,8 +240,9 @@ def verify_add_and_auth_invalid_token_request(merchant):
 
 @when('I perform POST request to authorise "<merchant>" above wallet only membership card')
 def verify_authorise_post_membership_card(merchant):
-    response = MembershipCards.authorise_field_only_card(TestContext.token, merchant,
-                                                         TestContext.current_scheme_account_id)
+    response = MembershipCards.authorise_field_only_card(
+        TestContext.token, merchant, TestContext.current_scheme_account_id
+    )
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")
     TestContext.response_status_code = response.status_code
@@ -257,12 +256,16 @@ def verify_authorise_post_membership_card(merchant):
     assert response.status_code == 202, "Authorised Journey for " + merchant + " failed"
 
 
-@when("I perform POST <merchant> membership_card request with invalid token and bearer prefix for"
-      " authorise membership card")
+@when(
+    "I perform POST <merchant> membership_card request with invalid token and bearer prefix for"
+    " authorise membership card"
+)
 def verify_invalid_token_bearer_prefix_for_authorise_membership_card(merchant):
-    response = MembershipCards.authorise_field_only_card(TestDataUtils.TEST_DATA.invalid_token.get
-                                                         (constants.INVALID_TOKEN),
-                                                         merchant, TestContext.current_scheme_account_id)
+    response = MembershipCards.authorise_field_only_card(
+        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN),
+        merchant,
+        TestContext.current_scheme_account_id,
+    )
 
     TestContext.response_status_code = response.status_code
     response_json = response.json()
@@ -284,13 +287,17 @@ def verify_invalid_token_bearer_prefix_for_authorise_membership_card(merchant):
 def verify_authorise_invalid_request(merchant, request_payload, status_code):
     setup_token()
     if request_payload == "invalid_request":
-        response = MembershipCards.authorise_field_only_card(TestContext.token, merchant, request_payload, TestContext.current_scheme_account_id)
+        response = MembershipCards.authorise_field_only_card(
+            TestContext.token, merchant, request_payload, TestContext.current_scheme_account_id
+        )
         response_json = response_to_json(response)
         TestContext.response_status_code = response.status_code
         TestContext.error_message = response_json["error_message"]
         TestContext.error_slug = response_json["error_slug"]
     elif request_payload == "invalid_json":
-        response = MembershipCards.authorise_field_only_card(TestContext.token, merchant, request_payload, TestContext.current_scheme_account_id)
+        response = MembershipCards.authorise_field_only_card(
+            TestContext.token, merchant, request_payload, TestContext.current_scheme_account_id
+        )
         response_json = response_to_json(response)
         TestContext.response_status_code = response.status_code
         TestContext.error_message = response_json["error_message"]
@@ -308,8 +315,9 @@ def verify_authorise_invalid_request(merchant, request_payload, status_code):
 
 @then('I perform DELETE request to delete the "<merchant>" membership card')
 def verify_delete_scheme_account(merchant):
-    response_del_schemes = MembershipCards.delete_scheme_account(TestContext.token,
-                                                                 TestContext.current_scheme_account_id)
+    response_del_schemes = MembershipCards.delete_scheme_account(
+        TestContext.token, TestContext.current_scheme_account_id
+    )
     # response_del_schemes_1 = MembershipCards.delete_scheme_account(TestContext.token_channel_1,
     #                                                                TestContext.scheme_account_id1)
     """Even if the scheme account is deleted, it is not updating DB so quickly
