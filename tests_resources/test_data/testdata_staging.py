@@ -80,6 +80,21 @@ iceland_membership_card = {
     "transaction_currency": "GBP",
 }
 
+harvey_nichols_membership_card = {
+    "id": "andyjameshill@gmail.com",
+    "password": "BinkTest",
+    "card_num": "1000000962497",
+    "barcode": "1000000962497",
+    "points": 64,
+    "currency": "Points",
+    "description": "Placeholder Balance Description",
+    "transactions": "5",
+    "transaction_status": "active",
+    "transaction_currency": "Points",
+}
+
+harvey_nichols_invalid_data = {"id": "fail@unknown.com"}
+
 wasabi_membership_card = {
     "card_num": "1048175295",
     "email": "binktestuser19@wasabi.com",

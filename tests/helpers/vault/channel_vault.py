@@ -146,7 +146,7 @@ def get_key(bundle_id, key_type: str):
         raise KeyVaultError(f"Unable to locate {key_type} in vault for bundle {bundle_id}") from e
 
 
-def create_bearer_token(sub=None, channel=None, utc_now=None, expire_in=60, prefix="bearer", algorithm="HS512"):
+def create_bearer_token(sub=None, channel=None, utc_now=None, expire_in=900, prefix="bearer", algorithm="HS512"):
     kid, secret = get_access_secret()
     if utc_now is None:
         iat = datetime.datetime.utcnow()

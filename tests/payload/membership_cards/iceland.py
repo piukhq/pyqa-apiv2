@@ -130,15 +130,9 @@ class IcelandCard:
 
     @staticmethod
     def add_and_authorise_membership_card_payload(invalid_request=None):
-        TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.CARD_NUM) + str(
-            random.randint(10, 999999)
-        )
-        TestContext.last_name = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.LAST_NAME) + str(
-            random.randint(10, 999999)
-        )
-        TestContext.postcode = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.POSTCODE) + str(
-            random.randint(10, 999999)
-        )
+        TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.CARD_NUM)
+        TestContext.last_name = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.LAST_NAME)
+        TestContext.postcode = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.POSTCODE)
 
         if invalid_request:
             payload = {}
