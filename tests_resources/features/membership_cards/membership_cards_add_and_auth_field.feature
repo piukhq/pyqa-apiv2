@@ -1,5 +1,5 @@
 # Created by rupalpatel at 23/09/2021
-@membership_card_add_and_authorise
+@membership_card_add_and_authorise @membership_cards
 Feature: Add and authorise a loyalty card
   As a Bink user
   I want add an ‘Engage' or 'PLL’ type loyalty card to my wallet
@@ -11,7 +11,7 @@ Feature: Add and authorise a loyalty card
     When I perform POST request to add and authorise "<merchant>" membership card
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
-#    And I perform DELETE request to delete the "<merchant>" membership card
+    And I perform DELETE request to delete the "<merchant>" membership card
     Examples:
       | merchant | status_code_returned | journey_type      |
       | Iceland  | 202                  | add_and_authorise |
@@ -24,7 +24,7 @@ Feature: Add and authorise a loyalty card
     And I perform POST request again with add and authorise to verify the "<merchant>" membership card is already added with "<status_code_returned>"
     Then I see a <status_code_returned>
     Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
-#    And I perform DELETE request to delete the "<merchant>" membership card
+    And I perform DELETE request to delete the "<merchant>" membership card
     Examples:
       | merchant | status_code_returned | journey_type      |
       | Iceland  | 200                  | add_and_authorise |
@@ -37,7 +37,7 @@ Feature: Add and authorise a loyalty card
 #    And I perform GET request to verify the "<merchant>" membership card is added to the wallet
     Then I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
-#    And I perform DELETE request to delete the "<merchant>" membership card
+    And I perform DELETE request to delete the "<merchant>" membership card
     Examples:
       | merchant | error_message             | error_slug             | request_payload | status_code |
       | Iceland  | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
@@ -51,7 +51,6 @@ Feature: Add and authorise a loyalty card
     Then I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
 
-#    And I perform DELETE request to delete the "<merchant>" membership card
     Examples:
       | merchant | error_message | error_slug        | request_payload | status_code |
       | Iceland  | Invalid JSON  | MALFORMED_REQUEST | invalid_json    | 400         |

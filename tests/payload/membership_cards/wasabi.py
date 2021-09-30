@@ -93,12 +93,8 @@ class WasabiCard:
 
     @staticmethod
     def add_and_authorise_membership_card_payload(invalid_request=None):
-        TestContext.card_number = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM) + str(
-            random.randint(10, 999999)
-        )
-        TestContext.email = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.EMAIL) + str(
-            random.randint(10, 999999)
-        )
+        TestContext.card_number = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM)
+        TestContext.email = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.EMAIL)
         if invalid_request:
             payload = {}
         else:
