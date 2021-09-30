@@ -1,5 +1,6 @@
 import json
 import logging
+import time
 
 from pytest_bdd import parsers, scenarios, then, when
 
@@ -12,6 +13,9 @@ from tests.helpers.test_context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
 from tests.helpers.test_helpers import TestData
 from tests.requests.membership_cards import MembershipCards
+
+from requests.exceptions import HTTPError
+
 
 scenarios("membership_cards/")
 
@@ -234,3 +238,92 @@ def verify_add_and_auth_invalid_token_request(merchant):
 
     assert response.status_code == 401, "Server error"
     return response
+
+
+@when('I perform POST request to authorise "<merchant>" above wallet only membership card')
+def verify_authorise_post_membership_card(merchant):
+    response = MembershipCards.authorise_field_only_card(TestContext.token, merchant,
+                                                         TestContext.current_scheme_account_id)
+    response_json = response_to_json(response)
+    TestContext.current_scheme_account_id = response_json.get("id")
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The response of Authorise field Journey (POST) is:\n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE.format(TestContext.current_scheme_account_id)
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    assert response.status_code == 202, "Authorised Journey for " + merchant + " failed"
+
+
+@when("I perform POST <merchant> membership_card request with invalid token and bearer prefix for"
+      " authorise membership card")
+def verify_invalid_token_bearer_prefix_for_authorise_membership_card(merchant):
+    response = MembershipCards.authorise_field_only_card(TestDataUtils.TEST_DATA.invalid_token.get
+                                                         (constants.INVALID_TOKEN),
+                                                         merchant, TestContext.current_scheme_account_id)
+
+    TestContext.response_status_code = response.status_code
+    response_json = response.json()
+    logging.info(
+        "The response of POST/Authorise Memebrship_card with invalid token is: \n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE.format(TestContext.current_payment_card_id)
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    TestContext.error_message = response_json.get("error_message")
+    TestContext.error_slug = response_json.get("error_slug")
+
+    assert response.status_code == 401, "Server error"
+    return response
+
+
+@when('I perform POST request to authorise "<merchant>" membership card with "<request_payload>" with "<status_code>"')
+def verify_authorise_invalid_request(merchant, request_payload, status_code):
+    setup_token()
+    if request_payload == "invalid_request":
+        response = MembershipCards.authorise_field_only_card(TestContext.token, merchant, request_payload, TestContext.current_scheme_account_id)
+        response_json = response_to_json(response)
+        TestContext.response_status_code = response.status_code
+        TestContext.error_message = response_json["error_message"]
+        TestContext.error_slug = response_json["error_slug"]
+    elif request_payload == "invalid_json":
+        response = MembershipCards.authorise_field_only_card(TestContext.token, merchant, request_payload, TestContext.current_scheme_account_id)
+        response_json = response_to_json(response)
+        TestContext.response_status_code = response.status_code
+        TestContext.error_message = response_json["error_message"]
+        TestContext.error_slug = response_json["error_slug"]
+
+    logging.info(
+        "The response of Invalid json Journey (POST) for Authorise field:\n \n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    assert TestContext.response_status_code == int(status_code), "Invalid json request for " + merchant + " failed"
+
+
+@then('I perform DELETE request to delete the "<merchant>" membership card')
+def verify_delete_scheme_account(merchant):
+    response_del_schemes = MembershipCards.delete_scheme_account(TestContext.token,
+                                                                 TestContext.current_scheme_account_id)
+    # response_del_schemes_1 = MembershipCards.delete_scheme_account(TestContext.token_channel_1,
+    #                                                                TestContext.scheme_account_id1)
+    """Even if the scheme account is deleted, it is not updating DB so quickly
+     so delay is required before next execution"""
+    logging.info(response_del_schemes)
+    time.sleep(2)
+    try:
+        if response_del_schemes.status_code == 200:
+
+            logging.info("Scheme account is deleted successfully")
+        elif response_del_schemes.status_code == 404:
+            logging.info("Scheme account is already  deleted")
+        else:
+            logging.info(response_del_schemes.status_code)
+
+    except HTTPError as network_response:
+        assert network_response.response.status_code == 404 or 400

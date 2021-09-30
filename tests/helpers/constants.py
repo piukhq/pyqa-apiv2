@@ -9,6 +9,7 @@ USER_DETAIL2 = "user_detail2"
 
 """ Contants for Add journey"""
 ID = "id"
+PASSWORD = "password"
 LAST_NAME = "last_name"
 POSTCODE = "postcode"
 CARD_NUM = "card_num"
