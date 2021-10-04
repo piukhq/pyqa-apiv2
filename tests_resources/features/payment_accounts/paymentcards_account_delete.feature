@@ -31,6 +31,8 @@ Feature: As a Bink User
     And I perform DELETE request to delete the payment card which is already deleted
     Then I see a "<status_code_returned>" status code for payment account
     And I verify "<error_message> <error_slug>" of payment_account response
+    And I perform DELETE request to delete "<payment_card_provider>" the payment card
+
 
     Examples:
       | payment_card_provider | status_code | status_code_returned | error_message                       | error_slug |
