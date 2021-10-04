@@ -68,8 +68,9 @@ def verify_loyalty_card_into_database(journey_type, merchant):
 
     elif journey_type == "delete":
         scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
-        assert scheme_account.id == TestContext.current_scheme_account_id \
-               and scheme_account.is_delete_scheme is True, "Delete in database is not success"
+        assert (
+            scheme_account.id == TestContext.current_scheme_account_id and scheme_account.is_delete_scheme is True
+        ), "Delete in database is not success"
 
     return scheme_account
 
@@ -365,8 +366,9 @@ def verify_delete_invalid_token(merchant):
 
 @then('I perform DELETE request with payload for "<merchant>"')
 def verify_delete_request_with_payload(merchant):
-    response = MembershipCards.delete_membership_card_with_payload(TestContext.token, merchant
-                                                                   , TestContext.current_scheme_account_id)
+    response = MembershipCards.delete_membership_card_with_payload(
+        TestContext.token, merchant, TestContext.current_scheme_account_id
+    )
 
     TestContext.response_status_code = response.status_code
     response_json = response.json()
