@@ -6,7 +6,7 @@ Feature: Add and authorise a loyalty card
   so that I am able to benefit from the Bink functionality
 
   @add_and_auth_field @bink_regression_api2
-  Scenario Outline: Add field journey only
+  Scenario Outline: Add and authorise field journey
 #    Given I am a Bink user
     When I perform POST request to add and authorise "<merchant>" membership card
     Then I see a <status_code_returned>
@@ -18,7 +18,7 @@ Feature: Add and authorise a loyalty card
       | Wasabi   | 202                  | add_and_authorise |
 
   @add_and_auth_existing_field @bink_regression_api2
-  Scenario Outline: Add existing card again into wallet
+  Scenario Outline: Add existing card again into wallet for add and authorise
 #    Given I am a Bink user
     When I perform POST request to add and authorise "<merchant>" membership card
     And I perform POST request again with add and authorise to verify the "<merchant>" membership card is already added with "<status_code_returned>"
@@ -31,7 +31,7 @@ Feature: Add and authorise a loyalty card
       | Wasabi   | 200                  | add_and_authorise |
 
   @invalid_field_bad_request @bink_regression_api2
-  Scenario Outline: Add field journey with Bad request
+  Scenario Outline: Add field journey with Bad request for add and authorise
 #    Given I am a Bink user
     When I perform POST request to add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
 #    And I perform GET request to verify the "<merchant>" membership card is added to the wallet
@@ -44,7 +44,7 @@ Feature: Add and authorise a loyalty card
       | Wasabi   | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
 
   @invalid_field @bink_regression_api2
-  Scenario Outline: Add field journey with Unprocessable entity
+  Scenario Outline: Add and authorised field journey with Unprocessable entity
 #    Given I am a Bink user
     When I perform POST request to add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
 #    And I perform GET request to verify the "<merchant>" membership card is added to the wallet
@@ -57,7 +57,7 @@ Feature: Add and authorise a loyalty card
       | Wasabi   | Invalid JSON  | MALFORMED_REQUEST | invalid_json    | 400         |
 
   @sending_invalid_token @bink_regression_api2
-  Scenario Outline: Sending invalid token with bearer prefix in header for add journey (Unauthorized)
+  Scenario Outline: Sending invalid token with bearer prefix in header for add and authoirse journey (Unauthorized)
 #    Given I am a Bink user
     When I perform POST <merchant> membership_card request for add and auth with invalid token and bearer prefix
     Then I see a <status_code_returned>

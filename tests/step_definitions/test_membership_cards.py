@@ -64,18 +64,23 @@ def verify_loyalty_card_into_database(journey_type, merchant):
 
     elif journey_type == "add_and_authorise":
         scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
-        assert scheme_account.id == TestContext.current_scheme_account_id, "Database error"
-    # logging.info(f"The scheme account is Active with status '{scheme_account.status}'")
+        assert scheme_account.id == TestContext.current_scheme_account_id, "add_authorise in database is not success"
+
+    elif journey_type == "delete":
+        scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
+        assert scheme_account.id == TestContext.current_scheme_account_id \
+               and scheme_account.is_delete_scheme is True, "Delete in database is not success"
+
     return scheme_account
 
 
 @when('I perform POST request again to verify the "<merchant>" membership card is already added with "<status_code>"')
-def verify_memebrship_card_added_already(merchant, status_code):
+def verify_membership_card_added_already(merchant, status_code):
     response = MembershipCards.add_field_with_existing_card(TestContext.token, merchant)
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")
     logging.info(
-        "The response of Add existing memebrship card (POST) is:\n\n"
+        "The response of Add existing Membership card (POST) is:\n\n"
         + Endpoint.BASE_URL
         + api.ENDPOINT_MEMBERSHIP_CARDS_ADD
         + "\n\n"
@@ -160,7 +165,7 @@ def verify_invalid_token_bearer_prefix_for_membership_card(merchant):
     TestContext.response_status_code = response.status_code
     response_json = response.json()
     logging.info(
-        "The response of POST/Memebrship_card with invalid token is: \n\n"
+        "The response of POST/Membership_card with invalid token is: \n\n"
         + Endpoint.BASE_URL
         + api.ENDPOINT_PAYMENT_ACCOUNTS.format(TestContext.current_payment_card_id)
         + "\n\n"
@@ -174,7 +179,7 @@ def verify_invalid_token_bearer_prefix_for_membership_card(merchant):
 
 
 @then("I see a <status_code_returned>")
-def verify_memebrship_card_status_code(status_code_returned):
+def verify_membership_card_status_code(status_code_returned):
     assert TestContext.response_status_code == int(status_code_returned)
 
 
@@ -225,7 +230,7 @@ def verify_add_and_auth_invalid_token_request(merchant):
     TestContext.response_status_code = response.status_code
     response_json = response.json()
     logging.info(
-        "The response of POST/Memebrship_card with invalid token is: \n\n"
+        "The response of POST/Membership_card with invalid token is: \n\n"
         + Endpoint.BASE_URL
         + api.ENDPOINT_PAYMENT_ACCOUNTS.format(TestContext.current_payment_card_id)
         + "\n\n"
@@ -270,7 +275,7 @@ def verify_invalid_token_bearer_prefix_for_authorise_membership_card(merchant):
     TestContext.response_status_code = response.status_code
     response_json = response.json()
     logging.info(
-        "The response of POST/Authorise Memebrship_card with invalid token is: \n\n"
+        "The response of POST/Authorise Membership_card with invalid token is: \n\n"
         + Endpoint.BASE_URL
         + api.ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE.format(TestContext.current_payment_card_id)
         + "\n\n"
@@ -318,20 +323,81 @@ def verify_delete_scheme_account(merchant):
     response_del_schemes = MembershipCards.delete_scheme_account(
         TestContext.token, TestContext.current_scheme_account_id
     )
+    TestContext.response_status_code = response_del_schemes.status_code
     # response_del_schemes_1 = MembershipCards.delete_scheme_account(TestContext.token_channel_1,
     #                                                                TestContext.scheme_account_id1)
     """Even if the scheme account is deleted, it is not updating DB so quickly
      so delay is required before next execution"""
-    logging.info(response_del_schemes)
     time.sleep(2)
     try:
-        if response_del_schemes.status_code == 200:
-
-            logging.info("Scheme account is deleted successfully")
+        if response_del_schemes.status_code == 202:
+            logging.info("Loyalty card is deleted")
         elif response_del_schemes.status_code == 404:
-            logging.info("Scheme account is already  deleted")
+            logging.info("Could not find this account or card")
         else:
             logging.info(response_del_schemes.status_code)
 
     except HTTPError as network_response:
         assert network_response.response.status_code == 404 or 400
+
+
+@then('I perform DELETE request to delete the "<merchant>" membership card with invalid token')
+def verify_delete_invalid_token(merchant):
+    response = MembershipCards.delete_scheme_account(
+        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN), TestContext.current_scheme_account_id
+    )
+
+    TestContext.response_status_code = response.status_code
+    response_json = response.json()
+    logging.info(
+        "The response of DELETE/Membership_card with invalid token is: \n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_PAYMENT_ACCOUNTS.format(TestContext.current_payment_card_id)
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    TestContext.error_message = response_json.get("error_message")
+    TestContext.error_slug = response_json.get("error_slug")
+
+    assert response.status_code == 401, "Server error"
+    return response
+
+
+@then('I perform DELETE request with payload for "<merchant>"')
+def verify_delete_request_with_payload(merchant):
+    response = MembershipCards.delete_membership_card_with_payload(TestContext.token, merchant
+                                                                   , TestContext.current_scheme_account_id)
+
+    TestContext.response_status_code = response.status_code
+    response_json = response.json()
+    logging.info(
+        "The response of DELETE/Membership_card with request payload is: \n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_PAYMENT_ACCOUNTS.format(TestContext.current_payment_card_id)
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    TestContext.error_message = response_json.get("error_message")
+    TestContext.error_slug = response_json.get("error_slug")
+
+    assert response.status_code == 422, "Server error"
+    return response
+
+
+@when("I perform DELETE request to delete the membership card which is already deleted")
+def i_perform_delete_request_to_delete_the_mebership_card_which_is_deleted():
+    response = MembershipCards.delete_scheme_account(TestContext.token, TestContext.current_scheme_account_id)
+    TestContext.response_status_code = response.status_code
+    response_json = response.json()
+    logging.info(
+        "The response of DELETE/Membership_card with Already Deleted membership card is: \n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_PAYMENT_ACCOUNTS.format(TestContext.current_payment_card_id)
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    TestContext.error_message = response_json.get("error_message")
+    TestContext.error_slug = response_json.get("error_slug")
+
+    assert response.status_code == 404, "Server error"
+    return response

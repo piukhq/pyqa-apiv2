@@ -87,6 +87,12 @@ class MembershipCards(Endpoint):
         response = Endpoint.call_payload(url, header, "DELETE")
         return response
 
+    def delete_membership_card_with_payload(token, merchant, scheme_account_id):
+        url = MembershipCards.get_delete_url(scheme_account_id)
+        header = Endpoint.request_header(token)
+        payload = Merchant.get_merchant(merchant).add_field_only_membership_card_payload()
+        return Endpoint.call(url, header, "DELETE", payload)
+
     @staticmethod
     def get_delete_url(scheme_account_id):
         return Endpoint.BASE_URL + api.ENDPOINT_MEMBERSHIP_CARDS.format(scheme_account_id)
