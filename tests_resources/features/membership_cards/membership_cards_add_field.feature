@@ -14,7 +14,6 @@ Feature: Add a loyalty card
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
     And I perform DELETE request to delete the "<merchant>" membership card
 
-#    And I perform DELETE request to delete the "<merchant>" membership card
     Examples:
       | merchant | journey_type | status_code_returned |
       | Iceland  | Add_field    | 201                  |
