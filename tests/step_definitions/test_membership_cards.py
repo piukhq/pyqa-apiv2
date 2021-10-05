@@ -61,7 +61,6 @@ def verify_loyalty_card_into_database(journey_type, merchant):
             and scheme_account.status == TestDataUtils.TEST_DATA.scheme_status.get(constants.WALLET_ONLY)
             and scheme_account.scheme_id == TestData.get_membership_plan_id(merchant)
         )
-
     elif journey_type == "add_and_authorise":
         scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
         assert scheme_account.id == TestContext.current_scheme_account_id, "add_authorise in database is not success"
@@ -71,6 +70,14 @@ def verify_loyalty_card_into_database(journey_type, merchant):
         assert (
             scheme_account.id == TestContext.current_scheme_account_id and scheme_account.is_delete_scheme is True
         ), "Delete in database is not success"
+
+    elif journey_type == "authorise_field":
+        time.sleep(4)
+        scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
+        assert (
+            scheme_account.id == TestContext.current_scheme_account_id
+            and scheme_account.status == TestDataUtils.TEST_DATA.scheme_status.get(constants.ACTIVE)
+        ), "Authorise in database is not success"
 
     return scheme_account
 
@@ -291,31 +298,39 @@ def verify_invalid_token_bearer_prefix_for_authorise_membership_card(merchant):
 
 @when('I perform POST request to authorise "<merchant>" membership card with "<request_payload>" with "<status_code>"')
 def verify_authorise_invalid_request(merchant, request_payload, status_code):
-    setup_token()
     if request_payload == "invalid_request":
         response = MembershipCards.authorise_field_only_card(
-            TestContext.token, merchant, request_payload, TestContext.current_scheme_account_id
+            TestContext.token, merchant, TestContext.current_scheme_account_id, request_payload
         )
         response_json = response_to_json(response)
         TestContext.response_status_code = response.status_code
         TestContext.error_message = response_json["error_message"]
         TestContext.error_slug = response_json["error_slug"]
+        logging.info(
+            "The response of Invalid request Journey (POST) for Authorise field:\n \n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE.format(TestContext.current_scheme_account_id)
+            + "\n\n"
+            + json.dumps(response_json, indent=4)
+        )
+
     elif request_payload == "invalid_json":
-        response = MembershipCards.authorise_field_only_card(
-            TestContext.token, merchant, request_payload, TestContext.current_scheme_account_id
+        response = MembershipCards.authorise_field_with_existing_field(
+            TestContext.token, merchant, TestContext.current_scheme_account_id, request_payload
         )
         response_json = response_to_json(response)
         TestContext.response_status_code = response.status_code
         TestContext.error_message = response_json["error_message"]
         TestContext.error_slug = response_json["error_slug"]
 
-    logging.info(
-        "The response of Invalid json Journey (POST) for Authorise field:\n \n"
-        + Endpoint.BASE_URL
-        + api.ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE
-        + "\n\n"
-        + json.dumps(response_json, indent=4)
-    )
+        logging.info(
+            "The response of Invalid json Journey (POST) for Authorise field:\n \n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE.format(TestContext.current_scheme_account_id)
+            + "\n\n"
+            + json.dumps(response_json, indent=4)
+        )
+
     assert TestContext.response_status_code == int(status_code), "Invalid json request for " + merchant + " failed"
 
 
@@ -403,3 +418,21 @@ def i_perform_delete_request_to_delete_the_mebership_card_which_is_deleted():
 
     assert response.status_code == 404, "Server error"
     return response
+
+
+@when('I perform POST request to authorise "<merchant>" above wallet only membership card again')
+def verify_i_perform_authorise_again(merchant):
+    response = MembershipCards.authorise_field_only_card(
+        TestContext.token, merchant, TestContext.current_scheme_account_id
+    )
+    response_json = response_to_json(response)
+    TestContext.current_scheme_account_id = response_json.get("id")
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The response of Authorise field send again is:\n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE.format(TestContext.current_scheme_account_id)
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    assert response.status_code == 200, "Authorised Journey for " + merchant + " failed"
