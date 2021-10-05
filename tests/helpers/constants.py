@@ -15,6 +15,7 @@ POSTCODE = "postcode"
 CARD_NUM = "card_num"
 EMAIL = "email"
 WALLET_ONLY = "wallet_only"
+ACTIVE = "active"
 
 
 """ Payment Cards Constant"""

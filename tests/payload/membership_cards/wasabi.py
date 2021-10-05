@@ -1,6 +1,5 @@
 import json
 import logging
-import random
 
 from tests import api
 from tests.api.base import Endpoint
@@ -15,9 +14,7 @@ class WasabiCard:
         if invalid_data:
             payload = {}
         else:
-            TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.CARD_NUM) + str(
-                random.randint(10, 999999)
-            )
+            TestContext.card_number = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM)
             payload = {
                 "account": {
                     "add_fields": {
@@ -190,6 +187,45 @@ class WasabiCard:
             "The Request for Add_and_Auth journey with invalid json:\n"
             + Endpoint.BASE_URL
             + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_AUTHORISE
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
+    def authorise_field_only_membership_card_payload(invalid_data=None):
+        if invalid_data == "invalid_request":
+            payload = {}
+        elif invalid_data == "invalid_json":
+            payload = {
+                "account": {
+                    "authorise_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "'email'",
+                                "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.EMAIL),
+                            }
+                        ]
+                    },
+                }
+            }
+        else:
+            payload = {
+                "account": {
+                    "authorise_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "email",
+                                "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.EMAIL),
+                            }
+                        ]
+                    },
+                },
+            }
+        logging.info(
+            "The Request for Authorise field only with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE.format(TestContext.current_scheme_account_id)
             + "\n\n"
             + json.dumps(payload, indent=4)
         )
