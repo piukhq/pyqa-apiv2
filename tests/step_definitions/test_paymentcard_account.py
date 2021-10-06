@@ -75,23 +75,6 @@ def verify_payment_account_added_in_wallet(payment_card_provider):
     )
 
 
-@then('I perform DELETE request to delete "<payment_card_provider>" the payment card')
-@then("I perform DELETE request to delete the payment card which is already deleted")
-def delete_payment_card(payment_card_provider="master"):
-    response = PaymentCards.delete_payment_card(TestContext.token, TestContext.current_payment_card_id)
-    time.sleep(2)
-    TestContext.response_status_code = response.status_code
-    try:
-        if response.status_code == 202:
-            logging.info("Payment card is deleted successfully")
-        elif response.status_code == 404:
-            response_json = response_to_json(response)
-            TestContext.error_message = response_json["error_message"]
-            TestContext.error_slug = response_json["error_slug"]
-    except HTTPError as network_response:
-        assert network_response.response.status_code == 404 or 400, "Payment card deletion is not successful"
-
-
 @then('I see a "<status_code_returned>" status code for payment account')
 def verify_payment_account_status_code(status_code_returned):
     assert TestContext.response_status_code == int(status_code_returned), "journey is not successful"

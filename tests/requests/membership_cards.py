@@ -17,6 +17,16 @@ class MembershipCards(Endpoint):
         return Endpoint.call(url, header, "POST", payload)
 
     @staticmethod
+    def add_and_register_field(token, merchant, email, invalid_request=None):
+        url = MembershipCards.get_add_and_register_url()
+        header = Endpoint.request_header(token)
+        if not invalid_request:
+            payload = Merchant.get_merchant(merchant).add_and_register_membership_card()
+        else:
+            payload = Merchant.get_merchant(merchant).add_and_register_membership_card(email, invalid_request)
+        return Endpoint.call(url, header, "POST", payload)
+
+    @staticmethod
     def authorise_field_only_card(token, merchant, scheme_account_id, invalid_data=None):
         url = MembershipCards.get_authorise_url(scheme_account_id)
         header = Endpoint.request_header(token)
@@ -66,6 +76,10 @@ class MembershipCards(Endpoint):
     @staticmethod
     def get_authorise_url(scheme_account_id):
         return Endpoint.BASE_URL + api.ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE.format(scheme_account_id)
+
+    @staticmethod
+    def get_add_and_register_url():
+        return Endpoint.BASE_URL + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_REGISTER
 
     @staticmethod
     def add_and_authorise_card(token, merchant, invalid_request=None):

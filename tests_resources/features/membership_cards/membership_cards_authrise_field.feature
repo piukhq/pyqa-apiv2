@@ -13,6 +13,7 @@ Feature: Authorise a loyalty card
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
     And I perform DELETE request to delete the "<merchant>" membership card
+
     Examples:
       | merchant | journey_type    | status_code_returned |
       | Iceland  | authorise_field | 202                  |
@@ -41,6 +42,7 @@ Feature: Authorise a loyalty card
     Then I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
     And I perform DELETE request to delete the "<merchant>" membership card
+
     Examples:
       | merchant | error_message | error_slug        | request_payload | status_code |
       | Iceland  | Invalid JSON  | MALFORMED_REQUEST | invalid_json    | 400         |
