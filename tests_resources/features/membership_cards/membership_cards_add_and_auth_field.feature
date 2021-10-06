@@ -50,6 +50,8 @@ Feature: Add and authorise a loyalty card
 #    And I perform GET request to verify the "<merchant>" membership card is added to the wallet
     Then I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
+    And I perform DELETE request to delete the "<merchant>" membership card
+
 
     Examples:
       | merchant | error_message | error_slug        | request_payload | status_code |
@@ -68,3 +70,19 @@ Feature: Add and authorise a loyalty card
       | merchant | status_code_returned | error_message             | error_slug    |
       | Iceland  | 401                  | Supplied token is invalid | INVALID_TOKEN |
       | Wasabi   | 401                  | Supplied token is invalid | INVALID_TOKEN |
+
+  @add_already_then_add_auth
+  Scenario Outline: Loyalty scheme already exist with add credential
+#    Given I am a Bink user
+    When I perform POST request to add "<merchant>" membership card
+    And I perform POST request to add and authorise "<merchant>" membership card which already exist with add credentail
+    Then I see a <status_code_returned>
+#    And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+    And I see a "<error_message>" error message
+    And I see a "<error_slug>" error slug
+    And I perform DELETE request to delete the "<merchant>" membership card
+
+    Examples:
+      | merchant | status_code_returned | error_message                                                                 | error_slug    |
+      | Iceland  | 409                  | Card already added. Use POST /loyalty_cards/authorise to authorise this card. | ALREADY_ADDED |
+      | Wasabi   | 409                  | Card already added. Use POST /loyalty_cards/authorise to authorise this card. | ALREADY_ADDED |

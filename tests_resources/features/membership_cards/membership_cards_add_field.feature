@@ -27,6 +27,7 @@ Feature: Add a loyalty card
 #    And I perform GET request to verify the "<merchant>" membership card is added to the wallet
     Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
     And I perform DELETE request to delete the "<merchant>" membership card
+
     Examples:
       | merchant | journey_type | status_code |
       | Iceland  | Add_field    | 200         |
@@ -39,7 +40,7 @@ Feature: Add a loyalty card
 #    And I perform GET request to verify the "<merchant>" membership card is added to the wallet
     Then I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
-#    And I perform DELETE request to delete the "<merchant>" membership card
+
     Examples:
       | merchant | error_message | error_slug        | request_payload | status_code |
       | Iceland  | Invalid JSON  | MALFORMED_REQUEST | invalid_json    | 400         |
@@ -53,7 +54,6 @@ Feature: Add a loyalty card
     Then I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
 
-#    And I perform DELETE request to delete the "<merchant>" membership card
     Examples:
       | merchant | error_message             | error_slug             | request_payload | status_code |
       | Iceland  | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |

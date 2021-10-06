@@ -3,7 +3,6 @@ import logging
 import time
 
 from pytest_bdd import parsers, scenarios, then, when
-from requests.exceptions import HTTPError
 
 from tests import api
 from tests.api.base import Endpoint
@@ -79,6 +78,12 @@ def verify_loyalty_card_into_database(journey_type, merchant):
             and scheme_account.status == TestDataUtils.TEST_DATA.scheme_status.get(constants.ACTIVE)
         ), "Authorise in database is not success"
 
+    elif journey_type == "add_field_then_add_auth":
+        scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
+        assert (
+            scheme_account.id == TestContext.current_scheme_account_id
+            and scheme_account.status == TestDataUtils.TEST_DATA.scheme_status.get(constants.WALLET_ONLY)
+        )
     return scheme_account
 
 
@@ -334,29 +339,6 @@ def verify_authorise_invalid_request(merchant, request_payload, status_code):
     assert TestContext.response_status_code == int(status_code), "Invalid json request for " + merchant + " failed"
 
 
-@then('I perform DELETE request to delete the "<merchant>" membership card')
-def verify_delete_scheme_account(merchant):
-    response_del_schemes = MembershipCards.delete_scheme_account(
-        TestContext.token, TestContext.current_scheme_account_id
-    )
-    TestContext.response_status_code = response_del_schemes.status_code
-    # response_del_schemes_1 = MembershipCards.delete_scheme_account(TestContext.token_channel_1,
-    #                                                                TestContext.scheme_account_id1)
-    """Even if the scheme account is deleted, it is not updating DB so quickly
-     so delay is required before next execution"""
-    time.sleep(2)
-    try:
-        if response_del_schemes.status_code == 202:
-            logging.info("Loyalty card is deleted")
-        elif response_del_schemes.status_code == 404:
-            logging.info("Could not find this account or card")
-        else:
-            logging.info(response_del_schemes.status_code)
-
-    except HTTPError as network_response:
-        assert network_response.response.status_code == 404 or 400
-
-
 @then('I perform DELETE request to delete the "<merchant>" membership card with invalid token')
 def verify_delete_invalid_token(merchant):
     response = MembershipCards.delete_scheme_account(
@@ -404,8 +386,9 @@ def verify_delete_request_with_payload(merchant):
 @when("I perform DELETE request to delete the membership card which is already deleted")
 def i_perform_delete_request_to_delete_the_mebership_card_which_is_deleted():
     response = MembershipCards.delete_scheme_account(TestContext.token, TestContext.current_scheme_account_id)
+    time.sleep(2)
     TestContext.response_status_code = response.status_code
-    response_json = response.json()
+    response_json = response_to_json(response)
     logging.info(
         "The response of DELETE/Membership_card with Already Deleted membership card is: \n\n"
         + Endpoint.BASE_URL
@@ -436,3 +419,37 @@ def verify_i_perform_authorise_again(merchant):
         + json.dumps(response_json, indent=4)
     )
     assert response.status_code == 200, "Authorised Journey for " + merchant + " failed"
+
+
+@when(
+    'I perform POST request to add and authorise "<merchant>" membership card which already exist with add credentail'
+)
+def i_perform_post_add_and_authorise_membership_card_which_is_exist_already(merchant):
+    response = MembershipCards.add_and_authorise_card(TestContext.token, merchant)
+    response_json = response_to_json(response)
+    TestContext.current_scheme_account_id = response_json.get("id")
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The response of Add and Authorise Journey (POST) which is already added with add credential:\n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_AUTHORISE
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    assert response.status_code == 409, "Add only then add and authorise Journey for " + merchant + " failed"
+
+
+@when('I perform POST request to add and register "<merchant>" membership card')
+def add_and_register_field(merchant, test_email):
+    response = MembershipCards.add_and_register_field(TestContext.token, merchant, test_email)
+    response_json = response_to_json(response)
+    TestContext.current_scheme_account_id = response_json.get("id")
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The response of Add field Journey (POST) is:\n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_ADD
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    assert response.status_code == 201, "Add Journey for " + merchant + " failed"

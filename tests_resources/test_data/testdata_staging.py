@@ -135,8 +135,8 @@ db_details = {
 # ---------------------------------------------USER ACCOUNTS ---------------------------------------------------- #
 
 bink_user_accounts = {
-    "uid": "pytest_2.0_staging_auto@bink.com",
+    "uid": "pytest_api2.0_staging_auto@bink.com",
     "pwd": "Password1",
-    "user_detail": "27925",
+    "user_detail": "31781",
     "user_detail2": "1168",
 }
