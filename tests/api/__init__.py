@@ -11,3 +11,5 @@ ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE = "/v2/loyalty_cards/{}/authorise"
 ENDPOINT_MEMBERSHIP_CARDS = "/v2/loyalty_cards/{}"
 
 ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_AUTHORISE = "/v2/loyalty_cards/add_and_authorise"
+
+ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_REGISTER = "/v2/loyalty_cards/add_and_register"
