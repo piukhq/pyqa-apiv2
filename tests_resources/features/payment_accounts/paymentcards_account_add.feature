@@ -33,7 +33,7 @@ Feature: As a Bink User
       | payment_card_provider | expiry_month | expiry_year | name_on_card | card_nickname | status_code_returned |
       | master                | 12           | 2999        | Mr AutoBink  | qa_automation | 200                  |
 
-  @empty_payload @bink_regression_api21
+  @empty_payload @bink_regression_api2
   Scenario Outline: Sending empty payload
 #    Given I am a Bink user
     When I perform "<request_call>" payment_account request with empty json payload
