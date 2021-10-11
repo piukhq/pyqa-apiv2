@@ -17,13 +17,28 @@ class MembershipCards(Endpoint):
         return Endpoint.call(url, header, "POST", payload)
 
     @staticmethod
-    def add_and_register_field(token, merchant, email, invalid_request=None):
+    def add_registered_card(token, merchant):
+        url = MembershipCards.get_add_url()
+        header = Endpoint.request_header(token)
+        payload = Merchant.get_merchant(merchant).add_register_membership_card_payload()
+
+        return Endpoint.call(url, header, "POST", payload)
+
+    @staticmethod
+    def add_and_register_field(token, merchant, invalid_request=None):
         url = MembershipCards.get_add_and_register_url()
         header = Endpoint.request_header(token)
         if not invalid_request:
             payload = Merchant.get_merchant(merchant).add_and_register_membership_card()
         else:
-            payload = Merchant.get_merchant(merchant).add_and_register_membership_card(email, invalid_request)
+            payload = Merchant.get_merchant(merchant).add_and_register_membership_card(invalid_request)
+        return Endpoint.call(url, header, "POST", payload)
+
+    @staticmethod
+    def add_and_register_field_again(token, merchant):
+        url = MembershipCards.get_add_and_register_url()
+        header = Endpoint.request_header(token)
+        payload = Merchant.get_merchant(merchant).add_and_register_membership_card_again()
         return Endpoint.call(url, header, "POST", payload)
 
     @staticmethod
@@ -62,6 +77,13 @@ class MembershipCards(Endpoint):
         url = MembershipCards.get_add_url()
         header = Endpoint.request_header(token)
         payload = Merchant.get_merchant(merchant).add_and_auth_field_only_membership_card_with_invalid_json()
+        return Endpoint.call_payload(url, header, "POST", payload)
+
+    @staticmethod
+    def add_and_register_field_with_invalid_json(token, merchant):
+        url = MembershipCards.get_add_url()
+        header = Endpoint.request_header(token)
+        payload = Merchant.get_merchant(merchant).add_and_register_field_only_membership_card_with_invalid_json()
         return Endpoint.call_payload(url, header, "POST", payload)
 
     @staticmethod

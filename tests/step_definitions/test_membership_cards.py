@@ -52,7 +52,7 @@ def verify_get_add_field_membership_cards(merchant):
 
 @then('verify the data stored in DB after "<journey_type>" journey for "<merchant>"')
 def verify_loyalty_card_into_database(journey_type, merchant):
-
+    time.sleep(2)
     if journey_type == "Add_field":
         scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
         assert (
@@ -83,6 +83,12 @@ def verify_loyalty_card_into_database(journey_type, merchant):
         assert (
             scheme_account.id == TestContext.current_scheme_account_id
             and scheme_account.status == TestDataUtils.TEST_DATA.scheme_status.get(constants.WALLET_ONLY)
+        )
+    elif journey_type == "add_and_register":
+        scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
+        assert (
+                scheme_account.id == TestContext.current_scheme_account_id
+                and scheme_account.status == TestDataUtils.TEST_DATA.scheme_status.get(constants.ACTIVE)
         )
     return scheme_account
 
@@ -440,8 +446,113 @@ def i_perform_post_add_and_authorise_membership_card_which_is_exist_already(merc
 
 
 @when('I perform POST request to add and register "<merchant>" membership card')
-def add_and_register_field(merchant, test_email):
-    response = MembershipCards.add_and_register_field(TestContext.token, merchant, test_email)
+def add_and_register_field(merchant):
+    response = MembershipCards.add_and_register_field(TestContext.token, merchant)
+    response_json = response_to_json(response)
+    TestContext.current_scheme_account_id = response_json.get("id")
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The response of Add and register Journey (POST) is:\n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_REGISTER
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    assert response.status_code == 202, "Add and register Journey for " + merchant + " failed"
+
+
+@when('I perform POST again the above request to add and register "<merchant>" membership card')
+def re_register_ghost_journey(merchant):
+    response = MembershipCards.add_and_register_field_again(TestContext.token, merchant)
+    response_json = response_to_json(response)
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The response of Add and register Journey (POST) is:\n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_REGISTER
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    assert response.status_code == 409, "Already register Add_register Journey for " + merchant + " failed"
+
+
+@when(
+    'I perform POST request to add and register "<merchant>" membership card with "<request_payload>" with "<status_code>"')
+def verify_add_and_register_membership_card_with_invalid_request(merchant, request_payload, status_code):
+    if request_payload == "invalid_request":
+        response = MembershipCards.add_and_register_field(TestContext.token, merchant, request_payload)
+        response_json = response_to_json(response)
+        TestContext.response_status_code = response.status_code
+        TestContext.error_message = response_json["error_message"]
+        TestContext.error_slug = response_json["error_slug"]
+    elif request_payload == "invalid_json":
+        response = MembershipCards.add_and_register_field_with_invalid_json(TestContext.token, merchant)
+        response_json = response_to_json(response)
+        TestContext.response_status_code = response.status_code
+        TestContext.error_message = response_json["error_message"]
+        TestContext.error_slug = response_json["error_slug"]
+
+    logging.info(
+        "The response of Invalid Journey (POST) for Add and Register field:\n \n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_REGISTER
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+
+    assert TestContext.response_status_code == int(status_code), "Invalid json request for " + merchant + " failed"
+
+
+@when("I perform POST <merchant> membership_card request for add and register with invalid token and bearer prefix")
+def add_and_register_invalid_token_and_beare_prefix(merchant):
+    response = MembershipCards.add_and_register_field(TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN)
+                                                      , merchant)
+
+    TestContext.response_status_code = response.status_code
+    response_json = response.json()
+    logging.info(
+        "The response of POST/add_and_register Membership_card with invalid token is: \n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_PAYMENT_ACCOUNTS.format(TestContext.current_payment_card_id)
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    TestContext.error_message = response_json.get("error_message")
+    TestContext.error_slug = response_json.get("error_slug")
+
+    assert response.status_code == 401, "Server error"
+    return response
+
+
+@when(
+    'I perform POST request to add and register "<merchant>" membership card which already exist with add credentail')
+def i_perform_add_and_register_scheme_which_is_already_exist_with_add_credential(merchant):
+    response = MembershipCards.add_and_register_field(TestContext.token, merchant)
+    response_json = response_to_json(response)
+    TestContext.current_scheme_account_id = response_json.get("id")
+    TestContext.response_status_code = response.status_code
+    TestContext.error_message = response_json.get("error_message")
+    TestContext.error_slug = response_json.get("error_slug")
+    logging.info(TestContext.error_message)
+    logging.info(TestContext.error_slug)
+    logging.info(
+        "The response of Add and Authorise Journey (POST) which is already added with add credential:\n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_AUTHORISE
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    assert response.status_code == 409, "Add only then add and authorise Journey for " + merchant + " failed"
+
+
+@when("I wait to get scheme active")
+def wait_for_few_second():
+    time.sleep(3)
+
+
+@when('I perform POST request to add registered "<merchant>" membership card')
+def add_register_scheme(merchant):
+    response = MembershipCards.add_registered_card(TestContext.token, merchant)
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")
     TestContext.response_status_code = response.status_code

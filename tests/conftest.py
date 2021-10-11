@@ -135,6 +135,8 @@ def response_to_json(response):
 
 @then('I perform DELETE request to delete the "<merchant>" membership card')
 def delete_scheme_account(merchant=None):
+    time.sleep(1)
+
     response_del_schemes = MembershipCards.delete_scheme_account(
         TestContext.token, TestContext.current_scheme_account_id
     )
@@ -143,7 +145,6 @@ def delete_scheme_account(merchant=None):
     #                                                                TestContext.scheme_account_id1)
     """Even if the scheme account is deleted, it is not updating DB so quickly
      so delay is required before next execution"""
-    time.sleep(2)
     try:
         if response_del_schemes.status_code == 202:
             logging.info("Loyalty card is deleted")

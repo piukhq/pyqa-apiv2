@@ -18,6 +18,7 @@ WALLET_ONLY = "wallet_only"
 ACTIVE = "active"
 
 """Register ghost card"""
+GHOST_CARD_NUM = "ghost_card_num"
 TITLE = "Mr"
 DATE_OF_BIRTH = "01/01/2000"
 PASSWORD_ENROL = "Password01"
