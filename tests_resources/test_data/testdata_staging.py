@@ -78,6 +78,7 @@ iceland_membership_card = {
     "transactions": "3",
     "transaction_status": "active",
     "transaction_currency": "GBP",
+    "ghost_card_num": "6332040000300001123",
 }
 
 harvey_nichols_membership_card = {
