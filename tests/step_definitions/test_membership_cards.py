@@ -87,8 +87,8 @@ def verify_loyalty_card_into_database(journey_type, merchant):
     elif journey_type == "add_and_register":
         scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
         assert (
-                scheme_account.id == TestContext.current_scheme_account_id
-                and scheme_account.status == TestDataUtils.TEST_DATA.scheme_status.get(constants.ACTIVE)
+            scheme_account.id == TestContext.current_scheme_account_id
+            and scheme_account.status == TestDataUtils.TEST_DATA.scheme_status.get(constants.ACTIVE)
         )
     return scheme_account
 
@@ -477,7 +477,9 @@ def re_register_ghost_journey(merchant):
 
 
 @when(
-    'I perform POST request to add and register "<merchant>" membership card with "<request_payload>" with "<status_code>"')
+    'I perform POST request to add and register "<merchant>" membership card with "<request_payload>" '
+    'with "<status_code>"'
+)
 def verify_add_and_register_membership_card_with_invalid_request(merchant, request_payload, status_code):
     if request_payload == "invalid_request":
         response = MembershipCards.add_and_register_field(TestContext.token, merchant, request_payload)
@@ -505,8 +507,9 @@ def verify_add_and_register_membership_card_with_invalid_request(merchant, reque
 
 @when("I perform POST <merchant> membership_card request for add and register with invalid token and bearer prefix")
 def add_and_register_invalid_token_and_beare_prefix(merchant):
-    response = MembershipCards.add_and_register_field(TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN)
-                                                      , merchant)
+    response = MembershipCards.add_and_register_field(
+        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN), merchant
+    )
 
     TestContext.response_status_code = response.status_code
     response_json = response.json()
@@ -524,8 +527,7 @@ def add_and_register_invalid_token_and_beare_prefix(merchant):
     return response
 
 
-@when(
-    'I perform POST request to add and register "<merchant>" membership card which already exist with add credentail')
+@when('I perform POST request to add and register "<merchant>" membership card which already exist with add credentail')
 def i_perform_add_and_register_scheme_which_is_already_exist_with_add_credential(merchant):
     response = MembershipCards.add_and_register_field(TestContext.token, merchant)
     response_json = response_to_json(response)

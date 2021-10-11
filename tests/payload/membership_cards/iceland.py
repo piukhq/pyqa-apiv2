@@ -289,7 +289,7 @@ class IcelandCard:
         TestContext.last_name = faker.last_name()
         TestContext.birthdate = constants.DATE_OF_BIRTH
         TestContext.email = faker.email()
-        TestContext.phone_number =faker.phone_number()
+        TestContext.phone_number = faker.phone_number()
         TestContext.num = faker.building_number()
         TestContext.address = faker.street_address()
         TestContext.city = faker.city()
