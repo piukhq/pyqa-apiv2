@@ -135,6 +135,8 @@ def response_to_json(response):
 
 @then('I perform DELETE request to delete the "<merchant>" membership card')
 def delete_scheme_account(merchant=None):
+    time.sleep(2)
+
     response_del_schemes = MembershipCards.delete_scheme_account(
         TestContext.token, TestContext.current_scheme_account_id
     )
@@ -143,12 +145,11 @@ def delete_scheme_account(merchant=None):
     #                                                                TestContext.scheme_account_id1)
     """Even if the scheme account is deleted, it is not updating DB so quickly
      so delay is required before next execution"""
-    time.sleep(2)
     try:
         if response_del_schemes.status_code == 202:
-            logging.info("Loyalty card is deleted")
+            logging.info("Loyalty card is deleted successfully")
         elif response_del_schemes.status_code == 404:
-            logging.info("Could not find this loyalty scheme")
+            logging.info("Loyalty card is already deleted")
         else:
             logging.info(response_del_schemes.status_code)
 
@@ -159,8 +160,9 @@ def delete_scheme_account(merchant=None):
 @then('I perform DELETE request to delete "<payment_card_provider>" the payment card')
 @then("I perform DELETE request to delete the payment card which is already deleted")
 def delete_payment_card(payment_card_provider=None):
-    response = PaymentCards.delete_payment_card(TestContext.token, TestContext.current_payment_card_id)
     time.sleep(2)
+
+    response = PaymentCards.delete_payment_card(TestContext.token, TestContext.current_payment_card_id)
     TestContext.response_status_code = response.status_code
     try:
         if response.status_code == 202:
@@ -169,5 +171,7 @@ def delete_payment_card(payment_card_provider=None):
             response_json = response_to_json(response)
             TestContext.error_message = response_json["error_message"]
             TestContext.error_slug = response_json["error_slug"]
+            logging.info("Payment card is already deleted")
+
     except HTTPError as network_response:
         assert network_response.response.status_code == 404 or 400, "Payment card deletion is not successful"

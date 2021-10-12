@@ -7,7 +7,7 @@ from requests.exceptions import HTTPError
 
 from tests import api
 from tests.api.base import Endpoint
-from tests.conftest import response_to_json, setup_second_token, setup_token
+from tests.conftest import response_to_json, setup_second_token
 from tests.helpers import constants
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_helpers import PaymentCardTestData
@@ -21,7 +21,6 @@ scenarios("payment_accounts/")
 
 @when('I perform POST request to add a new "<payment_card_provider>" payment card to wallet')
 def add_payment_account(payment_card_provider):
-    setup_token()
     response = PaymentCards.add_new_payment_card(TestContext.token, payment_card_provider)
     TestContext.response_status_code = response.status_code
     time.sleep(2)
@@ -127,7 +126,6 @@ def verify_existing_payment_account(payment_card_provider):
 
 @when('I perform "<request_call>" payment_account request with empty json payload')
 def verify_empty_json(request_call):
-    setup_token()
     response = PaymentCards.empty_json(TestContext.token, request_call)
     TestContext.response_status_code = response.status_code
     response_json = response.json()
@@ -198,7 +196,6 @@ def verify_invalid_token_bearer_prefix(payment_card_provider):
 
 @when(parsers.parse('I perform POST request to add a new payment card by removing "{field}" field to wallet'))
 def verify_optional_field(field):
-    setup_token()
     payment_card_provider = "master"
     if field == "optional":
         response = PaymentCards.add_payment_card_with_optional_field(TestContext.token, payment_card_provider)
@@ -427,7 +424,6 @@ def verify_patch_payment_account_with_invalid_token(payment_card_provider):
 
 @when('I perform "<request_call>" payment_account request with null json in payload')
 def verify_null_json_with_request_call(request_call):
-    setup_token()
     response = PaymentCards.null_json(TestContext.token, request_call)
     TestContext.response_status_code = response.status_code
     response_json = response.json()

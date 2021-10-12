@@ -7,7 +7,7 @@ Feature: Add a loyalty card
 
   @add_field @bink_regression_api2
   Scenario Outline: Add field journey only
-#    Given I am a Bink user
+    Given I am a Bink user
     When I perform POST request to add "<merchant>" membership card
     Then I see a <status_code_returned>
 #    And I perform GET request to verify the "<merchant>" membership card is added to the wallet
@@ -21,7 +21,7 @@ Feature: Add a loyalty card
 
   @add_existing_field @bink_regression_api2
   Scenario Outline: Add existing card again into wallet
-#    Given I am a Bink user
+    Given I am a Bink user
     When I perform POST request to add "<merchant>" membership card
     And I perform POST request again to verify the "<merchant>" membership card is already added with "<status_code>"
 #    And I perform GET request to verify the "<merchant>" membership card is added to the wallet
@@ -35,7 +35,7 @@ Feature: Add a loyalty card
 
   @invalid_field_bad_request @bink_regression_api2
   Scenario Outline: Add field journey with Bad request
-#    Given I am a Bink user
+    Given I am a Bink user
     When I perform POST request to add "<merchant>" membership card with "<request_payload>" with "<status_code>"
 #    And I perform GET request to verify the "<merchant>" membership card is added to the wallet
     Then I see a "<error_message>" error message
@@ -48,7 +48,7 @@ Feature: Add a loyalty card
 
   @invalid_field @bink_regression_api2
   Scenario Outline: Add field journey with Unprocessable entity
-#    Given I am a Bink user
+    Given I am a Bink user
     When I perform POST request to add "<merchant>" membership card with "<request_payload>" with "<status_code>"
 #    And I perform GET request to verify the "<merchant>" membership card is added to the wallet
     Then I see a "<error_message>" error message
@@ -61,7 +61,7 @@ Feature: Add a loyalty card
 
   @sending_invalid_token @bink_regression_api2
   Scenario Outline: Sending invalid token with bearer prefix in header for add journey (Unauthorized)
-#    Given I am a Bink user
+    Given I am a Bink user
     When I perform POST <merchant> membership_card request with invalid token and bearer prefix
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message

@@ -7,7 +7,7 @@ Feature: Delete a loyalty card
 
   @delete_add_and_authorise_loyalty_card @bink_regression_api22
   Scenario Outline: Delete add and authorise
-#    Given I am a Bink user
+    Given I am a Bink user
     When I perform POST request to add and authorise "<merchant>" membership card
     Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
     And I see a <status_code_returned>
@@ -34,7 +34,7 @@ Feature: Delete a loyalty card
 
   @sending_invalid_token_delete @bink_regression_api2
   Scenario Outline: Sending invalid token with bearer prefix in header for delete journey (Unauthorized with add and auth journey)
-#    Given I am a Bink user
+    Given I am a Bink user
     When I perform POST request to add and authorise "<merchant>" membership card
 #    Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
     Then I perform DELETE request to delete the "<merchant>" membership card with invalid token
@@ -50,7 +50,7 @@ Feature: Delete a loyalty card
 
   @sending_invalid_token_for_add_delete @bink_regression_api2
   Scenario Outline: Sending invalid token with bearer prefix in header for delete journey (Unauthorized with add journey)
-#    Given I am a Bink user
+    Given I am a Bink user
     When I perform POST request to add "<merchant>" membership card
 #    Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
     Then I perform DELETE request to delete the "<merchant>" membership card with invalid token
@@ -66,7 +66,7 @@ Feature: Delete a loyalty card
 
   @resource_specified_not_found @bink_regression_api2
   Scenario Outline: Resource specified could not be found in delete journey
-#    Given I am a Bink user
+    Given I am a Bink user
     When I perform POST request to add and authorise "<merchant>" membership card
 #    Then I see a <status_code_returned>
 #    And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
@@ -100,7 +100,7 @@ Feature: Delete a loyalty card
 
   @invalid_field_in_delete_journey @bink_regression_api2
   Scenario Outline: DELETE journey with Unprocessable entity for add membership card
-#    Given I am a Bink user
+    Given I am a Bink user
     When I perform POST request to add "<merchant>" membership card
     Then I perform DELETE request with payload for "<merchant>"
     And I see a <status_code_returned>

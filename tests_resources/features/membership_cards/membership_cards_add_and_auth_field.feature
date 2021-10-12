@@ -7,7 +7,7 @@ Feature: Add and authorise a loyalty card
 
   @add_and_auth_field @bink_regression_api2
   Scenario Outline: Add and authorise field journey
-#    Given I am a Bink user
+    Given I am a Bink user
     When I perform POST request to add and authorise "<merchant>" membership card
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
@@ -19,7 +19,7 @@ Feature: Add and authorise a loyalty card
 
   @add_and_auth_existing_field @bink_regression_api2
   Scenario Outline: Add existing card again into wallet for add and authorise
-#    Given I am a Bink user
+    Given I am a Bink user
     When I perform POST request to add and authorise "<merchant>" membership card
     And I perform POST request again with add and authorise to verify the "<merchant>" membership card is already added with "<status_code_returned>"
     Then I see a <status_code_returned>
@@ -30,14 +30,14 @@ Feature: Add and authorise a loyalty card
       | Iceland  | 200                  | add_and_authorise |
       | Wasabi   | 200                  | add_and_authorise |
 
-  @invalid_field_bad_request @bink_regression_api2
+  @invalid_field_bad_request_add_authorise @bink_regression_api2
   Scenario Outline: Add field journey with Bad request for add and authorise
-#    Given I am a Bink user
+    Given I am a Bink user
     When I perform POST request to add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
 #    And I perform GET request to verify the "<merchant>" membership card is added to the wallet
     Then I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
-    And I perform DELETE request to delete the "<merchant>" membership card
+#    And I perform DELETE request to delete the "<merchant>" membership card
     Examples:
       | merchant | error_message             | error_slug             | request_payload | status_code |
       | Iceland  | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
@@ -45,13 +45,12 @@ Feature: Add and authorise a loyalty card
 
   @invalid_field @bink_regression_api2
   Scenario Outline: Add and authorised field journey with Unprocessable entity
-#    Given I am a Bink user
+    Given I am a Bink user
     When I perform POST request to add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
 #    And I perform GET request to verify the "<merchant>" membership card is added to the wallet
     Then I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
-    And I perform DELETE request to delete the "<merchant>" membership card
-
+#    And I perform DELETE request to delete the "<merchant>" membership card
 
     Examples:
       | merchant | error_message | error_slug        | request_payload | status_code |
@@ -60,7 +59,7 @@ Feature: Add and authorise a loyalty card
 
   @sending_invalid_token @bink_regression_api2
   Scenario Outline: Sending invalid token with bearer prefix in header for add and authoirse journey (Unauthorized)
-#    Given I am a Bink user
+    Given I am a Bink user
     When I perform POST <merchant> membership_card request for add and auth with invalid token and bearer prefix
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message
@@ -71,9 +70,9 @@ Feature: Add and authorise a loyalty card
       | Iceland  | 401                  | Supplied token is invalid | INVALID_TOKEN |
       | Wasabi   | 401                  | Supplied token is invalid | INVALID_TOKEN |
 
-  @add_already_then_add_auth
+  @add_already_then_add_auth @bink_regression_api2
   Scenario Outline: Loyalty scheme already exist with add credential
-#    Given I am a Bink user
+    Given I am a Bink user
     When I perform POST request to add "<merchant>" membership card
     And I perform POST request to add and authorise "<merchant>" membership card which already exist with add credentail
     Then I see a <status_code_returned>
