@@ -13,6 +13,7 @@ from tests.helpers.test_context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
 from tests.helpers.test_helpers import TestData
 from tests.requests.membership_cards import MembershipCards
+from tests.step_definitions import test_paymentcard_account
 
 scenarios("membership_cards/")
 
@@ -84,6 +85,11 @@ def verify_loyalty_card_into_database(journey_type, merchant):
             scheme_account.id == TestContext.current_scheme_account_id
             and scheme_account.status == TestDataUtils.TEST_DATA.scheme_status.get(constants.WALLET_ONLY)
         )
+
+    elif journey_type == "pll":
+        pll_links = [{"id": TestContext.current_payment_card_id, "active_link": True}]
+        scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
+        assert scheme_account.id == TestContext.current_scheme_account_id and scheme_account.pll_links == pll_links
     return scheme_account
 
 
@@ -382,8 +388,9 @@ def verify_delete_request_with_payload(merchant):
 
 @when("I perform DELETE request to delete the membership card which is already deleted")
 def i_perform_delete_request_to_delete_the_mebership_card_which_is_deleted():
-    response = MembershipCards.delete_scheme_account(TestContext.token, TestContext.current_scheme_account_id)
     time.sleep(2)
+
+    response = MembershipCards.delete_scheme_account(TestContext.token, TestContext.current_scheme_account_id)
     TestContext.response_status_code = response.status_code
     response_json = response_to_json(response)
     logging.info(
@@ -453,3 +460,27 @@ def add_and_register_field(merchant, test_email):
         + json.dumps(response_json, indent=4)
     )
     assert response.status_code == 201, "Add Journey for " + merchant + " failed"
+
+
+@when('I perform POST request to add and authorise "<merchant>" with different auth credential')
+def i_perform_post_with_different_credential(merchant):
+    time.sleep(4)
+    response = MembershipCards.add_and_authorise_card_with_different_credential(TestContext.token, merchant)
+    response_json = response_to_json(response)
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The response of Add and Authorise Journey (POST) which is already added with add credential:\n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_AUTHORISE
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    TestContext.error_message = response_json["error_message"]
+    TestContext.error_slug = response_json["error_slug"]
+
+    assert response.status_code == 409, "Add only then add and authorise Journey for " + merchant + " failed"
+
+
+@when('I perform POST request to add a new "<payment_card_provider>" payment account to wallet')
+def verify_pll_authorise(payment_card_provider):
+    test_paymentcard_account.add_payment_account(payment_card_provider)

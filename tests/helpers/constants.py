@@ -14,6 +14,7 @@ LAST_NAME = "last_name"
 POSTCODE = "postcode"
 CARD_NUM = "card_num"
 EMAIL = "email"
+INVALID_EMAIL = "invalid_email"
 WALLET_ONLY = "wallet_only"
 ACTIVE = "active"
 

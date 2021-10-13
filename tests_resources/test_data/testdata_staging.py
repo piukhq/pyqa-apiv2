@@ -98,6 +98,7 @@ harvey_nichols_invalid_data = {"id": "fail@unknown.com"}
 wasabi_membership_card = {
     "card_num": "1048175295",
     "email": "binktestuser19@wasabi.com",
+    "invalid_email": "fail@unknown.com",
     "points": 5,
     "currency": "stamps",
     "description": "",

@@ -12,6 +12,7 @@ Feature: Add and authorise a loyalty card
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
     And I perform DELETE request to delete the "<merchant>" membership card
+
     Examples:
       | merchant | status_code_returned | journey_type      |
       | Iceland  | 202                  | add_and_authorise |
@@ -25,6 +26,7 @@ Feature: Add and authorise a loyalty card
     Then I see a <status_code_returned>
     Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
     And I perform DELETE request to delete the "<merchant>" membership card
+
     Examples:
       | merchant | status_code_returned | journey_type      |
       | Iceland  | 200                  | add_and_authorise |
@@ -38,6 +40,7 @@ Feature: Add and authorise a loyalty card
     Then I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
 #    And I perform DELETE request to delete the "<merchant>" membership card
+
     Examples:
       | merchant | error_message             | error_slug             | request_payload | status_code |
       | Iceland  | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
@@ -76,7 +79,6 @@ Feature: Add and authorise a loyalty card
     When I perform POST request to add "<merchant>" membership card
     And I perform POST request to add and authorise "<merchant>" membership card which already exist with add credentail
     Then I see a <status_code_returned>
-#    And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
     And I perform DELETE request to delete the "<merchant>" membership card
@@ -85,3 +87,33 @@ Feature: Add and authorise a loyalty card
       | merchant | status_code_returned | error_message                                                                 | error_slug    |
       | Iceland  | 409                  | Card already added. Use POST /loyalty_cards/authorise to authorise this card. | ALREADY_ADDED |
       | Wasabi   | 409                  | Card already added. Use POST /loyalty_cards/authorise to authorise this card. | ALREADY_ADDED |
+
+  @add_and_auth_with_different_authrised_field @bink_regression_api2
+  Scenario Outline: Already Add and authorised scheme then add with different auth credential
+    Given I am a Bink user
+    When I perform POST request to add and authorise "<merchant>" membership card
+    And I perform POST request to add and authorise "<merchant>" with different auth credential
+    Then I see a <status_code_returned>
+#    And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+    And I see a "<error_message>" error message
+    And I see a "<error_slug>" error slug
+    And I perform DELETE request to delete the "<merchant>" membership card
+
+    Examples:
+      | merchant | status_code_returned | error_message                                                                                   | error_slug         |
+      | Iceland  | 409                  | Card already authorised. Use POST /loyalty_cards/authorise to modify authorisation credentials. | ALREADY_AUTHORISED |
+#      | Wasabi   | 409                  |Card already authorised. Use POST /loyalty_cards/authorise to modify authorisation credentials.|ALREADY_AUTHORISED|
+
+  @add_and_auth_pll @bink_regression_api2
+  Scenario Outline: verify PLL for add and authorise
+    Given I am a Bink user
+    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform POST request to add and authorise "<merchant>" membership card
+    Then I see a <status_code_returned>
+    And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+    And I perform DELETE request to delete the "<merchant>" membership card
+    And I perform DELETE request to delete "<payment_card_provider>" the payment card
+
+    Examples:
+      | payment_card_provider | merchant | status_code_returned | journey_type |
+      | master                | Iceland  | 202                  | pll          |
