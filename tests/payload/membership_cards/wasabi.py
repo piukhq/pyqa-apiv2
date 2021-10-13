@@ -230,3 +230,35 @@ class WasabiCard:
             + json.dumps(payload, indent=4)
         )
         return payload
+
+    @staticmethod
+    def add_and_authorise_with_different_auth_field():
+        payload = {
+            "account": {
+                "add_fields": {
+                    "credentials": [
+                        {
+                            "credential_slug": "card_number",
+                            "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM)
+                        }
+                    ]
+                },
+                "authorise_fields": {
+                    "credentials": [
+                        {
+                            "credential_slug": "email",
+                            "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.INVALID_EMAIL)
+                        },
+                    ]
+                },
+            },
+            "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi")
+        }
+        logging.info(
+            "The Request for Wasabi Add_and_Auth journey with different auth value:\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_AUTHORISE
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload

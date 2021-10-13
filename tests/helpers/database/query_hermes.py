@@ -14,6 +14,7 @@ class SchemeAccountRecord:
     link_or_join_date: datetime.datetime
     main_answer: str
     is_delete_scheme: bool
+    pll_links: bool
 
 
 @dataclass
@@ -41,7 +42,7 @@ class QueryHermes:
             raise Exception(f"'{scheme_account_id}' is an Invalid Scheme account id")
         else:
             scheme_account_record = SchemeAccountRecord(
-                record[0], record[1], record[2], record[3], record[4], record[5]
+                record[0], record[1], record[2], record[3], record[4], record[5], record[6]
             )
         db.clear_db(connection)
         return scheme_account_record
@@ -60,7 +61,7 @@ def get_query(journey_type, scheme_account_id):
         logging.info("Scheme didnt attached to the wallet")
     else:
         query_scheme_account = (
-            """SELECT id,status,scheme_id,link_date,main_answer,is_deleted
+            """SELECT id,status,scheme_id,link_date,main_answer,is_deleted,pll_links
                  FROM hermes.public.scheme_schemeaccount WHERE id='%s'"""
             % scheme_account_id
         )

@@ -172,6 +172,45 @@ class IcelandCard:
             return payload
 
     @staticmethod
+    def add_and_authorise_with_different_auth_field():
+        faker = Faker()
+
+        payload = {
+            "account": {
+                "add_fields": {
+                    "credentials": [
+                        {
+                            "credential_slug": "card_number",
+                            "value": TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.CARD_NUM),
+                        }
+                    ]
+                },
+                "authorise_fields": {
+                    "credentials": [
+                        {
+                            "credential_slug": "last_name",
+                            "value": faker.name(),
+                        },
+                        {
+                            "credential_slug": "postcode",
+                            "value": TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.POSTCODE),
+                        },
+                    ]
+                },
+            },
+            "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("iceland"),
+        }
+
+        logging.info(
+            "The Request for Iceland Add_and_Auth journey with different auth value:\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_AUTHORISE
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
     def add_and_authorise_existing_membership_card_payload():
         payload = {
             "account": {
