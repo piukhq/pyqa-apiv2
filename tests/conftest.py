@@ -135,7 +135,7 @@ def response_to_json(response):
 
 @then('I perform DELETE request to delete the "<merchant>" membership card')
 def delete_scheme_account(merchant=None):
-    time.sleep(2)
+    time.sleep(3)
 
     response_del_schemes = MembershipCards.delete_scheme_account(
         TestContext.token, TestContext.current_scheme_account_id
@@ -160,7 +160,7 @@ def delete_scheme_account(merchant=None):
 @then('I perform DELETE request to delete "<payment_card_provider>" the payment card')
 @then("I perform DELETE request to delete the payment card which is already deleted")
 def delete_payment_card(payment_card_provider=None):
-    time.sleep(2)
+    time.sleep(3)
 
     response = PaymentCards.delete_payment_card(TestContext.token, TestContext.current_payment_card_id)
     TestContext.response_status_code = response.status_code

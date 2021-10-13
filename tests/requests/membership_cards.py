@@ -92,6 +92,13 @@ class MembershipCards(Endpoint):
         return Endpoint.call(url, header, "POST", payload)
 
     @staticmethod
+    def add_and_authorise_card_with_different_credential(token, merchant):
+        url = MembershipCards.get_add_and_authorise_url()
+        header = Endpoint.request_header(token)
+        payload = Merchant.get_merchant(merchant).add_and_authorise_with_different_auth_field()
+        return Endpoint.call(url, header, "POST", payload)
+
+    @staticmethod
     def add_and_authorise_card_with_existing_scheme(token, merchant):
         url = MembershipCards.get_add_and_authorise_url()
         header = Endpoint.request_header(token)
