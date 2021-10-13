@@ -36,7 +36,8 @@ class HarveyNicholsCard:
 
         payload = {
             "account": {
-                "authorise_fields": [{"credential_slug": "Email", "value": value}, {"credential_slug": "Password", "value": password}]
+                "authorise_fields": [{"credential_slug": "Email", "value": value},
+                                     {"credential_slug": "Password", "value": password}]
             },
             "membership_plan": TestDataUtils.TEST_DATA.membership_plan_id.get("harvey_nichols"),
         }
