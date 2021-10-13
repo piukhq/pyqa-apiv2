@@ -239,7 +239,7 @@ class WasabiCard:
                     "credentials": [
                         {
                             "credential_slug": "card_number",
-                            "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM)
+                            "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM),
                         }
                     ]
                 },
@@ -247,12 +247,12 @@ class WasabiCard:
                     "credentials": [
                         {
                             "credential_slug": "email",
-                            "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.INVALID_EMAIL)
+                            "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.INVALID_EMAIL),
                         },
                     ]
                 },
             },
-            "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi")
+            "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi"),
         }
         logging.info(
             "The Request for Wasabi Add_and_Auth journey with different auth value:\n"

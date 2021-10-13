@@ -89,10 +89,7 @@ def verify_loyalty_card_into_database(journey_type, merchant):
     elif journey_type == "pll":
         pll_links = [{"id": TestContext.current_payment_card_id, "active_link": True}]
         scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
-        assert (
-                scheme_account.id == TestContext.current_scheme_account_id
-                and scheme_account.pll_links == pll_links
-        )
+        assert scheme_account.id == TestContext.current_scheme_account_id and scheme_account.pll_links == pll_links
     return scheme_account
 
 
