@@ -221,6 +221,7 @@ def verify_add_and_auth(merchant):
     'added with "<status_code_returned>"'
 )
 def verify_add_and_auth_existing_membership_card(merchant, status_code_returned):
+    time.sleep(3)
     response = MembershipCards.add_and_authorise_card_with_existing_scheme(TestContext.token, merchant)
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")
