@@ -262,6 +262,7 @@ def verify_add_and_auth_invalid_token_request(merchant):
 
 @when('I perform POST request to authorise "<merchant>" above wallet only membership card')
 def verify_authorise_post_membership_card(merchant):
+    time.sleep(2)
     response = MembershipCards.authorise_field_only_card(
         TestContext.token, merchant, TestContext.current_scheme_account_id
     )
@@ -410,6 +411,7 @@ def i_perform_delete_request_to_delete_the_mebership_card_which_is_deleted():
 
 @when('I perform POST request to authorise "<merchant>" above wallet only membership card again')
 def verify_i_perform_authorise_again(merchant):
+    time.sleep(3)
     response = MembershipCards.authorise_field_only_card(
         TestContext.token, merchant, TestContext.current_scheme_account_id
     )
