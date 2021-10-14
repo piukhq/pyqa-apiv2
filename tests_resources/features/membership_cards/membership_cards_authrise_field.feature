@@ -92,3 +92,18 @@ Feature: Authorise a loyalty card
       | merchant | status_code_returned | error_message                       | error_slug         |
       | Iceland  | 404                  | Could not find this account or card | RESOURCE_NOT_FOUND |
       | Wasabi   | 404                  | Could not find this account or card | RESOURCE_NOT_FOUND |
+
+  @auth_pll @bink_regression_api2
+  Scenario Outline: verify PLL for authorise
+    Given I am a Bink user
+    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    When I perform POST request to add "<merchant>" membership card
+    And I perform POST request to authorise "<merchant>" above wallet only membership card
+    Then I see a <status_code_returned>
+    And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+    And I perform DELETE request to delete the "<merchant>" membership card
+    And I perform DELETE request to delete "<payment_card_provider>" the payment card
+
+    Examples:
+      | payment_card_provider | merchant | status_code_returned | journey_type |
+      | master                | Iceland  | 202                  | pll          |
