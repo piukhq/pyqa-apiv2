@@ -300,7 +300,7 @@ class IcelandCard:
         if invalid_request:
             payload = {}
         else:
-            TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.CARD_NUM)
+            TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_CARD)
             payload = {
                 "account": {
                     "add_fields": {
@@ -315,7 +315,7 @@ class IcelandCard:
                         "credentials": [
                             {"credential_slug": "title", "value": constants.TITLE},
                             {"credential_slug": "first_name", "value": faker.name()},
-                            {"credential_slug": "last_name", "value": faker.lastname()},
+                            {"credential_slug": "last_name", "value": faker.name()},
                             {"credential_slug": "date_of_birth", "value": constants.DATE_OF_BIRTH},
                             {"credential_slug": "email", "value": email},
                             {"credential_slug": "phone", "value": faker.phone_number()},
@@ -333,6 +333,52 @@ class IcelandCard:
 
         logging.info(
             "The Request for Add_and_register with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_ADD
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
+    def add_and_register_field_only_membership_card_with_invalid_json(email=None, invalid_request=None):
+        faker = Faker()
+        if invalid_request:
+            payload = {}
+        else:
+            TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_CARD)
+            payload = {
+                "account": {
+                    "add_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": '"card_number"',
+                                "value": TestContext.card_number,
+                            }
+                        ]
+                    },
+                    "register_ghost_card_fields": {
+                        "credentials": [
+                            {"credential_slug": "'title'", "value": constants.TITLE},
+                            {"credential_slug": "first_name", "value": faker.name()},
+                            {"credential_slug": "last_name", "value": faker.name()},
+                            {"credential_slug": "date_of_birth", "value": constants.DATE_OF_BIRTH},
+                            {"credential_slug": "email", "value": email},
+                            {"credential_slug": "phone", "value": "07796511290"},
+                            {"credential_slug": "address_1", "value": faker.building_number()},
+                            {"credential_slug": "address_2", "value": faker.street_address()},
+                            {"credential_slug": "town_city", "value": faker.city()},
+                            {"credential_slug": "county", "value": faker.country()},
+                            {"credential_slug": "postcode", "value": faker.postcode()},
+                        ],
+                        "consents": [{"consent_slug": "marketing_opt_in", "value": constants.CONSENT}],
+                    },
+                },
+                "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("iceland"),
+            }
+
+        logging.info(
+            "The Request for Add_and_register with invalid request:\n"
             + Endpoint.BASE_URL
             + api.ENDPOINT_MEMBERSHIP_CARDS_ADD
             + "\n\n"

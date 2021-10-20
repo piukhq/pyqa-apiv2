@@ -69,6 +69,7 @@ invalid_token = {
 # ----------------------------------------LOYALTY CARDs    --------------------------------------------------- #
 iceland_membership_card = {
     "card_num": "6332040000300000003",
+    "register_card": "6332040000400000011",
     "barcode": "6332040000300000003",
     "last_name": "hundred",
     "postcode": "rg2 2aa",
