@@ -534,6 +534,7 @@ def add_and_register_field_for_in_pending_state_scheme(merchant, test_email):
     # )
     # assert response.status_code == 200, "Add and Register Journey which is in pending " + merchant + " failed"
 
+
 @when('I perform POST request to add and authorise "<merchant>" with different auth credential')
 def i_perform_post_with_different_credential(merchant):
     time.sleep(4)
@@ -559,7 +560,9 @@ def verify_pll_authorise(payment_card_provider):
 
 
 @when(
-    'I perform POST request again with add and register to verify the "<merchant>" membership card is already added with "<status_code_returned>"')
+    'I perform POST request again with add and register to verify the "<merchant>" membership card is already '
+    'added with "<status_code_returned>"'
+)
 def add_and_register_with_existing_credential(merchant, status_code_returned, test_email):
     time.sleep(3)
     response = MembershipCards.add_and_register_field(TestContext.token, merchant, test_email)
@@ -575,7 +578,7 @@ def add_and_register_with_existing_credential(merchant, status_code_returned, te
         + json.dumps(response_json, indent=4)
     )
     assert TestContext.response_status_code == int(status_code_returned), (
-            "Add and register with existing Journey for " + merchant + " failed"
+        "Add and register with existing Journey for " + merchant + " failed"
     )
 
 
@@ -583,4 +586,4 @@ def add_and_register_with_existing_credential(merchant, status_code_returned, te
 def update_scheme_status(status):
     scheme_account = QueryHermes.update_scheme_account(TestContext.current_scheme_account_id, status)
     logging.info(scheme_account)
-    assert (scheme_account.id == TestContext.current_scheme_account_id and scheme_account.status == int(status))
+    assert scheme_account.id == TestContext.current_scheme_account_id and scheme_account.status == int(status)

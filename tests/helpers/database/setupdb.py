@@ -41,8 +41,8 @@ def execute_query_fetch_all(connection, query):
 def execute_update(connection, query):
     cursor = connection.cursor()
     cursor.execute(query)
-    logging.info(query)
-    # return cursor.fetchone()
+    return cursor.fetchone()
+
 
 def clear_db(connection):
     if connection:

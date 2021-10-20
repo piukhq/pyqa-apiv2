@@ -61,7 +61,8 @@ class QueryHermes:
             raise Exception(f"'{scheme_account_id}' is an Invalid Scheme account id")
         else:
             scheme_account_record = SchemeAccountRecord(
-                record[0], record[1], record[2], record[3], record[4], record[5], record[6])
+                record[0], record[1], record[2], record[3], record[4], record[5], record[6]
+            )
         db.clear_db(connection)
         return scheme_account_record
 
@@ -85,6 +86,9 @@ def get_query(journey_type, scheme_account_id):
         )
     return query_scheme_account
 
+
 def update_query(scheme_account_id, status):
-    query_scheme_account = (f"UPDATE hermes.public.scheme_schemeaccount SET status = {int(status)} WHERE id= {int(scheme_account_id)}")
+    query_scheme_account = (
+        f"UPDATE hermes.public.scheme_schemeaccount SET status = " f"{int(status)} WHERE id= {int(scheme_account_id)}"
+    )
     return query_scheme_account

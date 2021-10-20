@@ -71,7 +71,6 @@ class MembershipCards(Endpoint):
         payload = Merchant.get_merchant(merchant).add_and_register_field_only_membership_card_with_invalid_json()
         return Endpoint.call_payload(url, header, "POST", payload)
 
-
     @staticmethod
     def get_add_url(scheme_account_id=None):
         """Return URL for membership_cards and
@@ -112,6 +111,7 @@ class MembershipCards(Endpoint):
         header = Endpoint.request_header(token)
         payload = Merchant.get_merchant(merchant).add_and_authorise_existing_membership_card_payload()
         return Endpoint.call(url, header, "POST", payload)
+
     #
     # @staticmethod
     # def add_and_register_card_with_existing_scheme(token, merchant):
@@ -119,9 +119,8 @@ class MembershipCards(Endpoint):
     #     header = Endpoint.request_header(token)
     #     payload = Merchant.get_merchant(merchant).add_and_register_membership_card()
     #     return Endpoint.call(url, header, "POST", payload)
-
-
     # Delete Membership Card
+
     @staticmethod
     def delete_scheme_account(token, scheme_account_id):
         url = MembershipCards.get_delete_url(scheme_account_id)
