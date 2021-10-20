@@ -47,6 +47,24 @@ class QueryHermes:
         db.clear_db(connection)
         return scheme_account_record
 
+    @staticmethod
+    def update_scheme_account(scheme_account_id, status):
+        """Fetch the scheme account details using scheme_account_id """
+        connection = db.connect_db()
+
+        logging.info(db.execute_update(connection, update_query(scheme_account_id, status)))
+
+        journey_type = "add_and_register"
+        record = db.execute_query_fetch_one(connection, get_query(journey_type, scheme_account_id))
+
+        if record is None:
+            raise Exception(f"'{scheme_account_id}' is an Invalid Scheme account id")
+        else:
+            scheme_account_record = SchemeAccountRecord(
+                record[0], record[1], record[2], record[3], record[4], record[5], record[6])
+        db.clear_db(connection)
+        return scheme_account_record
+
 
 # def get_credential_qn_label(qn_id, connection):
 #     """The label for each credential answer has been fetched using the unique question_id
@@ -65,4 +83,8 @@ def get_query(journey_type, scheme_account_id):
                  FROM hermes.public.scheme_schemeaccount WHERE id='%s'"""
             % scheme_account_id
         )
+    return query_scheme_account
+
+def update_query(scheme_account_id, status):
+    query_scheme_account = (f"UPDATE hermes.public.scheme_schemeaccount SET status = {int(status)} WHERE id= {int(scheme_account_id)}")
     return query_scheme_account

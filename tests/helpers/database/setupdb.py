@@ -38,6 +38,12 @@ def execute_query_fetch_all(connection, query):
     return cursor.fetchone()
 
 
+def execute_update(connection, query):
+    cursor = connection.cursor()
+    cursor.execute(query)
+    logging.info(query)
+    # return cursor.fetchone()
+
 def clear_db(connection):
     if connection:
         connection.close()
