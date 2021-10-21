@@ -294,4 +294,3 @@ class WasabiCard:
             + json.dumps(payload, indent=4)
         )
         return payload
-
