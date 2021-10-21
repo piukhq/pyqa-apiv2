@@ -1,4 +1,5 @@
 # Created by rupalpatel at 10/09/2021
+@membership_plans @membership_cards
 Feature: As a Bink API Consumer I want to view the all the fields a user is required to fill in in order to complete all supported loyalty card journeys
   so that I can display them to the user when required.
 
