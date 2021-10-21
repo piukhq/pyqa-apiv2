@@ -73,12 +73,12 @@ def verify_loyalty_card_into_database(journey_type, merchant):
             scheme_account.id == TestContext.current_scheme_account_id and scheme_account.is_delete_scheme is True
         ), "Delete in database is not success"
 
-    elif journey_type == "authorise_field":
+    elif journey_type == "authorise_field" or journey_type == "join":
         scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
         assert (
             scheme_account.id == TestContext.current_scheme_account_id
             and scheme_account.status == TestDataUtils.TEST_DATA.scheme_status.get(constants.ACTIVE)
-        ), "Authorise in database is not success"
+        ), (journey_type + " in database is not success")
 
     elif journey_type == "add_field_then_add_auth":
         scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
@@ -587,3 +587,19 @@ def update_scheme_status(status):
     scheme_account = QueryHermes.update_scheme_account(TestContext.current_scheme_account_id, status)
     logging.info(scheme_account)
     assert scheme_account.id == TestContext.current_scheme_account_id and scheme_account.status == int(status)
+
+
+@when('I perform POST request to join "<merchant>" membership card')
+def join_scheme(merchant, test_email):
+    response = MembershipCards.join_field(TestContext.token, merchant, test_email)
+    response_json = response_to_json(response)
+    TestContext.current_scheme_account_id = response_json.get("id")
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The response of Join field Journey (POST) is:\n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_REGISTER
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    assert response.status_code == 202, "Join Journey for " + merchant + " failed"

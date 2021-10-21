@@ -1,6 +1,8 @@
 import json
 import logging
 
+from faker import Faker
+
 from tests import api
 from tests.api.base import Endpoint
 from tests.helpers import constants
@@ -258,6 +260,36 @@ class WasabiCard:
             "The Request for Wasabi Add_and_Auth journey with different auth value:\n"
             + Endpoint.BASE_URL
             + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_AUTHORISE
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
+    def join_journey(email=None, invalid_request=None):
+        faker = Faker()
+        if invalid_request:
+            payload = {}
+        else:
+            payload = {
+                "account": {
+                    "join_fields": {
+                        "credentials": [
+                            {"credential_slug": "first_name", "value": faker.name()},
+                            {"credential_slug": "last_name", "value": faker.name()},
+                            {"credential_slug": "date_of_birth", "value": "01/01/2000"},
+                            {"credential_slug": "email", "value": email},
+                        ],
+                        "consents": [{"consent_slug": "EmailOptin", "value": constants.CONSENT}],
+                    },
+                },
+                "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi"),
+            }
+
+        logging.info(
+            "The Request for Join with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_JOIN
             + "\n\n"
             + json.dumps(payload, indent=4)
         )
