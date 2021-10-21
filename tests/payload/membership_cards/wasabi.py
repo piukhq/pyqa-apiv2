@@ -1,7 +1,7 @@
 import json
 import logging
-from faker import Faker
 
+from faker import Faker
 
 from tests import api
 from tests.api.base import Endpoint
@@ -278,7 +278,7 @@ class WasabiCard:
                             {"credential_slug": "first_name", "value": faker.name()},
                             {"credential_slug": "last_name", "value": faker.name()},
                             {"credential_slug": "date_of_birth", "value": "01/01/2000"},
-                            {"credential_slug": "email", "value": email}
+                            {"credential_slug": "email", "value": email},
                         ],
                         "consents": [{"consent_slug": "EmailOptin", "value": constants.CONSENT}],
                     },

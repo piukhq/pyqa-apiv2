@@ -1,7 +1,7 @@
 import json
 import logging
-from faker import Faker
 
+from faker import Faker
 from shared_config_storage.credentials.encryption import RSACipher
 
 import config

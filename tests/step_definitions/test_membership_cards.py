@@ -78,7 +78,7 @@ def verify_loyalty_card_into_database(journey_type, merchant):
         assert (
             scheme_account.id == TestContext.current_scheme_account_id
             and scheme_account.status == TestDataUtils.TEST_DATA.scheme_status.get(constants.ACTIVE)
-        ), journey_type + " in database is not success"
+        ), (journey_type + " in database is not success")
 
     elif journey_type == "add_field_then_add_auth":
         scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
