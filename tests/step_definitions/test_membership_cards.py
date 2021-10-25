@@ -312,7 +312,7 @@ def verify_add_and_register_invalid_token_request(merchant, test_email):
     return response
 
 
-@when('I perform POST request to authorise "<merchant>" above wallet only membership card')
+@when('I perform PUT request to authorise "<merchant>" above wallet only membership card')
 def verify_authorise_post_membership_card(merchant):
     time.sleep(2)
     response = MembershipCards.authorise_field_only_card(
@@ -322,7 +322,7 @@ def verify_authorise_post_membership_card(merchant):
     TestContext.current_scheme_account_id = response_json.get("id")
     TestContext.response_status_code = response.status_code
     logging.info(
-        "The response of Authorise field Journey (POST) is:\n\n"
+        "The response of Authorise field Journey (PUT) is:\n\n"
         + Endpoint.BASE_URL
         + api.ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE.format(TestContext.current_scheme_account_id)
         + "\n\n"
@@ -332,7 +332,7 @@ def verify_authorise_post_membership_card(merchant):
 
 
 @when(
-    "I perform POST <merchant> membership_card request with invalid token and bearer prefix for"
+    "I perform PUT <merchant> membership_card request with invalid token and bearer prefix for"
     " authorise membership card"
 )
 def verify_invalid_token_bearer_prefix_for_authorise_membership_card(merchant):
@@ -345,7 +345,7 @@ def verify_invalid_token_bearer_prefix_for_authorise_membership_card(merchant):
     TestContext.response_status_code = response.status_code
     response_json = response.json()
     logging.info(
-        "The response of POST/Authorise Membership_card with invalid token is: \n\n"
+        "The response of PUT/Authorise Membership_card with invalid token is: \n\n"
         + Endpoint.BASE_URL
         + api.ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE.format(TestContext.current_payment_card_id)
         + "\n\n"
@@ -358,7 +358,7 @@ def verify_invalid_token_bearer_prefix_for_authorise_membership_card(merchant):
     return response
 
 
-@when('I perform POST request to authorise "<merchant>" membership card with "<request_payload>" with "<status_code>"')
+@when('I perform PUT request to authorise "<merchant>" membership card with "<request_payload>" with "<status_code>"')
 def verify_authorise_invalid_request(merchant, request_payload, status_code):
     if request_payload == "invalid_request":
         response = MembershipCards.authorise_field_only_card(
@@ -369,7 +369,7 @@ def verify_authorise_invalid_request(merchant, request_payload, status_code):
         TestContext.error_message = response_json["error_message"]
         TestContext.error_slug = response_json["error_slug"]
         logging.info(
-            "The response of Invalid request Journey (POST) for Authorise field:\n \n"
+            "The response of Invalid request Journey (PUT) for Authorise field:\n \n"
             + Endpoint.BASE_URL
             + api.ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE.format(TestContext.current_scheme_account_id)
             + "\n\n"
@@ -461,7 +461,7 @@ def i_perform_delete_request_to_delete_the_mebership_card_which_is_deleted():
     return response
 
 
-@when('I perform POST request to authorise "<merchant>" above wallet only membership card again')
+@when('I perform PUT request to authorise "<merchant>" above wallet only membership card again')
 def verify_i_perform_authorise_again(merchant):
     time.sleep(3)
     response = MembershipCards.authorise_field_only_card(

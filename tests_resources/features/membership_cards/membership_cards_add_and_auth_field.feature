@@ -85,9 +85,9 @@ Feature: Add and authorise a loyalty card
     And I perform DELETE request to delete the "<merchant>" membership card
 
     Examples:
-      | merchant | status_code_returned | error_message                                                                 | error_slug    |
-      | Iceland  | 409                  | Card already added. Use POST /loyalty_cards/authorise to authorise this card. | ALREADY_ADDED |
-      | Wasabi   | 409                  | Card already added. Use POST /loyalty_cards/authorise to authorise this card. | ALREADY_ADDED |
+      | merchant | status_code_returned | error_message                                                                                  | error_slug    |
+      | Iceland  | 409                  | Card already added. Use PUT /loyalty_cards/{loyalty_card_id}/authorise to authorise this card. | ALREADY_ADDED |
+      | Wasabi   | 409                  | Card already added. Use PUT /loyalty_cards/{loyalty_card_id}/authorise to authorise this card. | ALREADY_ADDED |
 
   @add_and_auth_with_different_authrised_field @bink_regression_api2
   Scenario Outline: Already Add and authorised scheme then add with different auth credential
@@ -101,8 +101,8 @@ Feature: Add and authorise a loyalty card
     And I perform DELETE request to delete the "<merchant>" membership card
 
     Examples:
-      | merchant | status_code_returned | error_message                                                                                   | error_slug         |
-      | Iceland  | 409                  | Card already authorised. Use POST /loyalty_cards/authorise to modify authorisation credentials. | ALREADY_AUTHORISED |
+      | merchant | status_code_returned | error_message                                                                                                    | error_slug         |
+      | Iceland  | 409                  | Card already authorised. Use PUT /loyalty_cards/{loyalty_card_id}/authorise to modify authorisation credentials. | ALREADY_AUTHORISED |
 #      | Wasabi   | 409                  |Card already authorised. Use POST /loyalty_cards/authorise to modify authorisation credentials.|ALREADY_AUTHORISED|
 
   @add_and_auth_pll @bink_regression_api2
