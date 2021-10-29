@@ -1,0 +1,298 @@
+{
+  "loyalty_plan_id": 124,
+  "plan_popularity": 2,
+  "plan_features": {
+    "has_points": true,
+    "has_transactions": true,
+    "plan_type": 2,
+    "barcode_type": 7,
+    "colour": "#000000",
+    "journeys": [
+      {
+        "type": 0,
+        "description": "ADD"
+      },
+      {
+        "type": 1,
+        "description": "AUTHORISE"
+      },
+      {
+        "type": 3,
+        "description": "JOIN"
+      }
+    ]
+  },
+  "images": [
+    {
+      "id": 1179,
+      "type": 2,
+      "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_3.png",
+      "description": "Offer tile 3 - Shop Men",
+      "encoding": "png"
+    },
+    {
+      "id": 1293,
+      "type": 9,
+      "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_ESHACSv.png",
+      "description": "Harvey Nichols Alternative Hero",
+      "encoding": "png"
+    },
+    {
+      "id": 1180,
+      "type": 2,
+      "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_4.png",
+      "description": "Offer tile 4 - Shop Beauty",
+      "encoding": "png"
+    },
+    {
+      "id": 1181,
+      "type": 2,
+      "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_5.png",
+      "description": "Offer tile 5 - Shop Food & Wine",
+      "encoding": "png"
+    },
+    {
+      "id": 660,
+      "type": 3,
+      "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Logo.png",
+      "description": "Harvey Nichols Icon",
+      "encoding": "png"
+    },
+    {
+      "id": 1186,
+      "type": 8,
+      "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_3_Platinum.png",
+      "description": "Platinum Tier",
+      "encoding": "png"
+    },
+    {
+      "id": 1182,
+      "type": 2,
+      "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_6.png",
+      "description": "Offer tile 6 - Find your Nearest Store",
+      "encoding": "png"
+    },
+    {
+      "id": 1187,
+      "type": 8,
+      "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_4_Black.png",
+      "description": "Black Tier",
+      "encoding": "png"
+    },
+    {
+      "id": 1183,
+      "type": 2,
+      "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_2_copy.png",
+      "description": "Offer tile 2 - Shop Women",
+      "encoding": "png"
+    },
+    {
+      "id": 1304,
+      "type": 2,
+      "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Rewards_square_oct_02.jpg",
+      "description": "Harvey Nichols Rewards",
+      "encoding": "jpg"
+    },
+    {
+      "id": 575,
+      "type": 0,
+      "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_0_TIER_UNKNOWN.png",
+      "description": "Harvey Nichols Hero",
+      "encoding": "png"
+    },
+    {
+      "id": 1184,
+      "type": 8,
+      "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_1_Silver.png",
+      "description": "Silver Tier",
+      "encoding": "png"
+    },
+    {
+      "id": 1178,
+      "type": 2,
+      "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_1.png",
+      "description": "Offer tile 1 - Open Rewards by Harvey Nichols",
+      "encoding": "png"
+    },
+    {
+      "id": 1185,
+      "type": 8,
+      "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_2_Gold.png",
+      "description": "Gold Tier",
+      "encoding": "png"
+    }
+  ],
+  "plan_details": {
+    "company_name": "Harvey Nichols",
+    "plan_name": "Rewards by Harvey Nichols",
+    "plan_label": "Account",
+    "plan_url": "https://www.harveynichols.com/",
+    "plan_summary": "Rewards by Harvey Nichols is your fast track pass to exclusive benefits and complimentary services. Earn 1 point for every £1 spent on harveynichols.com, in-stores and dining at any of our establishments.",
+    "plan_description": "As your purchases inch you up the points ladder, you will unlock ever-increasingly spectacular rewards – think cases of premium wine or a private canape party hosted at the OXO Tower Restaurant. Our programme is the only one of its kind to offer a choice of rewards every 3 months, rather than once a year. The hardest part will be choosing which to redeem. Please note, Payment Linked Loyalty is currently not available in Harvey Nichols restaurants and online.",
+    "redeem_instructions": "Present the barcode below to the cashier or use the card number below to still earn points, if you are paying with cash or an unlinked payment card.",
+    "plan_register_info": "Registrations typically processed in 24hrs",
+    "join_incentive": "Placeholder Enrol Incentive",
+    "category": "Household",
+    "tiers": [
+      {
+        "name": "Platinum Tier",
+        "description": "Platinum Tier Description"
+      },
+      {
+        "name": "Silver Tier",
+        "description": "Silver Tier Description"
+      },
+      {
+        "name": "Black Tier",
+        "description": "Black Tier Description"
+      },
+      {
+        "name": "Gold Tier",
+        "description": "Gold Tier Description"
+      }
+    ]
+  },
+  "journey_fields": {
+    "join_fields": {
+      "credentials": [
+        {
+          "order": 0,
+          "display_label": "Title",
+          "validation": "^(Mr|Mrs|Miss|Ms|Dame|Sir|Doctor|Professor|Lord|Lady)$",
+          "description": "Select title",
+          "credential_slug": "title",
+          "type": "choice",
+          "is_sensitive": false,
+          "choice": [
+            "Mr",
+            "Mrs",
+            "Miss",
+            "Ms",
+            "Dame",
+            "Sir",
+            "Doctor",
+            "Professor",
+            "Lord",
+            "Lady"
+          ],
+          "alternative": null
+        },
+        {
+          "order": 1,
+          "display_label": "First name",
+          "validation": "^(((?=.{1,255}$)[A-Za-z\\-\\u00C0-\\u00FF])+\\s*){1,4}$",
+          "description": "Enter first name",
+          "credential_slug": "first_name",
+          "type": "text",
+          "is_sensitive": false,
+          "choice": [],
+          "alternative": null
+        },
+        {
+          "order": 2,
+          "display_label": "Last name",
+          "validation": "^(((?=.{1,255}$)[A-Za-z\\-\\u00C0-\\u00FF])+\\s*){1,4}$",
+          "description": "Enter last name",
+          "credential_slug": "last_name",
+          "type": "text",
+          "is_sensitive": false,
+          "choice": [],
+          "alternative": null
+        },
+        {
+          "order": 3,
+          "display_label": "Email",
+          "validation": "^(?=[^@]{1,64}@)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
+          "description": "example@mydomain.com",
+          "credential_slug": "email",
+          "type": "text",
+          "is_sensitive": false,
+          "choice": [],
+          "alternative": null
+        },
+        {
+          "order": 4,
+          "display_label": "Password",
+          "validation": "^([A-z0-9!\"#$£%&'()*+,\\-./:;<=>?@\\[\\\\\\]^_`{|}~]){7,255}$",
+          "description": "Password (min 7 characters)",
+          "credential_slug": "password_2",
+          "type": "sensitive",
+          "is_sensitive": true,
+          "choice": [],
+          "alternative": null
+        },
+        {
+          "order": 5,
+          "display_label": "Mobile number",
+          "validation": "^(?:0|\\+?44)(?:\\d-?\\s?){9,15}$",
+          "description": "01234 123456",
+          "credential_slug": "phone",
+          "type": "text",
+          "is_sensitive": false,
+          "choice": [],
+          "alternative": null
+        }
+      ],
+      "plan_documents": [
+        {
+          "order": 0,
+          "name": "Retailer terms and conditions",
+          "url": "https://policies.staging.gb.bink.com/hn/tc.html",
+          "description": "I accept the",
+          "is_acceptance_required": true
+        },
+        {
+          "order": 1,
+          "name": "Harvey Nichols privacy policy",
+          "url": "https://policies.staging.gb.bink.com/hn/pp.html",
+          "description": "Please read the",
+          "is_acceptance_required": false
+        }
+      ],
+      "consents": [
+        {
+          "order": 0,
+          "consent_slug": "email_optin",
+          "is_acceptance_required": false,
+          "description": "Check this box for email marketing from Harvey Nichols - if you change your mind, you can opt out anytime via the retailer."
+        }
+      ]
+    },
+    "register_ghost_card_fields": null,
+    "add_fields": null,
+    "authorise_fields": {
+      "credentials": [
+        {
+          "order": 3,
+          "display_label": "Email",
+          "validation": "^(?=[^@]{1,64}@)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
+          "description": "example@mydomain.com",
+          "credential_slug": "email",
+          "type": "text",
+          "is_sensitive": false,
+          "choice": [],
+          "alternative": null
+        },
+        {
+          "order": 4,
+          "display_label": "Password",
+          "validation": "^([A-z0-9!\"#$£%&'()*+,\\-./:;<=>?@\\[\\\\\\]^_`{|}~]){6,255}$",
+          "description": "Password (min 6 characters)",
+          "credential_slug": "password",
+          "type": "sensitive",
+          "is_sensitive": true,
+          "choice": [],
+          "alternative": null
+        }
+      ],
+      "plan_documents": [],
+      "consents": []
+    }
+  },
+  "content": [
+    {
+      "column": "Enrol_Help_Text",
+      "value": "Please enter your details to register with the retailer. We won’t save or store any of the information you provide or edit below."
+    }
+  ]
+}
