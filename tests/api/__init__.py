@@ -3,6 +3,9 @@ ENDPOINT_PAYMENT_ACCOUNT = "/v2/payment_accounts/{}"
 
 ENDPOINT_PLAN_JOURNEY_FIELDS = "/v2/loyalty_plans/{}/journey_fields"
 
+ENDPOINT_LOYALTY_PLAN_BY_ID = "/v2/loyalty_plans/{}"
+ENDPOINT_LOYALTY_PLANS = "/v2/loyalty_plans"
+
 ENDPOINT_MEMBERSHIP_CARDS_ADD = "/v2/loyalty_cards/add"
 ENDPOINT_MEMBERSHIP_CARD = "/v2/loyalty_cards/add/{}"
 
