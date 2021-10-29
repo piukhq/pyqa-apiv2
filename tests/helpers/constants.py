@@ -54,6 +54,10 @@ JSON_DIFF_ACTUAL_JSON = (
     "tests_resources/test_data/membership_plan/journey_type_diff_comparator" "/actual_membership_plan.json"
 )
 
+EXPECTED_LOYALTY_PLANS_STAGING = (
+    "tests_resources/test_data/membership_plan" "/membership_plan_loyalty_plans_staging"
+)
+
 # PAYMENT_CARD_STATUS = "status"
 # ACTIVE_LINK = "active_link"
 # PAYMENT_PROVIDER = "payment_provider"
