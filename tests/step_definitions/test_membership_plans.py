@@ -48,13 +48,11 @@ def verify_get_loyalty_plan_by_id(loyalty_scheme, env, channel):
     TestContext.actual_loyalty_plan_by_id_field = response.json()
 
 
-@when('I perform GET request to view all available loyalty plans')
+@when("I perform GET request to view all available loyalty plans")
 def verify_get_all_loyalty_plans(env, channel):
     response = MembershipPlans.get_all_loyalty_plans(setup_token())
     TestContext.response_status_code = response.status_code
-    logging.info(
-        "The loyalty plans available are: \n" + json.dumps(response_to_json(response), indent=4)
-    )
+    logging.info("The loyalty plans available are: \n" + json.dumps(response_to_json(response), indent=4))
 
     with open(TestData.get_expected_all_loyalty_plans_json(env, channel)) as json_file:
         json_data = json.load(json_file)
@@ -117,9 +115,7 @@ def verify_loyalty_plan_fields_by_id(loyalty_scheme):
             + "loyalty plan fields has following differences"
             + json.dumps(difference, sort_keys=True, indent=4)
         )
-        raise Exception(
-            "The expected and actual loyalty plan of " + loyalty_scheme + " is not the same"
-        )
+        raise Exception("The expected and actual loyalty plan of " + loyalty_scheme + " is not the same")
     else:
         logging.info("The expected and actual loyalty plan of " + loyalty_scheme + " journey fields is same")
 
@@ -166,11 +162,9 @@ def verify_loyalty_plan_fields_invalid_token(loyalty_scheme):
     return response
 
 
-@when('I perform GET request to view all available loyalty plans with invalid token')
+@when("I perform GET request to view all available loyalty plans with invalid token")
 def verify_all_loyalty_plans_invalid_token():
-    response = MembershipPlans.get_all_loyalty_plans(
-        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN)
-    )
+    response = MembershipPlans.get_all_loyalty_plans(TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN))
 
     TestContext.response_status_code = response.status_code
     response_json = response.json()
