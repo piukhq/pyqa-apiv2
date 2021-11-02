@@ -8,15 +8,15 @@ Feature: View Loyalty Plan by id
   @loyalty_plan_id_success @journey_type @bink_regression_api2
   Scenario Outline: View Loyalty Plan by id
     Given I am a Bink user
-    When I perform GET request to view "<loyalty_scheme>" loyalty plan by id
-    Then I verify the <status_code> for loyalty plan
-    And  I can see the loyalty plan fields of that merchant "<loyalty_scheme>"
+    When I perform GET request to view loyalty_scheme loyalty plan by id
+#    Then I verify the <status_code> for loyalty plan
+    Then  I can see the loyalty plan fields of that merchant "<loyalty_scheme>"
 
     Examples:
-      | loyalty_scheme      | status_code |
-      | Iceland             | 200         |
-      | Wasabi              | 200         |
-      | HarveyNichols       | 200         |
+      | loyalty_scheme      |
+      | Iceland             |
+#      | Wasabi              | 200         |
+#      | HarveyNichols       | 200         |
 
   @loyalty_plan_id_invalid_token @invalid_token @bink_regression_api2
   Scenario Outline: Verify loyalty plan by id gives correct error messages with invalid token
