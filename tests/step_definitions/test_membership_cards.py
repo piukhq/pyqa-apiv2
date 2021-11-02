@@ -596,10 +596,55 @@ def join_scheme(merchant, test_email):
     TestContext.current_scheme_account_id = response_json.get("id")
     TestContext.response_status_code = response.status_code
     logging.info(
-        "The response of Join field Journey (POST) is:\n\n"
+        "The response of Join Journey (POST) for "
+        + merchant
+        + " is:\n\n"
         + Endpoint.BASE_URL
-        + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_REGISTER
+        + api.ENDPOINT_MEMBERSHIP_CARDS_JOIN
         + "\n\n"
         + json.dumps(response_json, indent=4)
     )
     assert response.status_code == 202, "Join Journey for " + merchant + " failed"
+
+
+@when('I perform POST request to join "<merchant>" membership card with "<request_payload>" with "<status_code>"')
+def perform_join_with_bad_request(merchant, request_payload, status_code, test_email):
+    response = MembershipCards.join_field(TestContext.token, merchant, test_email, request_payload)
+    response_json = response_to_json(response)
+    TestContext.response_status_code = response.status_code
+    TestContext.error_message = response_json["error_message"]
+    TestContext.error_slug = response_json["error_slug"]
+
+    logging.info(
+        "The response of"
+        + request_payload
+        + "Invalid Journey (POST) for join journey:\n \n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_ADD
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+
+    assert TestContext.response_status_code == int(status_code), "Invalid request for " + merchant + "failed"
+
+
+@when('I perform POST request to join "<merchant>" with invalid token')
+def join_with_invalid_token(merchant, test_email):
+    response = MembershipCards.join_field(
+        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN), merchant, test_email
+    )
+
+    TestContext.response_status_code = response.status_code
+    response_json = response.json()
+    logging.info(
+        "The response of join journey for POST/join with invalid token is: \n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_AUTHORISE
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    TestContext.error_message = response_json.get("error_message")
+    TestContext.error_slug = response_json.get("error_slug")
+
+    assert response.status_code == 401
+    return response

@@ -27,14 +27,18 @@ class MembershipCards(Endpoint):
         return Endpoint.call(url, header, "POST", payload)
 
     @staticmethod
-    def join_field(token, merchant, email, invalid_request=None):
+    def join_field(token, merchant, email, request_payload=None):
         url = MembershipCards.get_join_url()
         header = Endpoint.request_header(token)
-        if not invalid_request:
+        if not request_payload:
             payload = Merchant.get_merchant(merchant).join_journey(email)
+            return Endpoint.call(url, header, "POST", payload)
         else:
-            payload = Merchant.get_merchant(merchant).join_journey(email, invalid_request)
-        return Endpoint.call(url, header, "POST", payload)
+            payload = Merchant.get_merchant(merchant).join_journey(email, request_payload)
+            if request_payload == "invalid_json":
+                return Endpoint.call_payload(url, header, "POST", payload)
+            else:
+                return Endpoint.call(url, header, "POST", payload)
 
     @staticmethod
     def authorise_field_only_card(token, merchant, scheme_account_id, invalid_data=None):

@@ -266,10 +266,25 @@ class WasabiCard:
         return payload
 
     @staticmethod
-    def join_journey(email=None, invalid_request=None):
+    def join_journey(email=None, request_payload=None):
         faker = Faker()
-        if invalid_request:
+        if request_payload == "invalid_request":
             payload = {}
+        elif request_payload == "invalid_json":
+            payload = {
+                "account": {
+                    "join_fields": {
+                        "credentials": [
+                            {"credential_slug": '"first_name"', "value": faker.name()},
+                            {"credential_slug": '"last_name"', "value": faker.name()},
+                            {"credential_slug": "date_of_birth", "value": "01/01/2000"},
+                            {"credential_slug": "email", "value": email},
+                        ],
+                        "consents": [{"consent_slug": "EmailOptin", "value": constants.CONSENT}],
+                    },
+                },
+                "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi"),
+            }
         else:
             payload = {
                 "account": {
