@@ -103,10 +103,29 @@ class HarveyNicholsCard:
         return payload
 
     @staticmethod
-    def join_journey(email=None, invalid_request=None):
+    def join_journey(email=None, request_payload=None):
         faker = Faker()
-        if invalid_request:
+        if request_payload == "invalid_request":
             payload = {}
+
+        elif request_payload == "invalid_json":
+            payload = {
+                "account": {
+                    "join_fields": {
+                        "credentials": [
+                            {"credential_slug": '"title"', "value": constants.TITLE},
+                            {"credential_slug": '"first_name"', "value": faker.name()},
+                            {"credential_slug": "last_name", "value": faker.name()},
+                            {"credential_slug": "email", "value": email},
+                            {"credential_slug": "password_2", "value": faker.name()},
+                            {"credential_slug": "phone", "value": "07889878987"},
+                        ],
+                        "consents": [{"consent_slug": "email_optin", "value": constants.CONSENT}],
+                    },
+                },
+                "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("harvey_nichols"),
+            }
+
         else:
             payload = {
                 "account": {
@@ -126,7 +145,7 @@ class HarveyNicholsCard:
             }
 
         logging.info(
-            "The Request for Join with :\n"
+            "The Request for Join journey is :\n"
             + Endpoint.BASE_URL
             + api.ENDPOINT_MEMBERSHIP_CARDS_JOIN
             + "\n\n"

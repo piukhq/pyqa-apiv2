@@ -387,10 +387,32 @@ class IcelandCard:
         return payload
 
     @staticmethod
-    def join_journey(email=None, invalid_request=None):
+    def join_journey(email=None, request_payload=None):
         faker = Faker()
-        if invalid_request:
+        if request_payload == "invalid_request":
             payload = {}
+        elif request_payload == "invalid_json":
+            payload = {
+                "account": {
+                    "join_fields": {
+                        "credentials": [
+                            {"credential_slug": '"title"', "value": constants.TITLE},
+                            {"credential_slug": '"first_name"', "value": faker.name()},
+                            {"credential_slug": '"last_name"', "value": faker.name()},
+                            {"credential_slug": "'date_of_birth'", "value": constants.DATE_OF_BIRTH},
+                            {"credential_slug": "email", "value": email},
+                            {"credential_slug": "phone", "value": faker.phone_number()},
+                            {"credential_slug": "address_1", "value": faker.building_number()},
+                            {"credential_slug": "address_2", "value": faker.street_address()},
+                            {"credential_slug": "town_city", "value": faker.city()},
+                            {"credential_slug": "county", "value": faker.country()},
+                            {"credential_slug": "postcode", "value": faker.postcode()},
+                        ],
+                        "consents": [{"consent_slug": "marketing_opt_in", "value": constants.CONSENT}],
+                    },
+                },
+                "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("iceland"),
+            }
         else:
             payload = {
                 "account": {
