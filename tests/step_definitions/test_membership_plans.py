@@ -1,8 +1,13 @@
 import json
 import logging
 
-from json_diff import Comparator
-from pytest_bdd import scenarios, then, when
+# from json_diff import Comparator
+# import jsondiff as jd
+# from jsondiff import diff
+from deepdiff import DeepDiff
+
+
+from pytest_bdd import scenarios, then, when, parsers
 
 from tests.conftest import response_to_json, setup_token
 from tests.helpers import constants
@@ -32,20 +37,32 @@ def verify_journey_field(loyalty_scheme, env, channel):
     TestContext.actual_membership_plan_journey_field = response.json()
 
 
-@when('I perform GET request to view "<loyalty_scheme>" loyalty plan by id')
+@when(parsers.parse('I perform GET request to view {loyalty_scheme} loyalty plan by id'))
 def verify_get_loyalty_plan_by_id(loyalty_scheme, env, channel):
-    response = MembershipPlans.get_loyalty_plan_by_id(setup_token(), loyalty_scheme)
+    response = MembershipPlans.get_loyalty_plan_by_id(TestContext.token, loyalty_scheme)
     TestContext.response_status_code = response.status_code
     logging.info(
         "The loyalty plan for " + loyalty_scheme + " is: \n" + json.dumps(response_to_json(response), indent=4)
     )
 
     with open(TestData.get_expected_loyalty_plan_by_id_json(loyalty_scheme, env, channel)) as json_file:
-        json_data = json.load(json_file)
+        expected_data = json.load(json_file)
 
-    stored_json = json.dumps(json_data)
-    TestContext.expected_loyalty_plan_by_id_field = json.loads(stored_json)
-    TestContext.actual_loyalty_plan_by_id_field = response.json()
+    with open(TestData.get_expected_loyalty_plan_by_id_json2(loyalty_scheme, env, channel)) as json_file:
+        expected_data2 = json.load(json_file)
+
+    difference = json_compare_loyalty(expected_data, expected_data2)
+
+    if difference:
+        logging.info(
+            "The expected and actual loyalty plan of "
+            + loyalty_scheme
+            + "loyalty plan fields has following differences"
+            + json.dumps(difference, sort_keys=True, indent=4)
+        )
+        raise Exception("The expected and actual loyalty plan of " + loyalty_scheme + " is not the same")
+    else:
+        logging.info("The expected and actual loyalty plan of " + loyalty_scheme + " journey fields is same")
 
 
 @when("I perform GET request to view all available loyalty plans")
@@ -69,19 +86,27 @@ def json_compare(actual_membership_plan_journey_field, expected_membership_plan_
     json.dump(actual_membership_plan_journey_field, open(constants.JSON_DIFF_ACTUAL_JSON, "w"), indent=4)
     json.dump(expected_membership_plan_journey_field, open(constants.JSON_DIFF_EXPECTED_JSON, "w"), indent=4)
 
-    engine = Comparator(open(constants.JSON_DIFF_ACTUAL_JSON, "r"), open(constants.JSON_DIFF_EXPECTED_JSON, "r"))
-    return engine.compare_dicts()
+    # engine = Comparator(open(constants.JSON_DIFF_ACTUAL_JSON, "r"), open(constants.JSON_DIFF_EXPECTED_JSON, "r"))
+    # engine = Comparator(open(constants.JSON_DIFF_ACTUAL_JSON, "r"), open(constants.JSON_DIFF_EXPECTED_JSON, "r"))
 
+    # return engine._compare_arrays()
 
 def json_compare_loyalty(actual_loyalty_plan_by_id_field, expected_loyalty_plan_by_id_field):
     """This function will compare two loyalty plan Json objects using json_diff and
     create a third json with comparison results"""
 
-    json.dump(actual_loyalty_plan_by_id_field, open(constants.JSON_DIFF_ACTUAL_JSON, "w"), indent=4)
-    json.dump(expected_loyalty_plan_by_id_field, open(constants.JSON_DIFF_EXPECTED_JSON, "w"), indent=4)
+    # actual_loyalty_plan_by_id_field, open(constants.JSON_DIFF_ACTUAL_JSON, "w")
+    # expected_loyalty_plan_by_id_field, open(constants.JSON_DIFF_EXPECTED_JSON, "w")
+    # actual_result = json.dump(actual_loyalty_plan_by_id_field, open(constants.JSON_DIFF_ACTUAL_JSON, "w"), indent=4)
+    # expected_result = json.dump(expected_loyalty_plan_by_id_field, open(constants.JSON_DIFF_EXPECTED_JSON, "w"), indent=4)
 
-    engine = Comparator(open(constants.JSON_DIFF_ACTUAL_JSON, "r"), open(constants.JSON_DIFF_EXPECTED_JSON, "r"))
-    return engine.compare_dicts()
+    assert isinstance(actual_loyalty_plan_by_id_field,dict)
+    assert isinstance(expected_loyalty_plan_by_id_field,dict)
+
+
+    compare = DeepDiff(actual_loyalty_plan_by_id_field, expected_loyalty_plan_by_id_field, ignore_order= True)
+    # # engine = Comparator(open(constants.JSON_DIFF_ACTUAL_JSON, "r"), open(constants.JSON_DIFF_EXPECTED_JSON, "r"))
+    return compare
 
 
 @then('I can see the journey fields of that merchant "<loyalty_scheme>"')
@@ -103,7 +128,7 @@ def verify_journey_field_type(loyalty_scheme):
         logging.info("The expected and actual membership plan of " + loyalty_scheme + " journey fields is same")
 
 
-@then('I can see the loyalty plan fields of that merchant "<loyalty_scheme>"')
+@then(parsers.parse('I can see the loyalty plan fields of that merchant {loyalty_scheme}'))
 def verify_loyalty_plan_fields_by_id(loyalty_scheme):
     difference = json_compare_loyalty(
         TestContext.actual_loyalty_plan_by_id_field, TestContext.expected_loyalty_plan_by_id_field
