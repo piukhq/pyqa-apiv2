@@ -2,8 +2,10 @@ import json
 import logging
 
 # from json_diff import Comparator
-import jsondiff as jd
-from jsondiff import diff
+# import jsondiff as jd
+# from jsondiff import diff
+from deepdiff import DeepDiff
+
 
 from pytest_bdd import scenarios, then, when, parsers
 
@@ -44,11 +46,23 @@ def verify_get_loyalty_plan_by_id(loyalty_scheme, env, channel):
     )
 
     with open(TestData.get_expected_loyalty_plan_by_id_json(loyalty_scheme, env, channel)) as json_file:
-        json_data = json.load(json_file)
+        expected_data = json.load(json_file)
 
-    stored_json = json.dumps(json_data)
-    TestContext.expected_loyalty_plan_by_id_field = json.loads(stored_json)
-    TestContext.actual_loyalty_plan_by_id_field = response.json()
+    with open(TestData.get_expected_loyalty_plan_by_id_json2(loyalty_scheme, env, channel)) as json_file:
+        expected_data2 = json.load(json_file)
+
+    difference = json_compare_loyalty(expected_data, expected_data2)
+
+    if difference:
+        logging.info(
+            "The expected and actual loyalty plan of "
+            + loyalty_scheme
+            + "loyalty plan fields has following differences"
+            + json.dumps(difference, sort_keys=True, indent=4)
+        )
+        raise Exception("The expected and actual loyalty plan of " + loyalty_scheme + " is not the same")
+    else:
+        logging.info("The expected and actual loyalty plan of " + loyalty_scheme + " journey fields is same")
 
 
 @when("I perform GET request to view all available loyalty plans")
@@ -80,15 +94,18 @@ def json_compare(actual_membership_plan_journey_field, expected_membership_plan_
 def json_compare_loyalty(actual_loyalty_plan_by_id_field, expected_loyalty_plan_by_id_field):
     """This function will compare two loyalty plan Json objects using json_diff and
     create a third json with comparison results"""
-    #
-    # json.dump(actual_loyalty_plan_by_id_field, open(constants.JSON_DIFF_ACTUAL_JSON, "w"), indent=4)
-    # json.dump(expected_loyalty_plan_by_id_field, open(constants.JSON_DIFF_EXPECTED_JSON, "w"), indent=4)
-    logging.info("actual")
-    logging.info(actual_loyalty_plan_by_id_field)
-    logging.info("expected")
-    logging.info(expected_loyalty_plan_by_id_field)
-    compare = diff(actual_loyalty_plan_by_id_field, expected_loyalty_plan_by_id_field)
-    # engine = Comparator(open(constants.JSON_DIFF_ACTUAL_JSON, "r"), open(constants.JSON_DIFF_EXPECTED_JSON, "r"))
+
+    # actual_loyalty_plan_by_id_field, open(constants.JSON_DIFF_ACTUAL_JSON, "w")
+    # expected_loyalty_plan_by_id_field, open(constants.JSON_DIFF_EXPECTED_JSON, "w")
+    # actual_result = json.dump(actual_loyalty_plan_by_id_field, open(constants.JSON_DIFF_ACTUAL_JSON, "w"), indent=4)
+    # expected_result = json.dump(expected_loyalty_plan_by_id_field, open(constants.JSON_DIFF_EXPECTED_JSON, "w"), indent=4)
+
+    assert isinstance(actual_loyalty_plan_by_id_field,dict)
+    assert isinstance(expected_loyalty_plan_by_id_field,dict)
+
+
+    compare = DeepDiff(actual_loyalty_plan_by_id_field, expected_loyalty_plan_by_id_field, ignore_order= True)
+    # # engine = Comparator(open(constants.JSON_DIFF_ACTUAL_JSON, "r"), open(constants.JSON_DIFF_EXPECTED_JSON, "r"))
     return compare
 
 

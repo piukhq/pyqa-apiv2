@@ -1,3 +1,5 @@
+import logging
+
 from tests.helpers import constants
 from tests.helpers.test_data_utils import TestDataUtils
 from tests.payload.membership_cards.harvey_nichols import HarveyNicholsCard
@@ -53,6 +55,7 @@ class TestData:
     @staticmethod
     def get_membership_plan_id(merchant):
         merchant_key = TestData.get_merchant_key(merchant)
+        logging.info(merchant_key)
         return TestDataUtils.TEST_DATA.membership_plan_id.get(merchant_key)
 
     @staticmethod
@@ -88,8 +91,16 @@ class TestData:
 
         merchant_key = TestData.get_merchant_key(loyalty_scheme)
         mem_plan_path = TestData.get_loyalty_plan_by_id_path(env)
-
+        logging.info(mem_plan_path)
         return mem_plan_path + "/membership_plan_loyalty_field_" + merchant_key + ".json"
+
+    @staticmethod
+    def get_expected_loyalty_plan_by_id_json2(loyalty_scheme, env, channel=None):
+
+        merchant_key = TestData.get_merchant_key(loyalty_scheme)
+        mem_plan_path = TestData.get_loyalty_plan_by_id_path(env)
+        logging.info(mem_plan_path)
+        return mem_plan_path + "/membership_plan_loyalty_field_" + merchant_key + "2.json"
 
     @staticmethod
     def get_expected_all_loyalty_plans_json(env, channel=None):

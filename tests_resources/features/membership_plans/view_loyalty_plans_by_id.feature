@@ -6,15 +6,15 @@ Feature: View Loyalty Plan by id
  so that I can display this to users on the front end
 
   @loyalty_plan_id_success @journey_type @bink_regression_api2
-  Scenario Outline: View Loyalty Plan by id
+  Scenario: View Loyalty Plan by id
     Given I am a Bink user
-    When I perform GET request to view loyalty_scheme loyalty plan by id
+    When I perform GET request to view Iceland loyalty plan by id
 #    Then I verify the <status_code> for loyalty plan
-    Then  I can see the loyalty plan fields of that merchant "<loyalty_scheme>"
+#    Then  I can see the loyalty plan fields of that merchant "<loyalty_scheme>"
 
-    Examples:
-      | loyalty_scheme      |
-      | Iceland             |
+#    Examples:
+#      | loyalty_scheme      |
+#      | Iceland             |
 #      | Wasabi              | 200         |
 #      | HarveyNichols       | 200         |
 
