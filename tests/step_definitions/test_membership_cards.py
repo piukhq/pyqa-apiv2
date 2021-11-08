@@ -20,7 +20,7 @@ scenarios("membership_cards/")
 """Step definitions - Add_field Journey (store card only) """
 
 
-@when('I perform POST request to add "<merchant>" membership card')
+@when(parsers.parse('I perform POST request to add "{merchant}" membership card'))
 def add_field_loyalty_cards(merchant):
     response = MembershipCards.add_field_only_card(TestContext.token, merchant)
     response_json = response_to_json(response)
@@ -50,7 +50,7 @@ def verify_get_add_field_membership_cards(merchant):
     )
 
 
-@then('verify the data stored in DB after "<journey_type>" journey for "<merchant>"')
+@then(parsers.parse('verify the data stored in DB after "{journey_type}" journey for "{merchant}"'))
 def verify_loyalty_card_into_database(journey_type, merchant):
     time.sleep(5)
 
@@ -94,7 +94,12 @@ def verify_loyalty_card_into_database(journey_type, merchant):
     return scheme_account
 
 
-@when('I perform POST request again to verify the "<merchant>" membership card is already added with "<status_code>"')
+@when(
+    parsers.parse(
+        'I perform POST request again to verify the "{merchant}" membership card is already added '
+        'with "{status_code}"'
+    )
+)
 def verify_membership_card_added_already(merchant, status_code):
     response = MembershipCards.add_field_with_existing_card(TestContext.token, merchant)
     response_json = response_to_json(response)
@@ -109,7 +114,11 @@ def verify_membership_card_added_already(merchant, status_code):
     assert response.status_code == 200, "Add existing membership card for " + merchant + " failed"
 
 
-@when('I perform POST request to add "<merchant>" membership card with "<request_payload>" with "<status_code>"')
+@when(
+    parsers.parse(
+        'I perform POST request to add "{merchant}" membership card with "{request_payload}" ' 'with "{status_code}"'
+    )
+)
 def verify_invalid_request_for_add_journey(merchant, request_payload, status_code):
     if request_payload == "invalid_request":
         response = MembershipCards.add_field_only_card(TestContext.token, merchant, request_payload)
@@ -136,8 +145,10 @@ def verify_invalid_request_for_add_journey(merchant, request_payload, status_cod
 
 
 @when(
-    'I perform POST request to add and auth "<merchant>" membership card with "<request_payload>" '
-    'with "<status_code>"'
+    parsers.parse(
+        'I perform POST request to add and auth "{merchant}" membership card '
+        'with "{request_payload}" with "{status_code}"'
+    )
 )
 def verify_invalid_request_for_add_and_auth_journey(merchant, request_payload, status_code):
     if request_payload == "invalid_request":
@@ -165,8 +176,10 @@ def verify_invalid_request_for_add_and_auth_journey(merchant, request_payload, s
 
 
 @when(
-    'I perform POST request to add and register "<merchant>" membership card with "<request_payload>" '
-    'with "<status_code>"'
+    parsers.parse(
+        'I perform POST request to add and register "{merchant}" membership card '
+        'with "{request_payload}" with "{status_code}"'
+    )
 )
 def verify_invalid_request_for_add_and_register_journey(merchant, request_payload, status_code, test_email):
     if request_payload == "invalid_request":
@@ -193,17 +206,17 @@ def verify_invalid_request_for_add_and_register_journey(merchant, request_payloa
     assert TestContext.response_status_code == int(status_code), "Invalid json request for " + merchant + " failed"
 
 
-@then('I see a "<error_message>" error message')
+@then(parsers.parse('I see a "{error_message}" error message'))
 def verify_error_message(error_message):
     assert TestContext.error_message == error_message, "Error Message didnt returned"
 
 
-@then('I see a "<error_slug>" error slug')
+@then(parsers.parse('I see a "{error_slug}" error slug'))
 def verify_error_slug(error_slug):
     assert TestContext.error_slug == error_slug, "Error Slug didnt returned"
 
 
-@when("I perform POST <merchant> membership_card request with invalid token and bearer prefix")
+@when(parsers.parse("I perform POST {merchant} membership_card request with invalid token and bearer prefix"))
 def verify_invalid_token_bearer_prefix_for_membership_card(merchant):
     response = MembershipCards.add_field_only_card(
         TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN), merchant
@@ -225,12 +238,12 @@ def verify_invalid_token_bearer_prefix_for_membership_card(merchant):
     return response
 
 
-@then("I see a <status_code_returned>")
+@then(parsers.parse("I see a {status_code_returned}"))
 def verify_membership_card_status_code(status_code_returned):
     assert TestContext.response_status_code == int(status_code_returned)
 
 
-@when('I perform POST request to add and authorise "<merchant>" membership card')
+@when(parsers.parse('I perform POST request to add and authorise "{merchant}" membership card'))
 def verify_add_and_auth(merchant):
     response = MembershipCards.add_and_authorise_card(TestContext.token, merchant)
     response_json = response_to_json(response)
@@ -247,8 +260,10 @@ def verify_add_and_auth(merchant):
 
 
 @when(
-    'I perform POST request again with add and authorise to verify the "<merchant>" membership card is already '
-    'added with "<status_code_returned>"'
+    parsers.parse(
+        'I perform POST request again with add and authorise to verify the "{merchant}" '
+        'membership card is already added with "{status_code_returned}"'
+    )
 )
 def verify_add_and_auth_existing_membership_card(merchant, status_code_returned):
     time.sleep(3)
@@ -268,7 +283,11 @@ def verify_add_and_auth_existing_membership_card(merchant, status_code_returned)
     )
 
 
-@when("I perform POST <merchant> membership_card request for add and auth with invalid token and bearer prefix")
+@when(
+    parsers.parse(
+        "I perform POST {merchant} membership_card request for add and auth " "with invalid token and bearer prefix"
+    )
+)
 def verify_add_and_auth_invalid_token_request(merchant):
     response = MembershipCards.add_and_authorise_card(
         TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN), merchant
@@ -290,7 +309,11 @@ def verify_add_and_auth_invalid_token_request(merchant):
     return response
 
 
-@when("I perform POST <merchant> membership_card request for add and register with invalid token and bearer prefix")
+@when(
+    parsers.parse(
+        "I perform POST {merchant} membership_card request for add and register " "with invalid token and bearer prefix"
+    )
+)
 def verify_add_and_register_invalid_token_request(merchant, test_email):
     response = MembershipCards.add_and_register_field(
         TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN), merchant, test_email
@@ -312,7 +335,7 @@ def verify_add_and_register_invalid_token_request(merchant, test_email):
     return response
 
 
-@when('I perform PUT request to authorise "<merchant>" above wallet only membership card')
+@when(parsers.parse('I perform PUT request to authorise "{merchant}" above wallet only membership card'))
 def verify_authorise_post_membership_card(merchant):
     time.sleep(2)
     response = MembershipCards.authorise_field_only_card(
@@ -332,8 +355,10 @@ def verify_authorise_post_membership_card(merchant):
 
 
 @when(
-    "I perform PUT <merchant> membership_card request with invalid token and bearer prefix for"
-    " authorise membership card"
+    parsers.parse(
+        "I perform PUT {merchant} membership_card request with invalid token and bearer "
+        "prefix for authorise membership card"
+    )
 )
 def verify_invalid_token_bearer_prefix_for_authorise_membership_card(merchant):
     response = MembershipCards.authorise_field_only_card(
@@ -358,7 +383,12 @@ def verify_invalid_token_bearer_prefix_for_authorise_membership_card(merchant):
     return response
 
 
-@when('I perform PUT request to authorise "<merchant>" membership card with "<request_payload>" with "<status_code>"')
+@when(
+    parsers.parse(
+        'I perform PUT request to authorise "{merchant}" membership card with '
+        '"{request_payload}" with "{status_code}"'
+    )
+)
 def verify_authorise_invalid_request(merchant, request_payload, status_code):
     if request_payload == "invalid_request":
         response = MembershipCards.authorise_field_only_card(
@@ -396,7 +426,7 @@ def verify_authorise_invalid_request(merchant, request_payload, status_code):
     assert TestContext.response_status_code == int(status_code), "Invalid json request for " + merchant + " failed"
 
 
-@then('I perform DELETE request to delete the "<merchant>" membership card with invalid token')
+@then(parsers.parse('I perform DELETE request to delete the "{merchant}" membership card with invalid token'))
 def verify_delete_invalid_token(merchant):
     response = MembershipCards.delete_scheme_account(
         TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN), TestContext.current_scheme_account_id
@@ -418,7 +448,7 @@ def verify_delete_invalid_token(merchant):
     return response
 
 
-@then('I perform DELETE request with payload for "<merchant>"')
+@then(parsers.parse('I perform DELETE request with payload for "{merchant}"'))
 def verify_delete_request_with_payload(merchant):
     response = MembershipCards.delete_membership_card_with_payload(
         TestContext.token, merchant, TestContext.current_scheme_account_id
@@ -461,7 +491,7 @@ def i_perform_delete_request_to_delete_the_mebership_card_which_is_deleted():
     return response
 
 
-@when('I perform PUT request to authorise "<merchant>" above wallet only membership card again')
+@when(parsers.parse('I perform PUT request to authorise "{merchant}" above wallet only membership card again'))
 def verify_i_perform_authorise_again(merchant):
     time.sleep(3)
     response = MembershipCards.authorise_field_only_card(
@@ -481,7 +511,10 @@ def verify_i_perform_authorise_again(merchant):
 
 
 @when(
-    'I perform POST request to add and authorise "<merchant>" membership card which already exist with add credentail'
+    parsers.parse(
+        'I perform POST request to add and authorise "{merchant}" membership card '
+        "which already exist with add credentail"
+    )
 )
 def i_perform_post_add_and_authorise_membership_card_which_is_exist_already(merchant):
     response = MembershipCards.add_and_authorise_card(TestContext.token, merchant)
@@ -501,7 +534,7 @@ def i_perform_post_add_and_authorise_membership_card_which_is_exist_already(merc
     assert response.status_code == 409, "Add only then add and authorise Journey for " + merchant + " failed"
 
 
-@when('I perform POST request to add and register "<merchant>" membership card')
+@when(parsers.parse('I perform POST request to add and register "{merchant}" membership card'))
 def add_and_register_field(merchant, test_email):
     response = MembershipCards.add_and_register_field(TestContext.token, merchant, test_email)
     response_json = response_to_json(response)
@@ -517,7 +550,11 @@ def add_and_register_field(merchant, test_email):
     assert response.status_code == 202, "Add and Register Journey for " + merchant + " failed"
 
 
-@when('I perform POST request to add and register "<merchant>" membership card where membership card is in pending')
+@when(
+    parsers.parse(
+        'I perform POST request to add and register "{merchant}" membership card where ' "membership card is in pending"
+    )
+)
 def add_and_register_field_for_in_pending_state_scheme(merchant, test_email):
     time.sleep(4)
     response = MembershipCards.add_and_register_field(TestContext.token, merchant, test_email)
@@ -535,7 +572,7 @@ def add_and_register_field_for_in_pending_state_scheme(merchant, test_email):
     # assert response.status_code == 200, "Add and Register Journey which is in pending " + merchant + " failed"
 
 
-@when('I perform POST request to add and authorise "<merchant>" with different auth credential')
+@when(parsers.parse('I perform POST request to add and authorise "{merchant}" with different auth credential'))
 def i_perform_post_with_different_credential(merchant):
     time.sleep(4)
     response = MembershipCards.add_and_authorise_card_with_different_credential(TestContext.token, merchant)
@@ -554,14 +591,16 @@ def i_perform_post_with_different_credential(merchant):
     assert response.status_code == 409, "Add only then add and authorise Journey for " + merchant + " failed"
 
 
-@when('I perform POST request to add a new "<payment_card_provider>" payment account to wallet')
+@when(parsers.parse('I perform POST request to add a new "{payment_card_provider}" payment account to wallet'))
 def verify_pll_authorise(payment_card_provider):
     test_paymentcard_account.add_payment_account(payment_card_provider)
 
 
 @when(
-    'I perform POST request again with add and register to verify the "<merchant>" membership card is already '
-    'added with "<status_code_returned>"'
+    parsers.parse(
+        'I perform POST request again with add and register to verify the "{merchant}"'
+        ' membership card is already added with "{status_code_returned}"'
+    )
 )
 def add_and_register_with_existing_credential(merchant, status_code_returned, test_email):
     time.sleep(3)
@@ -582,14 +621,14 @@ def add_and_register_with_existing_credential(merchant, status_code_returned, te
     )
 
 
-@when('I update the membership card to "<status>" pending in DB')
+@when(parsers.parse('I update the membership card to "{status}" pending in DB'))
 def update_scheme_status(status):
     scheme_account = QueryHermes.update_scheme_account(TestContext.current_scheme_account_id, status)
     logging.info(scheme_account)
     assert scheme_account.id == TestContext.current_scheme_account_id and scheme_account.status == int(status)
 
 
-@when('I perform POST request to join "<merchant>" membership card')
+@when(parsers.parse('I perform POST request to join "{merchant}" membership card'))
 def join_scheme(merchant, test_email):
     response = MembershipCards.join_field(TestContext.token, merchant, test_email)
     response_json = response_to_json(response)
@@ -607,7 +646,11 @@ def join_scheme(merchant, test_email):
     assert response.status_code == 202, "Join Journey for " + merchant + " failed"
 
 
-@when('I perform POST request to join "<merchant>" membership card with "<request_payload>" with "<status_code>"')
+@when(
+    parsers.parse(
+        'I perform POST request to join "{merchant}" membership card with ' '"{request_payload}" with "{status_code}"'
+    )
+)
 def perform_join_with_bad_request(merchant, request_payload, status_code, test_email):
     response = MembershipCards.join_field(TestContext.token, merchant, test_email, request_payload)
     response_json = response_to_json(response)
@@ -628,7 +671,7 @@ def perform_join_with_bad_request(merchant, request_payload, status_code, test_e
     assert TestContext.response_status_code == int(status_code), "Invalid request for " + merchant + "failed"
 
 
-@when('I perform POST request to join "<merchant>" with invalid token')
+@when(parsers.parse('I perform POST request to join "{merchant}" with invalid token'))
 def join_with_invalid_token(merchant, test_email):
     response = MembershipCards.join_field(
         TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN), merchant, test_email

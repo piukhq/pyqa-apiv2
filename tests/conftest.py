@@ -6,7 +6,7 @@ from json import JSONDecodeError
 import pytest
 
 from faker import Faker
-from pytest_bdd import given, then
+from pytest_bdd import given, parsers, then
 from requests.exceptions import HTTPError
 
 import config
@@ -133,7 +133,7 @@ def response_to_json(response):
     return response_json
 
 
-@then('I perform DELETE request to delete the "<merchant>" membership card')
+@then(parsers.parse('I perform DELETE request to delete the "{merchant}" membership card'))
 def delete_scheme_account(merchant=None):
     time.sleep(3)
 
@@ -157,7 +157,7 @@ def delete_scheme_account(merchant=None):
         assert network_response.response.status_code == 404 or 400
 
 
-@then('I perform DELETE request to delete "<payment_card_provider>" the payment card')
+@then(parsers.parse('I perform DELETE request to delete "{payment_card_provider}" the payment card'))
 @then("I perform DELETE request to delete the payment card which is already deleted")
 def delete_payment_card(payment_card_provider=None):
     time.sleep(3)
