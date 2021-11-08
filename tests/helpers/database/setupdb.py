@@ -2,19 +2,14 @@ import logging
 
 import psycopg2
 
+from settings import HERMES_DATABASE_URI
 from tests.helpers.test_data_utils import TestDataUtils
 
 
 def connect_db():
     """Connect to Hermes"""
     try:
-        connection = psycopg2.connect(
-            user=get_db_credentials("user"),
-            password="",
-            host=get_db_credentials("host"),
-            port=get_db_credentials("port"),
-            database=get_db_credentials("database"),
-        )
+        connection = psycopg2.connect(HERMES_DATABASE_URI)
         logging.info("Connected to Hermes")
 
     except Exception as error:
