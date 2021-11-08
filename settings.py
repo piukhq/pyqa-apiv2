@@ -16,3 +16,4 @@ VAULT_URL = env_var("VAULT_URL", "https://bink-uksouth-staging-com.vault.azure.n
 CHANNEL_SECRET_NAME = env_var("CHANNEL_SECRET_NAME", "channels")
 ACCESS_SECRET_NAME = env_var("ACCESS_SECRET_NAME", "api2-access-secrets")
 BLOB_STORAGE_DSN = env_var("BLOB_STORAGE_DSN")
+HERMES_DATABASE_URI = env_var("HERMES_DATABASE_URI")
