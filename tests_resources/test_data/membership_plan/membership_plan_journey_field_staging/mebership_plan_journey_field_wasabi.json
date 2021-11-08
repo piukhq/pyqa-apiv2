@@ -49,14 +49,14 @@
         ],
         "plan_documents": [
             {
-                "order": 2,
+                "order": 1,
                 "name": "Retailer terms and conditions",
                 "url": "https://policies.staging.gb.bink.com/wasabi/tc.html",
                 "description": "I accept the",
                 "is_acceptance_required": true
             },
             {
-                "order": 1,
+                "order": 3,
                 "name": "Wasabi privacy policy",
                 "url": "https://policies.staging.gb.bink.com/wasabi/pp.html",
                 "description": "Please read the",

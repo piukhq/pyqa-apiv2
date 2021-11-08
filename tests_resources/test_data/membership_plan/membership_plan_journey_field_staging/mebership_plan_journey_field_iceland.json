@@ -132,14 +132,14 @@
         ],
         "plan_documents": [
             {
-                "order": 0,
+                "order": 1,
                 "name": "Iceland privacy policy",
                 "url": "https://policies.staging.gb.bink.com/iceland/pp.html",
                 "description": "Please read the",
                 "is_acceptance_required": false
             },
             {
-                "order": 0,
+                "order": 2,
                 "name": "Retailer terms and conditions",
                 "url": "https://policies.staging.gb.bink.com/iceland/tc.html",
                 "description": "I accept the",
@@ -287,14 +287,14 @@
         ],
         "plan_documents": [
             {
-                "order": 0,
+                "order": 1,
                 "name": "Iceland privacy policy",
                 "url": "https://policies.staging.gb.bink.com/iceland/pp.html",
                 "description": "Please read the",
                 "is_acceptance_required": false
             },
             {
-                "order": 0,
+                "order": 2,
                 "name": "Retailer terms and conditions",
                 "url": "https://policies.staging.gb.bink.com/iceland/tc.html",
                 "description": "I accept the",
