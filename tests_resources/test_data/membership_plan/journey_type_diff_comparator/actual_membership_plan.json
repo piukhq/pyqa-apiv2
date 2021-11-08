@@ -21,7 +21,8 @@
                     "Professor",
                     "Lord",
                     "Lady"
-                ]
+                ],
+                "alternative": null
             },
             {
                 "order": 1,
@@ -30,7 +31,9 @@
                 "description": "Enter first name",
                 "credential_slug": "first_name",
                 "type": "text",
-                "is_sensitive": false
+                "is_sensitive": false,
+                "choice": [],
+                "alternative": null
             },
             {
                 "order": 2,
@@ -39,7 +42,9 @@
                 "description": "Enter last name",
                 "credential_slug": "last_name",
                 "type": "text",
-                "is_sensitive": false
+                "is_sensitive": false,
+                "choice": [],
+                "alternative": null
             },
             {
                 "order": 3,
@@ -48,7 +53,9 @@
                 "description": "example@mydomain.com",
                 "credential_slug": "email",
                 "type": "text",
-                "is_sensitive": false
+                "is_sensitive": false,
+                "choice": [],
+                "alternative": null
             },
             {
                 "order": 4,
@@ -57,7 +64,9 @@
                 "description": "Password (min 7 characters)",
                 "credential_slug": "password_2",
                 "type": "sensitive",
-                "is_sensitive": true
+                "is_sensitive": true,
+                "choice": [],
+                "alternative": null
             },
             {
                 "order": 5,
@@ -66,17 +75,21 @@
                 "description": "01234 123456",
                 "credential_slug": "phone",
                 "type": "text",
-                "is_sensitive": false
+                "is_sensitive": false,
+                "choice": [],
+                "alternative": null
             }
         ],
         "plan_documents": [
             {
+                "order": 0,
                 "name": "Retailer terms and conditions",
                 "url": "https://policies.staging.gb.bink.com/hn/tc.html",
                 "description": "I accept the",
                 "is_acceptance_required": true
             },
             {
+                "order": 1,
                 "name": "Harvey Nichols privacy policy",
                 "url": "https://policies.staging.gb.bink.com/hn/pp.html",
                 "description": "Please read the",
@@ -92,6 +105,8 @@
             }
         ]
     },
+    "register_ghost_card_fields": null,
+    "add_fields": null,
     "authorise_fields": {
         "credentials": [
             {
@@ -101,7 +116,9 @@
                 "description": "example@mydomain.com",
                 "credential_slug": "email",
                 "type": "text",
-                "is_sensitive": false
+                "is_sensitive": false,
+                "choice": [],
+                "alternative": null
             },
             {
                 "order": 4,
@@ -110,8 +127,12 @@
                 "description": "Password (min 6 characters)",
                 "credential_slug": "password",
                 "type": "sensitive",
-                "is_sensitive": true
+                "is_sensitive": true,
+                "choice": [],
+                "alternative": null
             }
-        ]
+        ],
+        "plan_documents": [],
+        "consents": []
     }
 }

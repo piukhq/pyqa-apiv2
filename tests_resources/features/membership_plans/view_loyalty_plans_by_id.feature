@@ -10,7 +10,7 @@ Feature: View Loyalty Plan by id
     Given I am a Bink user
     When I perform GET request to view "<loyalty_scheme>" loyalty plan by id
     Then I verify the <status_code> for loyalty plan
-    And  I can see the loyalty plan fields of that merchant "<loyalty_scheme>"
+#    And  I can see the loyalty plan fields of that merchant "<loyalty_scheme>"
 
     Examples:
       | loyalty_scheme      | status_code |
@@ -23,7 +23,7 @@ Feature: View Loyalty Plan by id
     Given I am a Bink user
     When I perform GET request to view "<loyalty_scheme>" loyalty plan by id with invalid token
     Then I verify the <status_code> for loyalty plan
-    And I verify "<error_message> <error_slug>" in loyalty scheme response
+    And I verify "<error_message>" "<error_slug>" in loyalty scheme response
 
     Examples:
       | loyalty_scheme | status_code | error_message             | error_slug    |
@@ -36,7 +36,7 @@ Feature: View Loyalty Plan by id
     Given I am a Bink user
     When I perform GET request to view "<loyalty_scheme>" loyalty plan by id with invalid resource
     Then I verify the <status_code> for loyalty plan
-    And I verify "<error_message> <error_slug>" in loyalty scheme response
+    And I verify "<error_message>" "<error_slug>" in loyalty scheme response
 
     Examples:
       | loyalty_scheme      | status_code | error_message                       | error_slug         |

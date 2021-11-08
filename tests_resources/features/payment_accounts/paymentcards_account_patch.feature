@@ -1,5 +1,5 @@
 # Created by rupalpatel at 27/07/2021
-@paymentcard_account_patch
+@paymentcard_account_patch @paymentcard_account
 Feature: As a Bink User
   I want to be able update some details on my payment account
   so that I can keep my account upto date and customize it.
@@ -32,7 +32,7 @@ Feature: As a Bink User
 #    Given I am a Bink user
     When I perform PATCH <payment_card_provider> payment_account request with invalid token
     Then I see a "<status_code_returned>" status code for payment account
-    And I verify "<error_message> <error_slug>" of payment_account response
+    And I verify "<error_message>" "<error_slug>" of payment_account response
 
     Examples:
       | payment_card_provider | status_code_returned | error_message                                        | error_slug    |
@@ -45,7 +45,7 @@ Feature: As a Bink User
 #    Given I am a Bink user
     When I perform PATCH <payment_card_provider> payment_account request with invalid token and bearer prefix
     Then I see a "<status_code_returned>" status code for payment account
-    And I verify "<error_message> <error_slug>" of payment_account response
+    And I verify "<error_message>" "<error_slug>" of payment_account response
 
     Examples:
       | payment_card_provider | status_code_returned | error_message             | error_slug    |
@@ -59,7 +59,7 @@ Feature: As a Bink User
     When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
     When I perform "<request_call>" payment_account request with empty_json payload
     Then I see a "<status_code_returned>" status code for payment account
-    And I verify "<error_message> <error_slug>" of payment_account response
+    And I verify "<error_message>" "<error_slug>" of payment_account response
     Examples:
       | payment_card_provider | request_call | status_code_returned | error_message             | error_slug             |
       | master                | PATCH        | 422                  | Could not validate fields | FIELD_VALIDATION_ERROR |
@@ -72,7 +72,7 @@ Feature: As a Bink User
     When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
     When I perform "<request_call>" payment_account request with null_json payload
     Then I see a "<status_code_returned>" status code for payment account
-    And I verify "<error_message> <error_slug>" of payment_account response
+    And I verify "<error_message>" "<error_slug>" of payment_account response
     Examples:
       | payment_card_provider | request_call | status_code_returned | error_message | error_slug        |
       | master                | PATCH        | 400                  | Invalid JSON  | MALFORMED_REQUEST |
@@ -86,7 +86,7 @@ Feature: As a Bink User
     Then I perform DELETE request to delete "<payment_card_provider>" the payment card
     When I perform PATCH request to update "<update_field>" and "<payment_card_provider>" payment card to wallet
     Then I see a "<status_code_returned>" status code for payment account
-    And I verify "<error_message> <error_slug>" of payment_account response
+    And I verify "<error_message>" "<error_slug>" of payment_account response
 
     Examples:
       | payment_card_provider | status_code_returned | update_field | error_message                       | error_slug         |
@@ -100,7 +100,7 @@ Feature: As a Bink User
     When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
     And I perform PATCH request to update "<payment_card_provider>" payment card with add credential
     Then I see a "<status_code_returned>" status code for payment account
-    And I verify "<error_message> <error_slug>" of payment_account response
+    And I verify "<error_message>" "<error_slug>" of payment_account response
     Then I perform DELETE request to delete "<payment_card_provider>" the payment card
 
 

@@ -1,5 +1,5 @@
 # Created by rupalpatel at 16/07/2021
-@paymentcard_account_add
+@paymentcard_account_add @paymentcard_account
 Feature: As a Bink User
   I want to be able to add my payment card account to my bink wallet
   So that I can start to earn rewards when I use my payment card
@@ -25,7 +25,7 @@ Feature: As a Bink User
   Scenario Outline: Replace expiry_month,expiry_year,name_on_card,card_nickname into payment card
     Given I am a Bink user
     When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
-    And I replace "<payment_card_provider> <expiry_month> <expiry_year> <name_on_card> <card_nickname>" into the payment card
+    And I replace "<payment_card_provider>" "<expiry_month>" "<expiry_year>" "<name_on_card>" "<card_nickname>" into the payment card
     Then I see a "<status_code_returned>" status code for payment account
     And I perform DELETE request to delete "<payment_card_provider>" the payment card
 
@@ -38,7 +38,7 @@ Feature: As a Bink User
     Given I am a Bink user
     When I perform "<request_call>" payment_account request with empty json payload
     Then I see a "<status_code_returned>" status code for payment account
-    And I verify "<error_message> <error_slug>" of payment_account response
+    And I verify "<error_message>" "<error_slug>" of payment_account response
     Examples:
       |request_call| status_code_returned | error_message             | error_slug             |
       |POST        | 422                  | Could not validate fields | FIELD_VALIDATION_ERROR |
@@ -48,7 +48,7 @@ Feature: As a Bink User
     Given I am a Bink user
     When I perform "<request_call>" payment_account request with null json in payload
     Then I see a "<status_code_returned>" status code for payment account
-    And I verify "<error_message> <error_slug>" of payment_account response
+    And I verify "<error_message>" "<error_slug>" of payment_account response
     Examples:
       |request_call| status_code_returned | error_message | error_slug        |
       |POST        | 400                  | Invalid JSON  | MALFORMED_REQUEST |
@@ -58,7 +58,7 @@ Feature: As a Bink User
     Given I am a Bink user
     When I perform POST <payment_card_provider> payment_account request with invalid token
     Then I see a "<status_code_returned>" status code for payment account
-    And I verify "<error_message> <error_slug>" of payment_account response
+    And I verify "<error_message>" "<error_slug>" of payment_account response
 
     Examples:
       | payment_card_provider | status_code_returned | error_message                                        | error_slug    |
@@ -69,7 +69,7 @@ Feature: As a Bink User
     Given I am a Bink user
     When I perform POST <payment_card_provider> payment_account request with invalid token and bearer prefix
     Then I see a "<status_code_returned>" status code for payment account
-    And I verify "<error_message> <error_slug>" of payment_account response
+    And I verify "<error_message>" "<error_slug>" of payment_account response
 
     Examples:
       | payment_card_provider | status_code_returned | error_message             | error_slug    |
@@ -92,7 +92,7 @@ Feature: As a Bink User
     Given I am a Bink user
     When I perform POST request to add a new payment card by removing "mandatory" field to wallet
     Then I see a "<status_code_returned>" status code for payment account
-    And I verify "<error_message> <error_slug>" of payment_account response
+    And I verify "<error_message>" "<error_slug>" of payment_account response
 
     Examples:
       | status_code_returned | error_message             | error_slug             |
@@ -119,7 +119,7 @@ Feature: As a Bink User
     Given I am a Bink user
     When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
     Then I see a "<status_code_returned>" status code for payment account
-    And I perform existing payment card "<payment_card_provider>" to my another wallet with different "<expiry_month> <expiry_year> <name_on_card> <card_nickname>"
+    And I perform existing payment card "<payment_card_provider>" to my another wallet with different "<expiry_month>" "<expiry_year>" "<name_on_card>" "<card_nickname>"
     And I see an <existing_payment_card_status> status code
     And I perform DELETE request to delete "<payment_card_provider>" the payment card from another wallet
     And I perform DELETE request to delete "<payment_card_provider>" the payment card

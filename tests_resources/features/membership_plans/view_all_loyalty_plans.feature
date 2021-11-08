@@ -20,10 +20,8 @@ Feature: View Loyalty Plans
     Given I am a Bink user
     When I perform GET request to view all available loyalty plans with invalid token
     Then I verify the <status_code> for loyalty plan
-    And I verify "<error_message> <error_slug>" in loyalty scheme response
+    And I verify "<error_message>" "<error_slug>" in loyalty scheme response
 
     Examples:
       | status_code | error_message             | error_slug    |
       | 401         | Supplied token is invalid | INVALID_TOKEN |
-
-

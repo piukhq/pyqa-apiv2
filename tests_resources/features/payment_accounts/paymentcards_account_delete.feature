@@ -1,5 +1,5 @@
 # Created by rupalpatel at 26/08/2021
-@paymentcard_account_delete
+@paymentcard_account_delete @paymentcard_account
 Feature: As a Bink User
   I want to be able to delete my payment card account to my bink wallet
   So that I can start verify its deleted from my wallet
@@ -30,7 +30,7 @@ Feature: As a Bink User
     And I see the paymentcard been deleted and status_code "<status_code>" appeared
     And I perform DELETE request to delete the payment card which is already deleted
     Then I see a "<status_code_returned>" status code for payment account
-    And I verify "<error_message> <error_slug>" of payment_account response
+    And I verify "<error_message>" "<error_slug>" of payment_account response
     And I perform DELETE request to delete "<payment_card_provider>" the payment card
 
 
@@ -46,7 +46,7 @@ Feature: As a Bink User
     When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
     Then I perform DELETE request to delete "<payment_card_provider>" the payment card with invalid token
     Then I see a "<status_code_returned>" status code for payment account
-    And I verify "<error_message> <error_slug>" of payment_account response
+    And I verify "<error_message>" "<error_slug>" of payment_account response
     And I perform DELETE request to delete "<payment_card_provider>" the payment card
 
     Examples:
@@ -62,7 +62,7 @@ Feature: As a Bink User
     When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
     Then I perform DELETE request to delete "<payment_card_provider>" the payment card with invalid token and bearer prefix
     Then I see a "<status_code_returned>" status code for payment account
-    And I verify "<error_message> <error_slug>" of payment_account response
+    And I verify "<error_message>" "<error_slug>" of payment_account response
     And I perform DELETE request to delete "<payment_card_provider>" the payment card
 
     Examples:

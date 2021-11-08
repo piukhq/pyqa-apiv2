@@ -25,6 +25,7 @@ azure-identity = "*"
 azure-keyvault-secrets = "*"
 shared-config-storage = "*"
 pytest-html = "*"
+deepdiff = "*"
 
 [dev-packages]
 flake8 = "*"
