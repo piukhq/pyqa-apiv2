@@ -73,7 +73,7 @@ def verify_loyalty_card_into_database(journey_type, merchant):
             scheme_account.id == TestContext.current_scheme_account_id and scheme_account.is_delete_scheme is True
         ), "Delete in database is not success"
 
-    elif journey_type == "authorise_field" or journey_type == "join":
+    elif journey_type == "authorise_field" or journey_type == "join" or journey_type == "register_field":
         scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
         assert (
             scheme_account.id == TestContext.current_scheme_account_id
@@ -204,6 +204,144 @@ def verify_invalid_request_for_add_and_register_journey(merchant, request_payloa
     )
 
     assert TestContext.response_status_code == int(status_code), "Invalid json request for " + merchant + " failed"
+
+
+#Bula
+
+
+@when(parsers.parse('I perform POST request to add "{merchant}" membership card before register'))
+def add_before_register_field_loyalty_cards(merchant):
+    response = MembershipCards.add_before_register_field_only_card(TestContext.token, merchant)
+    response_json = response_to_json(response)
+    TestContext.current_scheme_account_id = response_json.get("id")
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The response of Add field Journey (POST) is:\n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_ADD
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    assert response.status_code == 201, "Add Journey for " + merchant + " failed"
+
+
+#Bula
+
+
+@when(parsers.parse('I perform PUT request to register "{merchant}" above wallet only membership card'))
+def verify_register_post_membership_card(merchant, test_email):
+    time.sleep(2)
+    response = MembershipCards.register_field_only_card(
+        TestContext.token, merchant, test_email, TestContext.current_scheme_account_id
+    )
+    response_json = response_to_json(response)
+    TestContext.current_scheme_account_id = response_json.get("id")
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The response of Register field Journey (PUT) is:\n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_REGISTER.format(TestContext.current_scheme_account_id)
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    assert response.status_code == 202, "Register Journey for " + merchant + " failed"
+
+
+#Bula
+
+
+@when(parsers.parse('I perform PUT request to register "{merchant}" above wallet only membership card again'))
+def verify_i_perform_register_again(merchant, test_email):
+    time.sleep(3)
+    response = MembershipCards.register_field_only_card(
+        TestContext.token, merchant, test_email, TestContext.current_scheme_account_id
+    )
+    response_json = response_to_json(response)
+    TestContext.response_status_code = response.status_code
+    TestContext.error_message = response_json["error_message"]
+    TestContext.error_slug = response_json["error_slug"]
+    logging.info(
+        "The response of Register field Journey (PUT) is:\n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_REGISTER.format(TestContext.current_scheme_account_id)
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    assert response.status_code == 409, "Register Journey for " + merchant + " failed"
+
+
+##Bula
+
+
+@when(
+parsers.parse(
+    'I perform PUT request to register "{merchant}" membership card with "{request_payload}" with "{status_code}"'
+     )
+)
+def verify_register_invalid_data(merchant, test_email, request_payload, status_code):
+    if request_payload == "invalid_request":
+        response = MembershipCards.register_field_only_card(
+            TestContext.token, merchant, test_email, TestContext.current_scheme_account_id, request_payload
+        )
+        response_json = response_to_json(response)
+        TestContext.response_status_code = response.status_code
+        TestContext.error_message = response_json["error_message"]
+        TestContext.error_slug = response_json["error_slug"]
+        logging.info(
+            "The response of Invalid request Journey (PUT) for Register field:\n \n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_REGISTER.format(TestContext.current_scheme_account_id)
+            + "\n\n"
+            + json.dumps(response_json, indent=4)
+        )
+    elif request_payload == "invalid_json":
+       response = MembershipCards.register_field_with_invalid_json(
+       TestContext.token, merchant, test_email, TestContext.current_scheme_account_id, request_payload
+      )
+       response_json = response_to_json(response)
+       TestContext.response_status_code = response.status_code
+       TestContext.error_message = response_json["error_message"]
+       TestContext.error_slug = response_json["error_slug"]
+       logging.info(
+         "The response of Invalid json Journey (POST) for Register field:\n \n"
+           + Endpoint.BASE_URL
+           + api.ENDPOINT_MEMBERSHIP_CARDS_REGISTER.format(TestContext.current_scheme_account_id)
+           + "\n\n"
+            + json.dumps(response_json, indent=4)
+        )
+
+    assert TestContext.response_status_code == int(status_code), "Invalid json request for " + merchant + " failed"
+
+#Bula
+
+
+@when(parsers.parse
+    (
+       'I perform PUT request to register "{merchant}" membership card '
+       'with invalid token and bearer prefix'
+    )
+)
+def verify_invalid_token_bearer_prefix_for_register_membership_card(merchant, test_email):
+    response = MembershipCards.register_field_only_card(
+        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN),
+        merchant, test_email,
+        TestContext.current_scheme_account_id,
+    )
+
+    TestContext.response_status_code = response.status_code
+    response_json = response.json()
+    logging.info(
+        "The response of PUT/Register Membership_card with invalid token is: \n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_REGISTER.format(TestContext.current_scheme_account_id)
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    TestContext.error_message = response_json.get("error_message")
+    TestContext.error_slug = response_json.get("error_slug")
+
+    assert response.status_code == 401, "Server error"
+    return response
 
 
 @then(parsers.parse('I see a "{error_message}" error message'))
