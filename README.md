@@ -22,8 +22,29 @@ To set up this project on your local machine:
 
 # Running Tests
 
-In progress..⌛️
+1. Test Execution:
+    - Use `pytest` command 
+    - Use markers '-m' to filter tests by BDD tags
+    - Pass variables '--env' and '--channel' to set current environment and channel
+    - The default environment is staging and default channel is bink
+  
+2. A few sample execution commands:
+    - pytest -m "add" --env staging                    : Execute Add Journey for all merchants in staging-bink
+    - pytest -m "add and iceland" --env staging        : Execute Add Journey for Iceland in staging-bink
+    - pytest -m "add and enrol"                        : Execute Add & Enrol Journey for all merchants in dev-bink 
 
+3. Commands used for nighly regression in bink in staging
+    - pytest -m "bink_regression_api2.0" --env staging 
+   
+4. Run Database query into new server:
+   Into Terminal:
+   Port forward to database:   kubectl port-forward deploy/proxy-postgres 5432
+   Then go to project and Run : pipenv install
+                              : pipenv shell
+                              : export HERMES_DATABASE_URI=$(echo $(kubectl get secret azure-pgfs -o json | jq -r .data.common_hermes | base64 --decode) | sed s/bink-uksouth-staging\.postgres\.database\.azure\.com/127\.0\.0\.1/)
+                              : pytest -m "bink_regression_api2.0" --env staging 
+                                
+   
 
 # Running inside Kubernetes
 The project requires the following Environment Variables to function correctly:
