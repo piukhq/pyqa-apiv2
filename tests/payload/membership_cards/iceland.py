@@ -386,8 +386,6 @@ class IcelandCard:
         )
         return payload
 
-
- ## Bula
     @staticmethod
     def add_field_before_register_membership_card_payload(invalid_request=None):
         if invalid_request:
@@ -416,9 +414,6 @@ class IcelandCard:
             + json.dumps(payload, indent=4)
         )
         return payload
-
-
-#Bula
 
     @staticmethod
     def register_field_only_membership_card_payload(email=None, invalid_data=None):
@@ -471,43 +466,6 @@ class IcelandCard:
             }
         logging.info(
             "The Request for Register field only with :\n"
-            + Endpoint.BASE_URL
-            + api.ENDPOINT_MEMBERSHIP_CARDS_REGISTER.format(TestContext.current_scheme_account_id)
-            + "\n\n"
-            + json.dumps(payload, indent=4)
-        )
-        return payload
-
-#Bula Can remove this
-    @staticmethod
-    def register_field_only_membership_card_with_invalid_json(email=None, invalid_data=None):
-        faker = Faker()
-        if invalid_data == "invalid_request":
-            payload = {}
-        elif invalid_data == "invalid_json":
-            TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_CARD)
-            payload = {
-                "account": {
-                    "register_ghost_card_fields": {
-                        "credentials": [
-                            {"credential_slug": "'title'", "value": constants.TITLE},
-                            {"credential_slug": "first_name", "value": faker.name()},
-                            {"credential_slug": "last_name", "value": faker.name()},
-                            {"credential_slug": "date_of_birth", "value": constants.DATE_OF_BIRTH},
-                            {"credential_slug": "email", "value": email},
-                            {"credential_slug": "phone", "value": faker.phone_number()},
-                            {"credential_slug": "address_1", "value": faker.building_number()},
-                            {"credential_slug": "address_2", "value": faker.street_address()},
-                            {"credential_slug": "town_city", "value": faker.city()},
-                            {"credential_slug": "county", "value": faker.country()},
-                            {"credential_slug": "postcode", "value": faker.postcode()},
-                        ],
-                        "consents": [{"consent_slug": "marketing_opt_in", "value": constants.CONSENT}],
-                    }
-                }
-            }
-        logging.info(
-            "The Request for invalid json for Register field only with :\n"
             + Endpoint.BASE_URL
             + api.ENDPOINT_MEMBERSHIP_CARDS_REGISTER.format(TestContext.current_scheme_account_id)
             + "\n\n"

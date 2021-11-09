@@ -206,9 +206,6 @@ def verify_invalid_request_for_add_and_register_journey(merchant, request_payloa
     assert TestContext.response_status_code == int(status_code), "Invalid json request for " + merchant + " failed"
 
 
-#Bula
-
-
 @when(parsers.parse('I perform POST request to add "{merchant}" membership card before register'))
 def add_before_register_field_loyalty_cards(merchant):
     response = MembershipCards.add_before_register_field_only_card(TestContext.token, merchant)
@@ -223,9 +220,6 @@ def add_before_register_field_loyalty_cards(merchant):
         + json.dumps(response_json, indent=4)
     )
     assert response.status_code == 201, "Add Journey for " + merchant + " failed"
-
-
-#Bula
 
 
 @when(parsers.parse('I perform PUT request to register "{merchant}" above wallet only membership card'))
@@ -245,9 +239,6 @@ def verify_register_post_membership_card(merchant, test_email):
         + json.dumps(response_json, indent=4)
     )
     assert response.status_code == 202, "Register Journey for " + merchant + " failed"
-
-
-#Bula
 
 
 @when(parsers.parse('I perform PUT request to register "{merchant}" above wallet only membership card again'))
@@ -270,13 +261,10 @@ def verify_i_perform_register_again(merchant, test_email):
     assert response.status_code == 409, "Register Journey for " + merchant + " failed"
 
 
-##Bula
-
-
 @when(
-parsers.parse(
-    'I perform PUT request to register "{merchant}" membership card with "{request_payload}" with "{status_code}"'
-     )
+    parsers.parse(
+        'I perform PUT request to register "{merchant}" membership card with "{request_payload}" with "{status_code}"'
+    )
 )
 def verify_register_invalid_data(merchant, test_email, request_payload, status_code):
     if request_payload == "invalid_request":
@@ -295,36 +283,34 @@ def verify_register_invalid_data(merchant, test_email, request_payload, status_c
             + json.dumps(response_json, indent=4)
         )
     elif request_payload == "invalid_json":
-       response = MembershipCards.register_field_with_invalid_json(
-       TestContext.token, merchant, test_email, TestContext.current_scheme_account_id, request_payload
-      )
-       response_json = response_to_json(response)
-       TestContext.response_status_code = response.status_code
-       TestContext.error_message = response_json["error_message"]
-       TestContext.error_slug = response_json["error_slug"]
-       logging.info(
-         "The response of Invalid json Journey (POST) for Register field:\n \n"
-           + Endpoint.BASE_URL
-           + api.ENDPOINT_MEMBERSHIP_CARDS_REGISTER.format(TestContext.current_scheme_account_id)
-           + "\n\n"
+        response = MembershipCards.register_field_with_invalid_json(
+            TestContext.token, merchant, test_email, TestContext.current_scheme_account_id, request_payload
+        )
+        response_json = response_to_json(response)
+        TestContext.response_status_code = response.status_code
+        TestContext.error_message = response_json["error_message"]
+        TestContext.error_slug = response_json["error_slug"]
+        logging.info(
+            "The response of Invalid json Journey (POST) for Register field:\n \n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_REGISTER.format(TestContext.current_scheme_account_id)
+            + "\n\n"
             + json.dumps(response_json, indent=4)
         )
 
     assert TestContext.response_status_code == int(status_code), "Invalid json request for " + merchant + " failed"
 
-#Bula
 
-
-@when(parsers.parse
-    (
-       'I perform PUT request to register "{merchant}" membership card '
-       'with invalid token and bearer prefix'
+@when(
+    parsers.parse(
+        'I perform PUT request to register "{merchant}" membership card ' "with invalid token and bearer prefix"
     )
 )
 def verify_invalid_token_bearer_prefix_for_register_membership_card(merchant, test_email):
     response = MembershipCards.register_field_only_card(
         TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN),
-        merchant, test_email,
+        merchant,
+        test_email,
         TestContext.current_scheme_account_id,
     )
 

@@ -16,9 +16,6 @@ class MembershipCards(Endpoint):
             payload = Merchant.get_merchant(merchant).add_field_only_membership_card_payload(invalid_request)
         return Endpoint.call(url, header, "POST", payload)
 
- ##Bula
-
-
     @staticmethod
     def add_before_register_field_only_card(token, merchant, invalid_request=None):
         url = MembershipCards.get_add_url()
@@ -28,9 +25,6 @@ class MembershipCards(Endpoint):
         else:
             payload = Merchant.get_merchant(merchant).add_field_before_register_membership_card_payload(invalid_request)
         return Endpoint.call(url, header, "POST", payload)
-
-## Bula
-
 
     @staticmethod
     def register_field_only_card(token, merchant, email, scheme_account_id, invalid_data=None):
@@ -42,24 +36,12 @@ class MembershipCards(Endpoint):
             payload = Merchant.get_merchant(merchant).register_field_only_membership_card_payload(email, invalid_data)
         return Endpoint.call(url, header, "PUT", payload)
 
-
-
-# Bula
-
     @staticmethod
     def register_field_with_invalid_json(token, merchant, email, scheme_account_id, invalid_data=None):
         url = MembershipCards.get_register_url(scheme_account_id)
         header = Endpoint.request_header(token)
         payload = Merchant.get_merchant(merchant).register_field_only_membership_card_payload(email, invalid_data)
         return Endpoint.call_payload(url, header, "PUT", payload)
-
-## Bula
-
-    @staticmethod
-    def get_register_url(scheme_account_id):
-        return Endpoint.BASE_URL + api.ENDPOINT_MEMBERSHIP_CARDS_REGISTER.format(scheme_account_id)
-
-
 
     @staticmethod
     def add_and_register_field(token, merchant, email, invalid_request=None):
@@ -116,8 +98,6 @@ class MembershipCards(Endpoint):
         payload = Merchant.get_merchant(merchant).add_field_only_membership_card_with_invalid_json()
         return Endpoint.call_payload(url, header, "POST", payload)
 
-
-
     @staticmethod
     def add_and_auth_field_with_invalid_json(token, merchant):
         url = MembershipCards.get_add_url()
@@ -152,6 +132,10 @@ class MembershipCards(Endpoint):
     @staticmethod
     def get_join_url():
         return Endpoint.BASE_URL + api.ENDPOINT_MEMBERSHIP_CARDS_JOIN
+
+    @staticmethod
+    def get_register_url(scheme_account_id):
+        return Endpoint.BASE_URL + api.ENDPOINT_MEMBERSHIP_CARDS_REGISTER.format(scheme_account_id)
 
     @staticmethod
     def add_and_authorise_card(token, merchant, invalid_request=None):
