@@ -691,3 +691,22 @@ def join_with_invalid_token(merchant, test_email):
 
     assert response.status_code == 401
     return response
+
+
+@when(parsers.parse('I perform fail POST request to join "{merchant}" membership card'))
+def fail_join_scheme(merchant):
+    response = MembershipCards.join_field(TestContext.token, merchant, TestDataUtils.TEST_DATA.harvey_nichols_invalid_data.get(constants.ID))
+    response_json = response_to_json(response)
+    TestContext.current_scheme_account_id = response_json.get("id")
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The response of Join Journey (POST) for "
+        + merchant
+        + " is:\n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_JOIN
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    assert response.status_code == 202, "Join Journey for " + merchant + " failed"
+
