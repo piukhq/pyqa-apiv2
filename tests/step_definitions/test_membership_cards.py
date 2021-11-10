@@ -74,6 +74,7 @@ def verify_loyalty_card_into_database(journey_type, merchant):
         ), "Delete in database is not success"
 
     elif journey_type == "authorise_field" or journey_type == "join" or journey_type == "register_field":
+        time.sleep(4)
         scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
         assert (
             scheme_account.id == TestContext.current_scheme_account_id
@@ -85,6 +86,14 @@ def verify_loyalty_card_into_database(journey_type, merchant):
         assert (
             scheme_account.id == TestContext.current_scheme_account_id
             and scheme_account.status == TestDataUtils.TEST_DATA.scheme_status.get(constants.WALLET_ONLY)
+        )
+
+    elif journey_type == "join_failed":
+        scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
+        assert (
+                scheme_account.id == TestContext.current_scheme_account_id
+                and scheme_account.status is TestDataUtils.TEST_DATA.scheme_status.get(
+            constants.ENROL_FAILED) or TestDataUtils.TEST_DATA.scheme_status.get(constants.ENROL_FAILED)
         )
 
     elif journey_type == "pll":
@@ -604,7 +613,7 @@ def i_perform_delete_request_to_delete_the_mebership_card_which_is_deleted():
     logging.info(
         "The response of DELETE/Membership_card with Already Deleted membership card is: \n\n"
         + Endpoint.BASE_URL
-        + api.ENDPOINT_PAYMENT_ACCOUNTS.format(TestContext.current_payment_card_id)
+        + api.ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE.format(TestContext.current_scheme_account_id)
         + "\n\n"
         + json.dumps(response_json, indent=4)
     )
@@ -772,9 +781,7 @@ def join_scheme(merchant, test_email):
 
 @when(
     parsers.parse(
-        'I perform POST request to join "{merchant}" membership card with ' '"{request_payload}" with "{status_code}"'
-    )
-)
+        'I perform POST request to join "{merchant}" membership card with "{request_payload}" with "{status_code}"'))
 def perform_join_with_bad_request(merchant, request_payload, status_code, test_email):
     response = MembershipCards.join_field(TestContext.token, merchant, test_email, request_payload)
     response_json = response_to_json(response)
@@ -815,3 +822,102 @@ def join_with_invalid_token(merchant, test_email):
 
     assert response.status_code == 401
     return response
+
+
+@when(parsers.parse('I perform fail POST request to join "{merchant}" membership card'))
+def fail_join_scheme(merchant):
+    response = MembershipCards.join_field(TestContext.token, merchant, TestDataUtils.TEST_DATA.harvey_nichols_invalid_data.get(constants.ID))
+    response_json = response_to_json(response)
+    logging.info(response_json)
+    TestContext.current_scheme_account_id = response_json.get("id")
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The response of Enrol with failed Journey (POST) for "
+        + merchant
+        + " is:\n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_JOIN
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    assert response.status_code == 202, "Join Journey for " + merchant + " failed"
+
+
+@when(parsers.parse('I perform DELETE request to delete the "{scheme_state}" membership card for "{merchant}"'))
+def delete_failed_scheme_account(scheme_state, merchant):
+    time.sleep(5)
+    response_del_schemes = MembershipCards.delete_fail_scheme_account(TestContext.token, TestContext.current_scheme_account_id)
+    TestContext.response_status_code = response_del_schemes.status_code
+
+    if scheme_state == "fail":
+        assert response_del_schemes.status_code == 200, "Enrol Journey for " + merchant + " failed"
+    else:
+        response_json = response_to_json(response_del_schemes)
+        TestContext.error_message = response_json["error_message"]
+        TestContext.error_slug = response_json["error_slug"]
+        assert response_del_schemes.status_code == 409, "Enrol Journey for " + merchant + " failed"
+
+
+@when(parsers.parse('I perform DELETE request to delete the membership card for "{merchant}" with invalid token'))
+def delete_fail_scheme_with_invalid_token(merchant):
+    response = MembershipCards.delete_fail_scheme_account(
+            TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN), TestContext.current_scheme_account_id)
+
+    TestContext.response_status_code = response.status_code
+    response_json = response.json()
+    logging.info(
+            "The response of delete failed scheme for with invalid token is: \n\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_AUTHORISE
+            + "\n\n"
+            + json.dumps(response_json, indent=4)
+    )
+    TestContext.error_message = response_json.get("error_message")
+    TestContext.error_slug = response_json.get("error_slug")
+    assert response.status_code == 401
+    return response
+
+
+@when(parsers.parse("I perform DELETE request to delete the failed membership card which is already deleted"))
+def delete_failed_scheme_again():
+    time.sleep(4)
+    response = MembershipCards.delete_fail_scheme_account(TestContext.token, TestContext.current_scheme_account_id)
+    TestContext.response_status_code = response.status_code
+    response_json = response_to_json(response)
+    logging.info(
+        "The response of DELETE/Membership_card with Already Deleted membership card is: \n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_JOIN_FAILED.format(TestContext.current_scheme_account_id)
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    TestContext.error_message = response_json.get("error_message")
+    TestContext.error_slug = response_json.get("error_slug")
+
+    assert response.status_code == 404, "Server error"
+    return response
+
+
+@when(parsers.parse('I perform POST request to join in progress "{merchant}" membership card'))
+def delete_join_in_progress_scheme(merchant):
+    response = MembershipCards.join_field(TestContext.token, merchant,
+                                          TestDataUtils.TEST_DATA.harvey_nichols_invalid_data.get(constants.SLOW_JOIN_ID))
+    response_json = response_to_json(response)
+    logging.info(response_json)
+    TestContext.current_scheme_account_id = response_json.get("id")
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The response of scheme stayed Join in progress for "
+        + merchant
+        + " is:\n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_JOIN
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    assert response.status_code == 202, "Join Journey for " + merchant + " failed"
+
+
+@then(parsers.parse("I wait {sec} second to get scheme active"))
+def wait_few_second(sec):
+    time.sleep(int(sec))
