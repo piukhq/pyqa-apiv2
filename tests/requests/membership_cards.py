@@ -177,6 +177,13 @@ class MembershipCards(Endpoint):
         response = Endpoint.call_payload(url, header, "DELETE")
         return response
 
+    @staticmethod
+    def delete_fail_scheme_account(token, scheme_account_id):
+        url = MembershipCards.get_fail_delete_url(scheme_account_id)
+        header = Endpoint.request_header(token)
+        response = Endpoint.call_payload(url, header, "DELETE")
+        return response
+
     def delete_membership_card_with_payload(token, merchant, scheme_account_id):
         url = MembershipCards.get_delete_url(scheme_account_id)
         header = Endpoint.request_header(token)
@@ -190,3 +197,7 @@ class MembershipCards(Endpoint):
     @staticmethod
     def get_add_and_authorise_url():
         return Endpoint.BASE_URL + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_AUTHORISE
+
+    @staticmethod
+    def get_fail_delete_url(scheme_account_id):
+        return Endpoint.BASE_URL + api.ENDPOINT_MEMBERSHIP_CARDS_JOIN_FAILED.format(scheme_account_id)

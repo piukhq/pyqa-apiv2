@@ -17,6 +17,8 @@ REGISTER_CARD = "register_card"
 EMAIL = "email"
 INVALID_EMAIL = "invalid_email"
 WALLET_ONLY = "wallet_only"
+ENROL_FAILED = "enrol_failed"
+ACCOUNT_ALREADY_EXIST = "account_already_exist"
 ACTIVE = "active"
 PENDING = "pending"
 
