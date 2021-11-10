@@ -54,6 +54,17 @@ class MembershipCards(Endpoint):
         return Endpoint.call(url, header, "POST", payload)
 
     @staticmethod
+    def delete_fail_scheme_account(token, scheme_account_id):
+        url = MembershipCards.get_fail_delete_url(scheme_account_id)
+        header = Endpoint.request_header(token)
+        response = Endpoint.call_payload(url, header, "DELETE")
+        return response
+
+    @staticmethod
+    def get_fail_delete_url(scheme_account_id):
+        return Endpoint.BASE_URL + api.ENDPOINT_MEMBERSHIP_CARDS_JOIN_FAILED.format(scheme_account_id)
+
+    @staticmethod
     def join_field(token, merchant, email, request_payload=None):
         url = MembershipCards.get_join_url()
         header = Endpoint.request_header(token)

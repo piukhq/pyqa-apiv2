@@ -94,7 +94,7 @@ harvey_nichols_membership_card = {
     "transaction_currency": "Points",
 }
 
-harvey_nichols_invalid_data = {"id": "fail@unknown.com"}
+harvey_nichols_invalid_data = {"id": "fail@unknown.com", "slow_join_id": "slowjoin@testbink.com"}
 
 wasabi_membership_card = {
     "card_num": "1048175295",
@@ -122,6 +122,8 @@ membership_plan_id = {
 scheme_status = {
     "wallet_only": 10,
     "active": 1,
+    "enrol_failed": 901,
+    "account_already_exist": 445,
 }
 
 # ------------------------------------------ DB DETAILS ---------------------------------------------------- #
