@@ -182,6 +182,7 @@ class PaymentCardDetails:
             + json.dumps(payload, indent=4)
         )
         return payload
+
     @staticmethod
     def empty_payload():
         payload = {}

@@ -68,6 +68,7 @@ class PaymentCards(Endpoint):
         header = Endpoint.request_header(token)
         payload = PaymentCardDetails.payment_card_with_empty_field(payment_card_provider)
         return Endpoint.call(url, header, "POST", payload)
+
     @staticmethod
     def get_payment_card(token, payment_card_id):
         url = PaymentCards.get_url(payment_card_id)
