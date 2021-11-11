@@ -110,24 +110,6 @@ def verify_replace_value(payment_card_provider, expiry_month, expiry_year, name_
     return TestContext.current_payment_card_id
 
 
-@then(parsers.parse('I perform POST request to add "{payment_card_provider}" payment card to wallet'))
-def verify_existing_payment_account(payment_card_provider):
-    response = PaymentCards.add_existing_payment_card(TestContext.token, payment_card_provider)
-    response_json = response_to_json(response)
-    assert response.status_code == 200 and TestContext.current_payment_card_id == response_json.get(
-        "id"
-    ), f"Payment card replacement '{payment_card_provider}' is not successful"
-    logging.info(
-        f"The response of POST/PaymentCards '{payment_card_provider}' is: \n\n"
-        + Endpoint.BASE_URL
-        + api.ENDPOINT_PAYMENT_ACCOUNTS
-        + "\n\n"
-        + json.dumps(response_json, indent=4)
-    )
-    TestContext.response_json = response_json
-    return TestContext.current_payment_card_id
-
-
 @when(parsers.parse('I perform "{request_call}" payment_account request with empty json payload'))
 def verify_empty_json(request_call):
     response = PaymentCards.empty_json(TestContext.token, request_call)
@@ -552,3 +534,19 @@ def verify_patch_with_add_credential(payment_card_provider):
 
     assert response.status_code == 422, "Receiving invalid data"
     return response
+
+
+@when(parsers.parse('I perform POST request to add "{payment_card_provider}" payment card to wallet'))
+def verify_existing_payment_account_field_with_empty_field(payment_card_provider):
+    response = PaymentCards.add_payment_card_with_empty_field(TestContext.token, payment_card_provider)
+    assert response.status_code == 422
+    logging.info(
+        "The response of empty field of PaymentCard is: \n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_PAYMENT_ACCOUNTS.format(TestContext.current_payment_card_id)
+        + "\n\n"
+        + json.dumps(response.json(), indent=4)
+    )
+    TestContext.response_status_code = response.status_code
+    TestContext.error_message = response.json().get("error_message")
+    TestContext.error_slug = response.json().get("error_slug")
