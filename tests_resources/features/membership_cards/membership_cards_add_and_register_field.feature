@@ -41,8 +41,8 @@ Feature: Add and register a loyalty card
     Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
     And I perform DELETE request to delete the "<merchant>" membership card
     Examples:
-      | merchant | status_code_returned | journey_type     | error_message              | error_slug         |
-      | Iceland  | 409                  | add_and_register | Card is already registered | ALREADY_REGISTERED |
+      | merchant | status_code_returned | journey_type     | error_message                                                                                          | error_slug         |
+      | Iceland  | 409                  | add_and_register | Card is already registered. Use POST /loyalty_cards/add_and_authorise to add this card to your wallet. | ALREADY_REGISTERED |
 
   @invalid_field_bad_request_add_register @bink_regression_api2
   Scenario Outline: Add field journey with Bad request for add and register
