@@ -40,8 +40,8 @@ Feature: As a Bink User
     Then I see a "<status_code_returned>" status code for payment account
     And I verify "<error_message>" "<error_slug>" of payment_account response
     Examples:
-      |request_call| status_code_returned | error_message             | error_slug             |
-      |POST        | 422                  | Could not validate fields | FIELD_VALIDATION_ERROR |
+      | request_call | status_code_returned | error_message             | error_slug             |
+      | POST         | 422                  | Could not validate fields | FIELD_VALIDATION_ERROR |
 
   @empty_null_payload @bink_regression_api2
   Scenario Outline: Sending null payload
@@ -50,8 +50,8 @@ Feature: As a Bink User
     Then I see a "<status_code_returned>" status code for payment account
     And I verify "<error_message>" "<error_slug>" of payment_account response
     Examples:
-      |request_call| status_code_returned | error_message | error_slug        |
-      |POST        | 400                  | Invalid JSON  | MALFORMED_REQUEST |
+      | request_call | status_code_returned | error_message | error_slug        |
+      | POST         | 400                  | Invalid JSON  | MALFORMED_REQUEST |
 
   @sending_invalid_token @bink_regression_api2
   Scenario Outline: Sending invalid token header
@@ -97,6 +97,17 @@ Feature: As a Bink User
     Examples:
       | status_code_returned | error_message             | error_slug             |
       | 422                  | Could not validate fields | FIELD_VALIDATION_ERROR |
+
+  @mandatory_field_empty_field @field_verify @bink_regression_api2
+  Scenario Outline: Leave expiry_month,expiry_year,token,last_four_digits,first_six_digits,fingerprint empty field from the payload
+    Given I am a Bink user
+    When I perform POST request to add "<payment_card_provider>" payment card to wallet
+    Then I see a "<status_code_returned>" status code for payment account
+    And I verify "<error_message>" "<error_slug>" of payment_account response
+
+    Examples:
+      | status_code_returned | error_message             | error_slug             | payment_card_provider |
+      | 422                  | Could not validate fields | FIELD_VALIDATION_ERROR | master                |
 
   @multiplewallet @bink_regression_api2
   Scenario Outline: Successfully add existing payment card to second wallet, same details
