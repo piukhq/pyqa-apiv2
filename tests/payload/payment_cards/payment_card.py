@@ -157,6 +157,33 @@ class PaymentCardDetails:
         return payload
 
     @staticmethod
+    def payment_card_with_empty_field(card_provider):
+        payload = {
+            "expiry_month": "",
+            "expiry_year": "",
+            "name_on_card": "QA_empty_string_name01",
+            "card_nickname": "QA_empty_string_nickname01",
+            "issuer": PaymentCardTestData.get_data(card_provider).get(constants.ISSUER),
+            "token": "",
+            "last_four_digits": "",
+            "first_six_digits": "",
+            "fingerprint": "",
+            "provider": PaymentCardTestData.get_data(card_provider).get(constants.PROVIDER),
+            "type": PaymentCardTestData.get_data(card_provider).get(constants.TYPE),
+            "country": PaymentCardTestData.get_data(card_provider).get(constants.COUNTRY),
+            "currency_code": PaymentCardTestData.get_data(card_provider).get(constants.CURRENCY_CODE),
+        }
+
+        logging.info(
+            "The Request to payment card with empty string is : \n\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_PAYMENT_ACCOUNTS
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
     def empty_payload():
         payload = {}
         return payload
