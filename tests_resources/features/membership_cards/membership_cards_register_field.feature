@@ -15,8 +15,8 @@ Feature: Register a loyalty card
     And I perform DELETE request to delete the "<merchant>" membership card
 
     Examples:
-      | merchant   | status_code_returned |journey_type |
-      | Iceland    | 202                  | register_field|
+      | merchant | status_code_returned | journey_type   |
+      | Iceland  | 202                  | register_field |
 
   @register_existing_field @bink_regression_api2
   Scenario Outline: Register a card that is already registered into Wallet
@@ -31,8 +31,8 @@ Feature: Register a loyalty card
     And I perform DELETE request to delete the "<merchant>" membership card
 
     Examples:
-      | merchant  | status_code_returned  | error_message                                                                                                                                           | error_slug         |
-      | Iceland   | 409                   | Card is already registered. Use PUT /loyalty_cards/{loyalty_card_id}/authorise to add this card to your wallet, or to update authorisation credentials. | ALREADY_REGISTERED |
+      | merchant | status_code_returned | error_message                                                                                                                                                 | error_slug         |
+      | Iceland  | 409                  | Card is already registered. Use PUT /loyalty_cards/{loyalty_card_id}/authorise to authorise this card in your wallet, or to update authorisation credentials. | ALREADY_REGISTERED |
 
   @invalid_json_register @bink_regression_api2
   Scenario Outline: Register field journey with Bad request

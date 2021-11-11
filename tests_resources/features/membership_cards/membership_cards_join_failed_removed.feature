@@ -31,8 +31,8 @@ Feature: Add and register a loyalty card
     Examples:
       | merchant      | status_code_returned | journey_type | scheme_state | error_message                               | error_slug |
       | Iceland       | 409                  | join         | active       | Could not process request due to a conflict | CONFLICT   |
-      | Wasabi        | 409                  | join         | active       | Could not process request due to a conflict | CONFLICT   |
-      | HarveyNichols | 409                  | join         | active       | Could not process request due to a conflict | CONFLICT   |
+#      | Wasabi        | 409                  | join         | active       | Could not process request due to a conflict | CONFLICT   |
+#      | HarveyNichols | 409                  | join         | active       | Could not process request due to a conflict | CONFLICT   |
 
 #  @remove_join_in_progress_scheme @bink_regression_api2
 #  Scenario Outline: Remove join in progress scheme from the wallet
