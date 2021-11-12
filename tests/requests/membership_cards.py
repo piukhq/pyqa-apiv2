@@ -27,6 +27,13 @@ class MembershipCards(Endpoint):
         return Endpoint.call(url, header, "POST", payload)
 
     @staticmethod
+    def get_view_wallet(token):
+        url = Endpoint.BASE_URL + api.ENDPOINT_WALLET
+        header = Endpoint.request_header(token, "2.0")
+        response = Endpoint.call(url, header, "GET")
+        return response
+
+    @staticmethod
     def register_field_only_card(token, merchant, email, scheme_account_id, invalid_data=None):
         url = MembershipCards.get_register_url(scheme_account_id)
         header = Endpoint.request_header(token)

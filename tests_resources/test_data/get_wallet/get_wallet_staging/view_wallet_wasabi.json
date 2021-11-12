@@ -1,0 +1,176 @@
+{
+  "joins": [],
+  "loyalty_cards": [
+    {
+      "id": 110677,
+      "loyalty_plan_id": 281,
+      "status": {
+        "state": "authorised",
+        "slug": null,
+        "description": null
+      },
+      "balance": {
+        "updated_at": 1636648296,
+        "current_display_value": "3 stamps"
+      },
+      "transactions": [
+        {
+          "id": "234170",
+          "timestamp": 1591788147,
+          "description": "Cambridge Petty Cury £27.35",
+          "display_value": "1 stamps"
+        },
+        {
+          "id": "234171",
+          "timestamp": 1591788146,
+          "description": "Cambridge Petty Cury £8.20",
+          "display_value": "1 stamps"
+        },
+        {
+          "id": "234172",
+          "timestamp": 1591788145,
+          "description": "Cambridge Petty Cury £11.49",
+          "display_value": "1 stamps"
+        },
+        {
+          "id": "234173",
+          "timestamp": 1591788145,
+          "description": "Cambridge Petty Cury £9.75",
+          "display_value": "1 stamps"
+        },
+        {
+          "id": "234174",
+          "timestamp": 1591788144,
+          "description": "Cambridge Petty Cury £15.11",
+          "display_value": "1 stamps"
+        }
+      ],
+      "vouchers": [
+        {
+          "state": "inprogress",
+          "earn_type": "stamps",
+          "reward_text": "Free Meal",
+          "headline": "Spend £7.00 or more to get a stamp. Collect 7 stamps to get a Meal Voucher of up to £7 off your next meal.",
+          "voucher_code": null,
+          "barcode_type": "0",
+          "progress_display_text": "3/7 stamps",
+          "body_text": "Some body text for in progress.",
+          "terms_and_conditions": null,
+          "issued_date": null,
+          "expiry_date": null,
+          "redeemed_date": null
+        },
+        {
+          "state": "expired",
+          "earn_type": "stamps",
+          "reward_text": "Free Meal",
+          "headline": "Expired",
+          "voucher_code": "12SA135Y",
+          "barcode_type": "0",
+          "progress_display_text": "7/7 stamps",
+          "body_text": "Something for expired",
+          "terms_and_conditions": null,
+          "issued_date": "1590066834",
+          "expiry_date": "1591747140",
+          "redeemed_date": null
+        },
+        {
+          "state": "redeemed",
+          "earn_type": "stamps",
+          "reward_text": "Free Meal",
+          "headline": "Redeemed",
+          "voucher_code": "12EF1922",
+          "barcode_type": "0",
+          "progress_display_text": "7/7 stamps",
+          "body_text": "Text for the Redeeemed body.",
+          "terms_and_conditions": null,
+          "issued_date": "1591788158",
+          "expiry_date": "1593647940",
+          "redeemed_date": "1591788207"
+        },
+        {
+          "state": "expired",
+          "earn_type": "stamps",
+          "reward_text": "Free Meal",
+          "headline": "Expired",
+          "voucher_code": "12RV736F",
+          "barcode_type": "0",
+          "progress_display_text": "7/7 stamps",
+          "body_text": "Something for expired",
+          "terms_and_conditions": null,
+          "issued_date": "1591788165",
+          "expiry_date": "1609286340",
+          "redeemed_date": null
+        },
+        {
+          "state": "issued",
+          "earn_type": "stamps",
+          "reward_text": "Free Meal",
+          "headline": "Earned",
+          "voucher_code": "12LE682G",
+          "barcode_type": "0",
+          "progress_display_text": "7/7 stamps",
+          "body_text": "Body text for issued.",
+          "terms_and_conditions": null,
+          "issued_date": "1614690381",
+          "expiry_date": "1640908800",
+          "redeemed_date": null
+        },
+        {
+          "state": "issued",
+          "earn_type": "stamps",
+          "reward_text": "Free Meal",
+          "headline": "Earned",
+          "voucher_code": "12TA9892",
+          "barcode_type": "0",
+          "progress_display_text": "7/7 stamps",
+          "body_text": "Body text for issued.",
+          "terms_and_conditions": null,
+          "issued_date": "1614696932",
+          "expiry_date": "1640908800",
+          "redeemed_date": null
+        }
+      ],
+      "card": {
+        "barcode": null,
+        "barcode_type": null,
+        "card_number": "1048170400",
+        "colour": "#ccd400"
+      },
+      "pll_links": [
+        {
+          "payment_account_id": 57303,
+          "payment_scheme": "Visa",
+          "status": "active"
+        }
+      ]
+    }
+  ],
+  "payment_accounts": [
+    {
+      "id": 57303,
+      "status": "active",
+      "expiry_month": "12",
+      "expiry_year": "2235",
+      "name_on_card": "Mr Fill Mils",
+      "card_nickname": "Hfret",
+      "pll_links": [
+        {
+          "loyalty_plan_id": 111881,
+          "loyalty_plan": "Iceland Bonus Card",
+          "status": "active"
+        },
+        {
+          "loyalty_plan_id": 110675,
+          "loyalty_plan": "Iceland Bonus Card",
+          "status": "active"
+        },
+        {
+          "loyalty_plan_id": 110677,
+          "loyalty_plan": "Wasabi Club",
+          "status": "active"
+        }
+      ]
+    }
+  ]
+}

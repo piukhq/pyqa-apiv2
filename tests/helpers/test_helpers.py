@@ -99,6 +99,24 @@ class TestData:
         return mem_plan_path + "/membership_plan_all_loyalty_plans" + ".json"
 
     @staticmethod
+    def get_expected_view_wallet_json(env, merchant, channel=None):
+        wallet_path = TestData.get_wallet_path(env)
+        return wallet_path + "/view_wallet_" + merchant + ".json"
+
+    @staticmethod
+    def get_expected_view_join_wallet_json(env, merchant, channel=None):
+        wallet_path = TestData.get_wallet_path(env)
+        return wallet_path + "/view_wallet_" + merchant + "_join.json"
+
+    @staticmethod
+    def get_wallet_path(env):
+        """return the base path of stored get wallet json
+        based on environment"""
+
+        switcher = {"staging": constants.EXPECTED_VIEW_WALLET_STAGING}
+        return switcher.get(env)
+
+    @staticmethod
     def get_mem_plan_path(env):
         """return the base path of stored membership plan json
         for any merchant based on environment"""
@@ -134,7 +152,7 @@ class Merchant:
 
     @staticmethod
     def get_scheme_cred_main_ans(merchant):
-        """Return main_scheme_account_answers for all merchants """
+        """Return main_scheme_account_answers for all merchants"""
         switcher = {
             "Iceland": TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.CARD_NUM),
             "Wasabi": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM),
