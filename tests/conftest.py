@@ -112,17 +112,17 @@ def login_user(channel, env):
 
 
 @given("I am a Bink Wallet user1")
-def login_user(channel, env):
+def login_user1(channel, env):
     setup_third_token()
 
 
 @given("I am a Bink Wallet user2")
-def login_user(channel, env):
+def login_user2(channel, env):
     setup_fourth_token()
 
 
 @given("I am a Bink Wallet user3")
-def login_user(channel, env):
+def login_user3(channel, env):
     setup_fifth_token()
 
 
