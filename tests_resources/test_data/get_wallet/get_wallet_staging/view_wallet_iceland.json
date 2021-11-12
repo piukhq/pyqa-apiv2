@@ -1,0 +1,91 @@
+{
+  "joins": [],
+  "loyalty_cards": [
+    {
+      "id": 111881,
+      "loyalty_plan_id": 105,
+      "status": {
+        "state": "authorised",
+        "slug": null,
+        "description": null
+      },
+      "balance": {
+        "updated_at": 1636651636,
+        "current_display_value": "£380.01"
+      },
+      "transactions": [
+        {
+          "id": "235915",
+          "timestamp": 1536080100,
+          "description": "Test transaction: 2 items",
+          "display_value": "-£50"
+        },
+        {
+          "id": "235916",
+          "timestamp": 1536046510,
+          "description": "Test transaction: 1 item",
+          "display_value": "£10"
+        },
+        {
+          "id": "235914",
+          "timestamp": 1536012345,
+          "description": "Test transaction: 5 items",
+          "display_value": "£200"
+        },
+        {
+          "id": "235913",
+          "timestamp": 1533211890,
+          "description": "Test transaction: 3 items",
+          "display_value": "-£100.01"
+        },
+        {
+          "id": "235912",
+          "timestamp": 1530455055,
+          "description": "Test transaction: 1 item",
+          "display_value": "£20.71"
+        }
+      ],
+      "vouchers": [],
+      "card": {
+        "barcode": "6332040000000000009",
+        "barcode_type": 0,
+        "card_number": "6332040000000000009",
+        "colour": "#d50724"
+      },
+      "pll_links": [
+        {
+          "payment_account_id": 57303,
+          "payment_scheme": "Visa",
+          "status": "active"
+        }
+      ]
+    }
+  ],
+  "payment_accounts": [
+    {
+      "id": 57303,
+      "status": "active",
+      "expiry_month": "12",
+      "expiry_year": "2235",
+      "name_on_card": "Mr Fill Mils",
+      "card_nickname": "Hfret",
+      "pll_links": [
+        {
+          "loyalty_plan_id": 111881,
+          "loyalty_plan": "Iceland Bonus Card",
+          "status": "active"
+        },
+        {
+          "loyalty_plan_id": 110675,
+          "loyalty_plan": "Iceland Bonus Card",
+          "status": "active"
+        },
+        {
+          "loyalty_plan_id": 110677,
+          "loyalty_plan": "Wasabi Club",
+          "status": "active"
+        }
+      ]
+    }
+  ]
+}

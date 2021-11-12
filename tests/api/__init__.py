@@ -22,3 +22,5 @@ ENDPOINT_MEMBERSHIP_CARDS_JOIN = "/v2/loyalty_cards/join"
 ENDPOINT_MEMBERSHIP_CARDS_REGISTER = "/v2/loyalty_cards/{}/register"
 
 ENDPOINT_MEMBERSHIP_CARDS_JOIN_FAILED = "/v2/loyalty_cards/{}/join"
+
+ENDPOINT_WALLET = "/v2/wallet"

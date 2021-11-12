@@ -2,11 +2,12 @@ import json
 import logging
 import time
 
+from deepdiff import DeepDiff
 from pytest_bdd import parsers, scenarios, then, when
 
 from tests import api
 from tests.api.base import Endpoint
-from tests.conftest import response_to_json
+from tests.conftest import response_to_json, setup_fifth_token, setup_fourth_token, setup_third_token
 from tests.helpers import constants
 from tests.helpers.database.query_hermes import QueryHermes
 from tests.helpers.test_context import TestContext
@@ -101,6 +102,78 @@ def verify_loyalty_card_into_database(journey_type, merchant):
         scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
         assert scheme_account.id == TestContext.current_scheme_account_id and scheme_account.pll_links == pll_links
     return scheme_account
+
+
+@then(parsers.parse('I can see all join Wallet fields successfully for the "{merchant}"'))
+def verify_view_join_wallet(env, channel, merchant):
+    response = MembershipCards.get_view_wallet(setup_fifth_token())
+    TestContext.response_status_code = response.status_code
+    logging.info("The response of view joins Wallet is : \n" + json.dumps(response_to_json(response), indent=4))
+
+    with open(TestData.get_expected_view_join_wallet_json(env, merchant, channel)) as json_file:
+        json_data = json.load(json_file)
+
+    stored_json = json.dumps(json_data)
+    TestContext.expected_view_wallet_field = json.loads(stored_json)
+    TestContext.actual_view_wallet_field = response.json()
+
+
+def json_compare_wallet(actual_view_wallet_field, expected_view_wallet_field):
+    compare = DeepDiff(actual_view_wallet_field, expected_view_wallet_field, ignore_order=True)
+    return compare
+
+
+@then(parsers.parse('I can see all Wallet fields successfully for the "{merchant}"'))
+def verify_view_wallet_fields(merchant):
+    difference = json_compare_wallet(TestContext.actual_view_wallet_field, TestContext.expected_view_wallet_field)
+    if json.dumps(difference) != "{}":
+        logging.info(
+            "The expected and actual wallets of "
+            + merchant
+            + "wallet fields has following differences"
+            + json.dumps(difference, sort_keys=True, indent=4)
+        )
+        raise Exception("The expected and actual wallet of " + merchant + " is not the same")
+    else:
+        logging.info("The expected and actual wallet of " + merchant + "  is same")
+
+
+@when(parsers.parse('I perform GET request to view Wallet for "{merchant}"'))
+def verify_view_wallet(env, channel, merchant):
+    if merchant == "Wasabi":
+        response = MembershipCards.get_view_wallet(setup_third_token())
+    else:
+        response = MembershipCards.get_view_wallet(setup_fourth_token())
+
+    TestContext.response_status_code = response.status_code
+    logging.info("The response of view Wallet is : \n" + json.dumps(response_to_json(response), indent=4))
+
+    with open(TestData.get_expected_view_wallet_json(env, merchant, channel)) as json_file:
+        json_data = json.load(json_file)
+
+    stored_json = json.dumps(json_data)
+    TestContext.expected_view_wallet_field = json.loads(stored_json)
+    TestContext.actual_view_wallet_field = response.json()
+
+
+@when(parsers.parse('I perform GET request to view Wallet for "{merchant}" with invalid token'))
+def verify_wallet_with_invalid_token(merchant):
+    response = MembershipCards.get_view_wallet(TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN))
+
+    TestContext.response_status_code = response.status_code
+    response_json = response.json()
+    logging.info(
+        "The response of POST/Membership_card with invalid token is: \n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_PAYMENT_ACCOUNTS.format(TestContext.current_payment_card_id)
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    TestContext.error_message = response_json.get("error_message")
+    TestContext.error_slug = response_json.get("error_slug")
+
+    assert response.status_code == 401, "Server error"
+    return response
 
 
 @when(
