@@ -144,6 +144,4 @@ bink_user_accounts = {
     "user_detail": "31781",
     "user_detail2": "1168",
     "user_detail3": "33405",
-    "user_detail4": "33406",
-    "user_detail5": "33439",
 }
