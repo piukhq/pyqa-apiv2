@@ -7,8 +7,6 @@ PWD = "pwd"
 USER_DETAIL = "user_detail"
 USER_DETAIL2 = "user_detail2"
 USER_DETAIL3 = "user_detail3"
-USER_DETAIL4 = "user_detail4"
-USER_DETAIL5 = "user_detail5"
 
 """ Contants for Add journey"""
 ID = "id"

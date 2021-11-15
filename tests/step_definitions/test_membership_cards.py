@@ -7,7 +7,7 @@ from pytest_bdd import parsers, scenarios, then, when
 
 from tests import api
 from tests.api.base import Endpoint
-from tests.conftest import response_to_json, setup_fifth_token, setup_fourth_token, setup_third_token
+from tests.conftest import response_to_json, setup_third_token
 from tests.helpers import constants
 from tests.helpers.database.query_hermes import QueryHermes
 from tests.helpers.test_context import TestContext
@@ -104,51 +104,33 @@ def verify_loyalty_card_into_database(journey_type, merchant):
     return scheme_account
 
 
-@then(parsers.parse('I can see all join Wallet fields successfully for the "{merchant}"'))
-def verify_view_join_wallet(env, channel, merchant):
-    response = MembershipCards.get_view_wallet(setup_fifth_token())
-    TestContext.response_status_code = response.status_code
-    logging.info("The response of view joins Wallet is : \n" + json.dumps(response_to_json(response), indent=4))
-
-    with open(TestData.get_expected_view_join_wallet_json(env, merchant, channel)) as json_file:
-        json_data = json.load(json_file)
-
-    stored_json = json.dumps(json_data)
-    TestContext.expected_view_wallet_field = json.loads(stored_json)
-    TestContext.actual_view_wallet_field = response.json()
-
-
 def json_compare_wallet(actual_view_wallet_field, expected_view_wallet_field):
     compare = DeepDiff(actual_view_wallet_field, expected_view_wallet_field, ignore_order=True)
     return compare
 
 
-@then(parsers.parse('I can see all Wallet fields successfully for the "{merchant}"'))
-def verify_view_wallet_fields(merchant):
+@then(parsers.parse("I can see all Wallet fields successfully"))
+def verify_view_wallet_fields():
     difference = json_compare_wallet(TestContext.actual_view_wallet_field, TestContext.expected_view_wallet_field)
     if json.dumps(difference) != "{}":
         logging.info(
-            "The expected and actual wallets of "
-            + merchant
-            + "wallet fields has following differences"
+            "The expected and actual wallets"
+            + "has following differences"
             + json.dumps(difference, sort_keys=True, indent=4)
         )
-        raise Exception("The expected and actual wallet of " + merchant + " is not the same")
+        raise Exception("The expected and actual wallet is not the same")
     else:
-        logging.info("The expected and actual wallet of " + merchant + "  is same")
+        logging.info("The expected and actual wallet is same")
 
 
-@when(parsers.parse('I perform GET request to view Wallet for "{merchant}"'))
-def verify_view_wallet(env, channel, merchant):
-    if merchant == "Wasabi":
-        response = MembershipCards.get_view_wallet(setup_third_token())
-    else:
-        response = MembershipCards.get_view_wallet(setup_fourth_token())
+@when(parsers.parse("I perform GET request to view Wallet"))
+def verify_view_wallet(env, channel):
+    response = MembershipCards.get_view_wallet(setup_third_token())
 
     TestContext.response_status_code = response.status_code
     logging.info("The response of view Wallet is : \n" + json.dumps(response_to_json(response), indent=4))
 
-    with open(TestData.get_expected_view_wallet_json(env, merchant, channel)) as json_file:
+    with open(TestData.get_expected_view_wallet_json(env, channel)) as json_file:
         json_data = json.load(json_file)
 
     stored_json = json.dumps(json_data)
@@ -156,8 +138,8 @@ def verify_view_wallet(env, channel, merchant):
     TestContext.actual_view_wallet_field = response.json()
 
 
-@when(parsers.parse('I perform GET request to view Wallet for "{merchant}" with invalid token'))
-def verify_wallet_with_invalid_token(merchant):
+@when(parsers.parse("I perform GET request to view Wallet with invalid token"))
+def verify_wallet_with_invalid_token():
     response = MembershipCards.get_view_wallet(TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN))
 
     TestContext.response_status_code = response.status_code

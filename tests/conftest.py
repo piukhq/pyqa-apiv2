@@ -116,16 +116,6 @@ def login_user1(channel, env):
     setup_third_token()
 
 
-@given("I am a Bink Wallet user2")
-def login_user2(channel, env):
-    setup_fourth_token()
-
-
-@given("I am a Bink Wallet user3")
-def login_user3(channel, env):
-    setup_fifth_token()
-
-
 def setup_token():
     TestContext.token = create_bearer_token(
         sub=TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.USER_DETAIL), channel=config.BINK.bundle_id
@@ -145,20 +135,6 @@ def setup_third_token():
         sub=TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.USER_DETAIL3), channel=config.BINK.bundle_id
     )
     return TestContext.third_token
-
-
-def setup_fourth_token():
-    TestContext.fourth_token = create_bearer_token(
-        sub=TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.USER_DETAIL4), channel=config.BINK.bundle_id
-    )
-    return TestContext.fourth_token
-
-
-def setup_fifth_token():
-    TestContext.fifth_token = create_bearer_token(
-        sub=TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.USER_DETAIL5), channel=config.BINK.bundle_id
-    )
-    return TestContext.fifth_token
 
 
 def response_to_json(response):

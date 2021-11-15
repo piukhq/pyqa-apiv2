@@ -14,8 +14,6 @@ class TestContext:
     token = ""
     second_token = ""
     third_token = ""
-    fourth_token = ""
-    fifth_token = ""
     error_message = ""
     error_slug = ""
     email = ""

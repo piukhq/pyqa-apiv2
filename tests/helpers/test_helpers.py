@@ -99,14 +99,15 @@ class TestData:
         return mem_plan_path + "/membership_plan_all_loyalty_plans" + ".json"
 
     @staticmethod
-    def get_expected_view_wallet_json(env, merchant, channel=None):
+    def get_expected_view_wallet_json(env, channel=None):
         wallet_path = TestData.get_wallet_path(env)
-        return wallet_path + "/view_wallet_" + merchant + ".json"
+        return wallet_path + "/view_wallet" + ".json"
 
     @staticmethod
-    def get_expected_view_join_wallet_json(env, merchant, channel=None):
+    def get_expected_view_join_wallet_json(env, channel=None):
+
         wallet_path = TestData.get_wallet_path(env)
-        return wallet_path + "/view_wallet_" + merchant + "_join.json"
+        return wallet_path + "/view_wallet" + "_join.json"
 
     @staticmethod
     def get_wallet_path(env):
