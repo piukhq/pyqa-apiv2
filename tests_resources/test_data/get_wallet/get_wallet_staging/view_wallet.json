@@ -20,7 +20,7 @@
         "description": null
       },
       "balance": {
-        "updated_at": 1637062476,
+        "updated_at": 1637224331,
         "current_display_value": "3 stamps"
       },
       "transactions": [
@@ -159,13 +159,13 @@
       "id": 112670,
       "loyalty_plan_id": 105,
       "status": {
-        "state": "authorised",
-        "slug": "PENDING",
-        "description": "This is a test"
+        "state": "failed",
+        "slug": "ACCOUNT_ALREADY_EXISTS",
+        "description": "An account already exists"
       },
       "balance": {
-        "updated_at": 1637062475,
-        "current_display_value": "£380.01"
+        "updated_at": null,
+        "current_display_value": null
       },
       "transactions": [
         {
@@ -210,7 +210,7 @@
         {
           "payment_account_id": 58880,
           "payment_scheme": "Visa",
-          "status": "active"
+          "status": "pending"
         }
       ]
     }
@@ -232,7 +232,12 @@
         {
           "loyalty_plan_id": 112670,
           "loyalty_plan": "Iceland Bonus Card",
-          "status": "active"
+          "status": "pending"
+        },
+        {
+          "loyalty_plan_id": 112065,
+          "loyalty_plan": "Iceland Bonus Card",
+          "status": "pending"
         }
       ]
     }
