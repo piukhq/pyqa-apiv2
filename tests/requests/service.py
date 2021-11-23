@@ -43,6 +43,3 @@ class CustomerAccount:
         else:
             payload = UserDetails.bink_user_email_update_invalid_data(test_email, invalid_data)
             return Endpoint.call_payload(url, header, "POST", payload)
-
-
-
