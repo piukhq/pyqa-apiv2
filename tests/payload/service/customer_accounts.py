@@ -1,10 +1,10 @@
 import json
 import logging
 
-from tests.helpers import constants
-from tests.helpers.test_data_utils import TestDataUtils
 from tests import api
 from tests.api.base import Endpoint
+from tests.helpers import constants
+from tests.helpers.test_data_utils import TestDataUtils
 
 
 class UserDetails:
@@ -22,9 +22,7 @@ class UserDetails:
 
     @staticmethod
     def bink_user_email_update(test_email):
-        payload = {
-            "email": test_email
-        }
+        payload = {"email": test_email}
 
         logging.info("Request body for POST email update : \n" + json.dumps(payload, indent=4))
 
@@ -37,9 +35,7 @@ class UserDetails:
         elif invalid_data == "invalid_json":
             payload = ""
         else:
-            payload = {
-                "email": test_email
-            }
+            payload = {"email": test_email}
 
         logging.info(
             "The Request for email update with :\n"
@@ -49,4 +45,3 @@ class UserDetails:
             + json.dumps(payload, indent=4)
         )
         return payload
-
