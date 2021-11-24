@@ -5,7 +5,7 @@ Feature: Add and register a loyalty card
   I want to register a ghost loyalty card with the loyalty plan
   so that I can use the Bink functionality with the loyalty card
 
-  @add_and_register_field @bink_regression_api2
+  @add_and_register_field @bink_regression_api21
   Scenario Outline: Add and register field journey
     Given I am a Bink user
     When I perform POST request to add and register "<merchant>" membership card

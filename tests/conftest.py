@@ -1,3 +1,4 @@
+import json
 import logging
 import time
 
@@ -6,18 +7,20 @@ from json import JSONDecodeError
 import pytest
 
 from faker import Faker
-from pytest_bdd import given, parsers, then
+from pytest_bdd import given, parsers, then, when
 from requests.exceptions import HTTPError
 
 import config
 
+from tests import api
 from tests.api.base import Endpoint
 from tests.helpers import constants
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
-from tests.helpers.vault.channel_vault import create_bearer_token
+from tests.helpers.vault.channel_vault import create_b2b_token, create_bearer_token, get_private_key_secret
 from tests.requests.membership_cards import MembershipCards
 from tests.requests.paymentcard_account import PaymentCards
+from tests.requests.token_b2b import Token_b2b
 
 
 def pytest_bdd_step_error(request, feature, scenario, step, step_func, step_func_args, exception):
@@ -137,6 +140,14 @@ def setup_third_token():
     return TestContext.third_token
 
 
+def setup_b2b_token():
+    key_secret = get_private_key_secret(config.BINK.kid)
+    user_email = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.B2B_EMAIL)
+    external_id = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.B2B_EXTERNAL_ID)
+    TestContext.b2btoken = create_b2b_token(key=key_secret, sub=external_id, kid=config.BINK.kid, email=user_email)
+    return TestContext.b2btoken
+
+
 def response_to_json(response):
     try:
         response_json = response.json()
@@ -187,3 +198,28 @@ def delete_payment_card(payment_card_provider=None):
 
     except HTTPError as network_response:
         assert network_response.response.status_code == 404 or 400, "Payment card deletion is not successful"
+
+
+@given("I am in Bink channel to get b2b token")
+def set_up_client_token_for_b2b():
+    setup_b2b_token()
+
+
+@when(parsers.parse('I perform POST token request for token type "{token_type}" to get access token'))
+def perform_post_b2b_with_token(token_type):
+    response = Token_b2b.post_b2b_with_grant_type(TestContext.b2btoken, token_type)
+    time.sleep(1)
+    response_json = response_to_json(response)
+    TestContext.access_token = response_json.get("access_token")
+    TestContext.token_type = response_json.get("token_type")
+    TestContext.refresh_token_type = response_json.get("refresh_token")
+    TestContext.token = TestContext.token_type + " " + TestContext.access_token
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The response of B2B token (POST) is:\n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_TOKEN
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    assert response.status_code == 200, "/token Journey failed to get access token"
