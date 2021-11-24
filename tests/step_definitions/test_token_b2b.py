@@ -1,6 +1,5 @@
 import json
 import logging
-import time
 
 from pytest_bdd import parsers, scenarios, then, when
 
@@ -14,6 +13,7 @@ from tests.step_definitions import test_membership_cards
 scenarios("b2b_token/")
 
 """Step definitions - /token """
+
 
 @when(parsers.parse('I perform POST request to add "{merchant}" membership card'))
 def add_membership_card_field(merchant):

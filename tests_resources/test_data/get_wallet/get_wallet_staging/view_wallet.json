@@ -1,240 +1,250 @@
 {
-  "joins": [
-    {
-      "loyalty_card_id": 112065,
-      "loyalty_plan_id": 105,
-      "status": {
-        "state": "pending",
-        "slug": "JOIN_IN_PROGRESS",
-        "description": null
-      }
-    }
-  ],
-  "loyalty_cards": [
-    {
-      "id": 112669,
-      "loyalty_plan_id": 281,
-      "status": {
-        "state": "authorised",
-        "slug": null,
-        "description": null
-      },
-      "balance": {
-        "updated_at": 1637062476,
-        "current_display_value": "3 stamps"
-      },
-      "transactions": [
+    "joins": [
         {
-          "id": "237645",
-          "timestamp": 1591788147,
-          "description": "Cambridge Petty Cury £27.35",
-          "display_value": "1 stamps"
-        },
-        {
-          "id": "237646",
-          "timestamp": 1591788146,
-          "description": "Cambridge Petty Cury £8.20",
-          "display_value": "1 stamps"
-        },
-        {
-          "id": "237647",
-          "timestamp": 1591788145,
-          "description": "Cambridge Petty Cury £11.49",
-          "display_value": "1 stamps"
-        },
-        {
-          "id": "237648",
-          "timestamp": 1591788145,
-          "description": "Cambridge Petty Cury £9.75",
-          "display_value": "1 stamps"
-        },
-        {
-          "id": "237649",
-          "timestamp": 1591788144,
-          "description": "Cambridge Petty Cury £15.11",
-          "display_value": "1 stamps"
+            "loyalty_card_id": 112065,
+            "loyalty_plan_id": 105,
+            "status": {
+                "state": "pending",
+                "slug": "JOIN_IN_PROGRESS",
+                "description": null
+            }
         }
-      ],
-      "vouchers": [
+    ],
+    "loyalty_cards": [
         {
-          "state": "inprogress",
-          "earn_type": "stamps",
-          "reward_text": "Free Meal",
-          "headline": "Spend £7.00 or more to get a stamp. Collect 7 stamps to get a Meal Voucher of up to £7 off your next meal.",
-          "voucher_code": null,
-          "barcode_type": "0",
-          "progress_display_text": "3/7 stamps",
-          "body_text": null,
-          "terms_and_conditions": null,
-          "issued_date": null,
-          "expiry_date": null,
-          "redeemed_date": null
+            "id": 112669,
+            "loyalty_plan_id": 281,
+            "status": {
+                "state": "authorised",
+                "slug": null,
+                "description": null
+            },
+            "balance": {
+                "updated_at": 1637224331,
+                "current_display_value": "3 stamps"
+            },
+            "transactions": [
+                {
+                    "id": "237645",
+                    "timestamp": 1591788147,
+                    "description": "Cambridge Petty Cury \u00a327.35",
+                    "display_value": "1 stamps"
+                },
+                {
+                    "id": "237646",
+                    "timestamp": 1591788146,
+                    "description": "Cambridge Petty Cury \u00a38.20",
+                    "display_value": "1 stamps"
+                },
+                {
+                    "id": "237647",
+                    "timestamp": 1591788145,
+                    "description": "Cambridge Petty Cury \u00a311.49",
+                    "display_value": "1 stamps"
+                },
+                {
+                    "id": "237648",
+                    "timestamp": 1591788145,
+                    "description": "Cambridge Petty Cury \u00a39.75",
+                    "display_value": "1 stamps"
+                },
+                {
+                    "id": "237649",
+                    "timestamp": 1591788144,
+                    "description": "Cambridge Petty Cury \u00a315.11",
+                    "display_value": "1 stamps"
+                }
+            ],
+            "vouchers": [
+                {
+                    "state": "inprogress",
+                    "earn_type": "stamps",
+                    "reward_text": "Free Meal",
+                    "headline": "Spend \u00a37.00 or more to get a stamp. Collect 7 stamps to get a Meal Voucher of up to \u00a37 off your next meal.",
+                    "voucher_code": null,
+                    "barcode_type": "0",
+                    "progress_display_text": "3/7 stamps",
+                    "body_text": null,
+                    "terms_and_conditions": null,
+                    "issued_date": null,
+                    "expiry_date": null,
+                    "redeemed_date": null
+                },
+                {
+                    "state": "expired",
+                    "earn_type": "stamps",
+                    "reward_text": "Free Meal",
+                    "headline": "Expired",
+                    "voucher_code": "12SA135Y",
+                    "barcode_type": "0",
+                    "progress_display_text": "7/7 stamps",
+                    "body_text": null,
+                    "terms_and_conditions": null,
+                    "issued_date": "1590066834",
+                    "expiry_date": "1591747140",
+                    "redeemed_date": null
+                },
+                {
+                    "state": "redeemed",
+                    "earn_type": "stamps",
+                    "reward_text": "Free Meal",
+                    "headline": "Redeemed",
+                    "voucher_code": "12EF1922",
+                    "barcode_type": "0",
+                    "progress_display_text": "7/7 stamps",
+                    "body_text": null,
+                    "terms_and_conditions": null,
+                    "issued_date": "1591788158",
+                    "expiry_date": "1593647940",
+                    "redeemed_date": "1591788207"
+                },
+                {
+                    "state": "expired",
+                    "earn_type": "stamps",
+                    "reward_text": "Free Meal",
+                    "headline": "Expired",
+                    "voucher_code": "12RV736F",
+                    "barcode_type": "0",
+                    "progress_display_text": "7/7 stamps",
+                    "body_text": null,
+                    "terms_and_conditions": null,
+                    "issued_date": "1591788165",
+                    "expiry_date": "1609286340",
+                    "redeemed_date": null
+                },
+                {
+                    "state": "issued",
+                    "earn_type": "stamps",
+                    "reward_text": "Free Meal",
+                    "headline": "Earned",
+                    "voucher_code": "12LE682G",
+                    "barcode_type": "0",
+                    "progress_display_text": "7/7 stamps",
+                    "body_text": null,
+                    "terms_and_conditions": null,
+                    "issued_date": "1614690381",
+                    "expiry_date": "1640908800",
+                    "redeemed_date": null
+                },
+                {
+                    "state": "issued",
+                    "earn_type": "stamps",
+                    "reward_text": "Free Meal",
+                    "headline": "Earned",
+                    "voucher_code": "12TA9892",
+                    "barcode_type": "0",
+                    "progress_display_text": "7/7 stamps",
+                    "body_text": null,
+                    "terms_and_conditions": null,
+                    "issued_date": "1614696932",
+                    "expiry_date": "1640908800",
+                    "redeemed_date": null
+                }
+            ],
+            "card": {
+                "barcode": null,
+                "barcode_type": null,
+                "card_number": "1048170400",
+                "colour": "#ccd400"
+            },
+            "pll_links": [
+                {
+                    "payment_account_id": 58880,
+                    "payment_scheme": "Visa",
+                    "status": "active"
+                }
+            ]
         },
         {
-          "state": "expired",
-          "earn_type": "stamps",
-          "reward_text": "Free Meal",
-          "headline": "Expired",
-          "voucher_code": "12SA135Y",
-          "barcode_type": "0",
-          "progress_display_text": "7/7 stamps",
-          "body_text": null,
-          "terms_and_conditions": null,
-          "issued_date": "1590066834",
-          "expiry_date": "1591747140",
-          "redeemed_date": null
-        },
-        {
-          "state": "redeemed",
-          "earn_type": "stamps",
-          "reward_text": "Free Meal",
-          "headline": "Redeemed",
-          "voucher_code": "12EF1922",
-          "barcode_type": "0",
-          "progress_display_text": "7/7 stamps",
-          "body_text": null,
-          "terms_and_conditions": null,
-          "issued_date": "1591788158",
-          "expiry_date": "1593647940",
-          "redeemed_date": "1591788207"
-        },
-        {
-          "state": "expired",
-          "earn_type": "stamps",
-          "reward_text": "Free Meal",
-          "headline": "Expired",
-          "voucher_code": "12RV736F",
-          "barcode_type": "0",
-          "progress_display_text": "7/7 stamps",
-          "body_text": null,
-          "terms_and_conditions": null,
-          "issued_date": "1591788165",
-          "expiry_date": "1609286340",
-          "redeemed_date": null
-        },
-        {
-          "state": "issued",
-          "earn_type": "stamps",
-          "reward_text": "Free Meal",
-          "headline": "Earned",
-          "voucher_code": "12LE682G",
-          "barcode_type": "0",
-          "progress_display_text": "7/7 stamps",
-          "body_text": null,
-          "terms_and_conditions": null,
-          "issued_date": "1614690381",
-          "expiry_date": "1640908800",
-          "redeemed_date": null
-        },
-        {
-          "state": "issued",
-          "earn_type": "stamps",
-          "reward_text": "Free Meal",
-          "headline": "Earned",
-          "voucher_code": "12TA9892",
-          "barcode_type": "0",
-          "progress_display_text": "7/7 stamps",
-          "body_text": null,
-          "terms_and_conditions": null,
-          "issued_date": "1614696932",
-          "expiry_date": "1640908800",
-          "redeemed_date": null
+            "id": 112670,
+            "loyalty_plan_id": 105,
+            "status": {
+                "state": "failed",
+                "slug": "ACCOUNT_ALREADY_EXISTS",
+                "description": "An account already exists"
+            },
+            "balance": {
+                "updated_at": null,
+                "current_display_value": null
+            },
+            "transactions": [
+                {
+                    "id": "237653",
+                    "timestamp": 1536080100,
+                    "description": "Test transaction: 2 items",
+                    "display_value": "-\u00a350"
+                },
+                {
+                    "id": "237654",
+                    "timestamp": 1536046510,
+                    "description": "Test transaction: 1 item",
+                    "display_value": "\u00a310"
+                },
+                {
+                    "id": "237652",
+                    "timestamp": 1536012345,
+                    "description": "Test transaction: 5 items",
+                    "display_value": "\u00a3200"
+                },
+                {
+                    "id": "237651",
+                    "timestamp": 1533211890,
+                    "description": "Test transaction: 3 items",
+                    "display_value": "-\u00a3100.01"
+                },
+                {
+                    "id": "237650",
+                    "timestamp": 1530455055,
+                    "description": "Test transaction: 1 item",
+                    "display_value": "\u00a320.71"
+                }
+            ],
+            "vouchers": [],
+            "card": {
+                "barcode": "6332040000000000009",
+                "barcode_type": 0,
+                "card_number": "6332040000000000009",
+                "colour": "#d50724"
+            },
+            "pll_links": [
+                {
+                    "payment_account_id": 58880,
+                    "payment_scheme": "Visa",
+                    "status": "pending"
+                }
+            ]
         }
-      ],
-      "card": {
-        "barcode": null,
-        "barcode_type": null,
-        "card_number": "1048170400",
-        "colour": "#ccd400"
-      },
-      "pll_links": [
+    ],
+    "payment_accounts": [
         {
-          "payment_account_id": 58880,
-          "payment_scheme": "Visa",
-          "status": "active"
+            "id": 58880,
+            "status": "active",
+            "expiry_month": "11",
+            "expiry_year": "2146",
+            "name_on_card": "Mrs Wall Test",
+            "card_nickname": "wallet",
+            "pll_links": [
+                {
+                    "loyalty_plan_id": 112669,
+                    "loyalty_plan": "Wasabi Club",
+                    "status": "active"
+                },
+                {
+                    "loyalty_plan_id": 112670,
+                    "loyalty_plan": "Iceland Bonus Card",
+                    "status": "pending"
+                },
+                {
+                    "loyalty_plan_id": 116278,
+                    "loyalty_plan": "Iceland Bonus Card",
+                    "status": "pending"
+                },
+                {
+                    "loyalty_plan_id": 112065,
+                    "loyalty_plan": "Iceland Bonus Card",
+                    "status": "pending"
+                }
+            ]
         }
-      ]
-    },
-    {
-      "id": 112670,
-      "loyalty_plan_id": 105,
-      "status": {
-        "state": "authorised",
-        "slug": "PENDING",
-        "description": "This is a test"
-      },
-      "balance": {
-        "updated_at": 1637062475,
-        "current_display_value": "£380.01"
-      },
-      "transactions": [
-        {
-          "id": "237653",
-          "timestamp": 1536080100,
-          "description": "Test transaction: 2 items",
-          "display_value": "-£50"
-        },
-        {
-          "id": "237654",
-          "timestamp": 1536046510,
-          "description": "Test transaction: 1 item",
-          "display_value": "£10"
-        },
-        {
-          "id": "237652",
-          "timestamp": 1536012345,
-          "description": "Test transaction: 5 items",
-          "display_value": "£200"
-        },
-        {
-          "id": "237651",
-          "timestamp": 1533211890,
-          "description": "Test transaction: 3 items",
-          "display_value": "-£100.01"
-        },
-        {
-          "id": "237650",
-          "timestamp": 1530455055,
-          "description": "Test transaction: 1 item",
-          "display_value": "£20.71"
-        }
-      ],
-      "vouchers": [],
-      "card": {
-        "barcode": "6332040000000000009",
-        "barcode_type": 0,
-        "card_number": "6332040000000000009",
-        "colour": "#d50724"
-      },
-      "pll_links": [
-        {
-          "payment_account_id": 58880,
-          "payment_scheme": "Visa",
-          "status": "active"
-        }
-      ]
-    }
-  ],
-  "payment_accounts": [
-    {
-      "id": 58880,
-      "status": "active",
-      "expiry_month": "11",
-      "expiry_year": "2146",
-      "name_on_card": "Mrs Wall Test",
-      "card_nickname": "wallet",
-      "pll_links": [
-        {
-          "loyalty_plan_id": 112669,
-          "loyalty_plan": "Wasabi Club",
-          "status": "active"
-        },
-        {
-          "loyalty_plan_id": 112670,
-          "loyalty_plan": "Iceland Bonus Card",
-          "status": "active"
-        }
-      ]
-    }
-  ]
+    ]
 }
