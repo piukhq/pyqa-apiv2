@@ -11,8 +11,8 @@ from pytest_bdd import given, parsers, then, when
 from requests.exceptions import HTTPError
 
 import config
-from tests import api
 
+from tests import api
 from tests.api.base import Endpoint
 from tests.helpers import constants
 from tests.helpers.test_context import TestContext
