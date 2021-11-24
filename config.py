@@ -18,16 +18,26 @@ else:
 
 
 class ChannelDetails:
-    def __init__(self, channel_name, bundle_id, client_id, organisation_id):
+    def __init__(self, channel_name, bundle_id, client_id, organisation_id, kid):
         self.channel_name = channel_name
         self.bundle_id = bundle_id
         self.client_id = client_id
         self.organisation_id = organisation_id
+        self.kid = kid
 
 
 BINK = ChannelDetails(
     channel_name="bink",
     bundle_id="com.bink.wallet",
     client_id="MKd3FfDGBi1CIUQwtahmPap64lneCa2R6GvVWKg6dNg4w9Jnpd",
+    kid="bink-bink-regression",
+    organisation_id="",
+)
+
+LLOYDS = ChannelDetails(
+    channel_name="Lloyds",
+    bundle_id="com.lloyds.api2",
+    client_id="8eBiL5Vh7AKKkWOezW5Avv8olfhK3to9ToqiypzPbOiBj5XEIv",
+    kid="lloyds-bink-regression",
     organisation_id="",
 )
