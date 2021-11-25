@@ -35,21 +35,6 @@ def get_refresh_token(grant_type):
     )
     assert response.status_code == 200, "/token Journey failed to get access token"
 
-# @when("I perform POST refresh token with new token")
-# def get_refresh_token():
-#     TestContext.refresh_token_type = "bearer" + " " + TestContext.refresh_token_type
-#     response = Token_b2b.post_b2b_with_grant_type(TestContext.refresh_token_type, token_type="refresh_token")
-#     response_json = response_to_json(response)
-#     TestContext.response_status_code = response.status_code
-#     logging.info(
-#         "The response of refresh B2B token (POST) is:\n\n"
-#         + Endpoint.BASE_URL
-#         + api.ENDPOINT_TOKEN
-#         + "\n\n"
-#         + json.dumps(response_json, indent=4)
-#     )
-#     assert response.status_code == 200, "/token Journey failed to get access token"
-
 
 @when(parsers.parse('I perform POST request for token with "{request_payload}"'))
 def verify_invalid_request_for_token(request_payload):
