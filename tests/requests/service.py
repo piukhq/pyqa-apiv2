@@ -20,3 +20,26 @@ class CustomerAccount:
         response = Endpoint.call(url, headers, "POST", payload)
         TestContext.token = response.json().get("api_key")
         return response
+
+    @staticmethod
+    def get_email_update_url():
+        return Endpoint.BASE_URL + api.ENDPOINT_EMAIL_UPDATE
+
+    @staticmethod
+    def user_email_update(token, test_email):
+        url = CustomerAccount.get_email_update_url()
+        header = Endpoint.request_header(token)
+        payload = UserDetails.bink_user_email_update(test_email)
+
+        return Endpoint.call(url, header, "POST", payload)
+
+    @staticmethod
+    def user_email_update_invalid_data(token, test_email, invalid_data):
+        url = CustomerAccount.get_email_update_url()
+        header = Endpoint.request_header(token)
+        if invalid_data == "invalid_request":
+            payload = UserDetails.bink_user_email_update_invalid_data(test_email, invalid_data)
+            return Endpoint.call(url, header, "POST", payload)
+        else:
+            payload = UserDetails.bink_user_email_update_invalid_data(test_email, invalid_data)
+            return Endpoint.call_payload(url, header, "POST", payload)
