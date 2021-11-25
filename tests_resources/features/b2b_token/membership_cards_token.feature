@@ -14,8 +14,17 @@ Feature: Get B2b token
   Scenario: Verify access via refresh token for post token
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
-    And I perform POST refresh token with new token
+    And I perform POST refresh token with grant type "refresh_token"
     Then I see a 200
+
+  @bink_regression_api2 @b2b_token_refresh_token @token
+  Scenario: Verify access via refresh token for post token with invalid grant type
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST refresh token with grant type "refresh_token"
+    And I perform POST request for token with "unsupported_grant_type"
+    Then I see a 400
+    And I see a "unsupported_grant_type" error message
 
   @bink_regression_api2 @unsupported_grant_type @token
   Scenario: Post token with invalid grant type

@@ -20,10 +20,10 @@ def add_membership_card_field(merchant):
     test_membership_cards.add_field_loyalty_cards(merchant)
 
 
-@when("I perform POST refresh token with new token")
-def get_refresh_token():
+@when(parsers.parse('I perform POST refresh token with grant type "{grant_type}"'))
+def get_refresh_token(grant_type):
     TestContext.refresh_token_type = "bearer" + " " + TestContext.refresh_token_type
-    response = Token_b2b.post_b2b_with_grant_type(TestContext.refresh_token_type, token_type="refresh_token")
+    response = Token_b2b.post_b2b_with_grant_type(TestContext.refresh_token_type, token_type=grant_type)
     response_json = response_to_json(response)
     TestContext.response_status_code = response.status_code
     logging.info(
