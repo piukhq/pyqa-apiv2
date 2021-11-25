@@ -55,7 +55,7 @@ def verify_invalid_request_for_token(request_payload):
         response_json = response_to_json(response)
         TestContext.response_status_code = response.status_code
         TestContext.error_message = response_json.get("error")
-        assert TestContext.response_status_code == 401, "Invalid client for token has failed"
+        assert TestContext.response_status_code == 400, "Invalid client for token has failed"
 
     logging.info(
         "The response of Invalid Request Journey (POST) for Token Endpoint:\n \n"
