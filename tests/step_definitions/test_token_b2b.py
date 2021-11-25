@@ -20,10 +20,10 @@ def add_membership_card_field(merchant):
     test_membership_cards.add_field_loyalty_cards(merchant)
 
 
-@when("I perform POST refresh token with new token")
-def get_refresh_token():
+@when(parsers.parse('I perform POST refresh token with grant type "{grant_type}"'))
+def get_refresh_token(grant_type):
     TestContext.refresh_token_type = "bearer" + " " + TestContext.refresh_token_type
-    response = Token_b2b.post_b2b_with_grant_type(TestContext.refresh_token_type, token_type="refresh_token")
+    response = Token_b2b.post_b2b_with_grant_type(TestContext.refresh_token_type, token_type=grant_type)
     response_json = response_to_json(response)
     TestContext.response_status_code = response.status_code
     logging.info(
@@ -34,6 +34,21 @@ def get_refresh_token():
         + json.dumps(response_json, indent=4)
     )
     assert response.status_code == 200, "/token Journey failed to get access token"
+
+# @when("I perform POST refresh token with new token")
+# def get_refresh_token():
+#     TestContext.refresh_token_type = "bearer" + " " + TestContext.refresh_token_type
+#     response = Token_b2b.post_b2b_with_grant_type(TestContext.refresh_token_type, token_type="refresh_token")
+#     response_json = response_to_json(response)
+#     TestContext.response_status_code = response.status_code
+#     logging.info(
+#         "The response of refresh B2B token (POST) is:\n\n"
+#         + Endpoint.BASE_URL
+#         + api.ENDPOINT_TOKEN
+#         + "\n\n"
+#         + json.dumps(response_json, indent=4)
+#     )
+#     assert response.status_code == 200, "/token Journey failed to get access token"
 
 
 @when(parsers.parse('I perform POST request for token with "{request_payload}"'))
