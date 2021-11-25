@@ -1,5 +1,9 @@
 class TestContext:
     current_scheme_account_id = ""
+    b2btoken = ""
+    access_token = ""
+    token_type = ""
+    refresh_token_type = ""
     current_payment_card_id = ""
     second_payment_card_id = ""
     name_on_payment_card = ""
