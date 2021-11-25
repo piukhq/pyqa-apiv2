@@ -11,14 +11,14 @@ Feature: Get B2b token
     Then I see a 200
 
   @bink_regression_api2 @b2b_token_refresh_token @token
-  Scenario: Verify post token with grand type and scope
+  Scenario: Verify access via refresh token for post token
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST refresh token with new token
     Then I see a 200
 
   @bink_regression_api2 @unsupported_grant_type @token
-  Scenario: Post token with invalid json
+  Scenario: Post token with invalid grant type
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request for token with "unsupported_grant_type"
@@ -33,11 +33,9 @@ Feature: Get B2b token
     Then I see a 400
     And I see a "invalid_request" error message
 
-#  Currently the issue with /token with different client gives 500
-#  @invalid_client_token @token
-#  Scenario: Post token with invalid json
-#    Given I am a Bink user
-#    When I perform POST request for token with "invalid_client"
-#    Then I see a 401
-#    And I see a "Supplied token is invalid" error message
-#    And I see a "INVALID_TOKEN" error slug
+  @bink_regression_api2 @invalid_client_token @token
+  Scenario: Post token with invalid client
+    Given I am a Bink user
+    When I perform POST request for token with "invalid_client"
+    Then I see a 400
+    And I see a "unauthorized_client" error message
