@@ -43,20 +43,18 @@ def verify_invalid_request_for_token(request_payload):
         response_json = response_to_json(response)
         TestContext.response_status_code = response.status_code
         TestContext.error_message = response_json.get("error")
-        assert TestContext.response_status_code == 400, "Unsupported grant type for token has failed"
     elif request_payload == "invalid_request":
         response = Token_b2b.token_invalid_json(TestContext.token)
         response_json = response_to_json(response)
         TestContext.response_status_code = response.status_code
         TestContext.error_message = response_json.get("error")
-        assert TestContext.response_status_code == 400, "Invalid request for token has failed"
     elif request_payload == "invalid_client":
         response = Token_b2b.post_b2b_with_grant_type(TestContext.token, "b2b")
         response_json = response_to_json(response)
         TestContext.response_status_code = response.status_code
         TestContext.error_message = response_json.get("error")
-        assert TestContext.response_status_code == 400, "Invalid client for token has failed"
 
+    assert TestContext.response_status_code == 400, "Unsupported grant type for token has failed"
     logging.info(
         "The response of Invalid Request Journey (POST) for Token Endpoint:\n \n"
         + Endpoint.BASE_URL
