@@ -5,7 +5,7 @@ Feature: Add and authorise a loyalty card
   I want add an ‘Engage' or 'PLL’ type loyalty card to my wallet
   so that I am able to benefit from the Bink functionality
 
-  @add_and_auth_field @bink_regression_api2
+  @add_and_auth_field1 @bink_regression_api2
   Scenario Outline: Add and authorise field journey
     Given I am a Bink user
     When I perform POST request to add and authorise "<merchant>" membership card
