@@ -123,6 +123,61 @@ def verify_view_wallet_fields():
         logging.info("The expected and actual wallet is same")
 
 
+@when(parsers.parse('I perform GET request to view loyalty card balance for "{merchant}" with "{balance}"'))
+def verify_loyalty_card_balance(env, channel, merchant, balance):
+    time.sleep(2)
+    response = MembershipCards.get_loyalty_balance(TestContext.token, TestContext.current_scheme_account_id)
+    response_json = response_to_json(response)
+    TestContext.response_status_code = response.status_code
+    TestContext.current_balance = response_json.get("current_display_value")
+    logging.info(
+        "The response of GET loyaltycard/transactions is : \n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_BALANCE.format(TestContext.current_scheme_account_id)
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    assert response_json["balance"]["current_display_value"] == balance
+
+
+@when(parsers.parse('I perform GET request to view loyalty card balance for "{merchant}" with invalid token'))
+def verify_loyalty_card_invalid_token_balance(env, channel, merchant):
+    time.sleep(2)
+    response = MembershipCards.get_loyalty_balance(
+        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN), TestContext.current_scheme_account_id
+    )
+    response_json = response_to_json(response)
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The response of GET loyaltycard/transactions with invalid token is : \n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_BALANCE.format(TestContext.current_scheme_account_id)
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    TestContext.error_message = response_json.get("error_message")
+    TestContext.error_slug = response_json.get("error_slug")
+
+
+@when(
+    parsers.parse('I perform GET request to view loyalty card balance for "{merchant}" with invalid id "{invalid_id}"')
+)
+def verify_loyalty_card_invalid_id_balance(env, channel, merchant, invalid_id):
+    time.sleep(2)
+    response = MembershipCards.get_loyalty_balance(TestContext.token, invalid_id)
+    response_json = response_to_json(response)
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The response of GET loyaltycard/transactions with invalid id is : \n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_BALANCE.format(invalid_id)
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    TestContext.error_message = response_json.get("error_message")
+    TestContext.error_slug = response_json.get("error_slug")
+
+
 @when(parsers.parse("I perform GET request to view Wallet"))
 def verify_view_wallet(env, channel):
     response = MembershipCards.get_view_wallet(setup_third_token())
