@@ -34,7 +34,7 @@ class CredentialAns:
 class QueryHermes:
     @staticmethod
     def fetch_scheme_account(journey_type, scheme_account_id):
-        """Fetch the scheme account details using scheme_account_id """
+        """Fetch the scheme account details using scheme_account_id"""
         connection = db.connect_db()
         record = db.execute_query_fetch_one(connection, get_query(journey_type, scheme_account_id))
 
@@ -49,7 +49,7 @@ class QueryHermes:
 
     @staticmethod
     def update_scheme_account(scheme_account_id, status):
-        """Fetch the scheme account details using scheme_account_id """
+        """Fetch the scheme account details using scheme_account_id"""
         connection = db.connect_db()
 
         logging.info(db.execute_update(connection, update_query(scheme_account_id, status)))
