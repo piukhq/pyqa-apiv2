@@ -129,6 +129,41 @@ class WasabiCard:
         return payload
 
     @staticmethod
+    def add_and_authorise_transactions_card_payload():
+        TestContext.card_number = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.TRANSACTIONS_CARD)
+        TestContext.email = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.TRANSACTIONS_EMAIL)
+        payload = {
+            "account": {
+                "add_fields": {
+                    "credentials": [
+                        {
+                            "credential_slug": "card_number",
+                            "value": TestContext.card_number,
+                        }
+                    ]
+                },
+                "authorise_fields": {
+                    "credentials": [
+                        {
+                            "credential_slug": "email",
+                            "value": TestContext.email,
+                        }
+                    ]
+                },
+            },
+            "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi"),
+        }
+
+        logging.info(
+            "The Request for Add_and_Auth journey with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_AUTHORISE
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
     def add_and_authorise_existing_membership_card_payload():
         payload = {
             "account": {
