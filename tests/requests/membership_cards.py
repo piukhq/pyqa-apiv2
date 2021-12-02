@@ -41,6 +41,20 @@ class MembershipCards(Endpoint):
         return response
 
     @staticmethod
+    def get_loyalty_vouchers(token, scheme_account_id):
+        url = MembershipCards.get_vouchers_url(scheme_account_id)
+        header = Endpoint.request_header(token, "2.0")
+        response = Endpoint.call(url, header, "GET")
+        return response
+
+    @staticmethod
+    def get_loyalty_transactions(token, scheme_account_id):
+        url = MembershipCards.get_transactions_url(scheme_account_id)
+        header = Endpoint.request_header(token, "2.0")
+        response = Endpoint.call(url, header, "GET")
+        return response
+
+    @staticmethod
     def register_field_only_card(token, merchant, email, scheme_account_id, invalid_data=None):
         url = MembershipCards.get_register_url(scheme_account_id)
         header = Endpoint.request_header(token)
@@ -167,6 +181,14 @@ class MembershipCards(Endpoint):
         return Endpoint.BASE_URL + api.ENDPOINT_MEMBERSHIP_CARDS_BALANCE.format(scheme_account_id)
 
     @staticmethod
+    def get_vouchers_url(scheme_account_id):
+        return Endpoint.BASE_URL + api.ENDPOINT_MEMBERSHIP_CARDS_VOUCHERS.format(scheme_account_id)
+
+    @staticmethod
+    def get_transactions_url(scheme_account_id):
+        return Endpoint.BASE_URL + api.ENDPOINT_MEMBERSHIP_CARDS_TRANSACTIONS.format(scheme_account_id)
+
+    @staticmethod
     def add_and_authorise_card(token, merchant, invalid_request=None):
         url = MembershipCards.get_add_and_authorise_url()
         header = Endpoint.request_header(token)
@@ -174,6 +196,13 @@ class MembershipCards(Endpoint):
             payload = Merchant.get_merchant(merchant).add_and_authorise_membership_card_payload()
         else:
             payload = Merchant.get_merchant(merchant).add_and_authorise_membership_card_payload(invalid_request)
+        return Endpoint.call(url, header, "POST", payload)
+
+    @staticmethod
+    def add_and_authorise_transactions_card(token, merchant):
+        url = MembershipCards.get_add_and_authorise_url()
+        header = Endpoint.request_header(token)
+        payload = Merchant.get_merchant(merchant).add_and_authorise_transactions_card_payload()
         return Endpoint.call(url, header, "POST", payload)
 
     @staticmethod

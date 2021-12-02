@@ -70,7 +70,10 @@ invalid_token = {
 iceland_membership_card = {
     "card_num": "6332040000300000003",
     "register_card": "6332040000400000011",
+    "transactions_card": "6332040000000000007",
     "barcode": "6332040000300000003",
+    "transactions_card_last_name": "perfuser07",
+    "transactions_postcode": "rg5 5aa",
     "last_name": "hundred",
     "postcode": "rg2 2aa",
     "points": 205.02,
@@ -98,7 +101,9 @@ harvey_nichols_invalid_data = {"id": "fail@unknown.com", "slow_join_id": "slowjo
 
 wasabi_membership_card = {
     "card_num": "1048175295",
+    "transactions_card": "1048171268",
     "email": "binktestuser19@wasabi.com",
+    "transactions_email": "binktestuser10@wasabi.com",
     "invalid_email": "fail@unknown.com",
     "points": 5,
     "currency": "stamps",
