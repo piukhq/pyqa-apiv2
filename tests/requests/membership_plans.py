@@ -31,4 +31,3 @@ class MembershipPlans(Endpoint):
         header = Endpoint.request_header(token, "2.0")
         response = Endpoint.call(url, header, "GET")
         return response
-
