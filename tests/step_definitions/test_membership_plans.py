@@ -5,7 +5,7 @@ from deepdiff import DeepDiff
 from json_diff import Comparator
 from pytest_bdd import parsers, scenarios, then, when
 
-from tests.conftest import response_to_json, setup_token, setup_third_token
+from tests.conftest import response_to_json, setup_third_token, setup_token
 from tests.helpers import constants
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
@@ -179,7 +179,7 @@ def verify_journey_field_invalid_token(loyalty_scheme):
     return response
 
 
-@when(parsers.parse('I perform GET request to view loyalty plans overview with invalid token'))
+@when(parsers.parse("I perform GET request to view loyalty plans overview with invalid token"))
 def verify_loyalty_plan_overview_invalid_token():
     response = MembershipPlans.get_loyalty_plans_overview(
         TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN)
