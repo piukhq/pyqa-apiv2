@@ -5,7 +5,7 @@ from deepdiff import DeepDiff
 from json_diff import Comparator
 from pytest_bdd import parsers, scenarios, then, when
 
-from tests.conftest import response_to_json, setup_token
+from tests.conftest import response_to_json, setup_token, setup_third_token
 from tests.helpers import constants
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
@@ -75,6 +75,27 @@ def verify_get_all_loyalty_plans(env, channel):
     TestContext.actual_all_loyalty_plans_field = response.json()
 
 
+@when(parsers.parse("I perform GET request to view loyalty plans overview"))
+def verify_loyalty_plans_overview(env, channel):
+    response = MembershipPlans.get_loyalty_plans_overview(setup_third_token())
+    TestContext.response_status_code = response.status_code
+    logging.info("The loyalty plans Overview is: \n" + json.dumps(response_to_json(response), indent=4))
+
+    # with open(TestData.get_expected_loyalty_plans_overview_json(env, channel)) as json_file:
+    #      expected_data = json.load(json_file)
+
+    #   difference = json_compare_loyalty_overview(response.json(), expected_data)
+    #   if difference:
+    #       logging.info(
+    #           "The expected and actual loyalty plan overview "
+    #            + "fields has following differences"
+    #          + json.dumps(difference, sort_keys=True, indent=4)
+    #       )
+    #      raise Exception("The expected and actual loyalty plan overview is not the same")
+    #   else:
+    #      logging.info("The expected and actual loyalty plan overview is same")
+
+
 def json_compare(actual_membership_plan_journey_field, expected_membership_plan_journey_field):
     """This function will compare two Json objects using json_diff and
     create a third json with comparison results"""
@@ -88,6 +109,11 @@ def json_compare(actual_membership_plan_journey_field, expected_membership_plan_
 
 def json_compare_loyalty(actual_loyalty_plan_by_id_field, expected_loyalty_plan_by_id_field):
     compare = DeepDiff(actual_loyalty_plan_by_id_field, expected_loyalty_plan_by_id_field, ignore_order=True)
+    return compare
+
+
+def json_compare_loyalty_overview(actual_loyalty_plans_overview, expected_loyalty_plans_overview):
+    compare = DeepDiff(actual_loyalty_plans_overview, expected_loyalty_plans_overview, ignore_order=True)
     return compare
 
 
@@ -141,6 +167,22 @@ def verify_success_loyalty_plan_field(status_code):
 def verify_journey_field_invalid_token(loyalty_scheme):
     response = MembershipPlans.get_membership_plan_journey_field(
         TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN), loyalty_scheme
+    )
+
+    TestContext.response_status_code = response.status_code
+    response_json = response.json()
+    logging.info("The response of invalid token is: \n\n" + json.dumps(response_json, indent=4))
+    TestContext.error_message = response_json.get("error_message")
+    TestContext.error_slug = response_json.get("error_slug")
+
+    assert TestContext.response_status_code == 401
+    return response
+
+
+@when(parsers.parse('I perform GET request to view loyalty plans overview with invalid token'))
+def verify_loyalty_plan_overview_invalid_token():
+    response = MembershipPlans.get_loyalty_plans_overview(
+        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN)
     )
 
     TestContext.response_status_code = response.status_code

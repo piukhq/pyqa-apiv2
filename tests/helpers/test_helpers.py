@@ -84,6 +84,11 @@ class TestData:
         #     return mem_plan_path + "/" + merchant_key + "_membership_plan.json"
 
     @staticmethod
+    def get_expected_loyalty_plans_overview_json(env, channel=None):
+        loyalty_plan_overview_path = TestData.get_loyalty_plans_overview_path(env)
+        return loyalty_plan_overview_path + "/membership_plan_loyalty_plans_overview" + ".json"
+
+    @staticmethod
     def get_expected_loyalty_plan_by_id_json(loyalty_scheme, env, channel=None):
 
         merchant_key = TestData.get_merchant_key(loyalty_scheme)
@@ -115,6 +120,14 @@ class TestData:
         based on environment"""
 
         switcher = {"staging": constants.EXPECTED_VIEW_WALLET_STAGING}
+        return switcher.get(env)
+
+    @staticmethod
+    def get_loyalty_plans_overview_path(env):
+        """return the base path of stored get loyalty plans overview json
+        based on environment"""
+
+        switcher = {"staging": constants.EXPECTED_LOYALTY_PLANS_OVERVIEW_STAGING}
         return switcher.get(env)
 
     @staticmethod
