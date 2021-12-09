@@ -125,7 +125,7 @@ def verify_view_wallet_fields():
 
 @when(parsers.parse('I perform GET request to view loyalty card balance for "{merchant}" with "{balance}"'))
 def verify_loyalty_card_balance(env, channel, merchant, balance):
-    time.sleep(3)
+    time.sleep(7)
     response = MembershipCards.get_loyalty_balance(TestContext.token, TestContext.current_scheme_account_id)
     response_json = response_to_json(response)
     TestContext.response_status_code = response.status_code

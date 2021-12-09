@@ -69,6 +69,9 @@ EXPECTED_LOYALTY_PLANS_STAGING = "tests_resources/test_data/membership_plan" "/m
 
 EXPECTED_VIEW_WALLET_STAGING = "tests_resources/test_data/get_wallet" "/get_wallet_staging"
 
+EXPECTED_LOYALTY_PLANS_OVERVIEW_STAGING = (
+    "tests_resources/test_data/membership_plan" "/membership_plan_loyalty_plans_staging"
+)
 # PAYMENT_CARD_STATUS = "status"
 # ACTIVE_LINK = "active_link"
 # PAYMENT_PROVIDER = "payment_provider"
