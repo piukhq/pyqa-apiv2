@@ -16,7 +16,7 @@ Feature: Overview of wallet information
     | 200                  |
 
   @wallet_overview_empty_list @bink_regression_api2
-  Scenario Outline: Get wallet overview with list value
+  Scenario Outline: Get wallet overview with empty list value
     Given I am a Bink user
     When I perform GET request to view wallet overview with empty list
     Then I see a <status_code_returned>

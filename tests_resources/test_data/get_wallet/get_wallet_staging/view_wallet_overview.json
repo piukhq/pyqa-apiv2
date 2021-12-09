@@ -34,15 +34,7 @@
                 "updated_at": 1638450406,
                 "current_display_value": "3 stamps"
             },
-            "images": [
-                {
-                    "id": 1296,
-                    "type": 0,
-                    "url": "schemes/Wasabi_Card.png",
-                    "description": "Wasabi Hero",
-                    "encoding": "png"
-                }
-            ]
+            "images": []
         },
         {
             "id": 118954,
