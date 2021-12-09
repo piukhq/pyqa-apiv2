@@ -347,7 +347,8 @@ def verify_wallet_with_invalid_token(endpoint):
         )
     else:
         response = MembershipCards.get_view_wallet_overview(
-            TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN))
+            TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN)
+        )
         logging.info(
             "The response of GET/wallet_overview with invalid token is: \n\n"
             + Endpoint.BASE_URL
