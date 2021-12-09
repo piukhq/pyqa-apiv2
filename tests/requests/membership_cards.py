@@ -34,6 +34,13 @@ class MembershipCards(Endpoint):
         return response
 
     @staticmethod
+    def get_view_wallet_overview(token):
+        url = Endpoint.BASE_URL + api.ENDPOINT_WALLET_OVERVIEW
+        header = Endpoint.request_header(token, "2.0")
+        response = Endpoint.call(url, header, "GET")
+        return response
+
+    @staticmethod
     def get_loyalty_balance(token, scheme_account_id):
         url = MembershipCards.get_balance_url(scheme_account_id)
         header = Endpoint.request_header(token, "2.0")
