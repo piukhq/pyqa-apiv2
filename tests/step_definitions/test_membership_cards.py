@@ -304,34 +304,62 @@ def verify_loyalty_card_invalid_id_vouchers(env, channel, merchant, invalid_id):
     TestContext.error_slug = response_json.get("error_slug")
 
 
-@when(parsers.parse("I perform GET request to view Wallet"))
-def verify_view_wallet(env, channel):
-    response = MembershipCards.get_view_wallet(setup_third_token())
+@when(parsers.parse("I perform GET request to view '{Wallet}'"))
+def verify_view_wallet(Wallet, env, channel):
+    if Wallet == "Wallet":
+        response = MembershipCards.get_view_wallet(setup_third_token())
+        logging.info("The response of Wallet is : \n" + json.dumps(response_to_json(response), indent=4))
+        with open(TestData.get_expected_view_wallet_json(env, channel)) as json_file:
+            json_data = json.load(json_file)
+    else:
+        response = MembershipCards.get_view_wallet_overview(setup_third_token())
+        logging.info("The response of Wallet overview is : \n" + json.dumps(response_to_json(response), indent=4))
+        with open(TestData.get_expected_view_wallet_overview_json(env)) as json_file:
+            json_data = json.load(json_file)
 
     TestContext.response_status_code = response.status_code
-    logging.info("The response of view Wallet is : \n" + json.dumps(response_to_json(response), indent=4))
-
-    with open(TestData.get_expected_view_wallet_json(env, channel)) as json_file:
-        json_data = json.load(json_file)
-
     stored_json = json.dumps(json_data)
     TestContext.expected_view_wallet_field = json.loads(stored_json)
     TestContext.actual_view_wallet_field = response.json()
 
 
-@when(parsers.parse("I perform GET request to view Wallet with invalid token"))
-def verify_wallet_with_invalid_token():
-    response = MembershipCards.get_view_wallet(TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN))
+@when(parsers.parse("I perform GET request to view wallet overview with empty list"))
+def verify_empty_list_wallet_overview():
+    response = MembershipCards.get_view_wallet_overview(TestContext.token)
+    TestContext.response_status_code = response.status_code
+
+    response_json = response_to_json(response)
+    TestContext.response_join = response_json.get("joins")
+    TestContext.response_loyalty_card = response_json.get("loyalty_cards")
+    TestContext.response_payment_account = response_json.get("payment_accounts")
+
+
+@when(parsers.parse("I perform GET request to view '{endpoint}' with invalid token"))
+def verify_wallet_with_invalid_token(endpoint):
+    if endpoint == "Wallet":
+        response = MembershipCards.get_view_wallet(TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN))
+        logging.info(
+            "The response of GET/wallet with invalid token is: \n\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_WALLET
+            + "\n\n"
+            + json.dumps(response.json(), indent=4)
+        )
+    else:
+        response = MembershipCards.get_view_wallet_overview(
+            TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN)
+        )
+        logging.info(
+            "The response of GET/wallet_overview with invalid token is: \n\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_WALLET_OVERVIEW
+            + "\n\n"
+            + json.dumps(response.json(), indent=4)
+        )
 
     TestContext.response_status_code = response.status_code
     response_json = response.json()
-    logging.info(
-        "The response of POST/Membership_card with invalid token is: \n\n"
-        + Endpoint.BASE_URL
-        + api.ENDPOINT_PAYMENT_ACCOUNTS.format(TestContext.current_payment_card_id)
-        + "\n\n"
-        + json.dumps(response_json, indent=4)
-    )
+
     TestContext.error_message = response_json.get("error_message")
     TestContext.error_slug = response_json.get("error_slug")
 
@@ -610,6 +638,16 @@ def verify_invalid_token_bearer_prefix_for_membership_card(merchant):
 @then(parsers.parse("I see a {status_code_returned}"))
 def verify_membership_card_status_code(status_code_returned):
     assert TestContext.response_status_code == int(status_code_returned)
+
+
+@then(parsers.parse("I see '{journey}' list appearing"))
+def verify_wallet_join(journey):
+    if journey == "join":
+        assert TestContext.response_join == []
+    elif journey == "loyalty_card":
+        assert TestContext.response_loyalty_card == []
+    else:
+        assert TestContext.response_payment_account == []
 
 
 @when(parsers.parse('I perform POST request to add and authorise "{merchant}" membership card'))

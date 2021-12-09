@@ -109,6 +109,11 @@ class TestData:
         return wallet_path + "/view_wallet" + ".json"
 
     @staticmethod
+    def get_expected_view_wallet_overview_json(env):
+        wallet_path = TestData.get_wallet_path(env)
+        return wallet_path + "/view_wallet_overview" + ".json"
+
+    @staticmethod
     def get_expected_view_join_wallet_json(env, channel=None):
 
         wallet_path = TestData.get_wallet_path(env)

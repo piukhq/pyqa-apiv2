@@ -26,6 +26,8 @@ ENDPOINT_MEMBERSHIP_CARDS_JOIN_FAILED = "/v2/loyalty_cards/{}/join"
 
 ENDPOINT_WALLET = "/v2/wallet"
 
+ENDPOINT_WALLET_OVERVIEW = "/v2/wallet_overview"
+
 ENDPOINT_EMAIL_UPDATE = "/v2/email_update"
 
 ENDPOINT_TOKEN = "/v2/token"

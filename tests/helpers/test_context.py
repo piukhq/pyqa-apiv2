@@ -34,6 +34,10 @@ class TestContext:
     actual_view_wallet_field = ""
     expected_loyalty_plans_overview = ""
     actual_loyalty_plans_overview = ""
+
+    response_join = ""
+    response_loyalty_card = ""
+    response_payment_account = ""
     """Variable that decides encryption is required / not"""
     flag_encrypt = ""
     channel_name = ""
