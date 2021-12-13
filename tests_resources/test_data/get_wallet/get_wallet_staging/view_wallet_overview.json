@@ -34,7 +34,15 @@
                 "updated_at": 1638450406,
                 "current_display_value": "3 stamps"
             },
-            "images": []
+            "images": [
+                {
+                    "id": 1296,
+                    "type": 0,
+                    "url": "schemes/Wasabi_Card.png",
+                    "description": "Wasabi Hero",
+                    "encoding": "png"
+                }
+            ]
         },
         {
             "id": 118954,
@@ -42,7 +50,7 @@
             "loyalty_plan_name": "Iceland Bonus Card",
             "status": {
                 "state": "authorised",
-                "slug": "PENDING",
+                "slug": "ACTIVE",
                 "description": "This is a test"
             },
             "balance": {
