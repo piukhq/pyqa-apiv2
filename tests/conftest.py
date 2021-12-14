@@ -51,7 +51,7 @@ def configure_html_report_env(request, env, channel):
 
 
 def pytest_addoption(parser):
-    parser.addoption("--channel", action="store", default="bink", help="Channel: can be bink or barclays should pass")
+    parser.addoption("--channel", action="store", default="bink", help="Channel: can be bink or lloyds should pass")
     parser.addoption("--env", action="store", default="dev", help="env : can be dev or staging or prod")
     parser.addoption("--encryption", action="store", default="false", help="encryption : can be true or false")
 
@@ -223,3 +223,30 @@ def perform_post_b2b_with_token(token_type):
         + json.dumps(response_json, indent=4)
     )
     assert response.status_code == 200, "/token Journey failed to get access token"
+
+
+@given("I am a Lloyds user")
+def get_lloyds_user(channel, env):
+    key_secret = get_private_key_secret(config.LLOYDS.kid)
+    user_email = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EMAIL)
+    external_id = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EXTERNAL_ID)
+    TestContext.b2btoken = create_b2b_token(key=key_secret, sub=external_id, kid=config.LLOYDS.kid, email=user_email)
+
+    response = Token_b2b.post_b2b_with_grant_type(TestContext.b2btoken, "b2b")
+    time.sleep(1)
+    response_json = response_to_json(response)
+    TestContext.access_token = response_json.get("access_token")
+    TestContext.token_type = response_json.get("token_type")
+    TestContext.refresh_token_type = response_json.get("refresh_token")
+    TestContext.token = TestContext.token_type + " " + TestContext.access_token
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The response of B2B token (POST) for lloyds is:\n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_TOKEN
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    assert response.status_code == 200, "/token Journey failed to get access token"
+
+    return TestContext.token

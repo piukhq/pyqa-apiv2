@@ -1,4 +1,3 @@
-# Created by bularaghavan on 26/10/2021
 @loyalty_plans_all @membership_plans
 Feature: View Loyalty Plans
  As a consuming channel
@@ -10,6 +9,19 @@ Feature: View Loyalty Plans
     Given I am a Bink user
     When I perform GET request to view all available loyalty plans
     Then I verify the <status_code> for loyalty plan
+
+    Examples:
+    | status_code |
+    | 200         |
+
+#    Below Plan work for lloyds channel
+#    Command to run : pytest -m "all_lloyds_plans_success" --channel lloyds --env staging
+  @all_lloyds_plans_success
+  Scenario Outline: View all available Lloyds Loyalty Plans
+    Given I am a Lloyds user
+    When I perform GET request to view all available loyalty bank plans
+    Then I verify the <status_code> for loyalty plan
+    And I verify all plans appeared correctly
 
     Examples:
     | status_code |
