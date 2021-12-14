@@ -2,7 +2,6 @@ import json
 import logging
 
 from deepdiff import DeepDiff
-from json_diff import Comparator
 from pytest_bdd import parsers, scenarios, then, when
 
 from tests.conftest import response_to_json, setup_third_token, setup_token
@@ -117,8 +116,9 @@ def json_compare(actual_membership_plan_journey_field, expected_membership_plan_
     json.dump(actual_membership_plan_journey_field, open(constants.JSON_DIFF_ACTUAL_JSON, "w"), indent=4)
     json.dump(expected_membership_plan_journey_field, open(constants.JSON_DIFF_EXPECTED_JSON, "w"), indent=4)
 
-    engine = DeepDiff(open(constants.JSON_DIFF_ACTUAL_JSON, "r"), open(constants.JSON_DIFF_EXPECTED_JSON, "r"),
-                      ignore_order=True)
+    engine = DeepDiff(
+        open(constants.JSON_DIFF_ACTUAL_JSON, "r"), open(constants.JSON_DIFF_EXPECTED_JSON, "r"), ignore_order=True
+    )
     return engine
 
 
@@ -284,4 +284,3 @@ def verify_plans_in_lloyds():
         raise Exception("The expected and actual all membership plans are not the same")
     else:
         logging.info("The expected and actual all membership plans are same")
-
