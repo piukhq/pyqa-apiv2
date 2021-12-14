@@ -150,5 +150,7 @@ bink_user_accounts = {
     "user_detail2": "1168",
     "user_detail3": "33405",
     "b2b_email": "pytest_b2b_staging_email@bink.com",
+    "lloyds_email": "lloyds_b2b_staging_email@bink.com",
+    "lloyds_external_id": "123456",
     "b2b_external_id": "0112839",
 }

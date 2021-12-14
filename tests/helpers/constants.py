@@ -9,7 +9,8 @@ USER_DETAIL2 = "user_detail2"
 USER_DETAIL3 = "user_detail3"
 B2B_EMAIL = "b2b_email"
 B2B_EXTERNAL_ID = "b2b_external_id"
-
+LLOYDS_EMAIL = "lloyds_email"
+LLOYDS_EXTERNAL_ID = "lloyds_external_id"
 
 """ Contants for Add journey"""
 ID = "id"

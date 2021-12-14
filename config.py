@@ -35,7 +35,7 @@ BINK = ChannelDetails(
 )
 
 LLOYDS = ChannelDetails(
-    channel_name="Lloyds",
+    channel_name="lloyds",
     bundle_id="com.lloyds.api2",
     client_id="8eBiL5Vh7AKKkWOezW5Avv8olfhK3to9ToqiypzPbOiBj5XEIv",
     kid="lloyds-bink-regression",

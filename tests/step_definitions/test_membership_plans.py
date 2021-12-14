@@ -2,7 +2,6 @@ import json
 import logging
 
 from deepdiff import DeepDiff
-from json_diff import Comparator
 from pytest_bdd import parsers, scenarios, then, when
 
 from tests.conftest import response_to_json, setup_third_token, setup_token
@@ -75,6 +74,20 @@ def verify_get_all_loyalty_plans(env, channel):
     TestContext.actual_all_loyalty_plans_field = response.json()
 
 
+@when(parsers.parse("I perform GET request to view all available loyalty bank plans"))
+def verify_get_all_loyalty_bank_plans(env, channel):
+    response = MembershipPlans.get_all_loyalty_plans(TestContext.token)
+    TestContext.response_status_code = response.status_code
+    logging.info("The loyalty bank plans available are: \n" + json.dumps(response_to_json(response), indent=4))
+
+    with open(TestData.get_expected_all_loyalty_plans_json(env, channel)) as json_file:
+        json_data = json.load(json_file)
+
+    stored_json = json.dumps(json_data)
+    TestContext.expected_all_loyalty_plans_field = json.loads(stored_json)
+    TestContext.actual_all_loyalty_plans_field = response.json()
+
+
 @when(parsers.parse("I perform GET request to view loyalty plans overview"))
 def verify_loyalty_plans_overview(env, channel):
     response = MembershipPlans.get_loyalty_plans_overview(setup_third_token())
@@ -103,8 +116,10 @@ def json_compare(actual_membership_plan_journey_field, expected_membership_plan_
     json.dump(actual_membership_plan_journey_field, open(constants.JSON_DIFF_ACTUAL_JSON, "w"), indent=4)
     json.dump(expected_membership_plan_journey_field, open(constants.JSON_DIFF_EXPECTED_JSON, "w"), indent=4)
 
-    engine = Comparator(open(constants.JSON_DIFF_ACTUAL_JSON, "r"), open(constants.JSON_DIFF_EXPECTED_JSON, "r"))
-    return engine.compare_dicts()
+    engine = DeepDiff(
+        open(constants.JSON_DIFF_ACTUAL_JSON, "r"), open(constants.JSON_DIFF_EXPECTED_JSON, "r"), ignore_order=True
+    )
+    return engine
 
 
 def json_compare_loyalty(actual_loyalty_plan_by_id_field, expected_loyalty_plan_by_id_field):
@@ -256,3 +271,16 @@ def verify_invalid_resource_for_loyalty_plan(loyalty_scheme):
 
     assert TestContext.response_status_code == 404
     return response
+
+
+@then("I verify all plans appeared correctly")
+def verify_plans_in_lloyds():
+    difference = json_compare(TestContext.expected_all_loyalty_plans_field, TestContext.actual_all_loyalty_plans_field)
+    if json.dumps(difference) != "{}":
+        logging.info(
+            "The expected and actual all membership plans of has following differences"
+            + json.dumps(difference, sort_keys=True, indent=4)
+        )
+        raise Exception("The expected and actual all membership plans are not the same")
+    else:
+        logging.info("The expected and actual all membership plans are same")

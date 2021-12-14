@@ -329,6 +329,7 @@ def verify_empty_list_wallet_overview():
     TestContext.response_status_code = response.status_code
 
     response_json = response_to_json(response)
+    logging.info(response_json)
     TestContext.response_join = response_json.get("joins")
     TestContext.response_loyalty_card = response_json.get("loyalty_cards")
     TestContext.response_payment_account = response_json.get("payment_accounts")

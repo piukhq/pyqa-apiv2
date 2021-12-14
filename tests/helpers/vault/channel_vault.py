@@ -127,7 +127,7 @@ def load_secrets():
     else:
         load_token_secrets = {
             "bink-bink-regression": B2B_BINK_PRIVATE_KEY,
-            "llyods-bink-regrssion": B2B_LLOYDS_PRIVATE_KEY,
+            "lloyds-bink-regression": B2B_LLOYDS_PRIVATE_KEY,
         }
         # private_key_secrets = [B2B_BINK_PRIVATE_KEY, B2B_LLOYDS_PRIVATE_KEY]
         for kid, secret_name in load_token_secrets.items():
