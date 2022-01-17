@@ -10,6 +10,7 @@ from tests.helpers import constants
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
 from tests.requests.service import CustomerAccount
+from tests.step_definitions import test_membership_cards
 
 scenarios("user_accounts/")
 
@@ -26,6 +27,21 @@ def update_user_email(channel, env, test_email):
         + "\n\n"
         + json.dumps(response_json, indent=4)
     )
+
+
+@when(parsers.parse('I perform POST request to add and authorise "{merchant}" membership card using b2b token'))
+def verify_add_and_auth_b2b(merchant):
+    test_membership_cards.verify_add_and_auth_b2b(merchant)
+
+
+@then(parsers.parse('verify the data stored in DB after "{journey_type}" journey for "{merchant}"'))
+def verify_loyalty_card_into_database(journey_type, merchant):
+    test_membership_cards.verify_loyalty_card_into_database(journey_type, merchant)
+
+
+@then(parsers.parse('verify that the PLL links are deleted from the scheme account for "{journey_type2}"'))
+def verify_pll_links_scheme_account(journey_type2):
+    test_membership_cards.verify_pll_links_scheme_account(journey_type2)
 
 
 @then(parsers.parse("I perform POST request to update email again"))
@@ -111,6 +127,29 @@ def update_user_email_duplicate(test_email, duplicate_email, status_code):
         + json.dumps(response_json, indent=4)
     )
     assert TestContext.response_status_code == int(status_code), "Duplicate Email Request"
+
+
+@then(parsers.parse("I perform DELETE request to delete user successfully"))
+def delete_user(channel, env):
+    response = CustomerAccount.delete_user(TestContext.token)
+    assert response.status_code == 202, "The user deletion is not successful"
+    logging.info("User is deleted successfully from the system")
+
+
+@when(parsers.parse("I perform DELETE request to delete user with invalid token"))
+def delete_user(channel, env):
+    response = CustomerAccount.delete_user(TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN))
+    response_json = response_to_json(response)
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The response of DELETE /me with invalid token is : \n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_DELETE_USER
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    TestContext.error_message = response_json.get("error_message")
+    TestContext.error_slug = response_json.get("error_slug")
 
 
 @then(parsers.parse("I see a {status_code_returned}"))

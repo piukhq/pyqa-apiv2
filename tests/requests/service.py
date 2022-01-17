@@ -26,6 +26,10 @@ class CustomerAccount:
         return Endpoint.BASE_URL + api.ENDPOINT_EMAIL_UPDATE
 
     @staticmethod
+    def get_delete_user_url():
+        return Endpoint.BASE_URL + api.ENDPOINT_DELETE_USER
+
+    @staticmethod
     def user_email_update(token, test_email):
         url = CustomerAccount.get_email_update_url()
         header = Endpoint.request_header(token)
@@ -43,3 +47,10 @@ class CustomerAccount:
         else:
             payload = UserDetails.bink_user_email_update_invalid_data(test_email, invalid_data)
             return Endpoint.call_payload(url, header, "POST", payload)
+
+    @staticmethod
+    def delete_user(token):
+        url = CustomerAccount.get_delete_user_url()
+        header = Endpoint.request_header(token)
+        response = Endpoint.call(url, header, "DELETE")
+        return response
