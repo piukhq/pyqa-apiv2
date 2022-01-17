@@ -137,7 +137,7 @@ def delete_user(channel, env):
 
 
 @when(parsers.parse("I perform DELETE request to delete user with invalid token"))
-def delete_user(channel, env):
+def delete_user_invalid_token(channel, env):
     response = CustomerAccount.delete_user(TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN))
     response_json = response_to_json(response)
     TestContext.response_status_code = response.status_code
