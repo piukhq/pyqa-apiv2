@@ -104,6 +104,13 @@ def verify_loyalty_card_into_database(journey_type, merchant):
     return scheme_account
 
 
+@then(parsers.parse('verify that the PLL links are deleted from the scheme account for "{journey_type2}"'))
+def verify_pll_links_scheme_account(journey_type2):
+    scheme_account = QueryHermes.fetch_scheme_account(journey_type2, TestContext.current_scheme_account_id)
+    assert scheme_account.id == TestContext.current_scheme_account_id
+    assert scheme_account.pll_links == []
+
+
 def json_compare_wallet(actual_view_wallet_field, expected_view_wallet_field):
     compare = DeepDiff(actual_view_wallet_field, expected_view_wallet_field, ignore_order=True)
     return compare
@@ -653,6 +660,22 @@ def verify_wallet_join(journey):
 
 @when(parsers.parse('I perform POST request to add and authorise "{merchant}" membership card'))
 def verify_add_and_auth(merchant):
+    response = MembershipCards.add_and_authorise_card(TestContext.token, merchant)
+    response_json = response_to_json(response)
+    TestContext.current_scheme_account_id = response_json.get("id")
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The response of Add and Authorise Journey (POST) is:\n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_AUTHORISE
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    assert response.status_code == 202, "Add and authorise Journey for " + merchant + " failed"
+
+
+@when(parsers.parse('I perform POST request to add and authorise "{merchant}" membership card using b2b token'))
+def verify_add_and_auth_b2b(merchant):
     response = MembershipCards.add_and_authorise_card(TestContext.token, merchant)
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")

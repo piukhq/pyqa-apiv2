@@ -30,6 +30,8 @@ ENDPOINT_WALLET_OVERVIEW = "/v2/wallet_overview"
 
 ENDPOINT_EMAIL_UPDATE = "/v2/email_update"
 
+ENDPOINT_DELETE_USER = "/v2/me"
+
 ENDPOINT_TOKEN = "/v2/token"
 
 ENDPOINT_MEMBERSHIP_CARDS_BALANCE = "/v2/loyalty_cards/{}/balance"
