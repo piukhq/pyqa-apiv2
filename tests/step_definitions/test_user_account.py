@@ -130,7 +130,7 @@ def update_user_email_duplicate(test_email, duplicate_email, status_code):
 
 
 @then(parsers.parse("I perform DELETE request to delete user successfully"))
-def delete_user(channel, env):
+def delete_user_successfully(channel, env):
     response = CustomerAccount.delete_user(TestContext.token)
     assert response.status_code == 202, "The user deletion is not successful"
     logging.info("User is deleted successfully from the system")
