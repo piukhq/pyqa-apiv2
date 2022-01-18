@@ -1,214 +1,220 @@
 {
-  "loyalty_plan_id": 281,
-  "plan_popularity": 3,
-  "plan_features": {
-    "has_points": true,
-    "has_transactions": true,
-    "plan_type": 2,
-    "barcode_type": null,
-    "colour": "#ccd400",
-    "journeys": [
-      {
-        "type": 0,
-        "description": "ADD"
-      },
-      {
-        "type": 1,
-        "description": "AUTHORISE"
-      },
-      {
-        "type": 3,
-        "description": "JOIN"
-      }
-    ]
-  },
-  "images": [
-    {
-      "id": 1324,
-      "type": 7,
-      "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Promo_1968x732.png",
-      "description": "Wasabi Promotion 1",
-      "encoding": "png"
-    },
-    {
-      "id": 1319,
-      "type": 2,
-      "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_5_CVAeqUv_naFzo9T.png",
-      "description": "Wasabi Test Offer",
-      "encoding": "png"
-    },
-    {
-      "id": 1298,
-      "type": 9,
-      "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Alternate_Hero.png",
-      "description": "Wasabi Alternative Hero",
-      "encoding": "png"
-    },
-    {
-      "id": 1297,
-      "type": 3,
-      "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
-      "description": "Wasabi Icon",
-      "encoding": "png"
-    },
-    {
-      "id": 1296,
-      "type": 0,
-      "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
-      "description": "Wasabi Hero",
-      "encoding": "png"
-    }
-  ],
-  "plan_details": {
-    "company_name": "Wasabi",
-    "plan_name": "Wasabi Club",
-    "plan_label": "Card",
-    "plan_url": "https://www.wasabi.uk.com",
-    "plan_summary": "Collect 7 stamps for a £7 OFF Meal Voucher. One stamp can be earned per customer per transaction when the qualifying spend in a single transaction for food & drink purchases totals £7.00 or more in a participating Wasabi store. Ts and Cs apply.",
-    "plan_description": "Please note that your vouchers are single-use and cannot be used twice. Show your Wasabi Club reward code in store to redeem £7 off your next meal.\r\nThe voucher will be available to redeem 2 months from the date it is collected. This voucher is non-refundable and cannot be exchanged for cash in part or full and is valid for a single transaction only.",
-    "redeem_instructions": null,
-    "plan_register_info": null,
-    "join_incentive": null,
-    "category": "Food & Drink",
-    "tiers": []
-  },
-  "journey_fields": {
-    "join_fields": {
-      "credentials": [
-        {
-          "order": 1,
-          "display_label": "First name",
-          "validation": "^(((?=.{1,100}$)[A-Za-z-'])+\\s*){1,4}$",
-          "description": "Enter first name",
-          "credential_slug": "first_name",
-          "type": "text",
-          "is_sensitive": false,
-          "choice": [],
-          "alternative": null
-        },
-        {
-          "order": 2,
-          "display_label": "Last name",
-          "validation": "^(((?=.{1,100}$)[A-Za-z-'])+\\s*){1,4}$",
-          "description": "Enter last name",
-          "credential_slug": "last_name",
-          "type": "text",
-          "is_sensitive": false,
-          "choice": [],
-          "alternative": null
-        },
-        {
-          "order": 3,
-          "display_label": "Email",
-          "validation": "^(?=[^@]{1,64}@)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
-          "description": "example@mydomain.com",
-          "credential_slug": "email",
-          "type": "text",
-          "is_sensitive": false,
-          "choice": [],
-          "alternative": null
-        },
-        {
-          "order": 4,
-          "display_label": "Date of birth",
-          "validation": "^(0[1-9]|[12][0-9]|3[01])[\\/](0[1-9]|1[012])[\\/](19|20)\\d\\d$",
-          "description": "DD/MM/YYYY",
-          "credential_slug": "date_of_birth",
-          "type": "text",
-          "is_sensitive": false,
-          "choice": [],
-          "alternative": null
-        }
-      ],
-      "plan_documents": [
-        {
-          "order": 1,
-          "name": "Retailer terms and conditions",
-          "url": "https://policies.staging.gb.bink.com/wasabi/tc.html",
-          "description": "I accept the",
-          "is_acceptance_required": true
-        },
-        {
-          "order": 3,
-          "name": "Wasabi privacy policy",
-          "url": "https://policies.staging.gb.bink.com/wasabi/pp.html",
-          "description": "Please read the",
-          "is_acceptance_required": false
-        }
-      ],
-      "consents": [
-        {
-          "order": 1,
-          "consent_slug": "EmailOptin",
-          "is_acceptance_required": false,
-          "description": "Check this box to receive the latest news and offers from Wasabi - if you change your mind, you can opt out anytime via the retailer."
-        }
-      ]
-    },
-    "register_ghost_card_fields": null,
-    "add_fields": {
-      "credentials": [
-        {
-          "order": 0,
-          "display_label": "Membership card number",
-          "validation": "^[0-9]{10}$",
-          "description": "10 digit card number",
-          "credential_slug": "card_number",
-          "type": "text",
-          "is_sensitive": false,
-          "choice": [],
-          "alternative": null
-        }
-      ],
-      "plan_documents": [],
-      "consents": []
-    },
-    "authorise_fields": {
-      "credentials": [
-        {
-          "order": 3,
-          "display_label": "Email",
-          "validation": "^(?=[^@]{1,64}@)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
-          "description": "example@mydomain.com",
-          "credential_slug": "email",
-          "type": "text",
-          "is_sensitive": false,
-          "choice": [],
-          "alternative": null
-        }
-      ],
-      "plan_documents": [],
-      "consents": []
-    }
-  },
-  "content": [
-    {
-      "column": "Voucher_Issued_Detail",
-      "value": "Show your Wasabi Club reward code in store to redeem £7 off your next meal."
-    },
-    {
-      "column": "Voucher_Redeemed_Detail",
-      "value": "Your FREE meal voucher was redeemed."
-    },
-    {
-      "column": "Voucher_Inprogress_Detail",
-      "value": "Spend £7.00 or more to get a stamp. Collect 7 stamps to get a Meal Voucher of up to £7 off your next meal."
-    },
-    {
-      "column": "Voucher_Expired_Detail",
-      "value": "Your FREE meal voucher has expired."
-    },
-    {
-      "column": "Voucher_Cancelled_Detail",
-      "value": "Your voucher has been cancelled. If you believe we have made a mistake please contact enquiries@wasabi.uk.com."
-    },
-    {
-      "column": "Enrol_Help_Text",
-      "value": "Please enter your details to register with the retailer. We won’t save or store any of the information you provide or edit below."
-    },
-    {
-      "column": "Promo_Text_1",
-      "value": "EVERYONE GETS £7 OFF IN WASABI CLUB!"
-    }
-  ]
+	"loyalty_plan_id": 281,
+	"plan_popularity": 3,
+	"plan_features": {
+		"has_points": true,
+		"has_transactions": true,
+		"plan_type": 2,
+		"barcode_type": null,
+		"colour": "#ccd400",
+		"text_colour": "#7289da",
+		"journeys": [
+			{
+				"type": 0,
+				"description": "ADD"
+			},
+			{
+				"type": 1,
+				"description": "AUTHORISE"
+			},
+			{
+				"type": 3,
+				"description": "JOIN"
+			}
+		]
+	},
+	"images": [
+		{
+			"id": 1298,
+			"type": 9,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Alternate_Hero.png",
+			"description": "Wasabi Alternative Hero",
+			"encoding": "png",
+			"order": 0
+		},
+		{
+			"id": 1296,
+			"type": 0,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
+			"description": "Wasabi Hero",
+			"encoding": "png",
+			"order": 5
+		},
+		{
+			"id": 1319,
+			"type": 2,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_5_CVAeqUv_naFzo9T.png",
+			"description": "Wasabi Test Offer",
+			"encoding": "png",
+			"order": 1
+		},
+		{
+			"id": 1324,
+			"type": 7,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Promo_1968x732.png",
+			"description": "Wasabi Promotion 1",
+			"encoding": "png",
+			"order": 0
+		},
+		{
+			"id": 1297,
+			"type": 3,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
+			"description": "Wasabi Icon",
+			"encoding": "png",
+			"order": 0
+		}
+	],
+	"plan_details": {
+		"company_name": "Wasabi",
+		"plan_name": "Wasabi Club",
+		"plan_label": "Card",
+		"plan_url": "https://www.wasabi.uk.com",
+		"plan_summary": "Collect 7 stamps for a £7 OFF Meal Voucher. One stamp can be earned per customer per transaction when the qualifying spend in a single transaction for food & drink purchases totals £7.00 or more in a participating Wasabi store. Ts and Cs apply.",
+		"plan_description": "Please note that your vouchers are single-use and cannot be used twice. Show your Wasabi Club reward code in store to redeem £7 off your next meal.\r\nThe voucher will be available to redeem 2 months from the date it is collected. This voucher is non-refundable and cannot be exchanged for cash in part or full and is valid for a single transaction only.",
+		"redeem_instructions": null,
+		"plan_register_info": null,
+		"join_incentive": null,
+		"category": "Food & Drink",
+		"tiers": []
+	},
+	"journey_fields": {
+		"join_fields": {
+			"credentials": [
+				{
+					"order": 1,
+					"display_label": "First name",
+					"validation": "^(((?=.{1,100}$)[A-Za-z-'])+\\s*){1,4}$",
+					"description": "Enter first name",
+					"credential_slug": "first_name",
+					"type": "text",
+					"is_sensitive": false,
+					"choice": [],
+					"alternative": null
+				},
+				{
+					"order": 2,
+					"display_label": "Last name",
+					"validation": "^(((?=.{1,100}$)[A-Za-z-'])+\\s*){1,4}$",
+					"description": "Enter last name",
+					"credential_slug": "last_name",
+					"type": "text",
+					"is_sensitive": false,
+					"choice": [],
+					"alternative": null
+				},
+				{
+					"order": 3,
+					"display_label": "Email",
+					"validation": "^(?=[^@]{1,64}@)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
+					"description": "example@mydomain.com",
+					"credential_slug": "email",
+					"type": "text",
+					"is_sensitive": false,
+					"choice": [],
+					"alternative": null
+				},
+				{
+					"order": 4,
+					"display_label": "Date of birth",
+					"validation": "^(0[1-9]|[12][0-9]|3[01])[\\/](0[1-9]|1[012])[\\/](19|20)\\d\\d$",
+					"description": "DD/MM/YYYY",
+					"credential_slug": "date_of_birth",
+					"type": "text",
+					"is_sensitive": false,
+					"choice": [],
+					"alternative": null
+				}
+			],
+			"plan_documents": [
+				{
+					"order": 1,
+					"name": "Retailer terms and conditions",
+					"url": "https://policies.staging.gb.bink.com/wasabi/tc.html",
+					"description": "I accept the",
+					"is_acceptance_required": true
+				},
+				{
+					"order": 3,
+					"name": "Wasabi privacy policy",
+					"url": "https://policies.staging.gb.bink.com/wasabi/pp.html",
+					"description": "Please read the",
+					"is_acceptance_required": false
+				}
+			],
+			"consents": [
+				{
+					"order": 1,
+					"consent_slug": "EmailOptin",
+					"is_acceptance_required": false,
+					"description": "Check this box to receive the latest news and offers from Wasabi - if you change your mind, you can opt out anytime via the retailer."
+				}
+			]
+		},
+		"register_ghost_card_fields": null,
+		"add_fields": {
+			"credentials": [
+				{
+					"order": 0,
+					"display_label": "Membership card number",
+					"validation": "^[0-9]{10}$",
+					"description": "10 digit card number",
+					"credential_slug": "card_number",
+					"type": "text",
+					"is_sensitive": false,
+					"choice": [],
+					"alternative": null
+				}
+			],
+			"plan_documents": [],
+			"consents": []
+		},
+		"authorise_fields": {
+			"credentials": [
+				{
+					"order": 3,
+					"display_label": "Email",
+					"validation": "^(?=[^@]{1,64}@)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
+					"description": "example@mydomain.com",
+					"credential_slug": "email",
+					"type": "text",
+					"is_sensitive": false,
+					"choice": [],
+					"alternative": null
+				}
+			],
+			"plan_documents": [],
+			"consents": []
+		}
+	},
+	"content": [
+		{
+			"column": "Voucher_Cancelled_Detail",
+			"value": "Your voucher has been cancelled. If you believe we have made a mistake please contact enquiries@wasabi.uk.com."
+		},
+		{
+			"column": "Enrol_Help_Text",
+			"value": "Please enter your details to register with the retailer. We won’t save or store any of the information you provide or edit below."
+		},
+		{
+			"column": "Promo_Text_1",
+			"value": "EVERYONE GETS £7 OFF IN WASABI CLUB!"
+		},
+		{
+			"column": "Voucher_Issued_Detail",
+			"value": "Show your Wasabi Club reward code in store to redeem £7 off your next meal."
+		},
+		{
+			"column": "Voucher_Redeemed_Detail",
+			"value": "Your FREE meal voucher was redeemed."
+		},
+		{
+			"column": "Voucher_Inprogress_Detail",
+			"value": "Spend £7.00 or more to get a stamp. Collect 7 stamps to get a Meal Voucher of up to £7 off your next meal."
+		},
+		{
+			"column": "Voucher_Expired_Detail",
+			"value": "Your FREE meal voucher has expired."
+		}
+	]
 }

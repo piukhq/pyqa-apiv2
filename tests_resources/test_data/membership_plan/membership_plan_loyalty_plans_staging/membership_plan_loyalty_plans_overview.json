@@ -1,109 +1,121 @@
 [
-  {
-    "loyalty_plan_id": 105,
-    "plan_name": "Bonus Card",
-    "company_name": "Iceland",
-    "plan_popularity": 1,
-    "plan_type": 2,
-    "colour": "#d50724",
-    "category": "Household",
-    "images": [
-      {
-        "id": 374,
-        "type": 3,
-        "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
-        "description": "Iceland Icon",
-        "encoding": "png"
-      }
-    ]
-  },
-  {
-    "loyalty_plan_id": 124,
-    "plan_name": "Rewards by Harvey Nichols",
-    "company_name": "Harvey Nichols",
-    "plan_popularity": 2,
-    "plan_type": 2,
-    "colour": "#000000",
-    "category": "Household",
-    "images": [
-      {
-        "id": 660,
-        "type": 3,
-        "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Logo.png",
-        "description": "Harvey Nichols Icon",
-        "encoding": "png"
-      }
-    ]
-  },
-  {
-    "loyalty_plan_id": 281,
-    "plan_name": "Wasabi Club",
-    "company_name": "Wasabi",
-    "plan_popularity": 3,
-    "plan_type": 2,
-    "colour": "#ccd400",
-    "category": "Food & Drink",
-    "images": [
-      {
-        "id": 1297,
-        "type": 3,
-        "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
-        "description": "Wasabi Icon",
-        "encoding": "png"
-      }
-    ]
-  },
-  {
-    "loyalty_plan_id": 283,
-    "plan_name": "ACME Test",
-    "company_name": "ACME Test Compnay",
-    "plan_popularity": null,
-    "plan_type": 3,
-    "colour": "#000000",
-    "category": "Uncategorised",
-    "images": []
-  },
-  {
-    "loyalty_plan_id": 286,
-    "plan_name": null,
-    "company_name": "SquareMeal",
-    "plan_popularity": null,
-    "plan_type": 2,
-    "colour": "#465560",
-    "category": "Food & Drink",
-    "images": [
-      {
-        "id": 1328,
-        "type": 3,
-        "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
-        "description": "SquareMeal Icon",
-        "encoding": "png"
-      }
-    ]
-  },
-  {
-    "loyalty_plan_id": 245,
-    "plan_name": "QA Scheme Test 2",
-    "company_name": "QA Scheme Test 2",
-    "plan_popularity": null,
-    "plan_type": 3,
-    "colour": "#000000",
-    "category": "Household",
-    "images": [
-      {
-        "id": 1290,
-        "type": 3,
-        "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Screenshot_2020-05-14_at_13.26.35.png",
-        "description": "test qa",
-        "encoding": "png"
-      },
-      {
-        "id": 1249,
-        "type": 3,
-        "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/QA_test_logo.jpg",
-        "description": "QA Icons",
-        "encoding": "jpg"
-      }
-    ]
-  }
+	{
+		"loyalty_plan_id": 105,
+		"plan_name": "Iceland Bonus Card",
+		"company_name": "Iceland",
+		"plan_popularity": 1,
+		"plan_type": 2,
+		"colour": "#d50724",
+		"text_colour": "#00FF00",
+		"category": "Household",
+		"images": [
+			{
+				"id": 374,
+				"type": 3,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
+				"description": "Iceland Icon",
+				"encoding": "png",
+				"order": 0
+			}
+		]
+	},
+	{
+		"loyalty_plan_id": 124,
+		"plan_name": "Rewards by Harvey Nichols",
+		"company_name": "Harvey Nichols",
+		"plan_popularity": 2,
+		"plan_type": 2,
+		"colour": "#000000",
+		"text_colour": "#bfc68c",
+		"category": "Household",
+		"images": [
+			{
+				"id": 660,
+				"type": 3,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Logo.png",
+				"description": "Harvey Nichols Icon",
+				"encoding": "png",
+				"order": 0
+			}
+		]
+	},
+	{
+		"loyalty_plan_id": 281,
+		"plan_name": "Wasabi Club",
+		"company_name": "Wasabi",
+		"plan_popularity": 3,
+		"plan_type": 2,
+		"colour": "#ccd400",
+		"text_colour": "#7289da",
+		"category": "Food & Drink",
+		"images": [
+			{
+				"id": 1297,
+				"type": 3,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
+				"description": "Wasabi Icon",
+				"encoding": "png",
+				"order": 0
+			}
+		]
+	},
+	{
+		"loyalty_plan_id": 283,
+		"plan_name": "Coming Soon Test",
+		"company_name": "ACME Test Compnay",
+		"plan_popularity": null,
+		"plan_type": 3,
+		"colour": "#000000",
+		"text_colour": null,
+		"category": "Uncategorised",
+		"images": []
+	},
+	{
+		"loyalty_plan_id": 286,
+		"plan_name": "SquareMeal Restaurant Rewards",
+		"company_name": "SquareMeal",
+		"plan_popularity": null,
+		"plan_type": 2,
+		"colour": "#465560",
+		"text_colour": null,
+		"category": "Food & Drink",
+		"images": [
+			{
+				"id": 1328,
+				"type": 3,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
+				"description": "SquareMeal Icon",
+				"encoding": "png",
+				"order": 0
+			}
+		]
+	},
+	{
+		"loyalty_plan_id": 245,
+		"plan_name": "QA Scheme Test 2",
+		"company_name": "QA Scheme Test 2",
+		"plan_popularity": null,
+		"plan_type": 3,
+		"colour": "#000000",
+		"text_colour": null,
+		"category": "Household",
+		"images": [
+			{
+				"id": 1290,
+				"type": 3,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Screenshot_2020-05-14_at_13.26.35.png",
+				"description": "test qa",
+				"encoding": "png",
+				"order": 1
+			},
+			{
+				"id": 1249,
+				"type": 3,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/QA_test_logo.jpg",
+				"description": "QA Icons",
+				"encoding": "jpg",
+				"order": 1
+			}
+		]
+	}
 ]
