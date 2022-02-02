@@ -32,6 +32,19 @@ def verify_journey_field(loyalty_scheme, env, channel):
     TestContext.actual_membership_plan_journey_field = response.json()
 
 
+@when(
+    parsers.parse('I perform GET request to view "{loyalty_scheme}" loyalty plan by id and verify is_in_wallet field')
+)
+def verify_is_in_wallet_loyalty_plan_by_id(loyalty_scheme, env, channel):
+    response = MembershipPlans.get_loyalty_plan_by_id(TestContext.token, loyalty_scheme)
+    response_json = response_to_json(response)
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The loyalty plan for " + loyalty_scheme + " is: \n" + json.dumps(response_to_json(response), indent=4)
+    )
+    assert response_json["is_in_wallet"] is False
+
+
 @when(parsers.parse('I perform GET request to view "{loyalty_scheme}" loyalty plan by id'))
 def verify_get_loyalty_plan_by_id(loyalty_scheme, env, channel):
     response = MembershipPlans.get_loyalty_plan_by_id(TestContext.token, loyalty_scheme)
@@ -107,6 +120,18 @@ def verify_loyalty_plans_overview(env, channel):
     #      raise Exception("The expected and actual loyalty plan overview is not the same")
     #   else:
     #      logging.info("The expected and actual loyalty plan overview is same")
+
+
+@when(parsers.parse("I perform GET request to view loyalty plans overview and verify is_in_wallet field"))
+def verify_is_in_wallet_loyalty_plans_overview(env, channel):
+    response = MembershipPlans.get_loyalty_plans_overview(setup_third_token())
+    response_json = response_to_json(response)
+    TestContext.response_status_code = response.status_code
+    logging.info("The loyalty plans Overview is: \n" + json.dumps(response_to_json(response), indent=4))
+    assert response_json[0]["is_in_wallet"] is False
+    assert response_json[1]["is_in_wallet"] is False
+    assert response_json[2]["is_in_wallet"] is False
+    assert response_json[3]["is_in_wallet"] is False
 
 
 def json_compare(actual_membership_plan_journey_field, expected_membership_plan_journey_field):

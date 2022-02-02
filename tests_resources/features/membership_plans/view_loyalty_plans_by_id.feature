@@ -18,6 +18,20 @@ Feature: View Loyalty Plan by id
       | Wasabi              | 200         |
       | HarveyNichols       | 200         |
 
+  @loyalty_is_in_wallet @journey_type @bink_regression_api2
+  Scenario Outline: Verify is_in_wallet field for Loyalty Plan by id
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform GET request to view "<loyalty_scheme>" loyalty plan by id and verify is_in_wallet field
+    Then I verify the <status_code> for loyalty plan
+#    And  I can see the loyalty plan fields of that merchant "<loyalty_scheme>"
+
+    Examples:
+      | loyalty_scheme      | status_code |
+      | Iceland             | 200         |
+      | Wasabi              | 200         |
+      | HarveyNichols       | 200         |
+
   @loyalty_plan_id_invalid_token @invalid_token @bink_regression_api2
   Scenario Outline: Verify loyalty plan by id gives correct error messages with invalid token
     Given I am a Bink user
