@@ -1,6 +1,7 @@
 [
 	{
 		"loyalty_plan_id": 105,
+		"is_in_wallet": true,
 		"plan_popularity": 1,
 		"plan_features": {
 			"has_points": true,
@@ -30,6 +31,22 @@
 		},
 		"images": [
 			{
+				"id": 374,
+				"type": 3,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
+				"description": "Iceland Icon",
+				"encoding": "png",
+				"order": 0
+			},
+			{
+				"id": 373,
+				"type": 4,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland-asset.png",
+				"description": "Iceland Asset",
+				"encoding": "png",
+				"order": 0
+			},
+			{
 				"id": 1302,
 				"type": 2,
 				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Pizza.jpg",
@@ -46,60 +63,12 @@
 				"order": 1
 			},
 			{
-				"id": 1232,
-				"type": 0,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland-yellow_stripe_Hero.png",
-				"description": "Iceland Yellow Stripe Hero",
-				"encoding": "png",
+				"id": 1071,
+				"type": 5,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref2.jpg",
+				"description": "Iceland Reference",
+				"encoding": "jpg",
 				"order": 1
-			},
-			{
-				"id": 373,
-				"type": 4,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland-asset.png",
-				"description": "Iceland Asset",
-				"encoding": "png",
-				"order": 0
-			},
-			{
-				"id": 1236,
-				"type": 2,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Yellow_tile_v2.png",
-				"description": "Save for Christmas",
-				"encoding": "png",
-				"order": 0
-			},
-			{
-				"id": 1234,
-				"type": 0,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
-				"description": "Iceland Slimming World hero card",
-				"encoding": "png",
-				"order": 0
-			},
-			{
-				"id": 374,
-				"type": 3,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
-				"description": "Iceland Icon",
-				"encoding": "png",
-				"order": 0
-			},
-			{
-				"id": 1323,
-				"type": 7,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Promo_1968x732.png",
-				"description": "Iceland Promotion 1",
-				"encoding": "png",
-				"order": 0
-			},
-			{
-				"id": 1233,
-				"type": 0,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_SERVICE_MESSAGE.png",
-				"description": "Iceland SERVICE MESSAGE",
-				"encoding": "png",
-				"order": 0
 			},
 			{
 				"id": 1303,
@@ -110,34 +79,10 @@
 				"order": 2
 			},
 			{
-				"id": 1289,
-				"type": 9,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_MiyMk96.png",
-				"description": "Iceland Alternative Hero Image",
-				"encoding": "png",
-				"order": 0
-			},
-			{
-				"id": 1071,
-				"type": 5,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref2.jpg",
-				"description": "Iceland Reference",
-				"encoding": "jpg",
-				"order": 1
-			},
-			{
-				"id": 1225,
-				"type": 2,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Home_delivery_-_T_and_Cs.png",
-				"description": "Home Delivery",
-				"encoding": "png",
-				"order": 1
-			},
-			{
-				"id": 372,
+				"id": 1234,
 				"type": 0,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland-yellow_stripe.png",
-				"description": "Iceland hero - redacted",
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
+				"description": "Iceland Slimming World hero card",
 				"encoding": "png",
 				"order": 0
 			},
@@ -148,6 +93,22 @@
 				"description": "Iceland Reference",
 				"encoding": "jpg",
 				"order": 1
+			},
+			{
+				"id": 1323,
+				"type": 7,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Promo_1968x732.png",
+				"description": "Iceland Promotion 1",
+				"encoding": "png",
+				"order": 0
+			},
+			{
+				"id": 1289,
+				"type": 9,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_MiyMk96.png",
+				"description": "Iceland Alternative Hero Image",
+				"encoding": "png",
+				"order": 0
 			}
 		],
 		"plan_details": {
@@ -542,6 +503,7 @@
 	},
 	{
 		"loyalty_plan_id": 124,
+		"is_in_wallet": false,
 		"plan_popularity": 2,
 		"plan_features": {
 			"has_points": true,
@@ -563,46 +525,6 @@
 		},
 		"images": [
 			{
-				"id": 1185,
-				"type": 8,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_2_Gold.png",
-				"description": "Gold Tier",
-				"encoding": "png",
-				"order": 0
-			},
-			{
-				"id": 1180,
-				"type": 2,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_4.png",
-				"description": "Offer tile 4 - Shop Beauty",
-				"encoding": "png",
-				"order": 4
-			},
-			{
-				"id": 1183,
-				"type": 2,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_2_copy.png",
-				"description": "Offer tile 2 - Shop Women",
-				"encoding": "png",
-				"order": 2
-			},
-			{
-				"id": 1187,
-				"type": 8,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_4_Black.png",
-				"description": "Black Tier",
-				"encoding": "png",
-				"order": 0
-			},
-			{
-				"id": 660,
-				"type": 3,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Logo.png",
-				"description": "Harvey Nichols Icon",
-				"encoding": "png",
-				"order": 0
-			},
-			{
 				"id": 1186,
 				"type": 8,
 				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_3_Platinum.png",
@@ -611,12 +533,20 @@
 				"order": 0
 			},
 			{
-				"id": 1182,
-				"type": 2,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_6.png",
-				"description": "Offer tile 6 - Find your Nearest Store",
+				"id": 1185,
+				"type": 8,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_2_Gold.png",
+				"description": "Gold Tier",
 				"encoding": "png",
-				"order": 6
+				"order": 0
+			},
+			{
+				"id": 1293,
+				"type": 9,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_ESHACSv.png",
+				"description": "Harvey Nichols Alternative Hero",
+				"encoding": "png",
+				"order": 0
 			},
 			{
 				"id": 1184,
@@ -627,22 +557,6 @@
 				"order": 0
 			},
 			{
-				"id": 1179,
-				"type": 2,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_3.png",
-				"description": "Offer tile 3 - Shop Men",
-				"encoding": "png",
-				"order": 3
-			},
-			{
-				"id": 1178,
-				"type": 2,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_1.png",
-				"description": "Offer tile 1 - Open Rewards by Harvey Nichols",
-				"encoding": "png",
-				"order": 1
-			},
-			{
 				"id": 575,
 				"type": 0,
 				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_0_TIER_UNKNOWN.png",
@@ -651,10 +565,10 @@
 				"order": 100
 			},
 			{
-				"id": 1293,
-				"type": 9,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_ESHACSv.png",
-				"description": "Harvey Nichols Alternative Hero",
+				"id": 660,
+				"type": 3,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Logo.png",
+				"description": "Harvey Nichols Icon",
 				"encoding": "png",
 				"order": 0
 			},
@@ -667,12 +581,12 @@
 				"order": 1
 			},
 			{
-				"id": 1181,
-				"type": 2,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_5.png",
-				"description": "Offer tile 5 - Shop Food & Wine",
+				"id": 1187,
+				"type": 8,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_4_Black.png",
+				"description": "Black Tier",
 				"encoding": "png",
-				"order": 5
+				"order": 0
 			}
 		],
 		"plan_details": {
@@ -688,20 +602,20 @@
 			"category": "Household",
 			"tiers": [
 				{
-					"name": "Platinum Tier",
-					"description": "Platinum Tier Description"
-				},
-				{
 					"name": "Silver Tier",
 					"description": "Silver Tier Description"
+				},
+				{
+					"name": "Black Tier",
+					"description": "Black Tier Description"
 				},
 				{
 					"name": "Gold Tier",
 					"description": "Gold Tier Description"
 				},
 				{
-					"name": "Black Tier",
-					"description": "Black Tier Description"
+					"name": "Platinum Tier",
+					"description": "Platinum Tier Description"
 				}
 			]
 		},
@@ -851,6 +765,7 @@
 	},
 	{
 		"loyalty_plan_id": 281,
+		"is_in_wallet": false,
 		"plan_popularity": 3,
 		"plan_features": {
 			"has_points": true,
@@ -876,34 +791,18 @@
 		},
 		"images": [
 			{
-				"id": 1298,
-				"type": 9,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Alternate_Hero.png",
-				"description": "Wasabi Alternative Hero",
-				"encoding": "png",
-				"order": 0
-			},
-			{
-				"id": 1296,
-				"type": 0,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
-				"description": "Wasabi Hero",
-				"encoding": "png",
-				"order": 5
-			},
-			{
-				"id": 1319,
-				"type": 2,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_5_CVAeqUv_naFzo9T.png",
-				"description": "Wasabi Test Offer",
-				"encoding": "png",
-				"order": 1
-			},
-			{
 				"id": 1324,
 				"type": 7,
 				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Promo_1968x732.png",
 				"description": "Wasabi Promotion 1",
+				"encoding": "png",
+				"order": 0
+			},
+			{
+				"id": 1298,
+				"type": 9,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Alternate_Hero.png",
+				"description": "Wasabi Alternative Hero",
 				"encoding": "png",
 				"order": 0
 			},
@@ -914,6 +813,22 @@
 				"description": "Wasabi Icon",
 				"encoding": "png",
 				"order": 0
+			},
+			{
+				"id": 1319,
+				"type": 2,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_5_CVAeqUv_naFzo9T.png",
+				"description": "Wasabi Test Offer",
+				"encoding": "png",
+				"order": 1
+			},
+			{
+				"id": 1296,
+				"type": 0,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
+				"description": "Wasabi Hero",
+				"encoding": "png",
+				"order": 5
 			}
 		],
 		"plan_details": {
@@ -1040,8 +955,16 @@
 		},
 		"content": [
 			{
-				"column": "Voucher_Expired_Detail",
-				"value": "Your FREE meal voucher has expired."
+				"column": "Voucher_Redeemed_Detail",
+				"value": "Your FREE meal voucher was redeemed."
+			},
+			{
+				"column": "Voucher_Issued_Detail",
+				"value": "Show your Wasabi Club reward code in store to redeem £7 off your next meal."
+			},
+			{
+				"column": "Promo_Text_1",
+				"value": "EVERYONE GETS £7 OFF IN WASABI CLUB!"
 			},
 			{
 				"column": "Enrol_Help_Text",
@@ -1052,25 +975,18 @@
 				"value": "Your voucher has been cancelled. If you believe we have made a mistake please contact enquiries@wasabi.uk.com."
 			},
 			{
-				"column": "Promo_Text_1",
-				"value": "EVERYONE GETS £7 OFF IN WASABI CLUB!"
-			},
-			{
-				"column": "Voucher_Redeemed_Detail",
-				"value": "Your FREE meal voucher was redeemed."
+				"column": "Voucher_Expired_Detail",
+				"value": "Your FREE meal voucher has expired."
 			},
 			{
 				"column": "Voucher_Inprogress_Detail",
 				"value": "Spend £7.00 or more to get a stamp. Collect 7 stamps to get a Meal Voucher of up to £7 off your next meal."
-			},
-			{
-				"column": "Voucher_Issued_Detail",
-				"value": "Show your Wasabi Club reward code in store to redeem £7 off your next meal."
 			}
 		]
 	},
 	{
 		"loyalty_plan_id": 283,
+		"is_in_wallet": false,
 		"plan_popularity": null,
 		"plan_features": {
 			"has_points": false,
@@ -1105,12 +1021,13 @@
 	},
 	{
 		"loyalty_plan_id": 286,
+		"is_in_wallet": false,
 		"plan_popularity": null,
 		"plan_features": {
 			"has_points": true,
 			"has_transactions": true,
 			"plan_type": 2,
-			"barcode_type": null,
+			"barcode_type": 0,
 			"colour": "#465560",
 			"text_colour": null,
 			"journeys": [
@@ -1126,18 +1043,18 @@
 		},
 		"images": [
 			{
-				"id": 1331,
+				"id": 1332,
 				"type": 8,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
-				"description": "SquareMeal Bronze Tier 1",
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Silver_Tier_2.png",
+				"description": "SquareMeal Silver Tier 2",
 				"encoding": "png",
 				"order": 0
 			},
 			{
-				"id": 1328,
-				"type": 3,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
-				"description": "SquareMeal Icon",
+				"id": 1331,
+				"type": 8,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
+				"description": "SquareMeal Bronze Tier 1",
 				"encoding": "png",
 				"order": 0
 			},
@@ -1150,10 +1067,10 @@
 				"order": 0
 			},
 			{
-				"id": 1332,
-				"type": 8,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Silver_Tier_2.png",
-				"description": "SquareMeal Silver Tier 2",
+				"id": 1328,
+				"type": 3,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
+				"description": "SquareMeal Icon",
 				"encoding": "png",
 				"order": 0
 			},
@@ -1179,17 +1096,13 @@
 			"plan_name": "SquareMeal Restaurant Rewards",
 			"plan_label": "Account",
 			"plan_url": "https://www.squaremeal.co.uk/rewards/",
-			"plan_summary": "SquareMeal Rewards is the loyalty scheme that is specially designed for foodies. Earn points for booking and dining at selected restaurants, to redeem for restaurant vouchers & luxury gifts.",
-			"plan_description": "With the SquareMeal Rewards programme, you can earn points for booking tables, leaving restaurant reviews and each time you pay in one of our selected restaurants with your linked payment cards. 100 points earned = £1 to spend on your choice of restaurant vouchers, luxury gifts or charity donations. Join SquareMeal Rewards today to make your next dinner even more rewarding.",
-			"redeem_instructions": "Only accounts with linked payment cards will receive SquareMeal Rewards Points, when you make a qualifying purchase in a  participating restaurant.",
+			"plan_summary": "With SquareMeal, you're rewarded for eating out. Go to our website, book selected restaurants, and you'll collect points every time you spend £20 or more. You can easily redeem points on our website for restaurant vouchers & luxury gifts.",
+			"plan_description": "Join SquareMeal Rewards today to make your next dinner even more rewarding. As a member, you'll earn points for booking tables, leaving restaurant reviews, and each time you spend £20 or more in one of our selected restaurants with your linked payment cards. 100 points = £1 spend on your choice of restaurant vouchers, luxury gifts, or charity donations. To book a table or redeem rewards, simply go to our website.",
+			"redeem_instructions": "Only accounts with linked payment cards will receive SquareMeal Rewards Points, when you make a qualifying purchase in a participating restaurant.",
 			"plan_register_info": null,
 			"join_incentive": null,
 			"category": "Food & Drink",
 			"tiers": [
-				{
-					"name": "Tier 2",
-					"description": "Silver"
-				},
 				{
 					"name": "Tier 1",
 					"description": "Bronze"
@@ -1197,6 +1110,10 @@
 				{
 					"name": "Tier 3",
 					"description": "Gold"
+				},
+				{
+					"name": "Tier 2",
+					"description": "Silver"
 				}
 			]
 		},
@@ -1251,17 +1168,17 @@
 				"plan_documents": [
 					{
 						"order": 0,
-						"name": "Retailer terms and conditions",
-						"url": "https://policies.staging.gb.bink.com/squaremeal/tc.html",
-						"description": "I accept the",
-						"is_acceptance_required": true
-					},
-					{
-						"order": 0,
 						"name": "SquareMeal privacy policy",
 						"url": "https://policies.staging.gb.bink.com/squaremeal/pp.html",
 						"description": "I accept the",
 						"is_acceptance_required": false
+					},
+					{
+						"order": 0,
+						"name": "Retailer terms and conditions",
+						"url": "https://policies.staging.gb.bink.com/squaremeal/tc.html",
+						"description": "I accept the",
+						"is_acceptance_required": true
 					}
 				],
 				"consents": [
@@ -1304,10 +1221,16 @@
 				"consents": []
 			}
 		},
-		"content": []
+		"content": [
+			{
+				"column": "Enrol_Help_Text",
+				"value": "Please enter your details to register with the retailer. We won’t save or store any of the information you provide or edit below."
+			}
+		]
 	},
 	{
 		"loyalty_plan_id": 245,
+		"is_in_wallet": false,
 		"plan_popularity": null,
 		"plan_features": {
 			"has_points": true,
@@ -1371,11 +1294,22 @@
 				"credentials": [
 					{
 						"order": 0,
-						"display_label": "Gender",
+						"display_label": "Favourite place",
 						"validation": null,
-						"description": "Gender",
-						"credential_slug": "gender",
-						"type": "boolean",
+						"description": null,
+						"credential_slug": "favourite_place",
+						"type": "text",
+						"is_sensitive": false,
+						"choice": [],
+						"alternative": null
+					},
+					{
+						"order": 0,
+						"display_label": "Username",
+						"validation": null,
+						"description": null,
+						"credential_slug": "username",
+						"type": "text",
 						"is_sensitive": false,
 						"choice": [],
 						"alternative": null
@@ -1404,6 +1338,17 @@
 					},
 					{
 						"order": 0,
+						"display_label": "Gender",
+						"validation": null,
+						"description": "Gender",
+						"credential_slug": "gender",
+						"type": "boolean",
+						"is_sensitive": false,
+						"choice": [],
+						"alternative": null
+					},
+					{
+						"order": 0,
 						"display_label": "Card Number",
 						"validation": "^((63317491)|(63317492))[0-9]{10}$",
 						"description": "18 digit card number",
@@ -1419,28 +1364,6 @@
 						"validation": null,
 						"description": null,
 						"credential_slug": "country",
-						"type": "text",
-						"is_sensitive": false,
-						"choice": [],
-						"alternative": null
-					},
-					{
-						"order": 0,
-						"display_label": "Favourite place",
-						"validation": null,
-						"description": null,
-						"credential_slug": "favourite_place",
-						"type": "text",
-						"is_sensitive": false,
-						"choice": [],
-						"alternative": null
-					},
-					{
-						"order": 0,
-						"display_label": "Username",
-						"validation": null,
-						"description": null,
-						"credential_slug": "username",
 						"type": "text",
 						"is_sensitive": false,
 						"choice": [],
@@ -1469,11 +1392,22 @@
 				"credentials": [
 					{
 						"order": 0,
-						"display_label": "Gender",
+						"display_label": "Favourite place",
 						"validation": null,
-						"description": "Gender",
-						"credential_slug": "gender",
-						"type": "boolean",
+						"description": null,
+						"credential_slug": "favourite_place",
+						"type": "text",
+						"is_sensitive": false,
+						"choice": [],
+						"alternative": null
+					},
+					{
+						"order": 0,
+						"display_label": "Username",
+						"validation": null,
+						"description": null,
+						"credential_slug": "username",
+						"type": "text",
 						"is_sensitive": false,
 						"choice": [],
 						"alternative": null
@@ -1502,32 +1436,21 @@
 					},
 					{
 						"order": 0,
+						"display_label": "Gender",
+						"validation": null,
+						"description": "Gender",
+						"credential_slug": "gender",
+						"type": "boolean",
+						"is_sensitive": false,
+						"choice": [],
+						"alternative": null
+					},
+					{
+						"order": 0,
 						"display_label": "Country",
 						"validation": null,
 						"description": null,
 						"credential_slug": "country",
-						"type": "text",
-						"is_sensitive": false,
-						"choice": [],
-						"alternative": null
-					},
-					{
-						"order": 0,
-						"display_label": "Favourite place",
-						"validation": null,
-						"description": null,
-						"credential_slug": "favourite_place",
-						"type": "text",
-						"is_sensitive": false,
-						"choice": [],
-						"alternative": null
-					},
-					{
-						"order": 0,
-						"display_label": "Username",
-						"validation": null,
-						"description": null,
-						"credential_slug": "username",
 						"type": "text",
 						"is_sensitive": false,
 						"choice": [],

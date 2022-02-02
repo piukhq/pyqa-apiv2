@@ -1,5 +1,6 @@
 {
 	"loyalty_plan_id": 281,
+	"is_in_wallet": true,
 	"plan_popularity": 3,
 	"plan_features": {
 		"has_points": true,
@@ -25,6 +26,22 @@
 	},
 	"images": [
 		{
+			"id": 1324,
+			"type": 7,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Promo_1968x732.png",
+			"description": "Wasabi Promotion 1",
+			"encoding": "png",
+			"order": 0
+		},
+		{
+			"id": 1297,
+			"type": 3,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
+			"description": "Wasabi Icon",
+			"encoding": "png",
+			"order": 0
+		},
+		{
 			"id": 1298,
 			"type": 9,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Alternate_Hero.png",
@@ -47,22 +64,6 @@
 			"description": "Wasabi Test Offer",
 			"encoding": "png",
 			"order": 1
-		},
-		{
-			"id": 1324,
-			"type": 7,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Promo_1968x732.png",
-			"description": "Wasabi Promotion 1",
-			"encoding": "png",
-			"order": 0
-		},
-		{
-			"id": 1297,
-			"type": 3,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
-			"description": "Wasabi Icon",
-			"encoding": "png",
-			"order": 0
 		}
 	],
 	"plan_details": {
@@ -189,18 +190,6 @@
 	},
 	"content": [
 		{
-			"column": "Voucher_Cancelled_Detail",
-			"value": "Your voucher has been cancelled. If you believe we have made a mistake please contact enquiries@wasabi.uk.com."
-		},
-		{
-			"column": "Enrol_Help_Text",
-			"value": "Please enter your details to register with the retailer. We won’t save or store any of the information you provide or edit below."
-		},
-		{
-			"column": "Promo_Text_1",
-			"value": "EVERYONE GETS £7 OFF IN WASABI CLUB!"
-		},
-		{
 			"column": "Voucher_Issued_Detail",
 			"value": "Show your Wasabi Club reward code in store to redeem £7 off your next meal."
 		},
@@ -215,6 +204,18 @@
 		{
 			"column": "Voucher_Expired_Detail",
 			"value": "Your FREE meal voucher has expired."
+		},
+		{
+			"column": "Voucher_Cancelled_Detail",
+			"value": "Your voucher has been cancelled. If you believe we have made a mistake please contact enquiries@wasabi.uk.com."
+		},
+		{
+			"column": "Enrol_Help_Text",
+			"value": "Please enter your details to register with the retailer. We won’t save or store any of the information you provide or edit below."
+		},
+		{
+			"column": "Promo_Text_1",
+			"value": "EVERYONE GETS £7 OFF IN WASABI CLUB!"
 		}
 	]
 }

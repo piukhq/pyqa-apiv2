@@ -1,5 +1,6 @@
 {
 	"loyalty_plan_id": 124,
+	"is_in_wallet": true,
 	"plan_popularity": 2,
 	"plan_features": {
 		"has_points": true,
@@ -21,58 +22,10 @@
 	},
 	"images": [
 		{
-			"id": 1181,
-			"type": 2,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_5.png",
-			"description": "Offer tile 5 - Shop Food & Wine",
-			"encoding": "png",
-			"order": 5
-		},
-		{
-			"id": 1186,
-			"type": 8,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_3_Platinum.png",
-			"description": "Platinum Tier",
-			"encoding": "png",
-			"order": 0
-		},
-		{
-			"id": 1179,
-			"type": 2,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_3.png",
-			"description": "Offer tile 3 - Shop Men",
-			"encoding": "png",
-			"order": 3
-		},
-		{
-			"id": 1185,
-			"type": 8,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_2_Gold.png",
-			"description": "Gold Tier",
-			"encoding": "png",
-			"order": 0
-		},
-		{
-			"id": 1178,
-			"type": 2,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_1.png",
-			"description": "Offer tile 1 - Open Rewards by Harvey Nichols",
-			"encoding": "png",
-			"order": 1
-		},
-		{
 			"id": 1184,
 			"type": 8,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_1_Silver.png",
 			"description": "Silver Tier",
-			"encoding": "png",
-			"order": 0
-		},
-		{
-			"id": 660,
-			"type": 3,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Logo.png",
-			"description": "Harvey Nichols Icon",
 			"encoding": "png",
 			"order": 0
 		},
@@ -85,28 +38,12 @@
 			"order": 1
 		},
 		{
-			"id": 1293,
-			"type": 9,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_ESHACSv.png",
-			"description": "Harvey Nichols Alternative Hero",
+			"id": 660,
+			"type": 3,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Logo.png",
+			"description": "Harvey Nichols Icon",
 			"encoding": "png",
 			"order": 0
-		},
-		{
-			"id": 1183,
-			"type": 2,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_2_copy.png",
-			"description": "Offer tile 2 - Shop Women",
-			"encoding": "png",
-			"order": 2
-		},
-		{
-			"id": 1180,
-			"type": 2,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_4.png",
-			"description": "Offer tile 4 - Shop Beauty",
-			"encoding": "png",
-			"order": 4
 		},
 		{
 			"id": 575,
@@ -117,18 +54,34 @@
 			"order": 100
 		},
 		{
-			"id": 1182,
-			"type": 2,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_6.png",
-			"description": "Offer tile 6 - Find your Nearest Store",
-			"encoding": "png",
-			"order": 6
-		},
-		{
 			"id": 1187,
 			"type": 8,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_4_Black.png",
 			"description": "Black Tier",
+			"encoding": "png",
+			"order": 0
+		},
+		{
+			"id": 1186,
+			"type": 8,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_3_Platinum.png",
+			"description": "Platinum Tier",
+			"encoding": "png",
+			"order": 0
+		},
+		{
+			"id": 1185,
+			"type": 8,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_2_Gold.png",
+			"description": "Gold Tier",
+			"encoding": "png",
+			"order": 0
+		},
+		{
+			"id": 1293,
+			"type": 9,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_ESHACSv.png",
+			"description": "Harvey Nichols Alternative Hero",
 			"encoding": "png",
 			"order": 0
 		}
@@ -146,10 +99,6 @@
 		"category": "Household",
 		"tiers": [
 			{
-				"name": "Silver Tier",
-				"description": "Silver Tier Description"
-			},
-			{
 				"name": "Black Tier",
 				"description": "Black Tier Description"
 			},
@@ -160,6 +109,10 @@
 			{
 				"name": "Platinum Tier",
 				"description": "Platinum Tier Description"
+			},
+			{
+				"name": "Silver Tier",
+				"description": "Silver Tier Description"
 			}
 		]
 	},

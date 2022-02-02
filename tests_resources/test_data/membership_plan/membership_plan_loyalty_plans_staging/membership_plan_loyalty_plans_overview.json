@@ -1,6 +1,7 @@
 [
 	{
 		"loyalty_plan_id": 105,
+		"is_in_wallet": true,
 		"plan_name": "Iceland Bonus Card",
 		"company_name": "Iceland",
 		"plan_popularity": 1,
@@ -21,6 +22,7 @@
 	},
 	{
 		"loyalty_plan_id": 124,
+		"is_in_wallet": false,
 		"plan_name": "Rewards by Harvey Nichols",
 		"company_name": "Harvey Nichols",
 		"plan_popularity": 2,
@@ -41,6 +43,7 @@
 	},
 	{
 		"loyalty_plan_id": 281,
+		"is_in_wallet": false,
 		"plan_name": "Wasabi Club",
 		"company_name": "Wasabi",
 		"plan_popularity": 3,
@@ -61,6 +64,7 @@
 	},
 	{
 		"loyalty_plan_id": 283,
+		"is_in_wallet": false,
 		"plan_name": "Coming Soon Test",
 		"company_name": "ACME Test Compnay",
 		"plan_popularity": null,
@@ -72,6 +76,7 @@
 	},
 	{
 		"loyalty_plan_id": 286,
+		"is_in_wallet": false,
 		"plan_name": "SquareMeal Restaurant Rewards",
 		"company_name": "SquareMeal",
 		"plan_popularity": null,
@@ -92,6 +97,7 @@
 	},
 	{
 		"loyalty_plan_id": 245,
+		"is_in_wallet": false,
 		"plan_name": "QA Scheme Test 2",
 		"company_name": "QA Scheme Test 2",
 		"plan_popularity": null,
