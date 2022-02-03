@@ -248,11 +248,11 @@ def verify_loyalty_card_invalid_id_transactions(env, channel, merchant, invalid_
     parsers.parse(
         "I perform GET request to view loyalty card vouchers "
         'for "{merchant}" with "{state}", "{progress_display_text}", '
-        '"{current_value}", "{target_value}" and "{suffix}"'
+        '"{current_value}", "{target_value}" "{suffix}" and "{barcode_type}"'
     )
 )
 def verify_loyalty_card_vouchers(
-    env, channel, merchant, state, progress_display_text, current_value, target_value, suffix
+    env, channel, merchant, state, progress_display_text, current_value, target_value, suffix, barcode_type
 ):
     time.sleep(3)
     response = MembershipCards.get_loyalty_vouchers(TestContext.token, TestContext.current_scheme_account_id)
@@ -271,6 +271,7 @@ def verify_loyalty_card_vouchers(
     assert response_json["vouchers"][0]["target_value"] == target_value
     assert response_json["vouchers"][0]["suffix"] == suffix
     assert response_json["vouchers"][0]["prefix"] is None
+    assert response_json["vouchers"][0]["barcode_type"] == barcode_type
 
 
 @when(parsers.parse('I perform GET request to view loyalty card vouchers for "{merchant}" with invalid token'))

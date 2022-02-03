@@ -1,90 +1,91 @@
 {
-    "joins": [
-        {
-            "loyalty_card_id": 118955,
-            "loyalty_plan_id": 105,
-            "loyalty_plan_name": "Iceland Bonus Card",
-            "status": {
-                "state": "pending",
-                "slug": "JOIN_IN_PROGRESS",
-                "description": null
-            },
-            "images": [
-                {
-                    "id": 1234,
-                    "type": 0,
-                    "url": "schemes/Iceland_Card.png",
-                    "description": "Iceland Slimming World hero card",
-                    "encoding": "png"
-                }
-            ]
-        }
-    ],
-    "loyalty_cards": [
-        {
-            "id": 118953,
-            "loyalty_plan_id": 281,
-            "loyalty_plan_name": "Wasabi Club",
-            "status": {
-                "state": "authorised",
-                "slug": null,
-                "description": null
-            },
-            "balance": {
-                "updated_at": 1642068479,
-                "current_display_value": "3 stamps"
-            },
-            "images": [
-                {
-                    "id": 1296,
-                    "type": 0,
-                    "url": "schemes/Wasabi_Card.png",
-                    "description": "Wasabi Hero",
-                    "encoding": "png"
-                }
-            ]
-        },
-        {
-            "id": 118954,
-            "loyalty_plan_id": 105,
-            "loyalty_plan_name": "Iceland Bonus Card",
-            "status": {
-                "state": "authorised",
-                "slug": "ACTIVE",
-                "description": "This is a test"
-            },
-            "balance": {
-                "updated_at": 1638450443,
-                "current_display_value": "\u00a320.10"
-            },
-            "images": [
-                {
-                    "id": 1234,
-                    "type": 0,
-                    "url": "schemes/Iceland_Card.png",
-                    "description": "Iceland Slimming World hero card",
-                    "encoding": "png"
-                }
-            ]
-        }
-    ],
-    "payment_accounts": [
-        {
-            "id": 63122,
-            "status": "active",
-            "expiry_month": "11",
-            "expiry_year": "2146",
-            "name_on_card": "Mrs Wall Test",
-            "card_nickname": "wallet",
-            "images": [
-                {
-                    "id": 55,
-                    "type": 0,
-                    "url": "schemes/Visa-Payment_Eq81MWN.png",
-                    "description": "Visa Card Image",
-                    "encoding": "png"
-                }
-            ]
-        }
-    ]
+	"joins": [
+		{
+			"loyalty_card_id": 118955,
+			"loyalty_plan_id": 105,
+			"loyalty_plan_name": "Iceland Bonus Card",
+			"status": {
+				"state": "pending",
+				"slug": "JOIN_IN_PROGRESS",
+				"description": null
+			},
+			"images": [
+				{
+					"id": 1234,
+					"type": 0,
+					"url": "schemes/Iceland_Card.png",
+					"description": "Iceland Slimming World hero card",
+					"encoding": "png"
+				}
+			]
+		}
+	],
+	"loyalty_cards": [
+		{
+			"id": 118953,
+			"loyalty_plan_id": 281,
+			"loyalty_plan_name": "Wasabi Club",
+			"status": {
+				"state": "authorised",
+				"slug": null,
+				"description": null
+			},
+			"balance": {
+				"updated_at": 1643904869,
+				"current_display_value": "3 stamps"
+			},
+			"images": [
+				{
+					"id": 1296,
+					"type": 0,
+					"url": "schemes/Wasabi_Card.png",
+					"description": "Wasabi Hero",
+					"encoding": "png"
+				}
+			]
+		},
+		{
+			"id": 118954,
+			"loyalty_plan_id": 105,
+			"loyalty_plan_name": "Iceland Bonus Card",
+			"status": {
+				"state": "authorised",
+				"slug": null,
+				"description": null
+			},
+			"balance": {
+				"updated_at": 1638450443,
+				"current_display_value": "£20.10"
+			},
+			"images": [
+				{
+					"id": 1234,
+					"type": 0,
+					"url": "schemes/Iceland_Card.png",
+					"description": "Iceland Slimming World hero card",
+					"encoding": "png"
+				}
+			]
+		}
+	],
+	"payment_accounts": [
+		{
+			"id": 63122,
+			"provider": "Visa",
+			"status": "active",
+			"expiry_month": "11",
+			"expiry_year": "2146",
+			"name_on_card": "Mrs Wall Test",
+			"card_nickname": "wallet",
+			"images": [
+				{
+					"id": 55,
+					"type": 0,
+					"url": "schemes/Visa-Payment_Eq81MWN.png",
+					"description": "Visa Card Image",
+					"encoding": "png"
+				}
+			]
+		}
+	]
 }
