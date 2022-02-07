@@ -112,7 +112,13 @@ def verify_pll_links_scheme_account(journey_type2):
 
 
 def json_compare_wallet(actual_view_wallet_field, expected_view_wallet_field):
-    compare = DeepDiff(actual_view_wallet_field, expected_view_wallet_field, ignore_order=True)
+    # [NP-04/Feb/2022]Ignoring updated at in the deepdiff as it depends on the time of API call in the actual response
+    compare = DeepDiff(
+        actual_view_wallet_field,
+        expected_view_wallet_field,
+        ignore_order=True,
+        exclude_paths="root['loyalty_cards'][0]['balance']['updated_at']",
+    )
     return compare
 
 
@@ -248,11 +254,11 @@ def verify_loyalty_card_invalid_id_transactions(env, channel, merchant, invalid_
     parsers.parse(
         "I perform GET request to view loyalty card vouchers "
         'for "{merchant}" with "{state}", "{progress_display_text}", '
-        '"{current_value}", "{target_value}" and "{suffix}"'
+        '"{current_value}", "{target_value}" "{suffix}" and {barcode_type}'
     )
 )
 def verify_loyalty_card_vouchers(
-    env, channel, merchant, state, progress_display_text, current_value, target_value, suffix
+    env, channel, merchant, state, progress_display_text, current_value, target_value, suffix, barcode_type
 ):
     time.sleep(3)
     response = MembershipCards.get_loyalty_vouchers(TestContext.token, TestContext.current_scheme_account_id)
@@ -271,6 +277,7 @@ def verify_loyalty_card_vouchers(
     assert response_json["vouchers"][0]["target_value"] == target_value
     assert response_json["vouchers"][0]["suffix"] == suffix
     assert response_json["vouchers"][0]["prefix"] is None
+    assert response_json["vouchers"][0]["barcode_type"] == int(barcode_type)
 
 
 @when(parsers.parse('I perform GET request to view loyalty card vouchers for "{merchant}" with invalid token'))
@@ -651,11 +658,13 @@ def verify_membership_card_status_code(status_code_returned):
 @then(parsers.parse("I see '{journey}' list appearing"))
 def verify_wallet_join(journey):
     if journey == "join":
-        assert TestContext.response_join == []
+        assert TestContext.response_join == [], "Join list is not empty"
     elif journey == "loyalty_card":
-        assert TestContext.response_loyalty_card == []
+        assert TestContext.response_loyalty_card == [], "loyalty card list is not empty"
+    elif journey == "payment_account":
+        assert TestContext.response_payment_account == [], "Payment card list is not empty"
     else:
-        assert TestContext.response_payment_account == []
+        print("check if journey type is join, loyalty_card, payment_account ")
 
 
 @when(parsers.parse('I perform POST request to add and authorise "{merchant}" membership card'))
