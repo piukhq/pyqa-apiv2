@@ -658,7 +658,7 @@ def verify_membership_card_status_code(status_code_returned):
 @then(parsers.parse("I see '{journey}' list appearing"))
 def verify_wallet_join(journey):
     if journey == "join":
-        assert TestContext.response_join == [],"Join list is not empty"
+        assert TestContext.response_join == [], "Join list is not empty"
     elif journey == "loyalty_card":
         assert TestContext.response_loyalty_card == [], "loyalty card list is not empty"
     elif journey == "payment_account":
