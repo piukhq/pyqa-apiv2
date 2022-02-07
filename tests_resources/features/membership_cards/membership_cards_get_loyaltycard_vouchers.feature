@@ -8,7 +8,7 @@ so that I am aware and have visibility of the vouchers that have been concluded 
   Scenario Outline: Get Loyalty card vouchers
     Given I am a Bink user
     When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET request to view loyalty card vouchers for "<merchant>" with "<state>", "<progress_display_text>", "<current_value>", "<target_value>" "<suffix>" and "<barcode_type>"
+    And I perform GET request to view loyalty card vouchers for "<merchant>" with "<state>", "<progress_display_text>", "<current_value>", "<target_value>" "<suffix>" and <barcode_type>
     Then I see a <status_code_returned>
     And I perform DELETE request to delete the "<merchant>" membership card
 
