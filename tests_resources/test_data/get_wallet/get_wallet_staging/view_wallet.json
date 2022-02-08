@@ -11,6 +11,20 @@
 			},
 			"images": [
 				{
+					"id": 1302,
+					"type": 2,
+					"url": "schemes/Iceland_Offer_Pizza.jpg",
+					"description": "Iceland Offer - Pizza",
+					"encoding": "jpg"
+				},
+				{
+					"id": 1303,
+					"type": 2,
+					"url": "schemes/Iceland_Offer_Greggs.jpg",
+					"description": "Iceland Offer - Greggs",
+					"encoding": "jpg"
+				},
+				{
 					"id": 1323,
 					"type": 7,
 					"url": "schemes/Iceland_Promo_1968x732.png",
@@ -65,20 +79,6 @@
 					"url": "schemes/Iceland_Card.png",
 					"description": "Iceland Slimming World hero card",
 					"encoding": "png"
-				},
-				{
-					"id": 1303,
-					"type": 2,
-					"url": "schemes/Iceland_Offer_Greggs.jpg",
-					"description": "Iceland Offer - Greggs",
-					"encoding": "jpg"
-				},
-				{
-					"id": 1302,
-					"type": 2,
-					"url": "schemes/Iceland_Offer_Pizza.jpg",
-					"description": "Iceland Offer - Pizza",
-					"encoding": "jpg"
 				}
 			]
 		}
@@ -94,7 +94,7 @@
 				"description": null
 			},
 			"balance": {
-				"updated_at": 1643973638,
+				"updated_at": 1642068479,
 				"current_display_value": "3 stamps"
 			},
 			"transactions": [
@@ -136,7 +136,7 @@
 					"reward_text": "Free Meal",
 					"headline": "Spend £7.00 or more to get a stamp. Collect 7 stamps to get a Meal Voucher of up to £7 off your next meal.",
 					"voucher_code": null,
-					"barcode_type": 0,
+					"barcode_type": "0",
 					"progress_display_text": "3/7 stamps",
 					"current_value": "3",
 					"target_value": "7",
@@ -154,7 +154,7 @@
 					"reward_text": "Free Meal",
 					"headline": "Expired",
 					"voucher_code": "12SA135Y",
-					"barcode_type": 0,
+					"barcode_type": "0",
 					"progress_display_text": "7/7 stamps",
 					"current_value": "7",
 					"target_value": "7",
@@ -172,7 +172,7 @@
 					"reward_text": "Free Meal",
 					"headline": "Redeemed",
 					"voucher_code": "12EF1922",
-					"barcode_type": 0,
+					"barcode_type": "0",
 					"progress_display_text": "7/7 stamps",
 					"current_value": "7",
 					"target_value": "7",
@@ -190,7 +190,7 @@
 					"reward_text": "Free Meal",
 					"headline": "Expired",
 					"voucher_code": "12RV736F",
-					"barcode_type": 0,
+					"barcode_type": "0",
 					"progress_display_text": "7/7 stamps",
 					"current_value": "7",
 					"target_value": "7",
@@ -208,7 +208,7 @@
 					"reward_text": "Free Meal",
 					"headline": "Expired",
 					"voucher_code": "12LE682G",
-					"barcode_type": 0,
+					"barcode_type": "0",
 					"progress_display_text": "7/7 stamps",
 					"current_value": "7",
 					"target_value": "7",
@@ -226,7 +226,7 @@
 					"reward_text": "Free Meal",
 					"headline": "Expired",
 					"voucher_code": "12TA9892",
-					"barcode_type": 0,
+					"barcode_type": "0",
 					"progress_display_text": "7/7 stamps",
 					"current_value": "7",
 					"target_value": "7",
@@ -247,6 +247,13 @@
 				"text_colour": "#7289da"
 			},
 			"images": [
+				{
+					"id": 1319,
+					"type": 2,
+					"url": "schemes/Offer_tile_5_CVAeqUv_naFzo9T.png",
+					"description": "Wasabi Test Offer",
+					"encoding": "png"
+				},
 				{
 					"id": 1324,
 					"type": 7,
@@ -274,13 +281,6 @@
 					"url": "schemes/Wasabi_Card.png",
 					"description": "Wasabi Hero",
 					"encoding": "png"
-				},
-				{
-					"id": 1319,
-					"type": 2,
-					"url": "schemes/Offer_tile_5_CVAeqUv_naFzo9T.png",
-					"description": "Wasabi Test Offer",
-					"encoding": "png"
 				}
 			],
 			"pll_links": [
@@ -297,8 +297,8 @@
 			"loyalty_plan_name": "Iceland Bonus Card",
 			"status": {
 				"state": "authorised",
-				"slug": null,
-				"description": null
+				"slug": "ACTIVE",
+				"description": "This is a test"
 			},
 			"balance": {
 				"updated_at": 1638450443,
@@ -321,6 +321,20 @@
 				"text_colour": "#00FF00"
 			},
 			"images": [
+				{
+					"id": 1302,
+					"type": 2,
+					"url": "schemes/Iceland_Offer_Pizza.jpg",
+					"description": "Iceland Offer - Pizza",
+					"encoding": "jpg"
+				},
+				{
+					"id": 1303,
+					"type": 2,
+					"url": "schemes/Iceland_Offer_Greggs.jpg",
+					"description": "Iceland Offer - Greggs",
+					"encoding": "jpg"
+				},
 				{
 					"id": 1323,
 					"type": 7,
@@ -376,20 +390,6 @@
 					"url": "schemes/Iceland_Card.png",
 					"description": "Iceland Slimming World hero card",
 					"encoding": "png"
-				},
-				{
-					"id": 1303,
-					"type": 2,
-					"url": "schemes/Iceland_Offer_Greggs.jpg",
-					"description": "Iceland Offer - Greggs",
-					"encoding": "jpg"
-				},
-				{
-					"id": 1302,
-					"type": 2,
-					"url": "schemes/Iceland_Offer_Pizza.jpg",
-					"description": "Iceland Offer - Pizza",
-					"encoding": "jpg"
 				}
 			],
 			"pll_links": [
@@ -404,7 +404,6 @@
 	"payment_accounts": [
 		{
 			"id": 63122,
-			"provider": "Visa",
 			"status": "active",
 			"expiry_month": "11",
 			"expiry_year": "2146",
