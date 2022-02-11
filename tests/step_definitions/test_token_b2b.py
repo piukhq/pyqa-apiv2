@@ -6,7 +6,7 @@ from pytest_bdd import parsers, scenarios, then, when
 from tests import api
 from tests.api.base import Endpoint
 from tests.conftest import response_to_json
-from tests.helpers.test_context import TestContext
+from tests.helpers.context import TestContext
 from tests.requests.token_b2b import Token_b2b
 from tests.step_definitions import test_membership_cards
 

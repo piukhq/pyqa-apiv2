@@ -7,8 +7,8 @@ from tests import api
 from tests.api.base import Endpoint
 from tests.conftest import response_to_json
 from tests.helpers import constants
-from tests.helpers.test_context import TestContext
-from tests.helpers.test_data_utils import TestDataUtils
+from tests.helpers.context import TestContext
+from tests.helpers.data_utils import TestDataUtils
 from tests.requests.service import CustomerAccount
 from tests.step_definitions import test_membership_cards
 

@@ -15,8 +15,8 @@ import config
 from tests import api
 from tests.api.base import Endpoint
 from tests.helpers import constants
-from tests.helpers.test_context import TestContext
-from tests.helpers.test_data_utils import TestDataUtils
+from tests.helpers.context import TestContext
+from tests.helpers.data_utils import TestDataUtils
 from tests.helpers.vault.channel_vault import create_b2b_token, create_bearer_token, get_private_key_secret
 from tests.requests.membership_cards import MembershipCards
 from tests.requests.paymentcard_account import PaymentCards

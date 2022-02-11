@@ -4,7 +4,7 @@ Feature: View Vouchers
 As a Bink user I want to view my loyalty card vouchers in my wallet
 so that I am aware and have visibility of the vouchers that have been concluded with my loyalty card
 
-  @view_loyalty_vouchers @bink_regression_api2
+  @view_loyalty_vouchers_testnp1102 @bink_regression_api2
   Scenario Outline: Get Loyalty card vouchers
     Given I am a Bink user
     When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers

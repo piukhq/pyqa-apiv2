@@ -1,6 +1,6 @@
 from tests import api
 from tests.api.base import Endpoint
-from tests.helpers.test_helpers import TestData
+from tests.helpers.helpers import TestData
 
 
 class MembershipPlans(Endpoint):

@@ -6,9 +6,9 @@ from pytest_bdd import parsers, scenarios, then, when
 
 from tests.conftest import response_to_json, setup_third_token, setup_token
 from tests.helpers import constants
-from tests.helpers.test_context import TestContext
-from tests.helpers.test_data_utils import TestDataUtils
-from tests.helpers.test_helpers import TestData
+from tests.helpers.context import TestContext
+from tests.helpers.data_utils import TestDataUtils
+from tests.helpers.helpers import TestData
 from tests.requests.membership_plans import MembershipPlans
 
 scenarios("membership_plans/")

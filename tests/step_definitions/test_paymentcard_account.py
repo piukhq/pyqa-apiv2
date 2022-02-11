@@ -9,8 +9,8 @@ from tests import api
 from tests.api.base import Endpoint
 from tests.conftest import response_to_json, setup_second_token
 from tests.helpers import constants
-from tests.helpers.test_context import TestContext
-from tests.helpers.test_helpers import PaymentCardTestData
+from tests.helpers.context import TestContext
+from tests.helpers.helpers import PaymentCardTestData
 from tests.requests.paymentcard_account import PaymentCards
 
 scenarios("payment_accounts/")

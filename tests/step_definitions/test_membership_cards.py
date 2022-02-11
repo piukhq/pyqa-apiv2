@@ -9,10 +9,10 @@ from tests import api
 from tests.api.base import Endpoint
 from tests.conftest import response_to_json, setup_third_token
 from tests.helpers import constants
+from tests.helpers.context import TestContext
 from tests.helpers.database.query_hermes import QueryHermes
-from tests.helpers.test_context import TestContext
-from tests.helpers.test_data_utils import TestDataUtils
-from tests.helpers.test_helpers import TestData
+from tests.helpers.data_utils import TestDataUtils
+from tests.helpers.helpers import TestData
 from tests.requests.membership_cards import MembershipCards
 from tests.step_definitions import test_paymentcard_account
 
@@ -271,6 +271,8 @@ def verify_loyalty_card_vouchers(
         + "\n\n"
         + json.dumps(response_json, indent=4)
     )
+    print("state", state)
+    print('response', response_json["vouchers"][0]["state"])
     assert response_json["vouchers"][0]["state"] == state
     assert response_json["vouchers"][0]["progress_display_text"] == progress_display_text
     assert response_json["vouchers"][0]["current_value"] == current_value

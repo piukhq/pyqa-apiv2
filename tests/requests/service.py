@@ -2,7 +2,7 @@ import config
 
 from tests import api
 from tests.api.base import Endpoint
-from tests.helpers.test_context import TestContext
+from tests.helpers.context import TestContext
 from tests.payload.service.customer_accounts import UserDetails
 
 

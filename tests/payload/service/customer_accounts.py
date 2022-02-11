@@ -4,7 +4,7 @@ import logging
 from tests import api
 from tests.api.base import Endpoint
 from tests.helpers import constants
-from tests.helpers.test_data_utils import TestDataUtils
+from tests.helpers.data_utils import TestDataUtils
 
 
 class UserDetails:

@@ -1,6 +1,6 @@
 from tests import api
 from tests.api.base import Endpoint
-from tests.helpers.test_helpers import Merchant
+from tests.helpers.helpers import Merchant
 
 
 class MembershipCards(Endpoint):
