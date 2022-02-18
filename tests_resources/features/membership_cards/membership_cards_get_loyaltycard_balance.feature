@@ -15,7 +15,7 @@ so that I am aware and have visibility of my rewards
 
     Examples:
       | merchant      | status_code_returned | balance  |
-      | Iceland       | 200                  | £205.02  |
+      | Iceland       | 200                  | £123456  |
       | Wasabi        | 200                  | 5 stamps |
 
    @balance_invalid_token @bink_regression_api2

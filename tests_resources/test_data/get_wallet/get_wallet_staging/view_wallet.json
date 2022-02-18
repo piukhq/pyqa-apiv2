@@ -85,7 +85,7 @@
 	],
 	"loyalty_cards": [
 		{
-			"id": 136461,
+			"id": 137383,
 			"loyalty_plan_id": 281,
 			"loyalty_plan_name": "Wasabi Club",
 			"status": {
@@ -94,7 +94,7 @@
 				"description": null
 			},
 			"balance": {
-				"updated_at": 1645013198,
+				"updated_at": 1645170163,
 				"current_display_value": "3 stamps",
 				"loyalty_currency_name": "stamps",
 				"prefix": null,
@@ -103,25 +103,25 @@
 			},
 			"transactions": [
 				{
-					"id": "291801",
+					"id": "293516",
 					"timestamp": 1638356401,
 					"description": "Ascot 1 Petty Cury £8.00",
 					"display_value": "1 stamps"
 				},
 				{
-					"id": "291802",
+					"id": "293517",
 					"timestamp": 1635854462,
 					"description": "Ascot 2 Petty Cury £15.60",
 					"display_value": "1 stamps"
 				},
 				{
-					"id": "291803",
+					"id": "293518",
 					"timestamp": 1633863844,
 					"description": "Ascot 3 Petty Cury £10.02",
 					"display_value": "1 stamps"
 				},
 				{
-					"id": "291804",
+					"id": "293519",
 					"timestamp": 1631271844,
 					"description": "Ascot 4 Petty Cury £11.75",
 					"display_value": "1 stamps"
@@ -263,12 +263,12 @@
 				"description": "This is a test"
 			},
 			"balance": {
-				"updated_at": 1645013422,
+				"updated_at": 1645169910,
 				"current_display_value": "£20.10",
 				"loyalty_currency_name": "GBP",
 				"prefix": "£",
 				"suffix": null,
-				"value": "20.1"
+				"value": "20.10"
 			},
 			"transactions": [
 				{
@@ -387,13 +387,13 @@
 			],
 			"pll_links": [
 				{
-					"loyalty_card_id": 136673,
-					"loyalty_plan": "Iceland Bonus Card",
+					"loyalty_card_id": 137383,
+					"loyalty_plan": "Wasabi Club",
 					"status": "active"
 				},
 				{
-					"loyalty_card_id": 136461,
-					"loyalty_plan": "Wasabi Club",
+					"loyalty_card_id": 136673,
+					"loyalty_plan": "Iceland Bonus Card",
 					"status": "active"
 				}
 			]
