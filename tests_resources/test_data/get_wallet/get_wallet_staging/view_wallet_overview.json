@@ -22,7 +22,7 @@
 	],
 	"loyalty_cards": [
 		{
-			"id": 136461,
+			"id": 137383,
 			"loyalty_plan_id": 281,
 			"loyalty_plan_name": "Wasabi Club",
 			"status": {
@@ -31,13 +31,21 @@
 				"description": null
 			},
 			"balance": {
-				"updated_at": 1645013198,
+				"updated_at": 1645170163,
 				"current_display_value": "3 stamps",
 				"loyalty_currency_name": "stamps",
 				"prefix": null,
 				"suffix": "stamps",
 				"value": "3"
 			},
+			"card": {
+				"barcode": null,
+				"barcode_type": null,
+				"card_number": "1048170400",
+				"colour": "#ccd400",
+				"text_colour": "#7289da"
+			},
+			"reward_available": true,
 			"images": [
 				{
 					"id": 1296,
@@ -58,13 +66,21 @@
 				"description": "This is a test"
 			},
 			"balance": {
-				"updated_at": 1645013422,
+				"updated_at": 1645169910,
 				"current_display_value": "£20.10",
 				"loyalty_currency_name": "GBP",
 				"prefix": "£",
 				"suffix": null,
-				"value": "20.1"
+				"value": "20.10"
 			},
+			"card": {
+				"barcode": "63320400000000000100080",
+				"barcode_type": 0,
+				"card_number": "6332040000000000010",
+				"colour": "#d50724",
+				"text_colour": "#00FF00"
+			},
+			"reward_available": false,
 			"images": [
 				{
 					"id": 1234,
