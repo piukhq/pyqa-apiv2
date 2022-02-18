@@ -113,9 +113,14 @@ def verify_pll_links_scheme_account(journey_type2):
 
 def json_compare_wallet(actual_view_wallet_field, expected_view_wallet_field):
     compare = DeepDiff(
-        actual_view_wallet_field, expected_view_wallet_field, ignore_order=True,
-        exclude_paths=["root['loyalty_cards'][0]['balance']['updated_at']",
-                       "root['loyalty_cards'][1]['balance']['updated_at']"])
+        actual_view_wallet_field,
+        expected_view_wallet_field,
+        ignore_order=True,
+        exclude_paths=[
+            "root['loyalty_cards'][0]['balance']['updated_at']",
+            "root['loyalty_cards'][1]['balance']['updated_at']",
+        ],
+    )
     return compare
 
 
