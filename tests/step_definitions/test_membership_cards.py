@@ -7,7 +7,7 @@ from pytest_bdd import parsers, scenarios, then, when
 
 from tests import api
 from tests.api.base import Endpoint
-from tests.conftest import response_to_json, setup_third_token
+from tests.conftest import response_to_json, setup_third_token, setup_token
 from tests.helpers import constants
 from tests.helpers.database.query_hermes import QueryHermes
 from tests.helpers.test_context import TestContext
@@ -112,6 +112,7 @@ def verify_pll_links_scheme_account(journey_type2):
 
 
 def json_compare_wallet(actual_view_wallet_field, expected_view_wallet_field):
+
     compare = DeepDiff(
         actual_view_wallet_field,
         expected_view_wallet_field,
@@ -121,6 +122,7 @@ def json_compare_wallet(actual_view_wallet_field, expected_view_wallet_field):
             "root['loyalty_cards'][1]['balance']['updated_at']",
         ],
     )
+
     return compare
 
 
@@ -128,7 +130,7 @@ def json_compare_wallet(actual_view_wallet_field, expected_view_wallet_field):
 def verify_view_wallet_fields():
     difference = json_compare_wallet(TestContext.actual_view_wallet_field, TestContext.expected_view_wallet_field)
     if json.dumps(difference) != "{}":
-        logging.info(
+        logging.error(
             "The expected and actual wallets"
             + "has following differences"
             + json.dumps(difference, sort_keys=True, indent=4)
@@ -136,6 +138,19 @@ def verify_view_wallet_fields():
         raise Exception("The expected and actual wallet is not the same")
     else:
         logging.info("The expected and actual wallet is same")
+
+
+@then(parsers.parse("All Wallet fields are correct"))
+def verify_get_wallet_fields():
+    wallet_response = TestContext.actual_view_wallet_field
+    logging.info("The response of GET/wallet :\n\n"
+        + Endpoint.BASE_URL + api.ENDPOINT_WALLET+ "\n\n"
+        + json.dumps(wallet_response, indent=4))
+    print(wallet_response['loyalty_cards'][0]['id'] )
+    assert (
+            wallet_response['loyalty_cards'][0]['id'] == TestContext.current_scheme_account_id
+
+    )
 
 
 @when(parsers.parse('I perform GET request to view loyalty card balance for "{merchant}" with "{balance}"'))
@@ -338,6 +353,18 @@ def verify_view_wallet(Wallet, env, channel):
     TestContext.response_status_code = response.status_code
     stored_json = json.dumps(json_data)
     TestContext.expected_view_wallet_field = json.loads(stored_json)
+    TestContext.actual_view_wallet_field = response.json()
+
+@when(parsers.parse("I perform GET '{Wallet}'"))
+def verify_view_wallet(Wallet, env, channel):
+    if Wallet == "Wallet":
+        response = MembershipCards.get_view_wallet(setup_token())
+        logging.info("The response of Wallet is : \n" + json.dumps(response_to_json(response), indent=4))
+    else:
+        response = MembershipCards.get_view_wallet_overview(setup_token())
+        logging.info("The response of Wallet overview is : \n" + json.dumps(response_to_json(response), indent=4))
+
+    TestContext.response_status_code = response.status_code
     TestContext.actual_view_wallet_field = response.json()
 
 

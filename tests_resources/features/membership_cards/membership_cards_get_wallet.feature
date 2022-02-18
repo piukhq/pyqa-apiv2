@@ -16,6 +16,20 @@ Feature: View Wallet
       | status_code_returned |
       | 200                  |
 
+   @view_my_wallet
+  Scenario Outline: View my wallet
+    Given I am a Bink user
+    When I perform POST request to add and authorise "<merchant>" membership card
+    And I perform GET 'Wallet'
+    Then I see a <status_code_returned>
+    And All Wallet fields are correct
+    And I perform DELETE request to delete the "<merchant>" membership card
+
+    Examples:
+      | merchant      | status_code_returned|
+      | Wasabi        | 200                 |
+
+
   @wallet_invalid_token @bink_regression_api2
   Scenario Outline: Verify invalid token scenario for get Wallet
     Given I am a Bink Wallet user1

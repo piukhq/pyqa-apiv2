@@ -1,5 +1,6 @@
 import json
 import logging
+
 import time
 
 from json import JSONDecodeError
@@ -25,8 +26,36 @@ from tests.requests.token_b2b import Token_b2b
 
 def pytest_bdd_step_error(request, feature, scenario, step, step_func, step_func_args, exception):
     """This function will log the failed BDD-Step at the end of logs"""
-    logging.info(f"Step failed: {step}")
+    logging.error(f"Step failed: {step}")
 
+# def pytest_bdd_before_step_call(request,feature,scenario,step,step_func,step_func_args):
+#     """Calledbeforestepfunctionisexecutedwithevaluatedarguments"""
+#     #print("pytest_bdd_before_step_callstep",step)
+#     #print("pytest_bdd_before_step_callstep_func",step_func)
+#     #print("pytest_bdd_before_step_callstep_func_args",step_func_args)
+#     #print("pytest_bdd_before_step_callselectmerchant",request.getfixturevalue('selected_merchant'))
+#     if request.getfixturevalue('selected_merchant').upper()!='ALL':
+#         if 'merchant' in step_func_args:
+#             print(step_func_args['merchant'])
+#             merchants_list = list((request.getfixturevalue('selected_merchant')).split())
+#             for this_merchant in merchants_list:
+#                 if this_merchant.upper() != (step_func_args['merchant']).upper():
+#                     pytest.skip(msg=f"merchant{step_func_args['merchant']}")
+
+
+def pytest_bdd_before_step_call(request,feature,scenario,step,step_func,step_func_args):
+    """Calledbeforestepfunctionisexecutedwithevaluatedarguments"""
+    #print("pytest_bdd_before_step_callstep",step)
+    #print("pytest_bdd_before_step_callstep_func",step_func)
+    #print("pytest_bdd_before_step_callstep_func_args",step_func_args)
+    #print("pytest_bdd_before_step_callselectmerchant",request.getfixturevalue('selected_merchant'))
+    if request.getfixturevalue('selected_merchant').upper()!='ALL':
+        if 'merchant' in step_func_args:
+            print(step_func_args['merchant'])
+            merchants_list = (request.getfixturevalue('selected_merchant').upper().split(','))
+            print("merchants_list ", merchants_list)
+            if (step_func_args['merchant']).upper() not in merchants_list:
+                pytest.skip(msg=f"merchant{step_func_args['merchant']}")
 
 def pytest_bdd_after_scenario():
     delete_scheme_account()
@@ -54,9 +83,16 @@ def pytest_addoption(parser):
     parser.addoption("--channel", action="store", default="bink", help="Channel: can be bink or lloyds should pass")
     parser.addoption("--env", action="store", default="dev", help="env : can be dev or staging or prod")
     parser.addoption("--encryption", action="store", default="false", help="encryption : can be true or false")
+    parser.addoption("--selected_merchant", action="store", default='All', help="selected_merchant: can be Wasabi or Iceland or HarveyNichols")
 
 
 """Terminal parameter Fixtures"""
+
+
+@pytest.fixture(scope="session")
+def selected_merchant(pytestconfig):
+    """Returns merchant"""
+    return pytestconfig.getoption("selected_merchant")
 
 
 @pytest.fixture(scope="session")
@@ -80,6 +116,7 @@ def encryption(pytestconfig):
 @pytest.fixture(scope="session", autouse=True)
 def set_environment(env):
     Endpoint.set_environment(env)
+    # logging.getLogger().setLevel(level=logging.ERROR)
     logging.info("Environment Setup ready")
     TestDataUtils.set_test_data(env)
 
