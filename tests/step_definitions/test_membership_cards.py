@@ -140,17 +140,21 @@ def verify_view_wallet_fields():
         logging.info("The expected and actual wallet is same")
 
 
-@then(parsers.parse("All Wallet fields are correct"))
-def verify_get_wallet_fields():
+@then(parsers.parse("All Wallet fields are correctly populated for {merchant}"))
+def verify_get_wallet_fields(merchant):
     wallet_response = TestContext.actual_view_wallet_field
-    logging.info("The response of GET/wallet :\n\n"
-        + Endpoint.BASE_URL + api.ENDPOINT_WALLET+ "\n\n"
-        + json.dumps(wallet_response, indent=4))
-    print(wallet_response['loyalty_cards'][0]['id'] )
-    assert (
-            wallet_response['loyalty_cards'][0]['id'] == TestContext.current_scheme_account_id
+    # logging.info("The response of GET/wallet :\n\n"
+    #     + Endpoint.BASE_URL + api.ENDPOINT_WALLET+ "\n\n"
+    #     + json.dumps(wallet_response, indent=4))
+    # print(wallet_response['loyalty_cards'][0]['id'])
+    assert wallet_response['loyalty_cards'][0][
+               'id'] == TestContext.current_scheme_account_id, "account id does not match"
 
-    )
+    assert wallet_response['loyalty_cards'][0]['loyalty_plan_id'] == \
+           TestDataUtils.TEST_DATA.wallet_info[merchant][0][
+               'loyalty_plan_id'], "loyalty plan id does not match"
+
+
 
 
 @when(parsers.parse('I perform GET request to view loyalty card balance for "{merchant}" with "{balance}"'))
@@ -355,14 +359,18 @@ def verify_view_wallet(Wallet, env, channel):
     TestContext.expected_view_wallet_field = json.loads(stored_json)
     TestContext.actual_view_wallet_field = response.json()
 
+
 @when(parsers.parse("I perform GET '{Wallet}'"))
 def verify_view_wallet(Wallet, env, channel):
     if Wallet == "Wallet":
-        response = MembershipCards.get_view_wallet(setup_token())
-        logging.info("The response of Wallet is : \n" + json.dumps(response_to_json(response), indent=4))
+        response = MembershipCards.get_view_wallet(TestContext.token)
+        logging.info("The response of get wallet is : \n" + json.dumps(response_to_json(response), indent=4))
+        print("response of Wallet in dictionary format : \n", response_to_json(response))
+        # print("type if response.json : \n", type(response.json()))
+
     else:
-        response = MembershipCards.get_view_wallet_overview(setup_token())
-        logging.info("The response of Wallet overview is : \n" + json.dumps(response_to_json(response), indent=4))
+        response = MembershipCards.get_view_wallet_overview(TestContext.token)
+        logging.info("The response of get wallet overview is : \n" + json.dumps(response_to_json(response), indent=4))
 
     TestContext.response_status_code = response.status_code
     TestContext.actual_view_wallet_field = response.json()
