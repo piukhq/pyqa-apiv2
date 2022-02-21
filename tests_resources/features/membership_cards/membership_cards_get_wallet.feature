@@ -16,7 +16,7 @@ Feature: View Wallet
       | status_code_returned |
       | 200                  |
 
-   @view_my_wallet
+   @view_my_wallet @bink_regression_api2
   Scenario Outline: View my wallet
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token

@@ -1,6 +1,5 @@
 import json
 import logging
-
 import time
 
 from json import JSONDecodeError
@@ -28,6 +27,7 @@ def pytest_bdd_step_error(request, feature, scenario, step, step_func, step_func
     """This function will log the failed BDD-Step at the end of logs"""
     logging.error(f"Step failed: {step}")
 
+
 # def pytest_bdd_before_step_call(request,feature,scenario,step,step_func,step_func_args):
 #     """Calledbeforestepfunctionisexecutedwithevaluatedarguments"""
 #     #print("pytest_bdd_before_step_callstep",step)
@@ -43,19 +43,20 @@ def pytest_bdd_step_error(request, feature, scenario, step, step_func, step_func
 #                     pytest.skip(msg=f"merchant{step_func_args['merchant']}")
 
 
-def pytest_bdd_before_step_call(request,feature,scenario,step,step_func,step_func_args):
-    """Calledbeforestepfunctionisexecutedwithevaluatedarguments"""
-    #print("pytest_bdd_before_step_callstep",step)
-    #print("pytest_bdd_before_step_callstep_func",step_func)
-    #print("pytest_bdd_before_step_callstep_func_args",step_func_args)
-    #print("pytest_bdd_before_step_callselectmerchant",request.getfixturevalue('selected_merchant'))
-    if request.getfixturevalue('selected_merchant').upper()!='ALL':
-        if 'merchant' in step_func_args:
-            print(step_func_args['merchant'])
-            merchants_list = (request.getfixturevalue('selected_merchant').upper().split(','))
+def pytest_bdd_before_step_call(request, feature, scenario, step, step_func, step_func_args):
+    """Called before step function is executed with evaluated arguments"""
+    # print("pytest_bdd_before_step_callstep",step)
+    # print("pytest_bdd_before_step_callstep_func",step_func)
+    # print("pytest_bdd_before_step_callstep_func_args",step_func_args)
+    # print("pytest_bdd_before_step_callselectmerchant",request.getfixturevalue('selected_merchant'))
+    if request.getfixturevalue("selected_merchant").upper() != "ALL":
+        if "merchant" in step_func_args:
+            print(step_func_args["merchant"])
+            merchants_list = request.getfixturevalue("selected_merchant").upper().split(",")
             print("merchants_list ", merchants_list)
-            if (step_func_args['merchant']).upper() not in merchants_list:
+            if (step_func_args["merchant"]).upper() not in merchants_list:
                 pytest.skip(msg=f"merchant{step_func_args['merchant']}")
+
 
 def pytest_bdd_after_scenario():
     delete_scheme_account()
@@ -83,7 +84,12 @@ def pytest_addoption(parser):
     parser.addoption("--channel", action="store", default="bink", help="Channel: can be bink or lloyds should pass")
     parser.addoption("--env", action="store", default="dev", help="env : can be dev or staging or prod")
     parser.addoption("--encryption", action="store", default="false", help="encryption : can be true or false")
-    parser.addoption("--selected_merchant", action="store", default='All', help="selected_merchant: can be Wasabi or Iceland or HarveyNichols")
+    parser.addoption(
+        "--selected_merchant",
+        action="store",
+        default="All",
+        help="selected_merchant: can be Wasabi or Iceland or HarveyNichols or combination e.g. Wasabi,Iceland",
+    )
 
 
 """Terminal parameter Fixtures"""

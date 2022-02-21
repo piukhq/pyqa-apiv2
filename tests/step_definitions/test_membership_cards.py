@@ -7,7 +7,7 @@ from pytest_bdd import parsers, scenarios, then, when
 
 from tests import api
 from tests.api.base import Endpoint
-from tests.conftest import response_to_json, setup_third_token, setup_token
+from tests.conftest import response_to_json, setup_third_token
 from tests.helpers import constants
 from tests.helpers.database.query_hermes import QueryHermes
 from tests.helpers.test_context import TestContext
@@ -147,14 +147,14 @@ def verify_get_wallet_fields(merchant):
     #     + Endpoint.BASE_URL + api.ENDPOINT_WALLET+ "\n\n"
     #     + json.dumps(wallet_response, indent=4))
     # print(wallet_response['loyalty_cards'][0]['id'])
-    assert wallet_response['loyalty_cards'][0][
-               'id'] == TestContext.current_scheme_account_id, "account id does not match"
+    assert (
+        wallet_response["loyalty_cards"][0]["id"] == TestContext.current_scheme_account_id
+    ), "account id does not match"
 
-    assert wallet_response['loyalty_cards'][0]['loyalty_plan_id'] == \
-           TestDataUtils.TEST_DATA.wallet_info[merchant][0][
-               'loyalty_plan_id'], "loyalty plan id does not match"
-
-
+    assert (
+        wallet_response["loyalty_cards"][0]["loyalty_plan_id"]
+        == TestDataUtils.TEST_DATA.wallet_info[merchant][0]["loyalty_plan_id"]
+    ), "loyalty plan id does not match"
 
 
 @when(parsers.parse('I perform GET request to view loyalty card balance for "{merchant}" with "{balance}"'))
@@ -361,7 +361,7 @@ def verify_view_wallet(Wallet, env, channel):
 
 
 @when(parsers.parse("I perform GET '{Wallet}'"))
-def verify_view_wallet(Wallet, env, channel):
+def verify_wallet(Wallet, env, channel):
     if Wallet == "Wallet":
         response = MembershipCards.get_view_wallet(TestContext.token)
         logging.info("The response of get wallet is : \n" + json.dumps(response_to_json(response), indent=4))
