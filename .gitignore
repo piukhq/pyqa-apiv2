@@ -6,6 +6,9 @@ report.html
 # Created by https://www.toptal.com/developers/gitignore/api/macos,linux,code,python,pycharm
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,linux,code,python,pycharm
 
+# Shell script
+run.sh
+
 ### Code ###
 .vscode
 *.code-workspace

@@ -113,6 +113,34 @@ wasabi_membership_card = {
     "transaction_currency": "stamps",
 }
 
+wallet_info = {
+    "Wasabi": [
+        {
+            "loyalty_plan_id": 281,
+            "loyalty_plan_name": "Wasabi Club",
+            "status": {"state": "pending", "slug": None, "description": None},
+            "balance": {
+                "updated_at": None,
+                "current_display_value": None,
+                "loyalty_currency_name": None,
+                "prefix": None,
+                "suffix": None,
+                "value": None,
+            },
+            "transactions": [],
+            "vouchers": [],
+            "card": {
+                "barcode": None,
+                "barcode_type": None,
+                "card_number": "1048171268",
+                "colour": "#ccd400",
+                "text_colour": "#7289da",
+            },
+        }
+    ]
+}
+
+
 # ----------------------------------------MEMBERSHIP PLAN IDs   ----------------------------------------------- #
 
 membership_plan_id = {
