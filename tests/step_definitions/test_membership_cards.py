@@ -141,23 +141,20 @@ def verify_view_wallet_fields():
 
 @then(parsers.parse("All '{Wallet}' fields are correctly populated for {merchant}"))
 def verify_get_wallet_fields(Wallet, merchant):
-    print("test enter")
     wallet_response = TestContext.actual_view_wallet_field
     # print(wallet_response['loyalty_cards'][0]['id'])
     if Wallet in ["Wallet", "Wallet_overview"]:
         wallet_response_temp = wallet_response["loyalty_cards"][0]
         for payment_key in TestDataUtils.TEST_DATA.wallet_info["payment_accounts"][0].keys():
-            if payment_key not in ["id", "pll_links"]:
-                # print("print reponse", wallet_response["payment_accounts"])
-                # print("expected",TestDataUtils.TEST_DATA.wallet_info["payment_accounts"][0][payment_key])
+            if payment_key not in ["id", "pll_links", "expiry_month","expiry_year","name_on_card","card_nickname"]:
                 assert (
                     wallet_response["payment_accounts"][0][payment_key]
                     == TestDataUtils.TEST_DATA.wallet_info["payment_accounts"][0][payment_key]
                 ), f"{payment_key} do not match"
-        assert wallet_response_temp["pll_links"] == wallet_response["payment_accounts"]["pll_links"]
+
     elif Wallet == "Wallet_by_card_id":
         wallet_response_temp = wallet_response
-        assert (
+    assert (
             wallet_response_temp["pll_links"][0]["payment_account_id"] == TestContext.current_payment_card_id
         ), "pll_links do not match"
 
