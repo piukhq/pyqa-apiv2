@@ -35,7 +35,15 @@ class MembershipCards(Endpoint):
 
     @staticmethod
     def get_view_wallet_overview(token):
-        url = Endpoint.BASE_URL + api.ENDPOINT_WALLET_OVERVIEW
+        url = MembershipCards.api.ENDPOINT_WALLET_OVERVIEW()
+        header = Endpoint.request_header(token, "2.0")
+        response = Endpoint.call(url, header, "GET")
+        return response
+
+    @staticmethod
+    def get_view_wallet_by_card_id(token, scheme_account_id):
+        url = MembershipCards.get_loyalty_card_by_id_url(scheme_account_id)
+        print("url print", url)
         header = Endpoint.request_header(token, "2.0")
         response = Endpoint.call(url, header, "GET")
         return response
@@ -166,6 +174,11 @@ class MembershipCards(Endpoint):
             return Endpoint.BASE_URL + api.ENDPOINT_MEMBERSHIP_CARDS_ADD
         else:
             return Endpoint.BASE_URL + api.ENDPOINT_MEMBERSHIP_CARD.format(scheme_account_id)
+
+    @staticmethod
+    def get_loyalty_card_by_id_url(scheme_account_id):
+        """Return URL for get_loyalty_card_by_id"""
+        return Endpoint.BASE_URL + api.ENDPOINT_WALLET_BY_CARD_ID.format(scheme_account_id)
 
     @staticmethod
     def get_authorise_url(scheme_account_id):

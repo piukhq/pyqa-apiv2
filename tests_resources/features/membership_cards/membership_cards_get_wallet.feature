@@ -23,7 +23,7 @@ Feature: View Wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And I perform GET 'Wallet'
     Then I see a <status_code_returned>
-    And All Wallet fields are correctly populated for <merchant>
+    And All 'Wallet' fields are correctly populated for <merchant>
     And I perform DELETE request to delete the "<merchant>" membership card
 
     Examples:

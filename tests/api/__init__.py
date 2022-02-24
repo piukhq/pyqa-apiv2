@@ -28,6 +28,8 @@ ENDPOINT_WALLET = "/v2/wallet"
 
 ENDPOINT_WALLET_OVERVIEW = "/v2/wallet_overview"
 
+ENDPOINT_WALLET_BY_CARD_ID = "/v2/wallet/loyalty_cards/{}"
+
 ENDPOINT_EMAIL_UPDATE = "/v2/email_update"
 
 ENDPOINT_DELETE_USER = "/v2/me"

@@ -112,7 +112,6 @@ def verify_pll_links_scheme_account(journey_type2):
 
 
 def json_compare_wallet(actual_view_wallet_field, expected_view_wallet_field):
-
     compare = DeepDiff(
         actual_view_wallet_field,
         expected_view_wallet_field,
@@ -140,21 +139,57 @@ def verify_view_wallet_fields():
         logging.info("The expected and actual wallet is same")
 
 
-@then(parsers.parse("All Wallet fields are correctly populated for {merchant}"))
-def verify_get_wallet_fields(merchant):
+@then(parsers.parse("All '{Wallet}' fields are correctly populated for {merchant}"))
+def verify_get_wallet_fields(Wallet, merchant):
+    print("test enter")
     wallet_response = TestContext.actual_view_wallet_field
-    # logging.info("The response of GET/wallet :\n\n"
-    #     + Endpoint.BASE_URL + api.ENDPOINT_WALLET+ "\n\n"
-    #     + json.dumps(wallet_response, indent=4))
     # print(wallet_response['loyalty_cards'][0]['id'])
-    assert (
-        wallet_response["loyalty_cards"][0]["id"] == TestContext.current_scheme_account_id
-    ), "account id does not match"
+    if Wallet in ["Wallet", "Wallet_overview"]:
+        wallet_response_temp = wallet_response["loyalty_cards"][0]
+        for payment_key in TestDataUtils.TEST_DATA.wallet_info["payment_accounts"][0].keys():
+            if payment_key not in ["id", "pll_links"]:
+                # print("print reponse", wallet_response["payment_accounts"])
+                # print("expected",TestDataUtils.TEST_DATA.wallet_info["payment_accounts"][0][payment_key])
+                assert (
+                    wallet_response["payment_accounts"][0][payment_key]
+                    == TestDataUtils.TEST_DATA.wallet_info["payment_accounts"][0][payment_key]
+                ), f"{payment_key} do not match"
+        assert wallet_response_temp["pll_links"] == wallet_response["payment_accounts"]["pll_links"]
+    elif Wallet == "Wallet_by_card_id":
+        wallet_response_temp = wallet_response
+        assert (
+            wallet_response_temp["pll_links"][0]["payment_account_id"] == TestContext.current_payment_card_id
+        ), "pll_links do not match"
 
-    assert (
-        wallet_response["loyalty_cards"][0]["loyalty_plan_id"]
-        == TestDataUtils.TEST_DATA.wallet_info[merchant][0]["loyalty_plan_id"]
-    ), "loyalty plan id does not match"
+    assert wallet_response_temp["id"] == TestContext.current_scheme_account_id, "account id does not match"
+
+    for wallet_key in TestDataUtils.TEST_DATA.wallet_info[merchant][0].keys():
+        if wallet_key not in ["balance", "transactions"]:
+            assert (
+                wallet_response_temp[wallet_key] == TestDataUtils.TEST_DATA.wallet_info[merchant][0][wallet_key]
+            ), f"{wallet_key} do not match"
+        else:
+            for i in range(len(TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"])):
+                for tran_key in TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"][i].keys():
+                    if tran_key != "id":
+                        print(
+                            "wallet_response_temp[wallet_key]['transactions'][i][tran_key] print",
+                            wallet_response_temp["transactions"][i][tran_key],
+                        )
+                        print(
+                            "TestDataUtils.TEST_DATA.wallet_info[merchant][0][wallet_key][transactions][i][tran_key]",
+                            TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"][i][tran_key],
+                        )
+                        assert (
+                            wallet_response_temp["transactions"][i][tran_key]
+                            == TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"][i][tran_key]
+                        ), f"{tran_key} do not match"
+            for balance_key in TestDataUtils.TEST_DATA.wallet_info[merchant][0]["balance"].keys():
+                if balance_key != "updated_at":
+                    assert (
+                        wallet_response_temp["balance"][balance_key]
+                        == TestDataUtils.TEST_DATA.wallet_info[merchant][0]["balance"][balance_key]
+                    ), f"{balance_key} do not match"
 
 
 @when(parsers.parse('I perform GET request to view loyalty card balance for "{merchant}" with "{balance}"'))
@@ -360,6 +395,22 @@ def verify_view_wallet(Wallet, env, channel):
     TestContext.actual_view_wallet_field = response.json()
 
 
+# @when(parsers.parse("I perform GET '{Wallet}'"))
+# def verify_wallet(Wallet, env, channel):
+#     if Wallet == "Wallet":
+#         response = MembershipCards.get_view_wallet(TestContext.token)
+#         logging.info("The response of get wallet is : \n" + json.dumps(response_to_json(response), indent=4))
+#         print("response of Wallet in dictionary format : \n", response_to_json(response))
+#         # print("type if response.json : \n", type(response.json()))
+#
+#     else:
+#         response = MembershipCards.get_view_wallet_overview(TestContext.token)
+#         logging.info("The response of get wallet overview is : \n" + json.dumps(response_to_json(response), indent=4))
+#
+#     TestContext.response_status_code = response.status_code
+#     TestContext.actual_view_wallet_field = response.json()
+
+
 @when(parsers.parse("I perform GET '{Wallet}'"))
 def verify_wallet(Wallet, env, channel):
     if Wallet == "Wallet":
@@ -368,9 +419,13 @@ def verify_wallet(Wallet, env, channel):
         print("response of Wallet in dictionary format : \n", response_to_json(response))
         # print("type if response.json : \n", type(response.json()))
 
-    else:
+    elif Wallet == "Wallet_overview":
         response = MembershipCards.get_view_wallet_overview(TestContext.token)
         logging.info("The response of get wallet overview is : \n" + json.dumps(response_to_json(response), indent=4))
+
+    elif Wallet == "Wallet_by_card_id":
+        response = MembershipCards.get_view_wallet_by_card_id(TestContext.token, TestContext.current_scheme_account_id)
+        logging.info("The response of get wallet by card id is : \n" + json.dumps(response_to_json(response), indent=4))
 
     TestContext.response_status_code = response.status_code
     TestContext.actual_view_wallet_field = response.json()

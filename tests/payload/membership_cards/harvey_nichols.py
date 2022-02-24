@@ -152,3 +152,21 @@ class HarveyNicholsCard:
             + json.dumps(payload, indent=4)
         )
         return payload
+
+    @staticmethod
+    def add_and_authorise_transactions_card_payload():
+        value = TestDataUtils.TEST_DATA.harvey_nichols_membership_card.get(constants.ID)
+        password = TestDataUtils.TEST_DATA.harvey_nichols_membership_card.get(constants.PASSWORD)
+        payload = {
+            "account": {
+                "authorise_fields": {
+                    "credentials": [
+                        {"credential_slug": "email", "value": value},
+                        {"credential_slug": "password", "value": password},
+                    ]
+                }
+            },
+            "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("harvey_nichols"),
+        }
+
+        return payload
