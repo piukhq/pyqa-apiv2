@@ -5,18 +5,18 @@ Feature: View Wallet
   I want to view my loyalty cards in a wallet-only state
   so that I can see the cards that support store only functionality
 
-  @view_wallet_success @bink_regression_api2
-  Scenario Outline: View Wallet success
-    Given I am a Bink Wallet user1
-    When I perform GET request to view 'Wallet'
-    Then I see a <status_code_returned>
-    And I can see all Wallet fields successfully
+#  @view_wallet_success @bink_regression_api2
+#  Scenario Outline: View Wallet success
+#    Given I am a Bink Wallet user1
+#    When I perform GET request to view 'Wallet'
+#    Then I see a <status_code_returned>
+#    And I can see all Wallet fields successfully
+#
+#    Examples:
+#      | status_code_returned |
+#      | 200                  |
 
-    Examples:
-      | status_code_returned |
-      | 200                  |
-
-   @view_my_wallet @bink_regression_api2 @testnp2402
+   @view_my_wallet @bink_regression_api2
   Scenario Outline: View my wallet
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -38,11 +38,11 @@ Feature: View Wallet
   @wallet_invalid_token @bink_regression_api2
   Scenario Outline: Verify invalid token scenario for get Wallet
     Given I am a Bink Wallet user1
-    When I perform GET request to view 'Wallet' with invalid token
+    When I perform GET request to view 'Wallet' with <invalid>
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
 
     Examples:
-      | status_code_returned | error_message             | error_slug    |
-      | 401                  | Supplied token is invalid | INVALID_TOKEN |
+      | status_code_returned | error_message             | error_slug    |invalid|
+      | 401                  | Supplied token is invalid | INVALID_TOKEN |token  |

@@ -43,7 +43,6 @@ class MembershipCards(Endpoint):
     @staticmethod
     def get_view_wallet_by_card_id(token, scheme_account_id):
         url = MembershipCards.get_loyalty_card_by_id_url(scheme_account_id)
-        print("url print", url)
         header = Endpoint.request_header(token, "2.0")
         response = Endpoint.call(url, header, "GET")
         return response

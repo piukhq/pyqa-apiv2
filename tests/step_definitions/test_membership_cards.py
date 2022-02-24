@@ -440,36 +440,74 @@ def verify_empty_list_wallet_overview():
     TestContext.response_payment_account = response_json.get("payment_accounts")
 
 
-@when(parsers.parse("I perform GET request to view '{endpoint}' with invalid token"))
-def verify_wallet_with_invalid_token(endpoint):
-    if endpoint == "Wallet":
-        response = MembershipCards.get_view_wallet(TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN))
-        logging.info(
-            "The response of GET/wallet with invalid token is: \n\n"
-            + Endpoint.BASE_URL
-            + api.ENDPOINT_WALLET
-            + "\n\n"
-            + json.dumps(response.json(), indent=4)
-        )
-    else:
-        response = MembershipCards.get_view_wallet_overview(
-            TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN)
-        )
-        logging.info(
-            "The response of GET/wallet_overview with invalid token is: \n\n"
-            + Endpoint.BASE_URL
-            + api.ENDPOINT_WALLET_OVERVIEW
-            + "\n\n"
-            + json.dumps(response.json(), indent=4)
-        )
+# @when(parsers.parse("I perform GET request to view '{endpoint}' with invalid token"))
+# def verify_wallet_with_invalid_token(endpoint):
+#     if endpoint == "Wallet":
+#         response = MembershipCards.get_view_wallet(TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN))
+#         logging.info(
+#             "The response of GET/wallet with invalid token is: \n\n"
+#             + Endpoint.BASE_URL
+#             + api.ENDPOINT_WALLET
+#             + "\n\n"
+#             + json.dumps(response.json(), indent=4)
+#         )
+#     else:
+#         response = MembershipCards.get_view_wallet_overview(
+#             TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN)
+#         )
+#         logging.info(
+#             "The response of GET/wallet_overview with invalid token is: \n\n"
+#             + Endpoint.BASE_URL
+#             + api.ENDPOINT_WALLET_OVERVIEW
+#             + "\n\n"
+#             + json.dumps(response.json(), indent=4)
+#         )
+#
+#     TestContext.response_status_code = response.status_code
+#     response_json = response.json()
+#
+#     TestContext.error_message = response_json.get("error_message")
+#     TestContext.error_slug = response_json.get("error_slug")
+#
+#     assert response.status_code == 401, "Server error"
+#     return response
 
+
+@when(parsers.parse("I perform GET request to view '{endpoint}' with {invalid}"))
+def verify_wallet_with_invalid_token(endpoint, invalid):
+    if invalid == "token":
+        if endpoint == "Wallet":
+            response = MembershipCards.get_view_wallet(TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN))
+            logging.info(
+                "The response of GET/wallet with invalid token is: \n\n"
+                + Endpoint.BASE_URL
+                + api.ENDPOINT_WALLET
+                + "\n\n"
+                + json.dumps(response.json(), indent=4)
+            )
+        elif endpoint == "Wallet_overview":
+            response = MembershipCards.get_view_wallet_overview(
+                TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN)
+            )
+            logging.info(
+                "The response of GET/wallet_overview with invalid token is: \n\n"
+                + Endpoint.BASE_URL
+                + api.ENDPOINT_WALLET_OVERVIEW
+                + "\n\n"
+                + json.dumps(response.json(), indent=4)
+            )
+        elif endpoint == "Wallet_by_card_id":
+            response = MembershipCards.get_view_wallet_by_card_id(
+                TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN),TestContext.current_scheme_account_id)
+
+        assert response.status_code == 401, "Status is not 401"
+    elif invalid == "scheme_account_id" and endpoint == "Wallet_by_card_id":
+        response = MembershipCards.get_view_wallet_by_card_id(TestContext.token, TestContext.current_scheme_account_id*90000)
+        assert response.status_code == 404, "Status is not 404"
     TestContext.response_status_code = response.status_code
     response_json = response.json()
-
     TestContext.error_message = response_json.get("error_message")
     TestContext.error_slug = response_json.get("error_slug")
-
-    assert response.status_code == 401, "Server error"
     return response
 
 
