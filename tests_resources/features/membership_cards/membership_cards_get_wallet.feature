@@ -16,7 +16,7 @@ Feature: View Wallet
 #      | status_code_returned |
 #      | 200                  |
 
-   @view_my_wallet @bink_regression_api2
+   @view_my_wallet @bink_regression_api2 @testnp2402
   Scenario Outline: View my wallet
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -35,7 +35,7 @@ Feature: View Wallet
       |HarveyNichols  |200                  |master               |
 
 
-  @wallet_invalid_token @bink_regression_api2
+  @wallet_invalid_token @bink_regression_api2 @testnp2402
   Scenario Outline: Verify invalid token scenario for get Wallet
     Given I am a Bink Wallet user1
     When I perform GET request to view 'Wallet' with <invalid>

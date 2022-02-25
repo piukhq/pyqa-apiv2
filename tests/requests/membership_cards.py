@@ -35,7 +35,7 @@ class MembershipCards(Endpoint):
 
     @staticmethod
     def get_view_wallet_overview(token):
-        url = MembershipCards.api.ENDPOINT_WALLET_OVERVIEW()
+        url = Endpoint.BASE_URL + api.ENDPOINT_WALLET_OVERVIEW
         header = Endpoint.request_header(token, "2.0")
         response = Endpoint.call(url, header, "GET")
         return response

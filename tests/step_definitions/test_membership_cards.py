@@ -146,7 +146,7 @@ def verify_get_wallet_fields(Wallet, merchant):
     if Wallet in ["Wallet", "Wallet_overview"]:
         wallet_response_temp = wallet_response["loyalty_cards"][0]
         for payment_key in TestDataUtils.TEST_DATA.wallet_info["payment_accounts"][0].keys():
-            if payment_key not in ["id", "pll_links", "expiry_month","expiry_year","name_on_card","card_nickname"]:
+            if payment_key not in ["id", "pll_links", "expiry_month", "expiry_year", "name_on_card", "card_nickname"]:
                 assert (
                     wallet_response["payment_accounts"][0][payment_key]
                     == TestDataUtils.TEST_DATA.wallet_info["payment_accounts"][0][payment_key]
@@ -155,8 +155,8 @@ def verify_get_wallet_fields(Wallet, merchant):
     elif Wallet == "Wallet_by_card_id":
         wallet_response_temp = wallet_response
     assert (
-            wallet_response_temp["pll_links"][0]["payment_account_id"] == TestContext.current_payment_card_id
-        ), "pll_links do not match"
+        wallet_response_temp["pll_links"][0]["payment_account_id"] == TestContext.current_payment_card_id
+    ), "pll_links do not match"
 
     assert wallet_response_temp["id"] == TestContext.current_scheme_account_id, "account id does not match"
 
@@ -477,7 +477,9 @@ def verify_empty_list_wallet_overview():
 def verify_wallet_with_invalid_token(endpoint, invalid):
     if invalid == "token":
         if endpoint == "Wallet":
-            response = MembershipCards.get_view_wallet(TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN))
+            response = MembershipCards.get_view_wallet(
+                TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN)
+            )
             logging.info(
                 "The response of GET/wallet with invalid token is: \n\n"
                 + Endpoint.BASE_URL
@@ -498,11 +500,15 @@ def verify_wallet_with_invalid_token(endpoint, invalid):
             )
         elif endpoint == "Wallet_by_card_id":
             response = MembershipCards.get_view_wallet_by_card_id(
-                TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN),TestContext.current_scheme_account_id)
+                TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN),
+                TestContext.current_scheme_account_id,
+            )
 
         assert response.status_code == 401, "Status is not 401"
     elif invalid == "scheme_account_id" and endpoint == "Wallet_by_card_id":
-        response = MembershipCards.get_view_wallet_by_card_id(TestContext.token, TestContext.current_scheme_account_id*90000)
+        response = MembershipCards.get_view_wallet_by_card_id(
+            TestContext.token, TestContext.current_scheme_account_id * 90000
+        )
         assert response.status_code == 404, "Status is not 404"
     TestContext.response_status_code = response.status_code
     response_json = response.json()

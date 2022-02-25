@@ -4,7 +4,7 @@ Feature: Overview of wallet information
   I want to see an overview of wallet information
   so that I can display this on the front end without having to call the larger /wallet endpoint
 
-  @view_wallet_overview_success @bink_regression_api2
+  @view_wallet_overview_success @bink_regression_api2 @testnp2402
   Scenario Outline: Get wallet overview success
     Given I am a Bink Wallet user1
     When I perform GET request to view 'Wallet_overview'
@@ -28,14 +28,14 @@ Feature: Overview of wallet information
     | status_code_returned |
     | 200                  |
 
-   @wallet_overview_invalid_token @bink_regression_api2
+   @wallet_overview_invalid_token @bink_regression_api2 @testnp2402
    Scenario Outline: Verify invalid token scenario for get Wallet overview
      Given I am a Bink Wallet user1
-     When I perform GET request to view 'Wallet_overview' with invalid token
+     When I perform GET request to view 'Wallet_overview' with <invalid>
      Then I see a <status_code_returned>
      And I see a "<error_message>" error message
      And I see a "<error_slug>" error slug
 
      Examples:
-     | status_code_returned | error_message              | error_slug     |
-     | 401                  | Supplied token is invalid  | INVALID_TOKEN |
+     | status_code_returned | error_message              | error_slug     |invalid|
+     | 401                  | Supplied token is invalid  | INVALID_TOKEN |token   |
