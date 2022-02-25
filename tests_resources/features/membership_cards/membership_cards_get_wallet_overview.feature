@@ -4,16 +4,36 @@ Feature: Overview of wallet information
   I want to see an overview of wallet information
   so that I can display this on the front end without having to call the larger /wallet endpoint
 
-  @view_wallet_overview_success @bink_regression_api2 @testnp2402
-  Scenario Outline: Get wallet overview success
-    Given I am a Bink Wallet user1
-    When I perform GET request to view 'Wallet_overview'
-    Then I see a <status_code_returned>
-    And I can see all Wallet fields successfully
+#  @view_wallet_overview_success @bink_regression_api2 @testnp2402
+#  Scenario Outline: Get wallet overview success
+#    Given I am a Bink Wallet user1
+#    When I perform GET request to view 'Wallet_overview'
+#    Then I see a <status_code_returned>
+#    And I can see all Wallet fields successfully
+#
+#    Examples:
+#    | status_code_returned |
+#    | 200                  |
 
-    Examples:
-    | status_code_returned |
-    | 200                  |
+
+  @view_wallet_overview_success @bink_regression_api2
+  Scenario Outline: Get wallet overview success
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform GET 'Wallet_overview'
+    Then I see a <status_code_returned>
+    And All 'Wallet_overview' fields are correctly populated for <merchant>
+    And I perform DELETE request to delete the "<merchant>" membership card
+    And I perform DELETE request to delete "<payment_card_provider>" the payment card
+
+  Examples:
+      | merchant      | status_code_returned|payment_card_provider|
+      |Wasabi         |200                  |master               |
+#      |Iceland        |200                  |master               |
+#      |HarveyNichols  |200                  |master               |
+
 
   @wallet_overview_empty_list @bink_regression_api2
   Scenario Outline: Get wallet overview with empty list value
@@ -30,8 +50,9 @@ Feature: Overview of wallet information
 
    @wallet_overview_invalid_token @bink_regression_api2 @testnp2402
    Scenario Outline: Verify invalid token scenario for get Wallet overview
-     Given I am a Bink Wallet user1
-     When I perform GET request to view 'Wallet_overview' with <invalid>
+     Given I am in Bink channel to get b2b token
+     When I perform POST token request for token type "b2b" to get access token
+     And I perform GET request to view 'Wallet_overview' with <invalid>
      Then I see a <status_code_returned>
      And I see a "<error_message>" error message
      And I see a "<error_slug>" error slug

@@ -31,14 +31,15 @@ Feature: View Wallet
     Examples:
       | merchant      | status_code_returned|payment_card_provider|
       | Wasabi        | 200                 | master              |
-      |Iceland        |200                  |master               |
-      |HarveyNichols  |200                  |master               |
+#      |Iceland        |200                  |master               |
+#      |HarveyNichols  |200                  |master               |
 
 
   @wallet_invalid_token @bink_regression_api2 @testnp2402
   Scenario Outline: Verify invalid token scenario for get Wallet
-    Given I am a Bink Wallet user1
-    When I perform GET request to view 'Wallet' with <invalid>
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform GET request to view 'Wallet' with <invalid>
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug

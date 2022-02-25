@@ -147,16 +147,32 @@ def verify_get_wallet_fields(Wallet, merchant):
         wallet_response_temp = wallet_response["loyalty_cards"][0]
         for payment_key in TestDataUtils.TEST_DATA.wallet_info["payment_accounts"][0].keys():
             if payment_key not in ["id", "pll_links", "expiry_month", "expiry_year", "name_on_card", "card_nickname"]:
-                assert (
+                if payment_key == "images" and Wallet == "Wallet_overview":
+                    assert (
+                            wallet_response["payment_accounts"][0][payment_key][0]["description"]
+                            == "Mastercard Hero"
+                    ), f"{payment_key} description is not hero image"
+                    assert (
+                            wallet_response["payment_accounts"][0][payment_key][0]["id"]
+                            == 2
+                    ), f"{payment_key} id is not 2"
+                    assert (
+                            wallet_response["payment_accounts"][0][payment_key][0]["type"]
+                            == 0
+                    ), f"{payment_key} type is not 0"
+                else:
+                    assert (
                     wallet_response["payment_accounts"][0][payment_key]
                     == TestDataUtils.TEST_DATA.wallet_info["payment_accounts"][0][payment_key]
                 ), f"{payment_key} do not match"
 
     elif Wallet == "Wallet_by_card_id":
         wallet_response_temp = wallet_response
-    assert (
+
+    if Wallet in ["Wallet", "Wallet_by_card_id"]:
+        assert (
         wallet_response_temp["pll_links"][0]["payment_account_id"] == TestContext.current_payment_card_id
-    ), "pll_links do not match"
+        ), "pll_links do not match"
 
     assert wallet_response_temp["id"] == TestContext.current_scheme_account_id, "account id does not match"
 
@@ -169,25 +185,15 @@ def verify_get_wallet_fields(Wallet, merchant):
             for i in range(len(TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"])):
                 for tran_key in TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"][i].keys():
                     if tran_key != "id":
-                        print(
-                            "wallet_response_temp[wallet_key]['transactions'][i][tran_key] print",
-                            wallet_response_temp["transactions"][i][tran_key],
-                        )
-                        print(
-                            "TestDataUtils.TEST_DATA.wallet_info[merchant][0][wallet_key][transactions][i][tran_key]",
-                            TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"][i][tran_key],
-                        )
                         assert (
                             wallet_response_temp["transactions"][i][tran_key]
                             == TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"][i][tran_key]
                         ), f"{tran_key} do not match"
             for balance_key in TestDataUtils.TEST_DATA.wallet_info[merchant][0]["balance"].keys():
-                if balance_key != "updated_at":
-                    assert (
-                        wallet_response_temp["balance"][balance_key]
-                        == TestDataUtils.TEST_DATA.wallet_info[merchant][0]["balance"][balance_key]
-                    ), f"{balance_key} do not match"
-
+                assert (
+                            wallet_response_temp["balance"][balance_key]
+                            == TestDataUtils.TEST_DATA.wallet_info[merchant][0]["balance"][balance_key]
+                        ), f"{balance_key} do not match"
 
 @when(parsers.parse('I perform GET request to view loyalty card balance for "{merchant}" with "{balance}"'))
 def verify_loyalty_card_balance(env, channel, merchant, balance):
