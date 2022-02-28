@@ -200,16 +200,20 @@ def verify_get_wallet_fields(Wallet, merchant):
     wallet_response = TestContext.actual_view_wallet_field
     if Wallet == "Wallet":
         assert (
-            wallet_response["loyalty_cards"][0]["pll_links"][0]["payment_account_id"] == TestContext.current_payment_card_id
-            ), "pll_links do not match"
+            wallet_response["loyalty_cards"][0]["pll_links"][0]["payment_account_id"]
+            == TestContext.current_payment_card_id
+        ), "pll_links do not match"
 
-        assert wallet_response["loyalty_cards"][0]["id"] == TestContext.current_scheme_account_id, "account id does not match"
+        assert (
+            wallet_response["loyalty_cards"][0]["id"] == TestContext.current_scheme_account_id
+        ), "account id does not match"
 
         for wallet_key in TestDataUtils.TEST_DATA.wallet_info[merchant][0].keys():
             if wallet_key not in ["balance", "transactions"]:
                 assert (
-                    wallet_response["loyalty_cards"][0][wallet_key] == TestDataUtils.TEST_DATA.wallet_info[merchant][0][wallet_key]
-                    ), f"{wallet_key} do not match"
+                    wallet_response["loyalty_cards"][0][wallet_key]
+                    == TestDataUtils.TEST_DATA.wallet_info[merchant][0][wallet_key]
+                ), f"{wallet_key} do not match"
             else:
                 for i in range(len(TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"])):
                     for tran_key in TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"][i].keys():
@@ -224,20 +228,22 @@ def verify_get_wallet_fields(Wallet, merchant):
                     ), f"{balance_key} do not match"
 
         for payment_key in TestDataUtils.TEST_DATA.wallet_info["payment_accounts"][0].keys():
-               assert (
-                    wallet_response["payment_accounts"][0][payment_key]
-                    == TestDataUtils.TEST_DATA.wallet_info["payment_accounts"][0][payment_key]
-                    ), f"{payment_key} do not match"
+            assert (
+                wallet_response["payment_accounts"][0][payment_key]
+                == TestDataUtils.TEST_DATA.wallet_info["payment_accounts"][0][payment_key]
+            ), f"{payment_key} do not match"
 
     elif Wallet == "Wallet_overview":
-        assert wallet_response["loyalty_cards"][0][
-             "id"] == TestContext.current_scheme_account_id, "account id does not match"
+        assert (
+            wallet_response["loyalty_cards"][0]["id"] == TestContext.current_scheme_account_id
+        ), "account id does not match"
 
         for wallet_key in TestDataUtils.TEST_DATA.wallet_overview_info[merchant][0].keys():
             if wallet_key != "balance":
                 assert (
-                    wallet_response["loyalty_cards"][0][wallet_key] == TestDataUtils.TEST_DATA.wallet_overview_info[merchant][0][wallet_key]
-                    ), f"{wallet_key} do not match"
+                    wallet_response["loyalty_cards"][0][wallet_key]
+                    == TestDataUtils.TEST_DATA.wallet_overview_info[merchant][0][wallet_key]
+                ), f"{wallet_key} do not match"
             else:
                 for balance_key in TestDataUtils.TEST_DATA.wallet_overview_info[merchant][0]["balance"].keys():
                     assert (
@@ -247,35 +253,33 @@ def verify_get_wallet_fields(Wallet, merchant):
 
         for payment_key in TestDataUtils.TEST_DATA.wallet_overview_info["payment_accounts"][0].keys():
             assert (
-                    wallet_response["payment_accounts"][0][payment_key]
-                    == TestDataUtils.TEST_DATA.wallet_overview_info["payment_accounts"][0][payment_key]
+                wallet_response["payment_accounts"][0][payment_key]
+                == TestDataUtils.TEST_DATA.wallet_overview_info["payment_accounts"][0][payment_key]
             ), f"{payment_key} do not match"
     elif Wallet == "Wallet_by_card_id":
         assert (
             wallet_response["pll_links"][0]["payment_account_id"] == TestContext.current_payment_card_id
-            ), "pll_links do not match"
+        ), "pll_links do not match"
 
         assert wallet_response["id"] == TestContext.current_scheme_account_id, "account id does not match"
 
         for wallet_key in TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant].keys():
             if wallet_key not in ["balance", "transactions"]:
                 assert (
-                        wallet_response[wallet_key] ==
-                        TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant][wallet_key]
+                    wallet_response[wallet_key] == TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant][wallet_key]
                 ), f"{wallet_key} do not match"
             else:
                 for i in range(len(TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant]["transactions"])):
                     for tran_key in TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant]["transactions"][i].keys():
                         assert (
-                                wallet_response["transactions"][i][tran_key]
-                                == TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant]["transactions"][i][tran_key]
+                            wallet_response["transactions"][i][tran_key]
+                            == TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant]["transactions"][i][tran_key]
                         ), f"{tran_key} do not match"
                 for balance_key in TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant]["balance"].keys():
                     assert (
-                            wallet_response["balance"][balance_key]
-                            == TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant]["balance"][balance_key]
+                        wallet_response["balance"][balance_key]
+                        == TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant]["balance"][balance_key]
                     ), f"{balance_key} do not match"
-
 
 
 @when(parsers.parse('I perform GET request to view loyalty card balance for "{merchant}" with "{balance}"'))

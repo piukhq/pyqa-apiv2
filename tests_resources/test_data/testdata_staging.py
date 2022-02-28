@@ -62,9 +62,9 @@ master_payment_card = {
 invalid_token = {
     "invalid_token1": "bearer invalid_token",
     "expired_token": "bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6ImFjY2Vzcy1zZWNyZXQtMSJ9.eyJ1c2VyX2lkIjoy"
-                     "Mzg3NywiY2hhbm5lbCI6ImNvbS5iYXJjbGF5cy5ibWIiLCJzdWIiOjIzODc3LCJleHAiOjE2MzEyOTE3MjYsImlhdCI6M"
-                     "TYzMTI5MDgyNX0.2LfB5dNuweArdz5j-ecXds4mepaeG65h3JA0vC-Mfeilv6C0IWVnfEK_K9_xrJDUhLD7f094rC1L7th"
-                     "5g4vJoQ",
+    "Mzg3NywiY2hhbm5lbCI6ImNvbS5iYXJjbGF5cy5ibWIiLCJzdWIiOjIzODc3LCJleHAiOjE2MzEyOTE3MjYsImlhdCI6M"
+    "TYzMTI5MDgyNX0.2LfB5dNuweArdz5j-ecXds4mepaeG65h3JA0vC-Mfeilv6C0IWVnfEK_K9_xrJDUhLD7f094rC1L7th"
+    "5g4vJoQ",
 }
 # ----------------------------------------LOYALTY CARDs    --------------------------------------------------- #
 iceland_membership_card = {
@@ -160,7 +160,7 @@ wallet_info = {
                     "earn_type": "stamps",
                     "reward_text": "Free Meal",
                     "headline": "Spend £7.00 or more to get a stamp. Collect 7 stamps to get a Meal Voucher of up to "
-                                "£7 off your next meal.",
+                    "£7 off your next meal.",
                     "voucher_code": None,
                     "barcode_type": 0,
                     "progress_display_text": "6/7 stamps",
@@ -523,25 +523,21 @@ wallet_overview_info = {
             # "id": 138934,
             "loyalty_plan_id": 281,
             "loyalty_plan_name": "Wasabi Club",
-            "status": {
-                "state": "authorised",
-                "slug": None,
-                "description": None
-            },
+            "status": {"state": "authorised", "slug": None, "description": None},
             "balance": {
                 # "updated_at": 1646039736,
                 "current_display_value": "6 stamps",
                 "loyalty_currency_name": "stamps",
                 "prefix": None,
                 "suffix": "stamps",
-                "value": "6"
+                "value": "6",
             },
             "card": {
                 "barcode": None,
                 "barcode_type": None,
                 "card_number": "1048172852",
                 "colour": "#ccd400",
-                "text_colour": "#7289da"
+                "text_colour": "#7289da",
             },
             "reward_available": True,
             "images": [
@@ -550,9 +546,9 @@ wallet_overview_info = {
                     "type": 0,
                     "url": "schemes/Wasabi_Card.png",
                     "description": "Wasabi Hero",
-                    "encoding": "png"
+                    "encoding": "png",
                 }
-            ]
+            ],
         }
     ],
     "Iceland": [
@@ -560,25 +556,21 @@ wallet_overview_info = {
             # "id": 138551,
             "loyalty_plan_id": 105,
             "loyalty_plan_name": "Iceland Bonus Card",
-            "status": {
-                "state": "authorised",
-                "slug": "ACTIVE",
-                "description": "This is a test"
-            },
+            "status": {"state": "authorised", "slug": "ACTIVE", "description": "This is a test"},
             "balance": {
                 # "updated_at": 1646040252,
                 "current_display_value": "£380.01",
                 "loyalty_currency_name": "GBP",
                 "prefix": "£",
                 "suffix": None,
-                "value": "380.01"
+                "value": "380.01",
             },
             "card": {
                 "barcode": "63320400000000000070080",
                 "barcode_type": 0,
                 "card_number": "6332040000000000007",
                 "colour": "#d50724",
-                "text_colour": "#00FF00"
+                "text_colour": "#00FF00",
             },
             "reward_available": False,
             "images": [
@@ -587,9 +579,9 @@ wallet_overview_info = {
                     "type": 0,
                     "url": "schemes/Iceland_Card.png",
                     "description": "Iceland Slimming World hero card",
-                    "encoding": "png"
+                    "encoding": "png",
                 }
-            ]
+            ],
         }
     ],
     "HarveyNichols": [
@@ -597,25 +589,21 @@ wallet_overview_info = {
             # "id": 138533,
             "loyalty_plan_id": 124,
             "loyalty_plan_name": "Rewards by Harvey Nichols",
-            "status": {
-                "state": "authorised",
-                "slug": None,
-                "description": None
-            },
+            "status": {"state": "authorised", "slug": None, "description": None},
             "balance": {
                 # "updated_at": 1646040402,
                 "current_display_value": "123456 pts",
                 "loyalty_currency_name": "points",
                 "prefix": None,
                 "suffix": "pts",
-                "value": "123456"
+                "value": "123456",
             },
             "card": {
                 "barcode": "9000000000003",
                 "barcode_type": 7,
                 "card_number": "9000000000003",
                 "colour": "#000000",
-                "text_colour": "#bfc68c"
+                "text_colour": "#bfc68c",
             },
             "reward_available": False,
             "images": [
@@ -624,9 +612,9 @@ wallet_overview_info = {
                     "type": 0,
                     "url": "schemes/Harvey_Nichols_Card_0_TIER_UNKNOWN.png",
                     "description": "Harvey Nichols Hero",
-                    "encoding": "png"
+                    "encoding": "png",
                 }
-            ]
+            ],
         }
     ],
     "payment_accounts": [
@@ -644,11 +632,11 @@ wallet_overview_info = {
                     "type": 0,
                     "url": "schemes/Mastercard-Payment_1goHQYv.png",
                     "description": "Mastercard Hero",
-                    "encoding": "png"
+                    "encoding": "png",
                 }
-            ]
+            ],
         }
-    ]
+    ],
 }
 
 wallet_info_by_card_id = {
@@ -656,37 +644,26 @@ wallet_info_by_card_id = {
         # "id": 138934,
         "loyalty_plan_id": 281,
         "loyalty_plan_name": "Wasabi Club",
-        "status": {
-            "state": "authorised",
-            "slug": None,
-            "description": None
-        },
+        "status": {"state": "authorised", "slug": None, "description": None},
         "balance": {
             # "updated_at": 1646003769,
             "current_display_value": "6 stamps",
             "loyalty_currency_name": "stamps",
             "prefix": None,
             "suffix": "stamps",
-            "value": "6"
+            "value": "6",
         },
         "transactions": [
-            {
-                "timestamp": 1638356401,
-                "description": "Ascot 1 Petty Cury £8.00",
-                "display_value": "1 stamps"
-            },
-            {
-                "timestamp": 1635854462,
-                "description": "Ascot 2 Petty Cury £15.60",
-                "display_value": "1 stamps"
-            }
+            {"timestamp": 1638356401, "description": "Ascot 1 Petty Cury £8.00", "display_value": "1 stamps"},
+            {"timestamp": 1635854462, "description": "Ascot 2 Petty Cury £15.60", "display_value": "1 stamps"},
         ],
         "vouchers": [
             {
                 "state": "inprogress",
                 "earn_type": "stamps",
                 "reward_text": "Free Meal",
-                "headline": "Spend £7.00 or more to get a stamp. Collect 7 stamps to get a Meal Voucher of up to £7 off your next meal.",
+                "headline": "Spend £7.00 or more to get a stamp. "
+                            "Collect 7 stamps to get a Meal Voucher of up to £7 off your next meal.",
                 "voucher_code": None,
                 "barcode_type": 0,
                 "progress_display_text": "6/7 stamps",
@@ -698,7 +675,7 @@ wallet_info_by_card_id = {
                 "terms_and_conditions": None,
                 "issued_date": None,
                 "expiry_date": None,
-                "redeemed_date": None
+                "redeemed_date": None,
             },
             {
                 "state": "issued",
@@ -716,97 +693,61 @@ wallet_info_by_card_id = {
                 "terms_and_conditions": None,
                 "issued_date": "1591787076",
                 "expiry_date": "1673308800",
-                "redeemed_date": None
-            }
+                "redeemed_date": None,
+            },
         ],
         "card": {
             "barcode": None,
             "barcode_type": None,
             "card_number": "1048172852",
             "colour": "#ccd400",
-            "text_colour": "#7289da"
+            "text_colour": "#7289da",
         },
         "images": [
-            {
-                "id": 1297,
-                "type": 3,
-                "url": "schemes/Wasabi_Logo.png",
-                "description": "Wasabi Icon",
-                "encoding": "png"
-            },
+            {"id": 1297, "type": 3, "url": "schemes/Wasabi_Logo.png", "description": "Wasabi Icon", "encoding": "png"},
             {
                 "id": 1324,
                 "type": 7,
                 "url": "schemes/Wasabi_Promo_1968x732.png",
                 "description": "Wasabi Promotion 1",
-                "encoding": "png"
+                "encoding": "png",
             },
-            {
-                "id": 1296,
-                "type": 0,
-                "url": "schemes/Wasabi_Card.png",
-                "description": "Wasabi Hero",
-                "encoding": "png"
-            },
+            {"id": 1296, "type": 0, "url": "schemes/Wasabi_Card.png", "description": "Wasabi Hero", "encoding": "png"},
             {
                 "id": 1298,
                 "type": 9,
                 "url": "schemes/Wasabi_Alternate_Hero.png",
                 "description": "Wasabi Alternative Hero",
-                "encoding": "png"
+                "encoding": "png",
             },
             {
                 "id": 1319,
                 "type": 2,
                 "url": "schemes/Offer_tile_5_CVAeqUv_naFzo9T.png",
                 "description": "Wasabi Test Offer",
-                "encoding": "png"
-            }
+                "encoding": "png",
+            },
         ],
     },
     "Iceland": {
         # "id": 138551,
         "loyalty_plan_id": 105,
         "loyalty_plan_name": "Iceland Bonus Card",
-        "status": {
-            "state": "authorised",
-            "slug": "ACTIVE",
-            "description": "This is a test"
-        },
+        "status": {"state": "authorised", "slug": "ACTIVE", "description": "This is a test"},
         "balance": {
             # "updated_at": 1645724754,
             "current_display_value": "£380.01",
             "loyalty_currency_name": "GBP",
             "prefix": "£",
             "suffix": None,
-            "value": "380.01"
+            "value": "380.01",
         },
         "transactions": [
-            {
-                "timestamp": 1643809826,
-                "description": "CREDIT",
-                "display_value": "£12.50"
-            },
-            {
-                "timestamp": 1639591616,
-                "description": "CREDIT",
-                "display_value": "£1"
-            },
-            {
-                "timestamp": 1631961858,
-                "description": "CREDIT",
-                "display_value": "£5"
-            },
-            {
-                "timestamp": 1626767059,
-                "description": "CREDIT",
-                "display_value": "£21.15"
-            },
-            {
-                "timestamp": 1623549329,
-                "description": "DEBIT",
-                "display_value": "-£23"
-            }
+            {"timestamp": 1643809826, "description": "CREDIT", "display_value": "£12.50"},
+            {"timestamp": 1639591616, "description": "CREDIT", "display_value": "£1"},
+            {"timestamp": 1631961858, "description": "CREDIT", "display_value": "£5"},
+            {"timestamp": 1626767059, "description": "CREDIT", "display_value": "£21.15"},
+            {"timestamp": 1623549329, "description": "DEBIT", "display_value": "-£23"},
         ],
         "vouchers": [],
         "card": {
@@ -814,7 +755,7 @@ wallet_info_by_card_id = {
             "barcode_type": 0,
             "card_number": "6332040000000000007",
             "colour": "#d50724",
-            "text_colour": "#00FF00"
+            "text_colour": "#00FF00",
         },
         "images": [
             {
@@ -822,117 +763,86 @@ wallet_info_by_card_id = {
                 "type": 9,
                 "url": "schemes/Iceland_MiyMk96.png",
                 "description": "Iceland Alternative Hero Image",
-                "encoding": "png"
+                "encoding": "png",
             },
             {
                 "id": 1323,
                 "type": 7,
                 "url": "schemes/Iceland_Promo_1968x732.png",
                 "description": "Iceland Promotion 1",
-                "encoding": "png"
+                "encoding": "png",
             },
-            {
-                "id": 374,
-                "type": 3,
-                "url": "schemes/Iceland_Logo.png",
-                "description": "Iceland Icon",
-                "encoding": "png"
-            },
+            {"id": 374, "type": 3, "url": "schemes/Iceland_Logo.png", "description": "Iceland Icon", "encoding": "png"},
             {
                 "id": 373,
                 "type": 4,
                 "url": "schemes/iceland-asset.png",
                 "description": "Iceland Asset",
-                "encoding": "png"
+                "encoding": "png",
             },
             {
                 "id": 1070,
                 "type": 5,
                 "url": "schemes/Iceland_ref1.jpg",
                 "description": "Iceland Reference",
-                "encoding": "jpg"
+                "encoding": "jpg",
             },
             {
                 "id": 1071,
                 "type": 5,
                 "url": "schemes/iceland_ref2.jpg",
                 "description": "Iceland Reference",
-                "encoding": "jpg"
+                "encoding": "jpg",
             },
             {
                 "id": 1072,
                 "type": 5,
                 "url": "schemes/iceland_ref3.jpg",
                 "description": "Iceland Reference",
-                "encoding": "jpg"
+                "encoding": "jpg",
             },
             {
                 "id": 1234,
                 "type": 0,
                 "url": "schemes/Iceland_Card.png",
                 "description": "Iceland Slimming World hero card",
-                "encoding": "png"
+                "encoding": "png",
             },
             {
                 "id": 1303,
                 "type": 2,
                 "url": "schemes/Iceland_Offer_Greggs.jpg",
                 "description": "Iceland Offer - Greggs",
-                "encoding": "jpg"
+                "encoding": "jpg",
             },
             {
                 "id": 1302,
                 "type": 2,
                 "url": "schemes/Iceland_Offer_Pizza.jpg",
                 "description": "Iceland Offer - Pizza",
-                "encoding": "jpg"
-            }
+                "encoding": "jpg",
+            },
         ],
-
     },
     "HarveyNichols": {
         # "id": 138533,
         "loyalty_plan_id": 124,
         "loyalty_plan_name": "Rewards by Harvey Nichols",
-        "status": {
-            "state": "authorised",
-            "slug": None,
-            "description": None
-        },
+        "status": {"state": "authorised", "slug": None, "description": None},
         "balance": {
             # "updated_at": 1646040402,
             "current_display_value": "123456 pts",
             "loyalty_currency_name": "points",
             "prefix": None,
             "suffix": "pts",
-            "value": "123456"
+            "value": "123456",
         },
         "transactions": [
-            {
-                "timestamp": 1536080100,
-                "description": "Test transaction: 2 items",
-                "display_value": "-50 pts"
-            },
-            {
-                "timestamp": 1536046510,
-                "description": "Test transaction: 1 item",
-                "display_value": "10 pts"
-            },
-            {
-                "timestamp": 1536012345,
-                "description": "Test transaction: 5 items",
-                "display_value": "200 pts"
-            },
-            {
-                "timestamp": 1533211890,
-                "description": "Test transaction: 3 items",
-                "display_value": "-100 pts"
-            },
-            {
-                "timestamp": 1530455055,
-                "description": "Test transaction: 1 item",
-                "display_value": "20 pts"
-            }
+            {"timestamp": 1536080100, "description": "Test transaction: 2 items", "display_value": "-50 pts"},
+            {"timestamp": 1536046510, "description": "Test transaction: 1 item", "display_value": "10 pts"},
+            {"timestamp": 1536012345, "description": "Test transaction: 5 items", "display_value": "200 pts"},
+            {"timestamp": 1533211890, "description": "Test transaction: 3 items", "display_value": "-100 pts"},
+            {"timestamp": 1530455055, "description": "Test transaction: 1 item", "display_value": "20 pts"},
         ],
         "vouchers": [],
         "card": {
@@ -940,7 +850,7 @@ wallet_info_by_card_id = {
             "barcode_type": 7,
             "card_number": "9000000000003",
             "colour": "#000000",
-            "text_colour": "#bfc68c"
+            "text_colour": "#bfc68c",
         },
         "images": [
             {
@@ -948,60 +858,59 @@ wallet_info_by_card_id = {
                 "type": 9,
                 "url": "schemes/Harvey_Nichols_ESHACSv.png",
                 "description": "Harvey Nichols Alternative Hero",
-                "encoding": "png"
+                "encoding": "png",
             },
             {
                 "id": 660,
                 "type": 3,
                 "url": "schemes/Harvey_Nichols_Logo.png",
                 "description": "Harvey Nichols Icon",
-                "encoding": "png"
+                "encoding": "png",
             },
             {
                 "id": 1187,
                 "type": 8,
                 "url": "schemes/Harvey_Nichols_Card_4_Black.png",
                 "description": "Black Tier",
-                "encoding": "png"
+                "encoding": "png",
             },
             {
                 "id": 1186,
                 "type": 8,
                 "url": "schemes/Harvey_Nichols_Card_3_Platinum.png",
                 "description": "Platinum Tier",
-                "encoding": "png"
+                "encoding": "png",
             },
             {
                 "id": 1185,
                 "type": 8,
                 "url": "schemes/Harvey_Nichols_Card_2_Gold.png",
                 "description": "Gold Tier",
-                "encoding": "png"
+                "encoding": "png",
             },
             {
                 "id": 1184,
                 "type": 8,
                 "url": "schemes/Harvey_Nichols_Card_1_Silver.png",
                 "description": "Silver Tier",
-                "encoding": "png"
+                "encoding": "png",
             },
             {
                 "id": 1304,
                 "type": 2,
                 "url": "schemes/Harvey_Nichols_Rewards_square_oct_02.jpg",
                 "description": "Harvey Nichols Rewards",
-                "encoding": "jpg"
+                "encoding": "jpg",
             },
             {
                 "id": 575,
                 "type": 0,
                 "url": "schemes/Harvey_Nichols_Card_0_TIER_UNKNOWN.png",
                 "description": "Harvey Nichols Hero",
-                "encoding": "png"
-            }
+                "encoding": "png",
+            },
         ],
-
-    }
+    },
 }
 
 # ----------------------------------------MEMBERSHIP PLAN IDs   ----------------------------------------------- #
