@@ -4,7 +4,7 @@ Feature: Overview of wallet information
   I want to see an overview of wallet information
   so that I can display this on the front end without having to call the larger /wallet endpoint
 
-#  @view_wallet_overview_success @bink_regression_api2 @testnp2402
+#  @view_wallet_overview_success @bink_regression_api2
 #  Scenario Outline: Get wallet overview success
 #    Given I am a Bink Wallet user1
 #    When I perform GET request to view 'Wallet_overview'
@@ -31,14 +31,29 @@ Feature: Overview of wallet information
   Examples:
       | merchant      | status_code_returned|payment_card_provider|
       |Wasabi         |200                  |master               |
-#      |Iceland        |200                  |master               |
-#      |HarveyNichols  |200                  |master               |
+      |Iceland        |200                  |master               |
+      |HarveyNichols  |200                  |master               |
 
 
-  @wallet_overview_empty_list @bink_regression_api2
+#  @wallet_overview_empty_list @bink_regression_api2
+#  Scenario Outline: Get wallet overview with empty list value
+#    Given I am a Bink user
+#    When I perform GET request to view wallet overview with empty list
+#    Then I see a <status_code_returned>
+#    And I see 'join' list appearing
+#    And I see 'loyalty_card' list appearing
+#    And I see 'payment_account' list appearing
+#
+#    Examples:
+#    | status_code_returned |
+#    | 200                  |
+
+
+   @wallet_overview_empty_list @bink_regression_api2
   Scenario Outline: Get wallet overview with empty list value
-    Given I am a Bink user
-    When I perform GET request to view wallet overview with empty list
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform GET request to view wallet overview with empty list
     Then I see a <status_code_returned>
     And I see 'join' list appearing
     And I see 'loyalty_card' list appearing
@@ -48,7 +63,9 @@ Feature: Overview of wallet information
     | status_code_returned |
     | 200                  |
 
-   @wallet_overview_invalid_token @bink_regression_api2 @testnp2402
+
+
+   @wallet_overview_invalid_token @bink_regression_api2
    Scenario Outline: Verify invalid token scenario for get Wallet overview
      Given I am in Bink channel to get b2b token
      When I perform POST token request for token type "b2b" to get access token
