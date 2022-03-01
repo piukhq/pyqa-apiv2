@@ -139,53 +139,146 @@ def verify_view_wallet_fields():
         logging.info("The expected and actual wallet is same")
 
 
+# @then(parsers.parse("All '{Wallet}' fields are correctly populated for {merchant}"))
+# def verify_get_wallet_fields(Wallet, merchant):
+#     wallet_response = TestContext.actual_view_wallet_field
+#     if Wallet in ["Wallet", "Wallet_overview"]:
+#         wallet_response_temp = wallet_response["loyalty_cards"][0]
+#         for payment_key in TestDataUtils.TEST_DATA.wallet_info["payment_accounts"][0].keys():
+#             if payment_key not in ["id", "pll_links", "expiry_month", "expiry_year", "name_on_card", "card_nickname"]:
+#                 if payment_key == "images" and Wallet == "Wallet_overview":
+#                     assert (
+#                             wallet_response["payment_accounts"][0][payment_key][0]["description"]
+#                             == "Mastercard Hero"
+#                     ), f"{payment_key} description is not hero image"
+#                     assert (
+#                             wallet_response["payment_accounts"][0][payment_key][0]["id"]
+#                             == 2
+#                     ), f"{payment_key} id is not 2"
+#                     assert (
+#                             wallet_response["payment_accounts"][0][payment_key][0]["type"]
+#                             == 0
+#                     ), f"{payment_key} type is not 0"
+#                 else:
+#                     assert (
+#                     wallet_response["payment_accounts"][0][payment_key]
+#                     == TestDataUtils.TEST_DATA.wallet_info["payment_accounts"][0][payment_key]
+#                 ), f"{payment_key} do not match"
+#
+#     elif Wallet == "Wallet_by_card_id":
+#         wallet_response_temp = wallet_response
+#
+#     if Wallet in ["Wallet", "Wallet_by_card_id"]:
+#         assert (
+#         wallet_response_temp["pll_links"][0]["payment_account_id"] == TestContext.current_payment_card_id
+#         ), "pll_links do not match"
+#
+#     assert wallet_response_temp["id"] == TestContext.current_scheme_account_id, "account id does not match"
+#
+#     for wallet_key in TestDataUtils.TEST_DATA.wallet_info[merchant][0].keys():
+#         if wallet_key not in ["balance", "transactions"]:
+#             assert (
+#                 wallet_response_temp[wallet_key] == TestDataUtils.TEST_DATA.wallet_info[merchant][0][wallet_key]
+#             ), f"{wallet_key} do not match"
+#         else:
+#             for i in range(len(TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"])):
+#                 for tran_key in TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"][i].keys():
+#                     if tran_key != "id":
+#                         assert (
+#                             wallet_response_temp["transactions"][i][tran_key]
+#                             == TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"][i][tran_key]
+#                         ), f"{tran_key} do not match"
+#             for balance_key in TestDataUtils.TEST_DATA.wallet_info[merchant][0]["balance"].keys():
+#                 assert (
+#                             wallet_response_temp["balance"][balance_key]
+#                             == TestDataUtils.TEST_DATA.wallet_info[merchant][0]["balance"][balance_key]
+#                         ), f"{balance_key} do not match"
+
+
 @then(parsers.parse("All '{Wallet}' fields are correctly populated for {merchant}"))
 def verify_get_wallet_fields(Wallet, merchant):
     wallet_response = TestContext.actual_view_wallet_field
-    # print(wallet_response['loyalty_cards'][0]['id'])
-    if Wallet in ["Wallet", "Wallet_overview"]:
-        wallet_response_temp = wallet_response["loyalty_cards"][0]
-        for payment_key in TestDataUtils.TEST_DATA.wallet_info["payment_accounts"][0].keys():
-            if payment_key not in ["id", "pll_links", "expiry_month", "expiry_year", "name_on_card", "card_nickname"]:
+    if Wallet == "Wallet":
+        assert (
+            wallet_response["loyalty_cards"][0]["pll_links"][0]["payment_account_id"]
+            == TestContext.current_payment_card_id
+        ), "pll_links do not match"
+
+        assert (
+            wallet_response["loyalty_cards"][0]["id"] == TestContext.current_scheme_account_id
+        ), "account id does not match"
+
+        for wallet_key in TestDataUtils.TEST_DATA.wallet_info[merchant][0].keys():
+            if wallet_key not in ["balance", "transactions"]:
                 assert (
-                    wallet_response["payment_accounts"][0][payment_key]
-                    == TestDataUtils.TEST_DATA.wallet_info["payment_accounts"][0][payment_key]
-                ), f"{payment_key} do not match"
-
-    elif Wallet == "Wallet_by_card_id":
-        wallet_response_temp = wallet_response
-    assert (
-        wallet_response_temp["pll_links"][0]["payment_account_id"] == TestContext.current_payment_card_id
-    ), "pll_links do not match"
-
-    assert wallet_response_temp["id"] == TestContext.current_scheme_account_id, "account id does not match"
-
-    for wallet_key in TestDataUtils.TEST_DATA.wallet_info[merchant][0].keys():
-        if wallet_key not in ["balance", "transactions"]:
-            assert (
-                wallet_response_temp[wallet_key] == TestDataUtils.TEST_DATA.wallet_info[merchant][0][wallet_key]
-            ), f"{wallet_key} do not match"
-        else:
-            for i in range(len(TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"])):
-                for tran_key in TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"][i].keys():
-                    if tran_key != "id":
-                        print(
-                            "wallet_response_temp[wallet_key]['transactions'][i][tran_key] print",
-                            wallet_response_temp["transactions"][i][tran_key],
-                        )
-                        print(
-                            "TestDataUtils.TEST_DATA.wallet_info[merchant][0][wallet_key][transactions][i][tran_key]",
-                            TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"][i][tran_key],
-                        )
+                    wallet_response["loyalty_cards"][0][wallet_key]
+                    == TestDataUtils.TEST_DATA.wallet_info[merchant][0][wallet_key]
+                ), f"{wallet_key} do not match"
+            else:
+                for i in range(len(TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"])):
+                    for tran_key in TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"][i].keys():
                         assert (
-                            wallet_response_temp["transactions"][i][tran_key]
+                            wallet_response["loyalty_cards"][0]["transactions"][i][tran_key]
                             == TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"][i][tran_key]
                         ), f"{tran_key} do not match"
-            for balance_key in TestDataUtils.TEST_DATA.wallet_info[merchant][0]["balance"].keys():
-                if balance_key != "updated_at":
+                for balance_key in TestDataUtils.TEST_DATA.wallet_info[merchant][0]["balance"].keys():
                     assert (
-                        wallet_response_temp["balance"][balance_key]
+                        wallet_response["loyalty_cards"][0]["balance"][balance_key]
                         == TestDataUtils.TEST_DATA.wallet_info[merchant][0]["balance"][balance_key]
+                    ), f"{balance_key} do not match"
+
+        for payment_key in TestDataUtils.TEST_DATA.wallet_info["payment_accounts"][0].keys():
+            assert (
+                wallet_response["payment_accounts"][0][payment_key]
+                == TestDataUtils.TEST_DATA.wallet_info["payment_accounts"][0][payment_key]
+            ), f"{payment_key} do not match"
+
+    elif Wallet == "Wallet_overview":
+        assert (
+            wallet_response["loyalty_cards"][0]["id"] == TestContext.current_scheme_account_id
+        ), "account id does not match"
+
+        for wallet_key in TestDataUtils.TEST_DATA.wallet_overview_info[merchant][0].keys():
+            if wallet_key != "balance":
+                assert (
+                    wallet_response["loyalty_cards"][0][wallet_key]
+                    == TestDataUtils.TEST_DATA.wallet_overview_info[merchant][0][wallet_key]
+                ), f"{wallet_key} do not match"
+            else:
+                for balance_key in TestDataUtils.TEST_DATA.wallet_overview_info[merchant][0]["balance"].keys():
+                    assert (
+                        wallet_response["loyalty_cards"][0]["balance"][balance_key]
+                        == TestDataUtils.TEST_DATA.wallet_overview_info[merchant][0]["balance"][balance_key]
+                    ), f"{balance_key} do not match"
+
+        for payment_key in TestDataUtils.TEST_DATA.wallet_overview_info["payment_accounts"][0].keys():
+            assert (
+                wallet_response["payment_accounts"][0][payment_key]
+                == TestDataUtils.TEST_DATA.wallet_overview_info["payment_accounts"][0][payment_key]
+            ), f"{payment_key} do not match"
+    elif Wallet == "Wallet_by_card_id":
+        assert (
+            wallet_response["pll_links"][0]["payment_account_id"] == TestContext.current_payment_card_id
+        ), "pll_links do not match"
+
+        assert wallet_response["id"] == TestContext.current_scheme_account_id, "account id does not match"
+
+        for wallet_key in TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant].keys():
+            if wallet_key not in ["balance", "transactions"]:
+                assert (
+                    wallet_response[wallet_key] == TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant][wallet_key]
+                ), f"{wallet_key} do not match"
+            else:
+                for i in range(len(TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant]["transactions"])):
+                    for tran_key in TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant]["transactions"][i].keys():
+                        assert (
+                            wallet_response["transactions"][i][tran_key]
+                            == TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant]["transactions"][i][tran_key]
+                        ), f"{tran_key} do not match"
+                for balance_key in TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant]["balance"].keys():
+                    assert (
+                        wallet_response["balance"][balance_key]
+                        == TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant]["balance"][balance_key]
                     ), f"{balance_key} do not match"
 
 
