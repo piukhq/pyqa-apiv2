@@ -5,23 +5,13 @@ Feature: View Wallet
   I want to view my loyalty cards in a wallet-only state
   so that I can see the cards that support store only functionality
 
-#  @view_wallet_success @bink_regression_api2
-#  Scenario Outline: View Wallet success
-#    Given I am a Bink Wallet user1
-#    When I perform GET request to view 'Wallet'
-#    Then I see a <status_code_returned>
-#    And I can see all Wallet fields successfully
-#
-#    Examples:
-#      | status_code_returned |
-#      | 200                  |
 
    @view_my_wallet @bink_regression_api2
   Scenario Outline: View my wallet
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And I perform GET 'Wallet'
     Then I see a <status_code_returned>
     And All 'Wallet' fields are correctly populated for <merchant>

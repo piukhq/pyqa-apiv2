@@ -503,6 +503,7 @@ def verify_view_wallet(Wallet, env, channel):
 
 @when(parsers.parse("I perform GET '{Wallet}'"))
 def verify_wallet(Wallet, env, channel):
+    time.sleep(3)
     if Wallet == "Wallet":
         response = MembershipCards.get_view_wallet(TestContext.token)
         logging.info("The response of get wallet is : \n" + json.dumps(response_to_json(response), indent=4))
