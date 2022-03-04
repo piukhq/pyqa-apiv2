@@ -1,7 +1,7 @@
 [
 	{
 		"loyalty_plan_id": 105,
-		"is_in_wallet": true,
+		"is_in_wallet": false,
 		"plan_name": "Iceland Bonus Card",
 		"company_name": "Iceland",
 		"plan_popularity": 1,

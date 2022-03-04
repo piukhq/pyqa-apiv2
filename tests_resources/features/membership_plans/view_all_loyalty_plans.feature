@@ -6,8 +6,9 @@ Feature: View Loyalty Plans
 
   @all_loyalty_plans_success @journey_type @bink_regression_api2
   Scenario Outline: View all available Loyalty Plans
-    Given I am a Bink user
-    When I perform GET request to view all available loyalty plans
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform GET request to view all available loyalty plans
     Then I verify the <status_code> for loyalty plan
 
     Examples:
@@ -18,8 +19,9 @@ Feature: View Loyalty Plans
 #    Command to run : pytest -m "all_lloyds_plans_success" --channel lloyds --env staging
   @all_lloyds_plans_success
   Scenario Outline: View all available Lloyds Loyalty Plans
-    Given I am a Lloyds user
-    When I perform GET request to view all available loyalty bank plans
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform GET request to view all available loyalty bank plans
     Then I verify the <status_code> for loyalty plan
     And I verify all plans appeared correctly
 
@@ -29,8 +31,9 @@ Feature: View Loyalty Plans
 
   @all_loyalty_plans_invalid_token @invalid_token @bink_regression_api2
   Scenario Outline: Verify request does not have a valid token
-    Given I am a Bink user
-    When I perform GET request to view all available loyalty plans with invalid token
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform GET request to view all available loyalty plans with invalid token
     Then I verify the <status_code> for loyalty plan
     And I verify "<error_message>" "<error_slug>" in loyalty scheme response
 
