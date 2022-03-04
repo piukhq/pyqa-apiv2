@@ -125,6 +125,17 @@ def json_compare_wallet(actual_view_wallet_field, expected_view_wallet_field):
     return compare
 
 
+def json_compare_transactions(actual_transactions_field, expected_transactions_field):
+    compare = DeepDiff(
+        actual_transactions_field,
+        expected_transactions_field,
+        ignore_order=True,
+        exclude_paths=["root[0]['id']", "root[1]['id']", "root[2]['id']", "root[3]['id']", "root[4]['id']"],
+    )
+
+    return compare
+
+
 @then(parsers.parse("I can see all Wallet fields successfully"))
 def verify_view_wallet_fields():
     difference = json_compare_wallet(TestContext.actual_view_wallet_field, TestContext.expected_view_wallet_field)
@@ -376,13 +387,8 @@ def verify_loyalty_card_invalid_id_balance(env, channel, merchant, invalid_id):
     TestContext.error_slug = response_json.get("error_slug")
 
 
-@when(
-    parsers.parse(
-        'I perform GET request to view loyalty card transactions for "{merchant}" '
-        'with "{transaction0}" "{transaction1}" and "{transaction3}"'
-    )
-)
-def verify_loyalty_card_transactions(env, channel, merchant, transaction0, transaction1, transaction3):
+@when(parsers.parse('I perform GET request to view loyalty card transactions for "{merchant}"'))
+def verify_loyalty_card_transactions(env, channel, merchant):
     time.sleep(4)
     response = MembershipCards.get_loyalty_transactions(TestContext.token, TestContext.current_scheme_account_id)
     response_json = response_to_json(response)
@@ -394,9 +400,19 @@ def verify_loyalty_card_transactions(env, channel, merchant, transaction0, trans
         + "\n\n"
         + json.dumps(response_json, indent=4)
     )
-    assert response_json["transactions"][0]["display_value"] == transaction0
-    assert response_json["transactions"][1]["display_value"] == transaction1
-    assert response_json["transactions"][3]["display_value"] == transaction3
+    difference = json_compare_transactions(
+        response_json["transactions"], TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant]["transactions"]
+    )
+    if difference:
+        logging.info(
+            "The expected and actual transactions of "
+            + merchant
+            + "has following differences"
+            + json.dumps(difference, sort_keys=True, indent=4)
+        )
+        raise Exception("The expected and actual transactions " + merchant + " is not the same")
+    else:
+        logging.info("The expected and actual transactions " + merchant + "  is same")
 
 
 @when(parsers.parse('I perform GET request to view loyalty card transactions for "{merchant}" with invalid token'))
@@ -419,7 +435,7 @@ def verify_loyalty_card_invalid_token_transactions(env, channel, merchant):
 
 @when(
     parsers.parse(
-        "I perform GET request to view loyalty card transactions" ' for "{merchant}" with invalid id "{invalid_id}"'
+        'I perform GET request to view loyalty card transactions with invalid id "{invalid_id}" for "{merchant}"'
     )
 )
 def verify_loyalty_card_invalid_id_transactions(env, channel, merchant, invalid_id):
@@ -1360,6 +1376,7 @@ def update_scheme_status(status):
 @when(parsers.parse('I perform POST request to join "{merchant}" membership card'))
 def join_scheme(merchant, test_email):
     response = MembershipCards.join_field(TestContext.token, merchant, test_email)
+    time.sleep(8)
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")
     TestContext.response_status_code = response.status_code

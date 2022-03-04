@@ -1,6 +1,6 @@
 {
 	"loyalty_plan_id": 124,
-	"is_in_wallet": true,
+	"is_in_wallet": false,
 	"plan_popularity": 2,
 	"plan_features": {
 		"has_points": true,
