@@ -23,6 +23,7 @@ scenarios("membership_cards/")
 
 @when(parsers.parse('I perform POST request to add "{merchant}" membership card'))
 def add_field_loyalty_cards(merchant):
+    time.sleep(1)
     response = MembershipCards.add_field_only_card(TestContext.token, merchant)
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")
@@ -111,18 +112,18 @@ def verify_pll_links_scheme_account(journey_type2):
     assert scheme_account.pll_links == []
 
 
-def json_compare_wallet(actual_view_wallet_field, expected_view_wallet_field):
-    compare = DeepDiff(
-        actual_view_wallet_field,
-        expected_view_wallet_field,
-        ignore_order=True,
-        exclude_paths=[
-            "root['loyalty_cards'][0]['balance']['updated_at']",
-            "root['loyalty_cards'][1]['balance']['updated_at']",
-        ],
-    )
-
-    return compare
+# def json_compare_wallet(actual_view_wallet_field, expected_view_wallet_field):
+#     compare = DeepDiff(
+#         actual_view_wallet_field,
+#         expected_view_wallet_field,
+#         ignore_order=True,
+#         exclude_paths=[
+#             "root['loyalty_cards'][0]['balance']['updated_at']",
+#             "root['loyalty_cards'][1]['balance']['updated_at']",
+#         ],
+#     )
+#
+#     return compare
 
 
 def json_compare_transactions(actual_transactions_field, expected_transactions_field):
@@ -136,19 +137,19 @@ def json_compare_transactions(actual_transactions_field, expected_transactions_f
     return compare
 
 
-@then(parsers.parse("I can see all Wallet fields successfully"))
-def verify_view_wallet_fields():
-    difference = json_compare_wallet(TestContext.actual_view_wallet_field, TestContext.expected_view_wallet_field)
-    if json.dumps(difference) != "{}":
-        logging.error(
-            "The expected and actual wallets"
-            + "has following differences"
-            + json.dumps(difference, sort_keys=True, indent=4)
-        )
-        raise Exception("The expected and actual wallet is not the same")
-    else:
-        logging.info("The expected and actual wallet is same")
-
+# @then(parsers.parse("I can see all Wallet fields successfully"))
+# def verify_view_wallet_fields():
+#     difference = json_compare_wallet(TestContext.actual_view_wallet_field, TestContext.expected_view_wallet_field)
+#     if json.dumps(difference) != "{}":
+#         logging.error(
+#             "The expected and actual wallets"
+#             + "has following differences"
+#             + json.dumps(difference, sort_keys=True, indent=4)
+#         )
+#         raise Exception("The expected and actual wallet is not the same")
+#     else:
+#         logging.info("The expected and actual wallet is same")
+#
 
 # @then(parsers.parse("All '{Wallet}' fields are correctly populated for {merchant}"))
 # def verify_get_wallet_fields(Wallet, merchant):
@@ -334,6 +335,12 @@ def verify_get_wallet_fields(Wallet, merchant):
                 )
 
 
+@then(parsers.parse("All voucher fields are correctly populated for {merchant}"))
+def verify_voucher_field(env, channel, merchant):
+    voucher_response = TestContext.actual_view_wallet_field
+    compare_two_lists(voucher_response["vouchers"], TestDataUtils.TEST_DATA.wallet_info[merchant][0]["vouchers"])
+
+
 @when(parsers.parse('I perform GET request to view loyalty card balance for "{merchant}" with "{balance}"'))
 def verify_loyalty_card_balance(env, channel, merchant, balance):
     time.sleep(7)
@@ -453,16 +460,9 @@ def verify_loyalty_card_invalid_id_transactions(env, channel, merchant, invalid_
     TestContext.error_slug = response_json.get("error_slug")
 
 
-@when(
-    parsers.parse(
-        "I perform GET request to view loyalty card vouchers "
-        'for "{merchant}" with "{state}", "{progress_display_text}", '
-        '"{current_value}", "{target_value}", "{suffix}" and "{barcode_type}"'
-    )
-)
-def verify_loyalty_card_vouchers(
-    env, channel, merchant, state, progress_display_text, current_value, target_value, suffix, barcode_type
-):
+@when(parsers.parse("I perform GET request to view loyalty card vouchers"))
+def verify_loyalty_card_vouchers(env, channel):
+
     time.sleep(3)
     response = MembershipCards.get_loyalty_vouchers(TestContext.token, TestContext.current_scheme_account_id)
     response_json = response_to_json(response)
@@ -474,15 +474,8 @@ def verify_loyalty_card_vouchers(
         + "\n\n"
         + json.dumps(response_json, indent=4)
     )
-    assert response_json["vouchers"][0]["state"] == state
-    assert response_json["vouchers"][0]["progress_display_text"] == progress_display_text
-    assert response_json["vouchers"][0]["current_value"] == current_value
-    assert response_json["vouchers"][0]["target_value"] == target_value
-    assert response_json["vouchers"][0]["suffix"] == suffix
-    assert response_json["vouchers"][0]["prefix"] is None
-    assert response_json["vouchers"][0]["barcode_type"] == int(
-        barcode_type
-    ), "actual and expected barcode type is not matching"
+    TestContext.response_status_code = response.status_code
+    TestContext.actual_view_wallet_field = response.json()
 
 
 @when(parsers.parse('I perform GET request to view loyalty card vouchers for "{merchant}" with invalid token'))
@@ -782,6 +775,7 @@ def verify_invalid_request_for_add_and_register_journey(merchant, request_payloa
 
 @when(parsers.parse('I perform POST request to add "{merchant}" membership card before register'))
 def add_before_register_field_loyalty_cards(merchant):
+    time.sleep(2)
     response = MembershipCards.add_before_register_field_only_card(TestContext.token, merchant)
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")
@@ -1082,7 +1076,7 @@ def verify_add_and_register_invalid_token_request(merchant, test_email):
 
 @when(parsers.parse('I perform PUT request to authorise "{merchant}" above wallet only membership card'))
 def verify_authorise_post_membership_card(merchant):
-    time.sleep(2)
+    time.sleep(3)
     response = MembershipCards.authorise_field_only_card(
         TestContext.token, merchant, TestContext.current_scheme_account_id
     )

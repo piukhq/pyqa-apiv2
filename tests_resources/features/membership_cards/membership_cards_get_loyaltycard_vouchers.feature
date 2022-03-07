@@ -4,17 +4,33 @@ Feature: View Vouchers
 As a Bink user I want to view my loyalty card vouchers in my wallet
 so that I am aware and have visibility of the vouchers that have been concluded with my loyalty card
 
+#  @view_loyalty_vouchers @bink_regression_api2
+#  Scenario Outline: Get Loyalty card vouchers
+#    Given I am a Bink user
+#    When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+#    And I perform GET request to view loyalty card vouchers for "<merchant>" with "<state>", "<progress_display_text>", "<current_value>", "<target_value>", "<suffix>" and "<barcode_type>"
+#    Then I see a <status_code_returned>
+#    And I perform DELETE request to delete the "<merchant>" membership card
+#
+#    Examples:
+#      | merchant      | status_code_returned |state       |progress_display_text | current_value |target_value|suffix|barcode_type|
+#      | Wasabi        | 200                  |inprogress  |4/7 stamps           |  4            | 7          |stamps|0            |
+
+
   @view_loyalty_vouchers @bink_regression_api2
   Scenario Outline: Get Loyalty card vouchers
-    Given I am a Bink user
-    When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET request to view loyalty card vouchers for "<merchant>" with "<state>", "<progress_display_text>", "<current_value>", "<target_value>", "<suffix>" and "<barcode_type>"
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform GET request to view loyalty card vouchers
     Then I see a <status_code_returned>
+    And All voucher fields are correctly populated for <merchant>
     And I perform DELETE request to delete the "<merchant>" membership card
 
     Examples:
-      | merchant      | status_code_returned |state       |progress_display_text | current_value |target_value|suffix|barcode_type|
-      | Wasabi        | 200                  |inprogress  |4/7 stamps           |  4            | 7          |stamps|0            |
+      | merchant      | status_code_returned |
+      | Wasabi        | 200                  |
+
 
    @vouchers_invalid_token @bink_regression_api2
    Scenario Outline: Verify invalid token scenario for get loyalty card vouchers
