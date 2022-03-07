@@ -95,9 +95,10 @@ Feature: Authorise a loyalty card
 
   @auth_pll @bink_regression_api2
   Scenario Outline: verify PLL for authorise
-    Given I am a Bink user
-    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    When I perform POST request to add "<merchant>" membership card
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform POST request to add "<merchant>" membership card
     And I perform PUT request to authorise "<merchant>" above wallet only membership card
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
