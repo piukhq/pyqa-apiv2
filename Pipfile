@@ -14,6 +14,7 @@ pytest = "*"
 pytest-bdd = "*"
 logger = "*"
 jsonpath = "*"
+click = "*"
 faker = "*"
 psycopg2-binary = "*"
 json-diff = "*"
@@ -27,11 +28,12 @@ shared-config-storage = "*"
 pytest-html = "*"
 deepdiff = "*"
 jwcrypto = "*"
+black = "*"
 
 [dev-packages]
 flake8 = "*"
 isort = "*"
-black = "==21.11b1"
+black = "==21.12b0"
 ptpython = "*"
 
 [requires]

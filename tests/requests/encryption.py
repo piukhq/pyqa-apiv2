@@ -180,8 +180,5 @@ def manual_encrypt(data: dict, pub_key_path: str = None, kid: str = None):
 
 def encrypted_payload_token(payload):
     token = manual_encrypt(payload, pub_key_path="rsa.pub")
-    logging.info(
-        "The encrypted request for the journey is :\n"
-        + token
-    )
+    logging.info("The encrypted request for the journey is :\n" + token)
     return token
