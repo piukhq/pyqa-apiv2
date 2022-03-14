@@ -22,6 +22,15 @@ class Endpoint:
         return headers
 
     @staticmethod
+    def encrypt_header(token=None):
+        headers = {
+            "Content-Type": "application/json",
+            "Accept": "application/jose+json",
+        }
+        headers["Authorization"] = token
+        return headers
+
+    @staticmethod
     def call(url, headers, method="GET", body=None):
         return requests.request(method, url, headers=headers, data=json.dumps(body))
 
