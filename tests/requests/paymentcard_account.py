@@ -6,8 +6,10 @@ from json import JSONDecodeError
 from tests import api
 from tests.api.base import Endpoint
 from tests.helpers import constants
+from tests.helpers.test_context import TestContext
 from tests.helpers.test_helpers import PaymentCardTestData
 from tests.payload.payment_cards.payment_card import PaymentCardDetails
+from tests.requests.encryption import encrypted_payload_token
 
 
 class PaymentCards(Endpoint):
@@ -15,15 +17,27 @@ class PaymentCards(Endpoint):
     def add_new_payment_card(token, card_provider):
         url = PaymentCards.get_url()
         header = Endpoint.request_header(token)
-        payload = PaymentCardDetails.enrol_payment_card_payload_unencrypted(card_provider)
-        return Endpoint.call(url, header, "POST", payload)
+        encrypt_header = Endpoint.encrypt_header(token)
+        if TestContext.flag_encrypt == "true":
+            payload = PaymentCardDetails.enrol_payment_card_payload_unencrypted(card_provider)
+            data = encrypted_payload_token(payload)
+            return Endpoint.call_payload(url, encrypt_header, "POST", data)
+        elif TestContext.flag_encrypt == "false":
+            payload = PaymentCardDetails.enrol_payment_card_payload_unencrypted(card_provider)
+            return Endpoint.call(url, header, "POST", payload)
 
     @staticmethod
     def update_payment_card(token, card_provider, update_field=None, payment_card_id=None):
         url = PaymentCards.get_url(payment_card_id)
         header = Endpoint.request_header(token)
-        payload = PaymentCardDetails.update_payment_card_payload(card_provider, update_field)
-        return Endpoint.call(url, header, "PATCH", payload)
+        encrypt_header = Endpoint.encrypt_header(token)
+        if TestContext.flag_encrypt == "true":
+            payload = PaymentCardDetails.update_payment_card_payload(card_provider, update_field)
+            data = encrypted_payload_token(payload)
+            return Endpoint.call_payload(url, encrypt_header, "PATCH", data)
+        elif TestContext.flag_encrypt == "false":
+            payload = PaymentCardDetails.update_payment_card_payload(card_provider, update_field)
+            return Endpoint.call(url, header, "PATCH", payload)
 
     @staticmethod
     def update_all_payment_card(token, card_provider, payment_card_id=None):
