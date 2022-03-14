@@ -28,7 +28,6 @@ shared-config-storage = "*"
 pytest-html = "*"
 deepdiff = "*"
 jwcrypto = "*"
-black = "*"
 
 [dev-packages]
 flake8 = "*"
