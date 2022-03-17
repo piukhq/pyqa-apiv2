@@ -73,9 +73,33 @@ def verify_get_loyalty_plan_by_id(loyalty_scheme, env, channel):
     # TestContext.actual_loyalty_plan_by_id_field = response.json()
 
 
+@when(parsers.parse('I perform GET request to view "{loyalty_scheme}" loyalty plan details'))
+def verify_get_loyalty_plan_details(loyalty_scheme, env, channel):
+    response = MembershipPlans.get_loyalty_plan_details(TestContext.token, loyalty_scheme)
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The loyalty plan for " + loyalty_scheme + " is: \n" + json.dumps(response_to_json(response), indent=4)
+    )
+
+    with open(TestData.get_expected_loyalty_plan_details_json(loyalty_scheme, env, channel)) as json_file:
+        expected_data = json.load(json_file)
+
+    difference = json_compare_loyalty(response.json(), expected_data)
+    if difference:
+        logging.info(
+            "The expected and actual loyalty plan details of "
+            + loyalty_scheme
+            + "has following differences"
+            + json.dumps(difference, sort_keys=True, indent=4)
+        )
+        raise Exception("The expected and actual loyalty plan details of " + loyalty_scheme + " is not the same")
+    else:
+        logging.info("The expected and actual loyalty plan details of " + loyalty_scheme + " journey fields is same")
+
+
 @when(parsers.parse("I perform GET request to view all available loyalty plans"))
 def verify_get_all_loyalty_plans(env, channel):
-    response = MembershipPlans.get_all_loyalty_plans(setup_token())
+    response = MembershipPlans.get_all_loyalty_plans(TestContext.token)
     TestContext.response_status_code = response.status_code
     logging.info("The loyalty plans available are: \n" + json.dumps(response_to_json(response), indent=4))
 
@@ -103,7 +127,7 @@ def verify_get_all_loyalty_bank_plans(env, channel):
 
 @when(parsers.parse("I perform GET request to view loyalty plans overview"))
 def verify_loyalty_plans_overview(env, channel):
-    response = MembershipPlans.get_loyalty_plans_overview(setup_third_token())
+    response = MembershipPlans.get_loyalty_plans_overview(TestContext.token)
     TestContext.response_status_code = response.status_code
     logging.info("The loyalty plans Overview is: \n" + json.dumps(response_to_json(response), indent=4))
 
@@ -124,7 +148,7 @@ def verify_loyalty_plans_overview(env, channel):
 
 @when(parsers.parse("I perform GET request to view loyalty plans overview and verify is_in_wallet field"))
 def verify_is_in_wallet_loyalty_plans_overview(env, channel):
-    response = MembershipPlans.get_loyalty_plans_overview(setup_third_token())
+    response = MembershipPlans.get_loyalty_plans_overview(TestContext.token)
     response_json = response_to_json(response)
     TestContext.response_status_code = response.status_code
     logging.info("The loyalty plans Overview is: \n" + json.dumps(response_to_json(response), indent=4))
@@ -251,6 +275,22 @@ def verify_loyalty_plan_fields_invalid_token(loyalty_scheme):
     return response
 
 
+@when(parsers.parse('I perform GET request to view "{loyalty_scheme}" loyalty plan details with invalid token'))
+def verify_loyalty_plan_details_invalid_token(loyalty_scheme):
+    response = MembershipPlans.get_loyalty_plan_details(
+        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN), loyalty_scheme
+    )
+
+    TestContext.response_status_code = response.status_code
+    response_json = response.json()
+    logging.info("The response of invalid token is: \n\n" + json.dumps(response_json, indent=4))
+    TestContext.error_message = response_json.get("error_message")
+    TestContext.error_slug = response_json.get("error_slug")
+
+    assert TestContext.response_status_code == 401
+    return response
+
+
 @when("I perform GET request to view all available loyalty plans with invalid token")
 def verify_all_loyalty_plans_invalid_token():
     response = MembershipPlans.get_all_loyalty_plans(TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN))
@@ -285,6 +325,19 @@ def verify_invalid_resource_for_loyalty_scheme(loyalty_scheme):
     return response
 
 
+@when(parsers.parse('I perform GET request to view "{loyalty_scheme}" loyalty plan details with invalid resource'))
+def verify_invalid_resource_for_loyalty_plan_details(loyalty_scheme):
+    response = MembershipPlans.get_loyalty_plan_details(TestContext.token, loyalty_scheme)
+    TestContext.response_status_code = response.status_code
+    response_json = response.json()
+    logging.info("The response of invalid resource is: \n\n" + json.dumps(response_json, indent=4))
+    TestContext.error_message = response_json.get("error_message")
+    TestContext.error_slug = response_json.get("error_slug")
+
+    assert TestContext.response_status_code == 404
+    return response
+
+
 @when(parsers.parse('I perform GET request to view "{loyalty_scheme}" loyalty plan by id with invalid resource'))
 def verify_invalid_resource_for_loyalty_plan(loyalty_scheme):
     response = MembershipPlans.get_loyalty_plan_by_id(setup_token(), loyalty_scheme)
@@ -295,7 +348,7 @@ def verify_invalid_resource_for_loyalty_plan(loyalty_scheme):
     TestContext.error_slug = response_json.get("error_slug")
 
     assert TestContext.response_status_code == 404
-    return response
+    return
 
 
 @then("I verify all plans appeared correctly")
