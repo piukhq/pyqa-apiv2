@@ -4,7 +4,7 @@ import logging
 from deepdiff import DeepDiff
 from pytest_bdd import parsers, scenarios, then, when
 
-from tests.conftest import response_to_json, setup_third_token, setup_token
+from tests.conftest import response_to_json, setup_token
 from tests.helpers import constants
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
