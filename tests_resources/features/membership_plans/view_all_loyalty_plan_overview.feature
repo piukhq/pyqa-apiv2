@@ -20,7 +20,6 @@ Feature: View Loyalty Plans Overview
   Scenario Outline: Verify is_in_wallet field loyalty plans overview
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
-    And I perform POST token request for token type "b2b" to get access token
     And I perform GET request to view loyalty plans overview and verify is_in_wallet field
     Then I verify the <status_code> for loyalty plan
 

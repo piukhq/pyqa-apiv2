@@ -89,6 +89,12 @@ class TestData:
         return loyalty_plan_overview_path + "/membership_plan_loyalty_plans_overview" + ".json"
 
     @staticmethod
+    def get_expected_loyalty_plan_details_json(loyalty_scheme, env, channel=None):
+        merchant_key = TestData.get_merchant_key(loyalty_scheme)
+        mem_plan_path = TestData.get_loyalty_plan_by_id_path(env)
+        return mem_plan_path + "/membership_plan_details_" + merchant_key + ".json"
+
+    @staticmethod
     def get_expected_loyalty_plan_by_id_json(loyalty_scheme, env, channel=None):
 
         merchant_key = TestData.get_merchant_key(loyalty_scheme)

@@ -944,13 +944,12 @@ db_details = {
 # ---------------------------------------------USER ACCOUNTS ---------------------------------------------------- #
 
 bink_user_accounts = {
-    "uid": "pytest_api2.0_staging_auto@bink.com",
+    "uid": "pytest+api2.0_staging_auto@bink.com",
     "pwd": "Password1",
-    "user_detail": "34471",
-    "user_detail2": "1168",
-    "user_detail3": "33405",
-    "b2b_email": "pytest_b2b_staging_email@bink.com",
-    "lloyds_email": "lloyds_b2b_staging_email@bink.com",
-    "lloyds_external_id": "123456",
-    "b2b_external_id": "0112839",
+    "user_detail": "38626",
+    "user_detail2": "38627",
+    "b2b_email": "pytest+b2b_staging_email@bink.com",
+    "lloyds_email": "pytest+lloydsb2b_staging_email@bink.com",
+    "lloyds_external_id": "12345",
+    "b2b_external_id": "Autob2b",
 }
