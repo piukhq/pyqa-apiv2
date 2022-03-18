@@ -348,7 +348,7 @@ def verify_invalid_resource_for_loyalty_plan(loyalty_scheme):
     TestContext.error_slug = response_json.get("error_slug")
 
     assert TestContext.response_status_code == 404
-    return
+    return response
 
 
 @then("I verify all plans appeared correctly")
