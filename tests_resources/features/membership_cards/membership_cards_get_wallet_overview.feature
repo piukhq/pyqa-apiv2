@@ -1,4 +1,4 @@
-@membership_cards_wallet_overview @membership_cards
+@membership_cards_wallet_overview @membership_cards @wallet
 Feature: Overview of wallet information
   As an API v2.0 consuming channel,
   I want to see an overview of wallet information

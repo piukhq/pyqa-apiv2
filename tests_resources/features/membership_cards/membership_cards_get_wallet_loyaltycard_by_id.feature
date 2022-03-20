@@ -1,5 +1,5 @@
 # Created by nehapatil on 22/02/2022
-@membership_cards_by_id @membership_cards
+@membership_cards_by_id @membership_cards @wallet
 Feature: View Wallet by loyalty card id
   As a Bink user
   I want to view details of single loyalty cards
