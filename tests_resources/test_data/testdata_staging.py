@@ -69,7 +69,8 @@ invalid_token = {
 # ----------------------------------------LOYALTY CARDs    --------------------------------------------------- #
 iceland_membership_card = {
     "card_num": "6332040000300000003",
-    "register_card": "6332040000400000011",
+    # "register_card": "6332040000400000011",
+    "register_card": "6332040031231230002",
     "transactions_card": "6332040000000000007",
     "barcode": "6332040000300000003",
     "transactions_card_last_name": "perfuser07",
@@ -1083,7 +1084,7 @@ db_details = {
 bink_user_accounts = {
     "uid": "pytest+api2.0_staging_auto@bink.com",
     "pwd": "Password1",
-    "user_detail": "38626",
+    "user_detail": "38766",
     "user_detail2": "38627",
     "b2b_email": "pytest+b2b_staging_email@bink.com",
     "lloyds_email": "pytest+lloydsb2b_staging_email@bink.com",
