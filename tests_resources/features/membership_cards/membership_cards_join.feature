@@ -15,8 +15,8 @@ Feature: Add and register a loyalty card
     Examples:
       | merchant      | status_code_returned | journey_type |
       | Iceland       | 202                  | join         |
-#      | Wasabi        | 202                  | join         |
-#      | HarveyNichols | 202                  | join         |
+      | Wasabi        | 202                  | join         |
+      | HarveyNichols | 202                  | join         |
 
 
   @empty_field_join @bink_regression_api2

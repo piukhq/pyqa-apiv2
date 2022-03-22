@@ -775,8 +775,8 @@ def verify_invalid_request_for_add_and_register_journey(merchant, request_payloa
 
 @when(parsers.parse('I perform POST request to add "{merchant}" membership card before register'))
 def add_before_register_field_loyalty_cards(merchant):
-    time.sleep(2)
     response = MembershipCards.add_before_register_field_only_card(TestContext.token, merchant)
+    time.sleep(7)
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")
     TestContext.response_status_code = response.status_code
@@ -792,10 +792,10 @@ def add_before_register_field_loyalty_cards(merchant):
 
 @when(parsers.parse('I perform PUT request to register "{merchant}" above wallet only membership card'))
 def verify_register_post_membership_card(merchant, test_email):
-    time.sleep(2)
     response = MembershipCards.register_field_only_card(
         TestContext.token, merchant, test_email, TestContext.current_scheme_account_id
     )
+    time.sleep(7)
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")
     TestContext.response_status_code = response.status_code
@@ -1276,6 +1276,7 @@ def i_perform_post_add_and_authorise_membership_card_which_is_exist_already(merc
 @when(parsers.parse('I perform POST request to add and register "{merchant}" membership card'))
 def add_and_register_field(merchant, test_email):
     response = MembershipCards.add_and_register_field(TestContext.token, merchant, test_email)
+    time.sleep(8)
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")
     TestContext.response_status_code = response.status_code
@@ -1342,8 +1343,8 @@ def verify_pll_authorise(payment_card_provider):
     )
 )
 def add_and_register_with_existing_credential(merchant, status_code_returned, test_email):
-    time.sleep(3)
     response = MembershipCards.add_and_register_field(TestContext.token, merchant, test_email)
+    time.sleep(8)
     response_json = response_to_json(response)
     TestContext.response_status_code = response.status_code
     TestContext.error_message = response_json.get("error_message")
@@ -1370,7 +1371,7 @@ def update_scheme_status(status):
 @when(parsers.parse('I perform POST request to join "{merchant}" membership card'))
 def join_scheme(merchant, test_email):
     response = MembershipCards.join_field(TestContext.token, merchant, test_email)
-    time.sleep(8)
+    time.sleep(6)
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")
     TestContext.response_status_code = response.status_code
