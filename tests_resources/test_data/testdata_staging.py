@@ -141,7 +141,8 @@ wallet_info = {
                 "loyalty_currency_name": "stamps",
                 "prefix": None,
                 "suffix": "stamps",
-                "value": "6",
+                "current_value": "6",
+                "target_value": "7",
             },
             "transactions": [
                 {
@@ -255,7 +256,8 @@ wallet_info = {
                 "loyalty_currency_name": "GBP",
                 "prefix": "£",
                 "suffix": None,
-                "value": "380.01",
+                "current_value": "380.01",
+                "target_value": None,
             },
             "transactions": [
                 {
@@ -384,7 +386,8 @@ wallet_info = {
                 "loyalty_currency_name": "points",
                 "prefix": None,
                 "suffix": "pts",
-                "value": "123456",
+                "current_value": "123456",
+                "target_value": None,
             },
             "transactions": [
                 {
@@ -583,7 +586,8 @@ wallet_overview_info = {
                 "loyalty_currency_name": "stamps",
                 "prefix": None,
                 "suffix": "stamps",
-                "value": "6",
+                "current_value": "6",
+                "target_value": "7",
             },
             "card": {
                 "barcode": None,
@@ -616,7 +620,8 @@ wallet_overview_info = {
                 "loyalty_currency_name": "GBP",
                 "prefix": "£",
                 "suffix": None,
-                "value": "380.01",
+                "current_value": "380.01",
+                "target_value": None,
             },
             "card": {
                 "barcode": "63320400000000000070080",
@@ -649,7 +654,8 @@ wallet_overview_info = {
                 "loyalty_currency_name": "points",
                 "prefix": None,
                 "suffix": "pts",
-                "value": "123456",
+                "current_value": "123456",
+                "target_value": None,
             },
             "card": {
                 "barcode": "9000000000003",
@@ -707,7 +713,8 @@ wallet_info_by_card_id = {
             "loyalty_currency_name": "stamps",
             "prefix": None,
             "suffix": "stamps",
-            "value": "6",
+            "current_value": "6",
+            "target_value": "7",
         },
         "transactions": [
             {
@@ -818,7 +825,8 @@ wallet_info_by_card_id = {
             "loyalty_currency_name": "GBP",
             "prefix": "£",
             "suffix": None,
-            "value": "380.01",
+            "current_value": "380.01",
+            "target_value": None,
         },
         "transactions": [
             {
@@ -945,7 +953,8 @@ wallet_info_by_card_id = {
             "loyalty_currency_name": "points",
             "prefix": None,
             "suffix": "pts",
-            "value": "123456",
+            "current_value": "123456",
+            "target_value": None,
         },
         "transactions": [
             {
