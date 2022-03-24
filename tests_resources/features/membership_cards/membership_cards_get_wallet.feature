@@ -1,12 +1,12 @@
 # Created by bularaghavan on 11/11/2021
-@membership_cards_wallet @membership_cards
+@membership_cards_wallet @membership_cards @wallet
 Feature: View Wallet
   As a Bink user
   I want to view my loyalty cards in a wallet-only state
   so that I can see the cards that support store only functionality
 
 
-   @view_my_wallet @bink_regression_api2 @wallet
+   @view_my_wallet @bink_regression_api2
   Scenario Outline: View my wallet
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token

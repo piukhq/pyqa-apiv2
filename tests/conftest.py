@@ -51,9 +51,9 @@ def pytest_bdd_before_step_call(request, feature, scenario, step, step_func, ste
     # print("pytest_bdd_before_step_callselectmerchant",request.getfixturevalue('selected_merchant'))
     if request.getfixturevalue("selected_merchant").upper() != "ALL":
         if "merchant" in step_func_args:
-            print(step_func_args["merchant"])
+            # print(step_func_args["merchant"])
             merchants_list = request.getfixturevalue("selected_merchant").upper().split(",")
-            print("merchants_list ", merchants_list)
+            # print("merchants_list ", merchants_list)
             if (step_func_args["merchant"]).upper() not in merchants_list:
                 pytest.skip(msg=f"merchant{step_func_args['merchant']}")
 
