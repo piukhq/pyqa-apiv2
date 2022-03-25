@@ -169,61 +169,6 @@ def json_compare_vouchers(actual_vouchers_field, expected_vouchers_field):
 #         logging.info("The expected and actual wallet is same")
 #
 
-# @then(parsers.parse("All '{Wallet}' fields are correctly populated for {merchant}"))
-# def verify_get_wallet_fields(Wallet, merchant):
-#     wallet_response = TestContext.actual_view_wallet_field
-#     if Wallet in ["Wallet", "Wallet_overview"]:
-#         wallet_response_temp = wallet_response["loyalty_cards"][0]
-#         for payment_key in TestDataUtils.TEST_DATA.wallet_info["payment_accounts"][0].keys():
-#             if payment_key not in ["id", "pll_links", "expiry_month", "expiry_year", "name_on_card", "card_nickname"]:
-#                 if payment_key == "images" and Wallet == "Wallet_overview":
-#                     assert (
-#                             wallet_response["payment_accounts"][0][payment_key][0]["description"]
-#                             == "Mastercard Hero"
-#                     ), f"{payment_key} description is not hero image"
-#                     assert (
-#                             wallet_response["payment_accounts"][0][payment_key][0]["id"]
-#                             == 2
-#                     ), f"{payment_key} id is not 2"
-#                     assert (
-#                             wallet_response["payment_accounts"][0][payment_key][0]["type"]
-#                             == 0
-#                     ), f"{payment_key} type is not 0"
-#                 else:
-#                     assert (
-#                     wallet_response["payment_accounts"][0][payment_key]
-#                     == TestDataUtils.TEST_DATA.wallet_info["payment_accounts"][0][payment_key]
-#                 ), f"{payment_key} do not match"
-#
-#     elif Wallet == "Wallet_by_card_id":
-#         wallet_response_temp = wallet_response
-#
-#     if Wallet in ["Wallet", "Wallet_by_card_id"]:
-#         assert (
-#         wallet_response_temp["pll_links"][0]["payment_account_id"] == TestContext.current_payment_card_id
-#         ), "pll_links do not match"
-#
-#     assert wallet_response_temp["id"] == TestContext.current_scheme_account_id, "account id does not match"
-#
-#     for wallet_key in TestDataUtils.TEST_DATA.wallet_info[merchant][0].keys():
-#         if wallet_key not in ["balance", "transactions"]:
-#             assert (
-#                 wallet_response_temp[wallet_key] == TestDataUtils.TEST_DATA.wallet_info[merchant][0][wallet_key]
-#             ), f"{wallet_key} do not match"
-#         else:
-#             for i in range(len(TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"])):
-#                 for tran_key in TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"][i].keys():
-#                     if tran_key != "id":
-#                         assert (
-#                             wallet_response_temp["transactions"][i][tran_key]
-#                             == TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"][i][tran_key]
-#                         ), f"{tran_key} do not match"
-#             for balance_key in TestDataUtils.TEST_DATA.wallet_info[merchant][0]["balance"].keys():
-#                 assert (
-#                             wallet_response_temp["balance"][balance_key]
-#                             == TestDataUtils.TEST_DATA.wallet_info[merchant][0]["balance"][balance_key]
-#                         ), f"{balance_key} do not match"
-
 
 def compare_two_lists(list1: list, list2: list) -> bool:
     """
@@ -235,7 +180,7 @@ def compare_two_lists(list1: list, list2: list) -> bool:
     diff = [i for i in list1 + list2 if i not in list1 or i not in list2]
     result = len(diff) == 0
     if not result:
-        print(f"There are {len(diff)} differences:\n{diff[:5]}")
+        raise Exception(f"There are differences:\n{diff}")
     return result
 
 
@@ -270,14 +215,14 @@ def verify_get_wallet_fields(Wallet, merchant):
                         wallet_response["loyalty_cards"][0]["balance"][balance_key]
                         == TestDataUtils.TEST_DATA.wallet_info[merchant][0]["balance"][balance_key]
                     ), f"{balance_key} do not match"
-                compare_two_lists(
-                    wallet_response["loyalty_cards"][0]["vouchers"],
-                    TestDataUtils.TEST_DATA.wallet_info[merchant][0]["vouchers"],
-                )
-                compare_two_lists(
-                    wallet_response["loyalty_cards"][0]["images"],
-                    TestDataUtils.TEST_DATA.wallet_info[merchant][0]["images"],
-                )
+        compare_two_lists(
+            wallet_response["loyalty_cards"][0]["vouchers"],
+            TestDataUtils.TEST_DATA.wallet_info[merchant][0]["vouchers"],
+        )
+        compare_two_lists(
+            wallet_response["loyalty_cards"][0]["images"],
+            TestDataUtils.TEST_DATA.wallet_info[merchant][0]["images"],
+        )
 
         for payment_key in TestDataUtils.TEST_DATA.wallet_info["payment_accounts"][0].keys():
             if payment_key != "images":
@@ -345,12 +290,10 @@ def verify_get_wallet_fields(Wallet, merchant):
                         wallet_response["balance"][balance_key]
                         == TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant]["balance"][balance_key]
                     ), f"{balance_key} do not match"
-                compare_two_lists(
-                    wallet_response["vouchers"], TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant]["vouchers"]
-                )
-                compare_two_lists(
-                    wallet_response["images"], TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant]["images"]
-                )
+        compare_two_lists(
+            wallet_response["vouchers"], TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant]["vouchers"]
+        )
+        compare_two_lists(wallet_response["images"], TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant]["images"])
 
 
 @then(parsers.parse("All voucher fields are correctly populated for {merchant}"))

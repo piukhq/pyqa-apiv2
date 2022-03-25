@@ -26,6 +26,22 @@
 	},
 	"images": [
 		{
+			"id": 1319,
+			"type": 2,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_5_CVAeqUv_naFzo9T.png",
+			"description": "Wasabi Test Offer",
+			"encoding": "png",
+			"order": 1
+		},
+		{
+			"id": 1298,
+			"type": 9,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Alternate_Hero.png",
+			"description": "Wasabi Alternative Hero",
+			"encoding": "png",
+			"order": 0
+		},
+		{
 			"id": 1324,
 			"type": 7,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Promo_1968x732.png",
@@ -42,28 +58,12 @@
 			"order": 0
 		},
 		{
-			"id": 1298,
-			"type": 9,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Alternate_Hero.png",
-			"description": "Wasabi Alternative Hero",
-			"encoding": "png",
-			"order": 0
-		},
-		{
 			"id": 1296,
 			"type": 0,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
 			"description": "Wasabi Hero",
 			"encoding": "png",
 			"order": 5
-		},
-		{
-			"id": 1319,
-			"type": 2,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_5_CVAeqUv_naFzo9T.png",
-			"description": "Wasabi Test Offer",
-			"encoding": "png",
-			"order": 1
 		}
 	],
 	"plan_details": {
@@ -90,6 +90,7 @@
 					"credential_slug": "first_name",
 					"type": "text",
 					"is_sensitive": false,
+					"is_scannable": false,
 					"choice": [],
 					"alternative": null
 				},
@@ -101,6 +102,7 @@
 					"credential_slug": "last_name",
 					"type": "text",
 					"is_sensitive": false,
+					"is_scannable": false,
 					"choice": [],
 					"alternative": null
 				},
@@ -112,6 +114,7 @@
 					"credential_slug": "email",
 					"type": "text",
 					"is_sensitive": false,
+					"is_scannable": false,
 					"choice": [],
 					"alternative": null
 				},
@@ -123,6 +126,7 @@
 					"credential_slug": "date_of_birth",
 					"type": "text",
 					"is_sensitive": false,
+					"is_scannable": false,
 					"choice": [],
 					"alternative": null
 				}
@@ -163,6 +167,7 @@
 					"credential_slug": "card_number",
 					"type": "text",
 					"is_sensitive": false,
+					"is_scannable": false,
 					"choice": [],
 					"alternative": null
 				}
@@ -180,6 +185,7 @@
 					"credential_slug": "email",
 					"type": "text",
 					"is_sensitive": false,
+					"is_scannable": false,
 					"choice": [],
 					"alternative": null
 				}
@@ -190,6 +196,14 @@
 	},
 	"content": [
 		{
+			"column": "Voucher_Cancelled_Detail",
+			"value": "Your voucher has been cancelled. If you believe we have made a mistake please contact enquiries@wasabi.uk.com."
+		},
+		{
+			"column": "Voucher_Inprogress_Detail",
+			"value": "Spend £7.00 or more to get a stamp. Collect 7 stamps to get a Meal Voucher of up to £7 off your next meal."
+		},
+		{
 			"column": "Voucher_Issued_Detail",
 			"value": "Show your Wasabi Club reward code in store to redeem £7 off your next meal."
 		},
@@ -198,16 +212,8 @@
 			"value": "Your FREE meal voucher was redeemed."
 		},
 		{
-			"column": "Voucher_Inprogress_Detail",
-			"value": "Spend £7.00 or more to get a stamp. Collect 7 stamps to get a Meal Voucher of up to £7 off your next meal."
-		},
-		{
 			"column": "Voucher_Expired_Detail",
 			"value": "Your FREE meal voucher has expired."
-		},
-		{
-			"column": "Voucher_Cancelled_Detail",
-			"value": "Your voucher has been cancelled. If you believe we have made a mistake please contact enquiries@wasabi.uk.com."
 		},
 		{
 			"column": "Enrol_Help_Text",
