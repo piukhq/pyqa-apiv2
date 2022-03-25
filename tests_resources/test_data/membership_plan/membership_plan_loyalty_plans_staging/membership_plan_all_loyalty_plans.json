@@ -31,14 +31,6 @@
 		},
 		"images": [
 			{
-				"id": 374,
-				"type": 3,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
-				"description": "Iceland Icon",
-				"encoding": "png",
-				"order": 0
-			},
-			{
 				"id": 373,
 				"type": 4,
 				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland-asset.png",
@@ -47,20 +39,12 @@
 				"order": 0
 			},
 			{
-				"id": 1302,
-				"type": 2,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Pizza.jpg",
-				"description": "Iceland Offer - Pizza",
-				"encoding": "jpg",
-				"order": 1
-			},
-			{
-				"id": 1070,
-				"type": 5,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_ref1.jpg",
-				"description": "Iceland Reference",
-				"encoding": "jpg",
-				"order": 1
+				"id": 374,
+				"type": 3,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
+				"description": "Iceland Icon",
+				"encoding": "png",
+				"order": 0
 			},
 			{
 				"id": 1071,
@@ -71,12 +55,12 @@
 				"order": 1
 			},
 			{
-				"id": 1303,
-				"type": 2,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Greggs.jpg",
-				"description": "Iceland Offer - Greggs",
-				"encoding": "jpg",
-				"order": 2
+				"id": 1289,
+				"type": 9,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_MiyMk96.png",
+				"description": "Iceland Alternative Hero Image",
+				"encoding": "png",
+				"order": 0
 			},
 			{
 				"id": 1234,
@@ -95,20 +79,36 @@
 				"order": 1
 			},
 			{
-				"id": 1323,
+				"id": 1070,
+				"type": 5,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_ref1.jpg",
+				"description": "Iceland Reference",
+				"encoding": "jpg",
+				"order": 1
+			},
+			{
+				"id": 1302,
+				"type": 2,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Pizza.jpg",
+				"description": "Iceland Offer - Pizza",
+				"encoding": "jpg",
+				"order": 1
+			},
+			{
+				"id": 1398,
 				"type": 7,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Promo_1968x732.png",
-				"description": "Iceland Promotion 1",
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/PromotionsIcelandBonusCard1968x732.png",
+				"description": "Promo_Text_1",
 				"encoding": "png",
 				"order": 0
 			},
 			{
-				"id": 1289,
-				"type": 9,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_MiyMk96.png",
-				"description": "Iceland Alternative Hero Image",
-				"encoding": "png",
-				"order": 0
+				"id": 1303,
+				"type": 2,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Greggs.jpg",
+				"description": "Iceland Offer - Greggs",
+				"encoding": "jpg",
+				"order": 2
 			}
 		],
 		"plan_details": {
@@ -135,6 +135,7 @@
 						"credential_slug": "title",
 						"type": "choice",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [
 							"Mr",
 							"Mrs",
@@ -152,6 +153,7 @@
 						"credential_slug": "first_name",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -163,6 +165,7 @@
 						"credential_slug": "last_name",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -174,6 +177,7 @@
 						"credential_slug": "date_of_birth",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -185,6 +189,7 @@
 						"credential_slug": "email",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -196,6 +201,7 @@
 						"credential_slug": "phone",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -207,6 +213,7 @@
 						"credential_slug": "address_1",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -218,6 +225,7 @@
 						"credential_slug": "address_2",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -229,6 +237,7 @@
 						"credential_slug": "town_city",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -240,6 +249,7 @@
 						"credential_slug": "county",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -251,6 +261,7 @@
 						"credential_slug": "postcode",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					}
@@ -271,14 +282,7 @@
 						"is_acceptance_required": true
 					}
 				],
-				"consents": [
-					{
-						"order": 1,
-						"consent_slug": "marketing_opt_in",
-						"is_acceptance_required": false,
-						"description": "Check this box to receive money-off promotions, special offers and information on the latest deals and more from Iceland by email, SMS and other digital channels - if you change your mind, you can opt out anytime via the retailer."
-					}
-				]
+				"consents": []
 			},
 			"register_ghost_card_fields": {
 				"credentials": [
@@ -290,6 +294,7 @@
 						"credential_slug": "title",
 						"type": "choice",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [
 							"Mr",
 							"Mrs",
@@ -307,6 +312,7 @@
 						"credential_slug": "first_name",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -318,6 +324,7 @@
 						"credential_slug": "last_name",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -329,6 +336,7 @@
 						"credential_slug": "date_of_birth",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -340,6 +348,7 @@
 						"credential_slug": "email",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -351,6 +360,7 @@
 						"credential_slug": "phone",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -362,6 +372,7 @@
 						"credential_slug": "address_1",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -373,6 +384,7 @@
 						"credential_slug": "address_2",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -384,6 +396,7 @@
 						"credential_slug": "town_city",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -395,6 +408,7 @@
 						"credential_slug": "county",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -406,6 +420,7 @@
 						"credential_slug": "postcode",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					}
@@ -426,14 +441,7 @@
 						"is_acceptance_required": true
 					}
 				],
-				"consents": [
-					{
-						"order": 1,
-						"consent_slug": "marketing_opt_in",
-						"is_acceptance_required": false,
-						"description": "Check this box to receive money-off promotions, special offers and information on the latest deals and more from Iceland by email, SMS and other digital channels - if you change your mind, you can opt out anytime via the retailer."
-					}
-				]
+				"consents": []
 			},
 			"add_fields": {
 				"credentials": [
@@ -445,6 +453,7 @@
 						"credential_slug": "barcode",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": true,
 						"choice": [],
 						"alternative": {
 							"order": 1,
@@ -454,6 +463,7 @@
 							"credential_slug": "card_number",
 							"type": "text",
 							"is_sensitive": false,
+							"is_scannable": false,
 							"choice": []
 						}
 					}
@@ -471,6 +481,7 @@
 						"credential_slug": "last_name",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -482,6 +493,7 @@
 						"credential_slug": "postcode",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					}
@@ -492,12 +504,12 @@
 		},
 		"content": [
 			{
-				"column": "Enrol_Help_Text",
-				"value": "Please enter your details to register with the retailer. We won’t save or store any of the information you provide or edit below."
+				"column": "Promo_Text_1",
+				"value": "Find Bonus Card prices in-store and online!"
 			},
 			{
-				"column": "Promo_Text_1",
-				"value": "Free delivery when you spend £35+ at iceland.co.uk"
+				"column": "Enrol_Help_Text",
+				"value": "Please enter your details to register with the retailer. We won’t save or store any of the information you provide or edit below."
 			}
 		]
 	},
@@ -525,10 +537,10 @@
 		},
 		"images": [
 			{
-				"id": 1186,
-				"type": 8,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_3_Platinum.png",
-				"description": "Platinum Tier",
+				"id": 1293,
+				"type": 9,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_ESHACSv.png",
+				"description": "Harvey Nichols Alternative Hero",
 				"encoding": "png",
 				"order": 0
 			},
@@ -541,20 +553,12 @@
 				"order": 0
 			},
 			{
-				"id": 1293,
-				"type": 9,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_ESHACSv.png",
-				"description": "Harvey Nichols Alternative Hero",
-				"encoding": "png",
-				"order": 0
-			},
-			{
-				"id": 1184,
-				"type": 8,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_1_Silver.png",
-				"description": "Silver Tier",
-				"encoding": "png",
-				"order": 0
+				"id": 1304,
+				"type": 2,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Rewards_square_oct_02.jpg",
+				"description": "Harvey Nichols Rewards",
+				"encoding": "jpg",
+				"order": 1
 			},
 			{
 				"id": 575,
@@ -565,6 +569,14 @@
 				"order": 100
 			},
 			{
+				"id": 1186,
+				"type": 8,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_3_Platinum.png",
+				"description": "Platinum Tier",
+				"encoding": "png",
+				"order": 0
+			},
+			{
 				"id": 660,
 				"type": 3,
 				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Logo.png",
@@ -573,12 +585,12 @@
 				"order": 0
 			},
 			{
-				"id": 1304,
-				"type": 2,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Rewards_square_oct_02.jpg",
-				"description": "Harvey Nichols Rewards",
-				"encoding": "jpg",
-				"order": 1
+				"id": 1184,
+				"type": 8,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_1_Silver.png",
+				"description": "Silver Tier",
+				"encoding": "png",
+				"order": 0
 			},
 			{
 				"id": 1187,
@@ -606,16 +618,16 @@
 					"description": "Silver Tier Description"
 				},
 				{
+					"name": "Platinum Tier",
+					"description": "Platinum Tier Description"
+				},
+				{
 					"name": "Black Tier",
 					"description": "Black Tier Description"
 				},
 				{
 					"name": "Gold Tier",
 					"description": "Gold Tier Description"
-				},
-				{
-					"name": "Platinum Tier",
-					"description": "Platinum Tier Description"
 				}
 			]
 		},
@@ -630,6 +642,7 @@
 						"credential_slug": "title",
 						"type": "choice",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [
 							"Mr",
 							"Mrs",
@@ -652,6 +665,7 @@
 						"credential_slug": "first_name",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -663,6 +677,7 @@
 						"credential_slug": "last_name",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -674,6 +689,7 @@
 						"credential_slug": "email",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -685,6 +701,7 @@
 						"credential_slug": "password_2",
 						"type": "sensitive",
 						"is_sensitive": true,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -696,6 +713,7 @@
 						"credential_slug": "phone",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					}
@@ -716,14 +734,7 @@
 						"is_acceptance_required": false
 					}
 				],
-				"consents": [
-					{
-						"order": 0,
-						"consent_slug": "email_optin",
-						"is_acceptance_required": false,
-						"description": "Check this box for email marketing from Harvey Nichols - if you change your mind, you can opt out anytime via the retailer."
-					}
-				]
+				"consents": []
 			},
 			"register_ghost_card_fields": null,
 			"add_fields": null,
@@ -737,6 +748,7 @@
 						"credential_slug": "email",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -748,6 +760,7 @@
 						"credential_slug": "password",
 						"type": "sensitive",
 						"is_sensitive": true,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					}
@@ -791,12 +804,20 @@
 		},
 		"images": [
 			{
-				"id": 1324,
-				"type": 7,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Promo_1968x732.png",
-				"description": "Wasabi Promotion 1",
+				"id": 1319,
+				"type": 2,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_5_CVAeqUv_naFzo9T.png",
+				"description": "Wasabi Test Offer",
 				"encoding": "png",
-				"order": 0
+				"order": 1
+			},
+			{
+				"id": 1296,
+				"type": 0,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
+				"description": "Wasabi Hero",
+				"encoding": "png",
+				"order": 5
 			},
 			{
 				"id": 1298,
@@ -815,20 +836,12 @@
 				"order": 0
 			},
 			{
-				"id": 1319,
-				"type": 2,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_5_CVAeqUv_naFzo9T.png",
-				"description": "Wasabi Test Offer",
+				"id": 1324,
+				"type": 7,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Promo_1968x732.png",
+				"description": "Wasabi Promotion 1",
 				"encoding": "png",
-				"order": 1
-			},
-			{
-				"id": 1296,
-				"type": 0,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
-				"description": "Wasabi Hero",
-				"encoding": "png",
-				"order": 5
+				"order": 0
 			}
 		],
 		"plan_details": {
@@ -855,6 +868,7 @@
 						"credential_slug": "first_name",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -866,6 +880,7 @@
 						"credential_slug": "last_name",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -877,6 +892,7 @@
 						"credential_slug": "email",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -888,6 +904,7 @@
 						"credential_slug": "date_of_birth",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					}
@@ -908,14 +925,7 @@
 						"is_acceptance_required": false
 					}
 				],
-				"consents": [
-					{
-						"order": 1,
-						"consent_slug": "EmailOptin",
-						"is_acceptance_required": false,
-						"description": "Check this box to receive the latest news and offers from Wasabi - if you change your mind, you can opt out anytime via the retailer."
-					}
-				]
+				"consents": []
 			},
 			"register_ghost_card_fields": null,
 			"add_fields": {
@@ -928,6 +938,7 @@
 						"credential_slug": "card_number",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					}
@@ -945,6 +956,7 @@
 						"credential_slug": "email",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					}
@@ -955,32 +967,32 @@
 		},
 		"content": [
 			{
-				"column": "Voucher_Redeemed_Detail",
-				"value": "Your FREE meal voucher was redeemed."
-			},
-			{
-				"column": "Voucher_Issued_Detail",
-				"value": "Show your Wasabi Club reward code in store to redeem £7 off your next meal."
-			},
-			{
-				"column": "Promo_Text_1",
-				"value": "EVERYONE GETS £7 OFF IN WASABI CLUB!"
-			},
-			{
-				"column": "Enrol_Help_Text",
-				"value": "Please enter your details to register with the retailer. We won’t save or store any of the information you provide or edit below."
-			},
-			{
-				"column": "Voucher_Cancelled_Detail",
-				"value": "Your voucher has been cancelled. If you believe we have made a mistake please contact enquiries@wasabi.uk.com."
-			},
-			{
 				"column": "Voucher_Expired_Detail",
 				"value": "Your FREE meal voucher has expired."
 			},
 			{
 				"column": "Voucher_Inprogress_Detail",
 				"value": "Spend £7.00 or more to get a stamp. Collect 7 stamps to get a Meal Voucher of up to £7 off your next meal."
+			},
+			{
+				"column": "Enrol_Help_Text",
+				"value": "Please enter your details to register with the retailer. We won’t save or store any of the information you provide or edit below."
+			},
+			{
+				"column": "Voucher_Issued_Detail",
+				"value": "Show your Wasabi Club reward code in store to redeem £7 off your next meal."
+			},
+			{
+				"column": "Voucher_Cancelled_Detail",
+				"value": "Your voucher has been cancelled. If you believe we have made a mistake please contact enquiries@wasabi.uk.com."
+			},
+			{
+				"column": "Voucher_Redeemed_Detail",
+				"value": "Your FREE meal voucher was redeemed."
+			},
+			{
+				"column": "Promo_Text_1",
+				"value": "EVERYONE GETS £7 OFF IN WASABI CLUB!"
 			}
 		]
 	},
@@ -1020,17 +1032,21 @@
 		"content": []
 	},
 	{
-		"loyalty_plan_id": 286,
+		"loyalty_plan_id": 284,
 		"is_in_wallet": false,
 		"plan_popularity": null,
 		"plan_features": {
 			"has_points": true,
-			"has_transactions": true,
+			"has_transactions": false,
 			"plan_type": 2,
 			"barcode_type": 0,
-			"colour": "#465560",
+			"colour": "#004d55",
 			"text_colour": null,
 			"journeys": [
+				{
+					"type": 0,
+					"description": "ADD"
+				},
 				{
 					"type": 1,
 					"description": "AUTHORISE"
@@ -1043,124 +1059,71 @@
 		},
 		"images": [
 			{
-				"id": 1332,
-				"type": 8,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Silver_Tier_2.png",
-				"description": "SquareMeal Silver Tier 2",
-				"encoding": "png",
-				"order": 0
-			},
-			{
-				"id": 1331,
-				"type": 8,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
-				"description": "SquareMeal Bronze Tier 1",
-				"encoding": "png",
-				"order": 0
-			},
-			{
-				"id": 1333,
-				"type": 8,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Gold_Tier_3.png",
-				"description": "SquareMeal Gold Tier 3",
-				"encoding": "png",
-				"order": 0
-			},
-			{
-				"id": 1328,
-				"type": 3,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
-				"description": "SquareMeal Icon",
-				"encoding": "png",
-				"order": 0
-			},
-			{
-				"id": 1329,
-				"type": 9,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Alternative_Hero.png",
-				"description": "SquareMeal Alternative Hero",
-				"encoding": "png",
-				"order": 0
-			},
-			{
-				"id": 1330,
+				"id": 1321,
 				"type": 0,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Hero.png",
-				"description": "SquareMeal Hero",
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/trenette-hero.png",
+				"description": "Trenette Hero",
+				"encoding": "png",
+				"order": 0
+			},
+			{
+				"id": 1322,
+				"type": 3,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/trenette-con.png",
+				"description": "Trenette Icon",
 				"encoding": "png",
 				"order": 0
 			}
 		],
 		"plan_details": {
-			"company_name": "SquareMeal",
-			"plan_name": "SquareMeal Restaurant Rewards",
+			"company_name": "Trenette",
+			"plan_name": "Trenette",
 			"plan_label": "Account",
-			"plan_url": "https://www.squaremeal.co.uk/rewards/",
-			"plan_summary": "With SquareMeal, you're rewarded for eating out. Go to our website, book selected restaurants, and you'll collect points every time you spend £20 or more. You can easily redeem points on our website for restaurant vouchers & luxury gifts.",
-			"plan_description": "Join SquareMeal Rewards today to make your next dinner even more rewarding. As a member, you'll earn points for booking tables, leaving restaurant reviews, and each time you spend £20 or more in one of our selected restaurants with your linked payment cards. 100 points = £1 spend on your choice of restaurant vouchers, luxury gifts, or charity donations. To book a table or redeem rewards, simply go to our website.",
-			"redeem_instructions": "Only accounts with linked payment cards will receive SquareMeal Rewards Points, when you make a qualifying purchase in a participating restaurant.",
+			"plan_url": "http://www.trenette.co.uk",
+			"plan_summary": "With Trenette Rewards, get a free bottle of wine.",
+			"plan_description": "Please note that your vouchers are single-use and cannot be used twice. This voucher is non refundable and cannot be exchanged for cash in part or full and is valid for a single transaction only.",
+			"redeem_instructions": null,
 			"plan_register_info": null,
 			"join_incentive": null,
 			"category": "Food & Drink",
-			"tiers": [
-				{
-					"name": "Tier 1",
-					"description": "Bronze"
-				},
-				{
-					"name": "Tier 3",
-					"description": "Gold"
-				},
-				{
-					"name": "Tier 2",
-					"description": "Silver"
-				}
-			]
+			"tiers": []
 		},
 		"journey_fields": {
 			"join_fields": {
 				"credentials": [
 					{
-						"order": 0,
+						"order": 1,
 						"display_label": "First name",
-						"validation": "^.{1,250}$",
+						"validation": "^(((?=.{1,100}$)[A-Za-z-\\u00C0-\\u00FF'])+\\s*){1,4}$",
 						"description": "Enter first name",
 						"credential_slug": "first_name",
 						"type": "text",
 						"is_sensitive": false,
-						"choice": [],
-						"alternative": null
-					},
-					{
-						"order": 1,
-						"display_label": "Last name",
-						"validation": "^.{1,250}$",
-						"description": "Enter last name",
-						"credential_slug": "last_name",
-						"type": "text",
-						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
 					{
 						"order": 2,
-						"display_label": "Email",
-						"validation": "^(?=.{1,250}$)(?=[^@]{1,64}@)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
-						"description": "example@mydomain.com",
-						"credential_slug": "email",
+						"display_label": "Last name",
+						"validation": "^(((?=.{1,100}$)[A-Za-z-\\u00C0-\\u00FF'])+\\s*){1,4}$",
+						"description": "Enter last name",
+						"credential_slug": "last_name",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
 					{
 						"order": 3,
-						"display_label": "Password",
-						"validation": "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,250}$",
-						"description": "Password (min 6 characters)",
-						"credential_slug": "password",
-						"type": "sensitive",
-						"is_sensitive": true,
+						"display_label": "Email",
+						"validation": "^(?=[^@]{1,64}@)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
+						"description": "example@mydomain.com",
+						"credential_slug": "email",
+						"type": "text",
+						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					}
@@ -1168,51 +1131,468 @@
 				"plan_documents": [
 					{
 						"order": 0,
-						"name": "SquareMeal privacy policy",
-						"url": "https://policies.staging.gb.bink.com/squaremeal/pp.html",
-						"description": "I accept the",
+						"name": "Trenette privacy policy",
+						"url": "https://policies.gb.bink.com/trenette/pp.html",
+						"description": "I have read the",
 						"is_acceptance_required": false
 					},
 					{
 						"order": 0,
-						"name": "Retailer terms and conditions",
-						"url": "https://policies.staging.gb.bink.com/squaremeal/tc.html",
+						"name": "Retailer terms & conditions",
+						"url": "https://policies.gb.bink.com/trenette/tc.html",
 						"description": "I accept the",
 						"is_acceptance_required": true
 					}
 				],
-				"consents": [
-					{
-						"order": 1,
-						"consent_slug": "Subscription",
-						"is_acceptance_required": false,
-						"description": "Check this box to receive the latest news and offers from SquareMeal - if you change your mind, you can opt out anytime via the retailer."
-					}
-				]
+				"consents": []
 			},
 			"register_ghost_card_fields": null,
-			"add_fields": null,
+			"add_fields": {
+				"credentials": [
+					{
+						"order": 4,
+						"display_label": "Membership card number",
+						"validation": "^[A-Z]{2,6}[0-9]{8,10}$",
+						"description": "14 digit card number",
+						"credential_slug": "card_number",
+						"type": "text",
+						"is_sensitive": false,
+						"is_scannable": false,
+						"choice": [],
+						"alternative": null
+					}
+				],
+				"plan_documents": [],
+				"consents": []
+			},
 			"authorise_fields": {
 				"credentials": [
 					{
-						"order": 2,
+						"order": 3,
 						"display_label": "Email",
-						"validation": "^(?=.{1,250}$)(?=[^@]{1,64}@)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
+						"validation": "^(?=[^@]{1,64}@)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
 						"description": "example@mydomain.com",
 						"credential_slug": "email",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
+						"choice": [],
+						"alternative": null
+					}
+				],
+				"plan_documents": [],
+				"consents": []
+			}
+		},
+		"content": []
+	},
+	{
+		"loyalty_plan_id": 243,
+		"is_in_wallet": false,
+		"plan_popularity": null,
+		"plan_features": {
+			"has_points": true,
+			"has_transactions": false,
+			"plan_type": 2,
+			"barcode_type": 0,
+			"colour": "#02b1e6",
+			"text_colour": null,
+			"journeys": [
+				{
+					"type": 0,
+					"description": "ADD"
+				},
+				{
+					"type": 1,
+					"description": "AUTHORISE"
+				},
+				{
+					"type": 2,
+					"description": "REGISTER"
+				},
+				{
+					"type": 3,
+					"description": "JOIN"
+				}
+			]
+		},
+		"images": [
+			{
+				"id": 1247,
+				"type": 0,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Co-op-hero.jpg",
+				"description": "Co-op Hero",
+				"encoding": "jpg",
+				"order": 0
+			},
+			{
+				"id": 1246,
+				"type": 3,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Coop_vo6PMzb.png",
+				"description": "Co-op Icon",
+				"encoding": "png",
+				"order": 0
+			},
+			{
+				"id": 1394,
+				"type": 9,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Coop_Pax7J95.png",
+				"description": "alt hero",
+				"encoding": "png",
+				"order": 0
+			}
+		],
+		"plan_details": {
+			"company_name": "Co-op",
+			"plan_name": "Co-op Membership Card",
+			"plan_label": "Card",
+			"plan_url": "https://www.coop.co.uk",
+			"plan_summary": "As a Co-op member, you earn 5% back when you buy selected products and services, and Co-op will donate 1% of what you spend to a local cause of your choice.",
+			"plan_description": "You can spend the rewards you earn on most items you buy from Co-op, not just Co-op products.\r\nYou also get access to exclusive prices and offers from other Co-op businesses like insurance, Funeralcare and legal services.\r\nYou cannot earn or spend Co-op rewards at independent co-operatives, including Central England, Chelmsford Star, Southern and Midcounties.",
+			"redeem_instructions": "Scan this barcode at the till to earn points if you do not have your linked Barclays card with you.",
+			"plan_register_info": "Register your temporary Co-op card and you’ll earn 5% back when you buy selected products and services, and Co-op will donate 1% of what you spend to a local cause of your choice. Plus you’ll also get access to exclusive offers and prices.",
+			"join_incentive": "Become a Co-op member for £1 and you’ll earn 5% back when you buy selected products and services, and Co-op will donate 1% of what you spend to a local cause of your choice. Plus you’ll also get access to exclusive offers and prices.",
+			"category": "Household",
+			"tiers": []
+		},
+		"journey_fields": {
+			"join_fields": {
+				"credentials": [
+					{
+						"order": 2,
+						"display_label": "Date of birth",
+						"validation": "^(0[1-9]|[12][0-9]|3[01])[\\/](0[1-9]|1[012])[\\/](19|20)\\d\\d$",
+						"description": "DD/MM/YYYY",
+						"credential_slug": "date_of_birth",
+						"type": "text",
+						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
 					{
 						"order": 3,
-						"display_label": "Password",
-						"validation": "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,250}$",
-						"description": "Password (min 6 characters)",
-						"credential_slug": "password",
-						"type": "sensitive",
-						"is_sensitive": true,
+						"display_label": "Title",
+						"validation": "^(Mr|Mrs|Miss|Ms|Dr|Mx|Prefer not to say)$",
+						"description": "Select title",
+						"credential_slug": "title",
+						"type": "choice",
+						"is_sensitive": false,
+						"is_scannable": false,
+						"choice": [
+							"Mr",
+							"Mrs",
+							"Miss",
+							"Ms",
+							"Mx",
+							"Dr",
+							"Prefer not to say"
+						],
+						"alternative": null
+					},
+					{
+						"order": 4,
+						"display_label": "First name",
+						"validation": "^(((?=.{1,20}$)[A-Za-z\\-\\u00C0-\\u00FF'])+\\s*){1,4}$",
+						"description": "Enter first name",
+						"credential_slug": "first_name",
+						"type": "text",
+						"is_sensitive": false,
+						"is_scannable": false,
+						"choice": [],
+						"alternative": null
+					},
+					{
+						"order": 5,
+						"display_label": "Last name",
+						"validation": "^(((?=.{1,20}$)[A-Za-z\\-\\u00C0-\\u00FF'])+\\s*){1,4}$",
+						"description": "Enter last name",
+						"credential_slug": "last_name",
+						"type": "text",
+						"is_sensitive": false,
+						"is_scannable": false,
+						"choice": [],
+						"alternative": null
+					},
+					{
+						"order": 6,
+						"display_label": "Email",
+						"validation": "^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$",
+						"description": "example@mydomain.com",
+						"credential_slug": "email",
+						"type": "text",
+						"is_sensitive": false,
+						"is_scannable": false,
+						"choice": [],
+						"alternative": null
+					},
+					{
+						"order": 7,
+						"display_label": "Address line 1",
+						"validation": "^([a-zA-Z0-9#.,;:' ]){1,100}$",
+						"description": "Enter address line 1",
+						"credential_slug": "address_1",
+						"type": "text",
+						"is_sensitive": false,
+						"is_scannable": false,
+						"choice": [],
+						"alternative": null
+					},
+					{
+						"order": 8,
+						"display_label": "Address line 2",
+						"validation": "^([a-zA-Z0-9#.,;:' ]){1,100}$",
+						"description": "Enter address line 2",
+						"credential_slug": "address_2",
+						"type": "text",
+						"is_sensitive": false,
+						"is_scannable": false,
+						"choice": [],
+						"alternative": null
+					},
+					{
+						"order": 9,
+						"display_label": "City",
+						"validation": "^([a-zA-Z0-9#.,;:' ]){1,100}$",
+						"description": "Enter city name",
+						"credential_slug": "town_city",
+						"type": "text",
+						"is_sensitive": false,
+						"is_scannable": false,
+						"choice": [],
+						"alternative": null
+					},
+					{
+						"order": 10,
+						"display_label": "Postcode",
+						"validation": "^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})$",
+						"description": "Enter post code",
+						"credential_slug": "postcode",
+						"type": "text",
+						"is_sensitive": false,
+						"is_scannable": false,
+						"choice": [],
+						"alternative": null
+					},
+					{
+						"order": 12,
+						"display_label": "Pay £1 from",
+						"validation": null,
+						"description": null,
+						"credential_slug": "payment_card_hash",
+						"type": "payment_card_hash",
+						"is_sensitive": false,
+						"is_scannable": false,
+						"choice": [],
+						"alternative": null
+					}
+				],
+				"plan_documents": [
+					{
+						"order": 0,
+						"name": "Co-op privacy policy",
+						"url": "https://policies.staging.gb.bink.com/coop/pp.html",
+						"description": "Please read the",
+						"is_acceptance_required": true
+					},
+					{
+						"order": 0,
+						"name": "Retailer terms and conditions",
+						"url": "https://policies.staging.gb.bink.com/coop/tc.html",
+						"description": "I accept the",
+						"is_acceptance_required": true
+					}
+				],
+				"consents": []
+			},
+			"register_ghost_card_fields": {
+				"credentials": [
+					{
+						"order": 2,
+						"display_label": "Date of birth",
+						"validation": "^(0[1-9]|[12][0-9]|3[01])[\\/](0[1-9]|1[012])[\\/](19|20)\\d\\d$",
+						"description": "DD/MM/YYYY",
+						"credential_slug": "date_of_birth",
+						"type": "text",
+						"is_sensitive": false,
+						"is_scannable": false,
+						"choice": [],
+						"alternative": null
+					},
+					{
+						"order": 3,
+						"display_label": "Title",
+						"validation": "^(Mr|Mrs|Miss|Ms|Dr|Mx|Prefer not to say)$",
+						"description": "Select title",
+						"credential_slug": "title",
+						"type": "choice",
+						"is_sensitive": false,
+						"is_scannable": false,
+						"choice": [
+							"Mr",
+							"Mrs",
+							"Miss",
+							"Ms",
+							"Mx",
+							"Dr",
+							"Prefer not to say"
+						],
+						"alternative": null
+					},
+					{
+						"order": 4,
+						"display_label": "First name",
+						"validation": "^(((?=.{1,20}$)[A-Za-z\\-\\u00C0-\\u00FF'])+\\s*){1,4}$",
+						"description": "Enter first name",
+						"credential_slug": "first_name",
+						"type": "text",
+						"is_sensitive": false,
+						"is_scannable": false,
+						"choice": [],
+						"alternative": null
+					},
+					{
+						"order": 5,
+						"display_label": "Last name",
+						"validation": "^(((?=.{1,20}$)[A-Za-z\\-\\u00C0-\\u00FF'])+\\s*){1,4}$",
+						"description": "Enter last name",
+						"credential_slug": "last_name",
+						"type": "text",
+						"is_sensitive": false,
+						"is_scannable": false,
+						"choice": [],
+						"alternative": null
+					},
+					{
+						"order": 6,
+						"display_label": "Email",
+						"validation": "^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$",
+						"description": "example@mydomain.com",
+						"credential_slug": "email",
+						"type": "text",
+						"is_sensitive": false,
+						"is_scannable": false,
+						"choice": [],
+						"alternative": null
+					},
+					{
+						"order": 7,
+						"display_label": "Address line 1",
+						"validation": "^([a-zA-Z0-9#.,;:' ]){1,100}$",
+						"description": "Enter address line 1",
+						"credential_slug": "address_1",
+						"type": "text",
+						"is_sensitive": false,
+						"is_scannable": false,
+						"choice": [],
+						"alternative": null
+					},
+					{
+						"order": 8,
+						"display_label": "Address line 2",
+						"validation": "^([a-zA-Z0-9#.,;:' ]){1,100}$",
+						"description": "Enter address line 2",
+						"credential_slug": "address_2",
+						"type": "text",
+						"is_sensitive": false,
+						"is_scannable": false,
+						"choice": [],
+						"alternative": null
+					},
+					{
+						"order": 9,
+						"display_label": "City",
+						"validation": "^([a-zA-Z0-9#.,;:' ]){1,100}$",
+						"description": "Enter city name",
+						"credential_slug": "town_city",
+						"type": "text",
+						"is_sensitive": false,
+						"is_scannable": false,
+						"choice": [],
+						"alternative": null
+					},
+					{
+						"order": 10,
+						"display_label": "Postcode",
+						"validation": "^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})$",
+						"description": "Enter post code",
+						"credential_slug": "postcode",
+						"type": "text",
+						"is_sensitive": false,
+						"is_scannable": false,
+						"choice": [],
+						"alternative": null
+					}
+				],
+				"plan_documents": [
+					{
+						"order": 0,
+						"name": "Co-op privacy policy",
+						"url": "https://policies.staging.gb.bink.com/coop/pp.html",
+						"description": "Please read the",
+						"is_acceptance_required": true
+					},
+					{
+						"order": 0,
+						"name": "Retailer terms and conditions",
+						"url": "https://policies.staging.gb.bink.com/coop/tc.html",
+						"description": "I accept the",
+						"is_acceptance_required": true
+					}
+				],
+				"consents": []
+			},
+			"add_fields": {
+				"credentials": [
+					{
+						"order": 1,
+						"display_label": "Barcode",
+						"validation": "^((63317491)|(63317492))[0-9]{10}$",
+						"description": null,
+						"credential_slug": "barcode",
+						"type": "text",
+						"is_sensitive": false,
+						"is_scannable": true,
+						"choice": [],
+						"alternative": {
+							"order": 1,
+							"display_label": "Membership card number",
+							"validation": "^((63317491)|(63317492))[0-9]{10}$",
+							"description": "18 digit card number",
+							"credential_slug": "card_number",
+							"type": "text",
+							"is_sensitive": false,
+							"is_scannable": false,
+							"choice": []
+						}
+					}
+				],
+				"plan_documents": [],
+				"consents": []
+			},
+			"authorise_fields": {
+				"credentials": [
+					{
+						"order": 2,
+						"display_label": "Date of birth",
+						"validation": "^(0[1-9]|[12][0-9]|3[01])[\\/](0[1-9]|1[012])[\\/](19|20)\\d\\d$",
+						"description": "DD/MM/YYYY",
+						"credential_slug": "date_of_birth",
+						"type": "text",
+						"is_sensitive": false,
+						"is_scannable": false,
+						"choice": [],
+						"alternative": null
+					},
+					{
+						"order": 10,
+						"display_label": "Postcode",
+						"validation": "^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})$",
+						"description": "Enter post code",
+						"credential_slug": "postcode",
+						"type": "text",
+						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					}
@@ -1224,7 +1604,7 @@
 		"content": [
 			{
 				"column": "Enrol_Help_Text",
-				"value": "Please enter your details to register with the retailer. We won’t save or store any of the information you provide or edit below."
+				"value": "Please enter your details to register with the retailer. If there’s a physical card, this will be sent to the address you provide. We won’t save or store any of the information you provide or edit below."
 			}
 		]
 	},
@@ -1260,19 +1640,19 @@
 		},
 		"images": [
 			{
-				"id": 1290,
-				"type": 3,
-				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Screenshot_2020-05-14_at_13.26.35.png",
-				"description": "test qa",
-				"encoding": "png",
-				"order": 1
-			},
-			{
 				"id": 1249,
 				"type": 3,
 				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/QA_test_logo.jpg",
 				"description": "QA Icons",
 				"encoding": "jpg",
+				"order": 1
+			},
+			{
+				"id": 1290,
+				"type": 3,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Screenshot_2020-05-14_at_13.26.35.png",
+				"description": "test qa",
+				"encoding": "png",
 				"order": 1
 			}
 		],
@@ -1294,34 +1674,13 @@
 				"credentials": [
 					{
 						"order": 0,
-						"display_label": "Favourite place",
-						"validation": null,
-						"description": null,
-						"credential_slug": "favourite_place",
-						"type": "text",
-						"is_sensitive": false,
-						"choice": [],
-						"alternative": null
-					},
-					{
-						"order": 0,
 						"display_label": "Username",
 						"validation": null,
 						"description": null,
 						"credential_slug": "username",
 						"type": "text",
 						"is_sensitive": false,
-						"choice": [],
-						"alternative": null
-					},
-					{
-						"order": 0,
-						"display_label": "Place of birth",
-						"validation": null,
-						"description": null,
-						"credential_slug": "place_of_birth",
-						"type": "text",
-						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -1333,6 +1692,31 @@
 						"credential_slug": "memorable_date",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
+						"choice": [],
+						"alternative": null
+					},
+					{
+						"order": 0,
+						"display_label": "Favourite place",
+						"validation": null,
+						"description": null,
+						"credential_slug": "favourite_place",
+						"type": "text",
+						"is_sensitive": false,
+						"is_scannable": false,
+						"choice": [],
+						"alternative": null
+					},
+					{
+						"order": 0,
+						"display_label": "Place of birth",
+						"validation": null,
+						"description": null,
+						"credential_slug": "place_of_birth",
+						"type": "text",
+						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -1344,6 +1728,7 @@
 						"credential_slug": "gender",
 						"type": "boolean",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -1355,6 +1740,7 @@
 						"credential_slug": "card_number",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -1366,6 +1752,7 @@
 						"credential_slug": "country",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					}
@@ -1373,16 +1760,16 @@
 				"plan_documents": [
 					{
 						"order": 0,
-						"name": "Privacy Policy",
-						"url": "https://policies.bink.com/QA2/pp.html",
-						"description": "I accept the",
+						"name": "QA Test Plan Documents",
+						"url": "https://bink.com/terms-and-conditions/",
+						"description": "Plan Documents",
 						"is_acceptance_required": true
 					},
 					{
 						"order": 0,
-						"name": "QA Test Plan Documents",
-						"url": "https://bink.com/terms-and-conditions/",
-						"description": "Plan Documents",
+						"name": "Privacy Policy",
+						"url": "https://policies.bink.com/QA2/pp.html",
+						"description": "I accept the",
 						"is_acceptance_required": true
 					}
 				],
@@ -1392,34 +1779,13 @@
 				"credentials": [
 					{
 						"order": 0,
-						"display_label": "Favourite place",
-						"validation": null,
-						"description": null,
-						"credential_slug": "favourite_place",
-						"type": "text",
-						"is_sensitive": false,
-						"choice": [],
-						"alternative": null
-					},
-					{
-						"order": 0,
 						"display_label": "Username",
 						"validation": null,
 						"description": null,
 						"credential_slug": "username",
 						"type": "text",
 						"is_sensitive": false,
-						"choice": [],
-						"alternative": null
-					},
-					{
-						"order": 0,
-						"display_label": "Place of birth",
-						"validation": null,
-						"description": null,
-						"credential_slug": "place_of_birth",
-						"type": "text",
-						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -1431,6 +1797,31 @@
 						"credential_slug": "memorable_date",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
+						"choice": [],
+						"alternative": null
+					},
+					{
+						"order": 0,
+						"display_label": "Favourite place",
+						"validation": null,
+						"description": null,
+						"credential_slug": "favourite_place",
+						"type": "text",
+						"is_sensitive": false,
+						"is_scannable": false,
+						"choice": [],
+						"alternative": null
+					},
+					{
+						"order": 0,
+						"display_label": "Place of birth",
+						"validation": null,
+						"description": null,
+						"credential_slug": "place_of_birth",
+						"type": "text",
+						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -1442,6 +1833,7 @@
 						"credential_slug": "gender",
 						"type": "boolean",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					},
@@ -1453,6 +1845,7 @@
 						"credential_slug": "country",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					}
@@ -1460,16 +1853,16 @@
 				"plan_documents": [
 					{
 						"order": 0,
-						"name": "Privacy Policy",
-						"url": "https://policies.bink.com/QA2/pp.html",
-						"description": "I accept the",
+						"name": "QA Test Plan Documents",
+						"url": "https://bink.com/terms-and-conditions/",
+						"description": "Plan Documents",
 						"is_acceptance_required": true
 					},
 					{
 						"order": 0,
-						"name": "QA Test Plan Documents",
-						"url": "https://bink.com/terms-and-conditions/",
-						"description": "Plan Documents",
+						"name": "Privacy Policy",
+						"url": "https://policies.bink.com/QA2/pp.html",
+						"description": "I accept the",
 						"is_acceptance_required": true
 					}
 				],
@@ -1485,6 +1878,7 @@
 						"credential_slug": "card_number",
 						"type": "text",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					}
@@ -1492,16 +1886,16 @@
 				"plan_documents": [
 					{
 						"order": 0,
-						"name": "Privacy Policy",
-						"url": "https://policies.bink.com/QA2/pp.html",
-						"description": "I accept the",
+						"name": "QA Test Plan Documents",
+						"url": "https://bink.com/terms-and-conditions/",
+						"description": "Plan Documents",
 						"is_acceptance_required": true
 					},
 					{
 						"order": 0,
-						"name": "QA Test Plan Documents",
-						"url": "https://bink.com/terms-and-conditions/",
-						"description": "Plan Documents",
+						"name": "Privacy Policy",
+						"url": "https://policies.bink.com/QA2/pp.html",
+						"description": "I accept the",
 						"is_acceptance_required": true
 					}
 				],
@@ -1517,6 +1911,7 @@
 						"credential_slug": "gender",
 						"type": "boolean",
 						"is_sensitive": false,
+						"is_scannable": false,
 						"choice": [],
 						"alternative": null
 					}

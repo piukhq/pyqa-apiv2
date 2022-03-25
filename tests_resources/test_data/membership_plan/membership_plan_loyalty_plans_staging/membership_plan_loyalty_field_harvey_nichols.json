@@ -22,10 +22,26 @@
 	},
 	"images": [
 		{
+			"id": 1185,
+			"type": 8,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_2_Gold.png",
+			"description": "Gold Tier",
+			"encoding": "png",
+			"order": 0
+		},
+		{
 			"id": 1184,
 			"type": 8,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_1_Silver.png",
 			"description": "Silver Tier",
+			"encoding": "png",
+			"order": 0
+		},
+		{
+			"id": 1186,
+			"type": 8,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_3_Platinum.png",
+			"description": "Platinum Tier",
 			"encoding": "png",
 			"order": 0
 		},
@@ -46,6 +62,14 @@
 			"order": 0
 		},
 		{
+			"id": 1293,
+			"type": 9,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_ESHACSv.png",
+			"description": "Harvey Nichols Alternative Hero",
+			"encoding": "png",
+			"order": 0
+		},
+		{
 			"id": 575,
 			"type": 0,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_0_TIER_UNKNOWN.png",
@@ -58,30 +82,6 @@
 			"type": 8,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_4_Black.png",
 			"description": "Black Tier",
-			"encoding": "png",
-			"order": 0
-		},
-		{
-			"id": 1186,
-			"type": 8,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_3_Platinum.png",
-			"description": "Platinum Tier",
-			"encoding": "png",
-			"order": 0
-		},
-		{
-			"id": 1185,
-			"type": 8,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_2_Gold.png",
-			"description": "Gold Tier",
-			"encoding": "png",
-			"order": 0
-		},
-		{
-			"id": 1293,
-			"type": 9,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_ESHACSv.png",
-			"description": "Harvey Nichols Alternative Hero",
 			"encoding": "png",
 			"order": 0
 		}
@@ -127,6 +127,7 @@
 					"credential_slug": "title",
 					"type": "choice",
 					"is_sensitive": false,
+					"is_scannable": false,
 					"choice": [
 						"Mr",
 						"Mrs",
@@ -149,6 +150,7 @@
 					"credential_slug": "first_name",
 					"type": "text",
 					"is_sensitive": false,
+					"is_scannable": false,
 					"choice": [],
 					"alternative": null
 				},
@@ -160,6 +162,7 @@
 					"credential_slug": "last_name",
 					"type": "text",
 					"is_sensitive": false,
+					"is_scannable": false,
 					"choice": [],
 					"alternative": null
 				},
@@ -171,6 +174,7 @@
 					"credential_slug": "email",
 					"type": "text",
 					"is_sensitive": false,
+					"is_scannable": false,
 					"choice": [],
 					"alternative": null
 				},
@@ -182,6 +186,7 @@
 					"credential_slug": "password_2",
 					"type": "sensitive",
 					"is_sensitive": true,
+					"is_scannable": false,
 					"choice": [],
 					"alternative": null
 				},
@@ -193,6 +198,7 @@
 					"credential_slug": "phone",
 					"type": "text",
 					"is_sensitive": false,
+					"is_scannable": false,
 					"choice": [],
 					"alternative": null
 				}
@@ -234,6 +240,7 @@
 					"credential_slug": "email",
 					"type": "text",
 					"is_sensitive": false,
+					"is_scannable": false,
 					"choice": [],
 					"alternative": null
 				},
@@ -245,6 +252,7 @@
 					"credential_slug": "password",
 					"type": "sensitive",
 					"is_sensitive": true,
+					"is_scannable": false,
 					"choice": [],
 					"alternative": null
 				}
