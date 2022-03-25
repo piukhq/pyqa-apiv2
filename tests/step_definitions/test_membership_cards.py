@@ -293,9 +293,7 @@ def verify_get_wallet_fields(Wallet, merchant):
         compare_two_lists(
             wallet_response["vouchers"], TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant]["vouchers"]
         )
-        compare_two_lists(
-            wallet_response["images"], TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant]["images"]
-        )
+        compare_two_lists(wallet_response["images"], TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant]["images"])
 
 
 @then(parsers.parse("All voucher fields are correctly populated for {merchant}"))
