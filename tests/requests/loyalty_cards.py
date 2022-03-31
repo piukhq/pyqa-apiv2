@@ -1,7 +1,7 @@
 from tests import api
 from tests.api.base import Endpoint
-from tests.helpers.test_context import TestContext
-from tests.helpers.test_helpers import Merchant
+from tests.helpers.context import TestContext
+from tests.helpers.helpers import Merchant
 from tests.requests.encryption import encrypted_payload_token
 
 

@@ -11,8 +11,8 @@ import tests.api as api
 
 from tests.api.base import Endpoint
 from tests.helpers import constants
-from tests.helpers.test_context import TestContext
-from tests.helpers.test_helpers import PaymentCardTestData
+from tests.helpers.context import TestContext
+from tests.helpers.helpers import PaymentCardTestData
 from tests.helpers.vault import channel_vault
 from tests.helpers.vault.channel_vault import KeyType
 

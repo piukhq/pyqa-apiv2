@@ -6,7 +6,7 @@ from faker import Faker
 from tests import api
 from tests.api.base import Endpoint
 from tests.helpers import constants
-from tests.helpers.test_context import TestContext
+from tests.helpers.context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
 
 

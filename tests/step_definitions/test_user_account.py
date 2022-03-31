@@ -7,10 +7,10 @@ from tests import api
 from tests.api.base import Endpoint
 from tests.conftest import response_to_json
 from tests.helpers import constants
-from tests.helpers.test_context import TestContext
+from tests.helpers.context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
 from tests.requests.service import CustomerAccount
-from tests.step_definitions import test_membership_cards
+from tests.step_definitions import test_loyalty_cards
 
 scenarios("user_accounts/")
 
@@ -31,17 +31,17 @@ def update_user_email(channel, env, test_email):
 
 @when(parsers.parse('I perform POST request to add and authorise "{merchant}" membership card using b2b token'))
 def verify_add_and_auth_b2b(merchant):
-    test_membership_cards.verify_add_and_auth_b2b(merchant)
+    test_loyalty_cards.verify_add_and_auth_b2b(merchant)
 
 
 @then(parsers.parse('verify the data stored in DB after "{journey_type}" journey for "{merchant}"'))
 def verify_loyalty_card_into_database(journey_type, merchant):
-    test_membership_cards.verify_loyalty_card_into_database(journey_type, merchant)
+    test_loyalty_cards.verify_loyalty_card_into_database(journey_type, merchant)
 
 
 @then(parsers.parse('verify that the PLL links are deleted from the scheme account for "{journey_type2}"'))
 def verify_pll_links_scheme_account(journey_type2):
-    test_membership_cards.verify_pll_links_scheme_account(journey_type2)
+    test_loyalty_cards.verify_pll_links_scheme_account(journey_type2)
 
 
 @then(parsers.parse("I perform POST request to update email again"))

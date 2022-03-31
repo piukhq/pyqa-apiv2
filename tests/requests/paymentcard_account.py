@@ -6,8 +6,8 @@ from json import JSONDecodeError
 from tests import api
 from tests.api.base import Endpoint
 from tests.helpers import constants
-from tests.helpers.test_context import TestContext
-from tests.helpers.test_helpers import PaymentCardTestData
+from tests.helpers.context import TestContext
+from tests.helpers.helpers import PaymentCardTestData
 from tests.payload.payment_cards.payment_card import PaymentCardDetails
 from tests.requests.encryption import encrypted_payload_token
 

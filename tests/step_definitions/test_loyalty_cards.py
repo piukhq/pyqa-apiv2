@@ -10,10 +10,10 @@ from tests.api.base import Endpoint
 from tests.conftest import response_to_json, setup_third_token
 from tests.helpers import constants
 from tests.helpers.database.query_hermes import QueryHermes
-from tests.helpers.test_context import TestContext
+from tests.helpers.context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
-from tests.helpers.test_helpers import TestData
-from tests.requests.membership_cards import MembershipCards
+from tests.helpers.helpers import TestData
+from tests.requests.loyalty_cards import MembershipCards
 from tests.step_definitions import test_paymentcard_account
 
 scenarios("membership_cards/")
