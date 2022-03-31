@@ -17,7 +17,7 @@ scenarios("b2b_token/")
 
 @when(parsers.parse('I perform POST request to add "{merchant}" membership card'))
 def add_membership_card_field(merchant):
-    test_membership_cards.add_field_loyalty_cards(merchant)
+    test_loyalty_cards.add_field_loyalty_cards(merchant)
 
 
 @when(parsers.parse('I perform POST refresh token with grant type "{grant_type}"'))
