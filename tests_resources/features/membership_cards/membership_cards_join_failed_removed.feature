@@ -15,7 +15,7 @@ Feature: Add and register a loyalty card
     Examples:
       | merchant      | status_code_returned | journey_type | scheme_state |
       | Iceland       | 200                  | join_failed  | fail         |
-      | Wasabi        | 200                  | join_failed  | fail         |
+#      | Wasabi        | 200                  | join_failed  | fail         |
       | HarveyNichols | 200                  | join_failed  | fail         |
 
   @remove_active_scheme @bink_regression_api2
@@ -74,5 +74,5 @@ Feature: Add and register a loyalty card
     Examples:
       | merchant      | status_code_returned | scheme_state | error_message                       | error_slug         |
       | Iceland       | 404                  | fail         | Could not find this account or card | RESOURCE_NOT_FOUND |
-      | Wasabi        | 404                  | fail         | Could not find this account or card | RESOURCE_NOT_FOUND |
+#      | Wasabi        | 404                  | fail         | Could not find this account or card | RESOURCE_NOT_FOUND |
       | HarveyNichols | 404                  | fail         | Could not find this account or card | RESOURCE_NOT_FOUND |

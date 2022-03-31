@@ -126,33 +126,45 @@ def verify_pll_links_scheme_account(journey_type2):
 #     return compare
 
 
-def json_compare_transactions(actual_transactions_field, expected_transactions_field):
+def json_compare(actual_field, expected_field, paths=None):
+
     compare = DeepDiff(
-        actual_transactions_field,
-        expected_transactions_field,
+        actual_field,
+        expected_field,
         ignore_order=True,
-        exclude_paths=["root[0]['id']", "root[1]['id']", "root[2]['id']", "root[3]['id']", "root[4]['id']"],
+        exclude_paths=paths,
     )
 
     return compare
 
 
-def json_compare_balance(actual_balance_field, expected_balance_field):
-    compare = DeepDiff(
-        actual_balance_field, expected_balance_field, ignore_order=True, exclude_paths=["root['updated_at']"]
-    )
-
-    return compare
-
-
-def json_compare_vouchers(actual_vouchers_field, expected_vouchers_field):
-    compare = DeepDiff(
-        actual_vouchers_field,
-        expected_vouchers_field,
-        ignore_order=True,
-    )
-
-    return compare
+# def json_compare_transactions(actual_transactions_field, expected_transactions_field):
+#     compare = DeepDiff(
+#         actual_transactions_field,
+#         expected_transactions_field,
+#         ignore_order=True,
+#         exclude_paths=["root[0]['id']", "root[1]['id']", "root[2]['id']", "root[3]['id']", "root[4]['id']"],
+#     )
+#
+#     return compare
+#
+#
+# def json_compare_balance(actual_balance_field, expected_balance_field):
+#     compare = DeepDiff(
+#         actual_balance_field, expected_balance_field, ignore_order=True, exclude_paths=["root['updated_at']"]
+#     )
+#
+#     return compare
+#
+#
+# def json_compare_vouchers(actual_vouchers_field, expected_vouchers_field):
+#     compare = DeepDiff(
+#         actual_vouchers_field,
+#         expected_vouchers_field,
+#         ignore_order=True,
+#      )
+#
+#     return compare
 
 
 # @then(parsers.parse("I can see all Wallet fields successfully"))
@@ -315,8 +327,10 @@ def verify_loyalty_card_balance(env, channel, merchant):
         + "\n\n"
         + json.dumps(response_json, indent=4)
     )
-    difference = json_compare_balance(
-        response_json["balance"], TestDataUtils.TEST_DATA.wallet_info[merchant][0]["balance"]
+    difference = json_compare(
+        response_json["balance"],
+        TestDataUtils.TEST_DATA.wallet_info[merchant][0]["balance"],
+        paths=["root['updated_at']"],
     )
     if difference:
         logging.info(
@@ -379,8 +393,10 @@ def verify_loyalty_card_transactions(env, channel, merchant):
         + "\n\n"
         + json.dumps(response_json, indent=4)
     )
-    difference = json_compare_transactions(
-        response_json["transactions"], TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"]
+    difference = json_compare(
+        response_json["transactions"],
+        TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"],
+        paths=["root[0]['id']", "root[1]['id']", "root[2]['id']", "root[3]['id']", "root[4]['id']"],
     )
     if difference:
         logging.info(
@@ -445,9 +461,7 @@ def verify_loyalty_card_vouchers(env, channel, merchant):
         + "\n\n"
         + json.dumps(response_json, indent=4)
     )
-    difference = json_compare_vouchers(
-        response_json["vouchers"], TestDataUtils.TEST_DATA.wallet_info[merchant][0]["vouchers"]
-    )
+    difference = json_compare(response_json["vouchers"], TestDataUtils.TEST_DATA.wallet_info[merchant][0]["vouchers"])
     if difference:
         logging.info(
             "The expected and actual vouchers of "
