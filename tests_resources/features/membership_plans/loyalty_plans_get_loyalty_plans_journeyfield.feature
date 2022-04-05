@@ -40,5 +40,5 @@ Feature: view journey fields
 
     Examples:
       | loyalty_scheme      | status_code | error_message                       | error_slug         |
-      | Merchant_not_exists | 404         | Could not find this account or card | RESOURCE_NOT_FOUND |
+      | Merchant_not_exists | 404         | Could not find this Loyalty Plan | RESOURCE_NOT_FOUND |
 
