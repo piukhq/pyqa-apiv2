@@ -131,12 +131,12 @@ wasabi_membership_card = {
 wallet_info = {
     "Wasabi": [
         {
-            # "id": 143754,
+            # "id": 149652,
             "loyalty_plan_id": 281,
             "loyalty_plan_name": "Wasabi Club",
             "status": {"state": "authorised", "slug": None, "description": None},
             "balance": {
-                # "updated_at": 1647611487,
+                # "updated_at": 1649424631,
                 "current_display_value": "6 stamps",
                 "loyalty_currency_name": "stamps",
                 "prefix": None,
@@ -146,13 +146,13 @@ wallet_info = {
             },
             "transactions": [
                 {
-                    # "id": "304831",
+                    # "id": "318120",
                     "timestamp": 1638356401,
                     "description": "Ascot 1 Petty Cury £8.00",
                     "display_value": "1 stamps",
                 },
                 {
-                    # "id": "304832",
+                    # "id": "318121",
                     "timestamp": 1635854462,
                     "description": "Ascot 2 Petty Cury £15.60",
                     "display_value": "1 stamps",
@@ -163,8 +163,8 @@ wallet_info = {
                     "state": "inprogress",
                     "earn_type": "stamps",
                     "reward_text": "Free Meal",
-                    "headline": "Spend £7.00 or more to get a stamp. Collect 7 stamps to get a Meal Voucher of "
-                    "up to £7 off your next meal.",
+                    "headline": "Spend £7.00 or more to get a stamp. Collect 7 stamps to get a Meal "
+                    "Voucher of up to £7 off your next meal.",
                     "voucher_code": None,
                     "barcode_type": 0,
                     "progress_display_text": "6/7 stamps",
@@ -173,7 +173,7 @@ wallet_info = {
                     "prefix": None,
                     "suffix": "stamps",
                     "body_text": "In progress body text",
-                    "terms_and_conditions": None,
+                    "terms_and_conditions": "https://policies.staging.gb.bink.com/wasabi/tc.html",
                     "issued_date": None,
                     "expiry_date": None,
                     "redeemed_date": None,
@@ -191,7 +191,7 @@ wallet_info = {
                     "prefix": None,
                     "suffix": "stamps",
                     "body_text": "Issued body text",
-                    "terms_and_conditions": None,
+                    "terms_and_conditions": "https://policies.staging.gb.bink.com/wasabi/tc.html",
                     "issued_date": "1591787076",
                     "expiry_date": "1673308800",
                     "redeemed_date": None,
@@ -703,12 +703,12 @@ wallet_overview_info = {
 
 wallet_info_by_card_id = {
     "Wasabi": {
-        # "id": 143754,
+        # "id": 149653,
         "loyalty_plan_id": 281,
         "loyalty_plan_name": "Wasabi Club",
         "status": {"state": "authorised", "slug": None, "description": None},
         "balance": {
-            # "updated_at": 1647611487,
+            # "updated_at": 1649425854,
             "current_display_value": "6 stamps",
             "loyalty_currency_name": "stamps",
             "prefix": None,
@@ -718,13 +718,13 @@ wallet_info_by_card_id = {
         },
         "transactions": [
             {
-                # "id": "304831",
+                # "id": "318122",
                 "timestamp": 1638356401,
                 "description": "Ascot 1 Petty Cury £8.00",
                 "display_value": "1 stamps",
             },
             {
-                # "id": "304832",
+                # "id": "318123",
                 "timestamp": 1635854462,
                 "description": "Ascot 2 Petty Cury £15.60",
                 "display_value": "1 stamps",
@@ -745,7 +745,7 @@ wallet_info_by_card_id = {
                 "prefix": None,
                 "suffix": "stamps",
                 "body_text": "In progress body text",
-                "terms_and_conditions": None,
+                "terms_and_conditions": "https://policies.staging.gb.bink.com/wasabi/tc.html",
                 "issued_date": None,
                 "expiry_date": None,
                 "redeemed_date": None,
@@ -763,7 +763,7 @@ wallet_info_by_card_id = {
                 "prefix": None,
                 "suffix": "stamps",
                 "body_text": "Issued body text",
-                "terms_and_conditions": None,
+                "terms_and_conditions": "https://policies.staging.gb.bink.com/wasabi/tc.html",
                 "issued_date": "1591787076",
                 "expiry_date": "1673308800",
                 "redeemed_date": None,
