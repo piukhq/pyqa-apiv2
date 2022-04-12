@@ -105,11 +105,30 @@ def verify_loyalty_card_into_database(journey_type, merchant):
     return scheme_account
 
 
+@then(parsers.parse('verify the payment data stored in DB after "{journey_type2}" journey for "{merchant}"'))
+def verify_payment_card_into_database(journey_type2, merchant):
+    pll_links = [{"id": TestContext.current_scheme_account_id, "active_link": True}]
+    payment_account = QueryHermes.fetch_payment_account(TestContext.current_payment_card_id)
+    assert payment_account.id == TestContext.current_payment_card_id and payment_account.pll_links == pll_links, (
+        journey_type2 + " for " + merchant + " in database is not success"
+    )
+    return payment_account
+
+
 @then(parsers.parse('verify that the PLL links are deleted from the scheme account for "{journey_type2}"'))
 def verify_pll_links_scheme_account(journey_type2):
     scheme_account = QueryHermes.fetch_scheme_account(journey_type2, TestContext.current_scheme_account_id)
+    assert scheme_account.is_delete_scheme is True
     assert scheme_account.id == TestContext.current_scheme_account_id
     assert scheme_account.pll_links == []
+
+
+@then(parsers.parse('verify that the PLL links are deleted from the payment account for "{journey_type2}"'))
+def verify_pll_links_payment_account(journey_type2):
+    payment_account = QueryHermes.fetch_payment_account(TestContext.current_payment_card_id)
+    assert payment_account.is_deleted is True
+    assert payment_account.id == TestContext.current_payment_card_id
+    assert payment_account.pll_links == []
 
 
 # def json_compare_wallet(actual_view_wallet_field, expected_view_wallet_field):
