@@ -77,15 +77,16 @@ class QueryHermes:
     @staticmethod
     def fetch_payment_account(payment_card_account_id):
         connection = db.connect_db()
-        query_payment_account = """SELECT id,name_on_card,is_deleted,pll_links FROM hermes.public.payment_card_paymentcardaccount
-                     where id='%s'""" % payment_card_account_id
+        query_payment_account = (
+            """SELECT id,name_on_card,is_deleted,pll_links FROM hermes.public.payment_card_paymentcardaccount
+                     where id='%s'"""
+            % payment_card_account_id
+        )
         record = db.execute_query_fetch_one(connection, query_payment_account)
         if record is None:
             raise Exception(f"'{payment_card_account_id}' is an Invalid Payment account id")
         else:
-            payment_account_record = PaymentAccountRecord(
-                record[0], record[1], record[2], record[3]
-            )
+            payment_account_record = PaymentAccountRecord(record[0], record[1], record[2], record[3])
         db.clear_db(connection)
         return payment_account_record
 
