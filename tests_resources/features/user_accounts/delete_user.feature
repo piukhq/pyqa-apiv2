@@ -28,18 +28,34 @@ Feature: Delete User feature
     Scenario Outline: soft delete pll links
       Given I am in Bink channel to get b2b token
       When I perform POST token request for token type "b2b" to get access token
+      And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
       And I perform POST request to add and authorise "<merchant>" membership card using b2b token
       Then I see a <status_code_returned>
       And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
-      Then I perform DELETE request to delete user successfully
+      And verify the data stored in DB after "<journey_type2>" journey for "<merchant>"
+      And I perform DELETE request to delete user successfully
       And verify that the PLL links are deleted from the scheme account for "<journey_type2>"
 
      Examples:
-      | merchant      | status_code_returned | journey_type      |journey_type2      |
-      | Iceland       | 202                  | add_and_authorise |pll                |
+       |payment_card_provider| merchant      | status_code_returned | journey_type      |journey_type2      |
+       |master               | Iceland       | 202                  | add_and_authorise |pll                |
 
 
+    @delete_payment_account_pll_links @bink_regression_api2
+    Scenario Outline: soft delete payment pll links
+      Given I am in Bink channel to get b2b token
+      When I perform POST token request for token type "b2b" to get access token
+      And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+      And I perform POST request to add and authorise "<merchant>" membership card using b2b token
+      Then I see a <status_code_returned>
+      And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+      And verify the payment data stored in DB after "<journey_type2>" journey for "<merchant>"
+      And I perform DELETE request to delete user successfully
+      And verify that the PLL links are deleted from the payment account for "<journey_type2>"
 
+     Examples:
+     |payment_card_provider| merchant      | status_code_returned    |journey_type       |journey_type2      |
+     |master               | Iceland       | 202                     | add_and_authorise |payment_pll        |
 
 
 

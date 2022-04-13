@@ -18,6 +18,14 @@ class SchemeAccountRecord:
 
 
 @dataclass
+class PaymentAccountRecord:
+    id: int
+    name_on_card: str
+    is_deleted: bool
+    pll_links: bool
+
+
+@dataclass
 class CredentialAns:
     """sub- Set of credential answers
     All credential answers need not be captured as some of them are
@@ -65,6 +73,22 @@ class QueryHermes:
             )
         db.clear_db(connection)
         return scheme_account_record
+
+    @staticmethod
+    def fetch_payment_account(payment_card_account_id):
+        connection = db.connect_db()
+        query_payment_account = (
+            """SELECT id,name_on_card,is_deleted,pll_links FROM hermes.public.payment_card_paymentcardaccount
+                     where id='%s'"""
+            % payment_card_account_id
+        )
+        record = db.execute_query_fetch_one(connection, query_payment_account)
+        if record is None:
+            raise Exception(f"'{payment_card_account_id}' is an Invalid Payment account id")
+        else:
+            payment_account_record = PaymentAccountRecord(record[0], record[1], record[2], record[3])
+        db.clear_db(connection)
+        return payment_account_record
 
 
 # def get_credential_qn_label(qn_id, connection):

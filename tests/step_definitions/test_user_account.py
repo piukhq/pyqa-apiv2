@@ -10,7 +10,7 @@ from tests.helpers import constants
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
 from tests.requests.service import CustomerAccount
-from tests.step_definitions import test_membership_cards
+from tests.step_definitions import test_membership_cards, test_paymentcard_account
 
 scenarios("user_accounts/")
 
@@ -39,9 +39,24 @@ def verify_loyalty_card_into_database(journey_type, merchant):
     test_membership_cards.verify_loyalty_card_into_database(journey_type, merchant)
 
 
+@then(parsers.parse('verify the payment data stored in DB after "{journey_type2}" journey for "{merchant}"'))
+def verify_payment_card_into_database(journey_type2, merchant):
+    test_membership_cards.verify_payment_card_into_database(journey_type2, merchant)
+
+
 @then(parsers.parse('verify that the PLL links are deleted from the scheme account for "{journey_type2}"'))
 def verify_pll_links_scheme_account(journey_type2):
     test_membership_cards.verify_pll_links_scheme_account(journey_type2)
+
+
+@then(parsers.parse('verify that the PLL links are deleted from the payment account for "{journey_type2}"'))
+def verify_pll_links_payment_account(journey_type2):
+    test_membership_cards.verify_pll_links_payment_account(journey_type2)
+
+
+@when(parsers.parse('I perform POST request to add a new "{payment_card_provider}" payment account to wallet'))
+def verify_pll_authorise(payment_card_provider):
+    test_paymentcard_account.add_payment_account(payment_card_provider)
 
 
 @then(parsers.parse("I perform POST request to update email again"))
