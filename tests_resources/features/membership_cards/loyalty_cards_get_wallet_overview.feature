@@ -25,6 +25,68 @@ Feature: Overview of wallet information
 
 
 
+  @verify_wallet_overview_fully_pll @bink_regression_api22
+  Scenario Outline: Verify wallet overview fully pll
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform GET 'Wallet_overview'
+    Then I see a <status_code_returned>
+    And I see <pll_linked_payment_accounts>,<total_payment_accounts> and <is_fully_pll_linked>
+    And I perform DELETE request to delete the "<merchant>" membership card
+    And I perform DELETE request to delete all the payment cards
+
+  Examples:
+      |merchant      | status_code_returned|payment_card_provider|pll_linked_payment_accounts|total_payment_accounts|is_fully_pll_linked|
+      |Wasabi         |200                  |master               |3                         |3                     |True              |
+#      |Iceland        |200                  |master               |3                         |3                     |True              |
+#      |HarveyNichols  |200                  |master               |3                         |3                     |True              |
+
+
+@verify_wallet_overview_not_fully_pll @bink_regression_api22
+  Scenario Outline: Verify wallet overview not fully pll
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform POST request to add a new payment account to wallet with status not active
+    And I perform GET 'Wallet_overview'
+    Then I see a <status_code_returned>
+    And I see <pll_linked_payment_accounts>,<total_payment_accounts> and <is_fully_pll_linked>
+    And I perform DELETE request to delete the "<merchant>" membership card
+    And I perform DELETE request to delete all the payment cards
+
+  Examples:
+      |merchant      | status_code_returned|payment_card_provider|pll_linked_payment_accounts|total_payment_accounts|is_fully_pll_linked|
+      |Wasabi         |200                  |master               |2                         |3                     |False              |
+#      |Iceland        |200                  |master               |2                         |3                     |False              |
+#      |HarveyNichols  |200                  |master               |2                         |3                     |False              |
+
+
+  @verify_wallet_overview_unauth_LC @bink_regression_api22
+  Scenario Outline: Verify wallet overview no pll with unauthorised loyalty card
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add "<merchant>" membership card
+    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform GET 'Wallet_overview'
+    Then I see a <status_code_returned>
+    And I see <pll_linked_payment_accounts>,<total_payment_accounts> and <is_fully_pll_linked>
+    And I perform DELETE request to delete the "<merchant>" membership card
+    And I perform DELETE request to delete all the payment cards
+
+  Examples:
+      |merchant      | status_code_returned|payment_card_provider|pll_linked_payment_accounts|total_payment_accounts|is_fully_pll_linked|
+      |Wasabi         |200                  |master               |0                         |3                     |False              |
+
+
+
    @wallet_overview_empty_list @bink_regression_api2
   Scenario Outline: Get wallet overview with empty list value
     Given I am in Bink channel to get b2b token
