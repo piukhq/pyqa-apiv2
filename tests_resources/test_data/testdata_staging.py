@@ -576,25 +576,32 @@ wallet_info = {
 wallet_overview_info = {
     "Wasabi": [
         {
-            # "id": 143763,
+            # "id": 154316,
             "loyalty_plan_id": 281,
             "loyalty_plan_name": "Wasabi Club",
-            "status": {"state": "authorised", "slug": None, "description": None},
+            "is_fully_pll_linked": True,
+            "pll_linked_payment_accounts": 1,
+            "total_payment_accounts": 1,
+            "status": {
+                "state": "authorised",
+                "slug": None,
+                "description": None
+            },
             "balance": {
-                # "updated_at": 1647618402,
+                # "updated_at": 1651055796,
                 "current_display_value": "6 stamps",
                 "loyalty_currency_name": "stamps",
                 "prefix": None,
                 "suffix": "stamps",
                 "current_value": "6",
-                "target_value": "7",
+                "target_value": "7"
             },
             "card": {
                 "barcode": None,
                 "barcode_type": None,
                 "card_number": "1048172852",
                 "colour": "#ccd400",
-                "text_colour": "#7289da",
+                "text_colour": "#7289da"
             },
             "reward_available": True,
             "images": [
@@ -603,32 +610,39 @@ wallet_overview_info = {
                     "type": 0,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
                     "description": "Wasabi Hero",
-                    "encoding": "png",
+                    "encoding": "png"
                 }
             ],
         }
     ],
     "Iceland": [
         {
-            # "id": 143769,
+            # "id": 154317,
             "loyalty_plan_id": 105,
             "loyalty_plan_name": "Iceland Bonus Card",
-            "status": {"state": "authorised", "slug": "ACTIVE", "description": "This is a test"},
+            "is_fully_pll_linked": True,
+            "pll_linked_payment_accounts": 1,
+            "total_payment_accounts": 1,
+            "status": {
+                "state": "authorised",
+                "slug": "ACTIVE",
+                "description": "This is a test"
+            },
             "balance": {
-                # "updated_at": 1647618507,
+                # "updated_at": 1651055977,
                 "current_display_value": "£380.01",
                 "loyalty_currency_name": "GBP",
                 "prefix": "£",
                 "suffix": None,
                 "current_value": "380.01",
-                "target_value": None,
+                "target_value": None
             },
             "card": {
                 "barcode": "63320400000000000070080",
                 "barcode_type": 0,
                 "card_number": "6332040000000000007",
                 "colour": "#d50724",
-                "text_colour": "#00FF00",
+                "text_colour": "#00FF00"
             },
             "reward_available": False,
             "images": [
@@ -637,42 +651,48 @@ wallet_overview_info = {
                     "type": 0,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
                     "description": "Iceland Slimming World hero card",
-                    "encoding": "png",
+                    "encoding": "png"
                 }
             ],
         }
     ],
     "HarveyNichols": [
         {
-            # "id": 143770,
+            # "id": 154318,
             "loyalty_plan_id": 124,
             "loyalty_plan_name": "Rewards by Harvey Nichols",
-            "status": {"state": "authorised", "slug": None, "description": None},
+            "is_fully_pll_linked": True,
+            "pll_linked_payment_accounts": 1,
+            "total_payment_accounts": 1,
+            "status": {
+                "state": "authorised",
+                "slug": None,
+                "description": None
+            },
             "balance": {
-                # "updated_at": 1647618511,
+                # "updated_at": 1651056068,
                 "current_display_value": "123456 pts",
                 "loyalty_currency_name": "points",
                 "prefix": None,
                 "suffix": "pts",
                 "current_value": "123456",
-                "target_value": None,
+                "target_value": None
             },
             "card": {
                 "barcode": "9000000000003",
                 "barcode_type": 7,
                 "card_number": "9000000000003",
                 "colour": "#000000",
-                "text_colour": "#bfc68c",
+                "text_colour": "#bfc68c"
             },
             "reward_available": False,
             "images": [
                 {
                     "id": 575,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Harvey_Nichols_Card_0_TIER_UNKNOWN.png",
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_0_TIER_UNKNOWN.png",
                     "description": "Harvey Nichols Hero",
-                    "encoding": "png",
+                    "encoding": "png"
                 }
             ],
         }
