@@ -330,14 +330,17 @@ def verify_get_wallet_fields(Wallet, merchant):
 @then(parsers.parse("I see {pll_linked_payment_accounts},{total_payment_accounts} and {is_fully_pll_linked}"))
 def verify_wallet_overview_pll(pll_linked_payment_accounts, total_payment_accounts, is_fully_pll_linked):
     wallet_overview_response = TestContext.actual_view_wallet_field
-    assert (str(wallet_overview_response["loyalty_cards"][0]["is_fully_pll_linked"])
-            == is_fully_pll_linked), "is_fully_pll_linked do not match"
+    assert (
+        str(wallet_overview_response["loyalty_cards"][0]["is_fully_pll_linked"]) == is_fully_pll_linked
+    ), "is_fully_pll_linked do not match"
 
-    assert (str(wallet_overview_response["loyalty_cards"][0]["pll_linked_payment_accounts"])
-            == pll_linked_payment_accounts), "pll_linked_payment_accounts do not match"
+    assert (
+        str(wallet_overview_response["loyalty_cards"][0]["pll_linked_payment_accounts"]) == pll_linked_payment_accounts
+    ), "pll_linked_payment_accounts do not match"
 
-    assert (str(wallet_overview_response["loyalty_cards"][0]["total_payment_accounts"])
-            == total_payment_accounts), "pll_linked_payment_accounts do not match"
+    assert (
+        str(wallet_overview_response["loyalty_cards"][0]["total_payment_accounts"]) == total_payment_accounts
+    ), "pll_linked_payment_accounts do not match"
 
 
 @then(parsers.parse("All voucher fields are correctly populated for {merchant}"))
@@ -1322,9 +1325,13 @@ def i_perform_post_with_different_credential(merchant):
     assert response.status_code == 409, "Add only then add and authorise Journey for " + merchant + " failed"
 
 
-@when(parsers.parse('I perform POST request to add a new "{payment_card_provider}" payment account to wallet'))
-def verify_pll_authorise(payment_card_provider):
-    test_paymentcard_account.add_payment_account(payment_card_provider)
+@when(
+    parsers.parse(
+        'I perform POST request to add a {payment_status} "{payment_card_provider}" payment account to wallet'
+    )
+)
+def verify_pll_authorise(payment_card_provider, payment_status):
+    test_paymentcard_account.add_payment_account(payment_card_provider, payment_status)
 
 
 @when(

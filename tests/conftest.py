@@ -243,6 +243,27 @@ def delete_payment_card(payment_card_provider=None):
         assert network_response.response.status_code == 404 or 400, "Payment card deletion is not successful"
 
 
+@then("I perform DELETE request to delete all the payment cards")
+def delete_all_payment_card():
+    time.sleep(3)
+    wallet_response = TestContext.actual_view_wallet_field
+    print("wallet response", wallet_response)
+    for i in range(len(wallet_response["payment_accounts"])):
+        response = PaymentCards.delete_payment_card(TestContext.token, wallet_response["payment_accounts"][i]["id"])
+        TestContext.response_status_code = response.status_code
+        try:
+            if response.status_code == 202:
+                logging.info(f"Payment card {i} is deleted successfully")
+            elif response.status_code == 404:
+                response_json = response_to_json(response)
+                TestContext.error_message = response_json["error_message"]
+                TestContext.error_slug = response_json["error_slug"]
+                logging.info(f"Payment card {i} is already deleted")
+
+        except HTTPError as network_response:
+            assert network_response.response.status_code == 404 or 400, "Payment card deletion is not successful"
+
+
 @given("I am in Bink channel to get b2b token")
 def set_up_client_token_for_b2b():
     setup_b2b_token()

@@ -42,8 +42,7 @@ Feature: Overview of wallet information
   Examples:
       |merchant      | status_code_returned|payment_card_provider|pll_linked_payment_accounts|total_payment_accounts|is_fully_pll_linked|
       |Wasabi         |200                  |master               |3                         |3                     |True              |
-#      |Iceland        |200                  |master               |3                         |3                     |True              |
-#      |HarveyNichols  |200                  |master               |3                         |3                     |True              |
+
 
 
 @verify_wallet_overview_not_fully_pll @bink_regression_api22
@@ -53,7 +52,7 @@ Feature: Overview of wallet information
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I perform POST request to add a new payment account to wallet with status not active
+    And I perform POST request to add a invalid_card_detail "<payment_card_provider>" payment account to wallet
     And I perform GET 'Wallet_overview'
     Then I see a <status_code_returned>
     And I see <pll_linked_payment_accounts>,<total_payment_accounts> and <is_fully_pll_linked>
@@ -63,8 +62,7 @@ Feature: Overview of wallet information
   Examples:
       |merchant      | status_code_returned|payment_card_provider|pll_linked_payment_accounts|total_payment_accounts|is_fully_pll_linked|
       |Wasabi         |200                  |master               |2                         |3                     |False              |
-#      |Iceland        |200                  |master               |2                         |3                     |False              |
-#      |HarveyNichols  |200                  |master               |2                         |3                     |False              |
+
 
 
   @verify_wallet_overview_unauth_LC @bink_regression_api22

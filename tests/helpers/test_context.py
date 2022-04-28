@@ -13,6 +13,7 @@ class TestContext:
     finger_print = ""
     card_nickname = ""
     finger_print = ""
+    payment_status = ""
     response_json = ""
     response_status_code = ""
     token = ""
