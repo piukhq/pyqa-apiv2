@@ -690,7 +690,8 @@ wallet_overview_info = {
                 {
                     "id": 575,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_0_TIER_UNKNOWN.png",
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                           "Harvey_Nichols_Card_0_TIER_UNKNOWN.png",
                     "description": "Harvey Nichols Hero",
                     "encoding": "png"
                 }

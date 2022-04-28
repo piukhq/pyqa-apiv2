@@ -25,7 +25,7 @@ Feature: Overview of wallet information
 
 
 
-  @verify_wallet_overview_fully_pll @bink_regression_api22
+  @verify_wallet_overview_fully_pll @bink_regression_api2
   Scenario Outline: Verify wallet overview fully pll
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -45,7 +45,7 @@ Feature: Overview of wallet information
 
 
 
-@verify_wallet_overview_not_fully_pll @bink_regression_api22
+@verify_wallet_overview_not_fully_pll @bink_regression_api2
   Scenario Outline: Verify wallet overview not fully pll
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -65,7 +65,7 @@ Feature: Overview of wallet information
 
 
 
-  @verify_wallet_overview_unauth_LC @bink_regression_api22
+  @verify_wallet_overview_unauth_LC @bink_regression_api2
   Scenario Outline: Verify wallet overview no pll with unauthorised loyalty card
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token

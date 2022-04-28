@@ -54,9 +54,13 @@ def verify_pll_links_payment_account(journey_type2):
     test_membership_cards.verify_pll_links_payment_account(journey_type2)
 
 
-@when(parsers.parse('I perform POST request to add a new "{payment_card_provider}" payment account to wallet'))
-def verify_pll_authorise(payment_card_provider):
-    test_paymentcard_account.add_payment_account(payment_card_provider)
+@when(
+    parsers.parse(
+        'I perform POST request to add a {payment_status} "{payment_card_provider}" ' "payment account to wallet"
+    )
+)
+def verify_pll_authorise(payment_card_provider, payment_status):
+    test_paymentcard_account.add_payment_account(payment_card_provider, payment_status)
 
 
 @then(parsers.parse("I perform POST request to update email again"))
