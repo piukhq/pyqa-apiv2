@@ -19,8 +19,11 @@ scenarios("payment_accounts/")
 """Step definitions - Add Payment Account/Delete Payment Account/ Patch Payment Account """
 
 
-@when(parsers.parse('I perform POST request to add a new "{payment_card_provider}" payment card to wallet'))
-def add_payment_account(payment_card_provider):
+@when(
+    parsers.parse('I perform POST request to add a {payment_status} "{payment_card_provider}" payment card to wallet')
+)
+def add_payment_account(payment_card_provider, payment_status):
+    TestContext.payment_status = payment_status
     response = PaymentCards.add_new_payment_card(TestContext.token, payment_card_provider)
     TestContext.response_status_code = response.status_code
     time.sleep(2)

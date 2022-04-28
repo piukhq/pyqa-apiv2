@@ -72,7 +72,10 @@ class PaymentCardDetails:
         TestContext.card_nickname = faker.last_name()
         TestContext.expiry_month = str(randint(1, 12))
         TestContext.expiry_year = str(randint(2999, 3999))
-        TestContext.payment_card_token = constants.TOKEN + "_pytest_api2_" + str(faker.random_int(100, 999999))
+        if TestContext.payment_status == "new":
+            TestContext.payment_card_token = constants.TOKEN + "_pytest_api2_" + str(faker.random_int(100, 999999))
+        elif TestContext.payment_status == "invalid_card_detail":
+            TestContext.payment_card_token = "ERRADD_RCCMP009"
         TestContext.finger_print = constants.FINGERPRINT + "_pytest_api2_" + str(faker.random_int(100, 999999))
 
         payload = {

@@ -576,12 +576,15 @@ wallet_info = {
 wallet_overview_info = {
     "Wasabi": [
         {
-            # "id": 143763,
+            # "id": 154316,
             "loyalty_plan_id": 281,
             "loyalty_plan_name": "Wasabi Club",
+            "is_fully_pll_linked": True,
+            "pll_linked_payment_accounts": 1,
+            "total_payment_accounts": 1,
             "status": {"state": "authorised", "slug": None, "description": None},
             "balance": {
-                # "updated_at": 1647618402,
+                # "updated_at": 1651055796,
                 "current_display_value": "6 stamps",
                 "loyalty_currency_name": "stamps",
                 "prefix": None,
@@ -610,12 +613,15 @@ wallet_overview_info = {
     ],
     "Iceland": [
         {
-            # "id": 143769,
+            # "id": 154317,
             "loyalty_plan_id": 105,
             "loyalty_plan_name": "Iceland Bonus Card",
+            "is_fully_pll_linked": True,
+            "pll_linked_payment_accounts": 1,
+            "total_payment_accounts": 1,
             "status": {"state": "authorised", "slug": "ACTIVE", "description": "This is a test"},
             "balance": {
-                # "updated_at": 1647618507,
+                # "updated_at": 1651055977,
                 "current_display_value": "£380.01",
                 "loyalty_currency_name": "GBP",
                 "prefix": "£",
@@ -644,12 +650,15 @@ wallet_overview_info = {
     ],
     "HarveyNichols": [
         {
-            # "id": 143770,
+            # "id": 154318,
             "loyalty_plan_id": 124,
             "loyalty_plan_name": "Rewards by Harvey Nichols",
+            "is_fully_pll_linked": True,
+            "pll_linked_payment_accounts": 1,
+            "total_payment_accounts": 1,
             "status": {"state": "authorised", "slug": None, "description": None},
             "balance": {
-                # "updated_at": 1647618511,
+                # "updated_at": 1651056068,
                 "current_display_value": "123456 pts",
                 "loyalty_currency_name": "points",
                 "prefix": None,

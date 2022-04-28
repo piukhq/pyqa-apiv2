@@ -327,6 +327,22 @@ def verify_get_wallet_fields(Wallet, merchant):
         compare_two_lists(wallet_response["images"], TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant]["images"])
 
 
+@then(parsers.parse("I see {pll_linked_payment_accounts},{total_payment_accounts} and {is_fully_pll_linked}"))
+def verify_wallet_overview_pll(pll_linked_payment_accounts, total_payment_accounts, is_fully_pll_linked):
+    wallet_overview_response = TestContext.actual_view_wallet_field
+    assert (
+        str(wallet_overview_response["loyalty_cards"][0]["is_fully_pll_linked"]) == is_fully_pll_linked
+    ), "is_fully_pll_linked do not match"
+
+    assert (
+        str(wallet_overview_response["loyalty_cards"][0]["pll_linked_payment_accounts"]) == pll_linked_payment_accounts
+    ), "pll_linked_payment_accounts do not match"
+
+    assert (
+        str(wallet_overview_response["loyalty_cards"][0]["total_payment_accounts"]) == total_payment_accounts
+    ), "pll_linked_payment_accounts do not match"
+
+
 @then(parsers.parse("All voucher fields are correctly populated for {merchant}"))
 def verify_voucher_field(env, channel, merchant):
     voucher_response = TestContext.actual_view_wallet_field
@@ -593,39 +609,6 @@ def verify_empty_list_wallet_overview():
     TestContext.response_join = response_json.get("joins")
     TestContext.response_loyalty_card = response_json.get("loyalty_cards")
     TestContext.response_payment_account = response_json.get("payment_accounts")
-
-
-# @when(parsers.parse("I perform GET request to view '{endpoint}' with invalid token"))
-# def verify_wallet_with_invalid_token(endpoint):
-#     if endpoint == "Wallet":
-#         response = MembershipCards.get_view_wallet(TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN))
-#         logging.info(
-#             "The response of GET/wallet with invalid token is: \n\n"
-#             + Endpoint.BASE_URL
-#             + api.ENDPOINT_WALLET
-#             + "\n\n"
-#             + json.dumps(response.json(), indent=4)
-#         )
-#     else:
-#         response = MembershipCards.get_view_wallet_overview(
-#             TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN)
-#         )
-#         logging.info(
-#             "The response of GET/wallet_overview with invalid token is: \n\n"
-#             + Endpoint.BASE_URL
-#             + api.ENDPOINT_WALLET_OVERVIEW
-#             + "\n\n"
-#             + json.dumps(response.json(), indent=4)
-#         )
-#
-#     TestContext.response_status_code = response.status_code
-#     response_json = response.json()
-#
-#     TestContext.error_message = response_json.get("error_message")
-#     TestContext.error_slug = response_json.get("error_slug")
-#
-#     assert response.status_code == 401, "Server error"
-#     return response
 
 
 @when(parsers.parse("I perform GET request to view '{endpoint}' with {invalid}"))
@@ -1342,9 +1325,13 @@ def i_perform_post_with_different_credential(merchant):
     assert response.status_code == 409, "Add only then add and authorise Journey for " + merchant + " failed"
 
 
-@when(parsers.parse('I perform POST request to add a new "{payment_card_provider}" payment account to wallet'))
-def verify_pll_authorise(payment_card_provider):
-    test_paymentcard_account.add_payment_account(payment_card_provider)
+@when(
+    parsers.parse(
+        'I perform POST request to add a {payment_status} "{payment_card_provider}" payment account to wallet'
+    )
+)
+def verify_pll_authorise(payment_card_provider, payment_status):
+    test_paymentcard_account.add_payment_account(payment_card_provider, payment_status)
 
 
 @when(
