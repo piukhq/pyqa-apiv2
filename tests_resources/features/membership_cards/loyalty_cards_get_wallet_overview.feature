@@ -5,7 +5,7 @@ Feature: Overview of wallet information
   so that I can display this on the front end without having to call the larger /wallet endpoint
 
 
-  @view_wallet_overview_success @bink_regression_api2
+  @view_wallet_overview_success
   Scenario Outline: Get wallet overview success
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -25,7 +25,7 @@ Feature: Overview of wallet information
 
 
 
-  @verify_wallet_overview_fully_pll @bink_regression_api2
+  @verify_wallet_overview_fully_pll
   Scenario Outline: Verify wallet overview fully pll
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -45,7 +45,7 @@ Feature: Overview of wallet information
 
 
 
-@verify_wallet_overview_not_fully_pll @bink_regression_api2
+@verify_wallet_overview_not_fully_pll
   Scenario Outline: Verify wallet overview not fully pll
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -65,7 +65,7 @@ Feature: Overview of wallet information
 
 
 
-  @verify_wallet_overview_unauth_LC @bink_regression_api2
+  @verify_wallet_overview_unauth_LC
   Scenario Outline: Verify wallet overview no pll with unauthorised loyalty card
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -85,7 +85,7 @@ Feature: Overview of wallet information
 
 
 
-   @wallet_overview_empty_list @bink_regression_api2
+   @wallet_overview_empty_list
   Scenario Outline: Get wallet overview with empty list value
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -101,7 +101,7 @@ Feature: Overview of wallet information
 
 
 
-   @wallet_overview_invalid_token @bink_regression_api2
+   @wallet_overview_invalid_token
    Scenario Outline: Verify invalid token scenario for get Wallet overview
      Given I am in Bink channel to get b2b token
      When I perform POST token request for token type "b2b" to get access token

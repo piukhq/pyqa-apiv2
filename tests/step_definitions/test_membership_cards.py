@@ -117,6 +117,7 @@ def verify_payment_card_into_database(journey_type2, merchant):
 
 @then(parsers.parse('verify that the PLL links are deleted from the scheme account for "{journey_type2}"'))
 def verify_pll_links_scheme_account(journey_type2):
+    time.sleep(5)
     scheme_account = QueryHermes.fetch_scheme_account(journey_type2, TestContext.current_scheme_account_id)
     assert scheme_account.is_delete_scheme is True
     assert scheme_account.id == TestContext.current_scheme_account_id
@@ -125,6 +126,7 @@ def verify_pll_links_scheme_account(journey_type2):
 
 @then(parsers.parse('verify that the PLL links are deleted from the payment account for "{journey_type2}"'))
 def verify_pll_links_payment_account(journey_type2):
+    time.sleep(5)
     payment_account = QueryHermes.fetch_payment_account(TestContext.current_payment_card_id)
     assert payment_account.is_deleted is True
     assert payment_account.id == TestContext.current_payment_card_id
