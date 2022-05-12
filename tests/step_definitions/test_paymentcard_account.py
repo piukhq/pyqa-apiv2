@@ -68,15 +68,7 @@ def verify_get_payment_account_added(payment_card_provider="master"):
 
 @then(parsers.parse('I verify the paymentcard "{payment_card_provider}" been added into my wallet'))
 def verify_payment_account_added_in_wallet(payment_card_provider):
-    assert (
-        TestContext.current_payment_card_id == TestContext.response_json.get("id")
-        and TestContext.name_on_payment_card == TestContext.response_json.get("name_on_card")
-        and TestContext.card_nickname == TestContext.response_json.get("card_nickname")
-        and PaymentCardTestData.get_data(payment_card_provider).get(constants.ISSUER)
-        == TestContext.response_json.get("issuer")
-        and TestContext.expiry_month == TestContext.response_json.get("expiry_month")
-        and TestContext.expiry_year == TestContext.response_json.get("expiry_year")
-    )
+    assert TestContext.current_payment_card_id == TestContext.response_json.get("id"), "payment card not added"
 
 
 @then(parsers.parse('I see a "{status_code_returned}" status code for payment account'))
@@ -96,10 +88,8 @@ def verify_replace_value(payment_card_provider, expiry_month, expiry_year, name_
     )
     response_json = response_to_json(response)
     time.sleep(2)
-    assert (
-        response.status_code == 200
-        and TestContext.current_payment_card_id == response_json.get("id")
-        and response_json.get("status") == "active"
+    assert response.status_code == 200 and TestContext.current_payment_card_id == response_json.get(
+        "id"
     ), f"Payment card replacement '{payment_card_provider}' is not successful"
     logging.info(
         f"The response of Replacement POST/PaymentCard '{payment_card_provider}' is: \n\n"
@@ -222,9 +212,9 @@ def add_existing_payment_card_in_another_wallet(payment_card_provider):
     TestContext.response_status_code = response.status_code
     response_json = response_to_json(response)
     time.sleep(3)
-    assert response.status_code == 200 and response_json.get("status") == PaymentCardTestData.get_data(
-        payment_card_provider
-    ).get(constants.PAYMENT_CARD_STATUS), f"Payment card addition for '{payment_card_provider}' is not successful"
+    assert response.status_code == 200 and TestContext.current_payment_card_id == TestContext.response_json.get(
+        "id"
+    ), f"Payment card addition for '{payment_card_provider}' is not successful"
     logging.info(
         f"The response of POST/PaymentCard '{payment_card_provider}' is: \n\n"
         + Endpoint.BASE_URL
@@ -274,8 +264,8 @@ def verify_different_detail(payment_card_provider, expiry_month, expiry_year, na
     response_json = response_to_json(response)
     TestContext.second_payment_card_id = response_json.get("id")
     time.sleep(4)
-    assert (
-        response.status_code == 200 and response_json.get("status") == "active"
+    assert response.status_code == 200 and TestContext.current_payment_card_id == TestContext.response_json.get(
+        "id"
     ), f"Payment card replacement '{payment_card_provider}' is not successful"
     logging.info(
         f"The response of Replacement POST/PaymentCard '{payment_card_provider}' is: \n\n"

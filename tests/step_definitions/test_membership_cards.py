@@ -586,8 +586,6 @@ def verify_wallet(Wallet, env, channel):
     if Wallet == "Wallet":
         response = MembershipCards.get_view_wallet(TestContext.token)
         logging.info("The response of get wallet is : \n" + json.dumps(response_to_json(response), indent=4))
-        print("response of Wallet in dictionary format : \n", response_to_json(response))
-        # print("type if response.json : \n", type(response.json()))
 
     elif Wallet == "Wallet_overview":
         response = MembershipCards.get_view_wallet_overview(TestContext.token)
