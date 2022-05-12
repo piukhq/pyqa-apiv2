@@ -7,7 +7,7 @@ Feature: View Wallet by loyalty card id
 
 
 
-   @view_wallet_by_loyalty_card_id @bink_regression_api2
+   @view_wallet_by_loyalty_card_id
   Scenario Outline: View loyalty card by id
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -26,7 +26,7 @@ Feature: View Wallet by loyalty card id
       |HarveyNichols  |200                  |master               |
 
 
-  @view_wallet_by_loyalty_card_id_invalid @bink_regression_api2
+  @view_wallet_by_loyalty_card_id_invalid
   Scenario Outline: Verify invalid token scenario for get Wallet
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token

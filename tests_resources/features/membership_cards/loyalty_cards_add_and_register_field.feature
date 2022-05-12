@@ -30,7 +30,7 @@ Feature: Add and register a loyalty card
 #      | merchant | status_code_returned | journey_type     | status |
 #      | Iceland  | 200                  | add_and_register | 0      |
 
-  @add_and_register_existing_field @bink_regression_api2
+  @add_and_register_existing_field
   Scenario Outline: Add existing card again into wallet for add and register
     Given I am a Bink user
     When I perform POST request to add and register "<merchant>" membership card
