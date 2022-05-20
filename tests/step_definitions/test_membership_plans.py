@@ -103,6 +103,12 @@ def verify_get_all_loyalty_plans(env, channel):
     TestContext.response_status_code = response.status_code
     logging.info("The loyalty plans available are: \n" + json.dumps(response_to_json(response), indent=4))
 
+    loyalty_plans_list = [x['loyalty_plan_id'] for x in response.json()]
+    print('list of loyalty plan IDs', loyalty_plans_list)
+
+    assert 132 not in loyalty_plans_list, 'suspended loyalty plan ID 132 should not be in response'
+    assert 131 not in loyalty_plans_list, 'inactive loyalty plan ID 131 should not be in response'
+
     with open(TestData.get_expected_all_loyalty_plans_json(env, channel)) as json_file:
         json_data = json.load(json_file)
 
@@ -130,6 +136,12 @@ def verify_loyalty_plans_overview(env, channel):
     response = MembershipPlans.get_loyalty_plans_overview(TestContext.token)
     TestContext.response_status_code = response.status_code
     logging.info("The loyalty plans Overview is: \n" + json.dumps(response_to_json(response), indent=4))
+
+    loyalty_plans_list = [x['loyalty_plan_id'] for x in response.json()]
+    print('list of loyalty plan IDs', loyalty_plans_list)
+
+    assert 132 not in loyalty_plans_list, 'suspended loyalty plan ID 132 should not be in response'
+    assert 131 not in loyalty_plans_list, 'inactive loyalty plan ID 131 should not be in response'
 
     # with open(TestData.get_expected_loyalty_plans_overview_json(env, channel)) as json_file:
     #      expected_data = json.load(json_file)
