@@ -31,7 +31,7 @@ jwcrypto = "*"
 [dev-packages]
 flake8 = "*"
 isort = "*"
-black = "==21.12b0"
+black = "==22.3.0"
 ptpython = "*"
 
 [requires]
