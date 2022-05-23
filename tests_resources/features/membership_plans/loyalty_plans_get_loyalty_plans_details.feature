@@ -43,3 +43,5 @@ Feature: View Loyalty Plan by id
     Examples:
       | loyalty_scheme      | status_code | error_message                     | error_slug         |
       | Merchant_not_exists | 404         | Could not find this Loyalty Plan  | RESOURCE_NOT_FOUND |
+      | Wallis             | 404         | Could not find this Loyalty Plan | RESOURCE_NOT_FOUND |
+      | Bink Test Scheme    | 404         | Could not find this Loyalty Plan | RESOURCE_NOT_FOUND |

@@ -1078,6 +1078,8 @@ membership_plan_id = {
     "whsmith": 280,
     "wasabi": 281,
     "merchant_not_exists": 0000,
+    "Bink Test Scheme": 132,  # suspended loyalty plan
+    "Wallis": 131,  # inactive loyalty plan
 }
 
 scheme_status = {

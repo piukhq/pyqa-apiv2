@@ -67,6 +67,8 @@ class TestData:
             "Wasabi": "wasabi",
             "WHSmith": "whsmith",
             "Merchant_not_exists": "merchant_not_exists",
+            "Wallis": "Wallis",
+            "Bink Test Scheme": "Bink Test Scheme",
         }
         return switcher.get(merchant)
 
