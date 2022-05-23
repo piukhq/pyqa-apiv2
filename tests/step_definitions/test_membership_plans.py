@@ -140,8 +140,14 @@ def verify_loyalty_plans_overview(env, channel):
     loyalty_plans_list = [x['loyalty_plan_id'] for x in response.json()]
     print('list of loyalty plan IDs', loyalty_plans_list)
 
-    assert 132 not in loyalty_plans_list, 'suspended loyalty plan ID 132 should not be in response'
-    assert 131 not in loyalty_plans_list, 'inactive loyalty plan ID 131 should not be in response'
+    inactive_merchant_key = TestData.get_merchant_key('Wallis')
+    inactive_merchant_id = TestDataUtils.TEST_DATA.membership_plan_id.get(inactive_merchant_key)
+
+    suspended_merchant_key = TestData.get_merchant_key('Bink Test Scheme')
+    suspended_merchant_id = TestDataUtils.TEST_DATA.membership_plan_id.get(suspended_merchant_key)
+
+    assert suspended_merchant_id not in loyalty_plans_list, 'suspended loyalty plan ID should not be in response'
+    assert inactive_merchant_id not in loyalty_plans_list, 'inactive loyalty plan ID should not be in response'
 
     # with open(TestData.get_expected_loyalty_plans_overview_json(env, channel)) as json_file:
     #      expected_data = json.load(json_file)
@@ -349,7 +355,7 @@ def verify_invalid_resource_for_loyalty_plan_details(loyalty_scheme):
     assert TestContext.response_status_code == 404
     return response
 
-
+# retrieving invalid resource id or resource id for loyalty plan which is inactive or suspended
 @when(parsers.parse('I perform GET request to view "{loyalty_scheme}" loyalty plan by id with invalid resource'))
 def verify_invalid_resource_for_loyalty_plan(loyalty_scheme):
     response = MembershipPlans.get_loyalty_plan_by_id(setup_token(), loyalty_scheme)
