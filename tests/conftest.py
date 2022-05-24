@@ -191,12 +191,46 @@ def setup_b2b_token():
     return TestContext.b2btoken
 
 
+def setup_b2b_token_user2():
+    key_secret = get_private_key_secret(config.BINK.kid)
+    user_email = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.B2B_EMAIL2)
+    external_id = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.B2B_EXTERNAL_ID2)
+    TestContext.b2btoken = create_b2b_token(key=key_secret, sub=external_id, kid=config.BINK.kid, email=user_email)
+    return TestContext.b2btoken
+
+
 def response_to_json(response):
     try:
         response_json = response.json()
     except JSONDecodeError or Exception:
         raise Exception(f"Empty response and the response Status Code is {str(response.status_code)}")
     return response_json
+
+
+@then(parsers.parse('I perform DELETE request to delete the first wallet "{merchant}" membership card'))
+def delete_first_wallet_scheme_account(merchant=None):
+    time.sleep(3)
+    print("firsttoken", TestContext.first_wallet_token)
+    print("schemeid", TestContext.first_wallet_scheme_account_id)
+    response_del_schemes = MembershipCards.delete_scheme_account(
+        TestContext.first_wallet_token, TestContext.first_wallet_scheme_account_id
+    )
+    TestContext.response_status_code = response_del_schemes.status_code
+    # response_del_schemes_1 = MembershipCards.delete_scheme_account(TestContext.token_channel_1,
+    #                                                                TestContext.scheme_account_id1)
+    """Even if the scheme account is deleted, it is not updating DB so quickly
+     so delay is required before next execution"""
+    try:
+        if response_del_schemes.status_code == 202:
+            logging.info("Loyalty card is deleted successfully")
+        elif response_del_schemes.status_code == 404:
+            logging.info("Loyalty card is already deleted")
+        else:
+            logging.info(response_del_schemes.status_code)
+
+    except HTTPError as network_response:
+        assert network_response.response.status_code == 404 or 400
+    logging.info("The response of delete scheme account (POST) is:\n\n" + Endpoint.BASE_URL + api.ENDPOINT_TOKEN)
 
 
 @then(parsers.parse('I perform DELETE request to delete the "{merchant}" membership card'))
@@ -243,6 +277,25 @@ def delete_payment_card(payment_card_provider=None):
         assert network_response.response.status_code == 404 or 400, "Payment card deletion is not successful"
 
 
+@then(parsers.parse('I perform DELETE request to delete the first wallet "{payment_card_provider}" the payment card'))
+def delete_payment_card_first_wallet(payment_card_provider=None):
+    time.sleep(3)
+
+    response = PaymentCards.delete_payment_card(TestContext.first_wallet_token, TestContext.current_payment_card_id)
+    TestContext.response_status_code = response.status_code
+    try:
+        if response.status_code == 202:
+            logging.info("Payment card is deleted successfully")
+        elif response.status_code == 404:
+            response_json = response_to_json(response)
+            TestContext.error_message = response_json["error_message"]
+            TestContext.error_slug = response_json["error_slug"]
+            logging.info("Payment card is already deleted")
+
+    except HTTPError as network_response:
+        assert network_response.response.status_code == 404 or 400, "Payment card deletion is not successful"
+
+
 @then("I perform DELETE request to delete all the payment cards")
 def delete_all_payment_card():
     time.sleep(3)
@@ -264,13 +317,62 @@ def delete_all_payment_card():
             assert network_response.response.status_code == 404 or 400, "Payment card deletion is not successful"
 
 
+@then("I perform DELETE request to delete all the loyalty cards")
+def delete_all_loyalty_card():
+    time.sleep(3)
+    wallet_response = TestContext.actual_view_wallet_field
+    for i in range(len(wallet_response["payment_accounts"][0]["pll_links"])):
+        response = MembershipCards.delete_scheme_account(
+            TestContext.token, wallet_response["payment_accounts"][0]["pll_links"][i]["loyalty_card_id"]
+        )
+        print("wallet", wallet_response["payment_accounts"][0]["pll_links"][i]["loyalty_card_id"])
+        TestContext.response_status_code = response.status_code
+        try:
+            if response.status_code == 202:
+                logging.info(f"Loyalty card {i} is deleted successfully")
+            elif response.status_code == 404:
+                response_json = response_to_json(response)
+                TestContext.error_message = response_json["error_message"]
+                TestContext.error_slug = response_json["error_slug"]
+                logging.info(f"Loyalty card {i} is already deleted")
+
+        except HTTPError as network_response:
+            assert network_response.response.status_code == 404 or 400, "Loyalty card deletion is not successful"
+
+
 @given("I am in Bink channel to get b2b token")
-def set_up_client_token_for_b2b():
+def set_up_client_token_for_b2b_user1():
     setup_b2b_token()
 
 
+@when("I am in Bink channel to get b2b token for second user")
+def set_up_client_token_for_b2b_user2():
+    setup_b2b_token_user2()
+
+
 @when(parsers.parse('I perform POST token request for token type "{token_type}" to get access token'))
-def perform_post_b2b_with_token(token_type):
+def perform_post_b2b_with_user1(token_type):
+    response = Token_b2b.post_b2b_with_grant_type(TestContext.b2btoken, token_type)
+    time.sleep(1)
+    response_json = response_to_json(response)
+    TestContext.access_token = response_json.get("access_token")
+    TestContext.token_type = response_json.get("token_type")
+    TestContext.refresh_token_type = response_json.get("refresh_token")
+    TestContext.token = TestContext.token_type + " " + TestContext.access_token
+    TestContext.first_wallet_token = TestContext.token
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The response of B2B token (POST) is:\n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_TOKEN
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    assert response.status_code == 200, "/token Journey failed to get access token"
+
+
+@when(parsers.parse('I perform POST token request for token type "{token_type}" to get access token for second user'))
+def perform_post_b2b_with_user2(token_type):
     response = Token_b2b.post_b2b_with_grant_type(TestContext.b2btoken, token_type)
     time.sleep(1)
     response_json = response_to_json(response)

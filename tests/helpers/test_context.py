@@ -17,6 +17,8 @@ class TestContext:
     response_json = ""
     response_status_code = ""
     token = ""
+    first_wallet_token = ""
+    first_wallet_scheme_account_id = ""
     second_token = ""
     third_token = ""
     error_message = ""

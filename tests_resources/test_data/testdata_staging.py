@@ -1,4 +1,5 @@
 # ------------------------------------ ---PAYMENT  CARDS ------------------------------------------------------- #
+
 visa_payment_card = {
     "expiry_month": "01",
     "expiry_year": "11",
@@ -118,6 +119,7 @@ wasabi_membership_card = {
     "transactions_email": "binktestuser14@wasabi.com",
     "email": "binktestuser19@wasabi.com",
     "invalid_email": "fail@unknown.com",
+    "unauthorised_email": "invalidemail@testbink.com",
     "points": 5,
     "currency": "stamps",
     "description": "",
@@ -1107,7 +1109,9 @@ bink_user_accounts = {
     "user_detail": "38766",
     "user_detail2": "38627",
     "b2b_email": "pytest+b2b_staging_email@bink.com",
+    "b2b_email2": "pytest+b2b_staging_email2@bink.com",
     "lloyds_email": "pytest+lloydsb2b_staging_email@bink.com",
     "lloyds_external_id": "12345",
     "b2b_external_id": "Autob2b",
+    "b2b_external_id2": "Autob2b2",
 }

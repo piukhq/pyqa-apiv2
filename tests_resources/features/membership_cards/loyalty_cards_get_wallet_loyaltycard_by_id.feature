@@ -6,9 +6,8 @@ Feature: View Wallet by loyalty card id
   so t do not have to call multiple different endpoints
 
 
-
    @view_wallet_by_loyalty_card_id @bink_regression_api2
-  Scenario Outline: View loyalty card by id
+  Scenario Outline: View wallet loyalty card by id
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
