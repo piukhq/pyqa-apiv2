@@ -724,16 +724,21 @@ def verify_invalid_request_for_add_and_auth_journey(merchant, request_payload, s
         TestContext.response_status_code = response.status_code
         TestContext.error_message = response_json["error_message"]
         TestContext.error_slug = response_json["error_slug"]
+    elif request_payload == "unauthorised":
+        response = MembershipCards.add_and_auth_field_with_unauthorised_json(TestContext.token, merchant)
+        response_json = response_to_json(response)
+        logging.info(response_json)
+        TestContext.response_status_code = response.status_code
 
     logging.info(
         "The response of Invalid Journey (POST) for Add and Auth field:\n \n"
         + Endpoint.BASE_URL
-        + api.ENDPOINT_MEMBERSHIP_CARDS_ADD
+        + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_AUTHORISE
         + "\n\n"
         + json.dumps(response_json, indent=4)
     )
 
-    assert TestContext.response_status_code == int(status_code), "Invalid json request for " + merchant + " failed"
+    assert TestContext.response_status_code == int(status_code), "Invalid request for " + merchant + " failed"
 
 
 @when(
@@ -944,6 +949,7 @@ def verify_add_and_auth(merchant):
     response = MembershipCards.add_and_authorise_card(TestContext.token, merchant)
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")
+    TestContext.first_wallet_scheme_account_id = TestContext.current_scheme_account_id
     TestContext.response_status_code = response.status_code
     logging.info(
         "The response of Add and Authorise Journey (POST) is:\n\n"
@@ -1334,6 +1340,11 @@ def verify_pll_authorise(payment_card_provider, payment_status):
     test_paymentcard_account.add_payment_account(payment_card_provider, payment_status)
 
 
+@when(parsers.parse('I perform POST request to add existing payment card "{payment_card_provider}" to second wallet'))
+def add_existing_payment_card_in_another_wallet(payment_card_provider):
+    test_paymentcard_account.add_existing_payment_card_in_another_wallet(payment_card_provider)
+
+
 @when(
     parsers.parse(
         'I perform POST request again with add and register to verify the "{merchant}"'
@@ -1488,6 +1499,83 @@ def delete_fail_scheme_with_invalid_token(merchant):
     TestContext.error_slug = response_json.get("error_slug")
     assert response.status_code == 401
     return response
+
+
+@then(parsers.parse("I can see '{state}','{slug}' and '{description}' for loyalty card PLL links in the Wallet"))
+def verify_loyalty_card_pll_status(state, slug, description):
+    wallet_response = TestContext.actual_view_wallet_field
+    if state == "active":
+        assert wallet_response["loyalty_cards"][0]["pll_links"][0]["status"]["state"] == state, "pll_links do not match"
+        assert wallet_response["loyalty_cards"][0]["pll_links"][0]["status"]["slug"] is None, "pll_links do not match"
+        assert (
+            wallet_response["loyalty_cards"][0]["pll_links"][0]["status"]["description"] is None
+        ), "pll_links do not match"
+    else:
+        assert wallet_response["loyalty_cards"][0]["pll_links"][0]["status"]["state"] == state, "pll_links do not match"
+        assert wallet_response["loyalty_cards"][0]["pll_links"][0]["status"]["slug"] == slug, "pll_links do not match"
+        assert (
+            wallet_response["loyalty_cards"][0]["pll_links"][0]["status"]["description"] == description
+        ), "pll_links do not match"
+
+
+@then(
+    parsers.parse(
+        "I can see '{state1}','{state2}','{slug1}','{slug2}','{description1}' and '{description2}' for "
+        "loyalty card PLL links in the Wallet"
+    )
+)
+def verify_loyalty_card_pll_status_UC(state1, state2, slug1, slug2, description1, description2):
+    wallet_response = TestContext.actual_view_wallet_field
+    assert wallet_response["loyalty_cards"][0]["pll_links"][0]["status"]["state"] == state2, "pll_links do not match"
+    assert wallet_response["loyalty_cards"][0]["pll_links"][0]["status"]["slug"] == slug2, "pll_links do not match"
+    assert (
+        wallet_response["loyalty_cards"][0]["pll_links"][0]["status"]["description"] == description2
+    ), "pll_links do not match"
+
+
+@then(parsers.parse("I can see '{state}','{slug}' and '{description}' for payment accounts PLL links in the Wallet"))
+def verify_payment_card_pll_status(state, slug, description):
+    wallet_response = TestContext.actual_view_wallet_field
+    if state == "active":
+        assert (
+            wallet_response["payment_accounts"][0]["pll_links"][0]["status"]["state"] == state
+        ), "pll_links do not match"
+        assert (
+            wallet_response["payment_accounts"][0]["pll_links"][0]["status"]["slug"] is None
+        ), "pll_links do not match"
+        assert (
+            wallet_response["payment_accounts"][0]["pll_links"][0]["status"]["description"] is None
+        ), "pll_links do not match"
+    else:
+        assert (
+            wallet_response["payment_accounts"][0]["pll_links"][0]["status"]["state"] == state
+        ), "pll_links do not match"
+        assert (
+            wallet_response["payment_accounts"][0]["pll_links"][0]["status"]["slug"] == slug
+        ), "pll_links do not match"
+        assert (
+            wallet_response["payment_accounts"][0]["pll_links"][0]["status"]["description"] == description
+        ), "pll_links do not match"
+
+
+@then(
+    parsers.parse(
+        "I can see '{state1}','{state2}','{slug1}','{slug2}','{description1}' and '{description2}' for "
+        "payment accounts PLL links in the Wallet"
+    )
+)
+def verify_payment_card_pll_status_UC(state1, state2, slug1, slug2, description1, description2):
+    wallet_response = TestContext.actual_view_wallet_field
+    assert wallet_response["payment_accounts"][0]["pll_links"][0]["status"]["state"] == state1, "pll_links do not match"
+    assert wallet_response["payment_accounts"][0]["pll_links"][0]["status"]["slug"] is None, "pll_links do not match"
+    assert (
+        wallet_response["payment_accounts"][0]["pll_links"][0]["status"]["description"] is None
+    ), "pll_links do not match"
+    assert wallet_response["payment_accounts"][0]["pll_links"][1]["status"]["state"] == state2, "pll_links do not match"
+    assert wallet_response["payment_accounts"][0]["pll_links"][1]["status"]["slug"] == slug2, "pll_links do not match"
+    assert (
+        wallet_response["payment_accounts"][0]["pll_links"][1]["status"]["description"] == description2
+    ), "pll_links do not match"
 
 
 @when(parsers.parse("I perform DELETE request to delete the failed membership card which is already deleted"))

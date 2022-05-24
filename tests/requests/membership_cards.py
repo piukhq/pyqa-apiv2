@@ -205,6 +205,13 @@ class MembershipCards(Endpoint):
         return Endpoint.call_payload(url, header, "POST", payload)
 
     @staticmethod
+    def add_and_auth_field_with_unauthorised_json(token, merchant):
+        url = MembershipCards.get_add_and_authorise_url()
+        header = Endpoint.request_header(token)
+        payload = Merchant.get_merchant(merchant).add_and_auth_field_only_membership_card_with_unauthorised_json()
+        return Endpoint.call(url, header, "POST", payload)
+
+    @staticmethod
     def add_and_register_field_with_invalid_json(token, merchant):
         url = MembershipCards.get_add_url()
         header = Endpoint.request_header(token)
@@ -307,6 +314,7 @@ class MembershipCards(Endpoint):
         response = Endpoint.call_payload(url, header, "DELETE")
         return response
 
+    @staticmethod
     def delete_membership_card_with_payload(token, merchant, scheme_account_id):
         url = MembershipCards.get_delete_url(scheme_account_id)
         header = Endpoint.request_header(token)

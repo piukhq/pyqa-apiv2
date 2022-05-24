@@ -205,10 +205,9 @@ def verify_optional_field(field):
     return TestContext.current_payment_card_id
 
 
-@then(parsers.parse('I perform existing payment card "{payment_card_provider}" to my another wallet'))
+@when(parsers.parse('I perform POST request to add existing payment card "{payment_card_provider}" second wallet'))
 def add_existing_payment_card_in_another_wallet(payment_card_provider):
-    setup_second_token()
-    response = PaymentCards.add_second_payment_card(TestContext.second_token, payment_card_provider)
+    response = PaymentCards.add_second_payment_card(TestContext.token, payment_card_provider)
     TestContext.response_status_code = response.status_code
     response_json = response_to_json(response)
     time.sleep(3)
@@ -238,7 +237,7 @@ def verify_status_code_for_existing_account(existing_payment_card_status):
     )
 )
 def delete_payment_account_from_another_wallet(payment_card_provider):
-    response = PaymentCards.delete_payment_card(TestContext.second_token, TestContext.second_payment_card_id)
+    response = PaymentCards.delete_payment_card(TestContext.first_wallet_token, TestContext.second_payment_card_id)
     assert response.status_code == 202
     TestContext.response = response
     try:
