@@ -7,8 +7,9 @@ Feature: Add and register a loyalty card
 
   @delete_fail_scheme @bink_regression_api2
   Scenario Outline: Remove a failed join request from the wallet
-    Given I am a Bink user
-    When I perform fail POST request to join "<merchant>" membership card
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform fail POST request to join "<merchant>" membership card
     And I perform DELETE request to delete the "<scheme_state>" membership card for "<merchant>"
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
@@ -20,8 +21,9 @@ Feature: Add and register a loyalty card
 
   @remove_active_scheme @bink_regression_api2
   Scenario Outline: Remove active scheme from the wallet
-    Given I am a Bink user
-    When I perform POST request to join "<merchant>" membership card
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to join "<merchant>" membership card
     And I perform DELETE request to delete the "<scheme_state>" membership card for "<merchant>"
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message
@@ -50,8 +52,9 @@ Feature: Add and register a loyalty card
 
   @invalid_token_fail_join @bink_regression_api2
   Scenario Outline: Sending invalid token with bearer prefix in header for join journey (Unauthorized) and delete the fail scheme
-    Given I am a Bink user
-    When I perform fail POST request to join "<merchant>" membership card
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform fail POST request to join "<merchant>" membership card
     And I perform DELETE request to delete the membership card for "<merchant>" with invalid token
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message
@@ -64,8 +67,9 @@ Feature: Add and register a loyalty card
 
   @delete_fail_scheme_again @bink_regression_api2
   Scenario Outline: Delete failed scheme again when scheme already deleted from the wallet
-    Given I am a Bink user
-    When I perform fail POST request to join "<merchant>" membership card
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform fail POST request to join "<merchant>" membership card
     And I perform DELETE request to delete the "<scheme_state>" membership card for "<merchant>"
     When I perform DELETE request to delete the failed membership card which is already deleted
     Then I see a <status_code_returned>

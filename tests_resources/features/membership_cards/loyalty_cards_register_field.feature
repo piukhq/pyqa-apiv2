@@ -7,8 +7,9 @@ Feature: Register a loyalty card
 
   @register_field @bink_regression_api2
   Scenario Outline: Register field journey only
-    Given I am a Bink user
-    When I perform POST request to add "<merchant>" membership card before register
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add "<merchant>" membership card before register
     And I perform PUT request to register "<merchant>" above wallet only membership card
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
@@ -20,8 +21,9 @@ Feature: Register a loyalty card
 
   @register_existing_field @bink_regression_api2
   Scenario Outline: Register a card that is already registered into Wallet
-    Given I am a Bink user
-    When I perform POST request to add "<merchant>" membership card before register
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add "<merchant>" membership card before register
     And I perform PUT request to register "<merchant>" above wallet only membership card
     And I perform PUT request to register "<merchant>" above wallet only membership card again
     Then I see a  <status_code_returned>
@@ -36,8 +38,9 @@ Feature: Register a loyalty card
 
   @invalid_json_register @bink_regression_api2
   Scenario Outline: Register field journey with Bad request
-    Given I am a Bink user
-    When I perform POST request to add "<merchant>" membership card before register
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add "<merchant>" membership card before register
     And I perform PUT request to register "<merchant>" membership card with "<request_payload>" with "<status_code>"
     Then I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
@@ -49,9 +52,10 @@ Feature: Register a loyalty card
 
   @invalid_request_register @bink_regression_api2
   Scenario Outline: Register field journey with Unprocessable entity
-    Given I am a Bink user
-    When I perform POST request to add "<merchant>" membership card before register
-    When I perform PUT request to register "<merchant>" membership card with "<request_payload>" with "<status_code>"
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add "<merchant>" membership card before register
+    And I perform PUT request to register "<merchant>" membership card with "<request_payload>" with "<status_code>"
     Then I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
     And I perform DELETE request to delete the "<merchant>" membership card
@@ -63,9 +67,10 @@ Feature: Register a loyalty card
 
   @register_invalid_token @bink_regression_api2
   Scenario Outline: Sending invalid token with bearer prefix in header for register journey (Unauthorized)
-    Given I am a Bink user
-    When I perform POST request to add "<merchant>" membership card before register
-    When I perform PUT request to register "<merchant>" membership card with invalid token and bearer prefix
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add "<merchant>" membership card before register
+    And I perform PUT request to register "<merchant>" membership card with invalid token and bearer prefix
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
@@ -78,9 +83,10 @@ Feature: Register a loyalty card
 
   @reg_pll @bink_regression_api2
   Scenario Outline: verify PLL for update register
-    Given I am a Bink user
-    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    When I perform POST request to add "<merchant>" membership card before register
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform POST request to add "<merchant>" membership card before register
     And I perform PUT request to register "<merchant>" above wallet only membership card
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"

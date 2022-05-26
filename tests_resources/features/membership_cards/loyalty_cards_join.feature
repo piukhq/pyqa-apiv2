@@ -7,8 +7,9 @@ Feature: Add and register a loyalty card
 
   @join_scheme @bink_regression_api2
   Scenario Outline: join journey
-    Given I am a Bink user
-    When I perform POST request to join "<merchant>" membership card
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to join "<merchant>" membership card
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
     And I perform DELETE request to delete the "<merchant>" membership card
@@ -21,8 +22,9 @@ Feature: Add and register a loyalty card
 
   @empty_field_join @bink_regression_api2
   Scenario Outline: join journey with Bad request (empty field)
-    Given I am a Bink user
-    When I perform POST request to join "<merchant>" membership card with "<request_payload>" with "<status_code>"
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to join "<merchant>" membership card with "<request_payload>" with "<status_code>"
     Then I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
 
@@ -34,8 +36,9 @@ Feature: Add and register a loyalty card
 
   @invalid_json_join @bink_regression_api2
   Scenario Outline: join journey with Unprocessable entity - bad request
-    Given I am a Bink user
-    When I perform POST request to join "<merchant>" membership card with "<request_payload>" with "<status_code>"
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to join "<merchant>" membership card with "<request_payload>" with "<status_code>"
     Then I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
 
@@ -47,8 +50,9 @@ Feature: Add and register a loyalty card
 
   @invalid_token_join @bink_regression_api2
   Scenario Outline: Sending invalid token with bearer prefix in header for join journey (Unauthorized)
-    Given I am a Bink user
-    When I perform POST request to join "<merchant>" with invalid token
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to join "<merchant>" with invalid token
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
@@ -61,9 +65,10 @@ Feature: Add and register a loyalty card
 
   @pll_join @bink_regression_api2
   Scenario Outline: verify PLL for join journey
-    Given I am a Bink user
-    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    When I perform POST request to join "<merchant>" membership card
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform POST request to join "<merchant>" membership card
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
     And I perform DELETE request to delete the "<merchant>" membership card
