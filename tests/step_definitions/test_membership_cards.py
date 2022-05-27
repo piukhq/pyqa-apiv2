@@ -729,6 +729,7 @@ def verify_invalid_request_for_add_and_auth_journey(merchant, request_payload, s
         response_json = response_to_json(response)
         logging.info(response_json)
         TestContext.response_status_code = response.status_code
+        TestContext.current_scheme_account_id = response_json.get("id")
 
     logging.info(
         "The response of Invalid Journey (POST) for Add and Auth field:\n \n"
@@ -1556,6 +1557,19 @@ def verify_payment_card_pll_status(state, slug, description):
         assert (
             wallet_response["payment_accounts"][0]["pll_links"][0]["status"]["description"] == description
         ), "pll_links do not match"
+
+
+@then(parsers.parse("I can see '{state}','{slug}' and '{description}' in PLL links for Wallet loyalty card by id"))
+def verify_wallet_loyaltycard_pll_status(state, slug, description):
+    wallet_response = TestContext.actual_view_wallet_field
+    if state == "active":
+        assert wallet_response["pll_links"][0]["status"]["state"] == state, "pll_links do not match"
+        assert wallet_response["pll_links"][0]["status"]["slug"] is None, "pll_links do not match"
+        assert wallet_response["pll_links"][0]["status"]["description"] is None, "pll_links do not match"
+    else:
+        assert wallet_response["pll_links"][0]["status"]["state"] == state, "pll_links do not match"
+        assert wallet_response["pll_links"][0]["status"]["slug"] == slug, "pll_links do not match"
+        assert wallet_response["pll_links"][0]["status"]["description"] == description, "pll_links do not match"
 
 
 @then(
