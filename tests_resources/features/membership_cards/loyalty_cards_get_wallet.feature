@@ -133,7 +133,7 @@ Feature: View Wallet
 
 
 
-  @state_slug_descr_mapping @bink_regression_api2
+  @wallet_state_slug_descr_mapping @bink_regression_api2
   Scenario Outline: verify state, slug and description in the wallet
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -148,4 +148,3 @@ Feature: View Wallet
       | HarveyNichols | 200                  |  enrol_failed         |
       | HarveyNichols | 200                  |  join_success         |
       | HarveyNichols | 200                  | asynchronous_join_in_progress |
-#      | HarveyNichols | 200                  |  fail         |
