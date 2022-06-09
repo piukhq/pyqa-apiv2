@@ -1444,18 +1444,32 @@ def join_with_invalid_token(merchant, test_email):
     return response
 
 
-@when(parsers.parse('I perform fail POST request to join "{merchant}" membership card'))
-def fail_join_scheme(merchant):
-    response = MembershipCards.join_field(
-        TestContext.token, merchant, TestDataUtils.TEST_DATA.harvey_nichols_invalid_data.get(constants.ID)
-    )
+@when(parsers.parse('I perform {scheme_state} POST request to join "{merchant}" membership card'))
+def fail_join_scheme(merchant, scheme_state):
+    if scheme_state == "enrol_failed":
+        response = MembershipCards.join_field(
+            TestContext.token, merchant, TestDataUtils.TEST_DATA.harvey_nichols_invalid_data.get(constants.ID)
+        )
+    elif scheme_state == "join_success":
+        response = MembershipCards.join_field(
+            TestContext.token,
+            merchant,
+            TestDataUtils.TEST_DATA.harvey_nichols_invalid_data.get(constants.SUCCESS_EMAIL),
+        )
+    elif scheme_state == "asynchronous_join_in_progress":
+        response = MembershipCards.join_field(
+            TestContext.token, merchant, TestDataUtils.TEST_DATA.harvey_nichols_invalid_data.get(constants.SLOW_JOIN_ID)
+        )
+
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")
     TestContext.response_status_code = response.status_code
     logging.info(
-        "The response of Enrol with failed Journey (POST) for "
+        "The response for "
         + merchant
-        + " is:\n\n"
+        + " with \n\n"
+        + scheme_state
+        + " is :\n\n"
         + Endpoint.BASE_URL
         + api.ENDPOINT_MEMBERSHIP_CARDS_JOIN
         + "\n\n"
@@ -1472,7 +1486,7 @@ def delete_failed_scheme_account(scheme_state, merchant):
     )
     TestContext.response_status_code = response_del_schemes.status_code
 
-    if scheme_state == "fail":
+    if scheme_state == "enrol_failed":
         assert response_del_schemes.status_code == 200, "Enrol Journey for " + merchant + " failed"
     else:
         response_json = response_to_json(response_del_schemes)
@@ -1630,3 +1644,20 @@ def delete_join_in_progress_scheme(merchant):
         + json.dumps(response_json, indent=4)
     )
     assert response.status_code == 202, "Join Journey for " + merchant + " failed"
+
+
+@then(parsers.parse("Verify state, slug and description in the wallet for {scheme_state}"))
+def verify_state_slug_desc(scheme_state):
+    wallet_response = TestContext.actual_view_wallet_field
+
+    for status_key in TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state].keys():
+        if scheme_state in ["enrol_failed", "join_success"]:
+            assert (
+                wallet_response["loyalty_cards"][0]["status"][status_key]
+                == TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state][status_key]
+            ), "status do not match"
+        elif scheme_state in ["asynchronous_join_in_progress"]:
+            assert (
+                wallet_response["joins"][0]["status"][status_key]
+                == TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state][status_key]
+            ), "status do not match"

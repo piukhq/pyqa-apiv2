@@ -129,3 +129,23 @@ Feature: View Wallet
      Examples:
      | merchant | status_code_returned | payment_card_provider |state1            |  slug1              |description1 | state2             | slug2              | description2                                                                               |
      | Wasabi   | 200                  | visa                  |active            |  null               |null         |inactive            |UBIQUITY_COLLISION  | There is already a Loyalty Card from the same Loyalty Plan linked to this Payment Account. |
+
+
+
+
+  @state_slug_descr_mapping @bink_regression_api2
+  Scenario Outline: verify state, slug and description in the wallet
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform <scheme_state> POST request to join "<merchant>" membership card
+    And I perform GET 'Wallet'
+    Then I see a <status_code_returned>
+    And Verify state, slug and description in the wallet for <scheme_state>
+    And I perform DELETE request to delete the "<merchant>" membership card
+
+    Examples:
+      | merchant      | status_code_returned |  scheme_state |
+      | HarveyNichols | 200                  |  enrol_failed         |
+      | HarveyNichols | 200                  |  join_success         |
+      | HarveyNichols | 200                  | asynchronous_join_in_progress |
+#      | HarveyNichols | 200                  |  fail         |

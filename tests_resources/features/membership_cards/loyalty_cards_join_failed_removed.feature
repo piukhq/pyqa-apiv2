@@ -9,15 +9,15 @@ Feature: Add and register a loyalty card
   Scenario Outline: Remove a failed join request from the wallet
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
-    And I perform fail POST request to join "<merchant>" membership card
+    And I perform <scheme_state> POST request to join "<merchant>" membership card
     And I perform DELETE request to delete the "<scheme_state>" membership card for "<merchant>"
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
     Examples:
       | merchant      | status_code_returned | journey_type | scheme_state |
-      | Iceland       | 200                  | join_failed  | fail         |
-#      | Wasabi        | 200                  | join_failed  | fail         |
-      | HarveyNichols | 200                  | join_failed  | fail         |
+      | Iceland       | 200                  | join_failed  | enrol_failed         |
+#      | Wasabi        | 200                  | join_failed  | enrol_failed         |
+      | HarveyNichols | 200                  | join_failed  | enrol_failed  |
 
   @remove_active_scheme @bink_regression_api2
   Scenario Outline: Remove active scheme from the wallet
@@ -54,7 +54,7 @@ Feature: Add and register a loyalty card
   Scenario Outline: Sending invalid token with bearer prefix in header for join journey (Unauthorized) and delete the fail scheme
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
-    And I perform fail POST request to join "<merchant>" membership card
+    And I perform enrol_failed POST request to join "<merchant>" membership card
     And I perform DELETE request to delete the membership card for "<merchant>" with invalid token
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message
@@ -69,7 +69,7 @@ Feature: Add and register a loyalty card
   Scenario Outline: Delete failed scheme again when scheme already deleted from the wallet
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
-    And I perform fail POST request to join "<merchant>" membership card
+    And I perform <scheme_state> POST request to join "<merchant>" membership card
     And I perform DELETE request to delete the "<scheme_state>" membership card for "<merchant>"
     When I perform DELETE request to delete the failed membership card which is already deleted
     Then I see a <status_code_returned>
@@ -77,6 +77,6 @@ Feature: Add and register a loyalty card
     And I see a "<error_slug>" error slug
     Examples:
       | merchant      | status_code_returned | scheme_state | error_message                       | error_slug         |
-      | Iceland       | 404                  | fail         | Could not find this account or card | RESOURCE_NOT_FOUND |
-#      | Wasabi        | 404                  | fail         | Could not find this account or card | RESOURCE_NOT_FOUND |
-      | HarveyNichols | 404                  | fail         | Could not find this account or card | RESOURCE_NOT_FOUND |
+      | Iceland       | 404                  | enrol_failed         | Could not find this account or card | RESOURCE_NOT_FOUND |
+#      | Wasabi        | 404                  | enrol_failed         | Could not find this account or card | RESOURCE_NOT_FOUND |
+      | HarveyNichols | 404                  | enrol_failed         | Could not find this account or card | RESOURCE_NOT_FOUND |

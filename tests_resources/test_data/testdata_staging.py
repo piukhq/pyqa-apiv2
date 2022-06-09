@@ -109,7 +109,11 @@ harvey_nichols_membership_card = {
     "transaction_currency": "Points",
 }
 
-harvey_nichols_invalid_data = {"id": "fail@unknown.com", "slow_join_id": "slowjoin@testbink.com"}
+harvey_nichols_invalid_data = {
+    "id": "fail@unknown.com",
+    "slow_join_id": "slowjoin@testbink.com",
+    "success_email": "pytest+success@bink.com",
+}
 
 wasabi_membership_card = {
     "card_num": "1048175295",
@@ -1114,4 +1118,23 @@ bink_user_accounts = {
     "lloyds_external_id": "12345",
     "b2b_external_id": "Autob2b",
     "b2b_external_id2": "Autob2b2",
+}
+
+Join_Scheme_status = {
+    "join_success": {
+        "state": "authorised",
+        "slug": None,
+        "description": None,
+    },
+    "enrol_failed": {
+        "state": "failed",
+        "slug": "JOIN_FAILED",
+        "description": "The retailer has not been able to accept your request at this time. "
+        "Please remove the request and try again.",
+    },
+    "asynchronous_join_in_progress": {
+        "state": "pending",
+        "slug": "JOIN_IN_PROGRESS",
+        "description": None,
+    },
 }
