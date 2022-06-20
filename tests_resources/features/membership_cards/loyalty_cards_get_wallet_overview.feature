@@ -116,7 +116,7 @@ Feature: Overview of wallet information
 
 
 
-  @wallet_overview_state_slug_descr_mapping @bink_regression_api2
+  @wallet_overview_state_slug_descr_mapping
   Scenario Outline: verify state, slug and description in wallet overview
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
