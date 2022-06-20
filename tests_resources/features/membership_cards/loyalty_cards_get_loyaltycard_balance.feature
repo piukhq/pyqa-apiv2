@@ -7,8 +7,9 @@ so that I am aware and have visibility of my rewards
 
   @view_loyalty_balance @bink_regression_api2
   Scenario Outline: Get Loyalty card balance
-    Given I am a Bink user
-    When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And I perform GET request to view loyalty card balance for "<merchant>"
     Then I see a <status_code_returned>
     And I perform DELETE request to delete the "<merchant>" membership card
@@ -20,8 +21,9 @@ so that I am aware and have visibility of my rewards
 
    @balance_invalid_token @bink_regression_api2
    Scenario Outline: Verify invalid token scenario for get loyalty card balance
-     Given I am a Bink user
-     When I perform POST request to add and authorise "<merchant>" membership card
+     Given I am in Bink channel to get b2b token
+     When I perform POST token request for token type "b2b" to get access token
+     And I perform POST request to add and authorise "<merchant>" membership card
      And I perform GET request to view loyalty card balance for "<merchant>" with invalid token
      Then I see a <status_code_returned>
      And I see a "<error_message>" error message
@@ -33,8 +35,9 @@ so that I am aware and have visibility of my rewards
 
    @resource_not_found_balance @bink_regression_api2
    Scenario Outline: Verify resource not found scenario for get loyalty card balance
-     Given I am a Bink user
-     When I perform POST request to add and authorise "<merchant>" membership card
+     Given I am in Bink channel to get b2b token
+     When I perform POST token request for token type "b2b" to get access token
+     And I perform POST request to add and authorise "<merchant>" membership card
      And I perform GET request to view loyalty card balance with invalid id "<invalid_id>" for "<merchant>"
      Then I see a <status_code_returned>
      And I see a "<error_message>" error message

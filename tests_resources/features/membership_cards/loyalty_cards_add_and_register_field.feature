@@ -7,8 +7,9 @@ Feature: Add and register a loyalty card
 
   @add_and_register_field @bink_regression_api2
   Scenario Outline: Add and register field journey
-    Given I am a Bink user
-    When I perform POST request to add and register "<merchant>" membership card
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add and register "<merchant>" membership card
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
     And I perform DELETE request to delete the "<merchant>" membership card
@@ -32,8 +33,9 @@ Feature: Add and register a loyalty card
 
   @add_and_register_existing_field
   Scenario Outline: Add existing card again into wallet for add and register
-    Given I am a Bink user
-    When I perform POST request to add and register "<merchant>" membership card
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add and register "<merchant>" membership card
     And I perform POST request again with add and register to verify the "<merchant>" membership card is already added with "<status_code_returned>"
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message
@@ -46,8 +48,9 @@ Feature: Add and register a loyalty card
 
   @invalid_field_bad_request_add_register @bink_regression_api2
   Scenario Outline: Add field journey with Bad request for add and register
-    Given I am a Bink user
-    When I perform POST request to add and register "<merchant>" membership card with "<request_payload>" with "<status_code>"
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add and register "<merchant>" membership card with "<request_payload>" with "<status_code>"
 #    And I perform GET request to verify the "<merchant>" membership card is added to the wallet
     Then I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
@@ -58,8 +61,9 @@ Feature: Add and register a loyalty card
 
   @invalid_field_add_register @bink_regression_api2
   Scenario Outline: Add and register field journey with Unprocessable entity
-    Given I am a Bink user
-    When I perform POST request to add and register "<merchant>" membership card with "<request_payload>" with "<status_code>"
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add and register "<merchant>" membership card with "<request_payload>" with "<status_code>"
 #    And I perform GET request to verify the "<merchant>" membership card is added to the wallet
     Then I see a "<error_message>" error message
     And I see a "<error_slug>" error slug

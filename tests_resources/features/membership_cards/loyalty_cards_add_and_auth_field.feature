@@ -7,8 +7,9 @@ Feature: Add and authorise a loyalty card
 
   @add_and_auth_field @bink_regression_api2
   Scenario Outline: Add and authorise field journey
-    Given I am a Bink user
-    When I perform POST request to add and authorise "<merchant>" membership card
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add and authorise "<merchant>" membership card
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
     And I perform DELETE request to delete the "<merchant>" membership card
@@ -21,8 +22,9 @@ Feature: Add and authorise a loyalty card
 
   @add_and_auth_existing_field @bink_regression_api2
   Scenario Outline: Add existing card again into wallet for add and authorise
-    Given I am a Bink user
-    When I perform POST request to add and authorise "<merchant>" membership card
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add and authorise "<merchant>" membership card
     And I perform POST request again with add and authorise to verify the "<merchant>" membership card is already added with "<status_code_returned>"
     Then I see a <status_code_returned>
     Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
@@ -35,8 +37,9 @@ Feature: Add and authorise a loyalty card
 
   @invalid_field_bad_request_add_authorise @bink_regression_api2
   Scenario Outline: Add field journey with Bad request for add and authorise
-    Given I am a Bink user
-    When I perform POST request to add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
 #    And I perform GET request to verify the "<merchant>" membership card is added to the wallet
     Then I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
@@ -49,8 +52,9 @@ Feature: Add and authorise a loyalty card
 
   @invalid_field @bink_regression_api2
   Scenario Outline: Add and authorised field journey with Unprocessable entity
-    Given I am a Bink user
-    When I perform POST request to add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
 #    And I perform GET request to verify the "<merchant>" membership card is added to the wallet
     Then I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
@@ -63,8 +67,9 @@ Feature: Add and authorise a loyalty card
 
   @sending_invalid_token @bink_regression_api2
   Scenario Outline: Sending invalid token with bearer prefix in header for add and authoirse journey (Unauthorized)
-    Given I am a Bink user
-    When I perform POST <merchant> membership_card request for add and auth with invalid token and bearer prefix
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST <merchant> membership_card request for add and auth with invalid token and bearer prefix
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
@@ -76,8 +81,9 @@ Feature: Add and authorise a loyalty card
 
   @add_already_then_add_auth @bink_regression_api2
   Scenario Outline: Loyalty scheme already exist with add credential
-    Given I am a Bink user
-    When I perform POST request to add "<merchant>" membership card
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add "<merchant>" membership card
     And I perform POST request to add and authorise "<merchant>" membership card which already exist with add credentail
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message
@@ -91,8 +97,9 @@ Feature: Add and authorise a loyalty card
 
   @add_and_auth_with_different_authrised_field @bink_regression_api2
   Scenario Outline: Already Add and authorised scheme then add with different auth credential
-    Given I am a Bink user
-    When I perform POST request to add and authorise "<merchant>" membership card
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add and authorise "<merchant>" membership card
     And I perform POST request to add and authorise "<merchant>" with different auth credential
     Then I see a <status_code_returned>
 #    And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
@@ -107,8 +114,9 @@ Feature: Add and authorise a loyalty card
 
   @add_and_auth_pll @bink_regression_api2
   Scenario Outline: verify PLL for add and authorise
-    Given I am a Bink user
-    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
