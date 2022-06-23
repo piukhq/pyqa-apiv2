@@ -20,12 +20,14 @@ from tests.helpers.test_data_utils import TestDataUtils
 from tests.helpers.vault.channel_vault import create_b2b_token, create_bearer_token, get_private_key_secret
 from tests.requests.membership_cards import MembershipCards
 from tests.requests.paymentcard_account import PaymentCards
+from tests.requests.service import CustomerAccount
 from tests.requests.token_b2b import Token_b2b
 
 
 def pytest_bdd_step_error(request, feature, scenario, step, step_func, step_func_args, exception):
     """This function will log the failed BDD-Step at the end of logs"""
     logging.error(f"Step failed: {step}")
+    delete_user()
 
 
 # def pytest_bdd_before_step_call(request,feature,scenario,step,step_func,step_func_args):
@@ -252,6 +254,7 @@ def delete_scheme_account(merchant=None):
             logging.info("Loyalty card is already deleted")
         else:
             logging.info(response_del_schemes.status_code)
+            delete_user()
 
     except HTTPError as network_response:
         assert network_response.response.status_code == 404 or 400
@@ -416,3 +419,10 @@ def get_lloyds_user(channel, env):
     assert response.status_code == 200, "/token Journey failed to get access token"
 
     return TestContext.token
+
+
+@then(parsers.parse("I perform DELETE request to delete user successfully"))
+def delete_user(channel="Bink", env="staging"):
+    response = CustomerAccount.delete_user(TestContext.token)
+    assert response.status_code == 202, "The user deletion is not successful"
+    logging.info("User is deleted successfully from the system")
