@@ -131,7 +131,7 @@ Feature: View Wallet
      | Wasabi   | 200                  | visa                  |active            |  null               |null         |inactive            |UBIQUITY_COLLISION  | There is already a Loyalty Card from the same Loyalty Plan linked to this Payment Account. |
 
 
-  @wallet_state_slug_descr_mapping
+  @wallet_state_slug_descr_mapping @bink_regression_api2
   Scenario Outline: verify state, slug and description in the wallet
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
