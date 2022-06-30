@@ -582,7 +582,7 @@ def verify_view_wallet(Wallet, env, channel):
 
 @when(parsers.parse("I perform GET '{Wallet}'"))
 def verify_wallet(Wallet, env, channel):
-    time.sleep(3)
+    time.sleep(5)
     if Wallet == "Wallet":
         response = MembershipCards.get_view_wallet(TestContext.token)
         logging.info("The response of get wallet is : \n" + json.dumps(response_to_json(response), indent=4))
@@ -1648,15 +1648,16 @@ def delete_join_in_progress_scheme(merchant):
 
 @then(parsers.parse("Verify state, slug and description in the wallet for {scheme_state}"))
 def verify_state_slug_desc(scheme_state):
+    time.sleep(3)
     wallet_response = TestContext.actual_view_wallet_field
 
     for status_key in TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state].keys():
-        if scheme_state in ["enrol_failed", "join_success"]:
+        if scheme_state in ["join_success"]:
             assert (
                 wallet_response["loyalty_cards"][0]["status"][status_key]
                 == TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state][status_key]
             ), "status do not match"
-        elif scheme_state in ["asynchronous_join_in_progress"]:
+        elif scheme_state in ["asynchronous_join_in_progress", "enrol_failed"]:
             assert (
                 wallet_response["joins"][0]["status"][status_key]
                 == TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state][status_key]

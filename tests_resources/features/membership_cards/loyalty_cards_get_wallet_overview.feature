@@ -124,10 +124,10 @@ Feature: Overview of wallet information
     And I perform GET 'Wallet_overview'
     Then I see a <status_code_returned>
     And Verify state, slug and description in the wallet for <scheme_state>
-    And I perform DELETE request to delete the "<merchant>" membership card
+    And I perform DELETE request to delete user successfully
 
     Examples:
       | merchant      | status_code_returned |  scheme_state |
       | HarveyNichols | 200                  |  enrol_failed         |
       | HarveyNichols | 200                  |  join_success         |
-      | HarveyNichols | 200                  | asynchronous_join_in_progress |
+#      | HarveyNichols | 200                  | asynchronous_join_in_progress |

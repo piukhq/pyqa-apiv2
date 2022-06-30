@@ -139,7 +139,7 @@ Feature: View Wallet
     And I perform GET 'Wallet'
     Then I see a <status_code_returned>
     And Verify state, slug and description in the wallet for <scheme_state>
-    And I perform DELETE request to delete the "<merchant>" membership card
+    And I perform DELETE request to delete user successfully
 
     Examples:
       | merchant      | status_code_returned |  scheme_state |
