@@ -255,7 +255,7 @@ wallet_info = {
             # "id": 143755,
             "loyalty_plan_id": 105,
             "loyalty_plan_name": "Iceland Bonus Card",
-            "status": {"state": "authorised", "slug": "ACTIVE", "description": "This is a test"},
+            "status": {"state": "authorised", "slug": None, "description": None},
             "balance": {
                 # "updated_at": 1647611859,
                 "current_display_value": "£380.01",
@@ -625,7 +625,7 @@ wallet_overview_info = {
             "is_fully_pll_linked": True,
             "pll_linked_payment_accounts": 1,
             "total_payment_accounts": 1,
-            "status": {"state": "authorised", "slug": "ACTIVE", "description": "This is a test"},
+            "status": {"state": "authorised", "slug": None, "description": None},
             "balance": {
                 # "updated_at": 1651055977,
                 "current_display_value": "£380.01",
@@ -833,7 +833,7 @@ wallet_info_by_card_id = {
         # "id": 143755,
         "loyalty_plan_id": 105,
         "loyalty_plan_name": "Iceland Bonus Card",
-        "status": {"state": "authorised", "slug": "ACTIVE", "description": "This is a test"},
+        "status": {"state": "authorised", "slug": None, "description": None},
         "balance": {
             # "updated_at": 1647611859,
             "current_display_value": "£380.01",
