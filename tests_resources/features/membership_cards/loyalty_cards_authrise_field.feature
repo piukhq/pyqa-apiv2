@@ -1,4 +1,4 @@
-# Created by rupalpatel at 04/10/2021
+# Created by rupalpatel at 04/10/2021, updated by BR on 29/07/2022
 @membership_card_authorise @membership_cards
 Feature: Authorise a loyalty card
   As a Bink user

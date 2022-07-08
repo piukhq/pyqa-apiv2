@@ -266,6 +266,7 @@ class WasabiCard:
 
     @staticmethod
     def authorise_field_only_membership_card_payload(invalid_data=None):
+        TestContext.card_number = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM)
         if invalid_data == "invalid_request":
             payload = {}
         elif invalid_data == "invalid_json":
@@ -284,6 +285,14 @@ class WasabiCard:
         else:
             payload = {
                 "account": {
+                    "add_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "card_number",
+                                "value": TestContext.card_number,
+                            }
+                        ]
+                    },
                     "authorise_fields": {
                         "credentials": [
                             {

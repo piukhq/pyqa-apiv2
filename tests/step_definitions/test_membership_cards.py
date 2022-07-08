@@ -1480,7 +1480,7 @@ def fail_join_scheme(merchant, scheme_state):
 
 @when(parsers.parse('I perform DELETE request to delete the "{scheme_state}" membership card for "{merchant}"'))
 def delete_failed_scheme_account(scheme_state, merchant):
-    time.sleep(5)
+    time.sleep(12)
     response_del_schemes = MembershipCards.delete_fail_scheme_account(
         TestContext.token, TestContext.current_scheme_account_id
     )
@@ -1648,7 +1648,7 @@ def delete_join_in_progress_scheme(merchant):
 
 @then(parsers.parse("Verify state, slug and description in the wallet for {scheme_state}"))
 def verify_state_slug_desc(scheme_state):
-    time.sleep(3)
+    time.sleep(12)
     wallet_response = TestContext.actual_view_wallet_field
 
     for status_key in TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state].keys():
