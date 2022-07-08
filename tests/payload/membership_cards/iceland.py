@@ -296,11 +296,7 @@ class IcelandCard:
             payload = {
                 "account": {
                     "add_fields": {
-                        "credentials": [
-                            {"credential_slug": "card_number",
-                             "value": TestContext.card_number
-                             }
-                        ]
+                        "credentials": [{"credential_slug": "card_number", "value": TestContext.card_number}]
                     },
                     "authorise_fields": {
                         "credentials": [
@@ -320,11 +316,7 @@ class IcelandCard:
             payload = {
                 "account": {
                     "add_fields": {
-                        "credentials": [
-                            {"credential_slug": "card_number",
-                             "value": TestContext.card_number
-                             }
-                        ]
+                        "credentials": [{"credential_slug": "card_number", "value": TestContext.card_number}]
                     },
                     "authorise_fields": {
                         "credentials": [
