@@ -289,11 +289,19 @@ class IcelandCard:
 
     @staticmethod
     def authorise_field_only_membership_card_payload(invalid_data=None):
+        TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.CARD_NUM)
         if invalid_data == "invalid_request":
             payload = {}
         elif invalid_data == "invalid_json":
             payload = {
                 "account": {
+                    "add_fields": {
+                        "credentials": [
+                            {"credential_slug": "card_number",
+                             "value": TestContext.card_number
+                             }
+                        ]
+                    },
                     "authorise_fields": {
                         "credentials": [
                             {
@@ -311,6 +319,13 @@ class IcelandCard:
         else:
             payload = {
                 "account": {
+                    "add_fields": {
+                        "credentials": [
+                            {"credential_slug": "card_number",
+                             "value": TestContext.card_number
+                             }
+                        ]
+                    },
                     "authorise_fields": {
                         "credentials": [
                             {
@@ -322,7 +337,7 @@ class IcelandCard:
                                 "value": TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.POSTCODE),
                             },
                         ]
-                    }
+                    },
                 },
             }
         logging.info(
