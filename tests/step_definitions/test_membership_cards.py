@@ -1381,7 +1381,7 @@ def update_scheme_status(status):
 @when(parsers.parse('I perform POST request to join "{merchant}" membership card'))
 def join_scheme(merchant, test_email):
     response = MembershipCards.join_field(TestContext.token, merchant, test_email)
-    time.sleep(6)
+    time.sleep(8)
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")
     TestContext.response_status_code = response.status_code
@@ -1480,7 +1480,7 @@ def fail_join_scheme(merchant, scheme_state):
 
 @when(parsers.parse('I perform DELETE request to delete the "{scheme_state}" membership card for "{merchant}"'))
 def delete_failed_scheme_account(scheme_state, merchant):
-    time.sleep(12)
+    time.sleep(15)
     response_del_schemes = MembershipCards.delete_fail_scheme_account(
         TestContext.token, TestContext.current_scheme_account_id
     )
