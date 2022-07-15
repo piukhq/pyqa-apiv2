@@ -140,6 +140,9 @@ wallet_info = {
             # "id": 149652,
             "loyalty_plan_id": 281,
             "loyalty_plan_name": "Wasabi Club",
+            "is_fully_pll_linked": True,
+            "pll_linked_payment_accounts": 1,
+            "total_payment_accounts": 1,
             "status": {"state": "authorised", "slug": None, "description": None},
             "balance": {
                 # "updated_at": 1649424631,
@@ -255,6 +258,9 @@ wallet_info = {
             # "id": 143755,
             "loyalty_plan_id": 105,
             "loyalty_plan_name": "Iceland Bonus Card",
+            "is_fully_pll_linked": True,
+            "pll_linked_payment_accounts": 1,
+            "total_payment_accounts": 1,
             "status": {"state": "authorised", "slug": None, "description": None},
             "balance": {
                 # "updated_at": 1647611859,
@@ -385,6 +391,9 @@ wallet_info = {
             # "id": 143753,
             "loyalty_plan_id": 124,
             "loyalty_plan_name": "Rewards by Harvey Nichols",
+            "is_fully_pll_linked": True,
+            "pll_linked_payment_accounts": 1,
+            "total_payment_accounts": 1,
             "status": {"state": "authorised", "slug": None, "description": None},
             "balance": {
                 # "updated_at": 1647610241,
@@ -721,6 +730,9 @@ wallet_info_by_card_id = {
         # "id": 149653,
         "loyalty_plan_id": 281,
         "loyalty_plan_name": "Wasabi Club",
+        "is_fully_pll_linked": True,
+        "pll_linked_payment_accounts": 1,
+        "total_payment_accounts": 1,
         "status": {"state": "authorised", "slug": None, "description": None},
         "balance": {
             # "updated_at": 1649425854,
@@ -833,6 +845,9 @@ wallet_info_by_card_id = {
         # "id": 143755,
         "loyalty_plan_id": 105,
         "loyalty_plan_name": "Iceland Bonus Card",
+        "is_fully_pll_linked": True,
+        "pll_linked_payment_accounts": 1,
+        "total_payment_accounts": 1,
         "status": {"state": "authorised", "slug": None, "description": None},
         "balance": {
             # "updated_at": 1647611859,
@@ -961,6 +976,9 @@ wallet_info_by_card_id = {
         # "id": 143753,
         "loyalty_plan_id": 124,
         "loyalty_plan_name": "Rewards by Harvey Nichols",
+        "is_fully_pll_linked": True,
+        "pll_linked_payment_accounts": 1,
+        "total_payment_accounts": 1,
         "status": {"state": "authorised", "slug": None, "description": None},
         "balance": {
             # "updated_at": 1647610241,
