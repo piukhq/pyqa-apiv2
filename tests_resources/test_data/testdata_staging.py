@@ -213,6 +213,7 @@ wallet_info = {
                 "colour": "#ccd400",
                 "text_colour": "#7289da",
             },
+            "reward_available": True,
             "images": [
                 {
                     "id": 1297,
@@ -311,6 +312,7 @@ wallet_info = {
                 "colour": "#d50724",
                 "text_colour": "#00FF00",
             },
+            "reward_available": False,
             "images": [
                 {
                     "id": 1289,
@@ -444,6 +446,7 @@ wallet_info = {
                 "colour": "#000000",
                 "text_colour": "#bfc68c",
             },
+            "reward_available": False,
             "images": [
                 {
                     "id": 1293,
@@ -803,6 +806,7 @@ wallet_info_by_card_id = {
             "colour": "#ccd400",
             "text_colour": "#7289da",
         },
+        "reward_available": True,
         "images": [
             {
                 "id": 1297,
@@ -898,6 +902,7 @@ wallet_info_by_card_id = {
             "colour": "#d50724",
             "text_colour": "#00FF00",
         },
+        "reward_available": False,
         "images": [
             {
                 "id": 1289,
@@ -1029,6 +1034,7 @@ wallet_info_by_card_id = {
             "colour": "#000000",
             "text_colour": "#bfc68c",
         },
+        "reward_available": False,
         "images": [
             {
                 "id": 1293,
