@@ -14,7 +14,7 @@ if "KUBERNETES_SERVICE_HOST" in environ:
     STAGING = EnvironmentDetails(base_url="http://angelia-api", test_data=testdata_staging)
     SANDBOX = EnvironmentDetails(base_url="http://angelia-api", test_data=testdata_sandbox)
 else:
-    DEV= EnvironmentDetails(base_url="https://api.dev.gb.bink.com", test_data=testdata_dev)
+    DEV = EnvironmentDetails(base_url="https://api.dev.gb.bink.com", test_data=testdata_dev)
     STAGING = EnvironmentDetails(base_url="https://api.staging.gb.bink.com", test_data=testdata_staging)
     SANDBOX = EnvironmentDetails(base_url="https://sit.sandbox.gb.bink.com", test_data=testdata_sandbox)
 
