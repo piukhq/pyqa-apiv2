@@ -1,6 +1,6 @@
 from os import environ
 
-from tests_resources.test_data import testdata_dev, testdata_staging
+from tests_resources.test_data import testdata_dev, testdata_staging, testdata_sandbox
 
 
 class EnvironmentDetails:
@@ -12,9 +12,11 @@ class EnvironmentDetails:
 if "KUBERNETES_SERVICE_HOST" in environ:
     DEV = EnvironmentDetails(base_url="http://angelia-api", test_data=testdata_dev)
     STAGING = EnvironmentDetails(base_url="http://angelia-api", test_data=testdata_staging)
+    SANDBOX = EnvironmentDetails(base_url="http://angelia-api", test_data=testdata_sandbox)
 else:
-    DEV = EnvironmentDetails(base_url="https://api.dev.gb.bink.com", test_data=testdata_dev)
+    DEV= EnvironmentDetails(base_url="https://api.dev.gb.bink.com", test_data=testdata_dev)
     STAGING = EnvironmentDetails(base_url="https://api.staging.gb.bink.com", test_data=testdata_staging)
+    SANDBOX = EnvironmentDetails(base_url="https://sit.sandbox.gb.bink.com", test_data=testdata_sandbox)
 
 
 class ChannelDetails:
@@ -39,5 +41,13 @@ LLOYDS = ChannelDetails(
     bundle_id="com.lloyds.api2",
     client_id="8eBiL5Vh7AKKkWOezW5Avv8olfhK3to9ToqiypzPbOiBj5XEIv",
     kid="lloyds-bink-regression",
+    organisation_id="",
+)
+
+BARCLAYS = ChannelDetails(
+    channel_name="barclays",
+    bundle_id="com.barclays.bmb",
+    client_id="lwhkGNn5FAXPCCcbIFrgZWk0i7Qolg5WBMFM4UYjZAbaOXQyq6",
+    kid="barclays-bink-regression",
     organisation_id="",
 )

@@ -84,7 +84,7 @@ def configure_html_report_env(request, env, channel):
 
 def pytest_addoption(parser):
     parser.addoption("--channel", action="store", default="bink", help="Channel: can be bink or lloyds should pass")
-    parser.addoption("--env", action="store", default="dev", help="env : can be dev or staging or prod")
+    parser.addoption("--env", action="store", default="dev", help="env : can be dev or staging or sandbox or prod")
     parser.addoption("--encryption", action="store", default="false", help="encryption : can be true or false")
     parser.addoption(
         "--selected_merchant",
@@ -127,6 +127,7 @@ def set_environment(env):
     # logging.getLogger().setLevel(level=logging.ERROR)
     logging.info("Environment Setup ready")
     TestDataUtils.set_test_data(env)
+    TestContext.environ = env
 
 
 @pytest.fixture(scope="session", autouse=True)
