@@ -156,7 +156,10 @@ class TestData:
         """return the base path of stored membership plan json
         for any merchant based on environment"""
 
-        switcher = {"staging": constants.EXPECTED_LOYALTY_PLANS_STAGING}
+        switcher = {
+            "staging": constants.EXPECTED_LOYALTY_PLANS_STAGING,
+            "sandbox": constants.EXPECTED_LOYALTY_PLANS_SANDBOX,
+        }
         return switcher.get(env)
 
     @staticmethod

@@ -19,8 +19,10 @@ from settings import (
     CHANNEL_SECRET_NAME,
     LOCAL_CHANNELS,
     LOCAL_SECRETS_PATH,
-    VAULT_URL,
+    VAULT_URL_SANDBOX,
+    VAULT_URL_STAGING,
 )
+from tests.helpers.test_context import TestContext
 
 logger = logging.getLogger(__name__)
 loaded = False
@@ -41,7 +43,7 @@ class KeyVaultError(Exception):
     pass
 
 
-def retry_get_secrets_from_vault():
+def retry_get_secrets_from_vault(VAULT_URL):
     retries = 3
     exception = RuntimeError("Failed to get secrets from Vault")
     for _ in range(retries):
@@ -59,7 +61,7 @@ def retry_get_secrets_from_vault():
     raise exception
 
 
-def retry_get_secrets_key_from_vault_b2b_token(secret_name):
+def retry_get_secrets_key_from_vault_b2b_token(secret_name, VAULT_URL):
     retries = 3
     exception = RuntimeError("Failed to get secrets from Vault")
     for _ in range(retries):
@@ -78,7 +80,7 @@ def retry_get_secrets_key_from_vault_b2b_token(secret_name):
     raise exception
 
 
-def retry_get_access_secrets_from_vault():
+def retry_get_access_secrets_from_vault(VAULT_URL):
     retries = 3
     exception = RuntimeError("Failed to get access secrets from Vault")
     for _ in range(retries):
@@ -114,6 +116,11 @@ def load_secrets():
     global _access_secrets
     global _private_key_secrets
 
+    if TestContext.environ == "staging":
+        vault_url = VAULT_URL_STAGING
+    else:
+        vault_url = VAULT_URL_SANDBOX
+
     if loaded:
         logger.info("Tried to load the vault secrets more than once, ignoring the request.")
 
@@ -132,14 +139,14 @@ def load_secrets():
         # private_key_secrets = [B2B_BINK_PRIVATE_KEY, B2B_LLOYDS_PRIVATE_KEY]
         for kid, secret_name in load_token_secrets.items():
             try:
-                _private_key_secrets[kid] = retry_get_secrets_key_from_vault_b2b_token(secret_name)
+                _private_key_secrets[kid] = retry_get_secrets_key_from_vault_b2b_token(secret_name, vault_url)
             except requests.RequestException as e:
                 err_msg = f"PRIVATE KEY secrets - Vault Exception {e}"
                 logger.exception(err_msg)
                 raise KeyVaultError(err_msg) from e
 
         try:
-            bundle_secrets = retry_get_secrets_from_vault()
+            bundle_secrets = retry_get_secrets_from_vault(vault_url)
         except requests.RequestException as e:
             err_msg = f"JWT bundle secrets - Vault Exception {e}"
             logger.exception(err_msg)
@@ -147,7 +154,7 @@ def load_secrets():
 
         _bundle_secrets = bundle_secrets
         try:
-            _access_secrets = retry_get_access_secrets_from_vault()
+            _access_secrets = retry_get_access_secrets_from_vault(vault_url)
         except requests.RequestException as e:
             err_msg = f"Access secret - Vault Exception {e}"
             logger.exception(err_msg)
