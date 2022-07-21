@@ -11,7 +11,6 @@ import requests
 from azure.core.exceptions import HttpResponseError, ResourceNotFoundError, ServiceRequestError
 from azure.identity import DefaultAzureCredential
 from azure.keyvault.secrets import SecretClient
-from tests.helpers.test_context import TestContext
 
 from settings import (
     ACCESS_SECRET_NAME,
@@ -20,9 +19,10 @@ from settings import (
     CHANNEL_SECRET_NAME,
     LOCAL_CHANNELS,
     LOCAL_SECRETS_PATH,
-    VAULT_URL_STAGING,
     VAULT_URL_SANDBOX,
+    VAULT_URL_STAGING,
 )
+from tests.helpers.test_context import TestContext
 
 logger = logging.getLogger(__name__)
 loaded = False
@@ -116,7 +116,7 @@ def load_secrets():
     global _access_secrets
     global _private_key_secrets
 
-    if TestContext.environ == 'staging':
+    if TestContext.environ == "staging":
         vault_url = VAULT_URL_STAGING
     else:
         vault_url = VAULT_URL_SANDBOX
