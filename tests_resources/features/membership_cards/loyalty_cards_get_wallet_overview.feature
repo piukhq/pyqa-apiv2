@@ -14,8 +14,6 @@ Feature: Overview of wallet information
     And I perform GET 'Wallet_overview'
     Then I see a <status_code_returned>
     And All 'Wallet_overview' fields are correctly populated for <merchant>
-    And I perform DELETE request to delete the "<merchant>" membership card
-    And I perform DELETE request to delete "<payment_card_provider>" the payment card
 
   Examples:
       | merchant      | status_code_returned|payment_card_provider|
@@ -36,7 +34,6 @@ Feature: Overview of wallet information
     And I perform GET 'Wallet_overview'
     Then I see a <status_code_returned>
     And I see <pll_linked_payment_accounts>,<total_payment_accounts> and <is_fully_pll_linked>
-    And I perform DELETE request to delete the "<merchant>" membership card
     And I perform DELETE request to delete all the payment cards
 
   Examples:
@@ -56,7 +53,6 @@ Feature: Overview of wallet information
     And I perform GET 'Wallet_overview'
     Then I see a <status_code_returned>
     And I see <pll_linked_payment_accounts>,<total_payment_accounts> and <is_fully_pll_linked>
-    And I perform DELETE request to delete the "<merchant>" membership card
     And I perform DELETE request to delete all the payment cards
 
   Examples:
@@ -76,7 +72,6 @@ Feature: Overview of wallet information
     And I perform GET 'Wallet_overview'
     Then I see a <status_code_returned>
     And I see <pll_linked_payment_accounts>,<total_payment_accounts> and <is_fully_pll_linked>
-    And I perform DELETE request to delete the "<merchant>" membership card
     And I perform DELETE request to delete all the payment cards
 
   Examples:
