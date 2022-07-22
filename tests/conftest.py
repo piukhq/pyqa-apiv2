@@ -411,8 +411,8 @@ def perform_post_b2b_with_user2(token_type):
 @given("I am a Lloyds user")
 def get_lloyds_user(lloyds_external_id, lloyds_test_email):
     key_secret = get_private_key_secret(config.LLOYDS.kid)
-# user_email = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EMAIL)
-# external_id = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EXTERNAL_ID)
+    # user_email = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EMAIL)
+    # external_id = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EXTERNAL_ID)
     TestContext.b2btoken = create_b2b_token(
         key=key_secret, sub=lloyds_external_id, kid=config.LLOYDS.kid, email=lloyds_test_email
     )
