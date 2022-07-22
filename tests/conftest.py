@@ -141,10 +141,12 @@ def test_email():
     faker = Faker()
     return constants.EMAIL_TEMPLATE.replace("email", str(faker.random_int(100, 999999)))
 
+
 @pytest.fixture()
 def lloyds_test_email():
     faker = Faker()
     return constants.LLOYDS_EMAIL_TEMPLATE.replace("email", str(faker.random_int(100, 999999)))
+
 
 @pytest.fixture()
 def lloyds_external_id():
@@ -409,10 +411,11 @@ def perform_post_b2b_with_user2(token_type):
 @given("I am a Lloyds user")
 def get_lloyds_user(lloyds_external_id, lloyds_test_email):
     key_secret = get_private_key_secret(config.LLOYDS.kid)
-    #user_email = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EMAIL)
-    #external_id = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EXTERNAL_ID)
-    TestContext.b2btoken = create_b2b_token(key=key_secret, sub=lloyds_external_id, kid=config.LLOYDS.kid,
-                                            email=lloyds_test_email)
+# user_email = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EMAIL)
+# external_id = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EXTERNAL_ID)
+    TestContext.b2btoken = create_b2b_token(
+        key=key_secret, sub=lloyds_external_id, kid=config.LLOYDS.kid, email=lloyds_test_email
+    )
 
     response = Token_b2b.post_b2b_with_grant_type(TestContext.b2btoken, "b2b")
     time.sleep(1)
