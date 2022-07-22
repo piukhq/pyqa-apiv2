@@ -3,8 +3,8 @@
 visa_payment_card = {
     "expiry_month": "01",
     "expiry_year": "11",
-    "name_on_card": "visa_staging_test",
-    "card_nickname": "visa_staging_test_nick",
+    "name_on_card": "visa_sandbox_test",
+    "card_nickname": "visa_sandbox_test_nick",
     "issuer": "HSBC",
     "issuer_updated": "LLOYDS",
     "token": "pytest24021",
@@ -23,8 +23,8 @@ visa_payment_card = {
 amex_payment_card = {
     "expiry_month": "03",
     "expiry_year": "11",
-    "name_on_card": "amex_staging_test",
-    "card_nickname": "amex_staging_test_nick",
+    "name_on_card": "amex_sandbox_test",
+    "card_nickname": "amex_sandbox_test_nick",
     "issuer": "HSBC",
     "issuer_updated": "LLOYDS",
     "token": "pytest24021",
@@ -43,8 +43,8 @@ amex_payment_card = {
 master_payment_card = {
     "expiry_month": "02",
     "expiry_year": "12",
-    "name_on_card": "master_staging_test",
-    "card_nickname": "master_staging_test_nick",
+    "name_on_card": "master_sandbox_test",
+    "card_nickname": "master_sandbox_test_nick",
     "issuer": "HSBC",
     "issuer_updated": "LLOYDS",
     "token": "pytest24011",

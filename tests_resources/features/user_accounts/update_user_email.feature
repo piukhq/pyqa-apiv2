@@ -1,5 +1,5 @@
 # Created by bularaghavan at 16/11/2021
-@membership_card_update_email @membership_cards
+@membership_card_update_email @membership_cards @user_test
 Feature: Update email feature
   As a Bink user
   I want to update my email address associated with my Bink account
@@ -7,7 +7,7 @@ Feature: Update email feature
 
   @update_new_email @bink_regression_api2
   Scenario Outline: Update to new email success
-    Given I am a Bink user
+    Given I am a Lloyds user
     When I perform POST request to update email
     Then I see a <status_code_returned>
     And I perform POST request to update email again
@@ -19,7 +19,7 @@ Feature: Update email feature
 
   @update_email_invalid_token @bink_regression_api2
   Scenario Outline: Email Update with invalid token
-     Given I am a Bink user
+     Given I am a Lloyds user
      When I perform POST request to update email with invalid token
      Then I see a <status_code_returned>
      And I see a "<error_message>" error message
@@ -31,7 +31,7 @@ Feature: Update email feature
 
    @update_email_invalid_request @bink_regression_api2
    Scenario Outline: Email Update with invalid request
-      Given I am a Bink user
+      Given I am a Lloyds user
       When I perform POST request to update email with "<request_payload>" with "<status_code>"
       Then I see a "<error_message>" error message
       And I see a "<error_slug>" error slug
@@ -43,7 +43,7 @@ Feature: Update email feature
 
    @update_email_invalid_json @bink_regression_api2
    Scenario Outline: Email Update with Invalid Json
-      Given I am a Bink user
+      Given I am a Lloyds user
       When I perform POST request to update email with "<request_payload>" with "<status_code>"
       Then I see a "<error_message>" error message
       And I see a "<error_slug>" error slug
@@ -54,11 +54,11 @@ Feature: Update email feature
 
    @duplicate_email @bink_regression_api2
    Scenario Outline: Email Update with duplicate email
-      Given I am a Bink user
+      Given I am a Lloyds user
       When I perform POST request to update email with "<duplicate_email>"  with "<status_code>"
       Then I see a "<error_message>" error message
       And I see a "<error_slug>" error slug
 
      Examples:
-       | error_message                                 | error_slug             | duplicate_email   | status_code |
-       |This email is already in use for this channel  | DUPLICATE_EMAIL        |  space@test.com   | 409        |
+       | error_message                                 | error_slug             | duplicate_email                  | status_code  |
+       |This email is already in use for this channel  | DUPLICATE_EMAIL        |  pytest+b2b_staging_email@bink.com   | 409        |

@@ -38,6 +38,14 @@ class CustomerAccount:
         return Endpoint.call(url, header, "POST", payload)
 
     @staticmethod
+    def user_duplicate_email_update(token, duplicate_email):
+        url = CustomerAccount.get_email_update_url()
+        header = Endpoint.request_header(token)
+        payload = UserDetails.bink_user_email_update(duplicate_email)
+
+        return Endpoint.call(url, header, "POST", payload)
+
+    @staticmethod
     def user_email_update_invalid_data(token, test_email, invalid_data):
         url = CustomerAccount.get_email_update_url()
         header = Endpoint.request_header(token)

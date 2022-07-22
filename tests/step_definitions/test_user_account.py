@@ -16,7 +16,7 @@ scenarios("user_accounts/")
 
 
 @when(parsers.parse("I perform POST request to update email"))
-def update_user_email(channel, env, test_email):
+def update_user_email(test_email):
     response = CustomerAccount.user_email_update(TestContext.token, test_email)
     response_json = response_to_json(response)
     TestContext.response_status_code = response.status_code
@@ -64,8 +64,8 @@ def verify_pll_authorise(payment_card_provider, payment_status):
 
 
 @then(parsers.parse("I perform POST request to update email again"))
-def update_user_email_again(channel, env, test_email):
-    response = CustomerAccount.user_email_update(TestContext.token, test_email)
+def update_user_email_again(lloyds_test_email):
+    response = CustomerAccount.user_email_update(TestContext.token, lloyds_test_email)
     response_json = response_to_json(response)
     TestContext.response_status_code = response.status_code
     logging.info(
@@ -132,8 +132,8 @@ def update_user_email_invalid_data(test_email, request_payload, status_code):
 
 
 @when(parsers.parse('I perform POST request to update email with "{duplicate_email}"  with "{status_code}"'))
-def update_user_email_duplicate(test_email, duplicate_email, status_code):
-    response = CustomerAccount.user_email_update(TestContext.token, duplicate_email)
+def update_user_email_duplicate(duplicate_email, status_code):
+    response = CustomerAccount.user_duplicate_email_update(TestContext.token, duplicate_email)
     response_json = response_to_json(response)
     TestContext.response_status_code = response.status_code
     TestContext.error_message = response_json["error_message"]
