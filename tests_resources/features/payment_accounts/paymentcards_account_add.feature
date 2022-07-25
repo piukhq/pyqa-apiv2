@@ -14,7 +14,6 @@ Feature: As a Bink User
 #    And I perform the GET request to verify the new payment card "<payment_card_provider>" has been added successfully to the wallet
     Then I verify the paymentcard "<payment_card_provider>" been added into my wallet
     And I see a "<status_code_returned>" status code for payment account
-    And I perform DELETE request to delete "<payment_card_provider>" the payment card
 
     Examples:
       | payment_card_provider | status_code_returned |
@@ -29,7 +28,6 @@ Feature: As a Bink User
     And I perform POST request to add a new "<payment_card_provider>" payment card to wallet
     And I replace "<payment_card_provider>" "<expiry_month>" "<expiry_year>" "<name_on_card>" "<card_nickname>" into the payment card
     Then I see a "<status_code_returned>" status code for payment account
-    And I perform DELETE request to delete "<payment_card_provider>" the payment card
 
     Examples:
       | payment_card_provider | expiry_month | expiry_year | name_on_card | card_nickname | status_code_returned |
@@ -88,11 +86,10 @@ Feature: As a Bink User
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new payment card by removing "optional" field to wallet
     Then I see a "<status_code_returned>" status code for payment account
-    And I perform DELETE request to delete "<payment_card_provider>" the payment card
 
     Examples:
-      | payment_card_provider | status_code_returned |
-      | master                | 201                  |
+   | status_code_returned |
+   | 201                  |
 
   @mandatory_field @field_verify @bink_regression_api2
   Scenario Outline: Remove expiry_month,expiry_year,token,last_four_digits,first_six_digits,fingerprint from the payload
@@ -128,7 +125,6 @@ Feature: As a Bink User
     And I perform POST request to add existing payment card "<payment_card_provider>" second wallet
     Then I see an <existing_payment_card_status> status code
     And I perform DELETE request to delete "<payment_card_provider>" the payment card from another wallet
-    And I perform DELETE request to delete "<payment_card_provider>" the payment card
 
     Examples:
       | payment_card_provider |  existing_payment_card_status |
@@ -145,7 +141,6 @@ Feature: As a Bink User
     And I perform existing payment card "<payment_card_provider>" to my another wallet with different "<expiry_month>" "<expiry_year>" "<name_on_card>" "<card_nickname>"
     And I see an <existing_payment_card_status> status code
     And I perform DELETE request to delete "<payment_card_provider>" the payment card from another wallet
-    And I perform DELETE request to delete "<payment_card_provider>" the payment card
 
     Examples:
       | payment_card_provider | status_code_returned | existing_payment_card_status | expiry_month | expiry_year | name_on_card | card_nickname |
