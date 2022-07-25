@@ -13,7 +13,6 @@ Feature: Add a loyalty card
     Then I see a <status_code_returned>
 #    And I perform GET request to verify the "<merchant>" membership card is added to the wallet
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
-    And I perform DELETE request to delete the "<merchant>" membership card
 
     Examples:
       | merchant | journey_type | status_code_returned |
@@ -28,7 +27,6 @@ Feature: Add a loyalty card
     And I perform POST request again to verify the "<merchant>" membership card is already added with "<status_code>"
 #    And I perform GET request to verify the "<merchant>" membership card is added to the wallet
     Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
-    And I perform DELETE request to delete the "<merchant>" membership card
 
     Examples:
       | merchant | journey_type | status_code |

@@ -44,7 +44,6 @@ Feature: Delete a loyalty card
     And I see a <status_code_returned>
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
-    And I perform DELETE request to delete the "<merchant>" membership card
 
     Examples:
       | merchant | status_code_returned | error_message             | error_slug    |
@@ -61,7 +60,6 @@ Feature: Delete a loyalty card
     And I see a <status_code_returned>
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
-    And I perform DELETE request to delete the "<merchant>" membership card
 
     Examples:
       | merchant | status_code_returned | error_message             | error_slug    |
@@ -112,7 +110,6 @@ Feature: Delete a loyalty card
     And I see a <status_code_returned>
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
-    And I perform DELETE request to delete the "<merchant>" membership card
 
     Examples:
       | merchant | error_message             | error_slug             | status_code_returned |

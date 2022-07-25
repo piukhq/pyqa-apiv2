@@ -1,5 +1,5 @@
 # Created by bularaghavan at 05/10/2021
-@membership_card_register
+@membership_card_register @membership_cards
 Feature: Register a loyalty card
   As a Bink user
   I want to add registration credentials to an existing Store card,
@@ -13,7 +13,6 @@ Feature: Register a loyalty card
     And I perform PUT request to register "<merchant>" above wallet only membership card
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
-    And I perform DELETE request to delete the "<merchant>" membership card
 
     Examples:
       | merchant | status_code_returned | journey_type   |
@@ -30,7 +29,6 @@ Feature: Register a loyalty card
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
  #  Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
-    And I perform DELETE request to delete the "<merchant>" membership card
 
     Examples:
       | merchant | status_code_returned | error_message                                                                                                                                                 | error_slug         |
@@ -44,7 +42,6 @@ Feature: Register a loyalty card
     And I perform PUT request to register "<merchant>" membership card with "<request_payload>" with "<status_code>"
     Then I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
-    And I perform DELETE request to delete the "<merchant>" membership card
 
     Examples:
       | merchant | error_message | error_slug        | request_payload | status_code |
@@ -58,7 +55,6 @@ Feature: Register a loyalty card
     And I perform PUT request to register "<merchant>" membership card with "<request_payload>" with "<status_code>"
     Then I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
-    And I perform DELETE request to delete the "<merchant>" membership card
 
     Examples:
       | merchant | error_message             | error_slug             | request_payload | status_code |
@@ -74,8 +70,6 @@ Feature: Register a loyalty card
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
-    And I perform DELETE request to delete the "<merchant>" membership card
-
 
     Examples:
       | merchant | status_code_returned | error_message             | error_slug    |
@@ -90,8 +84,6 @@ Feature: Register a loyalty card
     And I perform PUT request to register "<merchant>" above wallet only membership card
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
-    And I perform DELETE request to delete the "<merchant>" membership card
-    And I perform DELETE request to delete "<payment_card_provider>" the payment card
 
     Examples:
       | payment_card_provider | merchant | status_code_returned | journey_type |

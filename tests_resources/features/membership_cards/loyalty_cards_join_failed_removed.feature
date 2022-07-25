@@ -29,7 +29,7 @@ Feature: Add and register a loyalty card
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
-    And I perform DELETE request to delete the "<merchant>" membership card
+
     Examples:
       | merchant      | status_code_returned | journey_type | scheme_state | error_message                               | error_slug |
       | Iceland       | 409                  | join         | active       | Could not process request due to a conflict | CONFLICT   |

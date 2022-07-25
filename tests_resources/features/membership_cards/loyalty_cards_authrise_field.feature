@@ -13,7 +13,6 @@ Feature: Authorise a loyalty card
     And I perform PUT request to authorise "<merchant>" above wallet only membership card
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
-    And I perform DELETE request to delete the "<merchant>" membership card
 
     Examples:
       | merchant | journey_type    | status_code_returned |
@@ -29,7 +28,6 @@ Feature: Authorise a loyalty card
     And I perform PUT request to authorise "<merchant>" above wallet only membership card again
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
-    And I perform DELETE request to delete the "<merchant>" membership card
 
     Examples:
       | merchant | journey_type    | status_code_returned |
@@ -44,7 +42,6 @@ Feature: Authorise a loyalty card
     And I perform PUT request to authorise "<merchant>" membership card with "<request_payload>" with "<status_code>"
     Then I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
-    And I perform DELETE request to delete the "<merchant>" membership card
 
     Examples:
       | merchant | error_message | error_slug        | request_payload | status_code |
@@ -59,7 +56,6 @@ Feature: Authorise a loyalty card
     And I perform PUT request to authorise "<merchant>" membership card with "<request_payload>" with "<status_code>"
     Then I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
-    And I perform DELETE request to delete the "<merchant>" membership card
 
     Examples:
       | merchant | error_message             | error_slug             | request_payload | status_code |
@@ -75,7 +71,6 @@ Feature: Authorise a loyalty card
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
-    And I perform DELETE request to delete the "<merchant>" membership card
 
     Examples:
       | merchant | status_code_returned | error_message             | error_slug    |
@@ -108,8 +103,6 @@ Feature: Authorise a loyalty card
     And I perform PUT request to authorise "<merchant>" above wallet only membership card
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
-    And I perform DELETE request to delete the "<merchant>" membership card
-    And I perform DELETE request to delete "<payment_card_provider>" the payment card
 
     Examples:
       | payment_card_provider | merchant | status_code_returned | journey_type |
