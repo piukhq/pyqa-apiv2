@@ -13,7 +13,6 @@ Feature: As a Bink User
 
     Then I verify the paymentcard "<payment_card_provider>" been updated with "<update_field>"
     And I see a "<status_code_returned>" status code for payment account
-    And I perform DELETE request to delete "<payment_card_provider>" the payment card
 
     Examples:
       | payment_card_provider | status_code_returned | update_field                                                   |
@@ -101,8 +100,6 @@ Feature: As a Bink User
     And I perform PATCH request to update "<payment_card_provider>" payment card with add credential
     Then I see a "<status_code_returned>" status code for payment account
     And I verify "<error_message>" "<error_slug>" of payment_account response
-    Then I perform DELETE request to delete "<payment_card_provider>" the payment card
-
 
     Examples:
       | payment_card_provider | status_code_returned | error_message             | error_slug             |

@@ -12,7 +12,7 @@ Feature: Add and register a loyalty card
     And I perform POST request to join "<merchant>" membership card
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
-    And I perform DELETE request to delete the "<merchant>" membership card
+
     Examples:
       | merchant      | status_code_returned | journey_type |
       | Iceland       | 202                  | join         |
@@ -71,8 +71,6 @@ Feature: Add and register a loyalty card
     And I perform POST request to join "<merchant>" membership card
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
-    And I perform DELETE request to delete the "<merchant>" membership card
-    And I perform DELETE request to delete "<payment_card_provider>" the payment card
 
     Examples:
       | payment_card_provider | merchant | status_code_returned | journey_type |

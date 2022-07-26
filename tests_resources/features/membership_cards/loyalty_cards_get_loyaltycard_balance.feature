@@ -12,7 +12,6 @@ so that I am aware and have visibility of my rewards
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And I perform GET request to view loyalty card balance for "<merchant>"
     Then I see a <status_code_returned>
-    And I perform DELETE request to delete the "<merchant>" membership card
 
     Examples:
       | merchant      | status_code_returned |

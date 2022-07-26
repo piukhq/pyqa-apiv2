@@ -12,7 +12,7 @@ Feature: Add and register a loyalty card
     And I perform POST request to add and register "<merchant>" membership card
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
-    And I perform DELETE request to delete the "<merchant>" membership card
+
     Examples:
       | merchant | status_code_returned | journey_type     |
       | Iceland  | 202                  | add_and_register |
@@ -41,7 +41,7 @@ Feature: Add and register a loyalty card
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
     Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
-    And I perform DELETE request to delete the "<merchant>" membership card
+
     Examples:
       | merchant | status_code_returned | journey_type     | error_message                                                                                          | error_slug         |
       | Iceland  | 409                  | add_and_register | Card is already registered. Use POST /loyalty_cards/add_and_authorise to add this card to your wallet. | ALREADY_REGISTERED |
@@ -54,7 +54,7 @@ Feature: Add and register a loyalty card
 #    And I perform GET request to verify the "<merchant>" membership card is added to the wallet
     Then I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
-    And I perform DELETE request to delete the "<merchant>" membership card
+
     Examples:
       | merchant | error_message             | error_slug             | request_payload | status_code |
       | Iceland  | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
