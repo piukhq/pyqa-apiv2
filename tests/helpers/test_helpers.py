@@ -73,12 +73,12 @@ class TestData:
         return switcher.get(merchant)
 
     @staticmethod
-    def get_expected_membership_plan_json(loyalty_scheme, env, channel=None):
+    def get_expected_journey_fields_json(loyalty_scheme, env, channel=None):
 
         merchant_key = TestData.get_merchant_key(loyalty_scheme)
         mem_plan_path = TestData.get_mem_plan_path(env)
 
-        return mem_plan_path + "/mebership_plan_journey_field_" + merchant_key + ".json"
+        return mem_plan_path + "/membership_plan_journey_field_" + merchant_key + ".json"
         # if merchant == "Iceland" and channel == "barclays":
         #     """Temporary case as Iceland has different membership plan id for Bink & Barclays"""
         #     return mem_plan_path + "/" + merchant_key + "_membership_plan_bmb.json"
@@ -132,7 +132,10 @@ class TestData:
         """return the base path of stored get wallet json
         based on environment"""
 
-        switcher = {"staging": constants.EXPECTED_VIEW_WALLET_STAGING}
+        switcher = {
+            "staging": constants.EXPECTED_VIEW_WALLET_STAGING,
+            "sandbox": constants.EXPECTED_VIEW_WALLET_SANDBOX,
+        }
         return switcher.get(env)
 
     @staticmethod
@@ -140,7 +143,11 @@ class TestData:
         """return the base path of stored get loyalty plans overview json
         based on environment"""
 
-        switcher = {"staging": constants.EXPECTED_LOYALTY_PLANS_OVERVIEW_STAGING}
+        switcher = {
+            "staging": constants.EXPECTED_LOYALTY_PLANS_OVERVIEW_STAGING,
+            "sandbox": constants.EXPECTED_LOYALTY_PLANS_OVERVIEW_SANDBOX,
+        }
+
         return switcher.get(env)
 
     @staticmethod
@@ -148,7 +155,10 @@ class TestData:
         """return the base path of stored membership plan json
         for any merchant based on environment"""
 
-        switcher = {"staging": constants.EXPECTED_MEMBERSHIP_PLANS_PATH_STAGING}
+        switcher = {
+            "staging": constants.EXPECTED_JOURNEY_FIELDS_PATH_STAGING,
+            "sandbox": constants.EXPECTED_JOURNEY_FIELDS_PATH_SANDBOX,
+        }
         return switcher.get(env)
 
     @staticmethod

@@ -5,6 +5,8 @@ from dataclasses import dataclass
 
 import tests.helpers.database.setupdb as db
 
+from tests.helpers.test_context import TestContext
+
 
 @dataclass
 class SchemeAccountRecord:
@@ -77,11 +79,19 @@ class QueryHermes:
     @staticmethod
     def fetch_payment_account(payment_card_account_id):
         connection = db.connect_db()
-        query_payment_account = (
-            """SELECT id,name_on_card,is_deleted,pll_links FROM hermes.public.payment_card_paymentcardaccount
+        if TestContext.environ == "staging":
+            query_payment_account = (
+                """SELECT id,name_on_card,is_deleted,pll_links FROM hermes.public.payment_card_paymentcardaccount
                      where id='%s'"""
-            % payment_card_account_id
-        )
+                % payment_card_account_id
+            )
+        else:
+            query_payment_account = (
+                """SELECT id,name_on_card,is_deleted,pll_links FROM lloyds_sit_hermes.public.payment_card_paymentcardaccount
+                         where id='%s'"""
+                % payment_card_account_id
+            )
+
         record = db.execute_query_fetch_one(connection, query_payment_account)
         if record is None:
             raise Exception(f"'{payment_card_account_id}' is an Invalid Payment account id")
@@ -102,17 +112,31 @@ def get_query(journey_type, scheme_account_id):
 
     if journey_type == "":
         logging.info("Scheme didnt attached to the wallet")
-    else:
+    elif TestContext.environ == "staging":
         query_scheme_account = (
             """SELECT id,status,scheme_id,link_date,main_answer,is_deleted,pll_links
                  FROM hermes.public.scheme_schemeaccount WHERE id='%s'"""
+            % scheme_account_id
+        )
+    elif TestContext.environ == "sandbox":
+        query_scheme_account = (
+            """SELECT id,status,scheme_id,link_date,main_answer,is_deleted,pll_links
+                     FROM lloyds_sit_hermes.public.scheme_schemeaccount WHERE id='%s'"""
             % scheme_account_id
         )
     return query_scheme_account
 
 
 def update_query(scheme_account_id, status):
-    query_scheme_account = (
-        f"UPDATE hermes.public.scheme_schemeaccount SET status = " f"{int(status)} WHERE id= {int(scheme_account_id)}"
-    )
+    if TestContext.environ == "staging":
+        query_scheme_account = (
+            f"UPDATE hermes.public.scheme_schemeaccount SET status = "
+            f"{int(status)} WHERE id= {int(scheme_account_id)}"
+        )
+    else:
+        query_scheme_account = (
+            f"UPDATE lloyds_sit_hermes.public.scheme_schemeaccount SET status = "
+            f"{int(status)} WHERE id= {int(scheme_account_id)}"
+        )
+
     return query_scheme_account
