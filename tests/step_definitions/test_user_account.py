@@ -18,10 +18,7 @@ scenarios("user_accounts/")
 @when(parsers.parse("I perform POST request to update email"))
 def update_user_email(test_email):
     response = CustomerAccount.user_email_update(TestContext.token, test_email)
-    logging.info(
-        "User email update is successful : \n\n "
-        + Endpoint.BASE_URL
-        + api.ENDPOINT_EMAIL_UPDATE)
+    logging.info("User email update is successful : \n\n " + Endpoint.BASE_URL + api.ENDPOINT_EMAIL_UPDATE)
     response_json = response_to_json(response)
     TestContext.response_status_code = response.status_code
     logging.info(
