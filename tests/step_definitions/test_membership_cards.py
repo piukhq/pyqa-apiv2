@@ -1448,17 +1448,17 @@ def join_with_invalid_token(merchant, test_email):
 def fail_join_scheme(merchant, scheme_state):
     if scheme_state == "enrol_failed":
         response = MembershipCards.join_field(
-            TestContext.token, merchant, TestDataUtils.TEST_DATA.harvey_nichols_invalid_data.get(constants.ID)
+            TestContext.token, merchant, TestDataUtils.TEST_DATA.join_emails.get(constants.ID)
         )
     elif scheme_state == "join_success":
         response = MembershipCards.join_field(
             TestContext.token,
             merchant,
-            TestDataUtils.TEST_DATA.harvey_nichols_invalid_data.get(constants.SUCCESS_EMAIL),
+            TestDataUtils.TEST_DATA.join_emails.get(constants.SUCCESS_EMAIL),
         )
     elif scheme_state == "asynchronous_join_in_progress":
         response = MembershipCards.join_field(
-            TestContext.token, merchant, TestDataUtils.TEST_DATA.harvey_nichols_invalid_data.get(constants.SLOW_JOIN_ID)
+            TestContext.token, merchant, TestDataUtils.TEST_DATA.join_emails.get(constants.SLOW_JOIN_ID)
         )
 
     response_json = response_to_json(response)
@@ -1629,7 +1629,7 @@ def delete_failed_scheme_again():
 @when(parsers.parse('I perform POST request to join in progress "{merchant}" membership card'))
 def delete_join_in_progress_scheme(merchant):
     response = MembershipCards.join_field(
-        TestContext.token, merchant, TestDataUtils.TEST_DATA.harvey_nichols_invalid_data.get(constants.SLOW_JOIN_ID)
+        TestContext.token, merchant, TestDataUtils.TEST_DATA.join_emails.get(constants.SLOW_JOIN_ID)
     )
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")
@@ -1662,3 +1662,116 @@ def verify_state_slug_desc(scheme_state):
                 wallet_response["joins"][0]["status"][status_key]
                 == TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state][status_key]
             ), "status do not match"
+
+
+@when(parsers.parse("I perform put request with {request_payload} to update failed join for {merchant}"))
+def verify_put_join_with_invalid(request_payload, merchant):
+    time.sleep(15)
+    if request_payload == "successful_payload":
+        response = MembershipCards.update_failed_join(
+            TestContext.token,
+            merchant,
+            TestDataUtils.TEST_DATA.join_emails.get(constants.SUCCESS_EMAIL),
+            TestContext.current_scheme_account_id,
+            request_payload,
+        )
+        response_json = response_to_json(response)
+        TestContext.current_scheme_account_id = response_json.get("id")
+        TestContext.response_status_code = response.status_code
+        logging.info(
+            "The response of PUT/join is:\n\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE.format(TestContext.current_scheme_account_id)
+            + "\n\n"
+            + json.dumps(response_json, indent=4)
+        )
+        assert response.status_code == 202, "Update failed join for " + merchant + " failed"
+
+    else:
+        if request_payload == "invalid_token":
+            response = MembershipCards.update_failed_join(
+                TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN),
+                merchant,
+                TestDataUtils.TEST_DATA.join_emails.get(constants.SUCCESS_EMAIL),
+                TestContext.current_scheme_account_id,
+                request_payload,
+            )
+            logging.info(
+                "The response of put/join with invalid token is: \n\n"
+                + Endpoint.BASE_URL
+                + api.ENDPOINT_MEMBERSHIP_CARDS_JOIN_FAILED
+                + "\n\n"
+                + json.dumps(response.json(), indent=4)
+            )
+            assert response.status_code == 401, "Status is not 401"
+        elif request_payload == "invalid_scheme_account_id":
+            response = MembershipCards.update_failed_join(
+                TestContext.token,
+                merchant,
+                TestDataUtils.TEST_DATA.join_emails.get(constants.SUCCESS_EMAIL),
+                TestContext.current_scheme_account_id * 90000,
+                request_payload,
+            )
+            logging.info(
+                "The response of put/join with invalid scheme account is: \n\n"
+                + Endpoint.BASE_URL
+                + api.ENDPOINT_MEMBERSHIP_CARDS_JOIN_FAILED
+                + "\n\n"
+                + json.dumps(response.json(), indent=4)
+            )
+            assert response.status_code == 404, "Status is not 404"
+        elif request_payload == "invalid_json":
+            response = MembershipCards.update_failed_join(
+                TestContext.token,
+                merchant,
+                TestDataUtils.TEST_DATA.join_emails.get(constants.SUCCESS_EMAIL),
+                TestContext.current_scheme_account_id,
+                request_payload,
+            )
+            logging.info(
+                "The response of put/join with invalid json is: \n\n"
+                + Endpoint.BASE_URL
+                + api.ENDPOINT_MEMBERSHIP_CARDS_JOIN_FAILED
+                + "\n\n"
+                + json.dumps(response.json(), indent=4)
+            )
+            assert response.status_code == 400, "Status is not 400"
+
+        elif request_payload == "invalid_request":
+            response = MembershipCards.update_failed_join(
+                TestContext.token,
+                merchant,
+                TestDataUtils.TEST_DATA.join_emails.get(constants.SUCCESS_EMAIL),
+                TestContext.current_scheme_account_id,
+                request_payload,
+            )
+            logging.info(
+                "The response of put/join with invalid request is: \n\n"
+                + Endpoint.BASE_URL
+                + api.ENDPOINT_MEMBERSHIP_CARDS_JOIN_FAILED
+                + "\n\n"
+                + json.dumps(response.json(), indent=4)
+            )
+            assert response.status_code == 422, "Status is not 422"
+        elif request_payload == "conflict":
+            response = MembershipCards.update_failed_join(
+                TestContext.token,
+                merchant,
+                TestDataUtils.TEST_DATA.join_emails.get(constants.SUCCESS_EMAIL),
+                TestContext.current_scheme_account_id,
+                request_payload,
+            )
+            logging.info(
+                "The response of put/join with invalid scheme account is: \n\n"
+                + Endpoint.BASE_URL
+                + api.ENDPOINT_MEMBERSHIP_CARDS_JOIN_FAILED
+                + "\n\n"
+                + json.dumps(response.json(), indent=4)
+            )
+            assert response.status_code == 409, "Status is not 409"
+
+        TestContext.response_status_code = response.status_code
+        response_json = response.json()
+        TestContext.error_message = response_json.get("error_message")
+        TestContext.error_slug = response_json.get("error_slug")
+    return response

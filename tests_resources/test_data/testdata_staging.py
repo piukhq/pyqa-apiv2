@@ -109,8 +109,8 @@ harvey_nichols_membership_card = {
     "transaction_currency": "Points",
 }
 
-harvey_nichols_invalid_data = {
-    "id": "fail@unknown.com",
+join_emails = {
+    "id": "joininprogress@testbink.com",
     "slow_join_id": "slowjoin@testbink.com",
     "success_email": "pytest+success@bink.com",
 }

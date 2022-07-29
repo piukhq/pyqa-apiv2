@@ -571,9 +571,7 @@ class IcelandCard:
             }
 
         logging.info(
-            "The Request for Join with :\n"
-            + Endpoint.BASE_URL
-            + api.ENDPOINT_MEMBERSHIP_CARDS_JOIN
+            "The Request for post/Join or put/{id}/join is :"
             + "\n\n"
             + json.dumps(payload, indent=4)
         )

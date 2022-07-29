@@ -19,7 +19,7 @@ class HarveyNicholsCard:
     @staticmethod
     def add_field_only_membership_card_payload(invalid_data=None):
         if invalid_data:
-            value = TestDataUtils.TEST_DATA.harvey_nichols_invalid_data.get(constants.ID)
+            value = TestDataUtils.TEST_DATA.join_emails.get(constants.ID)
             logging.info("Invalid data is: " + value)
         else:
             value = TestDataUtils.TEST_DATA.harvey_nichols_membership_card.get(constants.ID)

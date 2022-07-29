@@ -328,3 +328,21 @@ class MembershipCards(Endpoint):
     @staticmethod
     def get_add_and_authorise_url():
         return Endpoint.BASE_URL + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_AUTHORISE
+
+    def update_failed_join(token, merchant, email, scheme_account_id, request_payload):
+        url = MembershipCards.get_fail_delete_url(scheme_account_id)
+        header = Endpoint.request_header(token)
+        encrypt_header = Endpoint.encrypt_header(token)
+        if request_payload not in ["invalid_json", "invalid_request"]:
+            payload = Merchant.get_merchant(merchant).join_journey(email)
+            if TestContext.flag_encrypt == "true":
+                data = encrypted_payload_token(payload)
+                return Endpoint.call_payload(url, encrypt_header, "PUT", data)
+            elif TestContext.flag_encrypt == "false":
+                return Endpoint.call(url, header, "PUT", payload)
+        elif request_payload == "invalid_json":
+            payload = Merchant.get_merchant(merchant).join_journey(email, request_payload)
+            return Endpoint.call_payload(url, header, "PUT", payload)
+        elif request_payload == "invalid_request":
+            payload = Merchant.get_merchant(merchant).join_journey(email, request_payload)
+            return Endpoint.call(url, header, "PUT", payload)
