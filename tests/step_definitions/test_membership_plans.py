@@ -18,13 +18,13 @@ scenarios("membership_plans/")
 
 @when(parsers.parse('I perform GET request to view journey field for "{loyalty_scheme}"'))
 def verify_journey_field(loyalty_scheme, env, channel):
-    response = MembershipPlans.get_membership_plan_journey_field(setup_token(), loyalty_scheme)
+    response = MembershipPlans.get_membership_plan_journey_field(TestContext.token, loyalty_scheme)
     TestContext.response_status_code = response.status_code
     logging.info(
         "The Membership plan for " + loyalty_scheme + " is: \n" + json.dumps(response_to_json(response), indent=4)
     )
 
-    with open(TestData.get_expected_membership_plan_json(loyalty_scheme, env, channel)) as json_file:
+    with open(TestData.get_expected_journey_fields_json(loyalty_scheme, env, channel)) as json_file:
         json_data = json.load(json_file)
 
     stored_json = json.dumps(json_data)

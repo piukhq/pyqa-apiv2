@@ -419,7 +419,7 @@ def verify_loyalty_card_invalid_id_balance(env, channel, merchant, invalid_id):
 
 @when(parsers.parse('I perform GET request to view loyalty card transactions for "{merchant}"'))
 def verify_loyalty_card_transactions(env, channel, merchant):
-    time.sleep(4)
+    time.sleep(6)
     response = MembershipCards.get_loyalty_transactions(TestContext.token, TestContext.current_scheme_account_id)
     response_json = response_to_json(response)
     TestContext.response_status_code = response.status_code
@@ -487,7 +487,7 @@ def verify_loyalty_card_invalid_id_transactions(env, channel, invalid_id, mercha
 
 @when(parsers.parse('I perform GET request to view loyalty card voucher for "{merchant}"'))
 def verify_loyalty_card_vouchers(env, channel, merchant):
-    time.sleep(4)
+    time.sleep(6)
     response = MembershipCards.get_loyalty_vouchers(TestContext.token, TestContext.current_scheme_account_id)
     response_json = response_to_json(response)
     TestContext.response_status_code = response.status_code
