@@ -1666,8 +1666,8 @@ def verify_state_slug_desc(scheme_state):
 
 @when(parsers.parse("I perform put request with {request_payload} to update failed join for {merchant}"))
 def verify_put_join_with_invalid(request_payload, merchant):
-    time.sleep(15)
     if request_payload == "successful_payload":
+        time.sleep(15)
         response = MembershipCards.update_failed_join(
             TestContext.token,
             merchant,

@@ -131,6 +131,6 @@ Feature: View Wallet
 
     Examples:
       | merchant      | status_code_returned |  scheme_state |
-      | HarveyNichols | 200                  |  enrol_failed         |
+#      | HarveyNichols | 200                  |  enrol_failed         |
       | HarveyNichols | 200                  |  join_success         |
       | HarveyNichols | 200                  | asynchronous_join_in_progress |

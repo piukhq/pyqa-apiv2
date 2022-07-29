@@ -10,6 +10,7 @@
                 "credential_slug": "title",
                 "type": "choice",
                 "is_sensitive": false,
+                "is_scannable": false,
                 "choice": [
                     "Mr",
                     "Mrs",
@@ -32,6 +33,7 @@
                 "credential_slug": "first_name",
                 "type": "text",
                 "is_sensitive": false,
+                "is_scannable": false,
                 "choice": [],
                 "alternative": null
             },
@@ -43,6 +45,7 @@
                 "credential_slug": "last_name",
                 "type": "text",
                 "is_sensitive": false,
+                "is_scannable": false,
                 "choice": [],
                 "alternative": null
             },
@@ -54,6 +57,7 @@
                 "credential_slug": "email",
                 "type": "text",
                 "is_sensitive": false,
+                "is_scannable": false,
                 "choice": [],
                 "alternative": null
             },
@@ -65,6 +69,7 @@
                 "credential_slug": "password_2",
                 "type": "sensitive",
                 "is_sensitive": true,
+                "is_scannable": false,
                 "choice": [],
                 "alternative": null
             },
@@ -76,6 +81,7 @@
                 "credential_slug": "phone",
                 "type": "text",
                 "is_sensitive": false,
+                "is_scannable": false,
                 "choice": [],
                 "alternative": null
             }
@@ -117,6 +123,7 @@
                 "credential_slug": "email",
                 "type": "text",
                 "is_sensitive": false,
+                "is_scannable": false,
                 "choice": [],
                 "alternative": null
             },
@@ -128,6 +135,7 @@
                 "credential_slug": "password",
                 "type": "sensitive",
                 "is_sensitive": true,
+                "is_scannable": false,
                 "choice": [],
                 "alternative": null
             }
