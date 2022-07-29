@@ -173,7 +173,8 @@ wallet_info = {
                     "state": "inprogress",
                     "earn_type": "stamps",
                     "reward_text": "Free Meal",
-                    "headline": "Spend £7.00 or more to get a stamp. Collect 7 stamps to get a Meal Voucher of up to £7 off your next meal.",
+                    "headline": "Spend £7.00 or more to get a stamp. "
+                                "Collect 7 stamps to get a Meal Voucher of up to £7 off your next meal.",
                     "voucher_code": None,
                     "barcode_type": 0,
                     "progress_display_text": "6/7 stamps",
@@ -181,7 +182,8 @@ wallet_info = {
                     "target_value": "7",
                     "prefix": None,
                     "suffix": "stamps",
-                    "body_text": "Spend £7.00 or more to get a stamp. Collect 7 stamps to get a Meal Voucher of up to £7 off your next meal.",
+                    "body_text": "Spend £7.00 or more to get a stamp. "
+                                 "Collect 7 stamps to get a Meal Voucher of up to £7 off your next meal.",
                     "terms_and_conditions": "https://policies.staging.gb.bink.com/wasabi/tc.html",
                     "issued_date": None,
                     "expiry_date": None,
