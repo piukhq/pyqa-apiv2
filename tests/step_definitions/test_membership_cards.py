@@ -1667,7 +1667,7 @@ def verify_state_slug_desc(scheme_state):
 @when(parsers.parse("I perform put request with {request_payload} to update failed join for {merchant}"))
 def verify_put_join_with_invalid(request_payload, merchant):
     if request_payload == "successful_payload":
-        time.sleep(15)
+        time.sleep(12)
         response = MembershipCards.update_failed_join(
             TestContext.token,
             merchant,
@@ -1686,6 +1686,7 @@ def verify_put_join_with_invalid(request_payload, merchant):
             + json.dumps(response_json, indent=4)
         )
         assert response.status_code == 202, "Update failed join for " + merchant + " failed"
+        time.sleep(12)
 
     else:
         if request_payload == "invalid_token":
