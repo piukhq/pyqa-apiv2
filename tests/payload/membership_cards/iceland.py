@@ -570,11 +570,5 @@ class IcelandCard:
                 "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("iceland"),
             }
 
-        logging.info(
-            "The Request for Join with :\n"
-            + Endpoint.BASE_URL
-            + api.ENDPOINT_MEMBERSHIP_CARDS_JOIN
-            + "\n\n"
-            + json.dumps(payload, indent=4)
-        )
+        logging.info("The Request for post/Join or put/{id}/join is :" + "\n\n" + json.dumps(payload, indent=4))
         return payload

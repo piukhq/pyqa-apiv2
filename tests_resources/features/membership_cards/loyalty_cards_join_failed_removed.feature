@@ -17,7 +17,7 @@ Feature: Add and register a loyalty card
       | merchant      | status_code_returned | journey_type | scheme_state |
       | Iceland       | 200                  | join_failed  | enrol_failed         |
 #      | Wasabi        | 200                  | join_failed  | enrol_failed         |
-      | HarveyNichols | 200                  | join_failed  | enrol_failed  |
+#      | HarveyNichols | 200                  | join_failed  | enrol_failed  |
 
   @remove_active_scheme @bink_regression_api2
   Scenario Outline: Remove active scheme from the wallet
@@ -63,7 +63,7 @@ Feature: Add and register a loyalty card
       | merchant      | status_code_returned | error_message             | error_slug    |
       | Iceland       | 401                  | Supplied token is invalid | INVALID_TOKEN |
       | Wasabi        | 401                  | Supplied token is invalid | INVALID_TOKEN |
-      | HarveyNichols | 401                  | Supplied token is invalid | INVALID_TOKEN |
+#      | HarveyNichols | 401                  | Supplied token is invalid | INVALID_TOKEN |
 
   @delete_fail_scheme_again @bink_regression_api2
   Scenario Outline: Delete failed scheme again when scheme already deleted from the wallet
@@ -79,4 +79,4 @@ Feature: Add and register a loyalty card
       | merchant      | status_code_returned | scheme_state | error_message                       | error_slug         |
       | Iceland       | 404                  | enrol_failed         | Could not find this account or card | RESOURCE_NOT_FOUND |
 #      | Wasabi        | 404                  | enrol_failed         | Could not find this account or card | RESOURCE_NOT_FOUND |
-      | HarveyNichols | 404                  | enrol_failed         | Could not find this account or card | RESOURCE_NOT_FOUND |
+#      | HarveyNichols | 404                  | enrol_failed         | Could not find this account or card | RESOURCE_NOT_FOUND |

@@ -3,7 +3,7 @@
 Feature: View Wallet by loyalty card id
   As a Bink user
   I want to view details of single loyalty cards
-  so t do not have to call multiple different endpoints
+  so that I do not have to call multiple different endpoints
 
 
    @view_wallet_by_loyalty_card_id @bink_regression_api2
@@ -32,7 +32,6 @@ Feature: View Wallet by loyalty card id
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
-    And I perform DELETE request to delete the "<merchant>" membership card
 
     Examples:
       | status_code_returned| error_message                      |error_slug        |merchant| invalid|
