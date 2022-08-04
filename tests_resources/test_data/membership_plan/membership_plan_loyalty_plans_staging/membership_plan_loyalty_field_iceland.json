@@ -30,20 +30,12 @@
 	},
 	"images": [
 		{
-			"id": 1071,
-			"type": 5,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref2.jpg",
-			"description": "Iceland Reference",
-			"encoding": "jpg",
-			"order": 1
-		},
-		{
-			"id": 1302,
-			"type": 2,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Pizza.jpg",
-			"description": "Iceland Offer - Pizza",
-			"encoding": "jpg",
-			"order": 1
+			"id": 1234,
+			"type": 0,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
+			"description": "Iceland Slimming World hero card",
+			"encoding": "png",
+			"order": 0
 		},
 		{
 			"id": 374,
@@ -54,33 +46,25 @@
 			"order": 0
 		},
 		{
-			"id": 1234,
-			"type": 0,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
-			"description": "Iceland Slimming World hero card",
-			"encoding": "png",
-			"order": 0
-		},
-		{
-			"id": 1303,
+			"id": 1302,
 			"type": 2,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Greggs.jpg",
-			"description": "Iceland Offer - Greggs",
-			"encoding": "jpg",
-			"order": 2
-		},
-		{
-			"id": 1070,
-			"type": 5,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_ref1.jpg",
-			"description": "Iceland Reference",
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Pizza.jpg",
+			"description": "Iceland Offer - Pizza",
 			"encoding": "jpg",
 			"order": 1
 		},
 		{
-			"id": 1072,
+			"id": 1398,
+			"type": 7,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/PromotionsIcelandBonusCard1968x732.png",
+			"description": "Promo_Text_1",
+			"encoding": "png",
+			"order": 0
+		},
+		{
+			"id": 1071,
 			"type": 5,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref3.jpg",
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref2.jpg",
 			"description": "Iceland Reference",
 			"encoding": "jpg",
 			"order": 1
@@ -94,12 +78,20 @@
 			"order": 0
 		},
 		{
-			"id": 1398,
-			"type": 7,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/PromotionsIcelandBonusCard1968x732.png",
-			"description": "Promo_Text_1",
-			"encoding": "png",
-			"order": 0
+			"id": 1303,
+			"type": 2,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Greggs.jpg",
+			"description": "Iceland Offer - Greggs",
+			"encoding": "jpg",
+			"order": 2
+		},
+		{
+			"id": 1072,
+			"type": 5,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref3.jpg",
+			"description": "Iceland Reference",
+			"encoding": "jpg",
+			"order": 1
 		},
 		{
 			"id": 1289,
@@ -108,6 +100,14 @@
 			"description": "Iceland Alternative Hero Image",
 			"encoding": "png",
 			"order": 0
+		},
+		{
+			"id": 1070,
+			"type": 5,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_ref1.jpg",
+			"description": "Iceland Reference",
+			"encoding": "jpg",
+			"order": 1
 		}
 	],
 	"plan_details": {
@@ -127,7 +127,7 @@
 		"join_fields": {
 			"credentials": [
 				{
-					"order": 2,
+					"order": 3,
 					"display_label": "Title",
 					"validation": "^(Mr|Mrs|Miss|Ms|Dr)$",
 					"description": "Select title",
@@ -145,7 +145,7 @@
 					"alternative": null
 				},
 				{
-					"order": 3,
+					"order": 4,
 					"display_label": "First name",
 					"validation": "^(((?=.{1,20}$)[A-Za-z\\-\\u00C0-\\u00FF])+\\s*){1,4}$",
 					"description": "Enter first name",
@@ -157,7 +157,7 @@
 					"alternative": null
 				},
 				{
-					"order": 4,
+					"order": 5,
 					"display_label": "Last name",
 					"validation": "^(((?=.{1,40}$)[A-Za-z\\-\\u00C0-\\u00FF])+\\s*){1,4}$",
 					"description": "Enter last name",
@@ -169,7 +169,7 @@
 					"alternative": null
 				},
 				{
-					"order": 5,
+					"order": 6,
 					"display_label": "Date of birth",
 					"validation": "^(0[1-9]|[12][0-9]|3[01])[\\/](0[1-9]|1[012])[\\/](19|20)\\d\\d$",
 					"description": "DD/MM/YYYY",
@@ -181,7 +181,7 @@
 					"alternative": null
 				},
 				{
-					"order": 6,
+					"order": 7,
 					"display_label": "Email",
 					"validation": "^(?=[^@]{1,64}@)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
 					"description": "example@mydomain.com",
@@ -193,7 +193,7 @@
 					"alternative": null
 				},
 				{
-					"order": 7,
+					"order": 8,
 					"display_label": "Phone",
 					"validation": "^(?:0|\\+?44)(?:\\d-?\\s?){9,15}$",
 					"description": "01234 123456",
@@ -205,7 +205,7 @@
 					"alternative": null
 				},
 				{
-					"order": 8,
+					"order": 9,
 					"display_label": "House name or number",
 					"validation": "^([a-zA-Z0-9#.,;:' ]){1,40}$",
 					"description": "Enter address line 1",
@@ -217,7 +217,7 @@
 					"alternative": null
 				},
 				{
-					"order": 9,
+					"order": 10,
 					"display_label": "Street name",
 					"validation": "^([a-zA-Z0-9-.' &/]){1,40}$",
 					"description": "Enter address line 2",
@@ -229,7 +229,7 @@
 					"alternative": null
 				},
 				{
-					"order": 10,
+					"order": 11,
 					"display_label": "City",
 					"validation": "^([a-zA-Z0-9-.' &/]){1,30}$",
 					"description": "Enter city name",
@@ -241,7 +241,7 @@
 					"alternative": null
 				},
 				{
-					"order": 11,
+					"order": 12,
 					"display_label": "County",
 					"validation": "^([a-zA-Z0-9-.' &/]){1,30}$",
 					"description": "Enter county name",
@@ -253,7 +253,7 @@
 					"alternative": null
 				},
 				{
-					"order": 12,
+					"order": 13,
 					"display_label": "Postcode",
 					"validation": "^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})$",
 					"description": "Enter post code",
@@ -267,14 +267,14 @@
 			],
 			"plan_documents": [
 				{
-					"order": 1,
+					"order": 14,
 					"name": "Iceland privacy policy",
 					"url": "https://policies.staging.gb.bink.com/iceland/pp.html",
 					"description": "Please read the",
 					"is_acceptance_required": false
 				},
 				{
-					"order": 2,
+					"order": 15,
 					"name": "Retailer terms and conditions",
 					"url": "https://policies.staging.gb.bink.com/iceland/tc.html",
 					"description": "I accept the",
@@ -283,7 +283,7 @@
 			],
 			"consents": [
 				{
-					"order": 1,
+					"order": 16,
 					"consent_slug": "marketing_opt_in",
 					"is_acceptance_required": false,
 					"description": "Check this box to receive money-off promotions, special offers and information on the latest deals and more from Iceland by email, SMS and other digital channels - if you change your mind, you can opt out anytime via the retailer."
@@ -293,7 +293,7 @@
 		"register_ghost_card_fields": {
 			"credentials": [
 				{
-					"order": 2,
+					"order": 3,
 					"display_label": "Title",
 					"validation": "^(Mr|Mrs|Miss|Ms|Dr)$",
 					"description": "Select title",
@@ -311,7 +311,7 @@
 					"alternative": null
 				},
 				{
-					"order": 3,
+					"order": 4,
 					"display_label": "First name",
 					"validation": "^(((?=.{1,20}$)[A-Za-z\\-\\u00C0-\\u00FF])+\\s*){1,4}$",
 					"description": "Enter first name",
@@ -323,7 +323,7 @@
 					"alternative": null
 				},
 				{
-					"order": 4,
+					"order": 5,
 					"display_label": "Last name",
 					"validation": "^(((?=.{1,40}$)[A-Za-z\\-\\u00C0-\\u00FF])+\\s*){1,4}$",
 					"description": "Enter last name",
@@ -335,7 +335,7 @@
 					"alternative": null
 				},
 				{
-					"order": 5,
+					"order": 6,
 					"display_label": "Date of birth",
 					"validation": "^(0[1-9]|[12][0-9]|3[01])[\\/](0[1-9]|1[012])[\\/](19|20)\\d\\d$",
 					"description": "DD/MM/YYYY",
@@ -347,7 +347,7 @@
 					"alternative": null
 				},
 				{
-					"order": 6,
+					"order": 7,
 					"display_label": "Email",
 					"validation": "^(?=[^@]{1,64}@)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
 					"description": "example@mydomain.com",
@@ -359,7 +359,7 @@
 					"alternative": null
 				},
 				{
-					"order": 7,
+					"order": 8,
 					"display_label": "Phone",
 					"validation": "^(?:0|\\+?44)(?:\\d-?\\s?){9,15}$",
 					"description": "01234 123456",
@@ -371,7 +371,7 @@
 					"alternative": null
 				},
 				{
-					"order": 8,
+					"order": 9,
 					"display_label": "House name or number",
 					"validation": "^([a-zA-Z0-9#.,;:' ]){1,40}$",
 					"description": "Enter address line 1",
@@ -383,7 +383,7 @@
 					"alternative": null
 				},
 				{
-					"order": 9,
+					"order": 10,
 					"display_label": "Street name",
 					"validation": "^([a-zA-Z0-9-.' &/]){1,40}$",
 					"description": "Enter address line 2",
@@ -395,7 +395,7 @@
 					"alternative": null
 				},
 				{
-					"order": 10,
+					"order": 11,
 					"display_label": "City",
 					"validation": "^([a-zA-Z0-9-.' &/]){1,30}$",
 					"description": "Enter city name",
@@ -407,7 +407,7 @@
 					"alternative": null
 				},
 				{
-					"order": 11,
+					"order": 12,
 					"display_label": "County",
 					"validation": "^([a-zA-Z0-9-.' &/]){1,30}$",
 					"description": "Enter county name",
@@ -419,7 +419,7 @@
 					"alternative": null
 				},
 				{
-					"order": 12,
+					"order": 13,
 					"display_label": "Postcode",
 					"validation": "^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})$",
 					"description": "Enter post code",
@@ -433,14 +433,14 @@
 			],
 			"plan_documents": [
 				{
-					"order": 1,
+					"order": 14,
 					"name": "Iceland privacy policy",
 					"url": "https://policies.staging.gb.bink.com/iceland/pp.html",
 					"description": "Please read the",
 					"is_acceptance_required": false
 				},
 				{
-					"order": 2,
+					"order": 15,
 					"name": "Retailer terms and conditions",
 					"url": "https://policies.staging.gb.bink.com/iceland/tc.html",
 					"description": "I accept the",
@@ -449,7 +449,7 @@
 			],
 			"consents": [
 				{
-					"order": 1,
+					"order": 16,
 					"consent_slug": "marketing_opt_in",
 					"is_acceptance_required": false,
 					"description": "Check this box to receive money-off promotions, special offers and information on the latest deals and more from Iceland by email, SMS and other digital channels - if you change your mind, you can opt out anytime via the retailer."
@@ -459,7 +459,7 @@
 		"add_fields": {
 			"credentials": [
 				{
-					"order": 1,
+					"order": 2,
 					"display_label": "Barcode",
 					"validation": "^$|^([0-9]){24}$",
 					"description": null,
@@ -469,7 +469,7 @@
 					"is_scannable": true,
 					"choice": [],
 					"alternative": {
-						"order": 1,
+						"order": 2,
 						"display_label": "Bonus card number",
 						"validation": "^(63320400)[0-9]{11}$",
 						"description": "19 digit card number",
@@ -487,7 +487,7 @@
 		"authorise_fields": {
 			"credentials": [
 				{
-					"order": 4,
+					"order": 5,
 					"display_label": "Last name",
 					"validation": "^(((?=.{1,40}$)[A-Za-z\\-\\u00C0-\\u00FF])+\\s*){1,4}$",
 					"description": "Enter last name",
@@ -499,7 +499,7 @@
 					"alternative": null
 				},
 				{
-					"order": 12,
+					"order": 13,
 					"display_label": "Postcode",
 					"validation": "^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})$",
 					"description": "Enter post code",
@@ -517,12 +517,12 @@
 	},
 	"content": [
 		{
-			"column": "Enrol_Help_Text",
-			"value": "Please enter your details to register with the retailer. We won’t save or store any of the information you provide or edit."
-		},
-		{
 			"column": "Promo_Text_1",
 			"value": "Find Bonus Card prices in-store and online!"
+		},
+		{
+			"column": "Enrol_Help_Text",
+			"value": "Please enter your details to register with the retailer. We won’t save or store any of the information you provide or edit."
 		}
 	]
 }

@@ -3,7 +3,7 @@
 	"join_fields": {
 		"credentials": [
 			{
-				"order": 0,
+				"order": 1,
 				"display_label": "Title",
 				"validation": "^(Mr|Mrs|Miss|Ms|Dame|Sir|Doctor|Professor|Lord|Lady)$",
 				"description": "Select title",
@@ -26,7 +26,7 @@
 				"alternative": null
 			},
 			{
-				"order": 1,
+				"order": 2,
 				"display_label": "First name",
 				"validation": "^(((?=.{1,255}$)[A-Za-z\\-\\u00C0-\\u00FF])+\\s*){1,4}$",
 				"description": "Enter first name",
@@ -38,7 +38,7 @@
 				"alternative": null
 			},
 			{
-				"order": 2,
+				"order": 3,
 				"display_label": "Last name",
 				"validation": "^(((?=.{1,255}$)[A-Za-z\\-\\u00C0-\\u00FF])+\\s*){1,4}$",
 				"description": "Enter last name",
@@ -50,7 +50,7 @@
 				"alternative": null
 			},
 			{
-				"order": 3,
+				"order": 4,
 				"display_label": "Email",
 				"validation": "^(?=[^@]{1,64}@)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
 				"description": "example@mydomain.com",
@@ -62,7 +62,7 @@
 				"alternative": null
 			},
 			{
-				"order": 4,
+				"order": 5,
 				"display_label": "Password",
 				"validation": "^([A-z0-9!\"#$£%&'()*+,\\-./:;<=>?@\\[\\\\\\]^_`{|}~]){7,255}$",
 				"description": "Password (min 7 characters)",
@@ -74,7 +74,7 @@
 				"alternative": null
 			},
 			{
-				"order": 5,
+				"order": 6,
 				"display_label": "Mobile number",
 				"validation": "^(?:0|\\+?44)(?:\\d-?\\s?){9,15}$",
 				"description": "01234 123456",
@@ -88,23 +88,23 @@
 		],
 		"plan_documents": [
 			{
-				"order": 0,
-				"name": "Retailer terms and conditions",
-				"url": "https://policies.staging.gb.bink.com/hn/tc.html",
-				"description": "I accept the",
-				"is_acceptance_required": true
-			},
-			{
-				"order": 1,
+				"order": 7,
 				"name": "Harvey Nichols privacy policy",
 				"url": "https://policies.staging.gb.bink.com/hn/pp.html",
 				"description": "Please read the",
 				"is_acceptance_required": false
+			},
+			{
+				"order": 8,
+				"name": "Retailer terms and conditions",
+				"url": "https://policies.staging.gb.bink.com/hn/tc.html",
+				"description": "I accept the",
+				"is_acceptance_required": true
 			}
 		],
 		"consents": [
 			{
-				"order": 0,
+				"order": 9,
 				"consent_slug": "email_optin",
 				"is_acceptance_required": false,
 				"description": "Check this box for email marketing from Harvey Nichols - if you change your mind, you can opt out anytime via the retailer."
@@ -116,7 +116,7 @@
 	"authorise_fields": {
 		"credentials": [
 			{
-				"order": 3,
+				"order": 4,
 				"display_label": "Email",
 				"validation": "^(?=[^@]{1,64}@)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
 				"description": "example@mydomain.com",
@@ -128,7 +128,7 @@
 				"alternative": null
 			},
 			{
-				"order": 4,
+				"order": 5,
 				"display_label": "Password",
 				"validation": "^([A-z0-9!\"#$£%&'()*+,\\-./:;<=>?@\\[\\\\\\]^_`{|}~]){6,255}$",
 				"description": "Password (min 6 characters)",
