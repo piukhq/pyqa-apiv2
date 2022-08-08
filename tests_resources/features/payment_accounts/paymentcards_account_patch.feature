@@ -7,8 +7,9 @@ Feature: As a Bink User
 
   @patch_payment_account @bink_regression_api2
   Scenario Outline: update payment card
-    Given I am a Bink user
-    When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add a new "<payment_card_provider>" payment card to wallet
     And I perform PATCH request to update "<update_field>" and "<payment_card_provider>" payment card to wallet
 
     Then I verify the paymentcard "<payment_card_provider>" been updated with "<update_field>"
@@ -54,8 +55,9 @@ Feature: As a Bink User
 
   @empty_payload_patch @bink_regression_api2
   Scenario Outline: Sending empty payload to patch payment_account
-    Given I am a Bink user
-    When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add a new "<payment_card_provider>" payment card to wallet
     When I perform "<request_call>" payment_account request with empty_json payload
     Then I see a "<status_code_returned>" status code for payment account
     And I verify "<error_message>" "<error_slug>" of payment_account response
@@ -67,8 +69,9 @@ Feature: As a Bink User
 
   @empty_null_payload_patch @bink_regression_api2
   Scenario Outline: Sending null payload to patch payment_account
-    Given I am a Bink user
-    When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add a new "<payment_card_provider>" payment card to wallet
     When I perform "<request_call>" payment_account request with null_json payload
     Then I see a "<status_code_returned>" status code for payment account
     And I verify "<error_message>" "<error_slug>" of payment_account response
@@ -80,8 +83,9 @@ Feature: As a Bink User
 
   @resource_not_found_patch @bink_regression_api2
   Scenario Outline: Resource not found to patch payment_account
-    Given I am a Bink user
-    When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add a new "<payment_card_provider>" payment card to wallet
     Then I perform DELETE request to delete "<payment_card_provider>" the payment card
     When I perform PATCH request to update "<update_field>" and "<payment_card_provider>" payment card to wallet
     Then I see a "<status_code_returned>" status code for payment account
@@ -95,8 +99,9 @@ Feature: As a Bink User
 
   @patch_with_all_credential @bink_regression_api2
   Scenario Outline: Patch call with giving all add credential
-    Given I am a Bink user
-    When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add a new "<payment_card_provider>" payment card to wallet
     And I perform PATCH request to update "<payment_card_provider>" payment card with add credential
     Then I see a "<status_code_returned>" status code for payment account
     And I verify "<error_message>" "<error_slug>" of payment_account response
