@@ -7,8 +7,9 @@ Feature: As a Bink User
 
   @delete_new_paymentcard @bink_regression_api2
   Scenario Outline: Delete new payment card
-    Given I am a Bink user
-    When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add a new "<payment_card_provider>" payment card to wallet
 #    GET is not implemented
 #    And I perform the GET request to verify the new payment card "<payment_card_provider>" has been added successfully to the wallet
     Then I verify the paymentcard "<payment_card_provider>" been added into my wallet
@@ -23,8 +24,9 @@ Feature: As a Bink User
 
   @already_deleted_paymentcard @bink_regression_api2
   Scenario Outline: Delete payment card which is already deleted from the wallet
-    Given I am a Bink user
-    When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add a new "<payment_card_provider>" payment card to wallet
     Then I verify the paymentcard "<payment_card_provider>" been added into my wallet
     And I perform DELETE request to delete "<payment_card_provider>" the payment card
     And I see the paymentcard been deleted and status_code "<status_code>" appeared
@@ -40,8 +42,9 @@ Feature: As a Bink User
 
   @invalid_token @bink_regression_api2
   Scenario Outline: Client does not have valid token
-    Given I am a Bink user
-    When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add a new "<payment_card_provider>" payment card to wallet
     Then I perform DELETE request to delete "<payment_card_provider>" the payment card with invalid token
     Then I see a "<status_code_returned>" status code for payment account
     And I verify "<error_message>" "<error_slug>" of payment_account response
@@ -55,8 +58,9 @@ Feature: As a Bink User
 
   @invalid_token_with_prefix @bink_regression_api2
   Scenario Outline: Sending invalid token with bearer prefix in header for delete payment card
-    Given I am a Bink user
-    When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add a new "<payment_card_provider>" payment card to wallet
     Then I perform DELETE request to delete "<payment_card_provider>" the payment card with invalid token and bearer prefix
     Then I see a "<status_code_returned>" status code for payment account
     And I verify "<error_message>" "<error_slug>" of payment_account response
