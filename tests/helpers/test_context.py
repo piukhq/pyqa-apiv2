@@ -1,6 +1,7 @@
 class TestContext:
     current_scheme_account_id = ""
     b2btoken = ""
+    all_users = {}
     access_token = ""
     token_type = ""
     refresh_token_type = ""

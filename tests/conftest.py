@@ -385,6 +385,7 @@ def perform_post_b2b_with_user1(token_type):
         + "\n\n"
         + json.dumps(response_json, indent=4)
     )
+    TestContext.all_users["bink_user"] = TestContext.token
     assert response.status_code == 200, "/token Journey failed to get access token"
 
 
@@ -435,12 +436,15 @@ def get_lloyds_user(lloyds_external_id, lloyds_test_email):
         + lloyds_external_id
     )
     assert response.status_code == 200, "/token Journey failed to get access token"
-
+    TestContext.all_users["lloyds_user"] = TestContext.token
     return TestContext.token
 
 
 @then(parsers.parse("I perform DELETE request to delete user successfully"))
-def delete_user(channel="Bink", env="staging"):
-    response = CustomerAccount.delete_user(TestContext.token)
-    assert response.status_code == 202, "The user deletion is not successful"
-    logging.info("User is deleted successfully from the system")
+def delete_user(env="staging"):
+    all_users = TestContext.all_users
+    if all_users != {}:
+        for i in all_users:
+            response = CustomerAccount.delete_user(all_users[i])
+            assert response.status_code == 202, "The user deletion is not successful"
+            logging.info(f"User {i} is deleted successfully from the system")
