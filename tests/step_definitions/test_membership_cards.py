@@ -1776,3 +1776,79 @@ def verify_put_join_with_invalid(request_payload, merchant):
         TestContext.error_message = response_json.get("error_message")
         TestContext.error_slug = response_json.get("error_slug")
     return response
+
+
+@then(parsers.parse("{Wallet} fields are correctly populated for unauthorised LC of {merchant}"))
+def verify_get_wallet_lc_unauath(Wallet, merchant):
+    wallet_response = TestContext.actual_view_wallet_field
+    if Wallet == "Wallet":
+        assert (
+            wallet_response["loyalty_cards"][0]["pll_links"][0]["payment_account_id"]
+            == TestContext.current_payment_card_id
+        ), "pll_links do not match"
+
+        assert (
+            wallet_response["loyalty_cards"][0]["id"] == TestContext.current_scheme_account_id
+        ), "account id does not match"
+
+        for wallet_key in TestDataUtils.TEST_DATA.unauth_wallet_info[merchant][0].keys():
+            if wallet_key not in ["images"]:
+                assert (
+                    wallet_response["loyalty_cards"][0][wallet_key]
+                    == TestDataUtils.TEST_DATA.unauth_wallet_info[merchant][0][wallet_key]
+                ), f"{wallet_key} do not match"
+
+        compare_two_lists(
+            wallet_response["loyalty_cards"][0]["images"],
+            TestDataUtils.TEST_DATA.unauth_wallet_info[merchant][0]["images"],
+        )
+
+        for payment_key in TestDataUtils.TEST_DATA.unauth_wallet_info["payment_accounts"][0].keys():
+            if payment_key != "images":
+                assert (
+                    wallet_response["payment_accounts"][0][payment_key]
+                    == TestDataUtils.TEST_DATA.wallet_info["payment_accounts"][0][payment_key]
+                ), f"{payment_key} do not match"
+            else:
+                compare_two_lists(
+                    wallet_response["payment_accounts"][0]["images"],
+                    TestDataUtils.TEST_DATA.wallet_info["payment_accounts"][0]["images"],
+                )
+
+    elif Wallet == "Wallet_overview":
+        assert (
+            wallet_response["loyalty_cards"][0]["id"] == TestContext.current_scheme_account_id
+        ), "account id does not match"
+
+        for wallet_key in TestDataUtils.TEST_DATA.unauth_wallet_overview_info[merchant][0].keys():
+            assert (
+                wallet_response["loyalty_cards"][0][wallet_key]
+                == TestDataUtils.TEST_DATA.unauth_wallet_overview_info[merchant][0][wallet_key]
+            ), f"{wallet_key} do not match"
+
+        for payment_key in TestDataUtils.TEST_DATA.wallet_overview_info["payment_accounts"][0].keys():
+            if payment_key != "images":
+                assert (
+                    wallet_response["payment_accounts"][0][payment_key]
+                    == TestDataUtils.TEST_DATA.wallet_overview_info["payment_accounts"][0][payment_key]
+                ), f"{payment_key} do not match"
+            else:
+                compare_two_lists(
+                    wallet_response["payment_accounts"][0]["images"],
+                    TestDataUtils.TEST_DATA.wallet_overview_info["payment_accounts"][0]["images"],
+                )
+
+    elif Wallet == "Wallet_by_card_id":
+        assert (
+            wallet_response["pll_links"][0]["payment_account_id"] == TestContext.current_payment_card_id
+        ), "pll_links do not match"
+
+        assert wallet_response["id"] == TestContext.current_scheme_account_id, "account id does not match"
+
+        for wallet_key in TestDataUtils.TEST_DATA.unauth_wallet_info_by_card_id[merchant].keys():
+            if wallet_key not in ["images"]:
+                assert (
+                    wallet_response[wallet_key]
+                    == TestDataUtils.TEST_DATA.unauth_wallet_info_by_card_id[merchant][wallet_key]
+                ), f"{wallet_key} do not match"
+        compare_two_lists(wallet_response["images"], TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant]["images"])
