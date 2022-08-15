@@ -1099,6 +1099,376 @@ wallet_info_by_card_id = {
     },
 }
 
+unauth_wallet_info = {
+    "Wasabi": [
+        {
+            "loyalty_plan_id": 281,
+            "loyalty_plan_name": "Wasabi Club",
+            "is_fully_pll_linked": False,
+            "pll_linked_payment_accounts": 0,
+            "total_payment_accounts": 1,
+            "status": {
+                "state": "unauthorised",
+                "slug": "AUTHORISATION_FAILED",
+                "description": "We're unable to verify the Loyalty Card details provided. "
+                "Please re-enter your details and try again.",
+            },
+            "balance": {
+                "updated_at": None,
+                "current_display_value": None,
+                "loyalty_currency_name": None,
+                "prefix": None,
+                "suffix": None,
+                "current_value": None,
+                "target_value": None,
+            },
+            "transactions": [],
+            "vouchers": [],
+            "card": {
+                "barcode": None,
+                "barcode_type": None,
+                "card_number": "1048175295",
+                "colour": "#ccd400",
+                "text_colour": "#7289da",
+            },
+            "reward_available": False,
+            "images": [
+                {
+                    "id": 1297,
+                    "type": 3,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
+                    "description": "Wasabi Icon",
+                    "encoding": "png",
+                },
+                {
+                    "id": 1324,
+                    "type": 7,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Promo_1968x732.png",
+                    "description": "Wasabi Promotion 1",
+                    "encoding": "png",
+                },
+                {
+                    "id": 1296,
+                    "type": 0,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
+                    "description": "Wasabi Hero",
+                    "encoding": "png",
+                },
+                {
+                    "id": 1298,
+                    "type": 9,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Alternate_Hero.png",
+                    "description": "Wasabi Alternative Hero",
+                    "encoding": "png",
+                },
+                {
+                    "id": 1319,
+                    "type": 2,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "Offer_tile_5_CVAeqUv_naFzo9T.png",
+                    "description": "Wasabi Test Offer",
+                    "encoding": "png",
+                },
+            ],
+            # "pll_links": [
+            # 	{
+            # 		"payment_account_id": 113304,
+            # 		"payment_scheme": "Mastercard",
+            # 		"status": {
+            # 			"state": "inactive",
+            # 			"slug": "LOYALTY_CARD_NOT_AUTHORISED",
+            # 			"description": "The Loyalty Card is not authorised so no PLL link can be created."
+            # 		}
+            # 	}
+            # ]
+        }
+    ],
+    # "Iceland" : [],
+    # "HarveyNichols" : [],
+    "payment_accounts": [
+        {
+            "provider": "Mastercard",
+            "issuer": "HSBC",
+            "status": "active",
+            "type": "debit",
+            "currency_code": "GBP",
+            "country": "GB",
+            "last_four_digits": "4444",
+            "images": [
+                {
+                    "id": 2,
+                    "type": 0,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "Mastercard-Payment_1goHQYv.png",
+                    "description": "Mastercard Hero",
+                    "encoding": "png",
+                },
+                {
+                    "id": 32,
+                    "type": 2,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "Mastercard_pricelesscities_heathrow.png",
+                    "description": "MasterCard Offer Stay - Heathrow",
+                    "encoding": "png",
+                },
+                {
+                    "id": 35,
+                    "type": 2,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Mastercard_qkr_app.png",
+                    "description": "Master Offer 7 - Qkr",
+                    "encoding": "png",
+                },
+                {
+                    "id": 28,
+                    "type": 2,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "Mastercard_pricelesscities_moreoffers.png",
+                    "description": "MasterCard Offer 6 - More Offers",
+                    "encoding": "png",
+                },
+                {
+                    "id": 40,
+                    "type": 2,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "Mastercard_pricelesscities_loungepass.png",
+                    "description": "MasterCard Offer Stay - Lounge",
+                    "encoding": "png",
+                },
+                {
+                    "id": 27,
+                    "type": 2,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "Mastercard_pricelesscities_liberty.png",
+                    "description": "MasterCard Offer Shop - Liberty",
+                    "encoding": "png",
+                },
+                {
+                    "id": 39,
+                    "type": 2,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "Mastercard_pricelesscities_market.png",
+                    "description": "MasterCard Offer Play - Markets",
+                    "encoding": "png",
+                },
+                {
+                    "id": 53,
+                    "type": 2,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "10773378_MDemand_WFP_BINK_Tile.png",
+                    "description": "World Food Programme",
+                    "encoding": "png",
+                },
+            ],
+        }
+    ],
+}
+
+unauth_wallet_overview_info = {
+    "Wasabi": [
+        {
+            "loyalty_plan_id": 281,
+            "loyalty_plan_name": "Wasabi Club",
+            "is_fully_pll_linked": False,
+            "pll_linked_payment_accounts": 0,
+            "total_payment_accounts": 1,
+            "status": {
+                "state": "unauthorised",
+                "slug": "AUTHORISATION_FAILED",
+                "description": "We're unable to verify the Loyalty Card details provided."
+                " Please re-enter your details and try again.",
+            },
+            "balance": {
+                "updated_at": None,
+                "current_display_value": None,
+                "loyalty_currency_name": None,
+                "prefix": None,
+                "suffix": None,
+                "current_value": None,
+                "target_value": None,
+            },
+            "card": {
+                "barcode": None,
+                "barcode_type": None,
+                "card_number": "1048175295",
+                "colour": "#ccd400",
+                "text_colour": "#7289da",
+            },
+            "reward_available": False,
+            "images": [
+                {
+                    "id": 1296,
+                    "type": 0,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
+                    "description": "Wasabi Hero",
+                    "encoding": "png",
+                }
+            ],
+        }
+    ],
+    # "Iceland" : [],
+    # "HarveyNichols" : [],
+    "payment_accounts": [
+        {
+            "provider": "Mastercard",
+            "issuer": "HSBC",
+            "status": "active",
+            "type": "debit",
+            "currency_code": "GBP",
+            "country": "GB",
+            "last_four_digits": "4444",
+            "images": [
+                {
+                    "id": 2,
+                    "type": 0,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "Mastercard-Payment_1goHQYv.png",
+                    "description": "Mastercard Hero",
+                    "encoding": "png",
+                },
+                {
+                    "id": 32,
+                    "type": 2,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "Mastercard_pricelesscities_heathrow.png",
+                    "description": "MasterCard Offer Stay - Heathrow",
+                    "encoding": "png",
+                },
+                {
+                    "id": 35,
+                    "type": 2,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Mastercard_qkr_app.png",
+                    "description": "Master Offer 7 - Qkr",
+                    "encoding": "png",
+                },
+                {
+                    "id": 28,
+                    "type": 2,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "Mastercard_pricelesscities_moreoffers.png",
+                    "description": "MasterCard Offer 6 - More Offers",
+                    "encoding": "png",
+                },
+                {
+                    "id": 40,
+                    "type": 2,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "Mastercard_pricelesscities_loungepass.png",
+                    "description": "MasterCard Offer Stay - Lounge",
+                    "encoding": "png",
+                },
+                {
+                    "id": 27,
+                    "type": 2,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "Mastercard_pricelesscities_liberty.png",
+                    "description": "MasterCard Offer Shop - Liberty",
+                    "encoding": "png",
+                },
+                {
+                    "id": 39,
+                    "type": 2,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "Mastercard_pricelesscities_market.png",
+                    "description": "MasterCard Offer Play - Markets",
+                    "encoding": "png",
+                },
+                {
+                    "id": 53,
+                    "type": 2,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "10773378_MDemand_WFP_BINK_Tile.png",
+                    "description": "World Food Programme",
+                    "encoding": "png",
+                },
+            ],
+        }
+    ],
+}
+
+unauth_wallet_info_by_card_id = {
+    "Wasabi": {
+        "loyalty_plan_id": 281,
+        "loyalty_plan_name": "Wasabi Club",
+        "is_fully_pll_linked": False,
+        "pll_linked_payment_accounts": 0,
+        "total_payment_accounts": 1,
+        "status": {
+            "state": "unauthorised",
+            "slug": "AUTHORISATION_FAILED",
+            "description": "We're unable to verify the Loyalty Card details provided. "
+            "Please re-enter your details and try again.",
+        },
+        "balance": {
+            "updated_at": None,
+            "current_display_value": None,
+            "loyalty_currency_name": None,
+            "prefix": None,
+            "suffix": None,
+            "current_value": None,
+            "target_value": None,
+        },
+        "transactions": [],
+        "vouchers": [],
+        "card": {
+            "barcode": None,
+            "barcode_type": None,
+            "card_number": "1048175295",
+            "colour": "#ccd400",
+            "text_colour": "#7289da",
+        },
+        "reward_available": False,
+        "images": [
+            {
+                "id": 1297,
+                "type": 3,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
+                "description": "Wasabi Icon",
+                "encoding": "png",
+            },
+            {
+                "id": 1324,
+                "type": 7,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Promo_1968x732.png",
+                "description": "Wasabi Promotion 1",
+                "encoding": "png",
+            },
+            {
+                "id": 1296,
+                "type": 0,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
+                "description": "Wasabi Hero",
+                "encoding": "png",
+            },
+            {
+                "id": 1298,
+                "type": 9,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Alternate_Hero.png",
+                "description": "Wasabi Alternative Hero",
+                "encoding": "png",
+            },
+            {
+                "id": 1319,
+                "type": 2,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_5_CVAeqUv_naFzo9T.png",
+                "description": "Wasabi Test Offer",
+                "encoding": "png",
+            },
+        ],
+        # "pll_links": [
+        # 	{
+        # 		"payment_account_id": 113304,
+        # 		"payment_scheme": "Mastercard",
+        # 		"status": {
+        # 			"state": "inactive",
+        # 			"slug": "LOYALTY_CARD_NOT_AUTHORISED",
+        # 			"description": "The Loyalty Card is not authorised so no PLL link can be created."
+        # 		}
+        # 	}
+        # ]
+    },
+    # "Iceland" : [],
+    # "HarveyNichols" : [],
+}
 # ----------------------------------------MEMBERSHIP PLAN IDs   ----------------------------------------------- #
 
 membership_plan_id = {
