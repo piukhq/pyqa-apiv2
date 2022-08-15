@@ -1450,12 +1450,14 @@ def fail_join_scheme(merchant, scheme_state):
         response = MembershipCards.join_field(
             TestContext.token, merchant, TestDataUtils.TEST_DATA.join_emails.get(constants.ID)
         )
+        time.sleep(15)
     elif scheme_state == "join_success":
         response = MembershipCards.join_field(
             TestContext.token,
             merchant,
             TestDataUtils.TEST_DATA.join_emails.get(constants.SUCCESS_EMAIL),
         )
+        time.sleep(15)
     elif scheme_state == "asynchronous_join_in_progress":
         response = MembershipCards.join_field(
             TestContext.token, merchant, TestDataUtils.TEST_DATA.join_emails.get(constants.SLOW_JOIN_ID)
@@ -1480,7 +1482,6 @@ def fail_join_scheme(merchant, scheme_state):
 
 @when(parsers.parse('I perform DELETE request to delete the "{scheme_state}" membership card for "{merchant}"'))
 def delete_failed_scheme_account(scheme_state, merchant):
-    time.sleep(15)
     response_del_schemes = MembershipCards.delete_fail_scheme_account(
         TestContext.token, TestContext.current_scheme_account_id
     )
@@ -1646,28 +1647,84 @@ def delete_join_in_progress_scheme(merchant):
     assert response.status_code == 202, "Join Journey for " + merchant + " failed"
 
 
-@then(parsers.parse("Verify state, slug and description in the wallet for {scheme_state}"))
-def verify_state_slug_desc(scheme_state):
-    time.sleep(12)
+@then(parsers.parse("Verify {Wallet} fields for {merchant} with {scheme_state}"))
+def verify_state_slug_desc(Wallet, merchant, scheme_state):
     wallet_response = TestContext.actual_view_wallet_field
+    if Wallet == "Wallet" and scheme_state == "join_success":
+        assert (
+            wallet_response["loyalty_cards"][0]["id"] == TestContext.current_scheme_account_id
+        ), "account id does not match"
+        for wallet_key in TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state].keys():
+            if wallet_key not in ["balance", "card", "images"]:
+                assert (
+                    wallet_response["loyalty_cards"][0][wallet_key]
+                    == TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state][wallet_key]
+                ), f"{wallet_key} do not match"
+            else:
+                for balance_key in TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state]["balance"].keys():
+                    assert (
+                        wallet_response["loyalty_cards"][0]["balance"][balance_key]
+                        == TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state]["balance"][balance_key]
+                    ), f"{balance_key} do not match"
+                for card_key in TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state]["card"].keys():
+                    assert (
+                        wallet_response["loyalty_cards"][0]["card"][card_key]
+                        == TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state]["card"][card_key]
+                    ), f"{card_key} do not match"
+        compare_two_lists(
+            wallet_response["loyalty_cards"][0]["images"],
+            TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state]["images"],
+        )
+    elif Wallet in ["Wallet", "Wallet_overview"] and scheme_state == "asynchronous_join_in_progress":
+        assert (
+            wallet_response["joins"][0]["loyalty_card_id"] == TestContext.current_scheme_account_id
+        ), "account id does not match"
 
-    for status_key in TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state].keys():
-        if scheme_state in ["join_success"]:
-            assert (
-                wallet_response["loyalty_cards"][0]["status"][status_key]
-                == TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state][status_key]
-            ), "status do not match"
-        elif scheme_state in ["asynchronous_join_in_progress", "enrol_failed"]:
-            assert (
-                wallet_response["joins"][0]["status"][status_key]
-                == TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state][status_key]
-            ), "status do not match"
+        for wallet_key in TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state].keys():
+            if wallet_key not in ["card", "images"]:
+                assert (
+                    wallet_response["joins"][0][wallet_key]
+                    == TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state][wallet_key]
+                ), f"{wallet_key} do not match"
+            else:
+                for card_key in TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state]["card"].keys():
+                    assert (
+                        wallet_response["joins"][0]["card"][card_key]
+                        == TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state]["card"][card_key]
+                    ), f"{card_key} do not match"
+    elif Wallet in ["Wallet", "Wallet_overview"] and scheme_state == "enrol_failed":
+        assert (
+            wallet_response["joins"][0]["loyalty_card_id"] == TestContext.current_scheme_account_id
+        ), "account id does not match"
+
+        for wallet_key in TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state].keys():
+            if wallet_key not in ["card", "images"]:
+                assert (
+                    wallet_response["joins"][0][wallet_key]
+                    == TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state][wallet_key]
+                ), f"{wallet_key} do not match"
+            else:
+                for card_key in TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state]["card"].keys():
+                    assert (
+                        wallet_response["joins"][0]["card"][card_key]
+                        == TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state]["card"][card_key]
+                    ), f"{card_key} do not match"
+    elif Wallet in ["Wallet"] and scheme_state in ["enrol_failed", "asynchronous_join_in_progress"]:
+        compare_two_lists(
+            wallet_response["joins"][0]["images"],
+            TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state]["images"],
+        )
+    elif Wallet in ["Wallet_overview"] and scheme_state in ["enrol_failed", "asynchronous_join_in_progress"]:
+        compare_two_lists(
+            wallet_response["joins"][0]["images"],
+            TestDataUtils.TEST_DATA.Join_Scheme_status["wallet_overview_image"],
+        )
 
 
 @when(parsers.parse("I perform put request with {request_payload} to update failed join for {merchant}"))
 def verify_put_join_with_invalid(request_payload, merchant):
     if request_payload == "successful_payload":
-        time.sleep(12)
+        time.sleep(2)
         response = MembershipCards.update_failed_join(
             TestContext.token,
             merchant,

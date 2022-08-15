@@ -13,7 +13,7 @@ Feature: Update failed join
     And I perform enrol_failed POST request to join "<merchant>" membership card
     And I perform put request with successful_payload to update failed join for <merchant>
     When I perform GET 'Wallet'
-    Then Verify state, slug and description in the wallet for join_success
+    Then Verify 'Wallet' fields for <merchant> with join_success
 
     Examples:
       | merchant      |
