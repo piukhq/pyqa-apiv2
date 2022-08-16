@@ -8,6 +8,8 @@
 	"redeem_instructions": "At checkout, simply tell the cashier how much money you would like to save or redeem, present the barcode and scan it using the customer facing scanners, as you normally would with your physical card.",
 	"plan_register_info": "You have added a temporary card. You’ll need to register it to enjoy the full benefits of the programme.",
 	"join_incentive": "Placeholder Enrol Incentive",
+	"colour": "#d50724",
+	"text_colour": "#00FF00",
 	"category": "Household",
 	"tiers": [],
 	"images": [

@@ -406,6 +406,7 @@ def perform_post_b2b_with_user2(token_type):
         + "\n\n"
         + json.dumps(response_json, indent=4)
     )
+    TestContext.all_users["bink_user2"] = TestContext.token
     assert response.status_code == 200, "/token Journey failed to get access token"
 
 

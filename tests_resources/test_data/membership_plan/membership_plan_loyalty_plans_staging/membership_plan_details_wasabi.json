@@ -8,6 +8,8 @@
 	"redeem_instructions": null,
 	"plan_register_info": null,
 	"join_incentive": null,
+	"colour": "#ccd400",
+	"text_colour": "#7289da",
 	"category": "Food & Drink",
 	"tiers": [],
 	"images": [

@@ -1484,6 +1484,7 @@ membership_plan_id = {
 
 scheme_status = {
     "wallet_only": 10,
+    "failed_validation": 401,
     "active": 1,
     "enrol_failed": 901,
     "account_already_exist": 445,

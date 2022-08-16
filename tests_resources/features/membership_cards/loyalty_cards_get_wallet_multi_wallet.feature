@@ -52,3 +52,28 @@ Feature: View Wallets
       |Wasabi        | 200                  |master              |unauthorised     | 202        |
 #      |Iceland        |200                  |master               | unauthorised  | 202        |
 #      |HarveyNichols  |200                  |master               | unauthorised  | 202        |
+
+
+  @view_my_wallet_same_channel_multi_wallet @add_and_auth_multi_wallet
+  Scenario Outline: View two wallet of same channel when LCs are authorised in both
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform GET 'Wallet'
+    Then I see a <status_code_returned>
+    And All 'Wallet' fields are correctly populated for <merchant>
+    When I am in Bink channel to get b2b token for second user
+    And I perform POST token request for token type "b2b" to get access token for second user
+    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform GET 'Wallet'
+    Then I see a <status_code_returned>
+    And All 'Wallet' fields are correctly populated for <merchant>
+
+
+    Examples:
+      | merchant      | status_code_returned|payment_card_provider|
+      |Wasabi        | 200                  |master              |
+#      |Iceland        |200                  |master               |
+#      |HarveyNichols  |200                  |master               |
