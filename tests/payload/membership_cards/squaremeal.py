@@ -109,7 +109,7 @@ class SquareMealCard:
                             {
                                 "credential_slug": "password",
                                 "value": TestContext.password,
-                            }
+                            },
                         ]
                     }
                 },
@@ -173,7 +173,7 @@ class SquareMealCard:
                         {
                             "credential_slug": "password",
                             "value": TestContext.password,
-                        }
+                        },
                     ]
                 }
             },
@@ -202,7 +202,7 @@ class SquareMealCard:
                         {
                             "credential_slug": "'password'",
                             "value": TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.PASSWORD),
-                        }
+                        },
                     ]
                 }
             },
@@ -313,7 +313,9 @@ class SquareMealCard:
                         },
                         {
                             "credential_slug": "password",
-                            "value": TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.INVALID_PASSWORD),
+                            "value": TestDataUtils.TEST_DATA.square_meal_membership_card.get(
+                                constants.INVALID_PASSWORD
+                            ),
                         },
                     ]
                 },

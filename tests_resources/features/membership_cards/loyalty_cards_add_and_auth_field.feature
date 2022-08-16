@@ -116,4 +116,5 @@ Feature: Add and authorise a loyalty card
     Examples:
       | payment_card_provider | merchant   | status_code_returned | journey_type |
       | master                | Iceland    | 202                  | pll          |
+      | master                | Wasabi     | 202                  | pll          |
       | master                | SquareMeal | 202                  | pll          |
