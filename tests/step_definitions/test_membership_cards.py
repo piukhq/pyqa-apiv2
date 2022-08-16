@@ -1253,7 +1253,7 @@ def verify_i_perform_authorise_again(merchant):
 @when(
     parsers.parse(
         'I perform POST request to add and authorise "{merchant}" membership card '
-        "which already exist with add credentail"
+        "which already exist with add credential"
     )
 )
 def i_perform_post_add_and_authorise_membership_card_which_is_exist_already(merchant):
