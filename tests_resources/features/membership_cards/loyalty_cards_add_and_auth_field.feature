@@ -15,9 +15,10 @@ Feature: Add and authorise a loyalty card
 
     Examples:
       | merchant      | status_code_returned | journey_type      |
-      | Iceland       | 202                  | add_and_authorise |
-      | Wasabi        | 202                  | add_and_authorise |
-      | HarveyNichols | 202                  | add_and_authorise |
+  #    | Iceland       | 202                  | add_and_authorise |
+  #    | Wasabi        | 202                  | add_and_authorise |
+      | SquareMeal    | 202                  | add_and_authorise |
+  #    | HarveyNichols | 202                  | add_and_authorise |
 
   @add_and_auth_existing_field @bink_regression_api2
   Scenario Outline: Add existing card again into wallet for add and authorise
