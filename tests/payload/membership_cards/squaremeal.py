@@ -164,24 +164,20 @@ class SquareMealCard:
     def add_and_authorise_existing_membership_card_payload():
         payload = {
             "account": {
-                "add_fields": {
-                    "credentials": [
-                        {
-                            "credential_slug": "card_number",
-                            "value": TestContext.card_number,
-                        }
-                    ]
-                },
                 "authorise_fields": {
                     "credentials": [
                         {
                             "credential_slug": "email",
                             "value": TestContext.email,
+                        },
+                        {
+                            "credential_slug": "password",
+                            "value": TestContext.password,
                         }
                     ]
-                },
+                }
             },
-            "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi"),
+            "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("square_meal"),
         }
 
         logging.info(
@@ -197,24 +193,20 @@ class SquareMealCard:
     def add_and_auth_field_only_membership_card_with_invalid_json():
         payload = {
             "account": {
-                "add_fields": {
-                    "credentials": [
-                        {
-                            "credential_slug": "'card_number'",
-                            "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM),
-                        }
-                    ]
-                },
                 "authorise_fields": {
                     "credentials": [
                         {
                             "credential_slug": "'email'",
-                            "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.EMAIL),
+                            "value": TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.EMAIL),
+                        },
+                        {
+                            "credential_slug": "'password'",
+                            "value": TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.PASSWORD),
                         }
                     ]
-                },
+                }
             },
-            "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi"),
+            "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("square_meal"),
         }
 
         logging.info(
@@ -313,24 +305,20 @@ class SquareMealCard:
     def add_and_authorise_with_different_auth_field():
         payload = {
             "account": {
-                "add_fields": {
-                    "credentials": [
-                        {
-                            "credential_slug": "card_number",
-                            "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM),
-                        }
-                    ]
-                },
                 "authorise_fields": {
                     "credentials": [
                         {
                             "credential_slug": "email",
-                            "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.INVALID_EMAIL),
+                            "value": TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.EMAIL),
+                        },
+                        {
+                            "credential_slug": "password",
+                            "value": TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.INVALID_PASSWORD),
                         },
                     ]
                 },
             },
-            "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi"),
+            "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("square_meal"),
         }
         logging.info(
             "The Request for Wasabi Add_and_Auth journey with different auth value:\n"
