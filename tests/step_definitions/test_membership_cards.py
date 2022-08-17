@@ -98,6 +98,15 @@ def verify_loyalty_card_into_database(journey_type, merchant):
             or TestDataUtils.TEST_DATA.scheme_status.get(constants.ENROL_FAILED)
         )
 
+    elif journey_type == "unauthorised":
+        if merchant == "Wasabi":
+            scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
+            assert (
+                scheme_account.id == TestContext.current_scheme_account_id
+                and scheme_account.status == TestDataUtils.TEST_DATA.scheme_status.get(constants.FAILED_VALIDATION)
+            )
+            print("scheme ac status", scheme_account.status)
+
     elif journey_type == "pll":
         pll_links = [{"id": TestContext.current_payment_card_id, "active_link": True}]
         scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
@@ -725,11 +734,13 @@ def verify_invalid_request_for_add_and_auth_journey(merchant, request_payload, s
         TestContext.error_message = response_json["error_message"]
         TestContext.error_slug = response_json["error_slug"]
     elif request_payload == "unauthorised":
+        journey_type = request_payload
         response = MembershipCards.add_and_auth_field_with_unauthorised_json(TestContext.token, merchant)
         response_json = response_to_json(response)
         logging.info(response_json)
         TestContext.response_status_code = response.status_code
         TestContext.current_scheme_account_id = response_json.get("id")
+        verify_loyalty_card_into_database(journey_type, merchant)
 
     logging.info(
         "The response of Invalid Journey (POST) for Add and Auth field:\n \n"

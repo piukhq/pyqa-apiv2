@@ -8,11 +8,13 @@
 	"redeem_instructions": "Present the barcode to the cashier or use the card number to still earn points, if you are paying with cash or an unlinked payment card.",
 	"plan_register_info": "Registrations typically processed in 24hrs",
 	"join_incentive": "Placeholder Enrol Incentive",
+	"colour": "#000000",
+	"text_colour": "#bfc68c",
 	"category": "Household",
 	"tiers": [
 		{
-			"name": "Gold Tier",
-			"description": "Gold Tier Description"
+			"name": "Platinum Tier",
+			"description": "Platinum Tier Description"
 		},
 		{
 			"name": "Black Tier",
@@ -23,8 +25,8 @@
 			"description": "Silver Tier Description"
 		},
 		{
-			"name": "Platinum Tier",
-			"description": "Platinum Tier Description"
+			"name": "Gold Tier",
+			"description": "Gold Tier Description"
 		}
 	],
 	"images": [

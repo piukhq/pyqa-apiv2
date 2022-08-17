@@ -38,6 +38,7 @@ ENROL_FAILED = "enrol_failed"
 ACCOUNT_ALREADY_EXIST = "account_already_exist"
 ACTIVE = "active"
 PENDING = "pending"
+FAILED_VALIDATION = "failed_validation"
 
 """Register ghost card"""
 TITLE = "Mr"
