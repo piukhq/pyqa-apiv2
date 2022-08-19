@@ -4,7 +4,7 @@ Feature: View Vouchers
 As a Bink user I want to view my loyalty card vouchers in my wallet
 so that I am aware and have visibility of the vouchers that have been concluded with my loyalty card
 
-  @view_loyalty_vouchers @bink_regression_api2
+  @view_loyalty_vouchers @bink_regression_api2 @sandbox_regression
   Scenario Outline: Get Loyalty card vouchers
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -16,7 +16,7 @@ so that I am aware and have visibility of the vouchers that have been concluded 
       | merchant      | status_code_returned |
       | Wasabi        | 200                  |
 
-   @vouchers_invalid_token @bink_regression_api2
+   @vouchers_invalid_token @bink_regression_api2 @sandbox_regression
    Scenario Outline: Verify invalid token scenario for get loyalty card vouchers
      Given I am in Bink channel to get b2b token
      When I perform POST token request for token type "b2b" to get access token
@@ -30,7 +30,7 @@ so that I am aware and have visibility of the vouchers that have been concluded 
      |merchant| status_code_returned | error_message              | error_slug     |
      |Wasabi  | 401                  | Supplied token is invalid  | INVALID_TOKEN  |
 
-   @vouchers_resource_not_found @bink_regression_api2
+   @vouchers_resource_not_found @bink_regression_api2 @sandbox_regression
    Scenario Outline: Verify resource not found scenario for get loyalty card vouchers
      Given I am in Bink channel to get b2b token
      When I perform POST token request for token type "b2b" to get access token
