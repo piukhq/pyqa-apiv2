@@ -1174,6 +1174,7 @@ membership_plan_id = {
     "iceland": 105,
     "whsmith": 280,
     "wasabi": 316,
+    "asos": 328,
     "square_meal": 326,
     "merchant_not_exists": 0000,
     "Bink Test Scheme": 132,  # suspended loyalty plan
