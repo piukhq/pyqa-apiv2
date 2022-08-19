@@ -5,7 +5,7 @@ Feature: Authorise a loyalty card
   I want add an ‘Engage' or 'PLL’ type loyalty card to my wallet
   so that I am able to benefit from the Bink functionality
 
-  @authorise_field @bink_regression_api2
+  @authorise_field @bink_regression_api2 @sandbox_regression
   Scenario Outline: Authorise field journey only
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -19,7 +19,7 @@ Feature: Authorise a loyalty card
       | Iceland  | authorise_field | 202                  |
       | Wasabi   | authorise_field | 202                  |
 
-  @authorise_existing_field @bink_regression_api2
+  @authorise_existing_field @bink_regression_api2 @sandbox_regression
   Scenario Outline: Authorise existing card again into wallet
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -34,7 +34,7 @@ Feature: Authorise a loyalty card
       | Iceland  | authorise_field | 200                  |
       | Wasabi   | authorise_field | 200                  |
 
-  @invalid_json_authorise @bink_regression_api2
+  @invalid_json_authorise @bink_regression_api2 @sandbox_regression
   Scenario Outline: Authorise field journey with Bad request
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -48,7 +48,7 @@ Feature: Authorise a loyalty card
       | Iceland  | Invalid JSON  | MALFORMED_REQUEST | invalid_json    | 400         |
       | Wasabi   | Invalid JSON  | MALFORMED_REQUEST | invalid_json    | 400         |
 
-  @invalid_request_authorise @bink_regression_api2
+  @invalid_request_authorise @bink_regression_api2 @sandbox_regression
   Scenario Outline: Authorise field journey with Unprocessable entity
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -62,7 +62,7 @@ Feature: Authorise a loyalty card
       | Iceland  | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
       | Wasabi   | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
 
-  @sending_invalid_token @bink_regression_api2
+  @sending_invalid_token @bink_regression_api2 @sandbox_regression
   Scenario Outline: Sending invalid token with bearer prefix in header for authorise journey (Unauthorized)
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -77,7 +77,7 @@ Feature: Authorise a loyalty card
       | Iceland  | 401                  | Supplied token is invalid | INVALID_TOKEN |
       | Wasabi   | 401                  | Supplied token is invalid | INVALID_TOKEN |
 
-  @multiple_wallet_delete_authorise @bink_regression_api2
+  @multiple_wallet_delete_authorise @bink_regression_api2 @sandbox_regression
   Scenario Outline: Delete journey in multiple wallet for authorise journey
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -94,7 +94,7 @@ Feature: Authorise a loyalty card
       | Iceland  | 404                  | Could not find this account or card | RESOURCE_NOT_FOUND |
       | Wasabi   | 404                  | Could not find this account or card | RESOURCE_NOT_FOUND |
 
-  @auth_pll @bink_regression_api2
+  @auth_pll @bink_regression_api2 @sandbox_regression
   Scenario Outline: verify PLL for authorise
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token

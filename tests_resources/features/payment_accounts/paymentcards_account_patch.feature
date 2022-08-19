@@ -5,7 +5,7 @@ Feature: As a Bink User
   so that I can keep my account upto date and customize it.
 
 
-  @patch_payment_account @bink_regression_api2
+  @patch_payment_account @bink_regression_api2 @sandbox_regression
   Scenario Outline: update payment card
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -27,7 +27,7 @@ Feature: As a Bink User
       | amex                  | 200                  | expiry_year                                                    |
       | visa                  | 200                  | expiry_year                                                    |
 
-  @sending_invalid_token_patch @bink_regression_api2
+  @sending_invalid_token_patch @bink_regression_api2 @sandbox_regression
   Scenario Outline: Sending invalid token header for Patch payment account
 #    Given I am a Bink user
     When I perform PATCH <payment_card_provider> payment_account request with invalid token
@@ -40,7 +40,7 @@ Feature: As a Bink User
       | visa                  | 401                  | Access Token must be in 2 parts separated by a space | INVALID_TOKEN |
       | amex                  | 401                  | Access Token must be in 2 parts separated by a space | INVALID_TOKEN |
 
-  @sending_invalid_token2_patch @bink_regression_api2
+  @sending_invalid_token2_patch @bink_regression_api2 @sandbox_regression
   Scenario Outline: Sending invalid token with bearer prefix in header
 #    Given I am a Bink user
     When I perform PATCH <payment_card_provider> payment_account request with invalid token and bearer prefix
@@ -53,7 +53,7 @@ Feature: As a Bink User
       | amex                  | 401                  | Supplied token is invalid | INVALID_TOKEN |
       | visa                  | 401                  | Supplied token is invalid | INVALID_TOKEN |
 
-  @empty_payload_patch @bink_regression_api2
+  @empty_payload_patch @bink_regression_api2 @sandbox_regression
   Scenario Outline: Sending empty payload to patch payment_account
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -67,7 +67,7 @@ Feature: As a Bink User
       | amex                  | PATCH        | 422                  | Could not validate fields | FIELD_VALIDATION_ERROR |
       | visa                  | PATCH        | 422                  | Could not validate fields | FIELD_VALIDATION_ERROR |
 
-  @empty_null_payload_patch @bink_regression_api2
+  @empty_null_payload_patch @bink_regression_api2 @sandbox_regression
   Scenario Outline: Sending null payload to patch payment_account
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -81,7 +81,7 @@ Feature: As a Bink User
       | amex                  | PATCH        | 400                  | Invalid JSON  | MALFORMED_REQUEST |
       | visa                  | PATCH        | 400                  | Invalid JSON  | MALFORMED_REQUEST |
 
-  @resource_not_found_patch @bink_regression_api2
+  @resource_not_found_patch @bink_regression_api2 @sandbox_regression
   Scenario Outline: Resource not found to patch payment_account
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -97,7 +97,7 @@ Feature: As a Bink User
       | amex                  | 404                  | expiry_month | Could not find this account or card | RESOURCE_NOT_FOUND |
       | visa                  | 404                  | expiry_month | Could not find this account or card | RESOURCE_NOT_FOUND |
 
-  @patch_with_all_credential @bink_regression_api2
+  @patch_with_all_credential @bink_regression_api2 @sandbox_regression
   Scenario Outline: Patch call with giving all add credential
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token

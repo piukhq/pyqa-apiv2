@@ -6,7 +6,7 @@ Feature: View Wallet by LC id in different channel
   so that I can see the card status is independent of other wallets
 
 
-   @wallet_by_lc_id_multi_channel @add_and_auth_multi_channel
+   @wallet_by_lc_id_multi_channel @add_and_auth_multi_channel @sandbox_regression
   Scenario Outline: View Wallet by LC id in different channel when both LCs are authorised
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -30,7 +30,7 @@ Feature: View Wallet by LC id in different channel
 #      |HarveyNichols  |200                  |master               |
 
 
-     @wallet_by_lc_id_unauth_multi_channel @add_and_auth_multi_channel
+     @wallet_by_lc_id_unauth_multi_channel @add_and_auth_multi_channel @sandbox_regression
   Scenario Outline: View Wallet by LC id in different channel when both LCs are unauthorised
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -54,7 +54,7 @@ Feature: View Wallet by LC id in different channel
 #      |HarveyNichols  |200                  |master               | unauthorised  | 202        |
 
 
-    @wallet_by_lc_id_same_channel_multi_wallet @add_and_auth_multi_wallet
+    @wallet_by_lc_id_same_channel_multi_wallet @add_and_auth_multi_wallet @sandbox_regression
   Scenario Outline: View two wallet by LC id of same channel when LCs are authorised in both
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token

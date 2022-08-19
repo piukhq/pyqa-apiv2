@@ -5,7 +5,7 @@ Feature: As a Bink User
   So that I can start verify its deleted from my wallet
 
 
-  @delete_new_paymentcard @bink_regression_api2
+  @delete_new_paymentcard @bink_regression_api2 @sandbox_regression
   Scenario Outline: Delete new payment card
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -22,7 +22,7 @@ Feature: As a Bink User
       | amex                  | 202         |
       | visa                  | 202         |
 
-  @already_deleted_paymentcard @bink_regression_api2
+  @already_deleted_paymentcard @bink_regression_api2 @sandbox_regression
   Scenario Outline: Delete payment card which is already deleted from the wallet
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -40,7 +40,7 @@ Feature: As a Bink User
       | amex                  | 202         | 404                  | Could not find this account or card | RESOURCE_NOT_FOUND  |
       | visa                  | 202         | 404                  | Could not find this account or card | RESOURCE_NOT_FOUND  |
 
-  @invalid_token @bink_regression_api2
+  @invalid_token @bink_regression_api2 @sandbox_regression
   Scenario Outline: Client does not have valid token
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -56,7 +56,7 @@ Feature: As a Bink User
       | visa                  | 401                  | Access Token must be in 2 parts separated by a space | INVALID_TOKEN |
 
 
-  @invalid_token_with_prefix @bink_regression_api2
+  @invalid_token_with_prefix @bink_regression_api2 @sandbox_regression
   Scenario Outline: Sending invalid token with bearer prefix in header for delete payment card
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token

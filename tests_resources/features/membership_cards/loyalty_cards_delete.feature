@@ -5,7 +5,7 @@ Feature: Delete a loyalty card
   I want to delete a loyalty card from my wallet
   because it is no longer relevant or needed
 
-  @delete_add_and_authorise_loyalty_card @bink_regression_api2
+  @delete_add_and_authorise_loyalty_card @bink_regression_api2 @sandbox_regression
   Scenario Outline: Delete add and authorise
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -19,7 +19,7 @@ Feature: Delete a loyalty card
       | Iceland  | 202                  |delete      |
       | Wasabi   | 202                  |delete      |
 
-  @delete_add_loyalty_card @bink_regression_api2
+  @delete_add_loyalty_card @bink_regression_api2 @sandbox_regression
   Scenario Outline: Delete Add loyalty card
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -34,7 +34,7 @@ Feature: Delete a loyalty card
       | Wasabi   | 202                  |delete      |
 
 
-  @sending_invalid_token_delete @bink_regression_api2
+  @sending_invalid_token_delete @bink_regression_api2 @sandbox_regression
   Scenario Outline: Sending invalid token with bearer prefix in header for delete journey (Unauthorized with add and auth journey)
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -50,7 +50,7 @@ Feature: Delete a loyalty card
       | Iceland  | 401                  | Supplied token is invalid | INVALID_TOKEN |
       | Wasabi   | 401                  | Supplied token is invalid | INVALID_TOKEN |
 
-  @sending_invalid_token_for_add_delete @bink_regression_api2
+  @sending_invalid_token_for_add_delete @bink_regression_api2 @sandbox_regression
   Scenario Outline: Sending invalid token with bearer prefix in header for delete journey (Unauthorized with add journey)
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -66,7 +66,7 @@ Feature: Delete a loyalty card
       | Iceland  | 401                  | Supplied token is invalid | INVALID_TOKEN |
       | Wasabi   | 401                  | Supplied token is invalid | INVALID_TOKEN |
 
-  @resource_specified_not_found @bink_regression_api2
+  @resource_specified_not_found @bink_regression_api2 @sandbox_regression
   Scenario Outline: Resource specified could not be found in delete journey
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -101,7 +101,7 @@ Feature: Delete a loyalty card
 #      | Iceland  | 404                  | Could not find this account or card | RESOURCE_NOT_FOUND |
 #      | Wasabi   | 404                  | Could not find this account or card | RESOURCE_NOT_FOUND |
 
-  @invalid_field_in_delete_journey @bink_regression_api2
+  @invalid_field_in_delete_journey @bink_regression_api2 @sandbox_regression
   Scenario Outline: DELETE journey with Unprocessable entity for add membership card
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
