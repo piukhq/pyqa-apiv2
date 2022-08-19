@@ -7,7 +7,7 @@ from requests.exceptions import HTTPError
 
 from tests import api
 from tests.api.base import Endpoint
-from tests.conftest import response_to_json, setup_second_token
+from tests.conftest import response_to_json
 from tests.helpers import constants
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_helpers import PaymentCardTestData
@@ -256,9 +256,9 @@ def delete_payment_account_from_another_wallet(payment_card_provider):
     )
 )
 def verify_different_detail(payment_card_provider, expiry_month, expiry_year, name_on_card, card_nickname):
-    setup_second_token()
+    #   setup_second_token()
     response = PaymentCards.add_existing_payment_card(
-        TestContext.second_token, payment_card_provider, expiry_month, expiry_year, name_on_card, card_nickname
+        TestContext.token, payment_card_provider, expiry_month, expiry_year, name_on_card, card_nickname
     )
     response_json = response_to_json(response)
     TestContext.second_payment_card_id = response_json.get("id")

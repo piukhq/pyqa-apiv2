@@ -5,7 +5,7 @@ As a Bink user
 I want to view my loyalty card balances in my wallet
 so that I am aware and have visibility of my rewards
 
-  @view_loyalty_balance @bink_regression_api2
+  @view_loyalty_balance @bink_regression_api2 @sandbox_regression
   Scenario Outline: Get Loyalty card balance
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -18,7 +18,7 @@ so that I am aware and have visibility of my rewards
       | Iceland       | 200                  |
       | Wasabi        | 200                  |
 
-   @balance_invalid_token @bink_regression_api2
+   @balance_invalid_token @bink_regression_api2 @sandbox_regression
    Scenario Outline: Verify invalid token scenario for get loyalty card balance
      Given I am in Bink channel to get b2b token
      When I perform POST token request for token type "b2b" to get access token
@@ -32,7 +32,7 @@ so that I am aware and have visibility of my rewards
      |merchant| status_code_returned | error_message              | error_slug     |
      |Wasabi  | 401                  | Supplied token is invalid  | INVALID_TOKEN  |
 
-   @resource_not_found_balance @bink_regression_api2
+   @resource_not_found_balance @bink_regression_api2 @sandbox_regression
    Scenario Outline: Verify resource not found scenario for get loyalty card balance
      Given I am in Bink channel to get b2b token
      When I perform POST token request for token type "b2b" to get access token

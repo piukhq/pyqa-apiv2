@@ -4,7 +4,7 @@ Feature: View transactions
 As a Bink user
 I want to view my loyalty card transactions in my wallet so that I am aware and have visibility of the transactions that have been concluded with my loyalty card
 
-  @view_loyalty_transactions @bink_regression_api2
+  @view_loyalty_transactions @bink_regression_api2 @sandbox_regression
   Scenario Outline: Get Loyalty card transactions
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -19,7 +19,7 @@ I want to view my loyalty card transactions in my wallet so that I am aware and 
       | HarveyNichols | 200                  |
 
 
-   @transactions_invalid_token @bink_regression_api2
+   @transactions_invalid_token @bink_regression_api2 @sandbox_regression
    Scenario Outline: Verify invalid token scenario for get loyalty card transactions
      Given I am in Bink channel to get b2b token
      When I perform POST token request for token type "b2b" to get access token
@@ -33,7 +33,7 @@ I want to view my loyalty card transactions in my wallet so that I am aware and 
      |merchant| status_code_returned | error_message              | error_slug     |
      |Wasabi  | 401                  | Supplied token is invalid  | INVALID_TOKEN  |
 
-   @transactions_resource_not_found @bink_regression_api2
+   @transactions_resource_not_found @bink_regression_api2 @sandbox_regression
    Scenario Outline: Verify resource not found scenario for get loyalty card transactions
      Given I am in Bink channel to get b2b token
      When I perform POST token request for token type "b2b" to get access token

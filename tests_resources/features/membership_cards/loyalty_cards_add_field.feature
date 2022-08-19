@@ -5,7 +5,7 @@ Feature: Add a loyalty card
   I want to store a loyalty card in my wallet
   so that I can display the barcode in-store, and (if applicable) authorise the loyalty card at a later stage
 
-  @add_field @bink_regression_api2
+  @add_field @bink_regression_api2 @sandbox_regression
   Scenario Outline: Add field journey only
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -19,7 +19,7 @@ Feature: Add a loyalty card
       | Iceland  | Add_field    | 201                  |
       | Wasabi   | Add_field    | 201                  |
 
-  @add_existing_field @bink_regression_api2
+  @add_existing_field @bink_regression_api2 @sandbox_regression
   Scenario Outline: Add existing card again into wallet
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -33,7 +33,7 @@ Feature: Add a loyalty card
       | Iceland  | Add_field    | 200         |
       | Wasabi   | Add_field    | 200         |
 
-  @invalid_field_bad_request @bink_regression_api2
+  @invalid_field_bad_request @bink_regression_api2 @sandbox_regression
   Scenario Outline: Add field journey with Bad request
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -47,7 +47,7 @@ Feature: Add a loyalty card
       | Iceland  | Invalid JSON  | MALFORMED_REQUEST | invalid_json    | 400         |
       | Wasabi   | Invalid JSON  | MALFORMED_REQUEST | invalid_json    | 400         |
 
-  @invalid_field @bink_regression_api2
+  @invalid_field @bink_regression_api2 @sandbox_regression
   Scenario Outline: Add field journey with Unprocessable entity
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -61,7 +61,7 @@ Feature: Add a loyalty card
       | Iceland  | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
       | Wasabi   | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
 
-  @sending_invalid_token @bink_regression_api2
+  @sending_invalid_token @bink_regression_api2 @sandbox_regression
   Scenario Outline: Sending invalid token with bearer prefix in header for add journey (Unauthorized)
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token

@@ -6,7 +6,7 @@ Feature: View Wallet
   so that I can see the cards that support store only functionality
 
 
-   @view_my_wallet @bink_regression_api2
+   @view_my_wallet @bink_regression_api2 @sandbox_regression
   Scenario Outline: View my wallet
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -23,7 +23,7 @@ Feature: View Wallet
       |HarveyNichols  |200                  |master               |
 
 
-  @wallet_invalid_token @bink_regression_api2
+  @wallet_invalid_token @bink_regression_api2 @sandbox_regression
   Scenario Outline: Verify invalid token scenario for get Wallet
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -36,7 +36,7 @@ Feature: View Wallet
       | status_code_returned | error_message             | error_slug    |invalid|
       | 401                  | Supplied token is invalid | INVALID_TOKEN |token  |
 
-  @wallet_pll_status1 @bink_regression_api2 @ubiquity_collision
+  @wallet_pll_status1 @bink_regression_api2 @ubiquity_collision @sandbox_regression
   Scenario Outline: Verify wallet pll links for active payment account and authorised loyalty card
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -51,7 +51,7 @@ Feature: View Wallet
      | merchant | status_code_returned|payment_card_provider|state|slug                     |description |
      | Wasabi   | 200                 | master              |active|null                    |null       |
 
-  @wallet_pll_status2 @bink_regression_api2 @ubiquity_collision
+  @wallet_pll_status2 @bink_regression_api2 @ubiquity_collision @sandbox_regression
   Scenario Outline: Verify wallet pll links for inactive payment account and authorised loyalty card
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -66,7 +66,7 @@ Feature: View Wallet
      | merchant | status_code_returned|payment_card_provider|state     |slug                     |description                                                     |
      | Wasabi   | 200                 | master              |inactive  |PAYMENT_ACCOUNT_INACTIVE |The Payment Account is not active so no PLL link can be created.|
 
-  @wallet_pll_status3 @bink_regression_api2 @ubiquity_collision
+  @wallet_pll_status3 @bink_regression_api2 @ubiquity_collision @sandbox_regression
   Scenario Outline: Verify wallet pll links for active payment account and unauthorised loyalty card
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -81,7 +81,7 @@ Feature: View Wallet
      | merchant | request_payload | status_code | status_code_returned | payment_card_provider | state    | slug                        | description                                                      |
      | Wasabi   | unauthorised    | 202         | 200                  | master                | inactive | LOYALTY_CARD_NOT_AUTHORISED | The Loyalty Card is not authorised so no PLL link can be created. |
 
-  @wallet_pll_status4 @bink_regression_api2 @ubiquity_collision
+  @wallet_pll_status4 @bink_regression_api2 @ubiquity_collision @sandbox_regression
   Scenario Outline: Verify wallet pll links for inactive payment account and unauthorised loyalty card
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -97,7 +97,7 @@ Feature: View Wallet
      | Wasabi   | unauthorised    | 202         | 200                  | master                | inactive | PAYMENT_ACCOUNT_AND_LOYALTY_CARD_INACTIVE | The Payment Account and Loyalty Card are not active/authorised so no PLL link can be created. |
 
 
-  @wallet_pll_status5 @bink_regression_api2 @ubiquity_collision
+  @wallet_pll_status5 @bink_regression_api2 @ubiquity_collision @sandbox_regression
   Scenario Outline: Verify wallet pll links for active payment account and unauthorised loyalty card for two users
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -119,7 +119,7 @@ Feature: View Wallet
      | Wasabi   | 200                  | visa                  |active            |  null               |null         |inactive            |UBIQUITY_COLLISION  | There is already a Loyalty Card from the same Loyalty Plan linked to this Payment Account. |
 
 
-  @wallet_failed_join @bink_regression_api2
+  @wallet_failed_join @bink_regression_api2 @sandbox_regression
   Scenario Outline: verify wallet for joins
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
