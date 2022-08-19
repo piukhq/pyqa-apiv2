@@ -1,0 +1,23 @@
+{
+    "company_name": "ASOS",
+    "plan_name": "ASOS EXTRA",
+    "plan_label": "Card",
+    "plan_url": "https://www.asos.com/",
+    "plan_summary": "Rewards for shopping at ASOS? Sounds good, right? ASOS love to recognise top customers so for every \u00a3100 you spend, you get \u00a310 back \u2013 even if it's across multiple orders! Just use your linked payment card at checkout (buy now pay later won't count!)",
+    "plan_description": "ASOS is the global destination for fashion-loving 20-somethings. Whatever your vibe, ASOS has got everything you need to take your style to the next level \u2013 from event-ready looks to everyday statements. That means 850+ of the best fashion and beauty brands, from iconic names to exclusive in-house labels. Created by ASOS, styled by you.",
+    "redeem_instructions": null,
+    "plan_register_info": null,
+    "join_incentive": null,
+    "category": "Retail",
+    "tiers": [],
+    "images": [
+        {
+            "id": 679,
+            "type": 3,
+            "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/App_icon.png",
+            "description": "ASOS icon",
+            "encoding": "png",
+            "order": 0
+        }
+    ]
+}

@@ -17,6 +17,6 @@ VAULT_URL_SANDBOX = env_var("VAULT_URL", "https://bink-uksouth-lloyds-sit.vault.
 CHANNEL_SECRET_NAME = env_var("CHANNEL_SECRET_NAME", "channels")
 ACCESS_SECRET_NAME = env_var("ACCESS_SECRET_NAME", "api2-access-secrets")
 B2B_BINK_PRIVATE_KEY = env_var("B2B_BINK_PRIVATE_KEY", "api2-b2b-private-key-bink-regression")
-B2B_LLOYDS_PRIVATE_KEY = env_var("B2B_LLOYDS_PRIVATE_KEY", "api2-b2b-private-key-lloyds-regression")
+B2B_LLOYDS_PRIVATE_KEY = env_var("B2B_LLOYDS_PRIVATE_KEY", "api2-b2b-private-key-lloydsqa-regression")
 BLOB_STORAGE_DSN = env_var("BLOB_STORAGE_DSN")
 HERMES_DATABASE_URI = env_var("HERMES_DATABASE_URI")

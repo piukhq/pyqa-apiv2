@@ -1,518 +1,101 @@
-[
-	{
-		"loyalty_plan_id": 244,
-		"is_in_wallet": false,
-		"plan_name": "QA Test Scheme",
-		"company_name": "Bink Test Scheme",
-		"plan_popularity": null,
-		"plan_type": 2,
-		"colour": "#000000",
-		"text_colour": null,
-		"category": "Household",
-		"images": [
-			{
-				"id": 544,
-				"type": 3,
-				"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Offer_tile_4_sbJaF5j_Z1X8tBI.png",
-				"description": "Icon",
-				"encoding": "png",
-				"order": 1
-			}
-		]
-	},
-	{
-		"loyalty_plan_id": 194,
-		"is_in_wallet": false,
-		"plan_name": "Rewards by Harvey Nichols",
-		"company_name": "Harvey Nichols",
-		"plan_popularity": 3,
-		"plan_type": 2,
-		"colour": "#000000",
-		"text_colour": "#FFFFFF",
-		"category": "Household",
-		"images": [
-			{
-				"id": 537,
-				"type": 3,
-				"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Logo.png",
-				"description": "Harvey nichols Icon",
-				"encoding": "png",
-				"order": 0
-			}
-		]
-	},
-	{
-		"loyalty_plan_id": 247,
-		"is_in_wallet": false,
-		"plan_name": "Rewards by QA",
-		"company_name": "by QA",
-		"plan_popularity": null,
-		"plan_type": 2,
-		"colour": "#000000",
-		"text_colour": null,
-		"category": "Household",
-		"images": []
-	},
-	{
-		"loyalty_plan_id": 207,
-		"is_in_wallet": false,
-		"plan_name": "Clubcard",
-		"company_name": "Tesco",
-		"plan_popularity": null,
-		"plan_type": 1,
-		"colour": "#f12c1a",
-		"text_colour": null,
-		"category": "Household",
-		"images": [
-			{
-				"id": 486,
-				"type": 3,
-				"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Tesco.png",
-				"description": "Tesco Icon",
-				"encoding": "png",
-				"order": 0
-			}
-		]
-	},
-	{
-		"loyalty_plan_id": 105,
-		"is_in_wallet": false,
-		"plan_name": "Iceland Bonus Card",
-		"company_name": "Iceland",
-		"plan_popularity": 1,
-		"plan_type": 2,
-		"colour": "#f80000",
-		"text_colour": "#FFFFFF",
-		"category": "Household",
-		"images": [
-			{
-				"id": 374,
-				"type": 3,
-				"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
-				"description": "Iceland Icon",
-				"encoding": "png",
-				"order": 0
-			}
-		]
-	},
-	{
-		"loyalty_plan_id": 5,
-		"is_in_wallet": false,
-		"plan_name": "B&Q Club",
-		"company_name": "B&Q",
-		"plan_popularity": null,
-		"plan_type": 0,
-		"colour": "#f36100",
-		"text_colour": null,
-		"category": "Household",
-		"images": [
-			{
-				"id": 22,
-				"type": 3,
-				"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/BQ.png",
-				"description": "Icon",
-				"encoding": "png",
-				"order": 0
-			}
-		]
-	},
-	{
-		"loyalty_plan_id": 242,
-		"is_in_wallet": false,
-		"plan_name": "Co-op Membership Card",
-		"company_name": "Co-op",
-		"plan_popularity": 7,
-		"plan_type": 2,
-		"colour": "#4fadd8",
-		"text_colour": null,
-		"category": "Household",
-		"images": [
-			{
-				"id": 538,
-				"type": 3,
-				"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Co-op_Logo.png",
-				"description": "Co-op Icon",
-				"encoding": "png",
-				"order": 0
-			}
-		]
-	},
-	{
-		"loyalty_plan_id": 14,
-		"is_in_wallet": false,
-		"plan_name": "Nectar",
-		"company_name": "Nectar",
-		"plan_popularity": null,
-		"plan_type": 0,
-		"colour": "#6f2792",
-		"text_colour": null,
-		"category": "Household",
-		"images": [
-			{
-				"id": 65,
-				"type": 3,
-				"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Nectar.png",
-				"description": "new icon",
-				"encoding": "png",
-				"order": 0
-			}
-		]
-	},
-	{
-		"loyalty_plan_id": 4,
-		"is_in_wallet": false,
-		"plan_name": "Boots Advantage Card",
-		"company_name": "Boots",
-		"plan_popularity": null,
-		"plan_type": 0,
-		"colour": "#1a438c",
-		"text_colour": null,
-		"category": "Household",
-		"images": [
-			{
-				"id": 18,
-				"type": 3,
-				"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Boots.png",
-				"description": "icon",
-				"encoding": "png",
-				"order": 0
-			}
-		]
-	},
-	{
-		"loyalty_plan_id": 20,
-		"is_in_wallet": false,
-		"plan_name": "Executive Club",
-		"company_name": "British Airways",
-		"plan_popularity": null,
-		"plan_type": 0,
-		"colour": "#004588",
-		"text_colour": null,
-		"category": "Travel",
-		"images": [
-			{
-				"id": 95,
-				"type": 3,
-				"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/British_Airways.png",
-				"description": "new icon",
-				"encoding": "png",
-				"order": 0
-			}
-		]
-	},
-	{
-		"loyalty_plan_id": 16,
-		"is_in_wallet": false,
-		"plan_name": "Health & Beautycard",
-		"company_name": "Superdrug",
-		"plan_popularity": null,
-		"plan_type": 0,
-		"colour": "#ee0088",
-		"text_colour": null,
-		"category": "Household",
-		"images": [
-			{
-				"id": 77,
-				"type": 3,
-				"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Superdrug.png",
-				"description": "new icon",
-				"encoding": "png",
-				"order": 0
-			}
-		]
-	},
-	{
-		"loyalty_plan_id": 9,
-		"is_in_wallet": false,
-		"plan_name": "Ikea Family",
-		"company_name": "IKEA Family",
-		"plan_popularity": null,
-		"plan_type": 0,
-		"colour": "#002b95",
-		"text_colour": null,
-		"category": "Household",
-		"images": [
-			{
-				"id": 40,
-				"type": 3,
-				"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Ikea.png",
-				"description": "ikea icon",
-				"encoding": "png",
-				"order": 0
-			}
-		]
-	},
-	{
-		"loyalty_plan_id": 10,
-		"is_in_wallet": false,
-		"plan_name": "My John Lewis",
-		"company_name": "John Lewis",
-		"plan_popularity": null,
-		"plan_type": 0,
-		"colour": "#0b3d2e",
-		"text_colour": null,
-		"category": "Household",
-		"images": [
-			{
-				"id": 45,
-				"type": 3,
-				"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/John_Lewis.png",
-				"description": "new icon",
-				"encoding": "png",
-				"order": 0
-			}
-		]
-	},
-	{
-		"loyalty_plan_id": 58,
-		"is_in_wallet": false,
-		"plan_name": "Shell Go+",
-		"company_name": "Shell",
-		"plan_popularity": null,
-		"plan_type": 0,
-		"colour": "#fad000",
-		"text_colour": null,
-		"category": "Travel",
-		"images": [
-			{
-				"id": 253,
-				"type": 3,
-				"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Shell.png",
-				"description": "new icon",
-				"encoding": "png",
-				"order": 0
-			}
-		]
-	},
-	{
-		"loyalty_plan_id": 171,
-		"is_in_wallet": false,
-		"plan_name": "Explore More",
-		"company_name": "Cotswold Outdoor",
-		"plan_popularity": null,
-		"plan_type": 0,
-		"colour": "#d7534a",
-		"text_colour": null,
-		"category": "Household",
-		"images": [
-			{
-				"id": 476,
-				"type": 3,
-				"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Cotswold_Outdoor.png",
-				"description": "Icon",
-				"encoding": "png",
-				"order": 0
-			}
-		]
-	},
-	{
-		"loyalty_plan_id": 52,
-		"is_in_wallet": false,
-		"plan_name": "Waterstones Plus",
-		"company_name": "Waterstones",
-		"plan_popularity": null,
-		"plan_type": 0,
-		"colour": "#1e6d77",
-		"text_colour": null,
-		"category": "Household",
-		"images": [
-			{
-				"id": 226,
-				"type": 3,
-				"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Waterstones.png",
-				"description": "icon",
-				"encoding": "png",
-				"order": 0
-			}
-		]
-	},
-	{
-		"loyalty_plan_id": 65,
-		"is_in_wallet": false,
-		"plan_name": "Subcard",
-		"company_name": "Subway",
-		"plan_popularity": null,
-		"plan_type": 0,
-		"colour": "#f4c106",
-		"text_colour": null,
-		"category": "Food & Drink",
-		"images": [
-			{
-				"id": 288,
-				"type": 3,
-				"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Subway.png",
-				"description": "subway icon",
-				"encoding": "png",
-				"order": 0
-			}
-		]
-	},
-	{
-		"loyalty_plan_id": 101,
-		"is_in_wallet": false,
-		"plan_name": "VIP Card",
-		"company_name": "Pets at Home",
-		"plan_popularity": null,
-		"plan_type": 0,
-		"colour": "#4db53c",
-		"text_colour": null,
-		"category": "Household",
-		"images": [
-			{
-				"id": 334,
-				"type": 3,
-				"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Pets_at_Home.png",
-				"description": "new icon",
-				"encoding": "png",
-				"order": 0
-			}
-		]
-	},
-	{
-		"loyalty_plan_id": 66,
-		"is_in_wallet": false,
-		"plan_name": "Colonel's Club",
-		"company_name": "KFC",
-		"plan_popularity": null,
-		"plan_type": 0,
-		"colour": "#be152c",
-		"text_colour": null,
-		"category": "Food & Drink",
-		"images": [
-			{
-				"id": 293,
-				"type": 3,
-				"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/KFC.png",
-				"description": "icon",
-				"encoding": "png",
-				"order": 0
-			}
-		]
-	},
-	{
-		"loyalty_plan_id": 222,
-		"is_in_wallet": false,
-		"plan_name": "Treasure",
-		"company_name": "Tk Maxx",
-		"plan_popularity": null,
-		"plan_type": 0,
-		"colour": "#e5212d",
-		"text_colour": null,
-		"category": "Household",
-		"images": [
-			{
-				"id": 511,
-				"type": 3,
-				"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/TK_Maxx.png",
-				"description": "TkMaxx Icon",
-				"encoding": "png",
-				"order": 1
-			}
-		]
-	},
-	{
-		"loyalty_plan_id": 62,
-		"is_in_wallet": false,
-		"plan_name": "Rewards for Life",
-		"company_name": "Holland & Barrett",
-		"plan_popularity": null,
-		"plan_type": 0,
-		"colour": "#01533d",
-		"text_colour": null,
-		"category": "Household",
-		"images": [
-			{
-				"id": 273,
-				"type": 3,
-				"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Holland_and_Barrett.png",
-				"description": "icon",
-				"encoding": "png",
-				"order": 0
-			}
-		]
-	},
-	{
-		"loyalty_plan_id": 64,
-		"is_in_wallet": false,
-		"plan_name": "Nando's Card",
-		"company_name": "Nandos",
-		"plan_popularity": null,
-		"plan_type": 0,
-		"colour": "#cc091a",
-		"text_colour": null,
-		"category": "Food & Drink",
-		"images": [
-			{
-				"id": 282,
-				"type": 3,
-				"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Nandos.png",
-				"description": "new icon",
-				"encoding": "png",
-				"order": 0
-			}
-		]
-	},
-	{
-		"loyalty_plan_id": 314,
-		"is_in_wallet": false,
-		"plan_name": "Burger King Rewards",
-		"company_name": "Burger King",
-		"plan_popularity": 4,
-		"plan_type": 2,
-		"colour": "#faaf18",
-		"text_colour": null,
-		"category": "Food & Drink",
-		"images": [
-			{
-				"id": 621,
-				"type": 3,
-				"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/BK_logo.png",
-				"description": "Burger King icon",
-				"encoding": "png",
-				"order": 0
-			}
-		]
-	},
-	{
-		"loyalty_plan_id": 281,
-		"is_in_wallet": false,
-		"plan_name": "FatFace Rewards",
-		"company_name": "FatFace",
-		"plan_popularity": 5,
-		"plan_type": 2,
-		"colour": "#000000",
-		"text_colour": null,
-		"category": "Uncategorised",
-		"images": [
-			{
-				"id": 630,
-				"type": 3,
-				"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Fatface_Logo.png",
-				"description": "FF logo",
-				"encoding": "png",
-				"order": 1
-			}
-		]
-	},
-	{
-		"loyalty_plan_id": 316,
-		"is_in_wallet": false,
-		"plan_name": "Wasabi Club",
-		"company_name": "Wasabi",
-		"plan_popularity": 2,
-		"plan_type": 2,
-		"colour": "#ccd400",
-		"text_colour": "#000000",
-		"category": "Food & Drink",
-		"images": [
-			{
-				"id": 642,
-				"type": 3,
-				"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
-				"description": "Wasabi Icon",
-				"encoding": "png",
-				"order": 0
-			}
-		]
-	}
+        "plan_popularity": 1,
+        "plan_type": 2,
+        "colour": "#f80000",
+        "text_colour": "#FFFFFF",
+        "category": "Household",
+        "images": [
+            {
+                "id": 374,
+                "type": 3,
+                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
+                "description": "Iceland Icon",
+                "encoding": "png",
+                "order": 0
+            }
+        ]
+    },
+    {
+        "loyalty_plan_id": 316,
+        "is_in_wallet": false,
+        "plan_name": "Wasabi Club",
+        "company_name": "Wasabi",
+        "plan_popularity": 2,
+        "plan_type": 2,
+        "colour": "#ccd400",
+        "text_colour": "#000000",
+        "category": "Food & Drink",
+        "images": [
+            {
+                "id": 642,
+                "type": 3,
+                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
+                "description": "Wasabi Icon",
+                "encoding": "png",
+                "order": 0
+            }
+        ]
+    },
+    {
+        "loyalty_plan_id": 326,
+        "is_in_wallet": false,
+        "plan_name": "SquareMeal Restaurant Rewards",
+        "company_name": "SquareMeal",
+        "plan_popularity": 3,
+        "plan_type": 2,
+        "colour": "#465560",
+        "text_colour": "#FFFFFF",
+        "category": "Food & Drink",
+        "images": [
+            {
+                "id": 668,
+                "type": 3,
+                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
+                "description": "SquareMeal Icon",
+                "encoding": "png",
+                "order": 0
+            }
+        ]
+    },
+    {
+        "loyalty_plan_id": 328,
+        "is_in_wallet": false,
+        "plan_name": "ASOS EXTRA",
+        "company_name": "ASOS",
+        "plan_popularity": 4,
+        "plan_type": 2,
+        "colour": "#000000",
+        "text_colour": "#FFFFFF",
+        "category": "Retail",
+        "images": [
+            {
+                "id": 679,
+                "type": 3,
+                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/App_icon.png",
+                "description": "ASOS icon",
+                "encoding": "png",
+                "order": 0
+            }
+        ]
+    },
+    {
+        "loyalty_plan_id": 325,
+        "is_in_wallet": false,
+        "plan_name": "Trenette",
+        "company_name": "Loyalty Angels Ltd",
+        "plan_popularity": null,
+        "plan_type": 2,
+        "colour": "#004d55",
+        "text_colour": "#FFFFFF",
+        "category": "Food & Drink",
+        "images": [
+            {
+                "id": 666,
+                "type": 3,
+                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/trenette-icon.png",
+                "description": "Trenette Icon",
+                "encoding": "png",
+                "order": 0
+            }
+        ]
+    }
 ]

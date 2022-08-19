@@ -1,0 +1,104 @@
+{
+    "loyalty_plan_id": 326,
+    "join_fields": {
+        "credentials": [
+            {
+                "order": 1,
+                "display_label": "First name",
+                "validation": "^.{1,250}$",
+                "description": "Enter first name",
+                "credential_slug": "first_name",
+                "type": "text",
+                "is_sensitive": false,
+                "is_scannable": false,
+                "choice": [],
+                "alternative": null
+            },
+            {
+                "order": 2,
+                "display_label": "Last name",
+                "validation": "^.{1,250}$",
+                "description": "Enter last name",
+                "credential_slug": "last_name",
+                "type": "text",
+                "is_sensitive": false,
+                "is_scannable": false,
+                "choice": [],
+                "alternative": null
+            },
+            {
+                "order": 3,
+                "display_label": "Email",
+                "validation": "^(?=.{1,250}$)(?=[^@]{1,64}@)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
+                "description": "example@mydomain.com",
+                "credential_slug": "email",
+                "type": "text",
+                "is_sensitive": false,
+                "is_scannable": false,
+                "choice": [],
+                "alternative": null
+            },
+            {
+                "order": 4,
+                "display_label": "Password",
+                "validation": "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,250}$",
+                "description": "Password (min 6 characters)",
+                "credential_slug": "password",
+                "type": "sensitive",
+                "is_sensitive": true,
+                "is_scannable": false,
+                "choice": [],
+                "alternative": null
+            }
+        ],
+        "plan_documents": [
+            {
+                "order": 5,
+                "name": "SquareMeal privacy policy",
+                "url": "https://policies.staging.gb.bink.com/squaremeal/pp.html",
+                "description": "I accept the",
+                "is_acceptance_required": false
+            },
+            {
+                "order": 6,
+                "name": "Retailer terms and conditions",
+                "url": "https://policies.staging.gb.bink.com/squaremeal/tc.html",
+                "description": "I accept the",
+                "is_acceptance_required": true
+            }
+        ],
+        "consents": []
+    },
+    "register_ghost_card_fields": null,
+    "add_fields": null,
+    "authorise_fields": {
+        "credentials": [
+            {
+                "order": 3,
+                "display_label": "Email",
+                "validation": "^(?=.{1,250}$)(?=[^@]{1,64}@)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
+                "description": "example@mydomain.com",
+                "credential_slug": "email",
+                "type": "text",
+                "is_sensitive": false,
+                "is_scannable": false,
+                "choice": [],
+                "alternative": null
+            },
+            {
+                "order": 4,
+                "display_label": "Password",
+                "validation": "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,250}$",
+                "description": "Password (min 6 characters)",
+                "credential_slug": "password",
+                "type": "sensitive",
+                "is_sensitive": true,
+                "is_scannable": false,
+                "choice": [],
+                "alternative": null
+            }
+        ],
+        "plan_documents": [],
+        "consents": []
+    }
+}

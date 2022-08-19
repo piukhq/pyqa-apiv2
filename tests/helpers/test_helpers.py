@@ -64,12 +64,14 @@ class TestData:
         switcher = {
             "Iceland": "iceland",
             "HarveyNichols": "harvey_nichols",
+            "SquareMeal": "square_meal",
             "FatFace": "fat_face",
             "Wasabi": "wasabi",
             "WHSmith": "whsmith",
             "Merchant_not_exists": "merchant_not_exists",
             "Wallis": "Wallis",
             "Bink Test Scheme": "Bink Test Scheme",
+            "Asos": "asos",
         }
         return switcher.get(merchant)
 
