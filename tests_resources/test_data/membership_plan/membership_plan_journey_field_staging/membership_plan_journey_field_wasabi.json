@@ -67,14 +67,7 @@
 				"is_acceptance_required": true
 			}
 		],
-		"consents": [
-			{
-				"order": 8,
-				"consent_slug": "EmailOptin",
-				"is_acceptance_required": false,
-				"description": "Check this box to receive the latest news and offers from Wasabi - if you change your mind, you can opt out anytime via the retailer."
-			}
-		]
+		"consents": []
 	},
 	"register_ghost_card_fields": null,
 	"add_fields": {
