@@ -1,5 +1,5 @@
 # Created by nehapatil on 10/08/2022
-@membership_cards_wallet @membership_cards @multi_wallet
+@membership_cards_wallet @multi_wallet
 Feature: View Wallet by LC id in different channel
   As a Bink user
   I want to view my loyalty cards in each wallet added in different channels
@@ -79,8 +79,8 @@ Feature: View Wallet by LC id in different channel
 #      |HarveyNichols  |200                  |master               |
 
 
-  @same_channel_multi_wallet_valid_invalid @add_and_auth_multi_wallet
-  Scenario Outline: View two wallet of same channel when LCs are authorised in both
+  @wallet_by_lc_id_same_channel_valid_invalid @add_and_auth_multi_wallet
+  Scenario Outline: View two wallet by LC id of same channel when LC1 is auth and LC2 is unauth
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
@@ -104,8 +104,8 @@ Feature: View Wallet by LC id in different channel
 #      |HarveyNichols  |200                  |master               |
 
 
-  @same_channel_multi_wallet_invalid_valid @add_and_auth_multi_wallet
-  Scenario Outline: View two wallet of same channel when LCs are authorised in both
+  @wallet_by_lc_id_same_channel_invalid_valid @add_and_auth_multi_wallet
+  Scenario Outline: View two wallet by LC id of same channel when LC1 unauth and LC2 auth
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
@@ -129,8 +129,8 @@ Feature: View Wallet by LC id in different channel
 #      |HarveyNichols  |200                  |master               |
 
 
-  @multi_channel_multi_wallet_invalid_valid @add_and_auth_multi_wallet
-  Scenario Outline: View two wallet of same channel when LCs are authorised in both
+  @wallet_by_lc_id_multi_channel_invalid_valid @add_and_auth_multi_wallet
+  Scenario Outline: View two wallet by LC id of different channel when LC1 is unauth and LC2 is auth
     Given I am a Lloyds user
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"

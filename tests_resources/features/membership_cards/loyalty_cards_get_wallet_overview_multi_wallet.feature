@@ -1,5 +1,5 @@
 # Created by nehapatil on 10/08/2022
-@membership_cards_wallet @membership_cards @multi_wallet
+@membership_cards_wallet @multi_wallet
 Feature: View Wallets overview
   As a Bink user
   I want to view my loyalty cards in each wallet added in different channels
@@ -79,8 +79,8 @@ Feature: View Wallets overview
 #      |HarveyNichols  |200                  |master               |
 
 
-  @same_channel_multi_wallet_valid_invalid @add_and_auth_multi_wallet
-  Scenario Outline: View two wallet of same channel when LCs are authorised in both
+  @wallet_overview_same_channel_valid_invalid @add_and_auth_multi_wallet
+  Scenario Outline: View two wallet overview of same channel when LC1 auth and LC2 unauth
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
@@ -104,8 +104,8 @@ Feature: View Wallets overview
 #      |HarveyNichols  |200                  |master               |
 
 
-  @same_channel_multi_wallet_invalid_valid @add_and_auth_multi_wallet
-  Scenario Outline: View two wallet of same channel when LCs are authorised in both
+  @wallet_overview_same_channel_invalid_valid @add_and_auth_multi_wallet
+  Scenario Outline: View two wallet overview of same channel when LC1 unauth and LC2 auth
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
@@ -129,8 +129,8 @@ Feature: View Wallets overview
 #      |HarveyNichols  |200                  |master               |
 
 
-  @multi_channel_multi_wallet_invalid_valid @add_and_auth_multi_wallet
-  Scenario Outline: View two wallet of same channel when LCs are authorised in both
+  @wallet_overview_multi_channel_invalid_valid @add_and_auth_multi_wallet
+  Scenario Outline: View two wallet overview of different channel when LC1 unauth and LC2 auth
     Given I am a Lloyds user
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
