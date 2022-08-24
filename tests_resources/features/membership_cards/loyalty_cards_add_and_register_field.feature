@@ -83,3 +83,19 @@ Feature: Add and register a loyalty card
     Examples:
       | merchant | status_code_returned | error_message             | error_slug    |
       | Iceland  | 401                  | Supplied token is invalid | INVALID_TOKEN |
+
+
+    @add_and_register_multi_wallet
+  Scenario Outline: Add existing card again into wallet for add and register
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add and register "<merchant>" membership card
+    And I perform POST request again with add and register to verify the "<merchant>" membership card is already added with "<status_code_returned>"
+    Then I see a <status_code_returned>
+    And I see a "<error_message>" error message
+    And I see a "<error_slug>" error slug
+    Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+
+    Examples:
+      | merchant | status_code_returned | journey_type     | error_message                                                                                          | error_slug         |
+      | Iceland  | 409                  | add_and_register | Card is already registered. Use POST /loyalty_cards/add_and_authorise to add this card to your wallet. | ALREADY_REGISTERED |

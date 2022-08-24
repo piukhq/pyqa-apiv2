@@ -449,3 +449,4 @@ def delete_user(env="staging"):
             response = CustomerAccount.delete_user(all_users[i])
             assert response.status_code == 202, "The user deletion is not successful"
             logging.info(f"User {i} is deleted successfully from the system")
+        all_users.clear()
