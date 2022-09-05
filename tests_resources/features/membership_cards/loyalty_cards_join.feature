@@ -75,3 +75,25 @@ Feature: Add and register a loyalty card
     Examples:
       | payment_card_provider | merchant | status_code_returned | journey_type |
       | master                | Iceland  | 202                  | pll          |
+
+
+  @identical_joins @bink_regression_api2
+  Scenario Outline: merchant fails to identify duplicate join requests
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to identical_join "<merchant>" membership card
+    Then I see a <status_code_returned>
+    When I perform GET 'Wallet'
+    Then Verify 'Wallet' fields for <merchant> with join_success
+    And verify the data stored in DB after "join" journey for "<merchant>"
+    When I am in Bink channel to get b2b token for second user
+    And I perform POST token request for token type "b2b" to get access token for second user
+    When I perform POST request to identical_join "<merchant>" membership card
+    Then I see a <status_code_returned>
+    When I perform GET 'Wallet'
+    Then Verify 'Wallet' fields for <merchant> with account_already_exist
+    And verify the data stored in DB after "account_already_exists" journey for "<merchant>"
+
+    Examples:
+      | merchant      | status_code_returned |
+      | Iceland       | 202                  |

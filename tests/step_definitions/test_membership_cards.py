@@ -97,6 +97,13 @@ def verify_loyalty_card_into_database(journey_type, merchant):
             and scheme_account.status is TestDataUtils.TEST_DATA.scheme_status.get(constants.ENROL_FAILED)
             or TestDataUtils.TEST_DATA.scheme_status.get(constants.ENROL_FAILED)
         )
+    elif journey_type == "account_already_exists":
+        scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
+        assert (
+            scheme_account.id == TestContext.current_scheme_account_id
+            and scheme_account.status is TestDataUtils.TEST_DATA.scheme_status.get(constants.ACCOUNT_ALREADY_EXIST)
+            or TestDataUtils.TEST_DATA.scheme_status.get(constants.ACCOUNT_ALREADY_EXIST)
+        )
 
     elif journey_type == "unauthorised":
         if merchant == "Wasabi":
@@ -1389,8 +1396,10 @@ def update_scheme_status(status):
     assert scheme_account.id == TestContext.current_scheme_account_id and scheme_account.status == int(status)
 
 
-@when(parsers.parse('I perform POST request to join "{merchant}" membership card'))
-def join_scheme(merchant, test_email):
+@when(parsers.parse('I perform POST request to {join} "{merchant}" membership card'))
+def join_scheme(join, merchant, test_email):
+    if join == 'identical_join':
+        test_email= TestDataUtils.TEST_DATA.join_emails.get(constants.IDENTICAL_JOIN)
     response = MembershipCards.join_field(TestContext.token, merchant, test_email)
     time.sleep(8)
     response_json = response_to_json(response)
@@ -1682,10 +1691,6 @@ def verify_state_slug_desc(Wallet, merchant, scheme_state):
                         wallet_response["loyalty_cards"][0]["card"][card_key]
                         == TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state]["card"][card_key]
                     ), f"{card_key} do not match"
-        compare_two_lists(
-            wallet_response["loyalty_cards"][0]["images"],
-            TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state]["images"],
-        )
     elif Wallet in ["Wallet", "Wallet_overview"] and scheme_state == "asynchronous_join_in_progress":
         assert (
             wallet_response["joins"][0]["loyalty_card_id"] == TestContext.current_scheme_account_id
@@ -1720,12 +1725,22 @@ def verify_state_slug_desc(Wallet, merchant, scheme_state):
                         wallet_response["joins"][0]["card"][card_key]
                         == TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state]["card"][card_key]
                     ), f"{card_key} do not match"
-    elif Wallet in ["Wallet"] and scheme_state in ["enrol_failed", "asynchronous_join_in_progress"]:
+    elif Wallet == "Wallet" and scheme_state == "account_already_exists":
+        assert (
+            wallet_response["loyalty_cards"][0]["id"] == TestContext.current_scheme_account_id
+        ), "account id does not match"
+        for wallet_key in TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state].keys():
+            if wallet_key not in ["images"]:
+                assert (
+                    wallet_response["loyalty_cards"][0][wallet_key]
+                    == TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state][wallet_key]
+                ), f"{wallet_key} do not match"
+    elif Wallet == "Wallet":
         compare_two_lists(
             wallet_response["joins"][0]["images"],
-            TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state]["images"],
+            TestDataUtils.TEST_DATA.Join_Scheme_status["join_success"]["images"],
         )
-    elif Wallet in ["Wallet_overview"] and scheme_state in ["enrol_failed", "asynchronous_join_in_progress"]:
+    elif Wallet == "Wallet_overview":
         compare_two_lists(
             wallet_response["joins"][0]["images"],
             TestDataUtils.TEST_DATA.Join_Scheme_status["wallet_overview_image"],
