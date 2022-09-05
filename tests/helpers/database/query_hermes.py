@@ -81,13 +81,13 @@ class QueryHermes:
         connection = db.connect_db()
         if TestContext.environ == "staging":
             query_payment_account = (
-                """SELECT id,name_on_card,is_deleted,pll_links 
+                """SELECT id,name_on_card,is_deleted,pll_links
                      FROM hermes.public.payment_card_paymentcardaccount where id='%s'"""
                 % payment_card_account_id
             )
         else:
             query_payment_account = (
-                """SELECT id,name_on_card,is_deleted,pll_links 
+                """SELECT id,name_on_card,is_deleted,pll_links
                      FROM lloyds_sit_hermes.public.payment_card_paymentcardaccount where id='%s'"""
                 % payment_card_account_id
             )
