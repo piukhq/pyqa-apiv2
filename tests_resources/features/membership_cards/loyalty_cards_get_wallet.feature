@@ -127,7 +127,6 @@ Feature: View Wallet
     And I perform GET 'Wallet'
     Then I see a <status_code_returned>
     And Verify 'Wallet' fields for <merchant> with <scheme_state>
-    And I perform DELETE request to delete user successfully
 
     Examples:
       | merchant| status_code_returned |  scheme_state         |
