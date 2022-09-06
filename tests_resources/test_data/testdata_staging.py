@@ -1680,7 +1680,7 @@ Join_Scheme_status = (
                 "state": "failed",
                 "slug": "ACCOUNT_ALREADY_EXISTS",
                 "description": "A Loyalty Card matching the entered credentials already exists. "
-                               "Please add this Loyalty Card to your wallet."
+                "Please add this Loyalty Card to your wallet.",
             },
             "balance": {
                 "updated_at": None,
@@ -1689,7 +1689,7 @@ Join_Scheme_status = (
                 "prefix": None,
                 "suffix": None,
                 "current_value": None,
-                "target_value": None
+                "target_value": None,
             },
             "transactions": [],
             "vouchers": [],
@@ -1698,7 +1698,7 @@ Join_Scheme_status = (
                 "barcode_type": 0,
                 "card_number": None,
                 "colour": "#d50724",
-                "text_colour": "#00FF00"
+                "text_colour": "#00FF00",
             },
             "reward_available": False,
         },
