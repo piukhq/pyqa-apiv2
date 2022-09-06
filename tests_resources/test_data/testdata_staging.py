@@ -1671,36 +1671,37 @@ Join_Scheme_status = (
         },
         "account_already_exists": {
             # "id": 200357,
-			"loyalty_plan_id": 105,
-			"loyalty_plan_name": "Iceland Bonus Card",
-			"is_fully_pll_linked": False,
-			"pll_linked_payment_accounts": 0,
-			"total_payment_accounts": 0,
-			"status": {
-				"state": "failed",
-				"slug": "ACCOUNT_ALREADY_EXISTS",
-				"description": "A Loyalty Card matching the entered credentials already exists. Please add this Loyalty Card to your wallet."
-			},
-			"balance": {
-				"updated_at": None,
-				"current_display_value": None,
-				"loyalty_currency_name": None,
-				"prefix": None,
-				"suffix": None,
-				"current_value": None,
-				"target_value": None
-			},
-			"transactions": [],
-			"vouchers": [],
-			"card": {
-				"barcode": None,
-				"barcode_type": 0,
-				"card_number": None,
-				"colour": "#d50724",
-				"text_colour": "#00FF00"
-			},
-			"reward_available": False,
-                                   },
+            "loyalty_plan_id": 105,
+            "loyalty_plan_name": "Iceland Bonus Card",
+            "is_fully_pll_linked": False,
+            "pll_linked_payment_accounts": 0,
+            "total_payment_accounts": 0,
+            "status": {
+                "state": "failed",
+                "slug": "ACCOUNT_ALREADY_EXISTS",
+                "description": "A Loyalty Card matching the entered credentials already exists. "
+                               "Please add this Loyalty Card to your wallet."
+            },
+            "balance": {
+                "updated_at": None,
+                "current_display_value": None,
+                "loyalty_currency_name": None,
+                "prefix": None,
+                "suffix": None,
+                "current_value": None,
+                "target_value": None
+            },
+            "transactions": [],
+            "vouchers": [],
+            "card": {
+                "barcode": None,
+                "barcode_type": 0,
+                "card_number": None,
+                "colour": "#d50724",
+                "text_colour": "#00FF00"
+            },
+            "reward_available": False,
+        },
         "wallet_overview_image": [
             {
                 "id": 1234,

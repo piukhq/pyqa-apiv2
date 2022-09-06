@@ -1398,8 +1398,8 @@ def update_scheme_status(status):
 
 @when(parsers.parse('I perform POST request to {join} "{merchant}" membership card'))
 def join_scheme(join, merchant, test_email):
-    if join == 'identical_join':
-        test_email= TestDataUtils.TEST_DATA.join_emails.get(constants.IDENTICAL_JOIN)
+    if join == "identical_join":
+        test_email = TestDataUtils.TEST_DATA.join_emails.get(constants.IDENTICAL_JOIN)
     response = MembershipCards.join_field(TestContext.token, merchant, test_email)
     time.sleep(8)
     response_json = response_to_json(response)
