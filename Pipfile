@@ -10,7 +10,7 @@ name = "pypi"
 [packages]
 requests = "*"
 pytest = "*"
-pytest-bdd = "*"
+pytest-bdd = "<6.0"
 logger = "*"
 jsonpath = "*"
 click = "*"
