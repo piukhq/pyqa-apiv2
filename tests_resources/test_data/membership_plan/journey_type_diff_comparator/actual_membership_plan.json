@@ -1,34 +1,11 @@
 {
-    "loyalty_plan_id": 124,
+    "loyalty_plan_id": 288,
     "join_fields": {
         "credentials": [
             {
-                "order": 1,
-                "display_label": "Title",
-                "validation": "^(Mr|Mrs|Miss|Ms|Dame|Sir|Doctor|Professor|Lord|Lady)$",
-                "description": "Select title",
-                "credential_slug": "title",
-                "type": "choice",
-                "is_sensitive": false,
-                "is_scannable": false,
-                "choice": [
-                    "Mr",
-                    "Mrs",
-                    "Miss",
-                    "Ms",
-                    "Dame",
-                    "Sir",
-                    "Doctor",
-                    "Professor",
-                    "Lord",
-                    "Lady"
-                ],
-                "alternative": null
-            },
-            {
                 "order": 2,
                 "display_label": "First name",
-                "validation": "^(((?=.{1,255}$)[A-Za-z\\-\\u00C0-\\u00FF])+\\s*){1,4}$",
+                "validation": "^(((?=.{1,100}$)[A-Za-z-\\u00C0-\\u00FF'])+\\s*){1,4}$",
                 "description": "Enter first name",
                 "credential_slug": "first_name",
                 "type": "text",
@@ -40,7 +17,7 @@
             {
                 "order": 3,
                 "display_label": "Last name",
-                "validation": "^(((?=.{1,255}$)[A-Za-z\\-\\u00C0-\\u00FF])+\\s*){1,4}$",
+                "validation": "^(((?=.{1,100}$)[A-Za-z-\\u00C0-\\u00FF'])+\\s*){1,4}$",
                 "description": "Enter last name",
                 "credential_slug": "last_name",
                 "type": "text",
@@ -63,22 +40,10 @@
             },
             {
                 "order": 5,
-                "display_label": "Password",
-                "validation": "^([A-z0-9!\"#$\u00a3%&'()*+,\\-./:;<=>?@\\[\\\\\\]^_`{|}~]){7,255}$",
-                "description": "Password (min 7 characters)",
-                "credential_slug": "password_2",
-                "type": "sensitive",
-                "is_sensitive": true,
-                "is_scannable": false,
-                "choice": [],
-                "alternative": null
-            },
-            {
-                "order": 6,
-                "display_label": "Mobile number",
-                "validation": "^(?:0|\\+?44)(?:\\d-?\\s?){9,15}$",
-                "description": "01234 123456",
-                "credential_slug": "phone",
+                "display_label": "Postcode",
+                "validation": "^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]? ?[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})$",
+                "description": "Enter postcode",
+                "credential_slug": "postcode",
                 "type": "text",
                 "is_sensitive": false,
                 "is_scannable": false,
@@ -88,31 +53,41 @@
         ],
         "plan_documents": [
             {
-                "order": 7,
-                "name": "Harvey Nichols privacy policy",
-                "url": "https://policies.staging.gb.bink.com/hn/pp.html",
-                "description": "Please read the",
+                "order": 6,
+                "name": "ASOS privacy policy",
+                "url": "https://policies.staging.gb.bink.com/ASOS/pp.html",
+                "description": "I have read the",
                 "is_acceptance_required": false
             },
             {
-                "order": 8,
-                "name": "Retailer terms and conditions",
-                "url": "https://policies.staging.gb.bink.com/hn/tc.html",
+                "order": 7,
+                "name": "Retailer terms & conditions",
+                "url": "https://policies.staging.gb.bink.com/ASOS/tc.html",
                 "description": "I accept the",
                 "is_acceptance_required": true
             }
         ],
-        "consents": [
-            {
-                "order": 9,
-                "consent_slug": "email_optin",
-                "is_acceptance_required": false,
-                "description": "Check this box for email marketing from Harvey Nichols - if you change your mind, you can opt out anytime via the retailer."
-            }
-        ]
+        "consents": []
     },
     "register_ghost_card_fields": null,
-    "add_fields": null,
+    "add_fields": {
+        "credentials": [
+            {
+                "order": 1,
+                "display_label": "Membership card number",
+                "validation": "^[A][S][O][S][0-9]{10}$",
+                "description": "Upper case 14 digits",
+                "credential_slug": "card_number",
+                "type": "text",
+                "is_sensitive": false,
+                "is_scannable": false,
+                "choice": [],
+                "alternative": null
+            }
+        ],
+        "plan_documents": [],
+        "consents": []
+    },
     "authorise_fields": {
         "credentials": [
             {
@@ -123,18 +98,6 @@
                 "credential_slug": "email",
                 "type": "text",
                 "is_sensitive": false,
-                "is_scannable": false,
-                "choice": [],
-                "alternative": null
-            },
-            {
-                "order": 5,
-                "display_label": "Password",
-                "validation": "^([A-z0-9!\"#$\u00a3%&'()*+,\\-./:;<=>?@\\[\\\\\\]^_`{|}~]){6,255}$",
-                "description": "Password (min 6 characters)",
-                "credential_slug": "password",
-                "type": "sensitive",
-                "is_sensitive": true,
                 "is_scannable": false,
                 "choice": [],
                 "alternative": null
