@@ -1292,7 +1292,7 @@ def i_perform_post_add_and_authorise_membership_card_which_is_exist_already(merc
     assert response.status_code == 409, "Add only then add and authorise Journey for " + merchant + " failed"
 
 
-@when(parsers.parse('I perform POST request add and register for {merchant}'))
+@when(parsers.parse("I perform POST request add and register for {merchant}"))
 def add_and_register_field(merchant, test_email):
     TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_CARD)
     response = MembershipCards.add_and_register_field(TestContext.token, merchant, test_email)
@@ -1365,9 +1365,7 @@ def add_existing_payment_card_in_another_wallet(payment_card_provider):
     test_paymentcard_account.add_existing_payment_card_in_another_wallet(payment_card_provider)
 
 
-@when(
-    parsers.parse('I perform POST request {journey_type} again for {merchant}')
-)
+@when(parsers.parse("I perform POST request {journey_type} again for {merchant}"))
 def add_and_register_with_existing_credential(journey_type, merchant, test_email):
     scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
     TestContext.card_number = scheme_account.main_answer
