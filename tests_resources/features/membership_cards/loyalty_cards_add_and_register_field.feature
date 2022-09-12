@@ -9,7 +9,7 @@ Feature: Add and register a loyalty card
   Scenario Outline: Add and register field journey
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add and register "<merchant>" membership card
+    And I perform POST request add and register for <merchant>
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
 
@@ -20,7 +20,7 @@ Feature: Add and register a loyalty card
 #  @scheme_is_pending_add_and_auth @bink_regression_api2
 #  Scenario Outline: Add and register field journey where scheme is in pending
 #    Given I am a Bink user
-#    When I perform POST request to add and register "<merchant>" membership card
+#    When I perform POST request <type> add and register for <merchant>
 #    And I update the membership card to "<status>" pending in DB
 #    And I perform POST request to add and register "<merchant>" membership card where membership card is in pending
 #    Then I see a <status_code_returned>
@@ -31,16 +31,16 @@ Feature: Add and register a loyalty card
 #      | merchant | status_code_returned | journey_type     | status |
 #      | Iceland  | 200                  | add_and_register | 0      |
 
-  @add_and_register_existing_field
+  @add_and_register_existing_field @bink_regression_api2
   Scenario Outline: Add existing card again into wallet for add and register
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add and register "<merchant>" membership card
-    And I perform POST request again with add and register to verify the "<merchant>" membership card is already added with "<status_code_returned>"
+    And I perform POST request add and register for <merchant>
+    And I perform POST request add_and_register again for <merchant>
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
-    Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+    And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
 
     Examples:
       | merchant | status_code_returned | journey_type     | error_message                                                                                          | error_slug         |
@@ -85,16 +85,18 @@ Feature: Add and register a loyalty card
       | Iceland  | 401                  | Supplied token is invalid | INVALID_TOKEN |
 
 
-    @add_and_register_multi_wallet
-  Scenario Outline: Add existing card again into wallet for add and register
+    @add_and_register_multi_wallet @bink_regression_api2
+  Scenario Outline: Add existing card again into different wallet via add and register
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add and register "<merchant>" membership card
-    And I perform POST request again with add and register to verify the "<merchant>" membership card is already added with "<status_code_returned>"
+    And I perform POST request add and register for <merchant>
+    And I am in Bink channel to get b2b token for second user
+    And I perform POST token request for token type "b2b" to get access token for second user
+    And I perform POST request add_and_register again for <merchant>
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
-    Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+    And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
 
     Examples:
       | merchant | status_code_returned | journey_type     | error_message                                                                                          | error_slug         |
