@@ -743,7 +743,7 @@
             "plan_type": 2,
             "barcode_type": 0,
             "colour": "#465560",
-            "text_colour": null,
+            "text_colour": "#FFFFFF",
             "journeys": [
                 {
                     "type": 1,
@@ -812,7 +812,7 @@
             "plan_url": "https://www.squaremeal.co.uk/rewards/",
             "plan_summary": "With SquareMeal, you're rewarded for eating out. Go to our website, book selected restaurants, and you'll collect points every time you spend \u00a320 or more. You can easily redeem points on our website for restaurant vouchers & luxury gifts.",
             "plan_description": "Join SquareMeal Rewards today to make your next dinner even more rewarding. As a member, you'll earn points for booking tables, leaving restaurant reviews, and each time you spend \u00a320 or more in one of our selected restaurants with your linked payment cards. 100 points = \u00a31 spend on your choice of restaurant vouchers, luxury gifts, or charity donations. To book a table or redeem rewards, simply go to our website.",
-            "redeem_instructions": "Only accounts with linked payment cards will receive SquareMeal Rewards Points, when you make a qualifying purchase in a participating restaurant.",
+            "redeem_instructions": null,
             "plan_register_info": null,
             "join_incentive": null,
             "category": "Food & Drink",
