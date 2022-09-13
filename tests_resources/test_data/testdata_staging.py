@@ -72,6 +72,8 @@ iceland_membership_card = {
     "card_num": "6332040000300000003",
     # "register_card": "6332040000400000011",
     "register_card": "6332040031231230002",
+    "register_failed_card": "6332040065432156789",
+    "register_failed_email": "generalerror@testbink.com",
     "transactions_card": "6332040000000000007",
     "barcode": "6332040000300000003",
     "transactions_card_last_name": "perfuser07",
@@ -1533,6 +1535,105 @@ bink_user_accounts = {
     "lloyds_external_id": "12345",
     "b2b_external_id": "Autob2b",
     "b2b_external_id2": "Autob2b2",
+}
+
+register_scheme_status = {
+    "registration_failed": {
+        # "id": 204517,
+        "loyalty_plan_id": 105,
+        "loyalty_plan_name": "Iceland Bonus Card",
+        "is_fully_pll_linked": False,
+        "pll_linked_payment_accounts": 0,
+        "total_payment_accounts": 0,
+        "status": {
+            "state": "failed",
+            "slug": "ACCOUNT_NOT_REGISTERED",
+            "description": "The Loyalty Card has not yet been registered. Please register the card with the retailer."
+        },
+        "balance": {
+            "updated_at": None,
+            "current_display_value": None,
+            "loyalty_currency_name": None,
+            "prefix": None,
+            "suffix": None,
+            "current_value": None,
+            "target_value": None
+        },
+        "transactions": [],
+        "vouchers": [],
+        "card": {
+            "barcode": None,
+            "barcode_type": 0,
+            "card_number": "6332040065432156789",
+            "colour": "#d50724",
+            "text_colour": "#00FF00"
+        },
+        "reward_available": False,
+    },
+    "registration_success": {
+        # "id": 204521,
+        "loyalty_plan_id": 105,
+        "loyalty_plan_name": "Iceland Bonus Card",
+        "is_fully_pll_linked": False,
+        "pll_linked_payment_accounts": 0,
+        "total_payment_accounts": 0,
+        "status": {
+            "state": "authorised",
+            "slug": None,
+            "description": None
+        },
+        "balance": {
+            "updated_at": 1662999593,
+            "current_display_value": "£0",
+            "loyalty_currency_name": "GBP",
+            "prefix": "£",
+            "suffix": None,
+            "current_value": "0",
+            "target_value": None
+        },
+        "transactions": [],
+        "vouchers": [],
+        "card": {
+            "barcode": "63320400739573552780080",
+            "barcode_type": 0,
+            "card_number": "6332040073957355278",
+            "colour": "#d50724",
+            "text_colour": "#00FF00"
+        },
+        "reward_available": False,
+    },
+    "registration_pending": {
+        # "id": 204521,
+        "loyalty_plan_id": 105,
+        "loyalty_plan_name": "Iceland Bonus Card",
+        "is_fully_pll_linked": False,
+        "pll_linked_payment_accounts": 0,
+        "total_payment_accounts": 0,
+        "status": {
+            "state": "pending",
+            "slug": "REGISTRATION_IN_PROGRESS",
+            "description": None
+        },
+        "balance": {
+            "updated_at": None,
+            "current_display_value": None,
+            "loyalty_currency_name": None,
+            "prefix": None,
+            "suffix": None,
+            "current_value": None,
+            "target_value": None
+        },
+        "transactions": [],
+        "vouchers": [],
+        "card": {
+            "barcode": None,
+            "barcode_type": 0,
+            "card_number": "6333333365432156789",
+            "colour": "#d50724",
+            "text_colour": "#00FF00"
+        },
+        "reward_available": False,
+    },
 }
 
 Join_Scheme_status = (
