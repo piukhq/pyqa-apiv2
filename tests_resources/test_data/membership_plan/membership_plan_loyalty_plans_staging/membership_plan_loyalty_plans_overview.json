@@ -42,26 +42,26 @@
         ]
     },
     {
-        "loyalty_plan_id": 286,
-        "is_in_wallet": false,
-        "plan_name": "SquareMeal Restaurant Rewards",
-        "company_name": "SquareMeal",
-        "plan_popularity": null,
-        "plan_type": 2,
-        "colour": "#465560",
-        "text_colour": null,
-        "category": "Food & Drink",
-        "images": [
-            {
-                "id": 1328,
-                "type": 3,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
-                "description": "SquareMeal Icon",
-                "encoding": "png",
-                "order": 0
-            }
-        ]
-    },
+		"loyalty_plan_id": 286,
+		"is_in_wallet": false,
+		"plan_name": "SquareMeal Restaurant Rewards",
+		"company_name": "SquareMeal",
+		"plan_popularity": null,
+		"plan_type": 2,
+		"colour": "#465560",
+		"text_colour": "#FFFFFF",
+		"category": "Food & Drink",
+		"images": [
+			{
+				"id": 1328,
+				"type": 3,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
+				"description": "SquareMeal Icon",
+				"encoding": "png",
+				"order": 0
+			}
+		]
+	},
     {
         "loyalty_plan_id": 288,
         "is_in_wallet": false,
