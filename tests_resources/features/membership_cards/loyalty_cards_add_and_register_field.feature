@@ -92,7 +92,7 @@ Feature: Add and register a loyalty card
     And I perform POST request add and register for <merchant>
     And I perform GET 'Wallet'
     Then Verify 'Wallet' fields for <merchant> with registration_success
-    And I am in Bink channel to get b2b token for second user
+    When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request add_and_register again for <merchant>
     Then I see a <status_code_returned>

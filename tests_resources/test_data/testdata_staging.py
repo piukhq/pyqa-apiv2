@@ -1566,7 +1566,7 @@ register_scheme_status = {
             "barcode_type": 0,
             "card_number": "6332040065432156789",
             "colour": "#d50724",
-            "text_colour": "#00FF00"
+            "text_colour": "#FFFFFF"
         },
         "reward_available": False,
     },
@@ -1583,7 +1583,7 @@ register_scheme_status = {
             "description": None
         },
         "balance": {
-            "updated_at": 1662999593,
+            # "updated_at": 1662999593,
             "current_display_value": "£0",
             "loyalty_currency_name": "GBP",
             "prefix": "£",
@@ -1594,11 +1594,11 @@ register_scheme_status = {
         "transactions": [],
         "vouchers": [],
         "card": {
-            "barcode": "63320400739573552780080",
+            # "barcode": "63320400739573552780080",
             "barcode_type": 0,
-            "card_number": "6332040073957355278",
+            # "card_number": "6332040073957355278",
             "colour": "#d50724",
-            "text_colour": "#00FF00"
+            "text_colour": "#FFFFFF"
         },
         "reward_available": False,
     },
@@ -1630,14 +1630,14 @@ register_scheme_status = {
             "barcode_type": 0,
             "card_number": "6333333365432156789",
             "colour": "#d50724",
-            "text_colour": "#00FF00"
+            "text_colour": "#FFFFFF"
         },
         "reward_available": False,
     },
 }
 
-Join_Scheme_status = (
-    {
+Join_Scheme_status = {
+
         "join_success": {
             # "id": 193506,
             "loyalty_plan_id": 105,
@@ -1662,7 +1662,7 @@ Join_Scheme_status = (
                 "barcode_type": 0,
                 # "card_number": "6332040032160399315",
                 "colour": "#d50724",
-                "text_colour": "#00FF00",
+                "text_colour": "#FFFFFF",
             },
             "reward_available": False,
             "images": [
@@ -1754,11 +1754,11 @@ Join_Scheme_status = (
                 "barcode_type": 0,
                 "card_number": None,
                 "colour": "#d50724",
-                "text_colour": "#00FF00",
+                "text_colour": "#FFFFFF",
             },
         },
         "asynchronous_join_in_progress": {
-            "loyalty_card_id": 193506,
+            # "loyalty_card_id": 193506,
             "loyalty_plan_id": 105,
             "loyalty_plan_name": "Iceland Bonus Card",
             "status": {"state": "pending", "slug": "JOIN_IN_PROGRESS", "description": None},
@@ -1767,7 +1767,7 @@ Join_Scheme_status = (
                 "barcode_type": 0,
                 "card_number": None,
                 "colour": "#d50724",
-                "text_colour": "#00FF00",
+                "text_colour": "#FFFFFF",
             },
         },
         "account_already_exists": {
@@ -1799,7 +1799,7 @@ Join_Scheme_status = (
                 "barcode_type": 0,
                 "card_number": None,
                 "colour": "#d50724",
-                "text_colour": "#00FF00",
+                "text_colour": "#FFFFFF",
             },
             "reward_available": False,
         },
@@ -1812,5 +1812,4 @@ Join_Scheme_status = (
                 "encoding": "png",
             }
         ],
-    },
-)
+    }
