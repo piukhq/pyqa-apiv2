@@ -8,7 +8,7 @@
 		"plan_type": 2,
 		"barcode_type": null,
 		"colour": "#ccd400",
-		"text_colour": "#7289da",
+		"text_colour": "#000000",
 		"journeys": [
 			{
 				"type": 0,
@@ -26,20 +26,12 @@
 	},
 	"images": [
 		{
-			"id": 1319,
-			"type": 2,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_5_CVAeqUv_naFzo9T.png",
-			"description": "Wasabi Test Offer",
+			"id": 1296,
+			"type": 0,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
+			"description": "Wasabi Hero",
 			"encoding": "png",
-			"order": 1
-		},
-		{
-			"id": 1324,
-			"type": 7,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Promo_1968x732.png",
-			"description": "Wasabi Promotion 1",
-			"encoding": "png",
-			"order": 0
+			"order": 5
 		},
 		{
 			"id": 1298,
@@ -50,18 +42,26 @@
 			"order": 0
 		},
 		{
-			"id": 1296,
-			"type": 0,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
-			"description": "Wasabi Hero",
+			"id": 1319,
+			"type": 2,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_5_CVAeqUv_naFzo9T.png",
+			"description": "Wasabi Test Offer",
 			"encoding": "png",
-			"order": 5
+			"order": 1
 		},
 		{
 			"id": 1297,
 			"type": 3,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
 			"description": "Wasabi Icon",
+			"encoding": "png",
+			"order": 0
+		},
+		{
+			"id": 1324,
+			"type": 7,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Promo_1968x732.png",
+			"description": "Wasabi Promotion 1",
 			"encoding": "png",
 			"order": 0
 		}
@@ -71,8 +71,8 @@
 		"plan_name": "Wasabi Club",
 		"plan_label": "Card",
 		"plan_url": "https://www.wasabi.uk.com",
-		"plan_summary": "Collect 7 stamps for a \u00a37 OFF Meal Voucher. One stamp can be earned per customer per transaction when the qualifying spend in a single transaction for food & drink purchases totals \u00a37.00 or more in a participating Wasabi store. Ts and Cs apply.",
-		"plan_description": "Please note that your vouchers are single-use and cannot be used twice. Show your Wasabi Club reward code in store to redeem \u00a37 off your next meal.\r\nThe voucher will be available to redeem 2 months from the date it is collected. This voucher is non-refundable and cannot be exchanged for cash in part or full and is valid for a single transaction only.",
+		"plan_summary": "Collect 7 stamps for a £7 OFF Meal Voucher. One stamp can be earned per customer per transaction when the qualifying spend in a single transaction for food & drink purchases totals £7.00 or more in a participating Wasabi store. Ts and Cs apply.",
+		"plan_description": "Please note that your vouchers are single-use and cannot be used twice. Show your Wasabi Club reward code in store to redeem £7 off your next meal.\r\nThe voucher will be available to redeem 2 months from the date it is collected. This voucher is non-refundable and cannot be exchanged for cash in part or full and is valid for a single transaction only.",
 		"redeem_instructions": null,
 		"plan_register_info": null,
 		"join_incentive": null,
@@ -147,7 +147,14 @@
 					"is_acceptance_required": true
 				}
 			],
-			"consents": []
+			"consents": [
+				{
+					"order": 8,
+					"consent_slug": "EmailOptin",
+					"is_acceptance_required": false,
+					"description": "Check this box to receive the latest news and offers from Wasabi - if you change your mind, you can opt out anytime via the retailer."
+				}
+			]
 		},
 		"register_ghost_card_fields": null,
 		"add_fields": {
@@ -189,32 +196,32 @@
 	},
 	"content": [
 		{
+			"column": "Voucher_Expired_Detail",
+			"value": "Your FREE meal voucher has expired."
+		},
+		{
+			"column": "Promo_Text_1",
+			"value": "EVERYONE GETS £7 OFF IN WASABI CLUB!"
+		},
+		{
 			"column": "Voucher_Issued_Detail",
-			"value": "Show your Wasabi Club reward code in store to redeem \u00a37 off your next meal."
+			"value": "Show your Wasabi Club reward code in store to redeem £7 off your next meal."
 		},
 		{
 			"column": "Enrol_Help_Text",
-			"value": "Please enter your details to register with the retailer. We won\u2019t save or store any of the information you provide or edit."
+			"value": "Please enter your details to register with the retailer. We won’t save or store any of the information you provide or edit."
 		},
 		{
 			"column": "Voucher_Inprogress_Detail",
-			"value": "Spend \u00a37.00 or more to get a stamp. Collect 7 stamps to get a Meal Voucher of up to \u00a37 off your next meal."
-		},
-		{
-			"column": "Voucher_Cancelled_Detail",
-			"value": "Your\u00a0voucher\u00a0has\u00a0been\u00a0cancelled. If you believe we have made a mistake please contact enquiries@wasabi.uk.com."
+			"value": "Spend £7.00 or more to get a stamp. Collect 7 stamps to get a Meal Voucher of up to £7 off your next meal."
 		},
 		{
 			"column": "Voucher_Redeemed_Detail",
 			"value": "Your FREE meal voucher was redeemed."
 		},
 		{
-			"column": "Voucher_Expired_Detail",
-			"value": "Your FREE meal voucher has expired."
-		},
-		{
-			"column": "Promo_Text_1",
-			"value": "EVERYONE GETS \u00a37 OFF IN WASABI CLUB!"
+			"column": "Voucher_Cancelled_Detail",
+			"value": "Your voucher has been cancelled. If you believe we have made a mistake please contact enquiries@wasabi.uk.com."
 		}
 	]
 }
