@@ -3,8 +3,8 @@
 	"plan_name": "SquareMeal Restaurant Rewards",
 	"plan_label": "Account",
 	"plan_url": "https://www.squaremeal.co.uk/rewards/",
-	"plan_summary": "With SquareMeal, you're rewarded for eating out. Go to our website, book selected restaurants, and you'll collect points every time you spend \u00a320 or more. You can easily redeem points on our website for restaurant vouchers & luxury gifts.",
-	"plan_description": "Join SquareMeal Rewards today to make your next dinner even more rewarding. As a member, you'll earn points for booking tables, leaving restaurant reviews, and each time you spend \u00a320 or more in one of our selected restaurants with your linked payment cards. 100 points = \u00a31 spend on your choice of restaurant vouchers, luxury gifts, or charity donations. To book a table or redeem rewards, simply go to our website.",
+	"plan_summary": "With SquareMeal, you're rewarded for eating out. Go to our website, book selected restaurants, and you'll collect points every time you spend £20 or more. You can easily redeem points on our website for restaurant vouchers & luxury gifts.",
+	"plan_description": "Join SquareMeal Rewards today to make your next dinner even more rewarding. As a member, you'll earn points for booking tables, leaving restaurant reviews, and each time you spend £20 or more in one of our selected restaurants with your linked payment cards. 100 points = £1 spend on your choice of restaurant vouchers, luxury gifts, or charity donations. To book a table or redeem rewards, simply go to our website.",
 	"redeem_instructions": null,
 	"plan_register_info": null,
 	"join_incentive": null,
@@ -15,12 +15,12 @@
 			"description": "Bronze"
 		},
 		{
-			"name": "Tier 2",
-			"description": "Silver"
-		},
-		{
 			"name": "Tier 3",
 			"description": "Gold"
+		},
+		{
+			"name": "Tier 2",
+			"description": "Silver"
 		}
 	],
 	"images": [
