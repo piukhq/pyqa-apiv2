@@ -1,46 +1,46 @@
 [
     {
-        "loyalty_plan_id": 105,
-        "is_in_wallet": false,
-        "plan_name": "Iceland Bonus Card",
-        "company_name": "Iceland",
-        "plan_popularity": 1,
-        "plan_type": 2,
-        "colour": "#d50724",
-        "text_colour": "#00FF00",
-        "category": "Household",
-        "images": [
-            {
-                "id": 374,
-                "type": 3,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
-                "description": "Iceland Icon",
-                "encoding": "png",
-                "order": 0
-            }
-        ]
-    },
+		"loyalty_plan_id": 105,
+		"is_in_wallet": false,
+		"plan_name": "Iceland Bonus Card",
+		"company_name": "Iceland",
+		"plan_popularity": 1,
+		"plan_type": 2,
+		"colour": "#d50724",
+		"text_colour": "#FFFFFF",
+		"category": "Household",
+		"images": [
+			{
+				"id": 374,
+				"type": 3,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
+				"description": "Iceland Icon",
+				"encoding": "png",
+				"order": 0
+			}
+		]
+	},
     {
-        "loyalty_plan_id": 281,
-        "is_in_wallet": false,
-        "plan_name": "Wasabi Club",
-        "company_name": "Wasabi",
-        "plan_popularity": 3,
-        "plan_type": 2,
-        "colour": "#ccd400",
-        "text_colour": "#7289da",
-        "category": "Food & Drink",
-        "images": [
-            {
-                "id": 1297,
-                "type": 3,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
-                "description": "Wasabi Icon",
-                "encoding": "png",
-                "order": 0
-            }
-        ]
-    },
+		"loyalty_plan_id": 281,
+		"is_in_wallet": false,
+		"plan_name": "Wasabi Club",
+		"company_name": "Wasabi",
+		"plan_popularity": 3,
+		"plan_type": 2,
+		"colour": "#ccd400",
+		"text_colour": "#000000",
+		"category": "Food & Drink",
+		"images": [
+			{
+				"id": 1297,
+				"type": 3,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
+				"description": "Wasabi Icon",
+				"encoding": "png",
+				"order": 0
+			}
+		]
+	},
     {
 		"loyalty_plan_id": 286,
 		"is_in_wallet": false,
@@ -63,26 +63,26 @@
 		]
 	},
     {
-        "loyalty_plan_id": 288,
-        "is_in_wallet": false,
-        "plan_name": "ASOS EXTRA",
-        "company_name": "ASOS",
-        "plan_popularity": 4,
-        "plan_type": 2,
-        "colour": "#000000",
-        "text_colour": "#FFFFFF",
-        "category": "Retail",
-        "images": [
-            {
-                "id": 1399,
-                "type": 3,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/App_icon.png",
-                "description": "ASOS icon",
-                "encoding": "png",
-                "order": 0
-            }
-        ]
-    },
+		"loyalty_plan_id": 288,
+		"is_in_wallet": false,
+		"plan_name": "ASOS EXTRA",
+		"company_name": "ASOS",
+		"plan_popularity": 4,
+		"plan_type": 2,
+		"colour": "#000000",
+		"text_colour": "#FFFFFF",
+		"category": "Retail",
+		"images": [
+			{
+				"id": 1399,
+				"type": 3,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/App_icon.png",
+				"description": "ASOS icon",
+				"encoding": "png",
+				"order": 0
+			}
+		]
+	},
     {
         "loyalty_plan_id": 284,
         "is_in_wallet": false,

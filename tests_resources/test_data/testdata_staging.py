@@ -157,7 +157,7 @@ square_meal_membership_card = {
 wallet_info = {
     "Wasabi": [
         {
-            # "id": 149652,
+            # "id": 205105,
             "loyalty_plan_id": 281,
             "loyalty_plan_name": "Wasabi Club",
             "is_fully_pll_linked": True,
@@ -165,7 +165,7 @@ wallet_info = {
             "total_payment_accounts": 1,
             "status": {"state": "authorised", "slug": None, "description": None},
             "balance": {
-                # "updated_at": 1649424631,
+                # "updated_at": 1663164498,
                 "current_display_value": "6 stamps",
                 "loyalty_currency_name": "stamps",
                 "prefix": None,
@@ -175,13 +175,13 @@ wallet_info = {
             },
             "transactions": [
                 {
-                    # "id": "318120",
+                    # "id": "446780",
                     "timestamp": 1638356401,
                     "description": "Ascot 1 Petty Cury £8.00",
                     "display_value": "1 stamps",
                 },
                 {
-                    # "id": "318121",
+                    # "id": "446781",
                     "timestamp": 1635854462,
                     "description": "Ascot 2 Petty Cury £15.60",
                     "display_value": "1 stamps",
@@ -201,7 +201,8 @@ wallet_info = {
                     "target_value": "7",
                     "prefix": None,
                     "suffix": "stamps",
-                    "body_text": "In progress body text",
+                    "body_text": "Spend £7.00 or more to get a stamp. Collect 7 stamps to get a Meal "
+                    "Voucher of up to £7 off your next meal.",
                     "terms_and_conditions": "https://policies.staging.gb.bink.com/wasabi/tc.html",
                     "issued_date": None,
                     "expiry_date": None,
@@ -219,7 +220,7 @@ wallet_info = {
                     "target_value": "7",
                     "prefix": None,
                     "suffix": "stamps",
-                    "body_text": "Issued body text",
+                    "body_text": "Show your Wasabi Club reward code in store to redeem £7 off your next meal.",
                     "terms_and_conditions": "https://policies.staging.gb.bink.com/wasabi/tc.html",
                     "issued_date": "1591787076",
                     "expiry_date": "1673308800",
@@ -231,7 +232,7 @@ wallet_info = {
                 "barcode_type": None,
                 "card_number": "1048172852",
                 "colour": "#ccd400",
-                "text_colour": "#7289da",
+                "text_colour": "#000000",
             },
             "reward_available": True,
             "images": [
@@ -330,7 +331,7 @@ wallet_info = {
                 "barcode_type": 0,
                 "card_number": "6332040000000000007",
                 "colour": "#d50724",
-                "text_colour": "#00FF00",
+                "text_colour": "#FFFFFF",
             },
             "reward_available": False,
             "images": [
@@ -614,7 +615,7 @@ wallet_info = {
 wallet_overview_info = {
     "Wasabi": [
         {
-            # "id": 154316,
+            # "id": 205105,
             "loyalty_plan_id": 281,
             "loyalty_plan_name": "Wasabi Club",
             "is_fully_pll_linked": True,
@@ -622,7 +623,7 @@ wallet_overview_info = {
             "total_payment_accounts": 1,
             "status": {"state": "authorised", "slug": None, "description": None},
             "balance": {
-                # "updated_at": 1651055796,
+                # "updated_at": 1663164498,
                 "current_display_value": "6 stamps",
                 "loyalty_currency_name": "stamps",
                 "prefix": None,
@@ -635,7 +636,7 @@ wallet_overview_info = {
                 "barcode_type": None,
                 "card_number": "1048172852",
                 "colour": "#ccd400",
-                "text_colour": "#7289da",
+                "text_colour": "#000000",
             },
             "reward_available": True,
             "images": [
@@ -672,7 +673,7 @@ wallet_overview_info = {
                 "barcode_type": 0,
                 "card_number": "6332040000000000007",
                 "colour": "#d50724",
-                "text_colour": "#00FF00",
+                "text_colour": "#FFFFFF",
             },
             "reward_available": False,
             "images": [
@@ -750,7 +751,7 @@ wallet_overview_info = {
 
 wallet_info_by_card_id = {
     "Wasabi": {
-        # "id": 149653,
+        # "id": 205105,
         "loyalty_plan_id": 281,
         "loyalty_plan_name": "Wasabi Club",
         "is_fully_pll_linked": True,
@@ -758,7 +759,7 @@ wallet_info_by_card_id = {
         "total_payment_accounts": 1,
         "status": {"state": "authorised", "slug": None, "description": None},
         "balance": {
-            # "updated_at": 1649425854,
+            # "updated_at": 1663164498,
             "current_display_value": "6 stamps",
             "loyalty_currency_name": "stamps",
             "prefix": None,
@@ -768,13 +769,13 @@ wallet_info_by_card_id = {
         },
         "transactions": [
             {
-                # "id": "318122",
+                # "id": "446780",
                 "timestamp": 1638356401,
                 "description": "Ascot 1 Petty Cury £8.00",
                 "display_value": "1 stamps",
             },
             {
-                # "id": "318123",
+                # "id": "446781",
                 "timestamp": 1635854462,
                 "description": "Ascot 2 Petty Cury £15.60",
                 "display_value": "1 stamps",
@@ -794,7 +795,8 @@ wallet_info_by_card_id = {
                 "target_value": "7",
                 "prefix": None,
                 "suffix": "stamps",
-                "body_text": "In progress body text",
+                "body_text": "Spend £7.00 or more to get a stamp. Collect 7 stamps to get a Meal "
+                "Voucher of up to £7 off your next meal.",
                 "terms_and_conditions": "https://policies.staging.gb.bink.com/wasabi/tc.html",
                 "issued_date": None,
                 "expiry_date": None,
@@ -812,7 +814,7 @@ wallet_info_by_card_id = {
                 "target_value": "7",
                 "prefix": None,
                 "suffix": "stamps",
-                "body_text": "Issued body text",
+                "body_text": "Show your Wasabi Club reward code in store to redeem £7 off your next meal.",
                 "terms_and_conditions": "https://policies.staging.gb.bink.com/wasabi/tc.html",
                 "issued_date": "1591787076",
                 "expiry_date": "1673308800",
@@ -824,7 +826,7 @@ wallet_info_by_card_id = {
             "barcode_type": None,
             "card_number": "1048172852",
             "colour": "#ccd400",
-            "text_colour": "#7289da",
+            "text_colour": "#000000",
         },
         "reward_available": True,
         "images": [
@@ -920,7 +922,7 @@ wallet_info_by_card_id = {
             "barcode_type": 0,
             "card_number": "6332040000000000007",
             "colour": "#d50724",
-            "text_colour": "#00FF00",
+            "text_colour": "#FFFFFF",
         },
         "reward_available": False,
         "images": [
@@ -1149,7 +1151,7 @@ unauth_wallet_info = {
                 "barcode_type": None,
                 "card_number": "1048175295",
                 "colour": "#ccd400",
-                "text_colour": "#7289da",
+                "text_colour": "#000000",
             },
             "reward_available": False,
             "images": [
@@ -1311,7 +1313,7 @@ unauth_wallet_overview_info = {
                 "barcode_type": None,
                 "card_number": "1048175295",
                 "colour": "#ccd400",
-                "text_colour": "#7289da",
+                "text_colour": "#000000",
             },
             "reward_available": False,
             "images": [
@@ -1434,7 +1436,7 @@ unauth_wallet_info_by_card_id = {
             "barcode_type": None,
             "card_number": "1048175295",
             "colour": "#ccd400",
-            "text_colour": "#7289da",
+            "text_colour": "#000000",
         },
         "reward_available": False,
         "images": [
@@ -1639,7 +1641,7 @@ register_scheme_status = {
 Join_Scheme_status = {
 
         "join_success": {
-            # "id": 193506,
+            # "id": 205106,
             "loyalty_plan_id": 105,
             "loyalty_plan_name": "Iceland Bonus Card",
             "is_fully_pll_linked": False,
@@ -1647,7 +1649,7 @@ Join_Scheme_status = {
             "total_payment_accounts": 0,
             "status": {"state": "authorised", "slug": None, "description": None},
             "balance": {
-                # "updated_at": 1660576410,
+                # "updated_at": 1663165070,
                 "current_display_value": "£0",
                 "loyalty_currency_name": "GBP",
                 "prefix": "£",
@@ -1658,9 +1660,9 @@ Join_Scheme_status = {
             "transactions": [],
             "vouchers": [],
             "card": {
-                # "barcode": "63320400321603993150080",
+                # "barcode": "63320400569935736110080",
                 "barcode_type": 0,
-                # "card_number": "6332040032160399315",
+                # "card_number": "6332040056993573611",
                 "colour": "#d50724",
                 "text_colour": "#FFFFFF",
             },
