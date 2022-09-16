@@ -12,9 +12,9 @@ Feature: View Wallet
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET 'Wallet'
+    And I perform GET Wallet
     Then I see a <status_code_returned>
-    And All 'Wallet' fields are correctly populated for <merchant>
+    And All Wallet fields are correctly populated for <merchant>
 
     Examples:
       | merchant      | status_code_returned|payment_card_provider|
@@ -27,7 +27,7 @@ Feature: View Wallet
   Scenario Outline: Verify invalid token scenario for get Wallet
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
-    And I perform GET request to view 'Wallet' with <invalid>
+    And I perform GET request with <invalid> to view Wallet
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
@@ -42,7 +42,7 @@ Feature: View Wallet
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET 'Wallet'
+    And I perform GET Wallet
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' for loyalty card PLL links in the Wallet
     And I can see '<state>','<slug>' and '<description>' for payment accounts PLL links in the Wallet
@@ -57,7 +57,7 @@ Feature: View Wallet
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a duplicate "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET 'Wallet'
+    And I perform GET Wallet
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' for loyalty card PLL links in the Wallet
     And I can see '<state>','<slug>' and '<description>' for payment accounts PLL links in the Wallet
@@ -72,7 +72,7 @@ Feature: View Wallet
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
-    And I perform GET 'Wallet'
+    And I perform GET Wallet
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' for loyalty card PLL links in the Wallet
     And I can see '<state>','<slug>' and '<description>' for payment accounts PLL links in the Wallet
@@ -87,7 +87,7 @@ Feature: View Wallet
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a duplicate "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
-    And I perform GET 'Wallet'
+    And I perform GET Wallet
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' for loyalty card PLL links in the Wallet
     And I can see '<state>','<slug>' and '<description>' for payment accounts PLL links in the Wallet
@@ -107,7 +107,7 @@ Feature: View Wallet
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET 'Wallet'
+    And I perform GET Wallet
     Then I see a <status_code_returned>
     And I can see '<state1>','<state2>','<slug1>','<slug2>','<description1>' and '<description2>' for loyalty card PLL links in the Wallet
     And I can see '<state1>','<state2>','<slug1>','<slug2>','<description1>' and '<description2>' for payment accounts PLL links in the Wallet
@@ -124,12 +124,12 @@ Feature: View Wallet
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform <scheme_state> POST request to join "<merchant>" membership card
-    And I perform GET 'Wallet'
+    And I perform GET Wallet
     Then I see a <status_code_returned>
-    And Verify 'Wallet' fields for <merchant> with <scheme_state>
+    And Verify Wallet fields for <merchant> with <scheme_state>
 
     Examples:
       | merchant| status_code_returned |  scheme_state         |
-      | Iceland | 200                  |  enrol_failed         |
+      | Iceland | 200                  |  enrol_failed        |
       | Iceland | 200                  |  join_success         |
       | Iceland | 200                  | asynchronous_join_in_progress |

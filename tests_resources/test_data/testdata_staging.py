@@ -1550,7 +1550,7 @@ register_scheme_status = {
         "status": {
             "state": "failed",
             "slug": "ACCOUNT_NOT_REGISTERED",
-            "description": "The Loyalty Card has not yet been registered. Please register the card with the retailer."
+            "description": "The Loyalty Card has not yet been registered. Please register the card with the retailer.",
         },
         "balance": {
             "updated_at": None,
@@ -1559,7 +1559,7 @@ register_scheme_status = {
             "prefix": None,
             "suffix": None,
             "current_value": None,
-            "target_value": None
+            "target_value": None,
         },
         "transactions": [],
         "vouchers": [],
@@ -1568,7 +1568,7 @@ register_scheme_status = {
             "barcode_type": 0,
             "card_number": "6332040065432156789",
             "colour": "#d50724",
-            "text_colour": "#FFFFFF"
+            "text_colour": "#FFFFFF",
         },
         "reward_available": False,
     },
@@ -1579,11 +1579,7 @@ register_scheme_status = {
         "is_fully_pll_linked": False,
         "pll_linked_payment_accounts": 0,
         "total_payment_accounts": 0,
-        "status": {
-            "state": "authorised",
-            "slug": None,
-            "description": None
-        },
+        "status": {"state": "authorised", "slug": None, "description": None},
         "balance": {
             # "updated_at": 1662999593,
             "current_display_value": "£0",
@@ -1591,7 +1587,7 @@ register_scheme_status = {
             "prefix": "£",
             "suffix": None,
             "current_value": "0",
-            "target_value": None
+            "target_value": None,
         },
         "transactions": [],
         "vouchers": [],
@@ -1600,7 +1596,7 @@ register_scheme_status = {
             "barcode_type": 0,
             # "card_number": "6332040073957355278",
             "colour": "#d50724",
-            "text_colour": "#FFFFFF"
+            "text_colour": "#FFFFFF",
         },
         "reward_available": False,
     },
@@ -1611,11 +1607,7 @@ register_scheme_status = {
         "is_fully_pll_linked": False,
         "pll_linked_payment_accounts": 0,
         "total_payment_accounts": 0,
-        "status": {
-            "state": "pending",
-            "slug": "REGISTRATION_IN_PROGRESS",
-            "description": None
-        },
+        "status": {"state": "pending", "slug": "REGISTRATION_IN_PROGRESS", "description": None},
         "balance": {
             "updated_at": None,
             "current_display_value": None,
@@ -1623,7 +1615,7 @@ register_scheme_status = {
             "prefix": None,
             "suffix": None,
             "current_value": None,
-            "target_value": None
+            "target_value": None,
         },
         "transactions": [],
         "vouchers": [],
@@ -1632,186 +1624,185 @@ register_scheme_status = {
             "barcode_type": 0,
             "card_number": "6333333365432156789",
             "colour": "#d50724",
-            "text_colour": "#FFFFFF"
+            "text_colour": "#FFFFFF",
         },
         "reward_available": False,
     },
 }
 
 Join_Scheme_status = {
-
-        "join_success": {
-            # "id": 205106,
-            "loyalty_plan_id": 105,
-            "loyalty_plan_name": "Iceland Bonus Card",
-            "is_fully_pll_linked": False,
-            "pll_linked_payment_accounts": 0,
-            "total_payment_accounts": 0,
-            "status": {"state": "authorised", "slug": None, "description": None},
-            "balance": {
-                # "updated_at": 1663165070,
-                "current_display_value": "£0",
-                "loyalty_currency_name": "GBP",
-                "prefix": "£",
-                "suffix": None,
-                "current_value": "0",
-                "target_value": None,
-            },
-            "transactions": [],
-            "vouchers": [],
-            "card": {
-                # "barcode": "63320400569935736110080",
-                "barcode_type": 0,
-                # "card_number": "6332040056993573611",
-                "colour": "#d50724",
-                "text_colour": "#FFFFFF",
-            },
-            "reward_available": False,
-            "images": [
-                {
-                    "id": 1289,
-                    "type": 9,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_MiyMk96.png",
-                    "description": "Iceland Alternative Hero Image",
-                    "encoding": "png",
-                },
-                {
-                    "id": 374,
-                    "type": 3,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
-                    "description": "Iceland Icon",
-                    "encoding": "png",
-                },
-                {
-                    "id": 373,
-                    "type": 4,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland-asset.png",
-                    "description": "Iceland Asset",
-                    "encoding": "png",
-                },
-                {
-                    "id": 1070,
-                    "type": 5,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_ref1.jpg",
-                    "description": "Iceland Reference",
-                    "encoding": "jpg",
-                },
-                {
-                    "id": 1071,
-                    "type": 5,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref2.jpg",
-                    "description": "Iceland Reference",
-                    "encoding": "jpg",
-                },
-                {
-                    "id": 1072,
-                    "type": 5,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref3.jpg",
-                    "description": "Iceland Reference",
-                    "encoding": "jpg",
-                },
-                {
-                    "id": 1234,
-                    "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
-                    "description": "Iceland Slimming World hero card",
-                    "encoding": "png",
-                },
-                {
-                    "id": 1303,
-                    "type": 2,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Greggs.jpg",
-                    "description": "Iceland Offer - Greggs",
-                    "encoding": "jpg",
-                },
-                {
-                    "id": 1302,
-                    "type": 2,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Pizza.jpg",
-                    "description": "Iceland Offer - Pizza",
-                    "encoding": "jpg",
-                },
-                {
-                    "id": 1398,
-                    "type": 7,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "PromotionsIcelandBonusCard1968x732.png",
-                    "description": "Promo_Text_1",
-                    "encoding": "png",
-                },
-            ],
+    "join_success": {
+        # "id": 205106,
+        "loyalty_plan_id": 105,
+        "loyalty_plan_name": "Iceland Bonus Card",
+        "is_fully_pll_linked": False,
+        "pll_linked_payment_accounts": 0,
+        "total_payment_accounts": 0,
+        "status": {"state": "authorised", "slug": None, "description": None},
+        "balance": {
+            # "updated_at": 1663165070,
+            "current_display_value": "£0",
+            "loyalty_currency_name": "GBP",
+            "prefix": "£",
+            "suffix": None,
+            "current_value": "0",
+            "target_value": None,
         },
-        "enrol_failed": {
-            # "loyalty_card_id": 193492,
-            "loyalty_plan_id": 105,
-            "loyalty_plan_name": "Iceland Bonus Card",
-            "status": {
-                "state": "failed",
-                "slug": "JOIN_FAILED",
-                "description": "The retailer has not been able to accept your request at this time. "
-                "Please remove the request and try again.",
-            },
-            "card": {
-                "barcode": None,
-                "barcode_type": 0,
-                "card_number": None,
-                "colour": "#d50724",
-                "text_colour": "#FFFFFF",
-            },
+        "transactions": [],
+        "vouchers": [],
+        "card": {
+            # "barcode": "63320400569935736110080",
+            "barcode_type": 0,
+            # "card_number": "6332040056993573611",
+            "colour": "#d50724",
+            "text_colour": "#FFFFFF",
         },
-        "asynchronous_join_in_progress": {
-            # "loyalty_card_id": 193506,
-            "loyalty_plan_id": 105,
-            "loyalty_plan_name": "Iceland Bonus Card",
-            "status": {"state": "pending", "slug": "JOIN_IN_PROGRESS", "description": None},
-            "card": {
-                "barcode": None,
-                "barcode_type": 0,
-                "card_number": None,
-                "colour": "#d50724",
-                "text_colour": "#FFFFFF",
+        "reward_available": False,
+        "images": [
+            {
+                "id": 1289,
+                "type": 9,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_MiyMk96.png",
+                "description": "Iceland Alternative Hero Image",
+                "encoding": "png",
             },
-        },
-        "account_already_exists": {
-            # "id": 200357,
-            "loyalty_plan_id": 105,
-            "loyalty_plan_name": "Iceland Bonus Card",
-            "is_fully_pll_linked": False,
-            "pll_linked_payment_accounts": 0,
-            "total_payment_accounts": 0,
-            "status": {
-                "state": "failed",
-                "slug": "ACCOUNT_ALREADY_EXISTS",
-                "description": "A Loyalty Card matching the entered credentials already exists. "
-                "Please add this Loyalty Card to your wallet.",
+            {
+                "id": 374,
+                "type": 3,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
+                "description": "Iceland Icon",
+                "encoding": "png",
             },
-            "balance": {
-                "updated_at": None,
-                "current_display_value": None,
-                "loyalty_currency_name": None,
-                "prefix": None,
-                "suffix": None,
-                "current_value": None,
-                "target_value": None,
+            {
+                "id": 373,
+                "type": 4,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland-asset.png",
+                "description": "Iceland Asset",
+                "encoding": "png",
             },
-            "transactions": [],
-            "vouchers": [],
-            "card": {
-                "barcode": None,
-                "barcode_type": 0,
-                "card_number": None,
-                "colour": "#d50724",
-                "text_colour": "#FFFFFF",
+            {
+                "id": 1070,
+                "type": 5,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_ref1.jpg",
+                "description": "Iceland Reference",
+                "encoding": "jpg",
             },
-            "reward_available": False,
-        },
-        "wallet_overview_image": [
+            {
+                "id": 1071,
+                "type": 5,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref2.jpg",
+                "description": "Iceland Reference",
+                "encoding": "jpg",
+            },
+            {
+                "id": 1072,
+                "type": 5,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref3.jpg",
+                "description": "Iceland Reference",
+                "encoding": "jpg",
+            },
             {
                 "id": 1234,
                 "type": 0,
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
                 "description": "Iceland Slimming World hero card",
                 "encoding": "png",
-            }
+            },
+            {
+                "id": 1303,
+                "type": 2,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Greggs.jpg",
+                "description": "Iceland Offer - Greggs",
+                "encoding": "jpg",
+            },
+            {
+                "id": 1302,
+                "type": 2,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Pizza.jpg",
+                "description": "Iceland Offer - Pizza",
+                "encoding": "jpg",
+            },
+            {
+                "id": 1398,
+                "type": 7,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                "PromotionsIcelandBonusCard1968x732.png",
+                "description": "Promo_Text_1",
+                "encoding": "png",
+            },
         ],
-    }
+    },
+    "enrol_failed": {
+        # "loyalty_card_id": 193492,
+        "loyalty_plan_id": 105,
+        "loyalty_plan_name": "Iceland Bonus Card",
+        "status": {
+            "state": "failed",
+            "slug": "JOIN_FAILED",
+            "description": "The retailer has not been able to accept your request at this time. "
+            "Please remove the request and try again.",
+        },
+        "card": {
+            "barcode": None,
+            "barcode_type": 0,
+            "card_number": None,
+            "colour": "#d50724",
+            "text_colour": "#FFFFFF",
+        },
+    },
+    "asynchronous_join_in_progress": {
+        # "loyalty_card_id": 193506,
+        "loyalty_plan_id": 105,
+        "loyalty_plan_name": "Iceland Bonus Card",
+        "status": {"state": "pending", "slug": "JOIN_IN_PROGRESS", "description": None},
+        "card": {
+            "barcode": None,
+            "barcode_type": 0,
+            "card_number": None,
+            "colour": "#d50724",
+            "text_colour": "#FFFFFF",
+        },
+    },
+    "account_already_exists": {
+        # "id": 200357,
+        "loyalty_plan_id": 105,
+        "loyalty_plan_name": "Iceland Bonus Card",
+        "is_fully_pll_linked": False,
+        "pll_linked_payment_accounts": 0,
+        "total_payment_accounts": 0,
+        "status": {
+            "state": "failed",
+            "slug": "ACCOUNT_ALREADY_EXISTS",
+            "description": "A Loyalty Card matching the entered credentials already exists. "
+            "Please add this Loyalty Card to your wallet.",
+        },
+        "balance": {
+            "updated_at": None,
+            "current_display_value": None,
+            "loyalty_currency_name": None,
+            "prefix": None,
+            "suffix": None,
+            "current_value": None,
+            "target_value": None,
+        },
+        "transactions": [],
+        "vouchers": [],
+        "card": {
+            "barcode": None,
+            "barcode_type": 0,
+            "card_number": None,
+            "colour": "#d50724",
+            "text_colour": "#FFFFFF",
+        },
+        "reward_available": False,
+    },
+    "wallet_overview_image": [
+        {
+            "id": 1234,
+            "type": 0,
+            "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
+            "description": "Iceland Slimming World hero card",
+            "encoding": "png",
+        }
+    ],
+}

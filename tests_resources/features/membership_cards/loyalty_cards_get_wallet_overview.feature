@@ -11,7 +11,7 @@ Feature: Overview of wallet information
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I perform GET 'Wallet_overview'
+    And I perform GET Wallet_overview
     Then I see a <status_code_returned>
     And All 'Wallet_overview' fields are correctly populated for <merchant>
 
@@ -31,7 +31,7 @@ Feature: Overview of wallet information
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I perform GET 'Wallet_overview'
+    And I perform GET Wallet_overview
     Then I see a <status_code_returned>
     And I see <pll_linked_payment_accounts>,<total_payment_accounts> and <is_fully_pll_linked>
     And I perform DELETE request to delete all the payment cards
@@ -50,7 +50,7 @@ Feature: Overview of wallet information
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add a invalid_card_detail "<payment_card_provider>" payment account to wallet
-    And I perform GET 'Wallet_overview'
+    And I perform GET Wallet_overview
     Then I see a <status_code_returned>
     And I see <pll_linked_payment_accounts>,<total_payment_accounts> and <is_fully_pll_linked>
     And I perform DELETE request to delete all the payment cards
@@ -69,7 +69,7 @@ Feature: Overview of wallet information
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I perform GET 'Wallet_overview'
+    And I perform GET Wallet_overview
     Then I see a <status_code_returned>
     And I see <pll_linked_payment_accounts>,<total_payment_accounts> and <is_fully_pll_linked>
     And I perform DELETE request to delete all the payment cards
@@ -100,7 +100,7 @@ Feature: Overview of wallet information
   Scenario Outline: Verify invalid token scenario for get Wallet overview
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
-    And I perform GET request to view 'Wallet_overview' with <invalid>
+    And I perform GET request with <invalid> to view Wallet_overview
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
@@ -116,9 +116,9 @@ Feature: Overview of wallet information
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform <scheme_state> POST request to join "<merchant>" membership card
-    And I perform GET 'Wallet_overview'
+    And I perform GET Wallet_overview
     Then I see a <status_code_returned>
-    And Verify 'Wallet_overview' fields for <merchant> with <scheme_state>
+    And Verify Wallet_overview fields for <merchant> with <scheme_state>
     And I perform DELETE request to delete user successfully
 
     Examples:

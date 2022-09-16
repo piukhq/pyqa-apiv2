@@ -12,9 +12,9 @@ Feature: View Wallet by loyalty card id
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET 'Wallet_by_card_id'
+    And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
-    And All 'Wallet_by_card_id' fields are correctly populated for <merchant>
+    And All Wallet_by_card_id fields are correctly populated for <merchant>
 
     Examples:
       | merchant      | status_code_returned|payment_card_provider|
@@ -28,7 +28,7 @@ Feature: View Wallet by loyalty card id
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET request to view 'Wallet_by_card_id' with <invalid>
+    And I perform GET request with <invalid> to view Wallet_by_card_id
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
@@ -44,7 +44,7 @@ Feature: View Wallet by loyalty card id
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET 'Wallet_by_card_id'
+    And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
 
@@ -58,7 +58,7 @@ Feature: View Wallet by loyalty card id
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a duplicate "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET 'Wallet_by_card_id'
+    And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
 
@@ -72,7 +72,7 @@ Feature: View Wallet by loyalty card id
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
-    And I perform GET 'Wallet_by_card_id'
+    And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
 
@@ -86,7 +86,7 @@ Feature: View Wallet by loyalty card id
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a duplicate "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
-    And I perform GET 'Wallet_by_card_id'
+    And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
 
@@ -105,7 +105,7 @@ Feature: View Wallet by loyalty card id
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET 'Wallet_by_card_id'
+    And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
     And I perform DELETE request to delete the first wallet "<merchant>" membership card

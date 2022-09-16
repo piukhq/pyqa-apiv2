@@ -12,15 +12,15 @@ Feature: View Wallet by LC id in different channel
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET 'Wallet_by_card_id'
+    And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
-    And All 'Wallet_by_card_id' fields are correctly populated for <merchant>
+    And All Wallet_by_card_id fields are correctly populated for <merchant>
     Given I am a Lloyds user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET 'Wallet_by_card_id'
+    And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
-    And All 'Wallet_by_card_id' fields are correctly populated for <merchant>
+    And All Wallet_by_card_id fields are correctly populated for <merchant>
 
 
     Examples:
@@ -36,13 +36,13 @@ Feature: View Wallet by LC id in different channel
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
-    And I perform GET 'Wallet_by_card_id'
+    And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And Wallet_by_card_id fields are correctly populated for unauthorised LC of <merchant>
     Given I am a Lloyds user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
-    And I perform GET 'Wallet_by_card_id'
+    And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And Wallet_by_card_id fields are correctly populated for unauthorised LC of <merchant>
 
@@ -60,16 +60,16 @@ Feature: View Wallet by LC id in different channel
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET 'Wallet_by_card_id'
+    And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
-    And All 'Wallet_by_card_id' fields are correctly populated for <merchant>
+    And All Wallet_by_card_id fields are correctly populated for <merchant>
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET 'Wallet_by_card_id'
+    And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
-    And All 'Wallet_by_card_id' fields are correctly populated for <merchant>
+    And All Wallet_by_card_id fields are correctly populated for <merchant>
 
 
     Examples:
@@ -85,14 +85,14 @@ Feature: View Wallet by LC id in different channel
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET 'Wallet_by_card_id'
+    And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
-    And All 'Wallet_by_card_id' fields are correctly populated for <merchant>
+    And All Wallet_by_card_id fields are correctly populated for <merchant>
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
-    And I perform GET 'Wallet_by_card_id'
+    And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And Wallet_by_card_id fields are correctly populated for unauthorised LC of <merchant>
 
@@ -110,16 +110,16 @@ Feature: View Wallet by LC id in different channel
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
-    And I perform GET 'Wallet_by_card_id'
+    And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And Wallet_by_card_id fields are correctly populated for unauthorised LC of <merchant>
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET 'Wallet_by_card_id'
+    And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
-    And All 'Wallet_by_card_id' fields are correctly populated for <merchant>
+    And All Wallet_by_card_id fields are correctly populated for <merchant>
 
 
     Examples:
@@ -134,14 +134,14 @@ Feature: View Wallet by LC id in different channel
     Given I am a Lloyds user
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
-    And I perform GET 'Wallet_by_card_id'
+    And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And Wallet_by_card_id fields are correctly populated for unauthorised LC of <merchant>
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET 'Wallet_by_card_id'
+    And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And All 'Wallet_by_card_id' fields are correctly populated for <merchant>
 
