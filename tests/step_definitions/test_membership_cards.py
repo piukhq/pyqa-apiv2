@@ -611,8 +611,9 @@ def verify_view_wallet(Wallet, env, channel):
 #     TestContext.response_status_code = response.status_code
 #     TestContext.actual_view_wallet_field = response.json()
 
+
 @when(parsers.parse("I perform GET '{Wallet}' for first user"))
-def verify_wallet(Wallet, env, channel):
+def verify_wallet_first(Wallet, env, channel):
     time.sleep(5)
     if Wallet == "Wallet":
         response = MembershipCards.get_view_wallet(TestContext.first_wallet_token)
@@ -623,7 +624,9 @@ def verify_wallet(Wallet, env, channel):
         logging.info("The response of get wallet overview is : \n" + json.dumps(response_to_json(response), indent=4))
 
     elif Wallet == "Wallet_by_card_id":
-        response = MembershipCards.get_view_wallet_by_card_id(TestContext.first_wallet_token, TestContext.current_scheme_account_id)
+        response = MembershipCards.get_view_wallet_by_card_id(
+            TestContext.first_wallet_token, TestContext.current_scheme_account_id
+        )
         logging.info("The response of get wallet by card id is : \n" + json.dumps(response_to_json(response), indent=4))
 
     TestContext.response_status_code = response.status_code
@@ -631,7 +634,7 @@ def verify_wallet(Wallet, env, channel):
 
 
 @when(parsers.parse("I perform GET '{Wallet}' for second user"))
-def verify_wallet(Wallet, env, channel):
+def verify_wallet_second(Wallet, env, channel):
     time.sleep(5)
     if Wallet == "Wallet":
         response = MembershipCards.get_view_wallet(TestContext.second_wallet_token)
@@ -642,7 +645,9 @@ def verify_wallet(Wallet, env, channel):
         logging.info("The response of get wallet overview is : \n" + json.dumps(response_to_json(response), indent=4))
 
     elif Wallet == "Wallet_by_card_id":
-        response = MembershipCards.get_view_wallet_by_card_id(TestContext.second_wallet_token, TestContext.current_scheme_account_id)
+        response = MembershipCards.get_view_wallet_by_card_id(
+            TestContext.second_wallet_token, TestContext.current_scheme_account_id
+        )
         logging.info("The response of get wallet by card id is : \n" + json.dumps(response_to_json(response), indent=4))
 
     TestContext.response_status_code = response.status_code
@@ -1165,8 +1170,11 @@ def verify_authorise_post_membership_card(merchant):
     assert response.status_code == 202, "Authorised Journey for " + merchant + " failed"
 
 
-@when(parsers.parse('I perform PUT request to authorise "{merchant}" wallet only membership card with '
-                    'transactions and vouchers'))
+@when(
+    parsers.parse(
+        'I perform PUT request to authorise "{merchant}" wallet only membership card with ' "transactions and vouchers"
+    )
+)
 def verify_authorise_post_membership_card_transactions(merchant):
     time.sleep(3)
     response = MembershipCards.authorise_field_only_card_transactions(
@@ -1253,7 +1261,20 @@ def verify_authorise_invalid_request(merchant, request_payload, status_code):
             + "\n\n"
             + json.dumps(response_json, indent=4)
         )
-
+    elif request_payload == "unauthorised":
+        response = MembershipCards.auth_field_with_unauthorised_json(TestContext.token, merchant,
+                                                                     TestContext.current_scheme_account_id)
+        response_json = response_to_json(response)
+        logging.info(response_json)
+        TestContext.response_status_code = response.status_code
+        TestContext.current_scheme_account_id = response_json.get("id")
+        logging.info(
+            "The response of Invalid json Journey (PUT) for Authorise field:\n \n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE.format(TestContext.current_scheme_account_id)
+            + "\n\n"
+            + json.dumps(response_json, indent=4)
+        )
     assert TestContext.response_status_code == int(status_code), "Invalid json request for " + merchant + " failed"
 
 
@@ -2066,5 +2087,3 @@ def verify_get_wallet_lc_unauath(Wallet, merchant):
                     == TestDataUtils.TEST_DATA.unauth_wallet_info_by_card_id[merchant][wallet_key]
                 ), f"{wallet_key} do not match"
         compare_two_lists(wallet_response["images"], TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant]["images"])
-
-

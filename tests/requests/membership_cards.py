@@ -219,6 +219,13 @@ class MembershipCards(Endpoint):
         return Endpoint.call(url, header, "POST", payload)
 
     @staticmethod
+    def auth_field_with_unauthorised_json(token, merchant, scheme_account_id):
+        url = MembershipCards.get_authorise_url(scheme_account_id)
+        header = Endpoint.request_header(token)
+        payload = Merchant.get_merchant(merchant).authorise_field_only_unauthorised_json_payload()
+        return Endpoint.call(url, header, "PUT", payload)
+
+    @staticmethod
     def add_and_register_field_with_invalid_json(token, merchant):
         url = MembershipCards.get_add_url()
         header = Endpoint.request_header(token)

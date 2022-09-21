@@ -352,7 +352,9 @@ class WasabiCard:
                         "credentials": [
                             {
                                 "credential_slug": "'email'",
-                                "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.TRANSACTIONS_EMAIL),
+                                "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(
+                                    constants.TRANSACTIONS_EMAIL
+                                ),
                             }
                         ]
                     },
@@ -373,12 +375,44 @@ class WasabiCard:
                         "credentials": [
                             {
                                 "credential_slug": "email",
-                                "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.TRANSACTIONS_EMAIL),
+                                "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(
+                                    constants.TRANSACTIONS_EMAIL
+                                ),
                             }
                         ]
                     },
                 },
             }
+        logging.info(
+            "The Request for Authorise field only with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE.format(TestContext.current_scheme_account_id)
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
+    def authorise_field_only_unauthorised_json_payload():
+        TestContext.card_number = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.TRANSACTIONS_CARD)
+        TestContext.email = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.UNAUTHORISED_EMAIL)
+        payload = {
+            "account": {
+                "add_fields": {
+                    "credentials": [
+                        {
+                            "credential_slug": "card_number",
+                            "value": TestContext.card_number,
+                        }
+                    ]
+                },
+                "authorise_fields": {
+                    "credentials": [
+                        {"credential_slug": "email", "value": TestContext.email},
+                    ]
+                },
+            },
+        }
         logging.info(
             "The Request for Authorise field only with :\n"
             + Endpoint.BASE_URL
