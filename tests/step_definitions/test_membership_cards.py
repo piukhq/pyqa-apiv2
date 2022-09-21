@@ -1729,7 +1729,7 @@ def verify_state_slug_desc(Wallet, merchant, scheme_state):
                         wallet_response["joins"][0]["card"][card_key]
                         == TestDataUtils.TEST_DATA.Join_Scheme_status[scheme_state]["card"][card_key]
                     ), f"{card_key} do not match"
-    elif Wallet in ["Wallet", "Wallet_overview"] and scheme_state == "enrol_failed" :
+    elif Wallet in ["Wallet", "Wallet_overview"] and scheme_state == "enrol_failed":
         print(f"starting response comparison in {Wallet} when scheme state is {scheme_state}")
         assert (
             wallet_response["joins"][0]["loyalty_card_id"] == TestContext.current_scheme_account_id
