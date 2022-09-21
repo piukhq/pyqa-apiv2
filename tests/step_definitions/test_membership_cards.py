@@ -1262,8 +1262,9 @@ def verify_authorise_invalid_request(merchant, request_payload, status_code):
             + json.dumps(response_json, indent=4)
         )
     elif request_payload == "unauthorised":
-        response = MembershipCards.auth_field_with_unauthorised_json(TestContext.token, merchant,
-                                                                     TestContext.current_scheme_account_id)
+        response = MembershipCards.auth_field_with_unauthorised_json(
+            TestContext.token, merchant, TestContext.current_scheme_account_id
+        )
         response_json = response_to_json(response)
         logging.info(response_json)
         TestContext.response_status_code = response.status_code
