@@ -36,7 +36,9 @@ Feature: Add and register a loyalty card
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request add and register for <merchant>
-    And I perform POST request add_and_register again for <merchant>
+    And I perform GET Wallet
+    Then Verify Wallet fields for <merchant> with registration_success
+    When I perform POST request add_and_register again for <merchant>
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
@@ -90,14 +92,34 @@ Feature: Add and register a loyalty card
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request add and register for <merchant>
-    And I am in Bink channel to get b2b token for second user
+    And I perform GET Wallet
+    Then Verify Wallet fields for <merchant> with registration_success
+    When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request add_and_register again for <merchant>
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
-    And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
 
     Examples:
-      | merchant | status_code_returned | journey_type     | error_message                                                                                          | error_slug         |
-      | Iceland  | 409                  | add_and_register | Card is already registered. Use POST /loyalty_cards/add_and_authorise to add this card to your wallet. | ALREADY_REGISTERED |
+      | merchant | status_code_returned | error_message                                                                                          | error_slug         |
+      | Iceland  | 409                  | Card is already registered. Use POST /loyalty_cards/add_and_authorise to add this card to your wallet. | ALREADY_REGISTERED |
+
+
+  @register_failed_card_multi_wallet @bink_regression_api2 @testnp1309
+  Scenario Outline: Wallet1 add and register failed, wallet2 add and register same card with correct details
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to result failed add and register for <merchant>
+    And I perform GET Wallet
+    Then Verify Wallet fields for <merchant> with <scheme_state>
+    When I am in Bink channel to get b2b token for second user
+    And I perform POST token request for token type "b2b" to get access token for second user
+    And I perform POST request add_and_register again for <merchant>
+    Then I see a <status_code_returned>
+    And I see a "<error_message>" error message
+    And I see a "<error_slug>" error slug
+
+    Examples:
+      | merchant | status_code_returned | scheme_state       |error_message|error_slug|
+      | Iceland  | 409                  | registration_failed|Card cannot be registered at this time.|REGISTRATION_ERROR|
