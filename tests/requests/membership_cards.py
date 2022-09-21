@@ -184,6 +184,13 @@ class MembershipCards(Endpoint):
         return Endpoint.call_payload(url, header, "PUT", payload)
 
     @staticmethod
+    def authorise_field_only_card_transactions(token, merchant, scheme_account_id):
+        url = MembershipCards.get_authorise_url(scheme_account_id)
+        header = Endpoint.request_header(token)
+        payload = Merchant.get_merchant(merchant).authorise_field_only_transactions_membership_card_payload()
+        return Endpoint.call(url, header, "PUT", payload)
+
+    @staticmethod
     def add_field_with_existing_card(token, merchant):
         url = MembershipCards.get_add_url()
         header = Endpoint.request_header(token)
@@ -282,6 +289,13 @@ class MembershipCards(Endpoint):
         url = MembershipCards.get_add_and_authorise_url()
         header = Endpoint.request_header(token)
         payload = Merchant.get_merchant(merchant).add_and_authorise_transactions_card_payload()
+        return Endpoint.call(url, header, "POST", payload)
+
+    @staticmethod
+    def add_field_only_card_transactions(token, merchant):
+        url = MembershipCards.get_add_url()
+        header = Endpoint.request_header(token)
+        payload = Merchant.get_merchant(merchant).add_field_only_transactions_membership_card_payload()
         return Endpoint.call(url, header, "POST", payload)
 
     @staticmethod
