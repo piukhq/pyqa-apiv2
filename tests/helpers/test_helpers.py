@@ -73,7 +73,7 @@ class TestData:
             "Bink Test Scheme": "Bink Test Scheme",
             "Asos": "asos",
             "Trenette": "trenette",
-            "Viator": "viator"
+            "Viator": "viator",
         }
         return switcher.get(merchant)
 
