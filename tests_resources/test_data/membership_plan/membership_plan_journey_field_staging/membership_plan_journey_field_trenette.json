@@ -1,0 +1,97 @@
+{
+	"loyalty_plan_id": 284,
+	"join_fields": {
+		"credentials": [
+			{
+				"order": 1,
+				"display_label": "First name",
+				"validation": "^(((?=.{1,100}$)[A-Za-z-\\u00C0-\\u00FF'])+\\s*){1,4}$",
+				"description": "Enter first name",
+				"credential_slug": "first_name",
+				"type": "text",
+				"is_sensitive": false,
+				"is_scannable": false,
+				"choice": [],
+				"alternative": null
+			},
+			{
+				"order": 2,
+				"display_label": "Last name",
+				"validation": "^(((?=.{1,100}$)[A-Za-z-\\u00C0-\\u00FF'])+\\s*){1,4}$",
+				"description": "Enter last name",
+				"credential_slug": "last_name",
+				"type": "text",
+				"is_sensitive": false,
+				"is_scannable": false,
+				"choice": [],
+				"alternative": null
+			},
+			{
+				"order": 3,
+				"display_label": "Email",
+				"validation": "^(?=[^@]{1,64}@)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
+				"description": "example@mydomain.com",
+				"credential_slug": "email",
+				"type": "text",
+				"is_sensitive": false,
+				"is_scannable": false,
+				"choice": [],
+				"alternative": null
+			}
+		],
+		"plan_documents": [
+			{
+				"order": 0,
+				"name": "Retailer terms & conditions",
+				"url": "https://policies.gb.bink.com/trenette/tc.html",
+				"description": "I accept the",
+				"is_acceptance_required": true
+			},
+			{
+				"order": 0,
+				"name": "Bink Sweet Shop privacy policy",
+				"url": "https://policies.gb.bink.com/trenette/pp.html",
+				"description": "I have read the",
+				"is_acceptance_required": false
+			}
+		],
+		"consents": []
+	},
+	"register_ghost_card_fields": null,
+	"add_fields": {
+		"credentials": [
+			{
+				"order": 4,
+				"display_label": "Membership card number",
+				"validation": "^[A-Z]{2,6}[0-9]{8,10}$",
+				"description": "14 digit card number",
+				"credential_slug": "card_number",
+				"type": "text",
+				"is_sensitive": false,
+				"is_scannable": false,
+				"choice": [],
+				"alternative": null
+			}
+		],
+		"plan_documents": [],
+		"consents": []
+	},
+	"authorise_fields": {
+		"credentials": [
+			{
+				"order": 3,
+				"display_label": "Email",
+				"validation": "^(?=[^@]{1,64}@)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
+				"description": "example@mydomain.com",
+				"credential_slug": "email",
+				"type": "text",
+				"is_sensitive": false,
+				"is_scannable": false,
+				"choice": [],
+				"alternative": null
+			}
+		],
+		"plan_documents": [],
+		"consents": []
+	}
+}

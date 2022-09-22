@@ -1,0 +1,25 @@
+{
+	"company_name": "Bink Sweet Shop",
+	"plan_name": "Bink Sweet Rewards",
+	"plan_label": "Account",
+	"plan_url": "https://www.bink.com",
+	"plan_summary": "Bink Sweet Rewards gets you a free chocolate hamper for spending £2 in stores, even across multiple orders.",
+	"plan_description": "Please note that your vouchers are single-use and cannot be used twice. This voucher is non refundable and cannot be exchanged for cash in part or full and is valid for a single transaction only.",
+	"redeem_instructions": null,
+	"plan_register_info": null,
+	"join_incentive": null,
+	"category": "Food & Drink",
+	"tiers": [],
+	"images": [
+		{
+			"id": 1322,
+			"type": 3,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/binksweetshop-icon.png",
+			"description": "Bink Sweet Rewards Icon",
+			"encoding": "png",
+			"order": 0
+		}
+	],
+	"colour": "#532f91",
+	"text_colour": null
+}

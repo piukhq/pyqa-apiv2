@@ -1501,6 +1501,8 @@ membership_plan_id = {
     "whsmith": 280,
     "asos": 288,
     "wasabi": 281,
+    "trenette": 284,
+    "viator": 292,
     "merchant_not_exists": 0000,
     "Bink Test Scheme": 132,  # suspended loyalty plan
     "Wallis": 131,  # inactive loyalty plan
