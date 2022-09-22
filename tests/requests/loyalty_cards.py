@@ -274,7 +274,6 @@ class MembershipCards(Endpoint):
     def get_transactions_url(scheme_account_id):
         return Endpoint.BASE_URL + api.ENDPOINT_MEMBERSHIP_CARDS_TRANSACTIONS.format(scheme_account_id)
 
-
     @staticmethod
     def add_and_authorise_card(token, merchant, invalid_request=None):
         url = MembershipCards.get_add_and_authorise_url()
@@ -291,7 +290,6 @@ class MembershipCards(Endpoint):
         else:
             payload = Merchant.get_merchant(merchant).add_and_authorise_membership_card_payload(invalid_request)
             return Endpoint.call(url, header, "POST", payload)
-
 
     @staticmethod
     def add_and_authorise_transactions_card(token, merchant):

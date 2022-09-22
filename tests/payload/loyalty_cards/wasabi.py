@@ -292,7 +292,6 @@ class WasabiCard:
         )
         return payload
 
-
     # @staticmethod
     # def add_and_authorise_field_loyalty_card_payload(invalid_data=None):
     #     TestContext.card_number = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM)
@@ -375,7 +374,6 @@ class WasabiCard:
     #         + json.dumps(payload, indent=4)
     #     )
     #     return payload
-
 
     @staticmethod
     def authorise_field_only_membership_card_payload(invalid_data=None):

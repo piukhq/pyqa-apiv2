@@ -786,7 +786,7 @@ def verify_invalid_request_for_add_and_auth_journey(merchant, request_payload, s
 
     assert TestContext.response_status_code == int(status_code), "Invalid request for " + merchant + " failed"
 
-    
+
 # def verify_invalid_request_for_add_and_auth_journey(merchant, request_payload, status_code):
 #     if request_payload in ["invalid_request", "invalid_json"]:
 #         response = MembershipCards.add_and_authorise_card(TestContext.token, merchant, request_payload)
