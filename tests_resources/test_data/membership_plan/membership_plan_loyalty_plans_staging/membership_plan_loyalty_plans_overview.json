@@ -1,5 +1,5 @@
 [
-    {
+	{
 		"loyalty_plan_id": 105,
 		"is_in_wallet": false,
 		"plan_name": "Iceland Bonus Card",
@@ -20,7 +20,7 @@
 			}
 		]
 	},
-    {
+	{
 		"loyalty_plan_id": 281,
 		"is_in_wallet": false,
 		"plan_name": "Wasabi Club",
@@ -41,7 +41,7 @@
 			}
 		]
 	},
-    {
+	{
 		"loyalty_plan_id": 286,
 		"is_in_wallet": false,
 		"plan_name": "SquareMeal Restaurant Rewards",
@@ -62,7 +62,7 @@
 			}
 		]
 	},
-    {
+	{
 		"loyalty_plan_id": 288,
 		"is_in_wallet": false,
 		"plan_name": "ASOS EXTRA",
@@ -83,25 +83,46 @@
 			}
 		]
 	},
-    {
-        "loyalty_plan_id": 284,
-        "is_in_wallet": false,
-        "plan_name": "Bink Sweet Rewards",
-        "company_name": "Bink Sweet Shop",
-        "plan_popularity": null,
-        "plan_type": 2,
-        "colour": "#532f91",
-        "text_colour": null,
-        "category": "Food & Drink",
-        "images": [
-            {
-                "id": 1322,
-                "type": 3,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/binksweetshop-icon.png",
-                "description": "Bink Sweet Rewards Icon",
-                "encoding": "png",
-                "order": 0
-            }
-        ]
-    }
+	{
+		"loyalty_plan_id": 284,
+		"is_in_wallet": false,
+		"plan_name": "Bink Sweet Rewards",
+		"company_name": "Bink Sweet Shop",
+		"plan_popularity": null,
+		"plan_type": 2,
+		"colour": "#532f91",
+		"text_colour": null,
+		"category": "Food & Drink",
+		"images": [
+			{
+				"id": 1322,
+				"type": 3,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/binksweetshop-icon.png",
+				"description": "Bink Sweet Rewards Icon",
+				"encoding": "png",
+				"order": 0
+			}
+		]
+	},
+	{
+		"loyalty_plan_id": 292,
+		"is_in_wallet": false,
+		"plan_name": "Viator Rewards Discount",
+		"company_name": "Viator",
+		"plan_popularity": 5,
+		"plan_type": 2,
+		"colour": "#246b6c",
+		"text_colour": "#FFFFFF",
+		"category": "Travel",
+		"images": [
+			{
+				"id": 1411,
+				"type": 3,
+				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Logo1-280x280.png",
+				"description": "Viator icon",
+				"encoding": "png",
+				"order": 0
+			}
+		]
+	}
 ]
