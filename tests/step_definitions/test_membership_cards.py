@@ -16,7 +16,7 @@ from tests.helpers.test_helpers import TestData
 from tests.requests.membership_cards import MembershipCards
 from tests.step_definitions import test_paymentcard_account
 
-scenarios("membership_cards/")
+scenarios("loyalty_cards/")
 
 """Step definitions - Add_field Journey (store card only) """
 
@@ -728,21 +728,21 @@ def verify_invalid_request_for_add_journey(merchant, request_payload, status_cod
     )
 )
 def verify_invalid_request_for_add_and_auth_journey(merchant, request_payload, status_code):
-    if request_payload == "invalid_request":
+    if request_payload in ["invalid_request", "invalid_json"]:
         response = MembershipCards.add_and_authorise_card(TestContext.token, merchant, request_payload)
         response_json = response_to_json(response)
         TestContext.response_status_code = response.status_code
         TestContext.error_message = response_json["error_message"]
         TestContext.error_slug = response_json["error_slug"]
-    elif request_payload == "invalid_json":
-        response = MembershipCards.add_and_auth_field_with_invalid_json(TestContext.token, merchant)
-        response_json = response_to_json(response)
-        TestContext.response_status_code = response.status_code
-        TestContext.error_message = response_json["error_message"]
-        TestContext.error_slug = response_json["error_slug"]
+    # elif request_payload == "invalid_json":
+    #     response = MembershipCards.add_and_auth_field_with_invalid_json(TestContext.token, merchant)
+    #     response_json = response_to_json(response)
+    #     TestContext.response_status_code = response.status_code
+    #     TestContext.error_message = response_json["error_message"]
+    #     TestContext.error_slug = response_json["error_slug"]
     elif request_payload == "unauthorised":
         journey_type = request_payload
-        response = MembershipCards.add_and_auth_field_with_unauthorised_json(TestContext.token, merchant)
+        response = MembershipCards.add_and_authorise_card(TestContext.token, merchant, request_payload)
         response_json = response_to_json(response)
         logging.info(response_json)
         TestContext.response_status_code = response.status_code
@@ -998,7 +998,7 @@ def verify_add_and_auth_b2b(merchant):
 
 @when(
     parsers.parse(
-        'I perform POST request to add and authorise "{merchant}" membership card with transactions and vouchers'
+        'I perform POST request to add and authorise "{merchant}" membership card with {transactions_and_vouchers}'
     )
 )
 def verify_add_and_auth_transactions(merchant):

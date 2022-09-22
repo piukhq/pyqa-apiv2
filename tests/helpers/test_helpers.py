@@ -81,7 +81,7 @@ class TestData:
         merchant_key = TestData.get_merchant_key(loyalty_scheme)
         mem_plan_path = TestData.get_mem_plan_path(env)
 
-        return mem_plan_path + "/membership_plan_journey_field_" + merchant_key + ".json"
+        return mem_plan_path + "/loyalty_plan_journey_field_" + merchant_key + ".json"
         # if merchant == "Iceland" and channel == "barclays":
         #     """Temporary case as Iceland has different membership plan id for Bink & Barclays"""
         #     return mem_plan_path + "/" + merchant_key + "_membership_plan_bmb.json"
@@ -91,13 +91,13 @@ class TestData:
     @staticmethod
     def get_expected_loyalty_plans_overview_json(env, channel=None):
         loyalty_plan_overview_path = TestData.get_loyalty_plans_overview_path(env)
-        return loyalty_plan_overview_path + "/membership_plan_loyalty_plans_overview" + ".json"
+        return loyalty_plan_overview_path + "/loyalty_plans_overview" + ".json"
 
     @staticmethod
     def get_expected_loyalty_plan_details_json(loyalty_scheme, env, channel=None):
         merchant_key = TestData.get_merchant_key(loyalty_scheme)
         mem_plan_path = TestData.get_loyalty_plan_by_id_path(env)
-        return mem_plan_path + "/membership_plan_details_" + merchant_key + ".json"
+        return mem_plan_path + "/loyalty_plan_details_" + merchant_key + ".json"
 
     @staticmethod
     def get_expected_loyalty_plan_by_id_json(loyalty_scheme, env, channel=None):
@@ -105,14 +105,14 @@ class TestData:
         merchant_key = TestData.get_merchant_key(loyalty_scheme)
         mem_plan_path = TestData.get_loyalty_plan_by_id_path(env)
 
-        return mem_plan_path + "/membership_plan_loyalty_field_" + merchant_key + ".json"
+        return mem_plan_path + "/loyalty_plan_by_id_" + merchant_key + ".json"
 
     @staticmethod
     def get_expected_all_loyalty_plans_json(env, channel=None):
 
         mem_plan_path = TestData.get_loyalty_plan_by_id_path(env)
 
-        return mem_plan_path + "/membership_plan_all_loyalty_plans" + ".json"
+        return mem_plan_path + "/loyalty_plans_all" + ".json"
 
     @staticmethod
     def get_expected_view_wallet_json(env, channel=None):

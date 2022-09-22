@@ -1,5 +1,5 @@
 # Created by rupalpatel at 23/09/2021
-@membership_card_add_and_authorise @membership_cards
+@loyalty_card_add_and_authorise @membership_cards
 Feature: Add and authorise a loyalty card
   As a Bink user
   I want add an ‘Engage' or 'PLL’ type loyalty card to my wallet

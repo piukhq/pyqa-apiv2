@@ -42,7 +42,7 @@ class HarveyNicholsCard:
                     {"credential_slug": "Password", "value": password},
                 ]
             },
-            "membership_plan": TestDataUtils.TEST_DATA.membership_plan_id.get("harvey_nichols"),
+            "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("harvey_nichols"),
         }
         logging.info(
             "The Request for Add_field only with :\n"
@@ -66,7 +66,7 @@ class HarveyNicholsCard:
     #         "account": {
     #             "authorise_fields": [{"column": "Email", "value": value}, {"column": "Password", "value": password}]
     #         },
-    #         "membership_plan": TestDataUtils.TEST_DATA.membership_plan_id.get("harvey_nichols"),
+    #         "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("harvey_nichols"),
     #     }
     #     logging.info(
     #         "The Request for Authorise field only with :\n"

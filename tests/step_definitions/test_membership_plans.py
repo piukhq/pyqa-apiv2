@@ -11,7 +11,7 @@ from tests.helpers.test_data_utils import TestDataUtils
 from tests.helpers.test_helpers import TestData
 from tests.requests.membership_plans import MembershipPlans
 
-scenarios("membership_plans/")
+scenarios("loyalty_plans/")
 
 """ Step definations - Loyalty Plans"""
 

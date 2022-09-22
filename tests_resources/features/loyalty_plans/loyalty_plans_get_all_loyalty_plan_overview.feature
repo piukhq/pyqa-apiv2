@@ -1,5 +1,5 @@
 # Created by bularaghavan on 07/12/2021
-@loyalty_plan_overview @membership_plans
+@loyalty_plan_overview @loyalty_plans
 Feature: View Loyalty Plans Overview
  As an API v2.0 consuming channel,
  I want to see an overview of the loyalty plans available

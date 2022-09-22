@@ -106,7 +106,7 @@ Feature: Add and register a loyalty card
       | Iceland  | 409                  | Card is already registered. Use POST /loyalty_cards/add_and_authorise to add this card to your wallet. | ALREADY_REGISTERED |
 
 
-  @register_failed_card_multi_wallet @bink_regression_api2 @testnp1309
+  @register_failed_card_multi_wallet @bink_regression_api2
   Scenario Outline: Wallet1 add and register failed, wallet2 add and register same card with correct details
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
