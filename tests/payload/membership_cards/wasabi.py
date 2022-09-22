@@ -40,6 +40,34 @@ class WasabiCard:
         return payload
 
     @staticmethod
+    def add_field_only_transactions_membership_card_payload(invalid_data=None):
+        if invalid_data:
+            payload = {}
+        else:
+            TestContext.card_number = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.TRANSACTIONS_CARD)
+            payload = {
+                "account": {
+                    "add_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "card_number",
+                                "value": TestContext.card_number,
+                            }
+                        ]
+                    }
+                },
+                "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi"),
+            }
+        logging.info(
+            "The Request for Add_field only with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_ADD
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
     def add_field_only_membership_card_payload_with_existing_id(invalid_request=None):
         if invalid_request:
             payload = {}
@@ -389,6 +417,88 @@ class WasabiCard:
                     },
                 },
             }
+        logging.info(
+            "The Request for Authorise field only with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE.format(TestContext.current_scheme_account_id)
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
+    def authorise_field_only_transactions_membership_card_payload(invalid_data=None):
+        TestContext.card_number = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.TRANSACTIONS_CARD)
+        if invalid_data == "invalid_request":
+            payload = {}
+        elif invalid_data == "invalid_json":
+            payload = {
+                "account": {
+                    "authorise_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "'email'",
+                                "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(
+                                    constants.TRANSACTIONS_EMAIL
+                                ),
+                            }
+                        ]
+                    },
+                }
+            }
+        else:
+            payload = {
+                "account": {
+                    "add_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "card_number",
+                                "value": TestContext.card_number,
+                            }
+                        ]
+                    },
+                    "authorise_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "email",
+                                "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(
+                                    constants.TRANSACTIONS_EMAIL
+                                ),
+                            }
+                        ]
+                    },
+                },
+            }
+        logging.info(
+            "The Request for Authorise field only with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE.format(TestContext.current_scheme_account_id)
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
+    def authorise_field_only_unauthorised_json_payload():
+        TestContext.card_number = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.TRANSACTIONS_CARD)
+        TestContext.email = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.UNAUTHORISED_EMAIL)
+        payload = {
+            "account": {
+                "add_fields": {
+                    "credentials": [
+                        {
+                            "credential_slug": "card_number",
+                            "value": TestContext.card_number,
+                        }
+                    ]
+                },
+                "authorise_fields": {
+                    "credentials": [
+                        {"credential_slug": "email", "value": TestContext.email},
+                    ]
+                },
+            },
+        }
         logging.info(
             "The Request for Authorise field only with :\n"
             + Endpoint.BASE_URL
