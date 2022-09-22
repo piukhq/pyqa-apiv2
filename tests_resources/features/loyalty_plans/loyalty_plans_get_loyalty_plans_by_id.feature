@@ -18,6 +18,8 @@ Feature: View Loyalty Plan by id
       | Wasabi              | 200         |
       | SquareMeal          | 200         |
       | Asos                | 200         |
+      | Trenette            | 200         |
+      | Viator              | 200         |
  #     | HarveyNichols       | 200         |
 
   @loyalty_is_in_wallet @journey_type @bink_regression_api2 @sandbox_regression
@@ -33,6 +35,8 @@ Feature: View Loyalty Plan by id
       | Wasabi              | 200         |
       | SquareMeal          | 200         |
       | Asos                | 200         |
+      | Trenette            | 200         |
+      | Viator              | 200         |
   #   | HarveyNichols       | 200         |
 
   @loyalty_plan_id_invalid_token @invalid_token @bink_regression_api2 @sandbox_regression
@@ -48,6 +52,8 @@ Feature: View Loyalty Plan by id
       | Wasabi         | 401         | Supplied token is invalid | INVALID_TOKEN |
       | SquareMeal     | 401         | Supplied token is invalid | INVALID_TOKEN |
       | Asos           | 401         | Supplied token is invalid | INVALID_TOKEN |
+      | Trenette       | 401         | Supplied token is invalid | INVALID_TOKEN |
+      | Viator         | 401         | Supplied token is invalid | INVALID_TOKEN |
   #    | HarveyNichols  | 401         | Supplied token is invalid | INVALID_TOKEN |
 
   @loyalty_plan_id_invalid_resource @invalid_resource @bink_regression_api2 @sandbox_regression
