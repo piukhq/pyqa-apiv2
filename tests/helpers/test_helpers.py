@@ -1,9 +1,9 @@
 from tests.helpers import constants
 from tests.helpers.test_data_utils import TestDataUtils
-from tests.payload.membership_cards.harvey_nichols import HarveyNicholsCard
-from tests.payload.membership_cards.iceland import IcelandCard
-from tests.payload.membership_cards.squaremeal import SquareMealCard
-from tests.payload.membership_cards.wasabi import WasabiCard
+from tests.payload.loyalty_cards.harvey_nichols import HarveyNicholsCard
+from tests.payload.loyalty_cards.iceland import IcelandCard
+from tests.payload.loyalty_cards.squaremeal import SquareMealCard
+from tests.payload.loyalty_cards.wasabi import WasabiCard
 
 
 class PaymentCardTestData:

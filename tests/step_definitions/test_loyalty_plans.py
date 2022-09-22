@@ -9,7 +9,7 @@ from tests.helpers import constants
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
 from tests.helpers.test_helpers import TestData
-from tests.requests.membership_plans import MembershipPlans
+from tests.requests.loyalty_plans import MembershipPlans
 
 scenarios("loyalty_plans/")
 

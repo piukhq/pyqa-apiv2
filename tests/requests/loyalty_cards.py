@@ -204,19 +204,19 @@ class MembershipCards(Endpoint):
         payload = Merchant.get_merchant(merchant).add_field_only_membership_card_with_invalid_json()
         return Endpoint.call_payload(url, header, "POST", payload)
 
-    # @staticmethod
-    # def add_and_auth_field_with_invalid_json(token, merchant):
-    #     url = MembershipCards.get_add_url()
-    #     header = Endpoint.request_header(token)
-    #     payload = Merchant.get_merchant(merchant).add_and_auth_field_only_membership_card_with_invalid_json()
-    #     return Endpoint.call_payload(url, header, "POST", payload)
+    @staticmethod
+    def add_and_auth_field_with_invalid_json(token, merchant):
+        url = MembershipCards.get_add_url()
+        header = Endpoint.request_header(token)
+        payload = Merchant.get_merchant(merchant).add_and_auth_field_only_membership_card_with_invalid_json()
+        return Endpoint.call_payload(url, header, "POST", payload)
 
-    # @staticmethod
-    # def add_and_auth_field_with_unauthorised_json(token, merchant):
-    #     url = MembershipCards.get_add_and_authorise_url()
-    #     header = Endpoint.request_header(token)
-    #     payload = Merchant.get_merchant(merchant).add_and_auth_field_only_membership_card_with_unauthorised_json()
-    #     return Endpoint.call(url, header, "POST", payload)
+    @staticmethod
+    def add_and_auth_field_with_unauthorised_json(token, merchant):
+        url = MembershipCards.get_add_and_authorise_url()
+        header = Endpoint.request_header(token)
+        payload = Merchant.get_merchant(merchant).add_and_auth_field_only_membership_card_with_unauthorised_json()
+        return Endpoint.call(url, header, "POST", payload)
 
     @staticmethod
     def auth_field_with_unauthorised_json(token, merchant, scheme_account_id):
@@ -274,6 +274,7 @@ class MembershipCards(Endpoint):
     def get_transactions_url(scheme_account_id):
         return Endpoint.BASE_URL + api.ENDPOINT_MEMBERSHIP_CARDS_TRANSACTIONS.format(scheme_account_id)
 
+
     @staticmethod
     def add_and_authorise_card(token, merchant, invalid_request=None):
         url = MembershipCards.get_add_and_authorise_url()
@@ -281,15 +282,16 @@ class MembershipCards(Endpoint):
         encrypt_header = Endpoint.encrypt_header(token)
         if not invalid_request:
             if TestContext.flag_encrypt == "true":
-                payload = Merchant.get_merchant(merchant).add_and_authorise_field_loyalty_card_payload()
+                payload = Merchant.get_merchant(merchant).add_and_authorise_membership_card_payload()
                 data = encrypted_payload_token(payload)
                 return Endpoint.call_payload(url, encrypt_header, "POST", data)
             elif TestContext.flag_encrypt == "false":
-                payload = Merchant.get_merchant(merchant).add_and_authorise_field_loyalty_card_payload()
+                payload = Merchant.get_merchant(merchant).add_and_authorise_membership_card_payload()
                 return Endpoint.call(url, header, "POST", payload)
         else:
-            payload = Merchant.get_merchant(merchant).add_and_authorise_field_loyalty_card_payload(invalid_request)
+            payload = Merchant.get_merchant(merchant).add_and_authorise_membership_card_payload(invalid_request)
             return Endpoint.call(url, header, "POST", payload)
+
 
     @staticmethod
     def add_and_authorise_transactions_card(token, merchant):

@@ -13,7 +13,7 @@ from tests.helpers.database.query_hermes import QueryHermes
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
 from tests.helpers.test_helpers import TestData
-from tests.requests.membership_cards import MembershipCards
+from tests.requests.loyalty_cards import MembershipCards
 from tests.step_definitions import test_paymentcard_account
 
 scenarios("loyalty_cards/")
@@ -218,21 +218,6 @@ def json_compare(actual_field, expected_field, paths=None):
 #      )
 #
 #     return compare
-
-
-# @then(parsers.parse("I can see all Wallet fields successfully"))
-# def verify_view_wallet_fields():
-#     difference = json_compare_wallet(TestContext.actual_view_wallet_field, TestContext.expected_view_wallet_field)
-#     if json.dumps(difference) != "{}":
-#         logging.error(
-#             "The expected and actual wallets"
-#             + "has following differences"
-#             + json.dumps(difference, sort_keys=True, indent=4)
-#         )
-#         raise Exception("The expected and actual wallet is not the same")
-#     else:
-#         logging.info("The expected and actual wallet is same")
-#
 
 
 def compare_two_lists(list1: list, list2: list) -> bool:
@@ -596,22 +581,6 @@ def verify_view_wallet(Wallet, env, channel):
     TestContext.actual_view_wallet_field = response.json()
 
 
-# @when(parsers.parse("I perform GET {Wallet}"))
-# def verify_wallet(Wallet, env, channel):
-#     if Wallet == "Wallet":
-#         response = MembershipCards.get_view_wallet(TestContext.token)
-#         logging.info("The response of get wallet is : \n" + json.dumps(response_to_json(response), indent=4))
-#         print("response of Wallet in dictionary format : \n", response_to_json(response))
-#         # print("type if response.json : \n", type(response.json()))
-#
-#     else:
-#         response = MembershipCards.get_view_wallet_overview(TestContext.token)
-#         logging.info("The response of get wallet overview is : \n" + json.dumps(response_to_json(response), indent=4))
-#
-#     TestContext.response_status_code = response.status_code
-#     TestContext.actual_view_wallet_field = response.json()
-
-
 @when(parsers.parse("I perform GET '{Wallet}' for first user"))
 def verify_wallet_first(Wallet, env, channel):
     time.sleep(5)
@@ -786,21 +755,21 @@ def verify_invalid_request_for_add_journey(merchant, request_payload, status_cod
     )
 )
 def verify_invalid_request_for_add_and_auth_journey(merchant, request_payload, status_code):
-    if request_payload in ["invalid_request", "invalid_json"]:
+    if request_payload == "invalid_request":
         response = MembershipCards.add_and_authorise_card(TestContext.token, merchant, request_payload)
         response_json = response_to_json(response)
         TestContext.response_status_code = response.status_code
         TestContext.error_message = response_json["error_message"]
         TestContext.error_slug = response_json["error_slug"]
-    # elif request_payload == "invalid_json":
-    #     response = MembershipCards.add_and_auth_field_with_invalid_json(TestContext.token, merchant)
-    #     response_json = response_to_json(response)
-    #     TestContext.response_status_code = response.status_code
-    #     TestContext.error_message = response_json["error_message"]
-    #     TestContext.error_slug = response_json["error_slug"]
+    elif request_payload == "invalid_json":
+        response = MembershipCards.add_and_auth_field_with_invalid_json(TestContext.token, merchant)
+        response_json = response_to_json(response)
+        TestContext.response_status_code = response.status_code
+        TestContext.error_message = response_json["error_message"]
+        TestContext.error_slug = response_json["error_slug"]
     elif request_payload == "unauthorised":
         journey_type = request_payload
-        response = MembershipCards.add_and_authorise_card(TestContext.token, merchant, request_payload)
+        response = MembershipCards.add_and_auth_field_with_unauthorised_json(TestContext.token, merchant)
         response_json = response_to_json(response)
         logging.info(response_json)
         TestContext.response_status_code = response.status_code
@@ -816,6 +785,33 @@ def verify_invalid_request_for_add_and_auth_journey(merchant, request_payload, s
     )
 
     assert TestContext.response_status_code == int(status_code), "Invalid request for " + merchant + " failed"
+
+    
+# def verify_invalid_request_for_add_and_auth_journey(merchant, request_payload, status_code):
+#     if request_payload in ["invalid_request", "invalid_json"]:
+#         response = MembershipCards.add_and_authorise_card(TestContext.token, merchant, request_payload)
+#         response_json = response_to_json(response)
+#         TestContext.response_status_code = response.status_code
+#         TestContext.error_message = response_json["error_message"]
+#         TestContext.error_slug = response_json["error_slug"]
+#     elif request_payload == "unauthorised":
+#         journey_type = request_payload
+#         response = MembershipCards.add_and_authorise_card(TestContext.token, merchant, request_payload)
+#         response_json = response_to_json(response)
+#         logging.info(response_json)
+#         TestContext.response_status_code = response.status_code
+#         TestContext.current_scheme_account_id = response_json.get("id")
+#         verify_loyalty_card_into_database(journey_type, merchant)
+#
+#     logging.info(
+#         "The response of Invalid Journey (POST) for Add and Auth field:\n \n"
+#         + Endpoint.BASE_URL
+#         + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_AUTHORISE
+#         + "\n\n"
+#         + json.dumps(response_json, indent=4)
+#     )
+#
+#     assert TestContext.response_status_code == int(status_code), "Invalid request for " + merchant + " failed"
 
 
 @when(
