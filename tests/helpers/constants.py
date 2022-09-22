@@ -66,12 +66,8 @@ TOKEN_PREFIX = "token_prefix"
 PAYMENT_CARD_STATUS = "status"
 INVALID_TOKEN = "invalid_token1"
 
-EXPECTED_JOURNEY_FIELDS_PATH_STAGING = (
-    "tests_resources/test_data/loyalty_plan" "/loyalty_plan_journey_field_staging"
-)
-EXPECTED_JOURNEY_FIELDS_PATH_SANDBOX = (
-    "tests_resources/test_data/loyalty_plan" "/loyalty_plan_journey_field_sandbox"
-)
+EXPECTED_JOURNEY_FIELDS_PATH_STAGING = "tests_resources/test_data/loyalty_plan" "/loyalty_plan_journey_field_staging"
+EXPECTED_JOURNEY_FIELDS_PATH_SANDBOX = "tests_resources/test_data/loyalty_plan" "/loyalty_plan_journey_field_sandbox"
 
 JSON_DIFF_EXPECTED_JSON = (
     "tests_resources/test_data/loyalty_plan/journey_type_diff_comparator" "/expected_membership_plan.json"
@@ -83,9 +79,7 @@ JSON_DIFF_ACTUAL_JSON = (
 EXPECTED_LOYALTY_PLANS_STAGING = "tests_resources/test_data/loyalty_plan" "/loyalty_plans_staging"
 EXPECTED_LOYALTY_PLANS_SANDBOX = "tests_resources/test_data/loyalty_plan" "/loyalty_plans_sandbox"
 EXPECTED_VIEW_WALLET_STAGING = "tests_resources/test_data/get_wallet" "/get_wallet_staging"
-EXPECTED_LOYALTY_PLANS_OVERVIEW_STAGING = (
-    "tests_resources/test_data/loyalty_plan" "/loyalty_plans_staging"
-)
+EXPECTED_LOYALTY_PLANS_OVERVIEW_STAGING = "tests_resources/test_data/loyalty_plan" "/loyalty_plans_staging"
 # PAYMENT_CARD_STATUS = "status"
 # ACTIVE_LINK = "active_link"
 # PAYMENT_PROVIDER = "payment_provider"
