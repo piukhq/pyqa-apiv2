@@ -18,6 +18,7 @@ Feature: Add a loyalty card
       | merchant | journey_type | status_code_returned |
       | Iceland  | Add_field    | 201                  |
       | Wasabi   | Add_field    | 201                  |
+      | Trenette | Add_field    | 201                  |
 
   @add_existing_field @bink_regression_api2 @sandbox_regression
   Scenario Outline: Add existing card again into wallet
@@ -32,6 +33,7 @@ Feature: Add a loyalty card
       | merchant | journey_type | status_code |
       | Iceland  | Add_field    | 200         |
       | Wasabi   | Add_field    | 200         |
+      | Trenette | Add_field    | 200         |
 
   @invalid_field_bad_request @bink_regression_api2 @sandbox_regression
   Scenario Outline: Add field journey with Bad request
@@ -46,6 +48,7 @@ Feature: Add a loyalty card
       | merchant | error_message | error_slug        | request_payload | status_code |
       | Iceland  | Invalid JSON  | MALFORMED_REQUEST | invalid_json    | 400         |
       | Wasabi   | Invalid JSON  | MALFORMED_REQUEST | invalid_json    | 400         |
+      | Trenette | Invalid JSON  | MALFORMED_REQUEST | invalid_json    | 400         |
 
   @invalid_field @bink_regression_api2 @sandbox_regression
   Scenario Outline: Add field journey with Unprocessable entity
@@ -60,6 +63,7 @@ Feature: Add a loyalty card
       | merchant | error_message             | error_slug             | request_payload | status_code |
       | Iceland  | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
       | Wasabi   | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
+      | Trenette | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
 
   @sending_invalid_token @bink_regression_api2 @sandbox_regression
   Scenario Outline: Sending invalid token with bearer prefix in header for add journey (Unauthorized)
@@ -74,3 +78,4 @@ Feature: Add a loyalty card
       | merchant | status_code_returned | error_message             | error_slug    |
       | Iceland  | 401                  | Supplied token is invalid | INVALID_TOKEN |
       | Wasabi   | 401                  | Supplied token is invalid | INVALID_TOKEN |
+      | Trenette | 401                  | Supplied token is invalid | INVALID_TOKEN |

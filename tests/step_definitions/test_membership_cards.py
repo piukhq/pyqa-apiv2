@@ -1737,6 +1737,20 @@ def verify_payment_card_pll_status_UC(state1, state2, slug1, slug2, description1
     ), "pll_links do not match"
 
 
+@then(parsers.parse("I can see empty loyalty card and empty payment account PLL links in the Wallet"))
+def verify_empty_lc_pc_pll_status():
+    wallet_response = TestContext.actual_view_wallet_field
+    assert wallet_response["loyalty_cards"] == []
+    assert wallet_response["payment_accounts"][0]["pll_links"] == []
+
+
+@then(parsers.parse("I can see empty payment account and empty loyalty card PLL links in the Wallet"))
+def verify_empty_pc_lc_pll_status():
+    wallet_response = TestContext.actual_view_wallet_field
+    assert wallet_response["payment_accounts"] == []
+    assert wallet_response["loyalty_cards"][0]["pll_links"] == []
+
+
 @when(parsers.parse("I perform DELETE request to delete the failed membership card which is already deleted"))
 def delete_failed_scheme_again():
     time.sleep(4)

@@ -152,6 +152,21 @@ square_meal_membership_card = {
     "transaction_currency": "points",
 }
 
+trenette_membership_card = {
+    "card_num": "TRNT4659789654",
+    "transactions_card": "TRNT4659789654",
+    "transactions_email": "JLcard3@bink.com",
+    "email": "JLcard3@bink.com",
+    "invalid_email": "fail@unknown.com",
+    "unauthorised_email": "invalidemail@testbink.com",
+    "points": 3,
+    "currency": "stamps",
+    "description": "",
+    "transactions": "4",
+    "transaction_status": "active",
+    "transaction_currency": "stamps",
+}
+
 # Wallet_info can have card details of different merchants and each merchant can have multiple loyalty cards.
 # Here Wasabi dictionary has a list stored in it. So more than 1 card can be added in future.
 wallet_info = {

@@ -17,6 +17,7 @@ Feature: Add and authorise a loyalty card
       | Iceland       | 202                  | add_and_authorise |
       | Wasabi        | 202                  | add_and_authorise |
       | SquareMeal    | 202                  | add_and_authorise |
+      | Trenette      | 202                  | add_and_authorise |
   #   | HarveyNichols | 202                  | add_and_authorise |
 
   @add_and_auth_existing_field @bink_regression_api2 @sandbox_regression
@@ -28,10 +29,11 @@ Feature: Add and authorise a loyalty card
     Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
 
     Examples:
-      | merchant  | status_code_returned | journey_type      |
-      | Iceland   | 200                  | add_and_authorise |
-      | Wasabi    | 200                  | add_and_authorise |
-      | SquareMeal| 200                  | add_and_authorise |
+      | merchant      | status_code_returned | journey_type      |
+      | Iceland       | 200                  | add_and_authorise |
+      | Wasabi        | 200                  | add_and_authorise |
+      | SquareMeal    | 200                  | add_and_authorise |
+      | Trenette      | 200                  | add_and_authorise |
 
   @invalid_field_bad_request_add_authorise @bink_regression_api2 @sandbox_regression
   Scenario Outline: Add field journey with Bad request for add and authorise
@@ -46,6 +48,7 @@ Feature: Add and authorise a loyalty card
       | Iceland     | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
       | Wasabi      | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
       | SquareMeal  | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
+      | Trenette    | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
 
   @invalid_field @bink_regression_api2 @sandbox_regression
   Scenario Outline: Add and authorised field journey with Unprocessable entity
@@ -60,6 +63,7 @@ Feature: Add and authorise a loyalty card
       | Iceland      | Invalid JSON  | MALFORMED_REQUEST | invalid_json    | 400         |
       | Wasabi       | Invalid JSON  | MALFORMED_REQUEST | invalid_json    | 400         |
       | SquareMeal   | Invalid JSON  | MALFORMED_REQUEST | invalid_json    | 400         |
+      | Trenette     | Invalid JSON  | MALFORMED_REQUEST | invalid_json    | 400         |
 
   @sending_invalid_token @bink_regression_api2 @sandbox_regression
   Scenario Outline: Sending invalid token with bearer prefix in header for add and authoirse journey (Unauthorized)
@@ -74,6 +78,8 @@ Feature: Add and authorise a loyalty card
       | Iceland      | 401                  | Supplied token is invalid | INVALID_TOKEN |
       | Wasabi       | 401                  | Supplied token is invalid | INVALID_TOKEN |
       | SquareMeal   | 401                  | Supplied token is invalid | INVALID_TOKEN |
+      | Trenette     | 401                  | Supplied token is invalid | INVALID_TOKEN |
+
 
   @add_already_then_add_auth @bink_regression_api2 @sandbox_regression
   Scenario Outline: Loyalty scheme already exist with add credential
@@ -88,6 +94,7 @@ Feature: Add and authorise a loyalty card
       | merchant    | status_code_returned | error_message                                                                                  | error_slug    |
       | Iceland     | 409                  | Card already added. Use PUT /loyalty_cards/{loyalty_card_id}/authorise to authorise this card. | ALREADY_ADDED |
       | Wasabi      | 409                  | Card already added. Use PUT /loyalty_cards/{loyalty_card_id}/authorise to authorise this card. | ALREADY_ADDED |
+      | Trenette    | 409                  | Card already added. Use PUT /loyalty_cards/{loyalty_card_id}/authorise to authorise this card. | ALREADY_ADDED |
 
 
   @add_and_auth_with_different_authorised_field @bink_regression_api2 @sandbox_regression
@@ -104,6 +111,7 @@ Feature: Add and authorise a loyalty card
       | merchant    | status_code_returned | error_message                                                                                                    | error_slug         |
       | Iceland     | 409                  |Card already authorised. Use PUT /loyalty_cards/{loyalty_card_id}/authorise to modify authorisation credentials.  | ALREADY_AUTHORISED |
       | SquareMeal  | 409                  |Card already authorised. Use PUT /loyalty_cards/{loyalty_card_id}/authorise to modify authorisation credentials.  | ALREADY_AUTHORISED |
+      | Trenette    | 409                  |Card already authorised. Use PUT /loyalty_cards/{loyalty_card_id}/authorise to modify authorisation credentials.  | ALREADY_AUTHORISED |
 
   @add_and_auth_pll @bink_regression_api2 @sandbox_regression
   Scenario Outline: verify PLL for add and authorise
@@ -118,3 +126,4 @@ Feature: Add and authorise a loyalty card
       | master                | Iceland    | 202                  | pll          |
       | master                | Wasabi     | 202                  | pll          |
       | master                | SquareMeal | 202                  | pll          |
+      | master                | Trenette   | 202                  | pll          |
