@@ -3,6 +3,7 @@ from tests.helpers.test_data_utils import TestDataUtils
 from tests.payload.loyalty_cards.harvey_nichols import HarveyNicholsCard
 from tests.payload.loyalty_cards.iceland import IcelandCard
 from tests.payload.loyalty_cards.squaremeal import SquareMealCard
+from tests.payload.loyalty_cards.trenette import TrenetteCard
 from tests.payload.loyalty_cards.wasabi import WasabiCard
 
 
@@ -193,6 +194,7 @@ class Merchant:
             "Iceland": IcelandCard,
             "Wasabi": WasabiCard,
             "SquareMeal": SquareMealCard,
+            "Trenette": TrenetteCard,
         }
         return switcher.get(merchant)
 
