@@ -19,8 +19,8 @@ Feature: View Loyalty Plan by id
       | SquareMeal          | 200         |
       | Asos                | 200         |
       | Trenette            | 200         |
-      | Viator              | 200         |
- #     | HarveyNichols       | 200         |
+  #   | Viator              | 200         |
+  #   | HarveyNichols       | 200         |
 
   @loyalty_is_in_wallet @journey_type @bink_regression_api2 @sandbox_regression
   Scenario Outline: Verify is_in_wallet field for Loyalty Plan by id
