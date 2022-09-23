@@ -4,6 +4,7 @@ from tests.payload.loyalty_cards.harvey_nichols import HarveyNicholsCard
 from tests.payload.loyalty_cards.iceland import IcelandCard
 from tests.payload.loyalty_cards.squaremeal import SquareMealCard
 from tests.payload.loyalty_cards.wasabi import WasabiCard
+from tests.payload.loyalty_cards.trenette import TrenetteCard
 
 
 class PaymentCardTestData:
