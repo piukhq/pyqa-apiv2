@@ -234,7 +234,7 @@ class MembershipCards(Endpoint):
 
     @staticmethod
     def get_add_url(scheme_account_id=None):
-        """Return URL for membership_cards and
+        """Return URL for loyalty_cards and
         membership_card/scheme_account_id"""
         if scheme_account_id is None:
             return Endpoint.BASE_URL + api.ENDPOINT_MEMBERSHIP_CARDS_ADD

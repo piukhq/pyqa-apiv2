@@ -10,7 +10,7 @@ from tests.helpers import constants
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
 from tests.requests.service import CustomerAccount
-from tests.step_definitions import test_membership_cards, test_paymentcard_account
+from tests.step_definitions import test_loyalty_cards, test_paymentcard_account
 
 scenarios("user_accounts/")
 
@@ -32,27 +32,27 @@ def update_user_email(test_email):
 
 @when(parsers.parse('I perform POST request to add and authorise "{merchant}" membership card using b2b token'))
 def verify_add_and_auth_b2b(merchant):
-    test_membership_cards.verify_add_and_auth_b2b(merchant)
+    test_loyalty_cards.verify_add_and_auth_b2b(merchant)
 
 
 @then(parsers.parse('verify the data stored in DB after "{journey_type}" journey for "{merchant}"'))
 def verify_loyalty_card_into_database(journey_type, merchant):
-    test_membership_cards.verify_loyalty_card_into_database(journey_type, merchant)
+    test_loyalty_cards.verify_loyalty_card_into_database(journey_type, merchant)
 
 
 @then(parsers.parse('verify the payment data stored in DB after "{journey_type2}" journey for "{merchant}"'))
 def verify_payment_card_into_database(journey_type2, merchant):
-    test_membership_cards.verify_payment_card_into_database(journey_type2, merchant)
+    test_loyalty_cards.verify_payment_card_into_database(journey_type2, merchant)
 
 
 @then(parsers.parse('verify that the PLL links are deleted from the scheme account for "{journey_type2}"'))
 def verify_pll_links_scheme_account(journey_type2):
-    test_membership_cards.verify_pll_links_scheme_account(journey_type2)
+    test_loyalty_cards.verify_pll_links_scheme_account(journey_type2)
 
 
 @then(parsers.parse('verify that the PLL links are deleted from the payment account for "{journey_type2}"'))
 def verify_pll_links_payment_account(journey_type2):
-    test_membership_cards.verify_pll_links_payment_account(journey_type2)
+    test_loyalty_cards.verify_pll_links_payment_account(journey_type2)
 
 
 @when(

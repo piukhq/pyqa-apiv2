@@ -8,7 +8,7 @@ from tests.api.base import Endpoint
 from tests.conftest import response_to_json
 from tests.helpers.test_context import TestContext
 from tests.requests.token_b2b import Token_b2b
-from tests.step_definitions import test_membership_cards
+from tests.step_definitions import test_loyalty_cards
 
 scenarios("b2b_token/")
 
@@ -17,7 +17,7 @@ scenarios("b2b_token/")
 
 @when(parsers.parse('I perform POST request to add "{merchant}" membership card'))
 def add_membership_card_field(merchant):
-    test_membership_cards.add_field_loyalty_cards(merchant)
+    test_loyalty_cards.add_field_loyalty_cards(merchant)
 
 
 @when(parsers.parse('I perform POST refresh token with grant type "{grant_type}"'))

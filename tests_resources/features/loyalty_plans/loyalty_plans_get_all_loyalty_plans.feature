@@ -1,4 +1,4 @@
-@loyalty_plans_all @membership_plans
+@loyalty_plans_all @loyalty_plans
 Feature: View Loyalty Plans
  As a consuming channel
  I want view all available loyalty plans for my channel
