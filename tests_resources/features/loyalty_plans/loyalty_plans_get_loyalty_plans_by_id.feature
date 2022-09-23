@@ -1,5 +1,5 @@
 # Created by bularaghavan on 26/10/2021
-@loyalty_plan_by_id @membership_plans
+@loyalty_plan_by_id @loyalty_plans
 Feature: View Loyalty Plan by id
  As a consuming channel
  I want to view a loyalty plan’s details available for my channel
