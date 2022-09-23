@@ -194,6 +194,7 @@ class Merchant:
             "Iceland": IcelandCard,
             "Wasabi": WasabiCard,
             "SquareMeal": SquareMealCard,
+            "Trenette": TrenetteCard,
         }
         return switcher.get(merchant)
 
