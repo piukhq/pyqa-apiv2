@@ -288,6 +288,47 @@ class IcelandCard:
         return payload
 
     @staticmethod
+    def add_and_auth_field_only_membership_card_with_unauthorised_json():
+        TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS_CARD)
+        TestContext.last_name = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.UNAUTHORISED_LAST_NAME)
+        TestContext.postcode = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS_POSTCODE)
+
+        payload = {
+            "account": {
+                "add_fields": {
+                    "credentials": [
+                        {
+                            "credential_slug": "card_number",
+                            "value": TestContext.card_number,
+                        }
+                    ]
+                },
+                "authorise_fields": {
+                    "credentials": [
+                        {
+                            "credential_slug": "last_name",
+                            "value": TestContext.last_name,
+                        },
+                        {
+                            "credential_slug": "postcode",
+                            "value": TestContext.postcode,
+                        },
+                    ]
+                },
+            },
+            "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("iceland"),
+        }
+
+        logging.info(
+            "The Request for Add_and_Auth journey with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_AUTHORISE
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
     def authorise_field_only_membership_card_payload(invalid_data=None):
         TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.CARD_NUM)
         if invalid_data == "invalid_request":

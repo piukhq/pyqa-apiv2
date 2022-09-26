@@ -25,8 +25,8 @@ Feature: View Wallet by LC id in different channel
 
     Examples:
       | merchant      | status_code_returned|payment_card_provider|
-      |Wasabi        | 200                  |master              |
-#      |Iceland        |200                  |master               |
+#      |Wasabi        | 200                  |master              |
+      |Iceland        |200                  |master               |
 #      |HarveyNichols  |200                  |master               |
 
 
@@ -49,8 +49,8 @@ Feature: View Wallet by LC id in different channel
 
     Examples:
       | merchant      | status_code_returned|payment_card_provider|request_payload | status_code|
-      |Wasabi        | 200                  |master              |unauthorised     | 202        |
-#      |Iceland        |200                  |master               | unauthorised  | 202        |
+#      |Wasabi        | 200                  |master              |unauthorised     | 202        |
+      |Iceland        |200                  |master               | unauthorised  | 202        |
 #      |HarveyNichols  |200                  |master               | unauthorised  | 202        |
 
 
@@ -74,8 +74,8 @@ Feature: View Wallet by LC id in different channel
 
     Examples:
       | merchant      | status_code_returned|payment_card_provider|
-      |Wasabi        | 200                  |master              |
-#      |Iceland        |200                  |master               |
+#      |Wasabi        | 200                  |master              |
+      |Iceland        |200                  |master               |
 #      |HarveyNichols  |200                  |master               |
 
 
@@ -99,8 +99,8 @@ Feature: View Wallet by LC id in different channel
 
     Examples:
       | merchant      | status_code_returned|payment_card_provider|
-      |Wasabi        | 200                  |master              |
-#      |Iceland        |200                  |master               |
+#      |Wasabi        | 200                  |master              |
+      |Iceland        |200                  |master               |
 #      |HarveyNichols  |200                  |master               |
 
 
@@ -124,8 +124,8 @@ Feature: View Wallet by LC id in different channel
 
     Examples:
       | merchant      | status_code_returned|payment_card_provider|
-      |Wasabi        | 200                  |master              |
-#      |Iceland        |200                  |master               |
+#      |Wasabi        | 200                  |master              |
+      |Iceland        |200                  |master               |
 #      |HarveyNichols  |200                  |master               |
 
 
@@ -148,6 +148,6 @@ Feature: View Wallet by LC id in different channel
 
     Examples:
       | merchant      | status_code_returned|payment_card_provider|
-      |Wasabi        | 200                  |master              |
-#      |Iceland        |200                  |master               |
+#      |Wasabi        | 200                  |master              |
+      |Iceland        |200                  |master               |
 #      |HarveyNichols  |200                  |master               |

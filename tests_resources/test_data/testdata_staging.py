@@ -71,6 +71,7 @@ invalid_token = {
 iceland_membership_card = {
     "card_num": "6332040000300000003",
     # "register_card": "6332040000400000011",
+    "unauthorised_last_name" : "InvalidLastName",
     "register_card": "6332040031231230002",
     "register_failed_card": "6332040065432156789",
     "register_failed_email": "generalerror@testbink.com",
@@ -1220,7 +1221,111 @@ unauth_wallet_info = {
             # ]
         }
     ],
-    # "Iceland" : [],
+    "Iceland" : [{
+			# "id": 210732,
+			"loyalty_plan_id": 105,
+			"loyalty_plan_name": "Iceland Bonus Card",
+			"is_fully_pll_linked": False,
+			"pll_linked_payment_accounts": 0,
+			"total_payment_accounts": 1,
+			"status": {
+				"state": "unauthorised",
+				"slug": "VALIDATION_ERROR",
+				"description": "We can’t link your card as some details don’t match what the retailer has. Please check your details and enter them into the form again. If this doesn’t work, please speak to the retailer, or re-join their loyalty scheme in Loyalty Plus."
+			},
+			"balance": {
+				"updated_at": None,
+				"current_display_value": None,
+				"loyalty_currency_name": None,
+				"prefix": None,
+				"suffix": None,
+				"current_value": None,
+				"target_value": None
+			},
+			"transactions": [],
+			"vouchers": [],
+			"card": {
+				"barcode": None,
+				"barcode_type": 0,
+				# "card_number": "6332040000000000007",
+				"colour": "#d50724",
+				"text_colour": "#FFFFFF"
+			},
+			"reward_available": False,
+			"images": [
+				{
+					"id": 1289,
+					"type": 9,
+					"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_MiyMk96.png",
+					"description": "Iceland Alternative Hero Image",
+					"encoding": "png"
+				},
+				{
+					"id": 374,
+					"type": 3,
+					"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
+					"description": "Iceland Icon",
+					"encoding": "png"
+				},
+				{
+					"id": 373,
+					"type": 4,
+					"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland-asset.png",
+					"description": "Iceland Asset",
+					"encoding": "png"
+				},
+				{
+					"id": 1070,
+					"type": 5,
+					"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_ref1.jpg",
+					"description": "Iceland Reference",
+					"encoding": "jpg"
+				},
+				{
+					"id": 1071,
+					"type": 5,
+					"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref2.jpg",
+					"description": "Iceland Reference",
+					"encoding": "jpg"
+				},
+				{
+					"id": 1072,
+					"type": 5,
+					"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref3.jpg",
+					"description": "Iceland Reference",
+					"encoding": "jpg"
+				},
+				{
+					"id": 1234,
+					"type": 0,
+					"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
+					"description": "Iceland Slimming World hero card",
+					"encoding": "png"
+				},
+				{
+					"id": 1303,
+					"type": 2,
+					"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Greggs.jpg",
+					"description": "Iceland Offer - Greggs",
+					"encoding": "jpg"
+				},
+				{
+					"id": 1302,
+					"type": 2,
+					"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Pizza.jpg",
+					"description": "Iceland Offer - Pizza",
+					"encoding": "jpg"
+				},
+				{
+					"id": 1398,
+					"type": 7,
+					"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/PromotionsIcelandBonusCard1968x732.png",
+					"description": "Promo_Text_1",
+					"encoding": "png"
+				}
+			],
+    }
+    ],
     # "HarveyNichols" : [],
     "payment_accounts": [
         {
@@ -1342,7 +1447,46 @@ unauth_wallet_overview_info = {
             ],
         }
     ],
-    # "Iceland" : [],
+    "Iceland" : [{
+			# "id": 210732,
+			"loyalty_plan_id": 105,
+			"loyalty_plan_name": "Iceland Bonus Card",
+			"is_fully_pll_linked": False,
+			"pll_linked_payment_accounts": 0,
+			"total_payment_accounts": 1,
+			"status": {
+				"state": "unauthorised",
+				"slug": "VALIDATION_ERROR",
+				"description": "We can’t link your card as some details don’t match what the retailer has. Please check your details and enter them into the form again. If this doesn’t work, please speak to the retailer, or re-join their loyalty scheme in Loyalty Plus."
+			},
+			"balance": {
+				"updated_at": None,
+				"current_display_value": None,
+				"loyalty_currency_name": None,
+				"prefix": None,
+				"suffix": None,
+				"current_value": None,
+				"target_value": None
+			},
+			"card": {
+				"barcode": None,
+				"barcode_type": 0,
+				# "card_number": "6332040000000000007",
+				"colour": "#d50724",
+				"text_colour": "#FFFFFF"
+			},
+			"reward_available": False,
+			"images": [
+				{
+					"id": 1234,
+					"type": 0,
+					"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
+					"description": "Iceland Slimming World hero card",
+					"encoding": "png"
+				}
+			]
+		}
+	],
     # "HarveyNichols" : [],
     "payment_accounts": [
         {
@@ -1491,19 +1635,111 @@ unauth_wallet_info_by_card_id = {
                 "encoding": "png",
             },
         ],
-        # "pll_links": [
-        # 	{
-        # 		"payment_account_id": 113304,
-        # 		"payment_scheme": "Mastercard",
-        # 		"status": {
-        # 			"state": "inactive",
-        # 			"slug": "LOYALTY_CARD_NOT_AUTHORISED",
-        # 			"description": "The Loyalty Card is not authorised so no PLL link can be created."
-        # 		}
-        # 	}
-        # ]
     },
-    # "Iceland" : [],
+    "Iceland" : {
+	# "id": 210732,
+	"loyalty_plan_id": 105,
+	"loyalty_plan_name": "Iceland Bonus Card",
+	"is_fully_pll_linked": False,
+	"pll_linked_payment_accounts": 0,
+	"total_payment_accounts": 1,
+	"status": {
+		"state": "unauthorised",
+		"slug": "VALIDATION_ERROR",
+		"description": "We can’t link your card as some details don’t match what the retailer has. Please check your details and enter them into the form again. If this doesn’t work, please speak to the retailer, or re-join their loyalty scheme in Loyalty Plus."
+	},
+	"balance": {
+		"updated_at": None,
+		"current_display_value": None,
+		"loyalty_currency_name": None,
+		"prefix": None,
+		"suffix": None,
+		"current_value": None,
+		"target_value": None
+	},
+	"transactions": [],
+	"vouchers": [],
+	"card": {
+		"barcode": None,
+		"barcode_type": 0,
+		# "card_number": "6332040000000000007",
+		"colour": "#d50724",
+		"text_colour": "#FFFFFF"
+	},
+	"reward_available": False,
+	"images": [
+		{
+			"id": 1289,
+			"type": 9,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_MiyMk96.png",
+			"description": "Iceland Alternative Hero Image",
+			"encoding": "png"
+		},
+		{
+			"id": 374,
+			"type": 3,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
+			"description": "Iceland Icon",
+			"encoding": "png"
+		},
+		{
+			"id": 373,
+			"type": 4,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland-asset.png",
+			"description": "Iceland Asset",
+			"encoding": "png"
+		},
+		{
+			"id": 1070,
+			"type": 5,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_ref1.jpg",
+			"description": "Iceland Reference",
+			"encoding": "jpg"
+		},
+		{
+			"id": 1071,
+			"type": 5,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref2.jpg",
+			"description": "Iceland Reference",
+			"encoding": "jpg"
+		},
+		{
+			"id": 1072,
+			"type": 5,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref3.jpg",
+			"description": "Iceland Reference",
+			"encoding": "jpg"
+		},
+		{
+			"id": 1234,
+			"type": 0,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
+			"description": "Iceland Slimming World hero card",
+			"encoding": "png"
+		},
+		{
+			"id": 1303,
+			"type": 2,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Greggs.jpg",
+			"description": "Iceland Offer - Greggs",
+			"encoding": "jpg"
+		},
+		{
+			"id": 1302,
+			"type": 2,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Pizza.jpg",
+			"description": "Iceland Offer - Pizza",
+			"encoding": "jpg"
+		},
+		{
+			"id": 1398,
+			"type": 7,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/PromotionsIcelandBonusCard1968x732.png",
+			"description": "Promo_Text_1",
+			"encoding": "png"
+		}
+	]
+    },
     # "HarveyNichols" : [],
 }
 # ----------------------------------------MEMBERSHIP PLAN IDs   ----------------------------------------------- #
