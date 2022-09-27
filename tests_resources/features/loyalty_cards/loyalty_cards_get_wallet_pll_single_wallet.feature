@@ -1,5 +1,5 @@
 # Created by bularaghavan on 16/09/2022
-@membership_cards_pll @pll_get_wallet_single
+@membership_cards_pll @pll_get_wallet_single @membership_cards
 Feature: View single wallet pll
   As a Bink user
   I want to see the Status of the PLL Link between a given loyalty card and payment card in my given wallet
