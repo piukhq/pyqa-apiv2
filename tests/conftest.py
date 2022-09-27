@@ -376,7 +376,6 @@ def perform_post_b2b_with_user1(token_type):
     TestContext.token_type = response_json.get("token_type")
     TestContext.refresh_token_type = response_json.get("refresh_token")
     TestContext.token = TestContext.token_type + " " + TestContext.access_token
-    TestContext.first_wallet_token = TestContext.token
     TestContext.response_status_code = response.status_code
     logging.info(
         "The response of B2B token (POST) is:\n\n"
@@ -398,7 +397,6 @@ def perform_post_b2b_with_user2(token_type):
     TestContext.token_type = response_json.get("token_type")
     TestContext.refresh_token_type = response_json.get("refresh_token")
     TestContext.token = TestContext.token_type + " " + TestContext.access_token
-    TestContext.second_wallet_token = TestContext.token
     TestContext.response_status_code = response.status_code
     logging.info(
         "The response of B2B token (POST) is:\n\n"
