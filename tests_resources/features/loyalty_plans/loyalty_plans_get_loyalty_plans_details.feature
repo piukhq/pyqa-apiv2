@@ -18,7 +18,7 @@ Feature: View Loyalty Plan by id
       | SquareMeal          | 200         |
       | Asos                | 200         |
       | Trenette            | 200         |
-      | Viator              | 200         |
+  #    | Viator              | 200         |
   #    | HarveyNichols       | 200         |
 
   @loyalty_plan_details_invalid_token @invalid_token @bink_regression_api2 @sandbox_regression

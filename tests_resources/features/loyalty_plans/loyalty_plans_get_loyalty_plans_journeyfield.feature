@@ -19,7 +19,7 @@ Feature: view journey fields
       | SquareMeal     | 200         |
       | Asos           | 200         |
       | Trenette       | 200         |
-      | Viator         | 200         |
+  #    | Viator         | 200         |
   #    | HarveyNichols  | 200         |
 
   @membership_plan @invalid_token @bink_regression_api2 @sandbox_regression

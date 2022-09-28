@@ -1,4 +1,4 @@
-# Created by rupalpatel at 04/10/2021, updated by BR on 29/07/2022
+# Created by bularagahavan 26/09/2022
 @membership_card_authorise_multi
 Feature: Authorise a loyalty card
   As a Bink user
@@ -21,12 +21,12 @@ Feature: Authorise a loyalty card
     Then I see a <status_code_returned3>
     When I perform PUT request to authorise "<merchant>" membership card with "<request_payload>" with "<status_code_returned2>"
     Then I see a <status_code_returned2>
-    When I perform GET 'Wallet' for first user
+    When I call GET Wallet for first bink user
     Then All Wallet fields are correctly populated for <merchant>
     When I perform GET request to view loyalty card transactions for "<merchant>"
     And I perform GET request to view loyalty card balance for "<merchant>"
     And I perform GET request to view loyalty card voucher for "<merchant>"
-    When I perform GET 'Wallet' for second user
+    When I call GET Wallet for second bink user
     Then Wallet fields are correctly populated for unauthorised LC of <merchant>
 
     Examples:

@@ -66,7 +66,7 @@ def verify_invalid_request_for_token(request_payload):
 
 @then(parsers.parse('I see a "{error_message}" error message'))
 def verify_token_error_message(error_message):
-    assert TestContext.error_message == error_message, "Error Message didnt returned"
+    assert TestContext.error_message == error_message, "Error Message is not returned"
 
 
 @then(parsers.parse("I see a {status_code_returned}"))
