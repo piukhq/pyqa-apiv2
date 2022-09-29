@@ -16,6 +16,8 @@ from settings import (
     ACCESS_SECRET_NAME,
     B2B_BINK_PRIVATE_KEY,
     B2B_LLOYDS_PRIVATE_KEY,
+    B2B_HALIFAX_PRIVATE_KEY,
+    B2B_BOS_PRIVATE_KEY,
     CHANNEL_SECRET_NAME,
     LOCAL_CHANNELS,
     LOCAL_SECRETS_PATH,
@@ -135,6 +137,8 @@ def load_secrets():
         load_token_secrets = {
             "bink-bink-regression": B2B_BINK_PRIVATE_KEY,
             "lloydsqa-bink-regression": B2B_LLOYDS_PRIVATE_KEY,
+            "halifax-bink-regression": B2B_HALIFAX_PRIVATE_KEY,
+            "bos-bink-regression": B2B_BOS_PRIVATE_KEY
         }
         # private_key_secrets = [B2B_BINK_PRIVATE_KEY, B2B_LLOYDS_PRIVATE_KEY]
         for kid, secret_name in load_token_secrets.items():

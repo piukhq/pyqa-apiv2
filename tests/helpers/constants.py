@@ -1,7 +1,11 @@
 """Email Template"""
 EMAIL_TEMPLATE = "pytest+2.0_regression_email@bink.com"
 LLOYDS_EMAIL_TEMPLATE = "pytest+2.0_auto_lloyds_email@bink.com"
-LLOYDS_EXTERNAL_ID_TEMPLATE = "Auto_external_id"
+BOS_EMAIL_TEMPLATE = "pytest+2.0_auto_bos_email@bink.com"
+HALIFAX_EMAIL_TEMPLATE = "pytest+2.0_auto_halifax_email@bink.com"
+LLOYDS_EXTERNAL_ID_TEMPLATE = "Auto_lloyds_external_id"
+BOS_EXTERNAL_ID_TEMPLATE = "Auto_bos_external_id"
+HALIFAX_EXTERNAL_ID_TEMPLATE = "Auto_halifax_external_id"
 
 """Channel User Details"""
 UID = "uid"
