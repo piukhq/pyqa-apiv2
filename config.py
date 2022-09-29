@@ -51,3 +51,19 @@ BARCLAYS = ChannelDetails(
     kid="barclays-bink-regression",
     organisation_id="",
 )
+
+HALIFAX = ChannelDetails(
+    channel_name="halifax",
+    bundle_id="com.halifax.api2",
+    client_id="8eBiL5Vh7AKKkWOezW5Avv8olfhK3to9ToqiypzPbOiBj5XEIv",
+    kid="halifax-bink-regression",
+    organisation_id="",
+)
+
+BOS = ChannelDetails(
+    channel_name="bos",
+    bundle_id="com.bos.api2",
+    client_id="8eBiL5Vh7AKKkWOezW5Avv8olfhK3to9ToqiypzPbOiBj5XEIv",
+    kid="bos-bink-regression",
+    organisation_id="",
+)
