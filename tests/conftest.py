@@ -149,9 +149,33 @@ def lloyds_test_email():
 
 
 @pytest.fixture()
+def bos_test_email():
+    faker = Faker()
+    return constants.BOS_EMAIL_TEMPLATE.replace("email", str(faker.random_int(100, 999999)))
+
+
+@pytest.fixture()
+def halifax_test_email():
+    faker = Faker()
+    return constants.HALIFAX_EMAIL_TEMPLATE.replace("email", str(faker.random_int(100, 999999)))
+
+
+@pytest.fixture()
 def lloyds_external_id():
     faker = Faker()
     return constants.LLOYDS_EXTERNAL_ID_TEMPLATE.replace("id", str(faker.random_int(100, 999999)))
+
+
+@pytest.fixture()
+def bos_external_id():
+    faker = Faker()
+    return constants.BOS_EXTERNAL_ID_TEMPLATE.replace("id", str(faker.random_int(100, 999999)))
+
+
+@pytest.fixture()
+def halifax_external_id():
+    faker = Faker()
+    return constants.HALIFAX_EXTERNAL_ID_TEMPLATE.replace("id", str(faker.random_int(100, 999999)))
 
 
 @given("I am a Bink user")
@@ -438,6 +462,67 @@ def get_lloyds_user(lloyds_external_id, lloyds_test_email):
     )
     assert response.status_code == 200, "/token Journey failed to get access token"
     TestContext.all_users["lloyds_user"] = TestContext.token
+    return TestContext.token
+
+
+@given("I am a bos user")
+def get_bos_user(bos_external_id, bos_test_email):
+    key_secret = get_private_key_secret(config.BOS.kid)
+    # user_email = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EMAIL)
+    # external_id = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EXTERNAL_ID)
+    TestContext.b2btoken = create_b2b_token(
+        key=key_secret, sub=bos_external_id, kid=config.BOS.kid, email=bos_test_email
+    )
+
+    response = Token_b2b.post_b2b_with_grant_type(TestContext.b2btoken, "b2b")
+    time.sleep(1)
+    response_json = response_to_json(response)
+    TestContext.access_token = response_json.get("access_token")
+    TestContext.token_type = response_json.get("token_type")
+    TestContext.refresh_token_type = response_json.get("refresh_token")
+    TestContext.token = TestContext.token_type + " " + TestContext.access_token
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The response of B2B token (POST) for bos is:\n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_TOKEN
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+        + "External Id"
+        + bos_external_id
+    )
+    assert response.status_code == 200, "/token Journey failed to get access token"
+    TestContext.all_users["bos_user"] = TestContext.token
+    return TestContext.token
+
+
+@given("I am a halifax user")
+def get_halifax_user(halifax_external_id, halifax_test_email):
+    key_secret = get_private_key_secret(config.HALIFAX.kid)
+    # user_email = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EMAIL)
+    # external_id = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EXTERNAL_ID)
+    TestContext.b2btoken = create_b2b_token(
+        key=key_secret, sub=halifax_external_id, kid=config.HALIFAX.kid, email=halifax_test_email
+    )
+    response = Token_b2b.post_b2b_with_grant_type(TestContext.b2btoken, "b2b")
+    time.sleep(1)
+    response_json = response_to_json(response)
+    TestContext.access_token = response_json.get("access_token")
+    TestContext.token_type = response_json.get("token_type")
+    TestContext.refresh_token_type = response_json.get("refresh_token")
+    TestContext.token = TestContext.token_type + " " + TestContext.access_token
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The response of B2B token (POST) for halifax is:\n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_TOKEN
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+        + "External Id"
+        + halifax_external_id
+    )
+    assert response.status_code == 200, "/token Journey failed to get access token"
+    TestContext.all_users["halifax_user"] = TestContext.token
     return TestContext.token
 
 
