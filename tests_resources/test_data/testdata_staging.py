@@ -1201,7 +1201,7 @@ unauth_wallet_info = {
             "card": {
                 "barcode": None,
                 "barcode_type": None,
-                "card_number": "1048175295",
+                # "card_number": "1048172852",
                 "colour": "#ccd400",
                 "text_colour": "#000000",
             },
@@ -1266,8 +1266,8 @@ unauth_wallet_info = {
 			"total_payment_accounts": 1,
 			"status": {
 				"state": "unauthorised",
-				"slug": "VALIDATION_ERROR",
-				"description": "We can’t link your card as some details don’t match what the retailer has. Please check your details and enter them into the form again. If this doesn’t work, please speak to the retailer, or re-join their loyalty scheme in Loyalty Plus."
+				"slug": "AUTHORISATION_FAILED",
+				"description": "We're unable to verify the Loyalty Card details provided. Please re-enter your details and try again."
 			},
 			"balance": {
 				"updated_at": None,
@@ -1467,7 +1467,7 @@ unauth_wallet_overview_info = {
             "card": {
                 "barcode": None,
                 "barcode_type": None,
-                "card_number": "1048175295",
+                # "card_number": "1048172852",
                 "colour": "#ccd400",
                 "text_colour": "#000000",
             },
@@ -1491,10 +1491,10 @@ unauth_wallet_overview_info = {
 			"pll_linked_payment_accounts": 0,
 			"total_payment_accounts": 1,
 			"status": {
-				"state": "unauthorised",
-				"slug": "VALIDATION_ERROR",
-				"description": "We can’t link your card as some details don’t match what the retailer has. Please check your details and enter them into the form again. If this doesn’t work, please speak to the retailer, or re-join their loyalty scheme in Loyalty Plus."
-			},
+                "state": "unauthorised",
+                "slug": "AUTHORISATION_FAILED",
+                "description": "We're unable to verify the Loyalty Card details provided. Please re-enter your details and try again."
+                },
 			"balance": {
 				"updated_at": None,
 				"current_display_value": None,
@@ -1629,7 +1629,7 @@ unauth_wallet_info_by_card_id = {
         "card": {
             "barcode": None,
             "barcode_type": None,
-            "card_number": "1048175295",
+            # "card_number": "1048172852",
             "colour": "#ccd400",
             "text_colour": "#000000",
         },
@@ -1680,10 +1680,10 @@ unauth_wallet_info_by_card_id = {
 	"pll_linked_payment_accounts": 0,
 	"total_payment_accounts": 1,
 	"status": {
-		"state": "unauthorised",
-		"slug": "VALIDATION_ERROR",
-		"description": "We can’t link your card as some details don’t match what the retailer has. Please check your details and enter them into the form again. If this doesn’t work, please speak to the retailer, or re-join their loyalty scheme in Loyalty Plus."
-	},
+        "state": "unauthorised",
+        "slug": "AUTHORISATION_FAILED",
+        "description": "We're unable to verify the Loyalty Card details provided. Please re-enter your details and try again."
+		},
 	"balance": {
 		"updated_at": None,
 		"current_display_value": None,
@@ -1801,6 +1801,7 @@ scheme_status = {
     "active": 1,
     "enrol_failed": 901,
     "account_already_exist": 445,
+    "invalid_credentials": 403,
 }
 
 # ------------------------------------------ DB DETAILS ---------------------------------------------------- #

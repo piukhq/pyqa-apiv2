@@ -43,7 +43,7 @@ ACCOUNT_ALREADY_EXIST = "account_already_exist"
 ACTIVE = "active"
 PENDING = "pending"
 FAILED_VALIDATION = "failed_validation"
-
+INVALID_CREDENTIALS = "invalid_credentials"
 """Register ghost card"""
 TITLE = "Mr"
 DATE_OF_BIRTH = "01/01/2000"

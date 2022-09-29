@@ -259,7 +259,7 @@ class WasabiCard:
 
     @staticmethod
     def add_and_auth_field_only_membership_card_with_unauthorised_json():
-        TestContext.card_number = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM)
+        TestContext.card_number = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.TRANSACTIONS_CARD)
         TestContext.email = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.UNAUTHORISED_EMAIL)
         payload = {
             "account": {
