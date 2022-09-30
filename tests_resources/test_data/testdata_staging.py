@@ -1269,7 +1269,7 @@ unauth_wallet_info = {
                 "state": "unauthorised",
                 "slug": "AUTHORISATION_FAILED",
                 "description": "We're unable to verify the Loyalty Card details provided. "
-                               "Please re-enter your details and try again.",
+                "Please re-enter your details and try again.",
             },
             "balance": {
                 "updated_at": None,
@@ -1358,7 +1358,7 @@ unauth_wallet_info = {
                     "id": 1398,
                     "type": 7,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                           "PromotionsIcelandBonusCard1968x732.png",
+                    "PromotionsIcelandBonusCard1968x732.png",
                     "description": "Promo_Text_1",
                     "encoding": "png",
                 },
@@ -1498,7 +1498,7 @@ unauth_wallet_overview_info = {
                 "state": "unauthorised",
                 "slug": "AUTHORISATION_FAILED",
                 "description": "We're unable to verify the Loyalty Card details provided. "
-                               "Please re-enter your details and try again.",
+                "Please re-enter your details and try again.",
             },
             "balance": {
                 "updated_at": None,
@@ -1688,7 +1688,7 @@ unauth_wallet_info_by_card_id = {
             "state": "unauthorised",
             "slug": "AUTHORISATION_FAILED",
             "description": "We're unable to verify the Loyalty Card details provided. "
-                           "Please re-enter your details and try again.",
+            "Please re-enter your details and try again.",
         },
         "balance": {
             "updated_at": None,
@@ -1777,7 +1777,7 @@ unauth_wallet_info_by_card_id = {
                 "id": 1398,
                 "type": 7,
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                       "PromotionsIcelandBonusCard1968x732.png",
+                "PromotionsIcelandBonusCard1968x732.png",
                 "description": "Promo_Text_1",
                 "encoding": "png",
             },
