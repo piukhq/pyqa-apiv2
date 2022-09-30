@@ -129,6 +129,13 @@ def verify_loyalty_card_into_database(journey_type, merchant):
                 and scheme_account.status == TestDataUtils.TEST_DATA.scheme_status.get(constants.FAILED_VALIDATION)
             )
             print("scheme ac status", scheme_account.status)
+        elif merchant == "Iceland":
+            scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
+            assert (
+                scheme_account.id == TestContext.current_scheme_account_id
+                and scheme_account.status == TestDataUtils.TEST_DATA.scheme_status.get(constants.INVALID_CREDENTIALS)
+            )
+            print("scheme ac status", scheme_account.status)
 
     elif journey_type == "pll":
         pll_links = [{"id": TestContext.current_payment_card_id, "active_link": True}]
@@ -2069,12 +2076,16 @@ def verify_get_wallet_lc_unauath(Wallet, merchant):
         ), "account id does not match"
 
         for wallet_key in TestDataUtils.TEST_DATA.unauth_wallet_info[merchant][0].keys():
-            if wallet_key not in ["images"]:
+            if wallet_key not in ["card", "images"]:
                 assert (
                     wallet_response["loyalty_cards"][0][wallet_key]
                     == TestDataUtils.TEST_DATA.unauth_wallet_info[merchant][0][wallet_key]
                 ), f"{wallet_key} do not match"
-
+        for card_key in TestDataUtils.TEST_DATA.unauth_wallet_info[merchant][0]["card"].keys():
+            assert (
+                wallet_response["loyalty_cards"][0]["card"][card_key]
+                == TestDataUtils.TEST_DATA.unauth_wallet_info[merchant][0]["card"][card_key]
+            ), f"{card_key} do not match"
         compare_two_lists(
             wallet_response["loyalty_cards"][0]["images"],
             TestDataUtils.TEST_DATA.unauth_wallet_info[merchant][0]["images"],
@@ -2098,11 +2109,16 @@ def verify_get_wallet_lc_unauath(Wallet, merchant):
         ), "account id does not match"
 
         for wallet_key in TestDataUtils.TEST_DATA.unauth_wallet_overview_info[merchant][0].keys():
+            if wallet_key not in ["card"]:
+                assert (
+                    wallet_response["loyalty_cards"][0][wallet_key]
+                    == TestDataUtils.TEST_DATA.unauth_wallet_overview_info[merchant][0][wallet_key]
+                ), f"{wallet_key} do not match"
+        for card_key in TestDataUtils.TEST_DATA.unauth_wallet_overview_info[merchant][0]["card"].keys():
             assert (
-                wallet_response["loyalty_cards"][0][wallet_key]
-                == TestDataUtils.TEST_DATA.unauth_wallet_overview_info[merchant][0][wallet_key]
-            ), f"{wallet_key} do not match"
-
+                wallet_response["loyalty_cards"][0]["card"][card_key]
+                == TestDataUtils.TEST_DATA.unauth_wallet_overview_info[merchant][0]["card"][card_key]
+            ), f"{card_key} do not match"
         for payment_key in TestDataUtils.TEST_DATA.wallet_overview_info["payment_accounts"][0].keys():
             if payment_key != "images":
                 assert (
@@ -2123,9 +2139,14 @@ def verify_get_wallet_lc_unauath(Wallet, merchant):
         assert wallet_response["id"] == TestContext.current_scheme_account_id, "account id does not match"
 
         for wallet_key in TestDataUtils.TEST_DATA.unauth_wallet_info_by_card_id[merchant].keys():
-            if wallet_key not in ["images"]:
+            if wallet_key not in ["card", "images"]:
                 assert (
                     wallet_response[wallet_key]
                     == TestDataUtils.TEST_DATA.unauth_wallet_info_by_card_id[merchant][wallet_key]
                 ), f"{wallet_key} do not match"
+        for card_key in TestDataUtils.TEST_DATA.unauth_wallet_info_by_card_id[merchant]["card"].keys():
+            assert (
+                wallet_response["card"][card_key]
+                == TestDataUtils.TEST_DATA.unauth_wallet_info_by_card_id[merchant]["card"][card_key]
+            ), f"{card_key} do not match"
         compare_two_lists(wallet_response["images"], TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant]["images"])
