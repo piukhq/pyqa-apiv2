@@ -2083,8 +2083,8 @@ def verify_get_wallet_lc_unauath(Wallet, merchant):
                 ), f"{wallet_key} do not match"
         for card_key in TestDataUtils.TEST_DATA.unauth_wallet_info[merchant][0]["card"].keys():
             assert (
-                    wallet_response["loyalty_cards"][0]["card"][card_key]
-                    == TestDataUtils.TEST_DATA.unauth_wallet_info[merchant][0]["card"][card_key]
+                wallet_response["loyalty_cards"][0]["card"][card_key]
+                == TestDataUtils.TEST_DATA.unauth_wallet_info[merchant][0]["card"][card_key]
             ), f"{card_key} do not match"
         compare_two_lists(
             wallet_response["loyalty_cards"][0]["images"],
@@ -2116,8 +2116,8 @@ def verify_get_wallet_lc_unauath(Wallet, merchant):
                 ), f"{wallet_key} do not match"
         for card_key in TestDataUtils.TEST_DATA.unauth_wallet_overview_info[merchant][0]["card"].keys():
             assert (
-                    wallet_response["loyalty_cards"][0]["card"][card_key]
-                    == TestDataUtils.TEST_DATA.unauth_wallet_overview_info[merchant][0]["card"][card_key]
+                wallet_response["loyalty_cards"][0]["card"][card_key]
+                == TestDataUtils.TEST_DATA.unauth_wallet_overview_info[merchant][0]["card"][card_key]
             ), f"{card_key} do not match"
         for payment_key in TestDataUtils.TEST_DATA.wallet_overview_info["payment_accounts"][0].keys():
             if payment_key != "images":
@@ -2146,7 +2146,7 @@ def verify_get_wallet_lc_unauath(Wallet, merchant):
                 ), f"{wallet_key} do not match"
         for card_key in TestDataUtils.TEST_DATA.unauth_wallet_info_by_card_id[merchant]["card"].keys():
             assert (
-                    wallet_response["card"][card_key]
-                    == TestDataUtils.TEST_DATA.unauth_wallet_info_by_card_id[merchant]["card"][card_key]
+                wallet_response["card"][card_key]
+                == TestDataUtils.TEST_DATA.unauth_wallet_info_by_card_id[merchant]["card"][card_key]
             ), f"{card_key} do not match"
         compare_two_lists(wallet_response["images"], TestDataUtils.TEST_DATA.wallet_info_by_card_id[merchant]["images"])

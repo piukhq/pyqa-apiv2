@@ -47,7 +47,7 @@ Feature: View multi wallet loyalty card by id  pll
      | merchant | status_code_returned|payment_card_provider|state |state2     |slug|slug2                     |description|description2                                                     |
      | Wasabi   | 200                 |master               |active|inactive   |null|PAYMENT_ACCOUNT_INACTIVE  |null       |The Payment Account is not active so no PLL link can be created. |
 
-   @multi_wallet_loyaltycard_pll_status3 @bink_regression_api2 @sandbox_regression
+   @multi_wallet_loyaltycard_pll_status3 @sandbox_regression
   Scenario Outline: Verify pll links for active payment account and unauthorised loyalty card for multi wallet loyalty card by id
      Given I am in Bink channel to get b2b token
      When I perform POST token request for token type "b2b" to get access token
@@ -67,7 +67,7 @@ Feature: View multi wallet loyalty card by id  pll
      | merchant | request_payload | status_code | status_code_returned | payment_card_provider |state | slug |  description|state2  | slug2                      |description2                                                     |
      | Wasabi   | unauthorised    | 202         | 200                   | master               |active| null |  null       |inactive|LOYALTY_CARD_NOT_AUTHORISED |The Loyalty Card is not authorised so no PLL link can be created.|
 
-  @multi_wallet_loyaltycard_pll_status4 @sandbox_regression @bink_regression_api2
+  @multi_wallet_loyaltycard_pll_status4 @sandbox_regression
   Scenario Outline: Verify pll links for inactive payment account and unauthorised loyalty card for multi wallet loyalty card by id
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
