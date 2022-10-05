@@ -12,17 +12,15 @@ Feature: View Wallets overview
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET Wallet_overview
-    Then I see a <status_code_returned>
-    And All Wallet_overview fields are correctly populated for <merchant>
     Given I am a Lloyds user
-    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    When I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET Wallet_overview
+    And For lloyds_user I perform GET Wallet_overview
     Then I see a <status_code_returned>
     And All Wallet_overview fields are correctly populated for <merchant>
-
-
+    When For bink_user I perform GET Wallet_overview
+    Then I see a <status_code_returned>
+    And All Wallet_overview fields are correctly populated for <merchant>
     Examples:
       | merchant      | status_code_returned|payment_card_provider|
       |Wasabi        | 200                  |master              |
@@ -36,13 +34,13 @@ Feature: View Wallets overview
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
-    And I perform GET Wallet_overview
+    Given I am a Lloyds user
+    When I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
+    And I perform POST request to add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
+    And For lloyds_user I perform GET Wallet_overview
     Then I see a <status_code_returned>
     And Wallet_overview fields are correctly populated for unauthorised LC of <merchant>
-    Given I am a Lloyds user
-    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I perform POST request to add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
-    And I perform GET Wallet_overview
+    When For bink_user I perform GET Wallet_overview
     Then I see a <status_code_returned>
     And Wallet_overview fields are correctly populated for unauthorised LC of <merchant>
 
@@ -60,18 +58,16 @@ Feature: View Wallets overview
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET Wallet_overview
-    Then I see a <status_code_returned>
-    And All Wallet_overview fields are correctly populated for <merchant>
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
-    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET Wallet_overview
+    And For bink_user2 I perform GET Wallet_overview
     Then I see a <status_code_returned>
     And All Wallet_overview fields are correctly populated for <merchant>
-
-
+    When For bink_user I perform GET Wallet_overview
+    Then I see a <status_code_returned>
+    And All Wallet_overview fields are correctly populated for <merchant>
     Examples:
       | merchant      | status_code_returned|payment_card_provider|
       |Wasabi        | 200                  |master              |
@@ -85,18 +81,16 @@ Feature: View Wallets overview
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET Wallet_overview
-    Then I see a <status_code_returned>
-    And All Wallet_overview fields are correctly populated for <merchant>
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
-    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
     And I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
-    And I perform GET Wallet_overview
+    And For bink_user2 I perform GET Wallet_overview
     Then I see a <status_code_returned>
     And Wallet_overview fields are correctly populated for unauthorised LC of <merchant>
-
-
+    When For bink_user I perform GET Wallet_overview
+    Then I see a <status_code_returned>
+    And All Wallet_overview fields are correctly populated for <merchant>
     Examples:
       | merchant      | status_code_returned|payment_card_provider|
       |Wasabi        | 200                  |master              |
@@ -110,18 +104,16 @@ Feature: View Wallets overview
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
-    And I perform GET Wallet_overview
-    Then I see a <status_code_returned>
-    And Wallet_overview fields are correctly populated for unauthorised LC of <merchant>
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
-    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET Wallet_overview
+    And For bink_user2 I perform GET Wallet_overview
     Then I see a <status_code_returned>
     And All Wallet_overview fields are correctly populated for <merchant>
-
-
+    And For bink_user I perform GET Wallet_overview
+    Then I see a <status_code_returned>
+    And Wallet_overview fields are correctly populated for unauthorised LC of <merchant>
     Examples:
       | merchant      | status_code_returned|payment_card_provider|
       |Wasabi        | 200                  |master              |
@@ -134,18 +126,16 @@ Feature: View Wallets overview
     Given I am a Lloyds user
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
-    And I perform GET Wallet_overview
-    Then I see a <status_code_returned>
-    And Wallet_overview fields are correctly populated for unauthorised LC of <merchant>
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
-    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET Wallet_overview
+    And For lloyds_user I perform GET Wallet_overview
+    Then I see a <status_code_returned>
+    And Wallet_overview fields are correctly populated for unauthorised LC of <merchant>
+    And For bink_user2 I perform GET Wallet_overview
     Then I see a <status_code_returned>
     And All Wallet_overview fields are correctly populated for <merchant>
-
-
     Examples:
       | merchant      | status_code_returned|payment_card_provider|
       |Wasabi        | 200                  |master              |

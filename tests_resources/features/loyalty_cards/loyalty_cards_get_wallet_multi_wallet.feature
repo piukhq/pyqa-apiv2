@@ -12,21 +12,26 @@ Feature: View Wallets
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET Wallet
-    Then I see a <status_code_returned>
-    And All Wallet fields are correctly populated for <merchant>
     Given I am a Lloyds user
-    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET Wallet
+    When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
+    And For lloyds_user I perform GET Wallet
     Then I see a <status_code_returned>
     And All Wallet fields are correctly populated for <merchant>
-
+    When For bink_user I perform GET Wallet
+    Then I see a <status_code_returned>
+    And All Wallet fields are correctly populated for <merchant>
+    When For bink_user I perform GET transaction for loyalty card with authorised for <merchant>
+    And For bink_user I perform GET balance for loyalty card with authorised for <merchant>
+    And For bink_user I perform GET voucher for loyalty card with authorised for <merchant>
+    And For lloyds_user I perform GET transaction for loyalty card with authorised for <merchant>
+    And For lloyds_user I perform GET balance for loyalty card with authorised for <merchant>
+    And For lloyds_user I perform GET voucher for loyalty card with authorised for <merchant>
 
     Examples:
       | merchant      | status_code_returned|payment_card_provider|
       |Wasabi        | 200                  |master              |
-      |Iceland        |200                  |master               |
+#      |Iceland        |200                  |master               |
 #      |HarveyNichols  |200                  |master               |
 
 
@@ -36,15 +41,21 @@ Feature: View Wallets
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I perform GET Wallet
-    Then I see a <status_code_returned>
-    And All Wallet fields are correctly populated for <merchant>
     Given I am a Lloyds user
     When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I perform GET Wallet
+    And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
+    And For lloyds_user I perform GET Wallet
     Then I see a <status_code_returned>
     And All Wallet fields are correctly populated for <merchant>
+    When For bink_user I perform GET Wallet
+    Then I see a <status_code_returned>
+    And All Wallet fields are correctly populated for <merchant>
+    When For bink_user I perform GET transaction for loyalty card with authorised for <merchant>
+    And For bink_user I perform GET balance for loyalty card with authorised for <merchant>
+    And For bink_user I perform GET voucher for loyalty card with authorised for <merchant>
+    And For lloyds_user I perform GET transaction for loyalty card with authorised for <merchant>
+    And For lloyds_user I perform GET balance for loyalty card with authorised for <merchant>
+    And For lloyds_user I perform GET voucher for loyalty card with authorised for <merchant>
     Examples:
       | merchant      | status_code_returned|payment_card_provider|
       |Wasabi        | 200                  |master              |
@@ -58,17 +69,21 @@ Feature: View Wallets
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
-    And I perform GET Wallet
-    Then I see a <status_code_returned>
-    And Wallet fields are correctly populated for unauthorised LC of <merchant>
     Given I am a Lloyds user
-    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    When I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
     And I perform POST request to add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
-    And I perform GET Wallet
+    And For lloyds_user I perform GET Wallet
     Then I see a <status_code_returned>
     And Wallet fields are correctly populated for unauthorised LC of <merchant>
-
-
+    When For bink_user I perform GET Wallet
+    Then I see a <status_code_returned>
+    And Wallet fields are correctly populated for unauthorised LC of <merchant>
+    When For bink_user I perform GET transaction for loyalty card with unauthorised for <merchant>
+    And For bink_user I perform GET balance for loyalty card with unauthorised for <merchant>
+    And For bink_user I perform GET voucher for loyalty card with unauthorised for <merchant>
+    And For lloyds_user I perform GET transaction for loyalty card with unauthorised for <merchant>
+    And For lloyds_user I perform GET balance for loyalty card with unauthorised for <merchant>
+    And For lloyds_user I perform GET voucher for loyalty card with unauthorised for <merchant>
     Examples:
       | merchant      | status_code_returned|payment_card_provider|request_payload | status_code|
       |Wasabi        | 200                  |master              |unauthorised     | 202        |
@@ -82,18 +97,22 @@ Feature: View Wallets
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET Wallet
-    Then I see a <status_code_returned>
-    And All Wallet fields are correctly populated for <merchant>
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
-    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET Wallet
+    And For bink_user2 I perform GET Wallet
     Then I see a <status_code_returned>
     And All Wallet fields are correctly populated for <merchant>
-
-
+    When For bink_user I perform GET Wallet
+    Then I see a <status_code_returned>
+    And All Wallet fields are correctly populated for <merchant>
+    When For bink_user I perform GET transaction for loyalty card with authorised for <merchant>
+    And For bink_user I perform GET balance for loyalty card with authorised for <merchant>
+    And For bink_user I perform GET voucher for loyalty card with authorised for <merchant>
+    And For bink_user2 I perform GET transaction for loyalty card with authorised for <merchant>
+    And For bink_user2 I perform GET balance for loyalty card with authorised for <merchant>
+    And For bink_user2 I perform GET voucher for loyalty card with authorised for <merchant>
     Examples:
       | merchant      | status_code_returned|payment_card_provider|
       |Wasabi        | 200                  |master              |
@@ -107,18 +126,22 @@ Feature: View Wallets
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET Wallet
-    Then I see a <status_code_returned>
-    And All Wallet fields are correctly populated for <merchant>
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
-    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
     And I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
-    And I perform GET Wallet
+    And For bink_user2 I perform GET Wallet
     Then I see a <status_code_returned>
     And Wallet fields are correctly populated for unauthorised LC of <merchant>
-
-
+    When For bink_user I perform GET Wallet
+    Then I see a <status_code_returned>
+    And All Wallet fields are correctly populated for <merchant>
+    When For bink_user I perform GET transaction for loyalty card with authorised for <merchant>
+    And For bink_user I perform GET balance for loyalty card with authorised for <merchant>
+    And For bink_user I perform GET voucher for loyalty card with authorised for <merchant>
+    And For bink_user2 I perform GET transaction for loyalty card with unauthorised for <merchant>
+    And For bink_user2 I perform GET balance for loyalty card with unauthorised for <merchant>
+    And For bink_user2 I perform GET voucher for loyalty card with unauthorised for <merchant>
     Examples:
       | merchant      | status_code_returned|payment_card_provider|
       |Wasabi        | 200                  |master              |
@@ -132,17 +155,22 @@ Feature: View Wallets
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
-    And I perform GET Wallet
-    Then I see a <status_code_returned>
-    And Wallet fields are correctly populated for unauthorised LC of <merchant>
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
-    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET Wallet
+    And For bink_user2 I perform GET Wallet
     Then I see a <status_code_returned>
     And All Wallet fields are correctly populated for <merchant>
-
+    When For bink_user I perform GET Wallet
+    Then I see a <status_code_returned>
+    And Wallet fields are correctly populated for unauthorised LC of <merchant>
+    When For bink_user I perform GET transaction for loyalty card with unauthorised for <merchant>
+    And For bink_user I perform GET balance for loyalty card with unauthorised for <merchant>
+    And For bink_user I perform GET voucher for loyalty card with unauthorised for <merchant>
+    And For bink_user2 I perform GET transaction for loyalty card with authorised for <merchant>
+    And For bink_user2 I perform GET balance for loyalty card with authorised for <merchant>
+    And For bink_user2 I perform GET voucher for loyalty card with authorised for <merchant>
 
     Examples:
       | merchant      | status_code_returned|payment_card_provider|
@@ -156,18 +184,22 @@ Feature: View Wallets
     Given I am a Lloyds user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
-    And I perform GET Wallet
-    Then I see a <status_code_returned>
-    And Wallet fields are correctly populated for unauthorised LC of <merchant>
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
-    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions_and_vouchers
-    And I perform GET Wallet
+    And For lloyds_user I perform GET Wallet
     Then I see a <status_code_returned>
-    And All Wallet fields are correctly populated for <merchant>
-
-
+    And Wallet fields are correctly populated for unauthorised LC of <merchant>
+    And For bink_user2 I perform GET Wallet
+    Then I see a <status_code_returned>
+    And All Wallet_overview fields are correctly populated for <merchant>
+    When For lloyds_user I perform GET transaction for loyalty card with unauthorised for <merchant>
+    And For lloyds_user I perform GET balance for loyalty card with unauthorised for <merchant>
+    And For lloyds_user I perform GET voucher for loyalty card with unauthorised for <merchant>
+    And For bink_user2 I perform GET transaction for loyalty card with authorised for <merchant>
+    And For bink_user2 I perform GET balance for loyalty card with authorised for <merchant>
+    And For bink_user2 I perform GET voucher for loyalty card with authorised for <merchant>
     Examples:
       | merchant      | status_code_returned|payment_card_provider|
       |Wasabi        | 200                  |master              |

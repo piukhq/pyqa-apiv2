@@ -254,7 +254,8 @@ wallet_info = {
                     "target_value": "7",
                     "prefix": None,
                     "suffix": "stamps",
-                    "body_text": "Your FREE meal voucher has been cancelled.",
+                    "body_text": "Your voucher has been cancelled. "
+                    "If you believe we have made a mistake please contact enquiries@wasabi.uk.com.",
                     "terms_and_conditions": "https://policies.staging.gb.bink.com/wasabi/tc.html",
                     "issued_date": "1591787076",
                     "expiry_date": "1644491076",
@@ -866,7 +867,8 @@ wallet_info_by_card_id = {
                 "target_value": "7",
                 "prefix": None,
                 "suffix": "stamps",
-                "body_text": "Your FREE meal voucher has been cancelled.",
+                "body_text": "Your voucher has been cancelled. "
+                "If you believe we have made a mistake please contact enquiries@wasabi.uk.com.",
                 "terms_and_conditions": "https://policies.staging.gb.bink.com/wasabi/tc.html",
                 "issued_date": "1591787076",
                 "expiry_date": "1644491076",
@@ -1843,7 +1845,7 @@ register_scheme_status = {
         "loyalty_plan_name": "Iceland Bonus Card",
         "is_fully_pll_linked": False,
         "pll_linked_payment_accounts": 0,
-        "total_payment_accounts": 0,
+        "total_payment_accounts": 1,
         "status": {
             "state": "failed",
             "slug": "ACCOUNT_NOT_REGISTERED",
@@ -1873,9 +1875,9 @@ register_scheme_status = {
         # "id": 204521,
         "loyalty_plan_id": 105,
         "loyalty_plan_name": "Iceland Bonus Card",
-        "is_fully_pll_linked": False,
-        "pll_linked_payment_accounts": 0,
-        "total_payment_accounts": 0,
+        "is_fully_pll_linked": True,
+        "pll_linked_payment_accounts": 1,
+        "total_payment_accounts": 1,
         "status": {"state": "authorised", "slug": None, "description": None},
         "balance": {
             # "updated_at": 1662999593,
@@ -1903,7 +1905,7 @@ register_scheme_status = {
         "loyalty_plan_name": "Iceland Bonus Card",
         "is_fully_pll_linked": False,
         "pll_linked_payment_accounts": 0,
-        "total_payment_accounts": 0,
+        "total_payment_accounts": 1,
         "status": {"state": "pending", "slug": "REGISTRATION_IN_PROGRESS", "description": None},
         "balance": {
             "updated_at": None,
@@ -1932,9 +1934,9 @@ Join_Scheme_status = {
         # "id": 205106,
         "loyalty_plan_id": 105,
         "loyalty_plan_name": "Iceland Bonus Card",
-        "is_fully_pll_linked": False,
-        "pll_linked_payment_accounts": 0,
-        "total_payment_accounts": 0,
+        "is_fully_pll_linked": True,
+        "pll_linked_payment_accounts": 1,
+        "total_payment_accounts": 1,
         "status": {"state": "authorised", "slug": None, "description": None},
         "balance": {
             # "updated_at": 1663165070,

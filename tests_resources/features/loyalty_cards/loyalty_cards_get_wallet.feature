@@ -40,6 +40,7 @@ Feature: View Wallet
   Scenario Outline: verify wallet for joins
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add a new "master" payment account to wallet
     And I perform <scheme_state> POST request to join "<merchant>" membership card
     And I perform GET Wallet
     Then I see a <status_code_returned>
