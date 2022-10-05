@@ -549,7 +549,7 @@ def verify_loyalty_card_vouchers(env, channel, user, loyalty_card_status, mercha
         else:
             logging.info("The expected and actual vouchers of  " + merchant + " is same")
     elif loyalty_card_status == "unauthorised":
-        assert (response_json["vouchers"] == []), "voucher for unauthorised loyalty card do not match"
+        assert response_json["vouchers"] == [], "voucher for unauthorised loyalty card do not match"
 
 
 @when(parsers.parse('I perform GET request to view loyalty card voucher with invalid token for "{merchant}"'))
