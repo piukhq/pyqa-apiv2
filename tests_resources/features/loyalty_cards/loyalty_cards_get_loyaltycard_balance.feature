@@ -10,7 +10,7 @@ so that I am aware and have visibility of my rewards
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET request to view loyalty card balance for "<merchant>"
+    And For bink_user I perform GET balance for loyalty card with authorised for <merchant>
     Then I see a <status_code_returned>
 
     Examples:

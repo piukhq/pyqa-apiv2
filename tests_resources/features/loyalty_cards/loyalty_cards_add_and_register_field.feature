@@ -36,6 +36,7 @@ Feature: Add and register a loyalty card
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request add and register for <merchant>
+    And I perform POST request to add a new "master" payment account to wallet
     And I perform GET Wallet
     Then Verify Wallet fields for <merchant> with registration_success
     When I perform POST request add_and_register again for <merchant>
@@ -92,6 +93,7 @@ Feature: Add and register a loyalty card
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request add and register for <merchant>
+    And I perform POST request to add a new "master" payment account to wallet
     And I perform GET Wallet
     Then Verify Wallet fields for <merchant> with registration_success
     When I am in Bink channel to get b2b token for second user
@@ -111,6 +113,7 @@ Feature: Add and register a loyalty card
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to result failed add and register for <merchant>
+    And I perform POST request to add a new "master" payment account to wallet
     And I perform GET Wallet
     Then Verify Wallet fields for <merchant> with <scheme_state>
     When I am in Bink channel to get b2b token for second user

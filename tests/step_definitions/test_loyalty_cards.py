@@ -375,8 +375,9 @@ def verify_voucher_field(env, channel, merchant):
     compare_two_lists(voucher_response["vouchers"], TestDataUtils.TEST_DATA.wallet_info[merchant][0]["vouchers"])
 
 
-@when(parsers.parse('I perform GET request to view loyalty card balance for "{merchant}"'))
-def verify_loyalty_card_balance(env, channel, merchant):
+@when(parsers.parse("For {user} I perform GET balance for loyalty card with {loyalty_card_status} for {merchant}"))
+def verify_loyalty_card_balance(env, channel, user, loyalty_card_status, merchant):
+    TestContext.token = TestContext.all_users[user]
     time.sleep(4)
     response = MembershipCards.get_loyalty_balance(TestContext.token, TestContext.current_scheme_account_id)
     response_json = response_to_json(response)
@@ -388,11 +389,17 @@ def verify_loyalty_card_balance(env, channel, merchant):
         + "\n\n"
         + json.dumps(response_json, indent=4)
     )
-    difference = json_compare(
-        response_json["balance"],
-        TestDataUtils.TEST_DATA.wallet_info[merchant][0]["balance"],
-        paths=["root['updated_at']"],
-    )
+    if loyalty_card_status == "authorised":
+        difference = json_compare(
+            response_json["balance"],
+            TestDataUtils.TEST_DATA.wallet_info[merchant][0]["balance"],
+            paths=["root['updated_at']"],
+        )
+    elif loyalty_card_status == "unauthorised":
+        difference = json_compare(
+            response_json["balance"], TestDataUtils.TEST_DATA.unauth_wallet_info[merchant][0]["balance"]
+        )
+
     if difference:
         logging.info(
             "The expected and actual balance of "
@@ -441,8 +448,9 @@ def verify_loyalty_card_invalid_id_balance(env, channel, merchant, invalid_id):
     TestContext.error_slug = response_json.get("error_slug")
 
 
-@when(parsers.parse('I perform GET request to view loyalty card transactions for "{merchant}"'))
-def verify_loyalty_card_transactions(env, channel, merchant):
+@when(parsers.parse("For {user} I perform GET transaction for loyalty card with {loyalty_card_status} for {merchant}"))
+def verify_loyalty_card_transactions(env, channel, user, loyalty_card_status, merchant):
+    TestContext.token = TestContext.all_users[user]
     time.sleep(6)
     response = MembershipCards.get_loyalty_transactions(TestContext.token, TestContext.current_scheme_account_id)
     response_json = response_to_json(response)
@@ -454,21 +462,24 @@ def verify_loyalty_card_transactions(env, channel, merchant):
         + "\n\n"
         + json.dumps(response_json, indent=4)
     )
-    difference = json_compare(
-        response_json["transactions"],
-        TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"],
-        paths=["root[0]['id']", "root[1]['id']", "root[2]['id']", "root[3]['id']", "root[4]['id']"],
-    )
-    if difference:
-        logging.info(
-            "The expected and actual transactions of "
-            + merchant
-            + "has following differences"
-            + json.dumps(difference, sort_keys=True, indent=4)
+    if loyalty_card_status == "authorised":
+        difference = json_compare(
+            response_json["transactions"],
+            TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"],
+            paths=["root[0]['id']", "root[1]['id']", "root[2]['id']", "root[3]['id']", "root[4]['id']"],
         )
-        raise Exception("The expected and actual transactions " + merchant + " is not the same")
-    else:
-        logging.info("The expected and actual transactions " + merchant + " is same")
+        if difference:
+            logging.info(
+                "The expected and actual transactions of "
+                + merchant
+                + "has following differences"
+                + json.dumps(difference, sort_keys=True, indent=4)
+            )
+            raise Exception("The expected and actual transactions " + merchant + " is not the same")
+        else:
+            logging.info("The expected and actual transactions " + merchant + " is same")
+    elif loyalty_card_status == "unauthorised":
+        assert response_json["transactions"] == [], "transaction for unauthorised card do not match"
 
 
 @when(parsers.parse('I perform GET request to view loyalty card transactions for "{merchant}" with invalid token'))
@@ -509,8 +520,9 @@ def verify_loyalty_card_invalid_id_transactions(env, channel, invalid_id, mercha
     TestContext.error_slug = response_json.get("error_slug")
 
 
-@when(parsers.parse('I perform GET request to view loyalty card voucher for "{merchant}"'))
-def verify_loyalty_card_vouchers(env, channel, merchant):
+@when(parsers.parse("For {user} I perform GET voucher for loyalty card with {loyalty_card_status} for {merchant}"))
+def verify_loyalty_card_vouchers(env, channel, user, loyalty_card_status, merchant):
+    TestContext.token = TestContext.all_users[user]
     time.sleep(6)
     response = MembershipCards.get_loyalty_vouchers(TestContext.token, TestContext.current_scheme_account_id)
     response_json = response_to_json(response)
@@ -522,17 +534,22 @@ def verify_loyalty_card_vouchers(env, channel, merchant):
         + "\n\n"
         + json.dumps(response_json, indent=4)
     )
-    difference = json_compare(response_json["vouchers"], TestDataUtils.TEST_DATA.wallet_info[merchant][0]["vouchers"])
-    if difference:
-        logging.info(
-            "The expected and actual vouchers of "
-            + merchant
-            + " has following differences"
-            + json.dumps(difference, sort_keys=True, indent=4)
+    if loyalty_card_status == "authorised":
+        difference = json_compare(
+            response_json["vouchers"], TestDataUtils.TEST_DATA.wallet_info[merchant][0]["vouchers"]
         )
-        raise Exception("The expected and actual vouchers of  " + merchant + " is not the same")
-    else:
-        logging.info("The expected and actual vouchers of  " + merchant + " is same")
+        if difference:
+            logging.info(
+                "The expected and actual vouchers of "
+                + merchant
+                + " has following differences"
+                + json.dumps(difference, sort_keys=True, indent=4)
+            )
+            raise Exception("The expected and actual vouchers of  " + merchant + " is not the same")
+        else:
+            logging.info("The expected and actual vouchers of  " + merchant + " is same")
+    elif loyalty_card_status == "unauthorised":
+        assert response_json["vouchers"] == [], "voucher for unauthorised loyalty card do not match"
 
 
 @when(parsers.parse('I perform GET request to view loyalty card voucher with invalid token for "{merchant}"'))
@@ -662,6 +679,31 @@ def verify_lloyds_wallet_second(Wallet, env, channel):
 
 @when(parsers.parse("I perform GET {Wallet}"))
 def verify_wallet(Wallet, env, channel):
+    time.sleep(5)
+    if Wallet == "Wallet":
+        response = MembershipCards.get_view_wallet(TestContext.token)
+        logging.info("The response of get wallet is : \n" + json.dumps(response_to_json(response), indent=4))
+
+    elif Wallet == "Wallet_overview":
+        response = MembershipCards.get_view_wallet_overview(TestContext.token)
+        logging.info("The response of get wallet overview is : \n" + json.dumps(response_to_json(response), indent=4))
+
+    elif Wallet == "Wallet_by_card_id":
+        response = MembershipCards.get_view_wallet_by_card_id(TestContext.token, TestContext.current_scheme_account_id)
+        logging.info("The response of get wallet by card id is : \n" + json.dumps(response_to_json(response), indent=4))
+
+    response_json = response.json()
+    TestContext.response_status_code = response.status_code
+    TestContext.error_message = response_json.get("error_message")
+    TestContext.error_slug = response_json.get("error_slug")
+    TestContext.actual_view_wallet_field = response.json()
+
+
+@when(parsers.parse("For {user} I perform GET {Wallet}"))
+def verify_user_wallet(user, Wallet, env, channel):
+    TestContext.token = TestContext.all_users[user]
+    print("user", user)
+    print("payment id", TestContext.current_payment_card_id)
     time.sleep(5)
     if Wallet == "Wallet":
         response = MembershipCards.get_view_wallet(TestContext.token)
