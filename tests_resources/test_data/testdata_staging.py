@@ -1799,7 +1799,7 @@ membership_plan_id = {
     "wasabi": 281,
     "trenette": 284,
     "viator": 292,
-    "merchant_not_exists": 0000,
+    "merchant_not_exists": 9999,
     "Bink Test Scheme": 132,  # suspended loyalty plan
     "Wallis": 131,  # inactive loyalty plan
 }
