@@ -927,8 +927,13 @@ def verify_invalid_request_for_add_and_register_journey(merchant, request_payloa
     assert TestContext.response_status_code == int(status_code), "Invalid json request for " + merchant + " failed"
 
 
-@when(parsers.parse('I perform POST request to add "{merchant}" membership card before register'))
-def add_before_register_field_loyalty_cards(merchant):
+@when(parsers.parse("I perform POST request to add {merchant} membership card before {scheme_state} register"))
+# @when(parsers.parse('I perform POST request to add "{merchant}" membership card before register'))
+def add_before_register_field_loyalty_cards(merchant, scheme_state):
+    if scheme_state == "registration_failed":
+        TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_FAILED_CARD)
+    else:
+        TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_CARD)
     response = MembershipCards.add_before_register_field_only_card(TestContext.token, merchant)
     time.sleep(7)
     response_json = response_to_json(response)
@@ -944,8 +949,29 @@ def add_before_register_field_loyalty_cards(merchant):
     assert response.status_code == 201, "Add Journey for " + merchant + " failed"
 
 
+@when(parsers.parse('I perform POST request to add "{merchant}" membership card already registered'))
+def add_already_register_card(merchant):
+    TestContext.card_number = TestContext.actual_view_wallet_field["loyalty_cards"][0]["card"]["card_number"]
+    response = MembershipCards.add_before_register_field_only_card(TestContext.token, merchant)
+    time.sleep(7)
+    response_json = response_to_json(response)
+    TestContext.current_scheme_account_id = response_json.get("id")
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The response of Add field Journey (POST) is:\n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_ADD
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+    # assert response.status_code == 201, "Add Journey for " + merchant + " failed"
+
+
 @when(parsers.parse('I perform PUT request to register "{merchant}" above wallet only membership card'))
-def verify_register_post_membership_card(merchant, test_email):
+@when(parsers.parse("I perform PUT request to register {merchant} with {scheme_state} membership card"))
+def verify_register_post_membership_card(merchant, scheme_state, test_email):
+    if scheme_state == "registration_failed":
+        test_email = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_FAILED_EMAIL)
     response = MembershipCards.register_field_only_card(
         TestContext.token, merchant, test_email, TestContext.current_scheme_account_id
     )
