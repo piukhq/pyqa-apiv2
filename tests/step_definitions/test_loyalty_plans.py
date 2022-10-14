@@ -4,7 +4,7 @@ import logging
 from deepdiff import DeepDiff
 from pytest_bdd import parsers, scenarios, then, when
 
-from tests.conftest import response_to_json, setup_token
+from tests.conftest import response_to_json
 from tests.helpers import constants
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
@@ -332,7 +332,7 @@ def verify_plan_response_error_slug_and_error_message(error_message, error_slug)
 
 @when(parsers.parse('I perform GET request to view journey field for "{loyalty_scheme}" for invalid resource'))
 def verify_invalid_resource_for_loyalty_scheme(loyalty_scheme):
-    response = MembershipPlans.get_membership_plan_journey_field(setup_token(), loyalty_scheme)
+    response = MembershipPlans.get_membership_plan_journey_field(TestContext.token, loyalty_scheme)
     TestContext.response_status_code = response.status_code
     response_json = response.json()
     logging.info("The response of invalid token is: \n\n" + json.dumps(response_json, indent=4))
@@ -359,7 +359,7 @@ def verify_invalid_resource_for_loyalty_plan_details(loyalty_scheme):
 # retrieving invalid resource id or resource id for loyalty plan which is inactive or suspended
 @when(parsers.parse('I perform GET request to view "{loyalty_scheme}" loyalty plan by id with invalid resource'))
 def verify_invalid_resource_for_loyalty_plan(loyalty_scheme):
-    response = MembershipPlans.get_loyalty_plan_by_id(setup_token(), loyalty_scheme)
+    response = MembershipPlans.get_loyalty_plan_by_id(TestContext.token, loyalty_scheme)
     TestContext.response_status_code = response.status_code
     response_json = response.json()
     logging.info("The response of invalid token is: \n\n" + json.dumps(response_json, indent=4))

@@ -191,7 +191,7 @@ Feature: View Wallets
     And For lloyds_user I perform GET Wallet
     Then I see a <status_code_returned>
     And Wallet fields are correctly populated for unauthorised LC of <merchant>
-    And For bink_user2 I perform GET Wallet
+    When For bink_user2 I perform GET Wallet
     Then I see a <status_code_returned>
     And All Wallet_overview fields are correctly populated for <merchant>
     When For lloyds_user I perform GET transaction for loyalty card with unauthorised for <merchant>
