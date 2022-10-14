@@ -605,78 +605,6 @@ def verify_view_wallet(Wallet, env, channel):
     TestContext.actual_view_wallet_field = response.json()
 
 
-@when(parsers.parse("I call GET {Wallet} for first bink user"))
-def verify_bink_wallet_first(Wallet, env, channel):
-    time.sleep(5)
-    if Wallet == "Wallet":
-        response = MembershipCards.get_view_wallet(TestContext.all_users["bink_user"])
-        logging.info("The response of get wallet is : \n" + json.dumps(response_to_json(response), indent=4))
-
-    elif Wallet == "Wallet_overview":
-        response = MembershipCards.get_view_wallet_overview(TestContext.all_users["bink_user"])
-        logging.info("The response of get wallet overview is : \n" + json.dumps(response_to_json(response), indent=4))
-
-    elif Wallet == "Wallet_by_card_id":
-        response = MembershipCards.get_view_wallet_by_card_id(
-            TestContext.all_users["bink_user"], TestContext.current_scheme_account_id
-        )
-        logging.info("The response of get wallet by card id is : \n" + json.dumps(response_to_json(response), indent=4))
-
-    response_json = response.json()
-    TestContext.response_status_code = response.status_code
-    TestContext.error_message = response_json.get("error_message")
-    TestContext.error_slug = response_json.get("error_slug")
-    TestContext.actual_view_wallet_field = response.json()
-
-
-@when(parsers.parse("I call GET {Wallet} for second bink user"))
-def verify_bink_wallet_second(Wallet, env, channel):
-    time.sleep(5)
-    if Wallet == "Wallet":
-        response = MembershipCards.get_view_wallet(TestContext.all_users["bink_user2"])
-        logging.info("The response of get wallet is : \n" + json.dumps(response_to_json(response), indent=4))
-
-    elif Wallet == "Wallet_overview":
-        response = MembershipCards.get_view_wallet_overview(TestContext.all_users["bink_user2"])
-        logging.info("The response of get wallet overview is : \n" + json.dumps(response_to_json(response), indent=4))
-
-    elif Wallet == "Wallet_by_card_id":
-        response = MembershipCards.get_view_wallet_by_card_id(
-            TestContext.all_users["bink_user2"], TestContext.current_scheme_account_id
-        )
-        logging.info("The response of get wallet by card id is : \n" + json.dumps(response_to_json(response), indent=4))
-
-    response_json = response.json()
-    TestContext.response_status_code = response.status_code
-    TestContext.error_message = response_json.get("error_message")
-    TestContext.error_slug = response_json.get("error_slug")
-    TestContext.actual_view_wallet_field = response.json()
-
-
-@when(parsers.parse("I call GET {Wallet} for lloyds user"))
-def verify_lloyds_wallet_second(Wallet, env, channel):
-    time.sleep(5)
-    if Wallet == "Wallet":
-        response = MembershipCards.get_view_wallet(TestContext.all_users["lloyds_user"])
-        logging.info("The response of get wallet is : \n" + json.dumps(response_to_json(response), indent=4))
-
-    elif Wallet == "Wallet_overview":
-        response = MembershipCards.get_view_wallet_overview(TestContext.all_users["lloyds_user"])
-        logging.info("The response of get wallet overview is : \n" + json.dumps(response_to_json(response), indent=4))
-
-    elif Wallet == "Wallet_by_card_id":
-        response = MembershipCards.get_view_wallet_by_card_id(
-            TestContext.all_users["lloyds_user"], TestContext.current_scheme_account_id
-        )
-        logging.info("The response of get wallet by card id is : \n" + json.dumps(response_to_json(response), indent=4))
-
-    response_json = response.json()
-    TestContext.response_status_code = response.status_code
-    TestContext.error_message = response_json.get("error_message")
-    TestContext.error_slug = response_json.get("error_slug")
-    TestContext.actual_view_wallet_field = response.json()
-
-
 @when(parsers.parse("I perform GET {Wallet}"))
 def verify_wallet(Wallet, env, channel):
     time.sleep(5)
@@ -1784,6 +1712,7 @@ def verify_wallet_loyaltycard_pll_status(state, slug, description):
         assert wallet_response["pll_links"][0]["status"]["state"] == state, "pll_links do not match"
         assert wallet_response["pll_links"][0]["status"]["slug"] is None, "pll_links do not match"
         assert wallet_response["pll_links"][0]["status"]["description"] is None, "pll_links do not match"
+    #        assert len(wallet_response["pll_links"]) == 1
     else:
         assert wallet_response["pll_links"][0]["status"]["state"] == state, "pll_links do not match"
         assert wallet_response["pll_links"][0]["status"]["slug"] == slug, "pll_links do not match"
