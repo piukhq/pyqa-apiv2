@@ -4,7 +4,6 @@ Feature: Overview of wallet information
   I want to see an overview of wallet information
   so that I can display this on the front end without having to call the larger /wallet endpoint
 
-
   @view_wallet_overview_success @bink_regression_api2
   Scenario Outline: Get wallet overview success
     Given I am in Bink channel to get b2b token
@@ -21,7 +20,36 @@ Feature: Overview of wallet information
       |Iceland        |200                  |master               |
       |HarveyNichols  |200                  |master               |
 
+  @wallet_overview_unauthorised @bink_regression_api2 @sandbox_regression
+  Scenario Outline: Get wallet overview with unauthorised loyalty card
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
+    And I perform GET Wallet_overview
+    Then I see a <status_code_returned>
+    And Wallet_overview fields are correctly populated for unauthorised LC of <merchant>
 
+    Examples:
+      | merchant      | status_code_returned|payment_card_provider|
+      |Wasabi        | 200                  |master              |
+      |Iceland        |200                  |master               |
+
+  @view_my_wallet_overview_put_invalid @sandbox_regression
+  Scenario Outline: View my wallet overview after authorising lc with invalid credentials
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
+    And I perform PUT request to authorise "<merchant>" membership card with "unauthorised" with "202"
+    And I perform GET Wallet_overview
+    Then I see a <status_code_returned>
+    And Wallet_overview fields are correctly populated for unauthorised LC of <merchant>
+
+    Examples:
+      | merchant      | status_code_returned|payment_card_provider|
+      |Wasabi        | 200                  |master              |
+      |Iceland        |200                  |master               |
 
   @verify_wallet_overview_fully_pll @bink_regression_api2
   Scenario Outline: Verify wallet overview fully pll
@@ -40,8 +68,6 @@ Feature: Overview of wallet information
       |merchant      | status_code_returned|payment_card_provider|pll_linked_payment_accounts|total_payment_accounts|is_fully_pll_linked|
       |Wasabi         |200                  |master               |3                         |3                     |True              |
 
-
-
 @verify_wallet_overview_not_fully_pll @bink_regression_api2
   Scenario Outline: Verify wallet overview not fully pll
     Given I am in Bink channel to get b2b token
@@ -58,8 +84,6 @@ Feature: Overview of wallet information
   Examples:
       |merchant      | status_code_returned|payment_card_provider|pll_linked_payment_accounts|total_payment_accounts|is_fully_pll_linked|
       |Wasabi         |200                  |master               |2                         |3                     |False              |
-
-
 
   @verify_wallet_overview_unauth_LC @bink_regression_api2
   Scenario Outline: Verify wallet overview no pll with unauthorised loyalty card
@@ -78,8 +102,6 @@ Feature: Overview of wallet information
       |merchant      | status_code_returned|payment_card_provider|pll_linked_payment_accounts|total_payment_accounts|is_fully_pll_linked|
       |Wasabi         |200                  |master               |0                         |3                     |False              |
 
-
-
    @wallet_overview_empty_list @bink_regression_api2
   Scenario Outline: Get wallet overview with empty list value
     Given I am in Bink channel to get b2b token
@@ -94,8 +116,6 @@ Feature: Overview of wallet information
     | status_code_returned |
     | 200                  |
 
-
-
    @wallet_overview_invalid_token @bink_regression_api2
   Scenario Outline: Verify invalid token scenario for get Wallet overview
     Given I am in Bink channel to get b2b token
@@ -108,8 +128,6 @@ Feature: Overview of wallet information
      Examples:
      | status_code_returned | error_message              | error_slug     |invalid|
      | 401                  | Supplied token is invalid  | INVALID_TOKEN |token   |
-
-
 
   @wallet_overview_failed_join @bink_regression_api2
   Scenario Outline: verify wallet_overview for joins
