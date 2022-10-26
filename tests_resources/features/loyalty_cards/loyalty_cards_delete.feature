@@ -115,3 +115,46 @@ Feature: Delete a loyalty card
       | merchant | error_message             | error_slug             | status_code_returned |
       | Iceland  | Could not validate fields | FIELD_VALIDATION_ERROR | 422                  |
       | Wasabi   | Could not validate fields | FIELD_VALIDATION_ERROR | 422                  |
+
+
+    @multi_wallet_delete @bink_regression_api2 @sandbox_regression
+    Scenario Outline: Add and auth lc in two wallets and delete the card from one wallet
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    Then I see a <status_code_returned>
+    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+    When I am in Bink channel to get b2b token for second user
+    And I perform POST token request for token type "b2b" to get access token for second user
+    And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
+    When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    Then I see a <status_code_returned>
+    When For bink_user I perform GET Wallet
+    Then All Wallet fields are correctly populated for <merchant>
+    When For bink_user I perform GET Wallet_overview
+    Then All Wallet_overview fields are correctly populated for <merchant>
+    When For bink_user I perform GET Wallet_by_card_id
+    Then All Wallet_by_card_id fields are correctly populated for <merchant>
+    When For bink_user2 I perform GET Wallet
+    Then All Wallet fields are correctly populated for <merchant>
+    When For bink_user2 I perform GET Wallet_overview
+    Then All Wallet_overview fields are correctly populated for <merchant>
+    When For bink_user2 I perform GET Wallet_by_card_id
+    Then All Wallet_by_card_id fields are correctly populated for <merchant>
+    And I perform DELETE request to delete the "<merchant>" membership card
+    And I see a <status_code_returned>
+    When For bink_user I perform GET Wallet
+    Then All Wallet fields are correctly populated for <merchant>
+    When For bink_user I perform GET Wallet_overview
+    Then All Wallet_overview fields are correctly populated for <merchant>
+    When For bink_user I perform GET Wallet_by_card_id
+    Then All Wallet_by_card_id fields are correctly populated for <merchant>
+    When For bink_user I perform GET transaction for loyalty card with authorised for <merchant>
+    And For bink_user I perform GET balance for loyalty card with authorised for <merchant>
+    And For bink_user I perform GET voucher for loyalty card with authorised for <merchant>
+
+    Examples:
+      | merchant |payment_card_provider| journey_type     |status_code_returned |
+      | Wasabi   |master               | authorise_field  |202                  |
+      | Iceland  |master               | authorise_field  |202                  |
