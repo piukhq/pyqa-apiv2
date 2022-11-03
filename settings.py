@@ -20,5 +20,6 @@ B2B_BINK_PRIVATE_KEY = env_var("B2B_BINK_PRIVATE_KEY", "api2-b2b-private-key-bin
 B2B_LLOYDS_PRIVATE_KEY = env_var("B2B_LLOYDS_PRIVATE_KEY", "api2-b2b-private-key-lloydsqa-regression")
 B2B_HALIFAX_PRIVATE_KEY = env_var("B2B_HALIFAX_PRIVATE_KEY", "api2-b2b-private-key-halifax-regression")
 B2B_BOS_PRIVATE_KEY = env_var("B2B_BOS_PRIVATE_KEY", "api2-b2b-private-key-bos-regression")
+B2B_SQUAREMEAL_PRIVATE_KEY = env_var("B2B_SQUAREMEAL_PRIVATE_KEY", "api2-b2b-private-key-sqremeal-regression")
 BLOB_STORAGE_DSN = env_var("BLOB_STORAGE_DSN")
 HERMES_DATABASE_URI = env_var("HERMES_DATABASE_URI")
