@@ -161,6 +161,12 @@ def halifax_test_email():
 
 
 @pytest.fixture()
+def squaremeal_test_email():
+    faker = Faker()
+    return constants.SQUAREMEAL_EMAIL_TEMPLATE.replace("email", str(faker.random_int(100, 999999)))
+
+
+@pytest.fixture()
 def lloyds_external_id():
     faker = Faker()
     return constants.LLOYDS_EXTERNAL_ID_TEMPLATE.replace("id", str(faker.random_int(100, 999999)))
@@ -176,6 +182,12 @@ def bos_external_id():
 def halifax_external_id():
     faker = Faker()
     return constants.HALIFAX_EXTERNAL_ID_TEMPLATE.replace("id", str(faker.random_int(100, 999999)))
+
+
+@pytest.fixture()
+def squaremeal_external_id():
+    faker = Faker()
+    return constants.SQUAREMEAL_EXTERNAL_ID_TEMPLATE.replace("id", str(faker.random_int(100, 999999)))
 
 
 @given("I am a Bink user")
@@ -523,6 +535,37 @@ def get_halifax_user(halifax_external_id, halifax_test_email):
     )
     assert response.status_code == 200, "/token Journey failed to get access token"
     TestContext.all_users["halifax_user"] = TestContext.token
+    return TestContext.token
+
+
+@given("I am a squaremeal user")
+def get_squaremeal_user(squaremeal_external_id, squaremeal_test_email):
+    key_secret = get_private_key_secret(config.SQUAREMEAL.kid)
+    # user_email = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EMAIL)
+    # external_id = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EXTERNAL_ID)
+    TestContext.b2btoken = create_b2b_token(
+        key=key_secret, sub=squaremeal_external_id, kid=config.SQUAREMEAL.kid, email=squaremeal_test_email
+    )
+
+    response = Token_b2b.post_b2b_with_grant_type(TestContext.b2btoken, "b2b")
+    time.sleep(1)
+    response_json = response_to_json(response)
+    TestContext.access_token = response_json.get("access_token")
+    TestContext.token_type = response_json.get("token_type")
+    TestContext.refresh_token_type = response_json.get("refresh_token")
+    TestContext.token = TestContext.token_type + " " + TestContext.access_token
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The response of B2B token (POST) for squaremeal is:\n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_TOKEN
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+        + "External Id"
+        + squaremeal_external_id
+    )
+    assert response.status_code == 200, "/token Journey failed to get access token"
+    TestContext.all_users["squaremeal_user"] = TestContext.token
     return TestContext.token
 
 

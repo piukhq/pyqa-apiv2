@@ -67,3 +67,11 @@ BOS = ChannelDetails(
     kid="bos-bink-regression",
     organisation_id="",
 )
+
+SQUAREMEAL = ChannelDetails(
+    channel_name="squaremeal",
+    bundle_id="com.squaremeal.api2",
+    client_id="Ngc7PzJM20zQMXhy8ZoTlAOrePGOkmLkqz0DCBSVcUJTcPkgNz",
+    kid="squaremeal-bink-regression",
+    organisation_id="",
+)
