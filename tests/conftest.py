@@ -539,7 +539,7 @@ def get_halifax_user(halifax_external_id, halifax_test_email):
 
 
 @given("I am a squaremeal user")
-def get_bos_user(squaremeal_external_id, squaremeal_test_email):
+def get_squaremeal_user(squaremeal_external_id, squaremeal_test_email):
     key_secret = get_private_key_secret(config.SQUAREMEAL.kid)
     # user_email = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EMAIL)
     # external_id = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EXTERNAL_ID)
