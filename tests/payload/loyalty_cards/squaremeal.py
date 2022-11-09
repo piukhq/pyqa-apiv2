@@ -57,7 +57,7 @@ class SquareMealCard:
                     },
                     "merchant_fields": {
                         "account_id": TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.MERCHANT_ID),
-                    }
+                    },
                 }
             }
         else:
@@ -73,7 +73,7 @@ class SquareMealCard:
                     },
                     "merchant_fields": {
                         "account_id": TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.MERCHANT_ID),
-                    }
+                    },
                 }
             }
         logging.info(
