@@ -9,7 +9,7 @@ ENDPOINT_LOYALTY_PLANS_OVERVIEW = "/v2/loyalty_plans_overview"
 ENDPOINT_LOYALTY_PLAN_DETAILS = "/v2/loyalty_plans/{}/plan_details"
 
 ENDPOINT_MEMBERSHIP_CARDS_ADD = "/v2/loyalty_cards/add"
-ENDPOINT_MEMBERSHIP_CARDS_ADD_TRUSTED = "/v2/loyalty_cards/add"
+ENDPOINT_MEMBERSHIP_CARDS_ADD_TRUSTED = "/v2/loyalty_cards/trusted_add"
 ENDPOINT_MEMBERSHIP_CARD = "/v2/loyalty_cards/add/{}"
 
 ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE = "/v2/loyalty_cards/{}/authorise"
