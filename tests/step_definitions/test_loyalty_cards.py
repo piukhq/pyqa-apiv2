@@ -54,6 +54,53 @@ def add_field_loyalty_cards_transactions(merchant):
     )
 
 
+@when(parsers.parse('I perform POST request to add trusted channel "{merchant}" loyalty card'))
+def add_field_loyalty_card_trusted(merchant):
+    time.sleep(1)
+    response = MembershipCards.add_loyalty_card_trusted(TestContext.token, merchant)
+    response_json = response_to_json(response)
+    TestContext.current_scheme_account_id = response_json.get("id")
+    TestContext.response_status_code = response.status_code
+    logging.info(
+        "The response of Add trusted Journey (POST) is:\n\n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_TRUSTED
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+
+
+@when(
+    parsers.parse(
+        'I perform POST request to add trusted channel "{merchant}" loyalty card with "{request_payload}" '
+        'with "{status_code}"'
+    )
+)
+def verify_invalid_request_for_add_trusted_journey(merchant, request_payload, status_code):
+    if request_payload == "invalid_request":
+        response = MembershipCards.add_loyalty_card_trusted(TestContext.token, merchant, request_payload)
+        response_json = response_to_json(response)
+        TestContext.response_status_code = response.status_code
+        TestContext.error_message = response_json["error_message"]
+        TestContext.error_slug = response_json["error_slug"]
+    elif request_payload == "invalid_json":
+        response = MembershipCards.add_loyalty_card_trusted(TestContext.token, merchant, request_payload)
+        response_json = response_to_json(response)
+        TestContext.response_status_code = response.status_code
+        TestContext.error_message = response_json["error_message"]
+        TestContext.error_slug = response_json["error_slug"]
+
+    logging.info(
+        "The response of Invalid json Journey (POST) for Add trusted field:\n \n"
+        + Endpoint.BASE_URL
+        + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_TRUSTED
+        + "\n\n"
+        + json.dumps(response_json, indent=4)
+    )
+
+    assert TestContext.response_status_code == int(status_code), "Invalid json request for " + merchant + " failed"
+
+
 @when(parsers.parse('I perform GET request to verify the "{merchant}" membership card is added to the wallet'))
 def verify_get_add_field_membership_cards(merchant):
     response = MembershipCards.get_add_field_only_card(TestContext.token, merchant)

@@ -20,7 +20,7 @@ Feature: View Wallet
       | merchant      | status_code_returned|payment_card_provider|
       |Wasabi        | 200                  |master              |
       |Iceland        |200                  |master               |
-      |HarveyNichols  |200                  |master               |
+ #     |HarveyNichols  |200                  |master               |
 
   @view_my_wallet_unauthorised @bink_regression_api2 @sandbox_regression
   Scenario Outline: View my wallet with unauthorised loyalty card

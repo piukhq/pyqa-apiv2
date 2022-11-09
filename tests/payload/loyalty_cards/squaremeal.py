@@ -16,7 +16,7 @@ class SquareMealCard:
         if invalid_data:
             payload = {}
         else:
-            TestContext.card_number = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM)
+            TestContext.card_number = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.CARD_NUM)
             payload = {
                 "account": {
                     "add_fields": {
@@ -28,12 +28,58 @@ class SquareMealCard:
                         ]
                     }
                 },
-                "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi"),
+                "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("square_meal"),
             }
         logging.info(
             "The Request for Add_field only with :\n"
             + Endpoint.BASE_URL
             + api.ENDPOINT_MEMBERSHIP_CARDS_ADD
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
+    def add_loyalty_card_trusted_payload(invalid_data=None):
+        TestContext.card_number = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.CARD_NUM)
+        if invalid_data == "invalid_request":
+            payload = {}
+        elif invalid_data == "invalid_json":
+            payload = {
+                "account": {
+                    "add_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "'card_number'",
+                                "value": TestContext.card_number,
+                            }
+                        ]
+                    },
+                    "merchant_fields": {
+                        "account_id": TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.MERCHANT_ID),
+                    },
+                }
+            }
+        else:
+            payload = {
+                "account": {
+                    "add_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "card_number",
+                                "value": TestContext.card_number,
+                            }
+                        ]
+                    },
+                    "merchant_fields": {
+                        "account_id": TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.MERCHANT_ID),
+                    },
+                }
+            }
+        logging.info(
+            "The Request for Add trusted loyalty card with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_TRUSTED
             + "\n\n"
             + json.dumps(payload, indent=4)
         )
