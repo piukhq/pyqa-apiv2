@@ -20,7 +20,7 @@ Feature: View Wallet by loyalty card id
       | merchant      | status_code_returned|payment_card_provider|
       | Wasabi        | 200                 |master               |
       |Iceland        |200                  |master               |
-      |HarveyNichols  |200                  |master               |
+ #     |HarveyNichols  |200                  |master               |
 
      @wallet_lcbyid_unauthorised @bink_regression_api2 @sandbox_regression
   Scenario Outline: Get wallet lc by id with unauthorised loyalty card

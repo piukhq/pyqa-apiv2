@@ -148,6 +148,7 @@ square_meal_membership_card = {
     "points": 800,
     "currency": "points",
     "description": "",
+    "merchant_id": "12345DAW",
     "transactions": "3",
     "transaction_status": "active",
     "transaction_currency": "points",

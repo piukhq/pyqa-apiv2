@@ -36,6 +36,23 @@ class MembershipCards(Endpoint):
             return Endpoint.call(url, header, "POST", payload)
 
     @staticmethod
+    def add_loyalty_card_trusted(token, merchant, invalid_request=None):
+        url = MembershipCards.get_add_trusted_url()
+        header = Endpoint.request_header(token)
+        encrypt_header = Endpoint.encrypt_header(token)
+        if not invalid_request:
+            if TestContext.flag_encrypt == "true":
+                payload = Merchant.get_merchant(merchant).add_loyalty_card_trusted_payload()
+                data = encrypted_payload_token(payload)
+                return Endpoint.call_payload(url, encrypt_header, "POST", data)
+            elif TestContext.flag_encrypt == "false":
+                payload = Merchant.get_merchant(merchant).add_loyalty_card_trusted_payload()
+                return Endpoint.call(url, header, "POST", payload)
+        else:
+            payload = Merchant.get_merchant(merchant).add_loyalty_card_trusted_payload(invalid_request)
+            return Endpoint.call(url, header, "POST", payload)
+
+    @staticmethod
     def add_before_register_field_only_card(token, merchant, invalid_request=None):
         url = MembershipCards.get_add_url()
         header = Endpoint.request_header(token)
@@ -240,6 +257,10 @@ class MembershipCards(Endpoint):
             return Endpoint.BASE_URL + api.ENDPOINT_MEMBERSHIP_CARDS_ADD
         else:
             return Endpoint.BASE_URL + api.ENDPOINT_MEMBERSHIP_CARD.format(scheme_account_id)
+
+    @staticmethod
+    def get_add_trusted_url():
+        return Endpoint.BASE_URL + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_TRUSTED
 
     @staticmethod
     def get_loyalty_card_by_id_url(scheme_account_id):

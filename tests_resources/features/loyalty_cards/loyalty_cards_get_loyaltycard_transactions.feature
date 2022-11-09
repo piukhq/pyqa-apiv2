@@ -16,7 +16,7 @@ I want to view my loyalty card transactions in my wallet so that I am aware and 
       | merchant      | status_code_returned |
       | Iceland       | 200                  |
       | Wasabi        | 200                  |
-      | HarveyNichols | 200                  |
+#      | HarveyNichols | 200                  |
 
 
    @transactions_invalid_token @bink_regression_api2 @sandbox_regression

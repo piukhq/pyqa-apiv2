@@ -18,7 +18,7 @@ Feature: Overview of wallet information
       | merchant      | status_code_returned|payment_card_provider|
       |Wasabi         |200                  |master               |
       |Iceland        |200                  |master               |
-      |HarveyNichols  |200                  |master               |
+ #     |HarveyNichols  |200                  |master               |
 
   @wallet_overview_unauthorised @bink_regression_api2 @sandbox_regression
   Scenario Outline: Get wallet overview with unauthorised loyalty card
