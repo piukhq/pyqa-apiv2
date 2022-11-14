@@ -51,7 +51,9 @@ def retry_get_secrets_from_vault(VAULT_URL):
     exception = RuntimeError("Failed to get secrets from Vault")
     for _ in range(retries):
         try:
-            client = SecretClient(vault_url=VAULT_URL, credential=DefaultAzureCredential())
+            client = SecretClient(vault_url=VAULT_URL, credential=DefaultAzureCredential(
+                additionally_allowed_tenants=["a6e2367a-92ea-4e5a-b565-723830bcc095"]
+            ))
             secret = client.get_secret(CHANNEL_SECRET_NAME)
             try:
                 return json.loads(secret.value)
@@ -69,7 +71,9 @@ def retry_get_secrets_key_from_vault_b2b_token(secret_name, VAULT_URL):
     exception = RuntimeError("Failed to get secrets from Vault")
     for _ in range(retries):
         try:
-            client = SecretClient(vault_url=VAULT_URL, credential=DefaultAzureCredential())
+            client = SecretClient(vault_url=VAULT_URL, credential=DefaultAzureCredential(
+                additionally_allowed_tenants=["a6e2367a-92ea-4e5a-b565-723830bcc095"]
+            ))
             secret = client.get_secret(secret_name)
             try:
                 secret_dict = json.loads(secret.value)
@@ -88,7 +92,9 @@ def retry_get_access_secrets_from_vault(VAULT_URL):
     exception = RuntimeError("Failed to get access secrets from Vault")
     for _ in range(retries):
         try:
-            client = SecretClient(vault_url=VAULT_URL, credential=DefaultAzureCredential())
+            client = SecretClient(vault_url=VAULT_URL, credential=DefaultAzureCredential(
+                additionally_allowed_tenants=["a6e2367a-92ea-4e5a-b565-723830bcc095"]
+            ))
             secret = client.get_secret(ACCESS_SECRET_NAME)
             try:
                 return json.loads(secret.value)
