@@ -77,7 +77,7 @@ Feature: Add and register a loyalty card
       | master                | Iceland  | 202                  | pll          |
 
 
-  @identical_joins @bink_regression_api2
+  @identical_joins @bink_regression_api2 @trusted
   Scenario Outline: merchant fails to identify duplicate join requests
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -100,8 +100,8 @@ Feature: Add and register a loyalty card
       | Iceland       | 202                  |
 
 
-  @multi_wallet_joins @bink_regression_api2
-  Scenario Outline: merchant fails to identify duplicate join requests
+  @multi_wallet_joins @bink_regression_api2 @trusted
+  Scenario Outline: join requests from different wallet
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "master" payment account to wallet

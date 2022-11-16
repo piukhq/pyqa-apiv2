@@ -117,7 +117,7 @@ Feature: Delete a loyalty card
       | Wasabi   | Could not validate fields | FIELD_VALIDATION_ERROR | 422                  |
 
 
-    @multi_wallet_delete @bink_regression_api2 @sandbox_regression
+    @multi_wallet_delete @bink_regression_api2 @trusted
     Scenario Outline: Add and auth lc in two wallets and delete the card from one wallet
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token

@@ -41,40 +41,43 @@ class SquareMealCard:
 
     @staticmethod
     def add_loyalty_card_trusted_payload(invalid_data=None):
-        TestContext.card_number = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.CARD_NUM)
+        TestContext.email = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.EMAIL)
+        TestContext.password = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.PASSWORD)
         if invalid_data == "invalid_request":
             payload = {}
         elif invalid_data == "invalid_json":
             payload = {
                 "account": {
-                    "add_fields": {
+                    "authorise_fields": {
                         "credentials": [
                             {
-                                "credential_slug": "'card_number'",
-                                "value": TestContext.card_number,
+                                "credential_slug": "'email'",
+                                "value": TestContext.email,
                             }
                         ]
                     },
                     "merchant_fields": {
                         "account_id": TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.MERCHANT_ID),
                     },
-                }
+                },
+                "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("square_meal"),
             }
         else:
             payload = {
                 "account": {
-                    "add_fields": {
+                    "authorise_fields": {
                         "credentials": [
                             {
-                                "credential_slug": "card_number",
-                                "value": TestContext.card_number,
+                                "credential_slug": "email",
+                                "value": TestContext.email,
                             }
                         ]
                     },
                     "merchant_fields": {
                         "account_id": TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.MERCHANT_ID),
                     },
-                }
+                },
+                "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("square_meal"),
             }
         logging.info(
             "The Request for Add trusted loyalty card with :\n"
@@ -85,60 +88,59 @@ class SquareMealCard:
         )
         return payload
 
-    @staticmethod
-    def add_field_only_membership_card_payload_with_existing_id(invalid_request=None):
-        if invalid_request:
-            payload = {}
-        else:
-            payload = {
-                "account": {
-                    "add_fields": {
-                        "credentials": [
-                            {
-                                "credential_slug": "card_number",
-                                "value": TestContext.card_number,
-                            }
-                        ]
-                    }
-                },
-                "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi"),
-            }
-        logging.info(
-            "The Request for Add_field only with :\n"
-            + Endpoint.BASE_URL
-            + api.ENDPOINT_MEMBERSHIP_CARDS_ADD
-            + "\n\n"
-            + json.dumps(payload, indent=4)
-        )
-        return payload
+    # @staticmethod
+    # def add_field_only_membership_card_payload_with_existing_id(invalid_request=None):
+    #     if invalid_request:
+    #         payload = {}
+    #     else:
+    #         payload = {
+    #             "account": {
+    #                 "add_fields": {
+    #                     "credentials": [
+    #                         {
+    #                             "credential_slug": "card_number",
+    #                             "value": TestContext.card_number,
+    #                         }
+    #                     ]
+    #                 }
+    #             },
+    #             "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi"),
+    #         }
+    #     logging.info(
+    #         "The Request for Add_field only with :\n"
+    #         + Endpoint.BASE_URL
+    #         + api.ENDPOINT_MEMBERSHIP_CARDS_ADD
+    #         + "\n\n"
+    #         + json.dumps(payload, indent=4)
+    #     )
+    #     return payload
 
-    @staticmethod
-    def add_field_only_membership_card_with_invalid_json():
-        payload = {
-            "account": {
-                "add_fields": {
-                    "credentials": [
-                        {
-                            "credential_slug": "'card_number'",
-                            "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM),
-                        }
-                    ]
-                }
-            },
-            "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi"),
-        }
-        logging.info(
-            "The Request for Add_field only with :\n"
-            + Endpoint.BASE_URL
-            + api.ENDPOINT_MEMBERSHIP_CARDS_ADD
-            + "\n\n"
-            + json.dumps(payload, indent=4)
-        )
-        return payload
+    # @staticmethod
+    # def add_field_only_membership_card_with_invalid_json():
+    #     payload = {
+    #         "account": {
+    #             "add_fields": {
+    #                 "credentials": [
+    #                     {
+    #                         "credential_slug": "'card_number'",
+    #                         "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM),
+    #                     }
+    #                 ]
+    #             }
+    #         },
+    #         "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi"),
+    #     }
+    #     logging.info(
+    #         "The Request for Add_field only with :\n"
+    #         + Endpoint.BASE_URL
+    #         + api.ENDPOINT_MEMBERSHIP_CARDS_ADD
+    #         + "\n\n"
+    #         + json.dumps(payload, indent=4)
+    #     )
+    #     return payload
 
     @staticmethod
     def add_and_authorise_membership_card_payload(invalid_request=None):
-        TestContext.card_number = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.CARD_NUM)
         TestContext.email = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.EMAIL)
         TestContext.password = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.PASSWORD)
         if invalid_request:
@@ -157,7 +159,10 @@ class SquareMealCard:
                                 "value": TestContext.password,
                             },
                         ]
-                    }
+                    },
+                    "merchant_fields": {
+                        "account_id": TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.MERCHANT_ID),
+                    },
                 },
                 "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("square_meal"),
             }
@@ -173,28 +178,27 @@ class SquareMealCard:
 
     @staticmethod
     def add_and_authorise_transactions_card_payload():
-        TestContext.card_number = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.TRANSACTIONS_CARD)
-        TestContext.email = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.TRANSACTIONS_EMAIL)
+        TestContext.email = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.TRANSACTIONS_EMAIL)
+        TestContext.password = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.TRANSACTIONS_PASSWORD)
         payload = {
             "account": {
-                "add_fields": {
-                    "credentials": [
-                        {
-                            "credential_slug": "card_number",
-                            "value": TestContext.card_number,
-                        }
-                    ]
-                },
                 "authorise_fields": {
                     "credentials": [
                         {
                             "credential_slug": "email",
                             "value": TestContext.email,
-                        }
+                        },
+                        {
+                            "credential_slug": "password",
+                            "value": TestContext.password,
+                        },
                     ]
                 },
+                "merchant_fields": {
+                    "account_id": TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.MERCHANT_ID),
+                },
             },
-            "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi"),
+            "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("square_meal"),
         }
 
         logging.info(
@@ -266,28 +270,27 @@ class SquareMealCard:
 
     @staticmethod
     def add_and_auth_field_only_membership_card_with_unauthorised_json():
-        TestContext.card_number = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM)
-        TestContext.email = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.UNAUTHORISED_EMAIL)
+        TestContext.email = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.UNAUTHORISED_EMAIL)
+        TestContext.password = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.PASSWORD)
         payload = {
             "account": {
-                "add_fields": {
-                    "credentials": [
-                        {
-                            "credential_slug": "card_number",
-                            "value": TestContext.card_number,
-                        }
-                    ]
-                },
                 "authorise_fields": {
                     "credentials": [
                         {
                             "credential_slug": "email",
                             "value": TestContext.email,
-                        }
+                        },
+                        {
+                            "credential_slug": "password",
+                            "value": TestContext.password,
+                        },
                     ]
                 },
+                "merchant_fields": {
+                    "account_id": TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.MERCHANT_ID),
+                },
             },
-            "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi"),
+            "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("square_meal"),
         }
 
         logging.info(
@@ -301,7 +304,8 @@ class SquareMealCard:
 
     @staticmethod
     def authorise_field_only_membership_card_payload(invalid_data=None):
-        TestContext.card_number = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM)
+        TestContext.email = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.EMAIL)
+        TestContext.password = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.PASSWORD)
         if invalid_data == "invalid_request":
             payload = {}
         elif invalid_data == "invalid_json":
@@ -311,31 +315,80 @@ class SquareMealCard:
                         "credentials": [
                             {
                                 "credential_slug": "'email'",
-                                "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.EMAIL),
-                            }
+                                "value": TestContext.email,
+                            },
+                            {
+                                "credential_slug": "password",
+                                "value": TestContext.password,
+                            },
                         ]
-                    },
+                    }
                 }
             }
         else:
             payload = {
                 "account": {
-                    "add_fields": {
-                        "credentials": [
-                            {
-                                "credential_slug": "card_number",
-                                "value": TestContext.card_number,
-                            }
-                        ]
-                    },
                     "authorise_fields": {
                         "credentials": [
                             {
                                 "credential_slug": "email",
-                                "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.EMAIL),
-                            }
+                                "value": TestContext.email,
+                            },
+                            {
+                                "credential_slug": "password",
+                                "value": TestContext.password,
+                            },
                         ]
-                    },
+                    }
+                },
+            }
+        logging.info(
+            "The Request for Authorise field only with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE.format(TestContext.current_scheme_account_id)
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
+    def authorise_field_only_transactions_membership_card_payload(invalid_data=None):
+        TestContext.email = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.TRANSACTIONS_EMAIL)
+        TestContext.password = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.TRANSACTIONS_PASSWORD)
+        if invalid_data == "invalid_request":
+            payload = {}
+        elif invalid_data == "invalid_json":
+            payload = {
+                "account": {
+                    "authorise_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "'email'",
+                                "value": TestContext.email,
+                            },
+                            {
+                                "credential_slug": "password",
+                                "value": TestContext.password,
+                            },
+                        ]
+                    }
+                }
+            }
+        else:
+            payload = {
+                "account": {
+                    "authorise_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "email",
+                                "value": TestContext.email,
+                            },
+                            {
+                                "credential_slug": "password",
+                                "value": TestContext.password,
+                            },
+                        ]
+                    }
                 },
             }
         logging.info(

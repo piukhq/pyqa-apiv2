@@ -1,5 +1,5 @@
 # Created by bularagahavan 26/09/2022
-@membership_card_authorise_multi
+@membership_card_authorise_multi @trusted
 Feature: Authorise a loyalty card
   As a Bink user
   I want add an ‘Engage' or 'PLL’ type loyalty card to my wallet
@@ -243,7 +243,7 @@ Feature: Authorise a loyalty card
       When For bink_user2 I perform GET Wallet
       Then All Wallet fields are correctly populated for <merchant>
       When For bink_user2 I perform GET Wallet_overview
-      Then All Wallet_overview fields are correctly populated for <merchant
+      Then All Wallet_overview fields are correctly populated for <merchant>
       When For bink_user2 I perform GET transaction for loyalty card with authorised for <merchant>
       And For bink_user2 I perform GET balance for loyalty card with authorised for <merchant>
       And For bink_user2 I perform GET voucher for loyalty card with authorised for <merchant>
