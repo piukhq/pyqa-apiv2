@@ -348,7 +348,7 @@
 					"order": 2,
 					"display_label": "Bonus card number",
 					"validation": "^(63320400)[0-9]{11}$",
-					"description": "19 digit card number",
+					"description": "Card number / first 19 barcode digits",
 					"credential_slug": "card_number",
 					"type": "text",
 					"is_sensitive": false,

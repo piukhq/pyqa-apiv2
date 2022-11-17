@@ -1,5 +1,5 @@
 # Created by bularaghavan on 26/09/2022
-@membership_cards_pll  @pll_get_wallet_lc_id_multi @membership_cards
+@membership_cards_pll  @pll_get_wallet_lc_id_multi @trusted
 Feature: View multi wallet loyalty card by id  pll
   As a Bink user
   I want to see the Status of the PLL Link between a given loyalty card and payment card in my given wallet
