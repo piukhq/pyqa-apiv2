@@ -17,7 +17,7 @@ Feature: Add and register a loyalty card
       | merchant      | status_code_returned | journey_type |
       | Iceland       | 202                  | join         |
       | Wasabi        | 202                  | join         |
-#      | HarveyNichols | 202                  | join         |
+ #     | HarveyNichols | 202                  | join         |
 
 
   @empty_field_join @bink_regression_api2
@@ -32,7 +32,7 @@ Feature: Add and register a loyalty card
       | merchant      | error_message             | error_slug             | request_payload | status_code |
       | Iceland       | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
       | Wasabi        | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
-#      | HarveyNichols | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
+  #    | HarveyNichols | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
 
   @invalid_json_join @bink_regression_api2
   Scenario Outline: join journey with Unprocessable entity - bad request
@@ -46,7 +46,7 @@ Feature: Add and register a loyalty card
       | merchant      | error_message | error_slug        | request_payload | status_code |
       | Iceland       | Invalid JSON  | MALFORMED_REQUEST | invalid_json    | 400         |
       | Wasabi        | Invalid JSON  | MALFORMED_REQUEST | invalid_json    | 400         |
-#      | HarveyNichols | Invalid JSON  | MALFORMED_REQUEST | invalid_json    | 400         |
+   #   | HarveyNichols | Invalid JSON  | MALFORMED_REQUEST | invalid_json    | 400         |
 
   @invalid_token_join @bink_regression_api2
   Scenario Outline: Sending invalid token with bearer prefix in header for join journey (Unauthorized)
@@ -61,7 +61,7 @@ Feature: Add and register a loyalty card
       | merchant      | status_code_returned | error_message             | error_slug    |
       | Iceland       | 401                  | Supplied token is invalid | INVALID_TOKEN |
       | Wasabi        | 401                  | Supplied token is invalid | INVALID_TOKEN |
-#      | HarveyNichols | 401                  | Supplied token is invalid | INVALID_TOKEN |
+  #    | HarveyNichols | 401                  | Supplied token is invalid | INVALID_TOKEN |
 
   @pll_join @bink_regression_api2
   Scenario Outline: verify PLL for join journey
@@ -77,7 +77,7 @@ Feature: Add and register a loyalty card
       | master                | Iceland  | 202                  | pll          |
 
 
-  @identical_joins @bink_regression_api2 @trusted
+  @identical_joins @bink_regression_api2
   Scenario Outline: merchant fails to identify duplicate join requests
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -100,8 +100,8 @@ Feature: Add and register a loyalty card
       | Iceland       | 202                  |
 
 
-  @multi_wallet_joins @bink_regression_api2 @trusted
-  Scenario Outline: join requests from different wallet
+  @multi_wallet_joins @bink_regression_api2
+  Scenario Outline: merchant fails to identify duplicate join requests
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "master" payment account to wallet
