@@ -627,7 +627,7 @@ wallet_info = {
                     "id": 1329,
                     "type": 9,
                     "url": "https://api.staging.gb.bink.com/content/media/"
-                           "hermes/schemes/SquareMeal_Alternative_Hero.png",
+                    "hermes/schemes/SquareMeal_Alternative_Hero.png",
                     "description": "SquareMeal Alternative Hero",
                     "encoding": "png",
                 },
