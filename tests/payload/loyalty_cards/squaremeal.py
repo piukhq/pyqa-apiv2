@@ -160,7 +160,6 @@ class SquareMealCard:
                             },
                         ]
                     },
-
                 },
                 "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("square_meal"),
             }
