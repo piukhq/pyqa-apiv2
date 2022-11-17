@@ -21,7 +21,7 @@ Feature: Authorise a loyalty card
     When I perform PUT request to authorise "<merchant>" wallet only membership card with transactions and vouchers
     Then I see a <status_code_returned2>
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+#    Then verify the data stored in DB after "add_and_authorise" journey for "<merchant>"
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add "<merchant>" membership card with transactions and vouchers
@@ -44,9 +44,9 @@ Feature: Authorise a loyalty card
     And For bink_user2 I perform GET voucher for loyalty card with unauthorised for <merchant>
 
     Examples:
-      | merchant |payment_card_provider| journey_type    |status_code_returned1 |status_code_returned2|status_code_returned |request_payload|
-      | Wasabi   |master               | authorise_field | 201                  |202                  |200                  |unauthorised   |
-      | Iceland  |master               | authorise_field | 201                  |202                  |200                  |unauthorised   |
+      | merchant |payment_card_provider| status_code_returned1 |status_code_returned2|status_code_returned |request_payload|
+      | Wasabi   |master               |  201                  |202                  |200                  |unauthorised   |
+      | Iceland  |master               | 201                  |202                  |200                  |unauthorised   |
 
   # add and auth wallet 1 with good credentials
   # Get wallet 1 has authorised details. Also balance vouchers and transactions returned
@@ -62,7 +62,7 @@ Feature: Authorise a loyalty card
       And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
       Then I see a <status_code_returned>
       When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-      Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+#      Then verify the data stored in DB after "add_and_authorise" journey for "<merchant>"
       When I am in Bink channel to get b2b token for second user
       And I perform POST token request for token type "b2b" to get access token for second user
       And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
@@ -88,9 +88,9 @@ Feature: Authorise a loyalty card
       And For bink_user2 I perform GET voucher for loyalty card with authorised for <merchant>
 
     Examples:
-      | merchant |payment_card_provider| journey_type       |status_code_returned  |request_payload|
-      | Wasabi   |master               | add_and_authorise  | 202                  |unauthorised   |
-      | Iceland  |master               | add_and_authorise  | 202                  |unauthorised   |
+      | merchant |payment_card_provider| status_code_returned  |request_payload|
+      | Wasabi   |master               |  202                  |unauthorised   |
+      | Iceland  |master               |  202                  |unauthorised   |
 
     # add and auth wallet 1 with bad credentials
   # Get wallet 1 has unauthorised details .Also balance vouchers and transactions null
@@ -106,7 +106,7 @@ Feature: Authorise a loyalty card
       And I perform POST request to add and auth "<merchant>" membership card with "<request_payload>" with "<status_code_returned>"
       Then I see a <status_code_returned>
       When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-      Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+#      Then verify the data stored in DB after "add_and_authorise" journey for "<merchant>"
       When I am in Bink channel to get b2b token for second user
       And I perform POST token request for token type "b2b" to get access token for second user
       And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
@@ -132,9 +132,9 @@ Feature: Authorise a loyalty card
       And For bink_user2 I perform GET voucher for loyalty card with authorised for <merchant>
 
     Examples:
-      | merchant |payment_card_provider| journey_type       |status_code_returned  |request_payload|
-      | Wasabi   |master               | add_and_authorise  | 202                  |unauthorised   |
-      | Iceland  |master               | add_and_authorise  | 202                  |unauthorised   |
+      | merchant |payment_card_provider| status_code_returned  |request_payload|
+      | Wasabi   |master               |  202                  |unauthorised   |
+      | Iceland  |master               |  202                  |unauthorised   |
 
     # add and auth wallet 1 with good credentials
     # Get wallet 1 has authorised details. Also balance vouchers and transactions returned
@@ -150,7 +150,7 @@ Feature: Authorise a loyalty card
       And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
       Then I see a <status_code_returned>
       When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-      Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+#      Then verify the data stored in DB after "add_and_authorise" journey for "<merchant>"
       When I am in Bink channel to get b2b token for second user
       And I perform POST token request for token type "b2b" to get access token for second user
       And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
@@ -179,9 +179,9 @@ Feature: Authorise a loyalty card
       And For bink_user2 I perform GET voucher for loyalty card with unauthorised for <merchant>
 
     Examples:
-      | merchant |payment_card_provider| journey_type      |status_code_returned   |request_payload|
-      | Wasabi   |master               | add_and_authorise | 202                   |unauthorised   |
-      | Iceland  |master               | add_and_authorise | 202                   |unauthorised   |
+      | merchant |payment_card_provider| status_code_returned   |request_payload|
+      | Wasabi   |master               |  202                   |unauthorised   |
+      | Iceland  |master               |  202                   |unauthorised   |
 
     # add and auth wallet 1 with Add_Credential_1 and good credentials
     # Get wallet 1 has authorised details. Also balance vouchers and transactions returned
@@ -194,7 +194,7 @@ Feature: Authorise a loyalty card
       Given I am a halifax user
       When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
       Then I see a <status_code_returned>
-      Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+#      Then verify the data stored in DB after "add_and_authorise" journey for "<merchant>"
       Given I am in Bink channel to get b2b token
       When I perform POST token request for token type "b2b" to get access token
       And I perform POST request to add and authorise "<merchant>" membership card
@@ -216,8 +216,8 @@ Feature: Authorise a loyalty card
 
 
     Examples:
-      | merchant |journey_type      |status_code_returned   |payment_card_provider|
-      | Wasabi   | add_and_authorise|202                    |master               |
+      | merchant |status_code_returned   |payment_card_provider|
+      | Wasabi   |202                    |master               |
 
 
     # add and auth wallet 1 with Add_Credential_1 and good credentials
@@ -232,7 +232,7 @@ Feature: Authorise a loyalty card
       When I perform POST token request for token type "b2b" to get access token
       And I perform POST request to add and authorise "<merchant>" membership card
       Then I see a <status_code_returned>
-      And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+#      And verify the data stored in DB after "add_and_authorise" journey for "<merchant>"
       When I am in Bink channel to get b2b token for second user
       And I perform POST token request for token type "b2b" to get access token for second user
       And I perform POST request to add and authorise "<merchant>" membership card
@@ -250,6 +250,6 @@ Feature: Authorise a loyalty card
 
 
     Examples:
-      | merchant |journey_type     |status_code_returned   |payment_card_provider|
-      | Wasabi   |add_and_authorise|202                    |master               |
+      | merchant |status_code_returned   |payment_card_provider|
+      | Wasabi   |202                    |master               |
 
