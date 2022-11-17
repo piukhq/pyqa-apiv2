@@ -136,6 +136,8 @@ def load_secrets():
 
     if TestContext.environ == "staging":
         vault_url = VAULT_URL_STAGING
+    elif TestContext.environ == "trusted":
+        vault_url = VAULT_URL_STAGING
     else:
         vault_url = VAULT_URL_SANDBOX
 
