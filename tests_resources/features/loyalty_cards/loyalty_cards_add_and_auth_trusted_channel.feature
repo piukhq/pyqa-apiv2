@@ -1,5 +1,5 @@
 # Created by bularaghavan at 31/10/2022
-@trusted_channel_add_and_authorise
+@trusted_channel_add_and_authorise @trusted
 Feature: Add and authorise a loyalty card into Trusted channel
   As a Trusted Channel I want to add a loyalty card into my user’s wallet, without needing to provide sensitive credential information
   so that I do not need to expose sensitive credential data within my system, and
@@ -9,6 +9,7 @@ Feature: Add and authorise a loyalty card into Trusted channel
   @add_and_auth_tc @sandbox_regression
   Scenario Outline: Trusted channel adds loyalty card into wallet
     Given I am a squaremeal user
+    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     When I perform POST request to add trusted channel "<merchant>" loyalty card
     Then I see a <status_code_returned>
  #   And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
@@ -21,13 +22,12 @@ Feature: Add and authorise a loyalty card into Trusted channel
     When For squaremeal_user I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And All Wallet_by_card_id fields are correctly populated for <merchant>
-    When For squaremeal_user I perform GET transaction for loyalty card with unauthorised for <merchant>
-    And For squaremeal_user I perform GET balance for loyalty card with unauthorised for <merchant>
-    And For squaremeal_user I perform GET voucher for loyalty card with unauthorised for <merchant>
+    When For squaremeal_user I perform GET transaction for loyalty card with authorised for <merchant>
+    And For squaremeal_user I perform GET balance for loyalty card with authorised for <merchant>
 
     Examples:
-      | merchant      | status_code_returned |
-      | SquareMeal    | 202                  |
+      | merchant      | status_code_returned |payment_card_provider |
+      | SquareMeal    | 202                  | master               |
 
   @invalid_json_trusted @sandbox_regression
   Scenario Outline: Add loyalty card in trusted channel with malformed request
@@ -66,10 +66,12 @@ Feature: Add and authorise a loyalty card into Trusted channel
   @add_and_auth_ntc_in_tc @sandbox_regression
   Scenario Outline: Trusted channel adds loyalty card into wallet which already exists in Non trusted channel
     Given I am a halifax user
+    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     When I perform POST request to add and authorise "<merchant>" membership card
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
     Given I am a squaremeal user
+    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     When I perform POST request to add trusted channel "<merchant>" loyalty card
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
@@ -84,19 +86,20 @@ Feature: Add and authorise a loyalty card into Trusted channel
     And All Wallet_by_card_id fields are correctly populated for <merchant>
     When For squaremeal_user I perform GET transaction for loyalty card with authorised for <merchant>
     And For squaremeal_user I perform GET balance for loyalty card with authorised for <merchant>
-    And For squaremeal_user I perform GET voucher for loyalty card with authorised for <merchant>
 
     Examples:
-      | merchant      | status_code_returned | journey_type      |
-      | SquareMeal    | 202                  | add_and_authorise |
+      | merchant      | status_code_returned | journey_type      |payment_card_provider |
+      | SquareMeal    | 202                  | add_and_authorise | master               |
 
 @add_and_auth_tc_in_ntc @sandbox_regression
   Scenario Outline: Non Trusted channel adds loyalty card into wallet which already exists in Trusted channel
     Given I am a squaremeal user
-    When I perform POST request to add trusted channel "<merchant>" loyalty card
+    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform POST request to add trusted channel "<merchant>" loyalty card
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
     Given I am a Lloyds user
+    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     When I perform POST request to add and authorise "<merchant>" membership card
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
@@ -111,11 +114,10 @@ Feature: Add and authorise a loyalty card into Trusted channel
     And All Wallet_by_card_id fields are correctly populated for <merchant>
     When For lloyds_user I perform GET transaction for loyalty card with authorised for <merchant>
     And For lloyds_user I perform GET balance for loyalty card with authorised for <merchant>
-    And For lloyds_user I perform GET voucher for loyalty card with authorised for <merchant>
 
     Examples:
-      | merchant      | status_code_returned | journey_type      |
-      | SquareMeal    | 202                  | add_and_authorise |
+      | merchant      | status_code_returned | journey_type      |payment_card_provider |
+      | SquareMeal    | 202                  | add_and_authorise |master                 |
 
   @add_and_auth_existing_field_tc @sandbox_regression
   Scenario Outline: Add existing card again into wallet in trusted channel
