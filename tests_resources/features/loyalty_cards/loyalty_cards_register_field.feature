@@ -90,7 +90,7 @@ Feature: Register a loyalty card
       | master                | Iceland  | 202                  | pll          |
 
 
-  @put_register_multi_wallet @bink_regression_api2
+  @put_register_multi_wallet @bink_regression_api2 @trusted
   Scenario Outline: Add existing card again into different wallet via put register
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -115,7 +115,7 @@ Feature: Register a loyalty card
       | Iceland  | 409                  | Card is already registered. Use PUT /loyalty_cards/{loyalty_card_id}/authorise to authorise this card in your wallet, or to update authorisation credentials. | ALREADY_REGISTERED |
 
 
-  @put_register_failed_multi_wallet @bink_regression_api2
+  @put_register_failed_multi_wallet @bink_regression_api2 @trusted
   Scenario Outline: Wallet1 add then register failed, wallet2 add then register same card with correct details
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token

@@ -37,21 +37,21 @@ Feature: View Wallet by loyalty card id
       |Wasabi        | 200                  |master              |
       |Iceland        |200                  |master               |
 
-  @view_my_walletlcbyid_put_invalid @sandbox_regression
-  Scenario Outline: View my wallet lc by id after authorising lc with invalid credentials
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
-    And I perform PUT request to authorise "<merchant>" membership card with "unauthorised" with "202"
-    And I perform GET Wallet_by_card_id
-    Then I see a <status_code_returned>
-    And Wallet_by_card_id fields are correctly populated for unauthorised LC of <merchant>
-
-    Examples:
-      | merchant      | status_code_returned|payment_card_provider|
-      |Wasabi        | 200                  |master              |
-      |Iceland        |200                  |master               |
+#  @view_my_walletlcbyid_put_invalid @sandbox_regression
+#  Scenario Outline: View my wallet lc by id after authorising lc with invalid credentials
+#    Given I am in Bink channel to get b2b token
+#    When I perform POST token request for token type "b2b" to get access token
+#    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+#    And I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
+#    And I perform PUT request to authorise "<merchant>" membership card with "unauthorised" with "202"
+#    And I perform GET Wallet_by_card_id
+#    Then I see a <status_code_returned>
+#    And Wallet_by_card_id fields are correctly populated for unauthorised LC of <merchant>
+#
+#    Examples:
+#      | merchant      | status_code_returned|payment_card_provider|
+#      |Wasabi        | 200                  |master              |
+#      |Iceland        |200                  |master               |
 
   @view_wallet_by_loyalty_card_id_invalid @bink_regression_api2
   Scenario Outline: Verify invalid token scenario for get Wallet loyalty card by id

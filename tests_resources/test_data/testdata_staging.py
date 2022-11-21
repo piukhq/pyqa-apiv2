@@ -138,10 +138,11 @@ wasabi_membership_card = {
 
 square_meal_membership_card = {
     "card_num": "100500000",
-    "transactions_card": "100500000",
-    "transactions_email": "pytest+auto1@testbink.com",
     "email": "pytest+auto1@testbink.com",
     "password": "passauto01",
+    "transactions_card": "10010012",
+    "transactions_email": "pytest+smauto02@bink.com",
+    "transactions_password": "password01",
     "invalid_password": "pass01",
     "invalid_email": "fail@unknown.com",
     "unauthorised_email": "invalidemail@testbink.com",
@@ -168,6 +169,8 @@ trenette_membership_card = {
     "transaction_status": "active",
     "transaction_currency": "stamps",
 }
+
+# ----------------------------------------LOYALTY CARD 1 wallet    ---------------------------------------- #
 
 # Wallet_info can have card details of different merchants and each merchant can have multiple loyalty cards.
 # Here Wasabi dictionary has a list stored in it. So more than 1 card can be added in future.
@@ -570,6 +573,95 @@ wallet_info = {
             ],
         }
     ],
+    "SquareMeal": [
+        {
+            # "id": 230144,
+            "loyalty_plan_id": 286,
+            "loyalty_plan_name": "SquareMeal Restaurant Rewards",
+            "is_fully_pll_linked": True,
+            "pll_linked_payment_accounts": 1,
+            "total_payment_accounts": 1,
+            "status": {"state": "authorised", "slug": None, "description": None},
+            "balance": {
+                # "updated_at": 1668095818,
+                "current_display_value": "800 pts",
+                "loyalty_currency_name": "points",
+                "prefix": None,
+                "suffix": "pts",
+                "current_value": "800",
+                "target_value": None,
+            },
+            "transactions": [
+                {
+                    "id": "506864",
+                    "timestamp": 1640772734,
+                    "description": "First Card Added",
+                    "display_value": "100 pts",
+                },
+                {
+                    "id": "506866",
+                    "timestamp": 1639769134,
+                    "description": "Dining at Camino Bankside",
+                    "display_value": "500 pts",
+                },
+                {"id": "506865", "timestamp": 1639592114, "description": "Registration", "display_value": "100 pts"},
+            ],
+            "vouchers": [],
+            "card": {
+                "barcode": None,
+                "barcode_type": 0,
+                "card_number": "100500000",
+                "colour": "#465560",
+                "text_colour": "#FFFFFF",
+            },
+            "reward_available": False,
+            "images": [
+                {
+                    "id": 1328,
+                    "type": 3,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
+                    "description": "SquareMeal Icon",
+                    "encoding": "png",
+                },
+                {
+                    "id": 1329,
+                    "type": 9,
+                    "url": "https://api.staging.gb.bink.com/content/media/"
+                    "hermes/schemes/SquareMeal_Alternative_Hero.png",
+                    "description": "SquareMeal Alternative Hero",
+                    "encoding": "png",
+                },
+                {
+                    "id": 1330,
+                    "type": 0,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Hero.png",
+                    "description": "SquareMeal Hero",
+                    "encoding": "png",
+                },
+                {
+                    "id": 1332,
+                    "type": 8,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Silver_Tier_2.png",
+                    "description": "SquareMeal Silver Tier 2",
+                    "encoding": "png",
+                },
+                {
+                    "id": 1331,
+                    "type": 8,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
+                    "description": "SquareMeal Bronze Tier 1",
+                    "encoding": "png",
+                },
+                {
+                    "id": 1333,
+                    "type": 8,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Gold_Tier_3.png",
+                    "description": "SquareMeal Gold Tier 3",
+                    "encoding": "png",
+                },
+            ],
+        }
+    ],
     "payment_accounts": [
         {
             "provider": "Mastercard",
@@ -756,6 +848,43 @@ wallet_overview_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
                     "Harvey_Nichols_Card_0_TIER_UNKNOWN.png",
                     "description": "Harvey Nichols Hero",
+                    "encoding": "png",
+                }
+            ],
+        }
+    ],
+    "SquareMeal": [
+        {
+            # "id": 230144,
+            "loyalty_plan_id": 286,
+            "loyalty_plan_name": "SquareMeal Restaurant Rewards",
+            "is_fully_pll_linked": True,
+            "pll_linked_payment_accounts": 1,
+            "total_payment_accounts": 1,
+            "status": {"state": "authorised", "slug": None, "description": None},
+            "balance": {
+                # "updated_at": 1668095818,
+                "current_display_value": "800 pts",
+                "loyalty_currency_name": "points",
+                "prefix": None,
+                "suffix": "pts",
+                "current_value": "800",
+                "target_value": None,
+            },
+            "card": {
+                "barcode": None,
+                "barcode_type": 0,
+                "card_number": "100500000",
+                "colour": "#465560",
+                "text_colour": "#FFFFFF",
+            },
+            "reward_available": False,
+            "images": [
+                {
+                    "id": 1330,
+                    "type": 0,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Hero.png",
+                    "description": "SquareMeal Hero",
                     "encoding": "png",
                 }
             ],
@@ -1170,6 +1299,87 @@ wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
                 "Harvey_Nichols_Card_0_TIER_UNKNOWN.png",
                 "description": "Harvey Nichols Hero",
+                "encoding": "png",
+            },
+        ],
+    },
+    "SquareMeal": {
+        # "id": 230144,
+        "loyalty_plan_id": 286,
+        "loyalty_plan_name": "SquareMeal Restaurant Rewards",
+        "is_fully_pll_linked": True,
+        "pll_linked_payment_accounts": 1,
+        "total_payment_accounts": 1,
+        "status": {"state": "authorised", "slug": None, "description": None},
+        "balance": {
+            # "updated_at": 1668095818,
+            "current_display_value": "800 pts",
+            "loyalty_currency_name": "points",
+            "prefix": None,
+            "suffix": "pts",
+            "current_value": "800",
+            "target_value": None,
+        },
+        "transactions": [
+            {"id": "506864", "timestamp": 1640772734, "description": "First Card Added", "display_value": "100 pts"},
+            {
+                "id": "506866",
+                "timestamp": 1639769134,
+                "description": "Dining at Camino Bankside",
+                "display_value": "500 pts",
+            },
+            {"id": "506865", "timestamp": 1639592114, "description": "Registration", "display_value": "100 pts"},
+        ],
+        "vouchers": [],
+        "card": {
+            "barcode": None,
+            "barcode_type": 0,
+            "card_number": "100500000",
+            "colour": "#465560",
+            "text_colour": "#FFFFFF",
+        },
+        "reward_available": False,
+        "images": [
+            {
+                "id": 1328,
+                "type": 3,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
+                "description": "SquareMeal Icon",
+                "encoding": "png",
+            },
+            {
+                "id": 1329,
+                "type": 9,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Alternative_Hero.png",
+                "description": "SquareMeal Alternative Hero",
+                "encoding": "png",
+            },
+            {
+                "id": 1330,
+                "type": 0,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Hero.png",
+                "description": "SquareMeal Hero",
+                "encoding": "png",
+            },
+            {
+                "id": 1332,
+                "type": 8,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Silver_Tier_2.png",
+                "description": "SquareMeal Silver Tier 2",
+                "encoding": "png",
+            },
+            {
+                "id": 1331,
+                "type": 8,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
+                "description": "SquareMeal Bronze Tier 1",
+                "encoding": "png",
+            },
+            {
+                "id": 1333,
+                "type": 8,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Gold_Tier_3.png",
+                "description": "SquareMeal Gold Tier 3",
                 "encoding": "png",
             },
         ],
@@ -1788,6 +1998,93 @@ unauth_wallet_info_by_card_id = {
     },
     # "HarveyNichols" : [],
 }
+
+# ----------------------------------------LOYALTY CARD 2 wallet    ---------------------------------------- #
+
+lc2_wallet_info = {
+    "SquareMeal": {
+        # "id": 232313,
+        "loyalty_plan_id": 286,
+        "loyalty_plan_name": "SquareMeal Restaurant Rewards",
+        "is_fully_pll_linked": False,
+        "pll_linked_payment_accounts": 0,
+        "total_payment_accounts": 0,
+        "status": {"state": "authorised", "slug": None, "description": None},
+        "balance": {
+            # "updated_at": 1668599502,
+            "current_display_value": "900 pts",
+            "loyalty_currency_name": "points",
+            "prefix": None,
+            "suffix": "pts",
+            "current_value": "900",
+            "target_value": None,
+        },
+        "transactions": [
+            {"id": "512307", "timestamp": 1640772734, "description": "First Card Added", "display_value": "100 pts"},
+            {
+                "id": "512309",
+                "timestamp": 1639769134,
+                "description": "Dining at Camino Bankside",
+                "display_value": "500 pts",
+            },
+            {"id": "512308", "timestamp": 1639592114, "description": "Registration", "display_value": "100 pts"},
+        ],
+        "vouchers": [],
+        "card": {
+            "barcode": None,
+            "barcode_type": 0,
+            "card_number": "10010012",
+            "colour": "#465560",
+            "text_colour": "#FFFFFF",
+        },
+        "reward_available": False,
+        "images": [
+            {
+                "id": 1328,
+                "type": 3,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
+                "description": "SquareMeal Icon",
+                "encoding": "png",
+            },
+            {
+                "id": 1329,
+                "type": 9,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Alternative_Hero.png",
+                "description": "SquareMeal Alternative Hero",
+                "encoding": "png",
+            },
+            {
+                "id": 1330,
+                "type": 0,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Hero.png",
+                "description": "SquareMeal Hero",
+                "encoding": "png",
+            },
+            {
+                "id": 1332,
+                "type": 8,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Silver_Tier_2.png",
+                "description": "SquareMeal Silver Tier 2",
+                "encoding": "png",
+            },
+            {
+                "id": 1331,
+                "type": 8,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
+                "description": "SquareMeal Bronze Tier 1",
+                "encoding": "png",
+            },
+            {
+                "id": 1333,
+                "type": 8,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Gold_Tier_3.png",
+                "description": "SquareMeal Gold Tier 3",
+                "encoding": "png",
+            },
+        ],
+    }
+}
+
 # ----------------------------------------MEMBERSHIP PLAN IDs   ----------------------------------------------- #
 
 membership_plan_id = {
@@ -1838,6 +2135,8 @@ bink_user_accounts = {
     "b2b_external_id": "Autob2b",
     "b2b_external_id2": "Autob2b2",
 }
+
+# ---------------------------------------- Register and join wallet    ----------------------------------- #
 
 register_scheme_status = {
     "registration_failed": {
