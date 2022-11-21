@@ -34,7 +34,6 @@ class SchemeAccountRecord:
 class NewSchemeAccountRecord:
     id: int
     scheme_id: int
-    link_date: datetime.datetime
     is_deleted: bool
     alt_main_answer: str
     pll_links: bool
@@ -97,7 +96,7 @@ class QueryHermes:
             raise Exception(f"Record not found for {external_id}")
         else:
             scheme_account_record = NewSchemeAccountRecord(
-                record[0], record[1], record[2], record[3], record[4], record[5], record[6]
+                record[0], record[1], record[2], record[3], record[4], record[5]
             )
         db.clear_db(connection)
         return scheme_account_record
@@ -190,7 +189,7 @@ def get_link_status_query(journey_type, external_id):
         logging.info("Scheme didnt attached to the wallet")
     elif TestContext.environ == "staging":
         query_scheme_account = (
-            """SELECT sa.id, sa.scheme_id, sa.link_date, sa.is_deleted, sa.alt_main_answer, sa.pll_links, sae.link_status
+            """SELECT sa.id, sa.scheme_id, sa.is_deleted, sa.alt_main_answer, sa.pll_links, sae.link_status
                  FROM hermes.public.scheme_schemeaccount  as sa
                  JOIN hermes.public.ubiquity_schemeaccountentry as sae ON sae.scheme_account_id = sa.id
                  JOIN hermes.public.user as usser ON usser.id = sae.user_id
@@ -199,7 +198,7 @@ def get_link_status_query(journey_type, external_id):
         )
     elif TestContext.environ == "sandbox":
         query_scheme_account = (
-            """SELECT sa.id, sa.scheme_id, sa.link_date, sa.is_deleted, sa.alt_main_answer, sa.pll_links, sae.link_status
+            """SELECT sa.id, sa.scheme_id, sa.is_deleted, sa.alt_main_answer, sa.pll_links, sae.link_status
                  FROM lloyds_sit_hermes.public.scheme_schemeaccount  as sa
                  JOIN lloyds_sit_hermes.public.ubiquity_schemeaccountentry as sae ON sae.scheme_account_id = sa.id
                  JOIN lloyds_sit_hermes.public.user as usser ON usser.id = sae.user_id
