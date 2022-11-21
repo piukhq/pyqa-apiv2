@@ -249,6 +249,7 @@ def setup_b2b_token_user2():
     user_email = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.B2B_EMAIL2)
     external_id = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.B2B_EXTERNAL_ID2)
     TestContext.b2btoken = create_b2b_token(key=key_secret, sub=external_id, kid=config.BINK.kid, email=user_email)
+    TestContext.external_id["bink_user2"] = external_id
     return TestContext.b2btoken
 
 
