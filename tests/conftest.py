@@ -508,7 +508,7 @@ def get_bos_user(bos_external_id, bos_test_email):
     )
     assert response.status_code == 200, "/token Journey failed to get access token"
     TestContext.all_users["bos_user"] = TestContext.token
-    TestContext.external_id["bos_user"] = lloyds_external_id
+    TestContext.external_id["bos_user"] = bos_external_id
     return TestContext.token
 
 
