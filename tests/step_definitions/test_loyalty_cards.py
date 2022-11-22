@@ -191,6 +191,93 @@ def verify_loyalty_card_into_database(journey_type, merchant):
     return scheme_account
 
 
+#  Trusted channel database change
+@then(parsers.parse('verify that for {user} data stored in after "{journey_type}" journey for "{merchant}"'))
+def verify_loyalty_card_into_database_trusted(user, journey_type, merchant):
+    TestContext.extid = TestContext.external_id[user]
+    time.sleep(5)
+
+    if journey_type == "Add_field":
+        scheme_account = QueryHermes.fetch_ubiquity_schemeaccountentry(journey_type, TestContext.extid)
+        assert (
+            scheme_account.id == TestContext.current_scheme_account_id
+            and scheme_account.link_status == TestDataUtils.TEST_DATA.scheme_status.get(constants.WALLET_ONLY)
+            and scheme_account.scheme_id == TestData.get_membership_plan_id(merchant)
+        )
+
+    elif journey_type == "add_and_authorise" or journey_type == "add_and_register":
+        scheme_account = QueryHermes.fetch_ubiquity_schemeaccountentry(journey_type, TestContext.extid)
+        assert (
+            scheme_account.id == TestContext.current_scheme_account_id
+            and scheme_account.link_status == TestDataUtils.TEST_DATA.scheme_status.get(constants.ACTIVE)
+            and scheme_account.scheme_id == TestData.get_membership_plan_id(merchant)
+        )
+
+    elif journey_type == "delete":
+        scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
+        assert (
+            scheme_account.id == TestContext.current_scheme_account_id and scheme_account.is_deleted is True
+        ), "Delete in database is not success"
+
+    elif journey_type == "authorise_field" or journey_type == "join" or journey_type == "register_field":
+        time.sleep(4)
+        scheme_account = QueryHermes.fetch_ubiquity_schemeaccountentry(journey_type, TestContext.extid)
+        assert (
+            scheme_account.id == TestContext.current_scheme_account_id
+            and scheme_account.link_status == TestDataUtils.TEST_DATA.scheme_status.get(constants.ACTIVE)
+        ), (journey_type + " in database is not success")
+
+    elif journey_type == "add_field_then_add_auth":
+        scheme_account = QueryHermes.fetch_ubiquity_schemeaccountentry(journey_type, TestContext.extid)
+        assert (
+            scheme_account.id == TestContext.current_scheme_account_id
+            and scheme_account.link_status == TestDataUtils.TEST_DATA.scheme_status.get(constants.WALLET_ONLY)
+        )
+
+    elif journey_type == "join_failed":
+        scheme_account = QueryHermes.fetch_ubiquity_schemeaccountentry(journey_type, TestContext.extid)
+        assert (
+            scheme_account.id == TestContext.current_scheme_account_id
+            and scheme_account.link_status is TestDataUtils.TEST_DATA.scheme_status.get(constants.ENROL_FAILED)
+            or TestDataUtils.TEST_DATA.scheme_status.get(constants.ENROL_FAILED)
+        )
+
+    elif journey_type == "account_already_exists":
+        scheme_account = QueryHermes.fetch_ubiquity_schemeaccountentry(journey_type, TestContext.extid)
+        assert (
+            scheme_account.id == TestContext.current_scheme_account_id
+            and scheme_account.link_status is TestDataUtils.TEST_DATA.scheme_status.get(constants.ACCOUNT_ALREADY_EXIST)
+            or TestDataUtils.TEST_DATA.scheme_status.get(constants.ACCOUNT_ALREADY_EXIST)
+        )
+
+    elif journey_type == "unauthorised":
+        if merchant == "Wasabi":
+            scheme_account = QueryHermes.fetch_ubiquity_schemeaccountentry(journey_type, TestContext.extid)
+            assert (
+                scheme_account.id == TestContext.current_scheme_account_id
+                and scheme_account.link_status == TestDataUtils.TEST_DATA.scheme_status.get(constants.FAILED_VALIDATION)
+            )
+            print("scheme ac status", scheme_account.status)
+        elif merchant == "Iceland":
+            scheme_account = QueryHermes.fetch_ubiquity_schemeaccountentry(journey_type, TestContext.extid)
+            assert (
+                scheme_account.id == TestContext.current_scheme_account_id
+                and scheme_account.link_status
+                == TestDataUtils.TEST_DATA.scheme_status.get(constants.INVALID_CREDENTIALS)
+            )
+            print("scheme ac status", scheme_account.status)
+
+    elif journey_type == "pll":
+
+        scheme_account = QueryHermes.fetch_pll_user_link(journey_type, TestContext.extid)
+        assert (
+            scheme_account.active_link is True
+            and scheme_account.scheme_account_id == TestContext.current_scheme_account_id
+            and scheme_account.payment_card_account_id == TestContext.current_payment_card_id
+        )
+    return scheme_account
+
+
 @then(parsers.parse('verify the payment data stored in DB after "{journey_type2}" journey for "{merchant}"'))
 def verify_payment_card_into_database(journey_type2, merchant):
     pll_links = [{"id": TestContext.current_scheme_account_id, "active_link": True}]
@@ -825,13 +912,11 @@ def verify_invalid_request_for_add_and_auth_journey(merchant, request_payload, s
         TestContext.error_message = response_json["error_message"]
         TestContext.error_slug = response_json["error_slug"]
     elif request_payload == "unauthorised":
-        journey_type = request_payload
         response = MembershipCards.add_and_auth_field_with_unauthorised_json(TestContext.token, merchant)
         response_json = response_to_json(response)
         logging.info(response_json)
         TestContext.response_status_code = response.status_code
         TestContext.current_scheme_account_id = response_json.get("id")
-        verify_loyalty_card_into_database(journey_type, merchant)
 
     logging.info(
         "The response of Invalid Journey (POST) for Add and Auth field:\n \n"

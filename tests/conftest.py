@@ -240,6 +240,7 @@ def setup_b2b_token():
     user_email = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.B2B_EMAIL)
     external_id = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.B2B_EXTERNAL_ID)
     TestContext.b2btoken = create_b2b_token(key=key_secret, sub=external_id, kid=config.BINK.kid, email=user_email)
+    TestContext.external_id["bink_user"] = external_id
     return TestContext.b2btoken
 
 
@@ -248,6 +249,7 @@ def setup_b2b_token_user2():
     user_email = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.B2B_EMAIL2)
     external_id = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.B2B_EXTERNAL_ID2)
     TestContext.b2btoken = create_b2b_token(key=key_secret, sub=external_id, kid=config.BINK.kid, email=user_email)
+    TestContext.external_id["bink_user2"] = external_id
     return TestContext.b2btoken
 
 
@@ -474,6 +476,7 @@ def get_lloyds_user(lloyds_external_id, lloyds_test_email):
     )
     assert response.status_code == 200, "/token Journey failed to get access token"
     TestContext.all_users["lloyds_user"] = TestContext.token
+    TestContext.external_id["lloyds_user"] = lloyds_external_id
     return TestContext.token
 
 
@@ -505,6 +508,7 @@ def get_bos_user(bos_external_id, bos_test_email):
     )
     assert response.status_code == 200, "/token Journey failed to get access token"
     TestContext.all_users["bos_user"] = TestContext.token
+    TestContext.external_id["bos_user"] = bos_external_id
     return TestContext.token
 
 
@@ -535,6 +539,7 @@ def get_halifax_user(halifax_external_id, halifax_test_email):
     )
     assert response.status_code == 200, "/token Journey failed to get access token"
     TestContext.all_users["halifax_user"] = TestContext.token
+    TestContext.external_id["halifax_user"] = halifax_external_id
     return TestContext.token
 
 
@@ -566,15 +571,18 @@ def get_squaremeal_user(squaremeal_external_id, squaremeal_test_email):
     )
     assert response.status_code == 200, "/token Journey failed to get access token"
     TestContext.all_users["squaremeal_user"] = TestContext.token
+    TestContext.external_id["squaremeal_user"] = squaremeal_external_id
     return TestContext.token
 
 
 @then(parsers.parse("I perform DELETE request to delete user successfully"))
 def delete_user(env="staging"):
     all_users = TestContext.all_users
+    external_id = TestContext.external_id
     if all_users != {}:
         for i in all_users:
             response = CustomerAccount.delete_user(all_users[i])
             assert response.status_code == 202, "The user deletion is not successful"
             logging.info(f"User {i} is deleted successfully from the system")
         all_users.clear()
+        external_id.clear()
