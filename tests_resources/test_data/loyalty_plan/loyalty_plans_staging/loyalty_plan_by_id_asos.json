@@ -26,18 +26,10 @@
 	},
 	"images": [
 		{
-			"id": 1404,
-			"type": 9,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/ASOS_alternative_hero_PiASHCk.png",
-			"description": "ASOS alternative hero",
-			"encoding": "png",
-			"order": 1
-		},
-		{
-			"id": 1402,
-			"type": 9,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/ASOS_alternative_hero.png",
-			"description": "ASOS alternative hero",
+			"id": 1401,
+			"type": 0,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/ASOS_Hero_06042022.png",
+			"description": "ASOS Hero",
 			"encoding": "png",
 			"order": 0
 		},
@@ -46,14 +38,6 @@
 			"type": 3,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/App_icon.png",
 			"description": "ASOS icon",
-			"encoding": "png",
-			"order": 0
-		},
-		{
-			"id": 1401,
-			"type": 0,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/ASOS_Hero_06042022.png",
-			"description": "ASOS Hero",
 			"encoding": "png",
 			"order": 0
 		}

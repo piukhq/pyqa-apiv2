@@ -38,14 +38,6 @@
 			"order": 0
 		},
 		{
-			"id": 1329,
-			"type": 9,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Alternative_Hero.png",
-			"description": "SquareMeal Alternative Hero",
-			"encoding": "png",
-			"order": 0
-		},
-		{
 			"id": 1330,
 			"type": 0,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Hero.png",

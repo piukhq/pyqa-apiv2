@@ -297,13 +297,6 @@ wallet_info = {
                     "encoding": "png",
                 },
                 {
-                    "id": 1298,
-                    "type": 9,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Alternate_Hero.png",
-                    "description": "Wasabi Alternative Hero",
-                    "encoding": "png",
-                },
-                {
                     "id": 1319,
                     "type": 2,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
@@ -374,13 +367,6 @@ wallet_info = {
             },
             "reward_available": False,
             "images": [
-                {
-                    "id": 1289,
-                    "type": 9,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_MiyMk96.png",
-                    "description": "Iceland Alternative Hero Image",
-                    "encoding": "png",
-                },
                 {
                     "id": 374,
                     "type": 3,
@@ -509,13 +495,6 @@ wallet_info = {
             "reward_available": False,
             "images": [
                 {
-                    "id": 1293,
-                    "type": 9,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_ESHACSv.png",
-                    "description": "Harvey Nichols Alternative Hero",
-                    "encoding": "png",
-                },
-                {
                     "id": 660,
                     "type": 3,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Logo.png",
@@ -624,39 +603,10 @@ wallet_info = {
                     "encoding": "png",
                 },
                 {
-                    "id": 1329,
-                    "type": 9,
-                    "url": "https://api.staging.gb.bink.com/content/media/"
-                    "hermes/schemes/SquareMeal_Alternative_Hero.png",
-                    "description": "SquareMeal Alternative Hero",
-                    "encoding": "png",
-                },
-                {
-                    "id": 1330,
-                    "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Hero.png",
-                    "description": "SquareMeal Hero",
-                    "encoding": "png",
-                },
-                {
-                    "id": 1332,
-                    "type": 8,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Silver_Tier_2.png",
-                    "description": "SquareMeal Silver Tier 2",
-                    "encoding": "png",
-                },
-                {
                     "id": 1331,
-                    "type": 8,
+                    "type": 0,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
                     "description": "SquareMeal Bronze Tier 1",
-                    "encoding": "png",
-                },
-                {
-                    "id": 1333,
-                    "type": 8,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Gold_Tier_3.png",
-                    "description": "SquareMeal Gold Tier 3",
                     "encoding": "png",
                 },
             ],
@@ -1036,13 +986,6 @@ wallet_info_by_card_id = {
                 "encoding": "png",
             },
             {
-                "id": 1298,
-                "type": 9,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Alternate_Hero.png",
-                "description": "Wasabi Alternative Hero",
-                "encoding": "png",
-            },
-            {
                 "id": 1319,
                 "type": 2,
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_5_CVAeqUv_naFzo9T.png",
@@ -1110,13 +1053,6 @@ wallet_info_by_card_id = {
         },
         "reward_available": False,
         "images": [
-            {
-                "id": 1289,
-                "type": 9,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_MiyMk96.png",
-                "description": "Iceland Alternative Hero Image",
-                "encoding": "png",
-            },
             {
                 "id": 374,
                 "type": 3,
@@ -1243,13 +1179,6 @@ wallet_info_by_card_id = {
         "reward_available": False,
         "images": [
             {
-                "id": 1293,
-                "type": 9,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_ESHACSv.png",
-                "description": "Harvey Nichols Alternative Hero",
-                "encoding": "png",
-            },
-            {
                 "id": 660,
                 "type": 3,
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Logo.png",
@@ -1348,13 +1277,6 @@ wallet_info_by_card_id = {
                 "encoding": "png",
             },
             {
-                "id": 1329,
-                "type": 9,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Alternative_Hero.png",
-                "description": "SquareMeal Alternative Hero",
-                "encoding": "png",
-            },
-            {
                 "id": 1330,
                 "type": 0,
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Hero.png",
@@ -1442,13 +1364,6 @@ unauth_wallet_info = {
                     "encoding": "png",
                 },
                 {
-                    "id": 1298,
-                    "type": 9,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Alternate_Hero.png",
-                    "description": "Wasabi Alternative Hero",
-                    "encoding": "png",
-                },
-                {
                     "id": 1319,
                     "type": 2,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
@@ -1504,13 +1419,6 @@ unauth_wallet_info = {
             },
             "reward_available": False,
             "images": [
-                {
-                    "id": 1289,
-                    "type": 9,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_MiyMk96.png",
-                    "description": "Iceland Alternative Hero Image",
-                    "encoding": "png",
-                },
                 {
                     "id": 374,
                     "type": 3,
@@ -1875,13 +1783,6 @@ unauth_wallet_info_by_card_id = {
                 "encoding": "png",
             },
             {
-                "id": 1298,
-                "type": 9,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Alternate_Hero.png",
-                "description": "Wasabi Alternative Hero",
-                "encoding": "png",
-            },
-            {
                 "id": 1319,
                 "type": 2,
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_5_CVAeqUv_naFzo9T.png",
@@ -1923,13 +1824,6 @@ unauth_wallet_info_by_card_id = {
         },
         "reward_available": False,
         "images": [
-            {
-                "id": 1289,
-                "type": 9,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_MiyMk96.png",
-                "description": "Iceland Alternative Hero Image",
-                "encoding": "png",
-            },
             {
                 "id": 374,
                 "type": 3,
@@ -2044,13 +1938,6 @@ lc2_wallet_info = {
                 "type": 3,
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
                 "description": "SquareMeal Icon",
-                "encoding": "png",
-            },
-            {
-                "id": 1329,
-                "type": 9,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Alternative_Hero.png",
-                "description": "SquareMeal Alternative Hero",
                 "encoding": "png",
             },
             {
@@ -2258,13 +2145,6 @@ Join_Scheme_status = {
         },
         "reward_available": False,
         "images": [
-            {
-                "id": 1289,
-                "type": 9,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_MiyMk96.png",
-                "description": "Iceland Alternative Hero Image",
-                "encoding": "png",
-            },
             {
                 "id": 374,
                 "type": 3,
