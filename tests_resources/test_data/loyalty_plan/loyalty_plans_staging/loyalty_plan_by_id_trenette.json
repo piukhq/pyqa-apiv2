@@ -26,14 +26,6 @@
 	},
 	"images": [
 		{
-			"id": 1321,
-			"type": 0,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/binksweetshop-hero.png",
-			"description": "Bink Sweet Rewards Hero",
-			"encoding": "png",
-			"order": 0
-		},
-		{
 			"id": 1322,
 			"type": 3,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/binksweetshop-icon.png",
@@ -42,10 +34,10 @@
 			"order": 0
 		},
 		{
-			"id": 1405,
-			"type": 9,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/binksweetshop-althero.png",
-			"description": "Bink Sweet Rewards Alternative Hero",
+			"id": 1321,
+			"type": 0,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/binksweetshop-hero.png",
+			"description": "Bink Sweet Rewards Hero",
 			"encoding": "png",
 			"order": 0
 		}

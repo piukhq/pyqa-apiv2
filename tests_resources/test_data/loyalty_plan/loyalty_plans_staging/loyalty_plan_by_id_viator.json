@@ -26,26 +26,10 @@
 	},
 	"images": [
 		{
-			"id": 1411,
-			"type": 3,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Logo1-280x280.png",
-			"description": "Viator icon",
-			"encoding": "png",
-			"order": 0
-		},
-		{
 			"id": 1409,
 			"type": 0,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Loyalty_Card_V2_1312x800.png",
 			"description": "Viator Hero",
-			"encoding": "png",
-			"order": 0
-		},
-		{
-			"id": 1410,
-			"type": 9,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Alternative_Card2_1312x800.png",
-			"description": "Viator Alternative Hero",
 			"encoding": "png",
 			"order": 0
 		},
@@ -56,6 +40,14 @@
 			"description": "Viator Promotion",
 			"encoding": "png",
 			"order": 1
+		},
+		{
+			"id": 1411,
+			"type": 3,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Logo1-280x280.png",
+			"description": "Viator icon",
+			"encoding": "png",
+			"order": 0
 		}
 	],
 	"plan_details": {
