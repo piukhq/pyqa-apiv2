@@ -600,15 +600,15 @@ wallet_info = {
                     "type": 3,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
                     "description": "SquareMeal Icon",
-                    "encoding": "png"
+                    "encoding": "png",
                 },
                 {
                     "id": 1331,
                     "type": 0,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
                     "description": "SquareMeal Bronze Tier 1",
-                    "encoding": "png"
-                }
+                    "encoding": "png",
+                },
             ],
         }
     ],
