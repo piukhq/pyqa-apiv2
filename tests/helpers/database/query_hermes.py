@@ -1,4 +1,3 @@
-import datetime
 import logging
 
 from dataclasses import dataclass
@@ -7,26 +6,12 @@ import tests.helpers.database.setupdb as db
 
 from tests.helpers.test_context import TestContext
 
-# @dataclass
-# class SchemeAccountRecord:
-#   id: int
-#   is_deleted: bool
-#   pll_links: bool
-
-# SELECT id,is_deleted,pll_links
-#     FROM hermes.public.scheme_schemeaccount WHERE id='%s'"""
-# % scheme_account_id
-# fetch scheme account record[0], record[1], record[2]
-
 
 @dataclass
 class SchemeAccountRecord:
     id: int
-    status: int
     scheme_id: int
-    link_or_join_date: datetime.datetime
-    main_answer: str
-    is_delete_scheme: bool
+    is_deleted: bool
     pll_links: bool
 
 
@@ -80,9 +65,7 @@ class QueryHermes:
         if record is None:
             raise Exception(f"'{scheme_account_id}' is an Invalid Scheme account id")
         else:
-            scheme_account_record = SchemeAccountRecord(
-                record[0], record[1], record[2], record[3], record[4], record[5], record[6]
-            )
+            scheme_account_record = SchemeAccountRecord(record[0], record[1], record[2], record[3])
         db.clear_db(connection)
         return scheme_account_record
 
@@ -170,13 +153,13 @@ def get_query(journey_type, scheme_account_id):
         logging.info("Scheme didnt attached to the wallet")
     elif TestContext.environ == "staging":
         query_scheme_account = (
-            """SELECT id,status,scheme_id,link_date,main_answer,is_deleted,pll_links
+            """SELECT id,scheme_id,is_deleted,pll_links
                  FROM hermes.public.scheme_schemeaccount WHERE id='%s'"""
             % scheme_account_id
         )
     elif TestContext.environ == "sandbox":
         query_scheme_account = (
-            """SELECT id,status,scheme_id,link_date,main_answer,is_deleted,pll_links
+            """SELECT id,scheme_id,is_deleted,pll_links
                      FROM lloyds_sit_hermes.public.scheme_schemeaccount WHERE id='%s'"""
             % scheme_account_id
         )

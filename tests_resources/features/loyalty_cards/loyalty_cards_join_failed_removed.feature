@@ -10,9 +10,10 @@ Feature: Add and register a loyalty card
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform <scheme_state> POST request to join "<merchant>" membership card
-    And I perform DELETE request to delete the "<scheme_state>" membership card for "<merchant>"
+    Then verify that for bink_user data stored in after "<journey_type>" journey for "<merchant>"
+    When I perform DELETE request to delete the "<scheme_state>" membership card for "<merchant>"
     Then I see a <status_code_returned>
-    And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+
     Examples:
       | merchant      | status_code_returned | journey_type | scheme_state |
       | Iceland       | 200                  | join_failed  | enrol_failed         |
@@ -28,7 +29,7 @@ Feature: Add and register a loyalty card
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
-    And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+    And verify that for bink_user data stored in after "<journey_type>" journey for "<merchant>"
 
     Examples:
       | merchant      | status_code_returned | journey_type | scheme_state | error_message                               | error_slug |
