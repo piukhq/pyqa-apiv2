@@ -40,6 +40,11 @@ def verify_loyalty_card_into_database(journey_type, merchant):
     test_loyalty_cards.verify_loyalty_card_into_database(journey_type, merchant)
 
 
+@then(parsers.parse('verify that for {user} data stored in after "{journey_type}" journey for "{merchant}"'))
+def verify_loyalty_card_into_database_trusted(user, journey_type, merchant):
+    test_loyalty_cards.verify_loyalty_card_into_database_trusted(user, journey_type, merchant)
+
+
 @then(parsers.parse('verify the payment data stored in DB after "{journey_type2}" journey for "{merchant}"'))
 def verify_payment_card_into_database(journey_type2, merchant):
     test_loyalty_cards.verify_payment_card_into_database(journey_type2, merchant)

@@ -10,7 +10,7 @@ Feature: Add and authorise a loyalty card
     Given I am a Lloyds user
     When I perform POST request to add and authorise "<merchant>" membership card
     Then I see a <status_code_returned>
-    And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+    And verify that for lloyds_user data stored in after "<journey_type>" journey for "<merchant>"
 
     Examples:
       | merchant      | status_code_returned | journey_type      |
@@ -26,7 +26,7 @@ Feature: Add and authorise a loyalty card
     When I perform POST request to add and authorise "<merchant>" membership card
     And I perform POST request again with add and authorise to verify the "<merchant>" membership card is already added with "<status_code_returned>"
     Then I see a <status_code_returned>
-    Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+    Then verify that for lloyds_user data stored in after "<journey_type>" journey for "<merchant>"
 
     Examples:
       | merchant      | status_code_returned | journey_type      |
@@ -119,7 +119,7 @@ Feature: Add and authorise a loyalty card
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card
     Then I see a <status_code_returned>
-    And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+    And verify that for lloyds_user data stored in after "<journey_type>" journey for "<merchant>"
 
     Examples:
       | payment_card_provider | merchant   | status_code_returned | journey_type |

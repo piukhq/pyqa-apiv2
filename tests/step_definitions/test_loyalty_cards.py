@@ -292,7 +292,7 @@ def verify_payment_card_into_database(journey_type2, merchant):
 def verify_pll_links_scheme_account(journey_type2):
     time.sleep(5)
     scheme_account = QueryHermes.fetch_scheme_account(journey_type2, TestContext.current_scheme_account_id)
-    assert scheme_account.is_delete_scheme is True
+    assert scheme_account.is_deleted is True
     assert scheme_account.id == TestContext.current_scheme_account_id
     assert scheme_account.pll_links == []
 

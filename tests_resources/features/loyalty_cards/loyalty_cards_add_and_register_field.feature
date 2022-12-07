@@ -11,7 +11,7 @@ Feature: Add and register a loyalty card
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request add and register for <merchant>
     Then I see a <status_code_returned>
-    And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+    And verify that for bink_user data stored in after "<journey_type>" journey for "<merchant>"
 
     Examples:
       | merchant | status_code_returned | journey_type     |
@@ -43,7 +43,7 @@ Feature: Add and register a loyalty card
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
-    And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+    And verify that for bink_user data stored in after "<journey_type>" journey for "<merchant>"
 
     Examples:
       | merchant | status_code_returned | journey_type     | error_message                                                                                          | error_slug         |
@@ -77,7 +77,7 @@ Feature: Add and register a loyalty card
 
   @sending_invalid_token_add_and_register @bink_regression_api2
   Scenario Outline: Sending invalid token with bearer prefix in header for add and register journey (Unauthorized)
-#    Given I am a Bink user
+    Given I am a Bink user
     When I perform POST <merchant> membership_card request for add and register with invalid token and bearer prefix
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message

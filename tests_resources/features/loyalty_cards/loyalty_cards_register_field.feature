@@ -12,7 +12,7 @@ Feature: Register a loyalty card
     And I perform POST request to add <merchant> membership card before registration_success register
     And I perform PUT request to register "<merchant>" above wallet only membership card
     Then I see a <status_code_returned>
-    And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+    And verify that for bink_user data stored in after "<journey_type>" journey for "<merchant>"
 
     Examples:
       | merchant | status_code_returned | journey_type   |
@@ -83,7 +83,7 @@ Feature: Register a loyalty card
     And I perform POST request to add <merchant> membership card before registration_success register
     And I perform PUT request to register "<merchant>" above wallet only membership card
     Then I see a <status_code_returned>
-    And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+    And verify that for bink_user data stored in after "<journey_type>" journey for "<merchant>"
 
     Examples:
       | payment_card_provider | merchant | status_code_returned | journey_type |

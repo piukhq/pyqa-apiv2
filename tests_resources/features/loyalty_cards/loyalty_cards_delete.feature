@@ -11,7 +11,7 @@ Feature: Delete a loyalty card
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add and authorise "<merchant>" membership card
     Then I perform DELETE request to delete the "<merchant>" membership card
-    And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+    And verify that for bink_user data stored in after "<journey_type>" journey for "<merchant>"
     And I see a <status_code_returned>
 
     Examples:
@@ -25,7 +25,7 @@ Feature: Delete a loyalty card
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add "<merchant>" membership card
     Then I perform DELETE request to delete the "<merchant>" membership card
-    And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+    And verify that for bink_user data stored in after "<journey_type>" journey for "<merchant>"
     And I see a <status_code_returned>
 
     Examples:
@@ -124,7 +124,7 @@ Feature: Delete a loyalty card
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     Then I see a <status_code_returned>
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+    Then verify that for bink_user data stored in after "<journey_type>" journey for "<merchant>"
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
