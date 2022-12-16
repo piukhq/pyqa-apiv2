@@ -190,10 +190,7 @@ class SquareMealCard:
                             "value": TestContext.password,
                         },
                     ]
-                },
-                "merchant_fields": {
-                    "account_id": TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.MERCHANT_ID),
-                },
+                }
             },
             "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("square_meal"),
         }
@@ -470,4 +467,85 @@ class SquareMealCard:
             + "\n\n"
             + json.dumps(payload, indent=4)
         )
+        return payload
+
+    @staticmethod
+    def update_trusted_add_payload(email=None, request_payload=None):
+        if request_payload == "invalid_request":
+            payload = {}
+        elif request_payload == "invalid_json":
+            payload = {
+                "account": {
+                    "authorise_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "'email'",
+                                "value": email,
+                            }
+                        ]
+                    },
+                    "merchant_fields": {
+                        "account_id": TestDataUtils.TEST_DATA.square_meal_membership_card.get(
+                            constants.TRANSACTIONS_MERCHANT_ID
+                        ),
+                    },
+                }
+            }
+        elif request_payload == "conflict":
+            payload = {
+                "account": {
+                    "authorise_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "email",
+                                "value": email,
+                            }
+                        ]
+                    },
+                    "merchant_fields": {
+                        "account_id": TestDataUtils.TEST_DATA.square_meal_membership_card.get(
+                            constants.TRANSACTIONS_MERCHANT_ID
+                        ),
+                    },
+                }
+            }
+        elif request_payload == "new_merchant_id":
+            payload = {
+                "account": {
+                    "authorise_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "email",
+                                "value": email,
+                            }
+                        ]
+                    },
+                    "merchant_fields": {
+                        "account_id": "new_identifier",
+                    },
+                }
+            }
+        elif request_payload in ["successful_payload", "invalid_scheme_account_id", "invalid_token"]:
+            payload = {
+                "account": {
+                    "authorise_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "email",
+                                "value": email,
+                            }
+                        ]
+                    },
+                    "merchant_fields": {
+                        "account_id": TestDataUtils.TEST_DATA.square_meal_membership_card.get(
+                            constants.TRANSACTIONS_MERCHANT_ID
+                        ),
+                    },
+                }
+            }
+        else:
+            payload = {}
+            logging.info("payload for" + request_payload + "is not defined:")
+
+        logging.info("The Request for put/{id}/trusted_add is :" + "\n\n" + json.dumps(payload, indent=4))
         return payload

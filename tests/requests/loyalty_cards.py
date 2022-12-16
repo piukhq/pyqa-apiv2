@@ -388,3 +388,20 @@ class MembershipCards(Endpoint):
         elif request_payload == "invalid_request":
             payload = Merchant.get_merchant(merchant).join_journey(email, request_payload)
             return Endpoint.call(url, header, "PUT", payload)
+
+    @staticmethod
+    def update_trusted_add_url(scheme_account_id):
+        return Endpoint.BASE_URL + api.ENDPOINT_LOYALTY_CARDS_UPDATE_TRUSTED.format(scheme_account_id)
+
+    def update_trusted_add(token, merchant, email, scheme_account_id, request_payload):
+        url = MembershipCards.update_trusted_add_url(scheme_account_id)
+        header = Endpoint.request_header(token)
+        encrypt_header = Endpoint.encrypt_header(token)
+        payload = Merchant.get_merchant(merchant).update_trusted_add_payload(email, request_payload)
+        if TestContext.flag_encrypt == "true":
+            data = encrypted_payload_token(payload)
+            return Endpoint.call_payload(url, encrypt_header, "PUT", data)
+        elif TestContext.flag_encrypt == "false":
+            return Endpoint.call(url, header, "PUT", payload)
+
+        return Endpoint.call_payload(url, header, "PUT", payload)

@@ -1,5 +1,5 @@
 # Created by nehapatil on 10/08/2022
-@membership_cards_wallet @multi_wallet @trusted
+@membership_cards_wallet_td @multi_wallet @trusted @bink_regression_api2
 Feature: View Wallets
   As a Bink user
   I want to view my loyalty cards in each wallet added in different channels
@@ -31,7 +31,7 @@ Feature: View Wallets
     Examples:
       | merchant      | status_code_returned|payment_card_provider|
       |Wasabi        | 200                  |master              |
-#      |Iceland        |200                  |master               |
+      |Iceland        |200                  |master               |
 #      |HarveyNichols  |200                  |master               |
 
 
@@ -91,7 +91,7 @@ Feature: View Wallets
 #      |HarveyNichols  |200                  |master               | unauthorised  | 202        |
 
 
-  @view_my_wallet_same_channel_multi_wallet @add_and_auth_multi_wallet
+  @add_and_auth_multi_wallet @bink_regression_api2
   Scenario Outline: View two wallet of same channel when LCs are authorised in both
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -168,7 +168,7 @@ Feature: View Wallets
     When For bink_user I perform GET transaction for loyalty card with unauthorised for <merchant>
     And For bink_user I perform GET balance for loyalty card with unauthorised for <merchant>
     And For bink_user I perform GET voucher for loyalty card with unauthorised for <merchant>
-    And For bink_user2 I perform GET transaction for loyalty card with authorised for <merchant>
+    When For bink_user2 I perform GET transaction for loyalty card with authorised for <merchant>
     And For bink_user2 I perform GET balance for loyalty card with authorised for <merchant>
     And For bink_user2 I perform GET voucher for loyalty card with authorised for <merchant>
 
@@ -197,7 +197,7 @@ Feature: View Wallets
     When For lloyds_user I perform GET transaction for loyalty card with unauthorised for <merchant>
     And For lloyds_user I perform GET balance for loyalty card with unauthorised for <merchant>
     And For lloyds_user I perform GET voucher for loyalty card with unauthorised for <merchant>
-    And For bink_user2 I perform GET transaction for loyalty card with authorised for <merchant>
+    When For bink_user2 I perform GET transaction for loyalty card with authorised for <merchant>
     And For bink_user2 I perform GET balance for loyalty card with authorised for <merchant>
     And For bink_user2 I perform GET voucher for loyalty card with authorised for <merchant>
     Examples:

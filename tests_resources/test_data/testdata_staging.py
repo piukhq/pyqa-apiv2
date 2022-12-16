@@ -143,13 +143,14 @@ square_meal_membership_card = {
     "transactions_card": "10010012",
     "transactions_email": "pytest+smauto02@bink.com",
     "transactions_password": "password01",
+    "transactions_merchant_id": "qa_testauto_02",
     "invalid_password": "pass01",
     "invalid_email": "fail@unknown.com",
     "unauthorised_email": "invalidemail@testbink.com",
     "points": 800,
     "currency": "points",
     "description": "",
-    "merchant_id": "12345DAW",
+    "merchant_id": "qa_test_01",
     "transactions": "3",
     "transaction_status": "active",
     "transaction_currency": "points",
@@ -572,18 +573,23 @@ wallet_info = {
             },
             "transactions": [
                 {
-                    "id": "506864",
+                    # "id": "506864",
                     "timestamp": 1640772734,
                     "description": "First Card Added",
                     "display_value": "100 pts",
                 },
                 {
-                    "id": "506866",
+                    # "id": "506866",
                     "timestamp": 1639769134,
                     "description": "Dining at Camino Bankside",
                     "display_value": "500 pts",
                 },
-                {"id": "506865", "timestamp": 1639592114, "description": "Registration", "display_value": "100 pts"},
+                {
+                    # "id": "506865",
+                    "timestamp": 1639592114,
+                    "description": "Registration",
+                    "display_value": "100 pts",
+                },
             ],
             "vouchers": [],
             "card": {
@@ -1250,14 +1256,24 @@ wallet_info_by_card_id = {
             "target_value": None,
         },
         "transactions": [
-            {"id": "506864", "timestamp": 1640772734, "description": "First Card Added", "display_value": "100 pts"},
             {
-                "id": "506866",
+                # "id": "506864",
+                "timestamp": 1640772734,
+                "description": "First Card Added",
+                "display_value": "100 pts",
+            },
+            {
+                # "id": "506866",
                 "timestamp": 1639769134,
                 "description": "Dining at Camino Bankside",
                 "display_value": "500 pts",
             },
-            {"id": "506865", "timestamp": 1639592114, "description": "Registration", "display_value": "100 pts"},
+            {
+                # "id": "506865",
+                "timestamp": 1639592114,
+                "description": "Registration",
+                "display_value": "100 pts",
+            },
         ],
         "vouchers": [],
         "card": {
@@ -1914,14 +1930,24 @@ lc2_wallet_info = {
             "target_value": None,
         },
         "transactions": [
-            {"id": "512307", "timestamp": 1640772734, "description": "First Card Added", "display_value": "100 pts"},
             {
-                "id": "512309",
+                # "id": "512307",
+                "timestamp": 1640772734,
+                "description": "First Card Added",
+                "display_value": "100 pts",
+            },
+            {
+                # "id": "512309",
                 "timestamp": 1639769134,
                 "description": "Dining at Camino Bankside",
                 "display_value": "500 pts",
             },
-            {"id": "512308", "timestamp": 1639592114, "description": "Registration", "display_value": "100 pts"},
+            {
+                # "id": "512308",
+                "timestamp": 1639592114,
+                "description": "Registration",
+                "display_value": "100 pts",
+            },
         ],
         "vouchers": [],
         "card": {
