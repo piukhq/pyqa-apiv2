@@ -1055,10 +1055,11 @@ def verify_i_perform_register_again(merchant, test_email):
     response = MembershipCards.register_field_only_card(
         TestContext.token, merchant, test_email, TestContext.current_scheme_account_id
     )
+    time.sleep(10)
     response_json = response_to_json(response)
     TestContext.response_status_code = response.status_code
-    TestContext.error_message = response_json["error_message"]
-    TestContext.error_slug = response_json["error_slug"]
+    # TestContext.error_message = response_json["error_message"]
+    # TestContext.error_slug = response_json["error_slug"]
     logging.info(
         "The response of Register field Journey (PUT) is:\n\n"
         + Endpoint.BASE_URL
@@ -1066,7 +1067,7 @@ def verify_i_perform_register_again(merchant, test_email):
         + "\n\n"
         + json.dumps(response_json, indent=4)
     )
-    assert response.status_code == 409, "Register Journey for " + merchant + " failed"
+    assert response.status_code == 202, "Register Journey for " + merchant + " failed"
 
 
 @when(
@@ -2289,39 +2290,160 @@ def verify_card_deleted(card):
         assert wallet_response["loyalty_cards"] == [], "loyalty card is not deleted"
     elif card == "payment_card":
         assert wallet_response["payment_accounts"] == [], "pll_links do not match"
-        assert wallet_response["loyalty_cards"] == [], "loyalty card is not deleted"
+        assert wallet_response["loyalty_cards"][0]["pll_links"] == [], "loyalty card is not deleted"
 
 
-@then(parsers.parse("Loyalty_card2 {wallet} fields are correctly populated for {merchant}"))
-def lc2_wallet_fields(wallet, merchant):
+@then(parsers.parse("{wallet} fields are correctly populated for {merchant} when {lc_in_tc}"))
+def lc2_wallet_fields(wallet, merchant, lc_in_tc):
     wallet_response = TestContext.actual_view_wallet_field
     if wallet == "Wallet":
-        assert wallet_response["loyalty_cards"][0]["pll_links"][0]["payment_account_id"] == [], "pll_links do not match"
-
         assert (
             wallet_response["loyalty_cards"][0]["id"] == TestContext.current_scheme_account_id
         ), "account id does not match"
 
         for wallet_key in TestDataUtils.TEST_DATA.lc2_wallet_info[merchant].keys():
-            if wallet_key not in ["balance", "images"]:
+            if wallet_key not in ["balance", "images", "transactions"]:
                 assert (
                     wallet_response["loyalty_cards"][0][wallet_key]
                     == TestDataUtils.TEST_DATA.lc2_wallet_info[merchant][wallet_key]
                 ), f"{wallet_key} do not match"
             else:
-                # for i in range(len(TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"])):
-                #     for tran_key in TestDataUils.TEST_DATA.wallet_info[merchant][0]["transactions"][i].keys():
-                #         assert (
-                #                 wallet_response["loyalty_cards"][0]["transactions"][i][tran_key]
-                #                 == TestDataUtils.TEST_DATA.wallet_info[merchant][0]["transactions"][i][tran_key]
-                #         ), f"{tran_key} do not match"
-                for balance_key in TestDataUtils.TEST_DATA.lc2_wallet_info[merchant]["balance"].keys():
+                if lc_in_tc == "lc_in_non_tc":
+                    for i in range(len(TestDataUtils.TEST_DATA.lc2_wallet_info[merchant]["transactions"])):
+                        for tran_key in TestDataUtils.TEST_DATA.lc2_wallet_info[merchant]["transactions"][i].keys():
+                            assert (
+                                wallet_response["loyalty_cards"][0]["transactions"][i][tran_key]
+                                == TestDataUtils.TEST_DATA.lc2_wallet_info[merchant]["transactions"][i][tran_key]
+                            ), f"{tran_key} do not match"
+                    for balance_key in TestDataUtils.TEST_DATA.lc2_wallet_info[merchant]["balance"].keys():
+                        assert (
+                            wallet_response["loyalty_cards"][0]["balance"][balance_key]
+                            == TestDataUtils.TEST_DATA.lc2_wallet_info[merchant]["balance"][balance_key]
+                        ), f"{balance_key} do not match"
+                elif lc_in_tc == "lc_in_only_tc":
+                    assert wallet_response["loyalty_cards"][0]["transactions"] == []
                     assert (
-                        wallet_response["loyalty_cards"][0]["balance"][balance_key]
-                        == TestDataUtils.TEST_DATA.lc2_wallet_info[merchant]["balance"][balance_key]
-                    ), f"{balance_key} do not match"
+                        wallet_response["loyalty_cards"][0]["balance"]
+                        == TestDataUtils.TEST_DATA.register_scheme_status["registration_failed"]["balance"]
+                    )
 
         compare_two_lists(
             wallet_response["loyalty_cards"][0]["images"],
             TestDataUtils.TEST_DATA.lc2_wallet_info[merchant]["images"],
         )
+
+
+@when(parsers.parse("I perform put request with {request_payload} to update trusted_add for {merchant}"))
+def put_trusted_add(request_payload, merchant):
+    if request_payload in ["new_merchant_id", "conflict"]:
+        TestContext.email = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.EMAIL)
+    else:
+        TestContext.email = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.TRANSACTIONS_EMAIL)
+    if request_payload in ["successful_payload", "new_merchant_id"]:
+        time.sleep(2)
+        response = MembershipCards.update_trusted_add(
+            TestContext.token,
+            merchant,
+            TestContext.email,
+            TestContext.current_scheme_account_id,
+            request_payload,
+        )
+        response_json = response_to_json(response)
+        TestContext.current_scheme_account_id = response_json.get("id")
+        TestContext.response_status_code = response.status_code
+        logging.info(
+            "The response of PUT/trusted_add is:\n\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_LOYALTY_CARDS_UPDATE_TRUSTED.format(TestContext.current_scheme_account_id)
+            + "\n\n"
+            + json.dumps(response_json, indent=4)
+        )
+        assert response.status_code == 201, "Update trusted add for " + merchant + " failed"
+
+    else:
+        if request_payload == "invalid_token":
+            response = MembershipCards.update_trusted_add(
+                TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN),
+                merchant,
+                TestContext.email,
+                TestContext.current_scheme_account_id,
+                request_payload,
+            )
+            logging.info(
+                "The response of PUT/trusted_add with invalid token is: \n\n"
+                + Endpoint.BASE_URL
+                + api.ENDPOINT_MEMBERSHIP_CARDS_JOIN_FAILED
+                + "\n\n"
+                + json.dumps(response.json(), indent=4)
+            )
+            assert response.status_code == 401, "Status is not 401"
+        elif request_payload == "invalid_scheme_account_id":
+            response = MembershipCards.update_trusted_add(
+                TestContext.token,
+                merchant,
+                TestContext.email,
+                TestContext.current_scheme_account_id * 90000,
+                request_payload,
+            )
+            logging.info(
+                "The response of PUT/trusted_add with invalid scheme account is: \n\n"
+                + Endpoint.BASE_URL
+                + api.ENDPOINT_MEMBERSHIP_CARDS_JOIN_FAILED
+                + "\n\n"
+                + json.dumps(response.json(), indent=4)
+            )
+            assert response.status_code == 404, "Status is not 404"
+        elif request_payload == "invalid_json":
+            response = MembershipCards.update_trusted_add(
+                TestContext.token,
+                merchant,
+                TestContext.email,
+                TestContext.current_scheme_account_id,
+                request_payload,
+            )
+            logging.info(
+                "The response of PUT/trusted_add with invalid json is: \n\n"
+                + Endpoint.BASE_URL
+                + api.ENDPOINT_MEMBERSHIP_CARDS_JOIN_FAILED
+                + "\n\n"
+                + json.dumps(response.json(), indent=4)
+            )
+            assert response.status_code == 400, "Status is not 400"
+        elif request_payload == "invalid_request":
+            response = MembershipCards.update_trusted_add(
+                TestContext.token,
+                merchant,
+                TestContext.email,
+                TestContext.current_scheme_account_id,
+                request_payload,
+            )
+            logging.info(
+                "The response of PUT/trusted_add with invalid request is: \n\n"
+                + Endpoint.BASE_URL
+                + api.ENDPOINT_MEMBERSHIP_CARDS_JOIN_FAILED
+                + "\n\n"
+                + json.dumps(response.json(), indent=4)
+            )
+            assert response.status_code == 422, "Status is not 422"
+        elif request_payload == "conflict":
+            response = MembershipCards.update_trusted_add(
+                TestContext.token,
+                merchant,
+                TestContext.email,
+                TestContext.current_scheme_account_id,
+                request_payload,
+            )
+            logging.info(
+                "The response of PUT/trusted_add with invalid scheme account is: \n\n"
+                + Endpoint.BASE_URL
+                + api.ENDPOINT_MEMBERSHIP_CARDS_JOIN_FAILED
+                + "\n\n"
+                + json.dumps(response.json(), indent=4)
+            )
+            assert response.status_code == 409, "Status is not 409"
+
+        TestContext.response_status_code = response.status_code
+        response_json = response.json()
+        TestContext.error_message = response_json.get("error_message")
+        TestContext.error_slug = response_json.get("error_slug")
+    return response

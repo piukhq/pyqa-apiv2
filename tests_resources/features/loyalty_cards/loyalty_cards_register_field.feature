@@ -126,15 +126,15 @@ Feature: Register a loyalty card
     Then Verify Wallet fields for <merchant> with <scheme_state>
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
+    And I perform POST request to add a new "master" payment account to wallet
     And I perform POST request to add "<merchant>" membership card already registered
     And I perform PUT request to register "<merchant>" above wallet only membership card again
-    Then I see a <status_code_returned>
-    And I see a "<error_message>" error message
-    And I see a "<error_slug>" error slug
+    When For bink_user2 I perform GET Wallet
+    Then Verify Wallet fields for <merchant> with registration_success
     When For bink_user I perform GET Wallet
     Then Verify Wallet fields for <merchant> with registration_failed
 
 
     Examples:
-      | merchant | status_code_returned | scheme_state       |error_message|error_slug|
-      | Iceland  | 409                  | registration_failed|Card cannot be registered at this time.|REGISTRATION_ERROR|
+      | merchant | scheme_state      |
+      | Iceland  |registration_failed|

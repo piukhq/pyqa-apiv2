@@ -1,5 +1,5 @@
 # Created by nehapatil on 10/08/2022
-@membership_cards_wallet @multi_wallet @trusted
+@membership_cards_wallet @multi_wallet @trusted @bink_regression_api2
 Feature: View Wallet by LC id in different channel
   As a Bink user
   I want to view my loyalty cards in each wallet added in different channels
