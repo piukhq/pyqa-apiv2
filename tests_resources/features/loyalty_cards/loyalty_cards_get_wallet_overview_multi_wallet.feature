@@ -108,10 +108,10 @@ Feature: View Wallets overview
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And For bink_user2 I perform GET Wallet_overview
+    When For bink_user2 I perform GET Wallet_overview
     Then I see a <status_code_returned>
     And All Wallet_overview fields are correctly populated for <merchant>
-    And For bink_user I perform GET Wallet_overview
+    When For bink_user I perform GET Wallet_overview
     Then I see a <status_code_returned>
     And Wallet_overview fields are correctly populated for unauthorised LC of <merchant>
     Examples:
@@ -124,7 +124,7 @@ Feature: View Wallets overview
   @wallet_overview_multi_channel_invalid_valid @add_and_auth_multi_wallet
   Scenario Outline: View two wallet overview of different channel when LC1 unauth and LC2 auth
     Given I am a Lloyds user
-    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
@@ -133,7 +133,7 @@ Feature: View Wallets overview
     And For lloyds_user I perform GET Wallet_overview
     Then I see a <status_code_returned>
     And Wallet_overview fields are correctly populated for unauthorised LC of <merchant>
-    And For bink_user2 I perform GET Wallet_overview
+    When For bink_user2 I perform GET Wallet_overview
     Then I see a <status_code_returned>
     And All Wallet_overview fields are correctly populated for <merchant>
     Examples:

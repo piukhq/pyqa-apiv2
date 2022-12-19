@@ -11,8 +11,11 @@ Feature: delete loyalty card and delete payment card from Trusted channel
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     When I perform POST request to add trusted channel "<merchant>" loyalty card
     Then I perform DELETE request to delete the "<merchant>" membership card
-    And verify that for squaremeal_user data stored in after "delete" journey for "<merchant>"
+#    And verify that for squaremeal_user data stored in after "delete" journey for "<merchant>"
     And I see a <status_code_returned>
+    When For squaremeal_user I perform GET Wallet
+    Then I see a 200
+    And verify loyalty_card is deleted from the wallet
 
     Examples:
       | merchant      | status_code_returned |payment_card_provider |
