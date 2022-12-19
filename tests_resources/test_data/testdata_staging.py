@@ -725,10 +725,10 @@ wallet_overview_info = {
             "reward_available": True,
             "images": [
                 {
-                    "id": 1296,
+                    "id": 1331,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
-                    "description": "Wasabi Hero",
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
+                    "description": "SquareMeal Bronze Tier 1",
                     "encoding": "png",
                 }
             ],
@@ -1293,31 +1293,10 @@ wallet_info_by_card_id = {
                 "encoding": "png",
             },
             {
-                "id": 1330,
-                "type": 0,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Hero.png",
-                "description": "SquareMeal Hero",
-                "encoding": "png",
-            },
-            {
-                "id": 1332,
-                "type": 8,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Silver_Tier_2.png",
-                "description": "SquareMeal Silver Tier 2",
-                "encoding": "png",
-            },
-            {
                 "id": 1331,
-                "type": 8,
+                "type": 0,
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
                 "description": "SquareMeal Bronze Tier 1",
-                "encoding": "png",
-            },
-            {
-                "id": 1333,
-                "type": 8,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Gold_Tier_3.png",
-                "description": "SquareMeal Gold Tier 3",
                 "encoding": "png",
             },
         ],
@@ -1967,33 +1946,86 @@ lc2_wallet_info = {
                 "encoding": "png",
             },
             {
-                "id": 1330,
-                "type": 0,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Hero.png",
-                "description": "SquareMeal Hero",
-                "encoding": "png",
-            },
-            {
-                "id": 1332,
-                "type": 8,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Silver_Tier_2.png",
-                "description": "SquareMeal Silver Tier 2",
-                "encoding": "png",
-            },
-            {
                 "id": 1331,
-                "type": 8,
+                "type": 0,
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
                 "description": "SquareMeal Bronze Tier 1",
                 "encoding": "png",
             },
+        ],
+    }
+}
+
+lc2_only_in_tc = {
+    "Wallet": {
+        "SquareMeal": {
+            "images": [
+                {
+                    "id": 1328,
+                    "type": 3,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
+                    "description": "SquareMeal Icon",
+                    "encoding": "png",
+                },
+                {
+                    "id": 1330,
+                    "type": 0,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Hero.png",
+                    "description": "SquareMeal Hero",
+                    "encoding": "png",
+                },
+            ]
+        }
+    },
+    "Wallet_overview": {
+        "SquareMeal": {
+            "images": [
+                {
+                    "id": 1330,
+                    "type": 0,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Hero.png",
+                    "description": "SquareMeal Hero",
+                    "encoding": "png",
+                }
+            ]
+        }
+    },
+}
+
+lc2_wallet_overview_info = {
+    "SquareMeal": {
+        # "id": 243832,
+        "loyalty_plan_id": 286,
+        "loyalty_plan_name": "SquareMeal Restaurant Rewards",
+        "is_fully_pll_linked": False,
+        "pll_linked_payment_accounts": 0,
+        "total_payment_accounts": 0,
+        "status": {"state": "authorised", "slug": None, "description": None},
+        "balance": {
+            # "updated_at": 1671445885,
+            "current_display_value": "900 pts",
+            "loyalty_currency_name": "points",
+            "prefix": None,
+            "suffix": "pts",
+            "current_value": "900",
+            "target_value": None,
+        },
+        "card": {
+            "barcode": None,
+            "barcode_type": 0,
+            "card_number": 10010012,
+            "colour": "#465560",
+            "text_colour": "#FFFFFF",
+        },
+        "reward_available": False,
+        "images": [
             {
-                "id": 1333,
-                "type": 8,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Gold_Tier_3.png",
-                "description": "SquareMeal Gold Tier 3",
+                "id": 1331,
+                "type": 0,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
+                "description": "SquareMeal Bronze Tier 1",
                 "encoding": "png",
-            },
+            }
         ],
     }
 }

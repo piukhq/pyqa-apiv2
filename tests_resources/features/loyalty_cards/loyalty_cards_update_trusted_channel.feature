@@ -15,7 +15,11 @@ Feature: update loyalty card in Trusted channel
       When I perform put request with successful_payload to update trusted_add for <merchant>
       Then I see a 201
       When For squaremeal_user I perform GET Wallet
-      Then wallet fields are correctly populated for <merchant> when lc_in_non_tc
+      Then Wallet fields are correctly populated for <merchant> when lc_in_non_tc
+      When For squaremeal_user I perform GET Wallet_overview
+      Then Wallet_overview fields are correctly populated for <merchant> when lc_in_non_tc
+      When For squaremeal_user I perform GET Wallet_by_card_id
+      Then Wallet_by_card_id fields are correctly populated for <merchant> when lc_in_non_tc
 
     Examples:
       | merchant   |
@@ -30,7 +34,11 @@ Feature: update loyalty card in Trusted channel
       When I perform put request with successful_payload to update trusted_add for <merchant>
       Then I see a 201
       When For squaremeal_user I perform GET Wallet
-      Then wallet fields are correctly populated for <merchant> when lc_in_only_tc
+      Then Wallet fields are correctly populated for <merchant> when lc_in_only_tc
+      When For squaremeal_user I perform GET Wallet_overview
+      Then Wallet_overview fields are correctly populated for <merchant> when lc_in_only_tc
+      When For squaremeal_user I perform GET Wallet_by_card_id
+      Then Wallet_by_card_id fields are correctly populated for <merchant> when lc_in_only_tc
 
     Examples:
       | merchant     |
@@ -45,7 +53,12 @@ Feature: update loyalty card in Trusted channel
       When I perform put request with new_merchant_id to update trusted_add for <merchant>
       Then I see a 201
       When For squaremeal_user I perform GET Wallet
-      Then wallet fields are correctly populated for <merchant> when lc_in_only_tc
+      Then Wallet fields are correctly populated for <merchant> when lc_in_only_tc
+      When For squaremeal_user I perform GET Wallet_overview
+      Then Wallet_overview fields are correctly populated for <merchant> when lc_in_only_tc
+      When For squaremeal_user I perform GET Wallet_by_card_id
+      Then Wallet_by_card_id fields are correctly populated for <merchant> when lc_in_only_tc
+
 
     Examples:
       | merchant     |
@@ -73,7 +86,11 @@ Feature: update loyalty card in Trusted channel
       When I perform put request with successful_payload to update trusted_add for <merchant>
       Then I see a 201
       When For squaremeal_user I perform GET Wallet
-      Then wallet fields are correctly populated for <merchant> when lc_in_non_tc
+      Then Wallet fields are correctly populated for <merchant> when lc_in_non_tc
+      When For squaremeal_user I perform GET Wallet_overview
+      Then Wallet_overview fields are correctly populated for <merchant> when lc_in_non_tc
+      When For squaremeal_user I perform GET Wallet_by_card_id
+      Then Wallet_by_card_id fields are correctly populated for <merchant> when lc_in_non_tc
 
     Examples:
       | merchant   |status_code_returned   |
@@ -93,7 +110,11 @@ Feature: update loyalty card in Trusted channel
       When I perform put request with successful_payload to update trusted_add for <merchant>
       Then I see a 201
       When For squaremeal_user I perform GET Wallet
-      Then wallet fields are correctly populated for <merchant> when lc_in_only_tc
+      Then Wallet fields are correctly populated for <merchant> when lc_in_only_tc
+      When For squaremeal_user I perform GET Wallet_overview
+      Then Wallet_overview fields are correctly populated for <merchant> when lc_in_only_tc
+      When For squaremeal_user I perform GET Wallet_by_card_id
+      Then Wallet_by_card_id fields are correctly populated for <merchant> when lc_in_only_tc
 
     Examples:
       | merchant     |status_code_returned   |
