@@ -109,7 +109,7 @@ Feature: View Wallet by LC id in different channel
     And For bink_user2 I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And All Wallet_by_card_id fields are correctly populated for <merchant>
-    And For bink_user I perform GET Wallet_by_card_id
+    When For bink_user I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And Wallet_by_card_id fields are correctly populated for unauthorised LC of <merchant>
     Examples:
@@ -122,7 +122,7 @@ Feature: View Wallet by LC id in different channel
   @wallet_by_lc_id_multi_channel_invalid_valid @add_and_auth_multi_wallet
   Scenario Outline: View two wallet by LC id of different channel when LC1 is unauth and LC2 is auth
     Given I am a Lloyds user
-    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
