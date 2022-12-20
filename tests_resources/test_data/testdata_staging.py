@@ -725,10 +725,10 @@ wallet_overview_info = {
             "reward_available": True,
             "images": [
                 {
-                    "id": 1331,
+                    "id": 1296,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
-                    "description": "SquareMeal Bronze Tier 1",
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
+                    "description": "Wasabi Hero",
                     "encoding": "png",
                 }
             ],
