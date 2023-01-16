@@ -55,7 +55,7 @@ def retry_get_secrets_from_vault(VAULT_URL):
                 vault_url=VAULT_URL,
                 credential=DefaultAzureCredential(
                     additionally_allowed_tenants=["a6e2367a-92ea-4e5a-b565-723830bcc095"],
-                    exclude_shared_token_cache_credential=True
+                    exclude_shared_token_cache_credential=True,
                 ),
             )
             secret = client.get_secret(CHANNEL_SECRET_NAME)
@@ -79,7 +79,7 @@ def retry_get_secrets_key_from_vault_b2b_token(secret_name, VAULT_URL):
                 vault_url=VAULT_URL,
                 credential=DefaultAzureCredential(
                     additionally_allowed_tenants=["a6e2367a-92ea-4e5a-b565-723830bcc095"],
-                    exclude_shared_token_cache_credential=True
+                    exclude_shared_token_cache_credential=True,
                 ),
             )
             secret = client.get_secret(secret_name)
@@ -104,7 +104,7 @@ def retry_get_access_secrets_from_vault(VAULT_URL):
                 vault_url=VAULT_URL,
                 credential=DefaultAzureCredential(
                     additionally_allowed_tenants=["a6e2367a-92ea-4e5a-b565-723830bcc095"],
-                    exclude_shared_token_cache_credential=True
+                    exclude_shared_token_cache_credential=True,
                 ),
             )
             secret = client.get_secret(ACCESS_SECRET_NAME)
