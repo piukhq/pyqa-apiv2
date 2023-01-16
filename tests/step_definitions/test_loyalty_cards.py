@@ -779,6 +779,13 @@ def verify_user_wallet(user, Wallet, env, channel):
         response = MembershipCards.get_view_wallet_by_card_id(TestContext.token, TestContext.current_scheme_account_id)
         logging.info("The response of get wallet by card id is : \n" + json.dumps(response_to_json(response), indent=4))
 
+    elif Wallet == "payment_account_channel_links":
+        response = MembershipCards.get_payment_account_channel_links(TestContext.token)
+        logging.info(
+            "The response of get wallet get_payment_account_channel_links is : \n"
+            + json.dumps(response_to_json(response), indent=4)
+        )
+
     response_json = response.json()
     TestContext.response_status_code = response.status_code
     TestContext.error_message = response_json.get("error_message")
@@ -827,6 +834,10 @@ def verify_wallet_with_invalid_token(invalid, endpoint):
             response = MembershipCards.get_view_wallet_by_card_id(
                 TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN),
                 TestContext.current_scheme_account_id,
+            )
+        elif endpoint == "payment_account_channel_links":
+            response = MembershipCards.get_payment_account_channel_links(
+                TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN)
             )
 
         assert response.status_code == 401, "Status is not 401"
