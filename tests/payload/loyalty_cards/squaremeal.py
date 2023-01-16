@@ -142,7 +142,7 @@ class SquareMealCard:
     @staticmethod
     def add_and_authorise_membership_card_payload(invalid_request=None):
         TestContext.email = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.EMAIL)
-        TestContext.password = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.PASSWORD)
+        TestContext.password = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.INVALID_PASSWORD)
         if invalid_request:
             payload = {}
         else:

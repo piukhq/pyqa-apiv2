@@ -144,7 +144,7 @@ square_meal_membership_card = {
     "transactions_email": "pytest+smauto02@bink.com",
     "transactions_password": "password01",
     "transactions_merchant_id": "qa_testauto_02",
-    "invalid_password": "pass01",
+    "invalid_password": "incorrectpassword",
     "invalid_email": "fail@unknown.com",
     "unauthorised_email": "invalidemail@testbink.com",
     "points": 800,

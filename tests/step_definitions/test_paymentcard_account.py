@@ -12,6 +12,7 @@ from tests.helpers import constants
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_helpers import PaymentCardTestData
 from tests.requests.paymentcard_account import PaymentCards
+from tests.step_definitions import test_loyalty_cards
 
 scenarios("payment_accounts/")
 
@@ -542,3 +543,90 @@ def verify_existing_payment_account_field_with_empty_field(payment_card_provider
     TestContext.response_status_code = response.status_code
     TestContext.error_message = response.json().get("error_message")
     TestContext.error_slug = response.json().get("error_slug")
+
+
+@when(parsers.parse('I perform POST request to add trusted channel "{merchant}" loyalty card'))
+def add_trusted_loyalty_card(merchant):
+    test_loyalty_cards.add_field_loyalty_card_trusted(merchant)
+
+
+@when(parsers.parse("I perform put request with {request_payload} to update trusted_add for {merchant}"))
+def put_trusted_add(request_payload, merchant):
+    test_loyalty_cards.put_trusted_add(request_payload, merchant)
+
+
+@then(parsers.parse("I see a {status_code_returned}"))
+def verify_loyalty_card_status_code(status_code_returned):
+    print("expected status code", int(status_code_returned))
+    print("actual status code", TestContext.response_status_code)
+
+    assert TestContext.response_status_code == int(status_code_returned)
+
+
+@when(parsers.parse("For {user} I perform GET {Wallet}"))
+def get_wallet(user, Wallet, env, channel):
+    test_loyalty_cards.verify_user_wallet(user, Wallet, env, channel)
+
+
+@when(parsers.parse("I perform GET request with {invalid} to view {endpoint}"))
+def get_pa_channel_links_with_invalid_token(invalid, endpoint):
+    test_loyalty_cards.verify_wallet_with_invalid_token(invalid, endpoint)
+
+
+@then(parsers.parse("verify response of get payment account channel links for {merchant}"))
+def verify_get_pa_channel_links(merchant):
+    wallet_response = TestContext.actual_view_wallet_field
+    for i in range(len(wallet_response["loyalty_cards"])):
+        if "bink_user" not in TestContext.all_users.keys() and "bink_user2" not in TestContext.all_users.keys():
+            assert len(wallet_response["loyalty_cards"][i]["channels"]) == len(
+                list(TestContext.all_users.keys())
+            ), "list of channels not matched with expected"
+            user_list = list(TestContext.all_users.keys())
+            logging.info(user_list)
+            for j in range(len(user_list)):
+                if user_list[j].lower() == "squaremeal_user":
+                    assert (
+                        wallet_response["loyalty_cards"][i]["channels"][j]["slug"] == "com.squaremeal.api2"
+                    ), "slug is not matching"
+                    assert (
+                        wallet_response["loyalty_cards"][i]["channels"][j]["description"]
+                        == "You have a Payment Card in the Squaremeal channel."
+                    ), "description is not matching"
+                elif user_list[j].lower() == "lloyds_user":
+                    assert (
+                        wallet_response["loyalty_cards"][i]["channels"][j]["slug"] == "com.lloydsqa.api2"
+                    ), "slug is not matching"
+                    assert (
+                        wallet_response["loyalty_cards"][i]["channels"][j]["description"]
+                        == "You have a Payment Card in the QA Lloyds Test channel."
+                    ), "description is not matching"
+                elif user_list[j].lower() == "halifax_user":
+                    assert (
+                        wallet_response["loyalty_cards"][i]["channels"][j]["slug"] == "com.halifax.api2"
+                    ), "slug is not matching"
+                    assert (
+                        wallet_response["loyalty_cards"][i]["channels"][j]["description"]
+                        == "You have a Payment Card in the Halifax channel."
+                    ), "description is not matching"
+                elif user_list[j].lower() == "bos_user":
+                    assert (
+                        wallet_response["loyalty_cards"][i]["channels"][j]["slug"] == "com.bos.api2"
+                    ), "slug is not matching"
+                    assert (
+                        wallet_response["loyalty_cards"][i]["channels"][j]["description"]
+                        == "You have a Payment Card in the Bank of Scotland channel."
+                    ), "description is not matching"
+                elif user_list[j].lower() == "barclays_user":
+                    assert (
+                        wallet_response["loyalty_cards"][i]["channels"][j]["slug"] == "com.barclays.bmb"
+                    ), "slug is not matching"
+                    assert (
+                        wallet_response["loyalty_cards"][i]["channels"][j]["description"]
+                        == "You have a Payment Card in the Barclays Mobile Banking channel."
+                    ), "description is not matching"
+                logging.info(f"response of get/payment_account_channel_links for loyalty card {i} is completed")
+
+
+@when(parsers.parse('I perform POST request to add and authorise "{merchant}" membership card'))
+def non_tc_add_and_auth(merchant):
+    test_loyalty_cards.verify_add_and_auth(merchant)

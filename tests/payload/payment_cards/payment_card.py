@@ -78,6 +78,8 @@ class PaymentCardDetails:
             TestContext.payment_card_token = "ERRADD_RCCMP009"
         elif TestContext.payment_status == "duplicate":
             TestContext.payment_card_token = "ERRADD_RCCMP005"
+        elif TestContext.payment_status == "pending":
+            TestContext.payment_card_token = "ERRRET_500"
         TestContext.finger_print = constants.FINGERPRINT + "_pytest_api2_" + str(faker.random_int(100, 999999))
 
         payload = {
