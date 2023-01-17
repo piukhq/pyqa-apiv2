@@ -13,7 +13,7 @@ Feature: update loyalty card in Trusted channel
       When I perform POST request to add trusted channel "<merchant>" loyalty card
       Then I see a 201
       When I perform put request with successful_payload to update trusted_add for <merchant>
-      Then I see a 201
+      Then I see a 202
       When For squaremeal_user I perform GET Wallet
       Then Wallet fields are correctly populated for <merchant> when lc_in_non_tc
       When For squaremeal_user I perform GET Wallet_overview
@@ -82,9 +82,9 @@ Feature: update loyalty card in Trusted channel
       Then I see a <status_code_returned>
       Given I am a squaremeal user
       When I perform POST request to add trusted channel "<merchant>" loyalty card
-      Then I see a 201
+      Then I see a <status_code_returned>
       When I perform put request with successful_payload to update trusted_add for <merchant>
-      Then I see a 201
+      Then I see a <status_code_returned>
       When For squaremeal_user I perform GET Wallet
       Then Wallet fields are correctly populated for <merchant> when lc_in_non_tc
       When For squaremeal_user I perform GET Wallet_overview
@@ -106,7 +106,7 @@ Feature: update loyalty card in Trusted channel
       Then I see a <status_code_returned>
       Given I am a squaremeal user
       When I perform POST request to add trusted channel "<merchant>" loyalty card
-      Then I see a 201
+      Then I see a <status_code_returned>
       When I perform put request with successful_payload to update trusted_add for <merchant>
       Then I see a 201
       When For squaremeal_user I perform GET Wallet

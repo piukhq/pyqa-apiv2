@@ -13,7 +13,7 @@ Feature: As a Bink User
     And I perform PATCH request to update "<update_field>" and "<payment_card_provider>" payment card to wallet
 
     Then I verify the paymentcard "<payment_card_provider>" been updated with "<update_field>"
-    And I see a "<status_code_returned>" status code for payment account
+    And I see a <status_code_returned>
 
     Examples:
       | payment_card_provider | status_code_returned | update_field                                                   |
@@ -31,7 +31,7 @@ Feature: As a Bink User
   Scenario Outline: Sending invalid token header for Patch payment account
 #    Given I am a Bink user
     When I perform PATCH <payment_card_provider> payment_account request with invalid token
-    Then I see a "<status_code_returned>" status code for payment account
+    Then I see a <status_code_returned>
     And I verify "<error_message>" "<error_slug>" of payment_account response
 
     Examples:
@@ -44,7 +44,7 @@ Feature: As a Bink User
   Scenario Outline: Sending invalid token with bearer prefix in header
 #    Given I am a Bink user
     When I perform PATCH <payment_card_provider> payment_account request with invalid token and bearer prefix
-    Then I see a "<status_code_returned>" status code for payment account
+    Then I see a <status_code_returned>
     And I verify "<error_message>" "<error_slug>" of payment_account response
 
     Examples:
@@ -59,7 +59,7 @@ Feature: As a Bink User
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment card to wallet
     When I perform "<request_call>" payment_account request with empty_json payload
-    Then I see a "<status_code_returned>" status code for payment account
+    Then I see a <status_code_returned>
     And I verify "<error_message>" "<error_slug>" of payment_account response
     Examples:
       | payment_card_provider | request_call | status_code_returned | error_message             | error_slug             |
@@ -73,7 +73,7 @@ Feature: As a Bink User
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment card to wallet
     When I perform "<request_call>" payment_account request with null_json payload
-    Then I see a "<status_code_returned>" status code for payment account
+    Then I see a <status_code_returned>
     And I verify "<error_message>" "<error_slug>" of payment_account response
     Examples:
       | payment_card_provider | request_call | status_code_returned | error_message | error_slug        |
@@ -88,7 +88,7 @@ Feature: As a Bink User
     And I perform POST request to add a new "<payment_card_provider>" payment card to wallet
     Then I perform DELETE request to delete "<payment_card_provider>" the payment card
     When I perform PATCH request to update "<update_field>" and "<payment_card_provider>" payment card to wallet
-    Then I see a "<status_code_returned>" status code for payment account
+    Then I see a <status_code_returned>
     And I verify "<error_message>" "<error_slug>" of payment_account response
 
     Examples:
@@ -103,7 +103,7 @@ Feature: As a Bink User
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment card to wallet
     And I perform PATCH request to update "<payment_card_provider>" payment card with add credential
-    Then I see a "<status_code_returned>" status code for payment account
+    Then I see a <status_code_returned>
     And I verify "<error_message>" "<error_slug>" of payment_account response
 
     Examples:
