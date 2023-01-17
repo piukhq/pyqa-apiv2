@@ -2363,8 +2363,9 @@ def lc2_wallet_fields(wallet, merchant, lc_in_tc):
                                 == TestDataUtils.TEST_DATA.lc2_wallet_info[merchant]["card"][card_key]
                             ), f"{card_key} do not match"
                         else:
-                            assert wallet_response["loyalty_cards"][0]["card"][card_key] is None, \
-                                f"{card_key} do not match"
+                            assert (
+                                wallet_response["loyalty_cards"][0]["card"][card_key] is None
+                            ), f"{card_key} do not match"
 
     elif wallet == "Wallet_overview":
         assert (
@@ -2409,8 +2410,9 @@ def lc2_wallet_fields(wallet, merchant, lc_in_tc):
                                 == TestDataUtils.TEST_DATA.lc2_wallet_info[merchant]["card"][card_key]
                             ), f"{card_key} do not match"
                         else:
-                            assert wallet_response["loyalty_cards"][0]["card"][card_key] is None, \
-                                f"{card_key} do not match"
+                            assert (
+                                wallet_response["loyalty_cards"][0]["card"][card_key] is None
+                            ), f"{card_key} do not match"
 
     elif wallet == "Wallet_by_card_id":
         assert wallet_response["id"] == TestContext.current_scheme_account_id, "account id does not match"
