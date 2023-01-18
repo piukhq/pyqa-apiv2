@@ -1,5 +1,5 @@
 # Created by nehapatil 14/11/2022
-@trusted_channel_put_authorise @trusted @bink_regression_api2
+@trusted_channel_put_authorise @trusted @bink_regression_api2 @actual_tc
 Feature: update loyalty card in Trusted channel
   As a Trusted Channel I want to update loyalty card
   so that the scheme account is updated and pll is updated for the wallet
@@ -13,7 +13,7 @@ Feature: update loyalty card in Trusted channel
       When I perform POST request to add trusted channel "<merchant>" loyalty card
       Then I see a 201
       When I perform put request with successful_payload to update trusted_add for <merchant>
-      Then I see a 202
+      Then I see a 201
       When For squaremeal_user I perform GET Wallet
       Then Wallet fields are correctly populated for <merchant> when lc_in_non_tc
       When For squaremeal_user I perform GET Wallet_overview
@@ -82,9 +82,9 @@ Feature: update loyalty card in Trusted channel
       Then I see a <status_code_returned>
       Given I am a squaremeal user
       When I perform POST request to add trusted channel "<merchant>" loyalty card
-      Then I see a <status_code_returned>
+      Then I see a 201
       When I perform put request with successful_payload to update trusted_add for <merchant>
-      Then I see a <status_code_returned>
+      Then I see a 201
       When For squaremeal_user I perform GET Wallet
       Then Wallet fields are correctly populated for <merchant> when lc_in_non_tc
       When For squaremeal_user I perform GET Wallet_overview
@@ -98,7 +98,7 @@ Feature: update loyalty card in Trusted channel
 
 
 
-  @put_manual_credential_tc
+  @put_manual_credential_tc @fix
   Scenario Outline: PUT Add_Credential_2 in TC wallet after Add_Credential_1 in wallet 1 and in wallet 2 and Add_Credential_2 does not exist in any other wallet
       Given I am in Bink channel to get b2b token
       When I perform POST token request for token type "b2b" to get access token
@@ -106,7 +106,7 @@ Feature: update loyalty card in Trusted channel
       Then I see a <status_code_returned>
       Given I am a squaremeal user
       When I perform POST request to add trusted channel "<merchant>" loyalty card
-      Then I see a <status_code_returned>
+      Then I see a 201
       When I perform put request with successful_payload to update trusted_add for <merchant>
       Then I see a 201
       When For squaremeal_user I perform GET Wallet
