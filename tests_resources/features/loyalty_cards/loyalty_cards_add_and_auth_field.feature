@@ -70,7 +70,7 @@ Feature: Add and authorise a loyalty card
   @sending_invalid_token @bink_regression_api2 @sandbox_regression
   Scenario Outline: Sending invalid token with bearer prefix in header for add and authoirse journey (Unauthorized)
     Given I am a Lloyds user
-    When I perform POST <merchant> membership_card request for add and auth with invalid token and bearer prefix
+    When I perform POST <merchant> membership_card request for add_and_auth with invalid token and bearer prefix
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug

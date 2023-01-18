@@ -72,9 +72,9 @@ def verify_payment_account_added_in_wallet(payment_card_provider):
     assert TestContext.current_payment_card_id == TestContext.response_json.get("id"), "payment card not added"
 
 
-@then(parsers.parse('I see a "{status_code_returned}" status code for payment account'))
-def verify_payment_account_status_code(status_code_returned):
-    assert TestContext.response_status_code == int(status_code_returned), "journey is not successful"
+# @then(parsers.parse('I see a "{status_code_returned}" status code for payment account'))
+# def verify_payment_account_status_code(status_code_returned):
+#     assert TestContext.response_status_code == int(status_code_returned), "journey is not successful"
 
 
 @when(
@@ -557,7 +557,7 @@ def put_trusted_add(request_payload, merchant):
 
 @then(parsers.parse("I see a {status_code_returned}"))
 def verify_loyalty_card_status_code(status_code_returned):
-    print("expected status code", int(status_code_returned))
+    print("expected status code", status_code_returned)
     print("actual status code", TestContext.response_status_code)
 
     assert TestContext.response_status_code == int(status_code_returned)
@@ -630,3 +630,13 @@ def verify_get_pa_channel_links(merchant):
 @when(parsers.parse('I perform POST request to add and authorise "{merchant}" membership card'))
 def non_tc_add_and_auth(merchant):
     test_loyalty_cards.verify_add_and_auth(merchant)
+
+
+@when(
+    parsers.parse(
+        'I perform POST request to add and auth "{merchant}" membership card '
+        'with "{request_payload}" with "{status_code}"'
+    )
+)
+def unauthorised_add_and_auth(merchant, request_payload, status_code):
+    test_loyalty_cards.verify_invalid_request_for_add_and_auth_journey(merchant, request_payload, status_code)
