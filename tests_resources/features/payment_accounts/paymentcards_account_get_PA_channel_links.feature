@@ -1,5 +1,5 @@
 # Created by nehapatil at 13/01/2023
-@trusted_channel_transparency @trusted @bink_regression_api2
+@trusted_channel_transparency @trusted @bink_regression_api2 @actual_tc
 Feature: Provide Payment Card Channel Transparency to Trusted Channels
   As a trusted channel, I want to know which channel(s) a given loyalty card has payment cards linked in
   so that users are informed which channel(s) they need to go to, to manage their payment cards.
@@ -131,7 +131,7 @@ Feature: Provide Payment Card Channel Transparency to Trusted Channels
       | SquareMeal    | 200                  | master               |duplicate       |
 
 
-  @multiplewallet
+  @multiplewallet_unauth_get_pa
   Scenario Outline: Multiple wallet channel transparency in Trusted channel with unauthorised LC in non-TC
     Given I am a squaremeal user
     When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
@@ -142,7 +142,7 @@ Feature: Provide Payment Card Channel Transparency to Trusted Channels
     Then verify response of get payment account channel links for <merchant>
     Given I am a Lloyds user
     When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
-    When I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "200"
+    When I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
     When For squaremeal_user I perform get payment_account_channel_links
     Then I see a <status_code_returned>
     Then verify response of get payment account channel links for <merchant>

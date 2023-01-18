@@ -1,5 +1,5 @@
 # Created by bularaghavan at 31/10/2022
-@trusted_channel_add_and_authorise @trusted
+@trusted_channel_add_and_authorise @trusted @actual_tc
 Feature: Add and authorise a loyalty card into Trusted channel
   As a Trusted Channel I want to add a loyalty card into my user’s wallet, without needing to provide sensitive credential information
   so that I do not need to expose sensitive credential data within my system, and
@@ -73,7 +73,7 @@ Feature: Add and authorise a loyalty card into Trusted channel
     Given I am a squaremeal user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     When I perform POST request to add trusted channel "<merchant>" loyalty card
-    Then I see a <status_code_returned>
+    Then I see a 201
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
     When For squaremeal_user I perform GET Wallet
     Then I see a 200

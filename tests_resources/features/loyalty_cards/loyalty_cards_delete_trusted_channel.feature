@@ -1,5 +1,5 @@
 # Created by nehapatil at 10/11/2022
-@trusted_channel_delete @trusted @bink_regression_api2
+@trusted_channel_delete @trusted @bink_regression_api2 @actual_tc
 Feature: delete loyalty card and delete payment card from Trusted channel
   As a Trusted Channel I want to delete loyalty card and delete payment card
   so that the card is deleted and pll is updated for the wallet
