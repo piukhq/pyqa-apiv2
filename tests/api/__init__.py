@@ -45,3 +45,10 @@ ENDPOINT_MEMBERSHIP_CARDS_BALANCE = "/v2/loyalty_cards/{}/balance"
 ENDPOINT_MEMBERSHIP_CARDS_TRANSACTIONS = "/v2/loyalty_cards/{}/transactions"
 
 ENDPOINT_MEMBERSHIP_CARDS_VOUCHERS = "/v2/loyalty_cards/{}/vouchers"
+
+# --------------------Transaction Matching API--------------------------------------------
+ENDPOINT_MASTER_CARD = "/auth_transactions_mock/mastercard"
+ENDPOINT_AMEX_CARD_REGISTER = "/auth_transactions/authorize"
+ENDPOINT_AMEX_CARD = "/auth_transactions/amex"
+ENDPOINT_AMEX_SETTLEMENT_CARD = "/auth_transactions/amex/settlement"
+ENDPOINT_VISA_CARD = "/auth_transactions/visa"
