@@ -13,7 +13,7 @@ Feature: As a Bink User
 #    GET is not implemented
 #    And I perform the GET request to verify the new payment card "<payment_card_provider>" has been added successfully to the wallet
     Then I verify the paymentcard "<payment_card_provider>" been added into my wallet
-    And I see a "<status_code_returned>" status code for payment account
+    Then I see a <status_code_returned>
 
     Examples:
       | payment_card_provider | status_code_returned |
@@ -27,7 +27,7 @@ Feature: As a Bink User
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment card to wallet
     And I replace "<payment_card_provider>" "<expiry_month>" "<expiry_year>" "<name_on_card>" "<card_nickname>" into the payment card
-    Then I see a "<status_code_returned>" status code for payment account
+    Then I see a <status_code_returned>
 
     Examples:
       | payment_card_provider | expiry_month | expiry_year | name_on_card | card_nickname | status_code_returned |
@@ -38,7 +38,7 @@ Feature: As a Bink User
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform "<request_call>" payment_account request with empty json payload
-    Then I see a "<status_code_returned>" status code for payment account
+    Then I see a <status_code_returned>
     And I verify "<error_message>" "<error_slug>" of payment_account response
     Examples:
       | request_call | status_code_returned | error_message             | error_slug             |
@@ -49,7 +49,7 @@ Feature: As a Bink User
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform "<request_call>" payment_account request with null json in payload
-    Then I see a "<status_code_returned>" status code for payment account
+    Then I see a <status_code_returned>
     And I verify "<error_message>" "<error_slug>" of payment_account response
     Examples:
       | request_call | status_code_returned | error_message | error_slug        |
@@ -60,7 +60,7 @@ Feature: As a Bink User
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST <payment_card_provider> payment_account request with invalid token
-    Then I see a "<status_code_returned>" status code for payment account
+    Then I see a <status_code_returned>
     And I verify "<error_message>" "<error_slug>" of payment_account response
 
     Examples:
@@ -72,7 +72,7 @@ Feature: As a Bink User
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST <payment_card_provider> payment_account request with invalid token and bearer prefix
-    Then I see a "<status_code_returned>" status code for payment account
+    Then I see a <status_code_returned>
     And I verify "<error_message>" "<error_slug>" of payment_account response
 
     Examples:
@@ -85,7 +85,7 @@ Feature: As a Bink User
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new payment card by removing "optional" field to wallet
-    Then I see a "<status_code_returned>" status code for payment account
+    Then I see a <status_code_returned>
 
     Examples:
    | status_code_returned |
@@ -96,7 +96,7 @@ Feature: As a Bink User
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new payment card by removing "mandatory" field to wallet
-    Then I see a "<status_code_returned>" status code for payment account
+    Then I see a <status_code_returned>
     And I verify "<error_message>" "<error_slug>" of payment_account response
 
     Examples:
@@ -108,7 +108,7 @@ Feature: As a Bink User
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add "<payment_card_provider>" payment card to wallet
-    Then I see a "<status_code_returned>" status code for payment account
+    Then I see a <status_code_returned>
     And I verify "<error_message>" "<error_slug>" of payment_account response
 
     Examples:
@@ -137,7 +137,7 @@ Feature: As a Bink User
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment card to wallet
-    Then I see a "<status_code_returned>" status code for payment account
+    Then I see a <status_code_returned>
     Given I am a Lloyds user
     Then I perform existing payment card "<payment_card_provider>" to my another wallet with different "<expiry_month>" "<expiry_year>" "<name_on_card>" "<card_nickname>"
     And I see an <existing_payment_card_status> status code

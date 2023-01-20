@@ -9,10 +9,10 @@ ENDPOINT_LOYALTY_PLANS_OVERVIEW = "/v2/loyalty_plans_overview"
 ENDPOINT_LOYALTY_PLAN_DETAILS = "/v2/loyalty_plans/{}/plan_details"
 
 ENDPOINT_MEMBERSHIP_CARDS_ADD = "/v2/loyalty_cards/add"
-ENDPOINT_MEMBERSHIP_CARDS_ADD_TRUSTED = "/v2/loyalty_cards/trusted_add"
+ENDPOINT_MEMBERSHIP_CARDS_ADD_TRUSTED = "/v2/loyalty_cards/add_trusted"
 ENDPOINT_MEMBERSHIP_CARD = "/v2/loyalty_cards/add/{}"
 
-ENDPOINT_LOYALTY_CARDS_UPDATE_TRUSTED = "/v2/loyalty_cards/{}/trusted_add"
+ENDPOINT_LOYALTY_CARDS_UPDATE_TRUSTED = "/v2/loyalty_cards/{}/add_trusted"
 
 ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE = "/v2/loyalty_cards/{}/authorise"
 
@@ -33,6 +33,8 @@ ENDPOINT_WALLET = "/v2/wallet"
 ENDPOINT_WALLET_OVERVIEW = "/v2/wallet_overview"
 
 ENDPOINT_WALLET_BY_CARD_ID = "/v2/wallet/loyalty_cards/{}"
+
+ENDPOINT_WALLET_PAYMENT_ACCOUNT_CHANNEL_LINKS = "/v2/wallet/payment_account_channel_links"
 
 ENDPOINT_EMAIL_UPDATE = "/v2/email_update"
 

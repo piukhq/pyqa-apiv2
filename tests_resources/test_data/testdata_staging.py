@@ -144,7 +144,7 @@ square_meal_membership_card = {
     "transactions_email": "pytest+smauto02@bink.com",
     "transactions_password": "password01",
     "transactions_merchant_id": "qa_testauto_02",
-    "invalid_password": "pass01",
+    "invalid_password": "incorrectpassword",
     "invalid_email": "fail@unknown.com",
     "unauthorised_email": "invalidemail@testbink.com",
     "points": 800,
@@ -837,10 +837,10 @@ wallet_overview_info = {
             "reward_available": False,
             "images": [
                 {
-                    "id": 1330,
+                    "id": 1331,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Hero.png",
-                    "description": "SquareMeal Hero",
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
+                    "description": "SquareMeal Bronze Tier 1",
                     "encoding": "png",
                 }
             ],
@@ -2013,7 +2013,7 @@ lc2_wallet_overview_info = {
         "card": {
             "barcode": None,
             "barcode_type": 0,
-            "card_number": 10010012,
+            "card_number": "10010012",
             "colour": "#465560",
             "text_colour": "#FFFFFF",
         },

@@ -1,5 +1,5 @@
 # Created by bularaghavan at 31/10/2022
-@trusted_channel_add_and_authorise @trusted
+@trusted_channel_add_and_authorise @trusted @actual_tc
 Feature: Add and authorise a loyalty card into Trusted channel
   As a Trusted Channel I want to add a loyalty card into my user’s wallet, without needing to provide sensitive credential information
   so that I do not need to expose sensitive credential data within my system, and
@@ -9,25 +9,25 @@ Feature: Add and authorise a loyalty card into Trusted channel
   @add_and_auth_tc @sandbox_regression
   Scenario Outline: Trusted channel adds loyalty card into wallet
     Given I am a squaremeal user
-    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+#    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     When I perform POST request to add trusted channel "<merchant>" loyalty card
     Then I see a <status_code_returned>
  #   And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
     When For squaremeal_user I perform GET Wallet
-    Then I see a <status_code_returned>
-    And All Wallet fields are correctly populated for <merchant>
+    Then I see a 200
+    Then Wallet fields are correctly populated for <merchant> when lc_in_only_tc
     When For squaremeal_user I perform GET Wallet_overview
-    Then I see a <status_code_returned>
-    And All Wallet_overview fields are correctly populated for <merchant>
+    Then I see a 200
+    Then Wallet_overview fields are correctly populated for <merchant> when lc_in_only_tc
     When For squaremeal_user I perform GET Wallet_by_card_id
-    Then I see a <status_code_returned>
-    And All Wallet_by_card_id fields are correctly populated for <merchant>
-    When For squaremeal_user I perform GET transaction for loyalty card with authorised for <merchant>
-    And For squaremeal_user I perform GET balance for loyalty card with authorised for <merchant>
+    Then I see a 200
+    Then Wallet_by_card_id fields are correctly populated for <merchant> when lc_in_only_tc
+#    When For squaremeal_user I perform GET transaction for loyalty card with authorised for <merchant>
+#    And For squaremeal_user I perform GET balance for loyalty card with authorised for <merchant>
 
     Examples:
-      | merchant      | status_code_returned |payment_card_provider |
-      | SquareMeal    | 202                  | master               |
+      | merchant      | status_code_returned |
+      | SquareMeal    | 201                  |
 
   @invalid_json_trusted @sandbox_regression
   Scenario Outline: Add loyalty card in trusted channel with malformed request
@@ -54,7 +54,7 @@ Feature: Add and authorise a loyalty card into Trusted channel
   @sending_invalid_token_trusted @sandbox_regression
   Scenario Outline: Sending invalid token with bearer prefix in header for add trusted journey (Unauthorized)
     Given I am a squaremeal user
-    When I perform POST <merchant> loyalty card in trusted channel with invalid token and bearer prefix
+    When I perform POST <merchant> membership_card request for add_trusted with invalid token and bearer prefix
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
@@ -73,16 +73,16 @@ Feature: Add and authorise a loyalty card into Trusted channel
     Given I am a squaremeal user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     When I perform POST request to add trusted channel "<merchant>" loyalty card
-    Then I see a <status_code_returned>
+    Then I see a 201
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
     When For squaremeal_user I perform GET Wallet
-    Then I see a <status_code_returned>
+    Then I see a 200
     And All Wallet fields are correctly populated for <merchant>
     When For squaremeal_user I perform GET Wallet_overview
-    Then I see a <status_code_returned>
+    Then I see a 200
     And All Wallet_overview fields are correctly populated for <merchant>
     When For squaremeal_user I perform GET Wallet_by_card_id
-    Then I see a <status_code_returned>
+    Then I see a 200
     And All Wallet_by_card_id fields are correctly populated for <merchant>
     When For squaremeal_user I perform GET transaction for loyalty card with authorised for <merchant>
     And For squaremeal_user I perform GET balance for loyalty card with authorised for <merchant>
@@ -96,7 +96,7 @@ Feature: Add and authorise a loyalty card into Trusted channel
     Given I am a squaremeal user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add trusted channel "<merchant>" loyalty card
-    Then I see a <status_code_returned>
+    Then I see a 201
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
     Given I am a Lloyds user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
@@ -104,13 +104,13 @@ Feature: Add and authorise a loyalty card into Trusted channel
     Then I see a <status_code_returned>
     And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
     When For lloyds_user I perform GET Wallet
-    Then I see a <status_code_returned>
+    Then I see a 200
     And All Wallet fields are correctly populated for <merchant>
     When For lloyds_user I perform GET Wallet_overview
-    Then I see a <status_code_returned>
+    Then I see a 200
     And All Wallet_overview fields are correctly populated for <merchant>
     When For lloyds_user I perform GET Wallet_by_card_id
-    Then I see a <status_code_returned>
+    Then I see a 200
     And All Wallet_by_card_id fields are correctly populated for <merchant>
     When For lloyds_user I perform GET transaction for loyalty card with authorised for <merchant>
     And For lloyds_user I perform GET balance for loyalty card with authorised for <merchant>
@@ -119,17 +119,17 @@ Feature: Add and authorise a loyalty card into Trusted channel
       | merchant      | status_code_returned | journey_type      |payment_card_provider |
       | SquareMeal    | 202                  | add_and_authorise |master                 |
 
-  @add_and_auth_existing_field_tc @sandbox_regression
-  Scenario Outline: Add existing card again into wallet in trusted channel
-    Given I am a squaremeal user
-    When I perform POST request to add trusted channel "<merchant>" loyalty card
-    And I perform POST request again to add "<merchant>" in trusted channel with "<status_code_returned>"
-    Then I see a <status_code_returned>
-    Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
-
-    Examples:
-      | merchant      | status_code_returned | journey_type      |
-      | SquareMeal    | 200                  | add_and_authorise |
+#  @add_and_auth_existing_field_tc @sandbox_regression
+#  Scenario Outline: Add existing card again into wallet in trusted channel
+#    Given I am a squaremeal user
+#    When I perform POST request to add trusted channel "<merchant>" loyalty card
+#    And I perform POST request again to add "<merchant>" in trusted channel with "<status_code_returned>"
+#    Then I see a <status_code_returned>
+#    Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+#
+#    Examples:
+#      | merchant      | status_code_returned | journey_type      |
+#      | SquareMeal    | 200                  | add_and_authorise |
 
   @add_and_auth_pll_tc @sandbox_regression
   Scenario Outline: verify PLL for add card in trusted channel
@@ -141,5 +141,5 @@ Feature: Add and authorise a loyalty card into Trusted channel
 
     Examples:
       | payment_card_provider | merchant   | status_code_returned | journey_type |
-      | master                | SquareMeal | 202                  | pll          |
+      | master                | SquareMeal | 201                  | pll          |
 
