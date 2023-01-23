@@ -99,12 +99,12 @@ Feature: Add and authorise a loyalty card into Trusted channel
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add trusted channel "<merchant>" loyalty card
     Then I see a 201
-    And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+    And verify that for squaremeal_user data stored in after "<journey_type>" journey for "<merchant>"
     Given I am a Lloyds user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card
     Then I see a <status_code_returned>
-    And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+    And verify that for lloyds_user data stored in after "<journey_type>" journey for "<merchant>"
     When For lloyds_user I perform GET Wallet
     Then I see a 200
     And All Wallet fields are correctly populated for <merchant>
