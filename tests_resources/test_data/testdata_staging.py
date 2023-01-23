@@ -71,7 +71,7 @@ invalid_token = {
 iceland_membership_card = {
     "card_num": "6332040000300000003",
     # "register_card": "6332040000400000011",
-    "unauthorised_last_name": "InvalidLastName",
+    "unauthorised_last_name": "invalidlastname",
     "register_card": "6332040031231230002",
     "register_failed_card": "6332040065432156789",
     "register_failed_email": "generalerror@testbink.com",
@@ -137,7 +137,7 @@ wasabi_membership_card = {
 }
 
 square_meal_membership_card = {
-    "card_num": "100500000",
+    "card_num": "10050000",
     "email": "pytest+auto1@testbink.com",
     "password": "passauto01",
     "transactions_card": "10010012",
@@ -595,7 +595,7 @@ wallet_info = {
             "card": {
                 "barcode": None,
                 "barcode_type": 0,
-                "card_number": "100500000",
+                "card_number": "10050000",
                 "colour": "#465560",
                 "text_colour": "#FFFFFF",
             },
@@ -830,7 +830,7 @@ wallet_overview_info = {
             "card": {
                 "barcode": None,
                 "barcode_type": 0,
-                "card_number": "100500000",
+                "card_number": "10050000",
                 "colour": "#465560",
                 "text_colour": "#FFFFFF",
             },
@@ -1279,7 +1279,7 @@ wallet_info_by_card_id = {
         "card": {
             "barcode": None,
             "barcode_type": 0,
-            "card_number": "100500000",
+            "card_number": "10050000",
             "colour": "#465560",
             "text_colour": "#FFFFFF",
         },
