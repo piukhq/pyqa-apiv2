@@ -1,5 +1,5 @@
 # Created by bularaghavan on 16/09/2022
-@membership_cards_pll @pll_get_wallet_multi @trusted
+@membership_cards_pll @pll_get_wallet_multi @trusted @bink_regression_api2
 Feature: View multi wallet pll
   As a Bink user
   I want to see the Status of the PLL Link between a given loyalty card and payment card in my given wallet
