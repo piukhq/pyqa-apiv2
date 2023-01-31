@@ -23,7 +23,7 @@ Feature: Add and authorise a loyalty card into Trusted channel
     Then I see a 200
     Then Wallet_by_card_id fields are correctly populated for <merchant> when lc_in_only_tc
     When For squaremeal_user I perform GET transaction for loyalty card with unauthorised for <merchant>
-#    And For squaremeal_user I perform GET balance for loyalty card with unauthorised for <merchant>
+    And For squaremeal_user I perform GET balance for loyalty card with unauthorised for <merchant>
     And For squaremeal_user I perform GET voucher for loyalty card with unauthorised for <merchant>
 
     Examples:

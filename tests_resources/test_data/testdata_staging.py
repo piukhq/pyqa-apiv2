@@ -244,7 +244,7 @@ wallet_info = {
                     "body_text": "Show your Wasabi Club reward code in store to redeem £7 off your next meal.",
                     "terms_and_conditions": "https://policies.staging.gb.bink.com/wasabi/tc.html",
                     "issued_date": "1591787076",
-                    "expiry_date": "1673308800",
+                    "expiry_date": "1924819200",
                     "redeemed_date": None,
                 },
                 {
@@ -938,7 +938,7 @@ wallet_info_by_card_id = {
                 "body_text": "Show your Wasabi Club reward code in store to redeem £7 off your next meal.",
                 "terms_and_conditions": "https://policies.staging.gb.bink.com/wasabi/tc.html",
                 "issued_date": "1591787076",
-                "expiry_date": "1673308800",
+                "expiry_date": "1924819200",
                 "redeemed_date": None,
             },
             {

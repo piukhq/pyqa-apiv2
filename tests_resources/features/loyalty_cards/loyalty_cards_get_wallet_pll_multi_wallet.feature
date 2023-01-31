@@ -28,15 +28,16 @@ Feature: View multi wallet pll
      | merchant | status_code_returned|payment_card_provider|state|slug                     |description |
      | Wasabi   | 200                 | master              |active|null                    |null        |
 
-  @multi_wallet_pll_status2 @sandbox_regression
-  Scenario Outline: Verify pll links for inactive payment account and authorised loyalty card for multi wallets
+
+  @multi_wallet_pll_status1b @sandbox_regression
+  Scenario Outline: Verify pll links for pending payment account and authorised loyalty card for multi wallets
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    And I perform POST request to add a pending "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
-    And I perform POST request to add a duplicate "<payment_card_provider>" payment account to wallet
+    And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And For bink_user I perform GET Wallet
     Then I see a <status_code_returned>
@@ -44,12 +45,36 @@ Feature: View multi wallet pll
     And I can see '<state>','<slug>' and '<description>' for payment accounts PLL links in the Wallet
     When For bink_user2 I perform GET Wallet
     Then I see a <status_code_returned>
-    And I can see '<state2>','<slug2>' and '<description2>' for loyalty card PLL links in the Wallet
-    And I can see '<state2>','<slug2>' and '<description2>' for payment accounts PLL links in the Wallet
+    And I can see '<state>','<slug>' and '<description>' for loyalty card PLL links in the Wallet
+    And I can see '<state>','<slug>' and '<description>' for payment accounts PLL links in the Wallet
 
      Examples:
-     | merchant | status_code_returned|payment_card_provider|state |state2     |slug|slug2                     |description|description2                                                     |
-     | Wasabi   | 200                 |master               |active|inactive   |null|PAYMENT_ACCOUNT_INACTIVE  |null       |The Payment Account is not active so no PLL link can be created. |
+     | merchant | status_code_returned|payment_card_provider|state  |slug                     |description                                                                        |
+     | Wasabi   | 200                 | master              |pending|PAYMENT_ACCOUNT_PENDING  |When the Payment Account becomes active, the PLL link will automatically go active.|
+
+
+  @multi_wallet_pll_status2 @sandbox_regression
+  Scenario Outline: Verify pll links for inactive payment account and authorised loyalty card for multi wallets
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add a duplicate "<payment_card_provider>" payment account to wallet
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    When I am in Bink channel to get b2b token for second user
+    And I perform POST token request for token type "b2b" to get access token for second user
+    And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    And For bink_user I perform GET Wallet
+    Then I see a <status_code_returned>
+    And I can see '<state>','<slug>' and '<description>' for loyalty card PLL links in the Wallet
+    And I can see '<state>','<slug>' and '<description>' for payment accounts PLL links in the Wallet
+    When For bink_user2 I perform GET Wallet
+    Then I see a <status_code_returned>
+    And I can see '<state>','<slug>' and '<description>' for loyalty card PLL links in the Wallet
+    And I can see '<state>','<slug>' and '<description>' for payment accounts PLL links in the Wallet
+
+     Examples:
+     | merchant | status_code_returned|payment_card_provider|state      | slug                     |description                                                      |
+     | Wasabi   | 200                 |master               |inactive   |PAYMENT_ACCOUNT_INACTIVE  |The Payment Account is not active so no PLL link can be created. |
 
   @multi_wallet_pll_status3 @sandbox_regression
   Scenario Outline: Verify pll links for active payment account and unauthorised loyalty card for multi wallets
@@ -140,6 +165,51 @@ Feature: View multi wallet pll
      Examples:
      | merchant | status_code_returned | payment_card_provider |state1            |  slug1              |description1 | state2             | slug2              | description2                                                                               |
      | Wasabi   | 200                  | visa                  |active            |  null               |null         |inactive            |UBIQUITY_COLLISION  | There is already a Loyalty Card from the same Loyalty Plan linked to this Payment Account. |
+
+
+  @multi_wallet_pll_status6 @sandbox_regression
+  Scenario Outline: Verify pending payment status in two channels
+    Given I am a Lloyds user
+    When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform POST request to add a pending "<payment_card_provider>" payment account to wallet
+    Given I am a halifax user
+    When I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
+    And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
+    And For lloyds_user I perform GET Wallet
+    Then I see a <status_code_returned>
+    And I can see '<state1>','<slug1>' and '<description1>' for loyalty card PLL links in the Wallet
+    And I can see '<state1>','<slug1>' and '<description1>' for payment accounts PLL links in the Wallet
+    When For halifax_user I perform GET Wallet
+    Then I see a <status_code_returned>
+    And I can see '<state2>', '<slug2>' and '<description2>' for loyalty card PLL links in the Wallet
+    And I can see '<state2>','<slug2>' and '<description2>' for payment accounts PLL links in the Wallet
+
+     Examples:
+     | merchant | status_code_returned | payment_card_provider |state1            | slug1                   |description1                                                                        | state2   | slug2                       | description2                                                      |
+     | Wasabi   | 200                  | visa                  |pending           | PAYMENT_ACCOUNT_PENDING |When the Payment Account becomes active, the PLL link will automatically go active. |inactive  |LOYALTY_CARD_NOT_AUTHORISED  | The Loyalty Card is not authorised so no PLL link can be created. |
+
+
+  @multi_wallet_pll_status7 @sandbox_regression
+  Scenario Outline: Verify PLL links for failed join scenario
+    Given I am a Lloyds user
+    When I perform enrol_failed POST request to join "<merchant>" membership card
+    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    Given I am a halifax user
+    When I perform enrol_failed POST request to join "<merchant>" membership card
+    And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
+    And For lloyds_user I perform GET Wallet
+    Then I see a <status_code_returned>
+  #  And I can see '<state>','<slug1>' and '<description1>' for loyalty card PLL links in the Wallet
+    And I can see '<state>','<slug1>' and '<description1>' for payment accounts PLL links in the Wallet
+    When For halifax_user I perform GET Wallet
+    Then I see a <status_code_returned>
+  #  And I can see '<state>','<slug2>' and '<description2>' for loyalty card PLL links in the Wallet
+    And I can see '<state>','<slug2>' and '<description2>' for payment accounts PLL links in the Wallet
+
+     Examples:
+     | merchant | status_code_returned | payment_card_provider |state           |slug1                        |description1                                                      |slug2                |description2                                                                                |
+     | Iceland   | 200                  | visa                  |inactive        | LOYALTY_CARD_NOT_AUTHORISED |The Loyalty Card is not authorised so no PLL link can be created. |UBIQUITY_COLLISION   | There is already a Loyalty Card from the same Loyalty Plan linked to this Payment Account.|
+
 
     @multi_wallet_delete_lc_pll @sandbox_regression
    Scenario Outline: PLL link when loyalty card deleted from multiple wallet
