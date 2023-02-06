@@ -2076,7 +2076,7 @@ lc2_wallet_info = {
                 "id": 1398,
                 "type": 7,
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                       "PromotionsIcelandBonusCard1968x732.png",
+                "PromotionsIcelandBonusCard1968x732.png",
                 "description": "Promo_Text_1",
                 "encoding": "png",
             },
