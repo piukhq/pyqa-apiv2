@@ -157,7 +157,7 @@ class WasabiCard:
         return payload
 
     @staticmethod
-    def add_and_authorise_transactions_card_payload():
+    def add_and_authorise_transactions_card_payload(card=None):
         TestContext.card_number = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.TRANSACTIONS_CARD)
         TestContext.email = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.TRANSACTIONS_EMAIL)
         payload = {
@@ -258,7 +258,7 @@ class WasabiCard:
         return payload
 
     @staticmethod
-    def add_and_auth_field_only_membership_card_with_unauthorised_json():
+    def add_and_auth_field_only_membership_card_with_unauthorised_json(membership_card=None):
         TestContext.card_number = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.TRANSACTIONS_CARD)
         TestContext.email = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.UNAUTHORISED_EMAIL)
         payload = {
