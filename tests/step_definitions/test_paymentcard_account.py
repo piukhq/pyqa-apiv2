@@ -584,42 +584,27 @@ def verify_get_pa_channel_links(merchant):
             user_list = list(TestContext.all_users.keys())
             logging.info(user_list)
             for j in range(len(user_list)):
-                if user_list[j].lower() == "squaremeal_user":
-                    assert (
-                        wallet_response["loyalty_cards"][i]["channels"][j]["slug"] == "com.squaremeal.api2"
-                    ), "slug is not matching"
+                if wallet_response["loyalty_cards"][i]["channels"][j]["slug"] == "com.squaremeal.api2":
                     assert (
                         wallet_response["loyalty_cards"][i]["channels"][j]["description"]
                         == "You have a Payment Card in the Squaremeal channel."
                     ), "description is not matching"
-                elif user_list[j].lower() == "lloyds_user":
-                    assert (
-                        wallet_response["loyalty_cards"][i]["channels"][j]["slug"] == "com.lloydsqa.api2"
-                    ), "slug is not matching"
+                elif wallet_response["loyalty_cards"][i]["channels"][j]["slug"] == "com.lloydsqa.api2":
                     assert (
                         wallet_response["loyalty_cards"][i]["channels"][j]["description"]
                         == "You have a Payment Card in the QA Lloyds Test channel."
                     ), "description is not matching"
-                elif user_list[j].lower() == "halifax_user":
-                    assert (
-                        wallet_response["loyalty_cards"][i]["channels"][j]["slug"] == "com.halifax.api2"
-                    ), "slug is not matching"
+                elif wallet_response["loyalty_cards"][i]["channels"][j]["slug"] == "com.halifax.api2":
                     assert (
                         wallet_response["loyalty_cards"][i]["channels"][j]["description"]
                         == "You have a Payment Card in the Halifax channel."
                     ), "description is not matching"
-                elif user_list[j].lower() == "bos_user":
-                    assert (
-                        wallet_response["loyalty_cards"][i]["channels"][j]["slug"] == "com.bos.api2"
-                    ), "slug is not matching"
+                elif wallet_response["loyalty_cards"][i]["channels"][j]["slug"] == "com.bos.api2":
                     assert (
                         wallet_response["loyalty_cards"][i]["channels"][j]["description"]
                         == "You have a Payment Card in the Bank of Scotland channel."
                     ), "description is not matching"
-                elif user_list[j].lower() == "barclays_user":
-                    assert (
-                        wallet_response["loyalty_cards"][i]["channels"][j]["slug"] == "com.barclays.bmb"
-                    ), "slug is not matching"
+                elif wallet_response["loyalty_cards"][i]["channels"][j]["slug"] == "com.barclays.bmb":
                     assert (
                         wallet_response["loyalty_cards"][i]["channels"][j]["description"]
                         == "You have a Payment Card in the Barclays Mobile Banking channel."

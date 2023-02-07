@@ -172,9 +172,17 @@ class IcelandCard:
             return payload
 
     @staticmethod
-    def add_and_authorise_transactions_card_payload():
-        TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS_CARD)
-        TestContext.last_name = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS_LAST_NAME)
+    def add_and_authorise_transactions_card_payload(card):
+        if card == "transactions and vouchers":
+            TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS_CARD)
+            TestContext.last_name = TestDataUtils.TEST_DATA.iceland_membership_card.get(
+                constants.TRANSACTIONS_LAST_NAME
+            )
+        elif card == "transaction2_card":
+            TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS2_CARD)
+            TestContext.last_name = TestDataUtils.TEST_DATA.iceland_membership_card.get(
+                constants.TRANSACTIONS2_LASTNAME
+            )
         TestContext.postcode = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS_POSTCODE)
 
         payload = {
@@ -288,9 +296,17 @@ class IcelandCard:
         return payload
 
     @staticmethod
-    def add_and_auth_field_only_membership_card_with_unauthorised_json():
-        TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS_CARD)
-        TestContext.last_name = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.UNAUTHORISED_LAST_NAME)
+    def add_and_auth_field_only_membership_card_with_unauthorised_json(membership_card=None):
+        if membership_card == "membership card":
+            TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS_CARD)
+            TestContext.last_name = TestDataUtils.TEST_DATA.iceland_membership_card.get(
+                constants.UNAUTHORISED_LAST_NAME
+            )
+        elif membership_card == "transaction2_unauth_card":
+            TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS2_CARD)
+            TestContext.last_name = TestDataUtils.TEST_DATA.iceland_membership_card.get(
+                constants.TRANSACTIONS2_UNAUTH_LASTNAME
+            )
         TestContext.postcode = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS_POSTCODE)
 
         payload = {
