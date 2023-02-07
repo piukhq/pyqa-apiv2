@@ -120,24 +120,24 @@ Feature: View Wallets
 #      |HarveyNichols  |200                  |master               |
 
 
-  @same_channel_multi_wallet_valid_invalid @add_and_auth_multi_wallet
+  @same_channel_multi_wallet_valid_invalid @add_and_auth_multi_wallet @testnpp
   Scenario Outline: View two wallet of same channel when LC1 auth and LC2 unauth
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I perform POST request to add and authorise "<merchant>" membership card with cp2_auth_card
+    And I perform POST request to add and authorise "<merchant>" membership card with transaction2_card
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
-    And I perform POST request to add and auth "<merchant>" cp2_unauth_card with "unauthorised" with "202"
+    And I perform POST request to add and auth "<merchant>" transaction2_unauth_card with "unauthorised" with "202"
     And For bink_user2 I perform GET Wallet
     Then I see a <status_code_returned>
     And Wallet fields are correctly populated for unauthorised LC of <merchant>
     When For bink_user I perform GET Wallet
     Then I see a <status_code_returned>
     Then Wallet fields are correctly populated for <merchant> when lc_in_non_tc
-    When For bink_user I perform GET transaction for loyalty card with cp2_auth_card for <merchant>
-    And For bink_user I perform GET balance for loyalty card with cp2_auth_card for <merchant>
+    When For bink_user I perform GET transaction for loyalty card with transaction2_card for <merchant>
+    And For bink_user I perform GET balance for loyalty card with transaction2_card for <merchant>
     And For bink_user I perform GET voucher for loyalty card with authorised for <merchant>
     And For bink_user2 I perform GET transaction for loyalty card with unauthorised for <merchant>
     And For bink_user2 I perform GET balance for loyalty card with unauthorised for <merchant>

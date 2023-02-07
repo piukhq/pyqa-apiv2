@@ -178,9 +178,11 @@ class IcelandCard:
             TestContext.last_name = TestDataUtils.TEST_DATA.iceland_membership_card.get(
                 constants.TRANSACTIONS_LAST_NAME
             )
-        elif card == "cp2_auth_card":
-            TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.CP2_CARD)
-            TestContext.last_name = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.CP2_AUTH_LASTNAME)
+        elif card == "transaction2_card":
+            TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS2_CARD)
+            TestContext.last_name = TestDataUtils.TEST_DATA.iceland_membership_card.get(
+                constants.TRANSACTIONS2_LASTNAME
+            )
         TestContext.postcode = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS_POSTCODE)
 
         payload = {
@@ -300,9 +302,11 @@ class IcelandCard:
             TestContext.last_name = TestDataUtils.TEST_DATA.iceland_membership_card.get(
                 constants.UNAUTHORISED_LAST_NAME
             )
-        elif membership_card == "cp2_unauth_card":
-            TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.CP2_CARD)
-            TestContext.last_name = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.CP2_UNAUTH_LASTNAME)
+        elif membership_card == "transaction2_unauth_card":
+            TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS2_CARD)
+            TestContext.last_name = TestDataUtils.TEST_DATA.iceland_membership_card.get(
+                constants.TRANSACTIONS2_UNAUTH_LASTNAME
+            )
         TestContext.postcode = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS_POSTCODE)
 
         payload = {

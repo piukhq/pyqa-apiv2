@@ -523,8 +523,8 @@ def verify_loyalty_card_balance(env, channel, user, loyalty_card_status, merchan
         + "\n\n"
         + json.dumps(response_json, indent=4)
     )
-    if loyalty_card_status in ["authorised", "cp2_auth_card"]:
-        if merchant == "Iceland" and loyalty_card_status == "cp2_auth_card":
+    if loyalty_card_status in ["authorised", "transaction2_card"]:
+        if merchant == "Iceland" and loyalty_card_status == "transaction2_card":
             difference = json_compare(
                 response_json["balance"],
                 TestDataUtils.TEST_DATA.lc2_wallet_info[merchant]["balance"],
@@ -603,8 +603,8 @@ def verify_loyalty_card_transactions(env, channel, user, loyalty_card_status, me
         + "\n\n"
         + json.dumps(response_json, indent=4)
     )
-    if loyalty_card_status in ["authorised", "cp2_auth_card"]:
-        if merchant == "Iceland" and loyalty_card_status == "cp2_auth_card":
+    if loyalty_card_status in ["authorised", "transaction2_card"]:
+        if merchant == "Iceland" and loyalty_card_status == "transaction2_card":
             assert len(response_json["transactions"]) == len(
                 TestDataUtils.TEST_DATA.lc2_wallet_info[merchant]["transactions"]
             ), "transaction do not match"

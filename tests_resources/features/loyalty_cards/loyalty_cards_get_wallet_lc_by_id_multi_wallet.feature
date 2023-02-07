@@ -73,16 +73,16 @@ Feature: View Wallet by LC id in different channel
 #      |HarveyNichols  |200                  |master               |
 
 
-  @wallet_by_lc_id_same_channel_valid_invalid @add_and_auth_multi_wallet
+  @wallet_by_lc_id_same_channel_valid_invalid @add_and_auth_multi_wallet @testnpp
   Scenario Outline: View two wallet by LC id of same channel when LC1 is auth and LC2 is unauth
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I perform POST request to add and authorise "<merchant>" membership card with cp2_auth_card
+    And I perform POST request to add and authorise "<merchant>" membership card with transaction2_card
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
-    And I perform POST request to add and auth "<merchant>" cp2_unauth_card with "unauthorised" with "202"
+    And I perform POST request to add and auth "<merchant>" transaction2_unauth_card with "unauthorised" with "202"
     And For bink_user2 I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And Wallet_by_card_id fields are correctly populated for unauthorised LC of <merchant>
