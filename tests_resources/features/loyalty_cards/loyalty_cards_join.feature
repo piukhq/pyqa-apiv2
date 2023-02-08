@@ -17,6 +17,8 @@ Feature: Add and register a loyalty card
       | merchant      | status_code_returned | journey_type |
       | Iceland       | 202                  | join         |
       | Wasabi        | 202                  | join         |
+      | SquareMeal    | 202                  | join         |
+
  #     | HarveyNichols | 202                  | join         |
 
 
@@ -101,7 +103,7 @@ Feature: Add and register a loyalty card
 
 
   @multi_wallet_joins @bink_regression_api2
-  Scenario Outline: merchant fails to identify duplicate join requests in multiwallet
+  Scenario Outline: join requests in multiwallet
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "master" payment account to wallet

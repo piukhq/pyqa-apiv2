@@ -619,9 +619,11 @@ def non_tc_add_and_auth(merchant):
 
 @when(
     parsers.parse(
-        'I perform POST request to add and auth "{merchant}" membership card '
+        'I perform POST request to add and auth "{merchant}" {membership_card} '
         'with "{request_payload}" with "{status_code}"'
     )
 )
-def unauthorised_add_and_auth(merchant, request_payload, status_code):
-    test_loyalty_cards.verify_invalid_request_for_add_and_auth_journey(merchant, request_payload, status_code)
+def unauthorised_add_and_auth(merchant, membership_card, request_payload, status_code):
+    test_loyalty_cards.verify_invalid_request_for_add_and_auth_journey(
+        merchant, membership_card, request_payload, status_code
+    )

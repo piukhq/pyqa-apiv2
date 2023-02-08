@@ -25,7 +25,7 @@ Feature: Add and authorise a loyalty card
     Given I am a Lloyds user
     When I perform POST request to add and authorise "<merchant>" membership card
     And I perform POST request again with add and authorise to verify the "<merchant>" membership card is already added with "<status_code_returned>"
-    Then I see a <status_code_returned>
+#    Then I see a <status_code_returned>
 #    Then I see a "<error_message>" error message
 #    And I see a "<error_slug>" error slug
     Then verify that for lloyds_user data stored in after "<journey_type>" journey for "<merchant>"

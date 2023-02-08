@@ -874,7 +874,7 @@ def verify_wallet_with_invalid_token(invalid, endpoint):
 def verify_membership_card_added_already(merchant, status_code):
     response = MembershipCards.add_field_with_existing_card(TestContext.token, merchant)
     response_json = response_to_json(response)
-    TestContext.current_scheme_account_id = response_json.get("id")
+    # TestContext.current_scheme_account_id = response_json.get("id")
     logging.info(
         "The response of Add existing Membership card (POST) is:\n\n"
         + Endpoint.BASE_URL
@@ -882,7 +882,7 @@ def verify_membership_card_added_already(merchant, status_code):
         + "\n\n"
         + json.dumps(response_json, indent=4)
     )
-    assert response.status_code == 200, "Add existing membership card for " + merchant + " failed"
+    assert response.status_code == 409, "Add existing membership card for " + merchant + " failed"
 
 
 @when(
@@ -1271,7 +1271,7 @@ def verify_add_and_auth_existing_membership_card(merchant, status_code_returned)
     time.sleep(3)
     response = MembershipCards.add_and_authorise_card_with_existing_scheme(TestContext.token, merchant)
     response_json = response_to_json(response)
-    TestContext.current_scheme_account_id = response_json.get("id")
+    # TestContext.current_scheme_account_id = response_json.get("id")
     TestContext.response_status_code = response.status_code
     logging.info(
         "The response of Add and Authorise existing scheme Journey (POST) is:\n\n"

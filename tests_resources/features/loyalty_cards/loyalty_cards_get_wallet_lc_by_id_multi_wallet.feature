@@ -73,7 +73,7 @@ Feature: View Wallet by LC id in different channel
 #      |HarveyNichols  |200                  |master               |
 
 
-  @wallet_by_lc_id_same_channel_valid_invalid @add_and_auth_multi_wallet @testnpp
+  @wallet_by_lc_id_same_channel_valid_invalid @add_and_auth_multi_wallet
   Scenario Outline: View two wallet by LC id of same channel when LC1 is auth and LC2 is unauth
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token

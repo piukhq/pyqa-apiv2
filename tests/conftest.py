@@ -27,6 +27,8 @@ from tests.requests.token_b2b import Token_b2b
 def pytest_bdd_step_error(request, feature, scenario, step, step_func, step_func_args, exception):
     """This function will log the failed BDD-Step at the end of logs"""
     logging.error(f"Step failed: {step}")
+    delete_scheme_account()
+    delete_payment_card()
     delete_user()
 
 
