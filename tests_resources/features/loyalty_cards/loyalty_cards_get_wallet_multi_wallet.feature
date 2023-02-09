@@ -120,7 +120,7 @@ Feature: View Wallets
 #      |HarveyNichols  |200                  |master               |
 
 
-  @same_channel_multi_wallet_valid_invalid @add_and_auth_multi_wallet @testnpp
+  @same_channel_multi_wallet_valid_invalid @add_and_auth_multi_wallet
   Scenario Outline: View two wallet of same channel when LC1 auth and LC2 unauth
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
