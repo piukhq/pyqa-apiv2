@@ -41,6 +41,35 @@ class IcelandCard:
         return payload
 
     @staticmethod
+    def add_field_only_transactions_membership_card_payload(invalid_request=None):
+        if invalid_request:
+            payload = {}
+        else:
+            TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS2_CARD)
+            payload = {
+                "account": {
+                    "add_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "card_number",
+                                "value": TestContext.card_number,
+                            }
+                        ]
+                    }
+                },
+                "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("iceland"),
+            }
+
+        logging.info(
+            "The Request for Add_field only with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_ADD
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
     def add_field_only_membership_card_payload_with_existing_id():
         payload = {
             "account": {
@@ -389,6 +418,101 @@ class IcelandCard:
                     },
                 },
             }
+        logging.info(
+            "The Request for Authorise field only with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE.format(TestContext.current_scheme_account_id)
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
+    def authorise_field_only_transactions_membership_card_payload(invalid_data=None):
+        TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS2_CARD)
+        if invalid_data == "invalid_request":
+            payload = {}
+        elif invalid_data == "invalid_json":
+            payload = {
+                "account": {
+                    "add_fields": {
+                        "credentials": [{"credential_slug": "card_number", "value": TestContext.card_number}]
+                    },
+                    "authorise_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": '"last_name"',
+                                "value": TestDataUtils.TEST_DATA.iceland_membership_card.get(
+                                    constants.TRANSACTIONS2_LASTNAME
+                                ),
+                            },
+                            {
+                                "credential_slug": '"postcode"',
+                                "value": TestDataUtils.TEST_DATA.iceland_membership_card.get(
+                                    constants.TRANSACTIONS_POSTCODE
+                                ),
+                            },
+                        ]
+                    },
+                }
+            }
+        else:
+            payload = {
+                "account": {
+                    "add_fields": {
+                        "credentials": [{"credential_slug": "card_number", "value": TestContext.card_number}]
+                    },
+                    "authorise_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "last_name",
+                                "value": TestDataUtils.TEST_DATA.iceland_membership_card.get(
+                                    constants.TRANSACTIONS2_LASTNAME
+                                ),
+                            },
+                            {
+                                "credential_slug": "postcode",
+                                "value": TestDataUtils.TEST_DATA.iceland_membership_card.get(
+                                    constants.TRANSACTIONS_POSTCODE
+                                ),
+                            },
+                        ]
+                    },
+                },
+            }
+        logging.info(
+            "The Request for Authorise field only with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE.format(TestContext.current_scheme_account_id)
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
+    def authorise_field_only_unauthorised_json_payload():
+        TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS2_CARD)
+        payload = {
+            "account": {
+                "add_fields": {"credentials": [{"credential_slug": "card_number", "value": TestContext.card_number}]},
+                "authorise_fields": {
+                    "credentials": [
+                        {
+                            "credential_slug": "last_name",
+                            "value": TestDataUtils.TEST_DATA.iceland_membership_card.get(
+                                constants.TRANSACTIONS2_UNAUTH_LASTNAME
+                            ),
+                        },
+                        {
+                            "credential_slug": "postcode",
+                            "value": TestDataUtils.TEST_DATA.iceland_membership_card.get(
+                                constants.TRANSACTIONS_POSTCODE
+                            ),
+                        },
+                    ]
+                },
+            },
+        }
         logging.info(
             "The Request for Authorise field only with :\n"
             + Endpoint.BASE_URL
