@@ -48,9 +48,9 @@ master_payment_card = {
     "issuer": "HSBC",
     "issuer_updated": "LLOYDS",
     "token": "pytest24011",
-    "last_four_digits": "4444",
-    "first_six_digits": "555555",
-    "fingerprint": "pytest2002",
+    "last_four_digits": "5844",
+    "first_six_digits": "528673",
+    "fingerprint": "pytestversion2test",
     # "provider": "MasterCard",
     "type": "debit",
     "country": "GB",
@@ -78,7 +78,7 @@ iceland_membership_card = {
     "transactions_card": "6332040000000000007",
     "barcode": "6332040000300000003",
     "transactions_card_last_name": "perfuser07",
-    "transactions_postcode": "rg55aa",
+    "transactions_postcode": "rg5 5aa",
     "transactions2_card": "6332040012312354321",
     "transactions2_lastname": "testuser",
     "transactions2_unauth_lastname": "error",
@@ -126,8 +126,8 @@ wasabi_membership_card = {
     "card_num": "1048175295",
     # "transactions_card": "1048171268",
     # "transactions_email": "binktestuser10@wasabi.com",
-    "transactions_card": "1048172852",
-    "transactions_email": "binktestuser14@wasabi.com",
+    "transactions_card": "1048172996",
+    "transactions_email": "binktestauto01@wasabi.com",
     "email": "binktestuser19@wasabi.com",
     "invalid_email": "fail@unknown.com",
     "unauthorised_email": "invalidemail@testbink.com",
@@ -273,7 +273,7 @@ wallet_info = {
             "card": {
                 "barcode": None,
                 "barcode_type": None,
-                "card_number": "1048172852",
+                "card_number": "1048172996",
                 "colour": "#ccd400",
                 "text_colour": "#000000",
             },
@@ -629,7 +629,7 @@ wallet_info = {
             "type": "debit",
             "currency_code": "GBP",
             "country": "GB",
-            "last_four_digits": "4444",
+            "last_four_digits": "5844",
             "images": [
                 {
                     "id": 2,
@@ -721,7 +721,7 @@ wallet_overview_info = {
             "card": {
                 "barcode": None,
                 "barcode_type": None,
-                "card_number": "1048172852",
+                "card_number": "1048172996",
                 "colour": "#ccd400",
                 "text_colour": "#000000",
             },
@@ -858,7 +858,7 @@ wallet_overview_info = {
             "type": "debit",
             "currency_code": "GBP",
             "country": "GB",
-            "last_four_digits": "4444",
+            "last_four_digits": "5844",
             "images": [
                 {
                     "id": 2,
@@ -1493,7 +1493,7 @@ unauth_wallet_info = {
             "type": "debit",
             "currency_code": "GBP",
             "country": "GB",
-            "last_four_digits": "4444",
+            "last_four_digits": "5844",
             "images": [
                 {
                     "id": 2,
@@ -1656,7 +1656,7 @@ unauth_wallet_overview_info = {
             "type": "debit",
             "currency_code": "GBP",
             "country": "GB",
-            "last_four_digits": "4444",
+            "last_four_digits": "5844",
             "images": [
                 {
                     "id": 2,

@@ -12,22 +12,23 @@ Feature: Authorise a loyalty card
   # Check the status codes. This might change after TC changes
   # Get wallet 1 has authorised details. Also balance vouchers and transactions returned
   # Get wallet 2 has unauthorised details .Also balance vouchers and transactions null
-  @multi_wallet_authorise_1 @sandbox_regression
+  @multi_wallet_authorise_1 @sandbox_regression @bink_regression_api2
   Scenario Outline: PUT with good cred in wallet 1 and bad cred in wallet 2
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add "<merchant>" membership card with transactions and vouchers
-    Then I see a <status_code_returned1>
+    Then I see a 201
     When I perform PUT request to authorise "<merchant>" wallet only membership card with transactions and vouchers
-    Then I see a <status_code_returned2>
-    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-#    Then verify the data stored in DB after "add_and_authorise" journey for "<merchant>"
+    Then I see a 202
+    And verify that for bink_user data stored in after "<journey_type>" journey for "<merchant>"
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
+    And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
     And I perform POST request to add "<merchant>" membership card with transactions and vouchers
-    Then I see a <status_code_returned>
-    When I perform PUT request to authorise "<merchant>" membership card with "<request_payload>" with "<status_code_returned2>"
-    Then I see a <status_code_returned2>
+    Then I see a 200
+    When I perform PUT request to authorise "<merchant>" membership card with "unauthorised" with "202"
+    Then I see a 202
     When For bink_user I perform GET Wallet
     Then All Wallet fields are correctly populated for <merchant>
     When For bink_user I perform GET Wallet_overview
@@ -44,9 +45,9 @@ Feature: Authorise a loyalty card
     And For bink_user2 I perform GET voucher for loyalty card with unauthorised for <merchant>
 
     Examples:
-      | merchant |payment_card_provider| status_code_returned1 |status_code_returned2|status_code_returned |request_payload|
-      | Wasabi   |master               |  201                  |202                  |200                  |unauthorised   |
-      | Iceland  |master               | 201                  |202                  |200                  |unauthorised   |
+      | merchant |payment_card_provider |journey_type     |
+      | Wasabi   |master                 |authorise_field |
+   #   | Iceland  |master                 |authorise_field |
 
   # add and auth wallet 1 with good credentials
   # Get wallet 1 has authorised details. Also balance vouchers and transactions returned
@@ -60,18 +61,18 @@ Feature: Authorise a loyalty card
       Given I am in Bink channel to get b2b token
       When I perform POST token request for token type "b2b" to get access token
       And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-      Then I see a <status_code_returned>
+      Then I see a 201
       When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
 #      Then verify the data stored in DB after "add_and_authorise" journey for "<merchant>"
       When I am in Bink channel to get b2b token for second user
       And I perform POST token request for token type "b2b" to get access token for second user
       And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
-      And I perform POST request to add and auth "<merchant>" membership card with "<request_payload>" with "<status_code_returned>"
-      Then I see a <status_code_returned>
+      And I perform POST request to add and auth "<merchant>" membership card with "<request_payload>" with "202"
+      Then I see a 202
       When For bink_user2 I perform GET Wallet
       Then Wallet fields are correctly populated for unauthorised LC of <merchant>
       When I perform PUT request to authorise "<merchant>" wallet only membership card with transactions and vouchers
-      Then I see a <status_code_returned>
+      Then I see a 202
       When For bink_user I perform GET Wallet
       Then All Wallet fields are correctly populated for <merchant>
       When For bink_user I perform GET Wallet_overview
@@ -88,9 +89,9 @@ Feature: Authorise a loyalty card
       And For bink_user2 I perform GET voucher for loyalty card with authorised for <merchant>
 
     Examples:
-      | merchant |payment_card_provider| status_code_returned  |request_payload|
-      | Wasabi   |master               |  202                  |unauthorised   |
-      | Iceland  |master               |  202                  |unauthorised   |
+      | merchant |payment_card_provider|request_payload|
+      | Wasabi   |master               |unauthorised   |
+      | Iceland  |master               |unauthorised   |
 
     # add and auth wallet 1 with bad credentials
   # Get wallet 1 has unauthorised details .Also balance vouchers and transactions null

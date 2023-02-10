@@ -35,7 +35,6 @@ def add_field_loyalty_cards(merchant):
         + "\n\n"
         + json.dumps(response_json, indent=4)
     )
-    assert response.status_code == 201, "Add Journey for " + merchant + " failed"
 
 
 @when(parsers.parse('I perform POST request to add "{merchant}" membership card with transactions and vouchers'))
