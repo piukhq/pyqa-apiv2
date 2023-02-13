@@ -42,9 +42,44 @@ class SquareMealCard:
     @staticmethod
     def add_loyalty_card_trusted_payload(invalid_data=None):
         TestContext.email = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.EMAIL)
+        TestContext.email2 = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.EMAIL2)
         TestContext.password = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.PASSWORD)
         if invalid_data == "invalid_request":
             payload = {}
+        elif invalid_data == "email2":
+            payload = {
+                "account": {
+                    "authorise_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "email",
+                                "value": TestContext.email2,
+                            }
+                        ]
+                    },
+                    "merchant_fields": {
+                        "account_id": TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.MERCHANT_ID),
+                    },
+                },
+                "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("square_meal"),
+            }
+        elif invalid_data == "merchantid2":
+            payload = {
+                "account": {
+                    "authorise_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "email",
+                                "value": TestContext.email,
+                            }
+                        ]
+                    },
+                    "merchant_fields": {
+                        "account_id": TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.MERCHANT_ID2),
+                    },
+                },
+                "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("square_meal"),
+            }
         elif invalid_data == "invalid_json":
             payload = {
                 "account": {

@@ -545,11 +545,6 @@ def verify_existing_payment_account_field_with_empty_field(payment_card_provider
     TestContext.error_slug = response.json().get("error_slug")
 
 
-@when(parsers.parse('I perform POST request to add trusted channel "{merchant}" loyalty card'))
-def add_trusted_loyalty_card(merchant):
-    test_loyalty_cards.add_field_loyalty_card_trusted(merchant)
-
-
 @when(parsers.parse("I perform put request with {request_payload} to update trusted_add for {merchant}"))
 def put_trusted_add(request_payload, merchant):
     test_loyalty_cards.put_trusted_add(request_payload, merchant)

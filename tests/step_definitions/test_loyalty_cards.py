@@ -76,7 +76,13 @@ def add_field_loyalty_card_trusted(merchant):
     )
 )
 def verify_invalid_request_for_add_trusted_journey(merchant, request_payload, status_code):
-    if request_payload == "invalid_request":
+    if request_payload == "email2" or request_payload == "merchantid2":
+        response = MembershipCards.add_loyalty_card_trusted(TestContext.token, merchant, request_payload)
+        response_json = response_to_json(response)
+        TestContext.response_status_code = response.status_code
+        TestContext.error_message = response_json["error_message"]
+        TestContext.error_slug = response_json["error_slug"]
+    elif request_payload == "invalid_request":
         response = MembershipCards.add_loyalty_card_trusted(TestContext.token, merchant, request_payload)
         response_json = response_to_json(response)
         TestContext.response_status_code = response.status_code

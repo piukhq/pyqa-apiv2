@@ -529,6 +529,7 @@ class IcelandCard:
             payload = {}
         else:
             # TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_CARD)
+
             payload = {
                 "account": {
                     "add_fields": {
@@ -543,7 +544,12 @@ class IcelandCard:
                         "credentials": [
                             {"credential_slug": "title", "value": constants.TITLE},
                             {"credential_slug": "first_name", "value": faker.name()},
-                            {"credential_slug": "last_name", "value": faker.name()},
+                            {
+                                "credential_slug": "last_name",
+                                "value": TestDataUtils.TEST_DATA.iceland_membership_card.get(
+                                    constants.REGISTER_LASTNAME
+                                ),
+                            },
                             {"credential_slug": "date_of_birth", "value": constants.DATE_OF_BIRTH},
                             {"credential_slug": "email", "value": email},
                             {"credential_slug": "phone", "value": faker.phone_number()},

@@ -72,7 +72,8 @@ iceland_membership_card = {
     "card_num": "6332040000300000003",
     # "register_card": "6332040000400000011",
     "unauthorised_last_name": "invalidlastname",
-    "register_card": "6332040031231230002",
+    "register_card": "6633204006543210000",
+    "register_lastname":"ghostcard_success",
     "register_failed_card": "6332040065432156789",
     "register_failed_email": "generalerror@testbink.com",
     "transactions_card": "6332040000000000007",
@@ -142,6 +143,7 @@ wasabi_membership_card = {
 square_meal_membership_card = {
     "card_num": "10050000",
     "email": "pytest+auto1@testbink.com",
+    "email2": "pytest+auto2@testbink.com",
     "password": "passauto01",
     "transactions_card": "10010012",
     "transactions_email": "pytest+smauto02@bink.com",
@@ -154,6 +156,7 @@ square_meal_membership_card = {
     "currency": "points",
     "description": "",
     "merchant_id": "qa_test_01",
+    "merchant_id2": "qa_test_02",
     "transactions": "3",
     "transaction_status": "active",
     "transaction_currency": "points",
@@ -967,7 +970,7 @@ wallet_info_by_card_id = {
         "card": {
             "barcode": None,
             "barcode_type": None,
-            "card_number": "1048172852",
+            "card_number": "1048172996",
             "colour": "#ccd400",
             "text_colour": "#000000",
         },
@@ -1334,7 +1337,7 @@ unauth_wallet_info = {
             "card": {
                 "barcode": None,
                 "barcode_type": None,
-                # "card_number": "1048172852",
+                # "card_number": "1048172996",
                 "colour": "#ccd400",
                 "text_colour": "#000000",
             },
@@ -1589,7 +1592,7 @@ unauth_wallet_overview_info = {
             "card": {
                 "barcode": None,
                 "barcode_type": None,
-                # "card_number": "1048172852",
+                # "card_number": "1048172996",
                 "colour": "#ccd400",
                 "text_colour": "#000000",
             },
