@@ -73,7 +73,7 @@ iceland_membership_card = {
     # "register_card": "6332040000400000011",
     "unauthorised_last_name": "invalidlastname",
     "register_card": "6633204006543210000",
-    "register_lastname":"ghostcard_success",
+    "register_lastname": "ghostcard_success",
     "register_failed_card": "6332040065432156789",
     "register_failed_email": "generalerror@testbink.com",
     "transactions_card": "6332040000000000007",
