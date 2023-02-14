@@ -2277,7 +2277,7 @@ register_scheme_status = {
         "card": {
             "barcode": None,
             "barcode_type": 0,
-            "card_number": "6332040065432156789",
+            "card_number": "6633204006543210000",
             "colour": "#d50724",
             "text_colour": "#FFFFFF",
         },
@@ -2303,9 +2303,9 @@ register_scheme_status = {
         "transactions": [],
         "vouchers": [],
         "card": {
-            # "barcode": "63320400739573552780080",
+            "barcode": "66332040065432100000080",
             "barcode_type": 0,
-            # "card_number": "6332040073957355278",
+            "card_number": "6633204006543210000",
             "colour": "#d50724",
             "text_colour": "#FFFFFF",
         },

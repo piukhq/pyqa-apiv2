@@ -88,41 +88,89 @@ Feature: Add and register a loyalty card
       | Iceland  | 401                  | Supplied token is invalid | INVALID_TOKEN |
 
 
-    @add_and_register_multi_wallet @bink_regression_api2 @trusted
-  Scenario Outline: Add existing card again into different wallet via add and register
+  @add_and_register_success_multi_wallet @bink_regression_api2 @trusted @testnp1402
+  Scenario Outline: add and register success in wallet1 then add and register success in wallet2
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request add and register for <merchant>
     And I perform POST request to add a new "master" payment account to wallet
-    And I perform GET Wallet
+    And For bink_user I perform GET Wallet
     Then Verify Wallet fields for <merchant> with registration_success
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request add_and_register again for <merchant>
-    Then I see a <status_code_returned>
-    And I see a "<error_message>" error message
-    And I see a "<error_slug>" error slug
+    And I perform POST request to add a new "master" payment account to wallet
+    And For bink_user2 I perform GET Wallet
+    Then Verify Wallet fields for <merchant> with registration_success
+    When For bink_user I perform GET Wallet
+    Then Verify Wallet fields for <merchant> with registration_success
+
 
     Examples:
-      | merchant | status_code_returned | error_message                                                                                          | error_slug         |
-      | Iceland  | 409                  | Card is already registered. Use POST /loyalty_cards/add_and_authorise to add this card to your wallet. | ALREADY_REGISTERED |
+      | merchant |
+      | Iceland  |
 
-
-  @register_failed_card_multi_wallet @bink_regression_api2 @trusted
-  Scenario Outline: Wallet1 add and register failed, wallet2 add and register same card with correct details
+  @register_failed_card_multi_wallet @bink_regression_api2 @trusted @testnp1402
+  Scenario Outline: add and register failed in wallet1 then add and register success in wallet2
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to result failed add and register for <merchant>
     And I perform POST request to add a new "master" payment account to wallet
-    And I perform GET Wallet
+    And For bink_user I perform GET Wallet
     Then Verify Wallet fields for <merchant> with <scheme_state>
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request add_and_register again for <merchant>
-    Then I see a <status_code_returned>
-    And I see a "<error_message>" error message
-    And I see a "<error_slug>" error slug
+    And I perform POST request to add a new "master" payment account to wallet
+    And For bink_user2 I perform GET Wallet
+    Then Verify Wallet fields for <merchant> with registration_success
+    When For bink_user I perform GET Wallet
+    Then Verify Wallet fields for <merchant> with <scheme_state>
 
     Examples:
-      | merchant | status_code_returned | scheme_state       |error_message|error_slug|
-      | Iceland  | 409                  | registration_failed|Card cannot be registered at this time.|REGISTRATION_ERROR|
+      | merchant |  scheme_state      |
+      | Iceland  | registration_failed|
+
+
+  @register_success_failed_multi_wallet @bink_regression_api2 @trusted @testnp1402
+  Scenario Outline: add and register success in wallet1 then add and register failed in wallet2
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request add and register for <merchant>
+    And I perform POST request to add a new "master" payment account to wallet
+    And For bink_user I perform GET Wallet
+    Then Verify Wallet fields for <merchant> with registration_success
+    When I am in Bink channel to get b2b token for second user
+    And I perform POST token request for token type "b2b" to get access token for second user
+    And I perform POST request to result failed add and register for <merchant>
+    And I perform POST request to add a new "master" payment account to wallet
+    And For bink_user2 I perform GET Wallet
+    Then Verify Wallet fields for <merchant> with <scheme_state>
+    When For bink_user I perform GET Wallet
+    Then Verify Wallet fields for <merchant> with registration_success
+
+    Examples:
+      | merchant |  scheme_state      |
+      | Iceland  | registration_failed|
+
+
+  @register_failed_failed_multi_wallet @bink_regression_api2 @trusted @testnp1402
+  Scenario Outline: add and register failed in wallet1 then add and register failed in wallet2
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to result failed add and register for <merchant>
+    And I perform POST request to add a new "master" payment account to wallet
+    And For bink_user I perform GET Wallet
+    Then Verify Wallet fields for <merchant> with <scheme_state>
+    When I am in Bink channel to get b2b token for second user
+    And I perform POST token request for token type "b2b" to get access token for second user
+    And I perform POST request to result failed add and register for <merchant>
+    And I perform POST request to add a new "master" payment account to wallet
+    And For bink_user2 I perform GET Wallet
+    Then Verify Wallet fields for <merchant> with <scheme_state>
+    When For bink_user I perform GET Wallet
+    Then Verify Wallet fields for <merchant> with <scheme_state>
+
+    Examples:
+      | merchant |  scheme_state      |
+      | Iceland  | registration_failed|
