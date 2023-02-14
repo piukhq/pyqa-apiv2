@@ -622,3 +622,8 @@ def unauthorised_add_and_auth(merchant, membership_card, request_payload, status
     test_loyalty_cards.verify_invalid_request_for_add_and_auth_journey(
         merchant, membership_card, request_payload, status_code
     )
+
+
+@when(parsers.parse('I perform POST request to add trusted channel "{merchant}" loyalty card'))
+def tc_add(merchant):
+    test_loyalty_cards.add_field_loyalty_card_trusted(merchant)
