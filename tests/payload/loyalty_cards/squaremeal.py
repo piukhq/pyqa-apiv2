@@ -42,9 +42,44 @@ class SquareMealCard:
     @staticmethod
     def add_loyalty_card_trusted_payload(invalid_data=None):
         TestContext.email = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.EMAIL)
+        TestContext.email2 = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.EMAIL2)
         TestContext.password = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.PASSWORD)
         if invalid_data == "invalid_request":
             payload = {}
+        elif invalid_data == "email2":
+            payload = {
+                "account": {
+                    "authorise_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "email",
+                                "value": TestContext.email2,
+                            }
+                        ]
+                    },
+                    "merchant_fields": {
+                        "account_id": TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.MERCHANT_ID),
+                    },
+                },
+                "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("square_meal"),
+            }
+        elif invalid_data == "merchantid2":
+            payload = {
+                "account": {
+                    "authorise_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "email",
+                                "value": TestContext.email,
+                            }
+                        ]
+                    },
+                    "merchant_fields": {
+                        "account_id": TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.MERCHANT_ID2),
+                    },
+                },
+                "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("square_meal"),
+            }
         elif invalid_data == "invalid_json":
             payload = {
                 "account": {
@@ -174,7 +209,7 @@ class SquareMealCard:
         return payload
 
     @staticmethod
-    def add_and_authorise_transactions_card_payload():
+    def add_and_authorise_transactions_card_payload(card=None):
         TestContext.email = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.TRANSACTIONS_EMAIL)
         TestContext.password = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.TRANSACTIONS_PASSWORD)
         payload = {
@@ -263,7 +298,7 @@ class SquareMealCard:
         return payload
 
     @staticmethod
-    def add_and_auth_field_only_membership_card_with_unauthorised_json():
+    def add_and_auth_field_only_membership_card_with_unauthorised_json(card=None):
         TestContext.email = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.EMAIL)
         TestContext.password = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.INVALID_PASSWORD)
         payload = {
@@ -433,13 +468,13 @@ class SquareMealCard:
                         "credentials": [
                             {"credential_slug": '"first_name"', "value": faker.name()},
                             {"credential_slug": '"last_name"', "value": faker.name()},
-                            {"credential_slug": "date_of_birth", "value": "01/01/2000"},
                             {"credential_slug": "email", "value": email},
+                            {"credential_slug": "password", "value": "testpass"},
                         ],
-                        "consents": [{"consent_slug": "EmailOptin", "value": constants.CONSENT}],
+                        "consents": [{"consent_slug": "Subscription", "value": constants.CONSENT}],
                     },
                 },
-                "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi"),
+                "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("square_meal"),
             }
         else:
             payload = {
@@ -448,13 +483,13 @@ class SquareMealCard:
                         "credentials": [
                             {"credential_slug": "first_name", "value": faker.name()},
                             {"credential_slug": "last_name", "value": faker.name()},
-                            {"credential_slug": "date_of_birth", "value": "01/01/2000"},
                             {"credential_slug": "email", "value": email},
+                            {"credential_slug": "password", "value": "testpass"},
                         ],
-                        "consents": [{"consent_slug": "EmailOptin", "value": constants.CONSENT}],
+                        "consents": [{"consent_slug": "Subscription", "value": constants.CONSENT}],
                     },
                 },
-                "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi"),
+                "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("square_meal"),
             }
 
         logging.info(

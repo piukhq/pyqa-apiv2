@@ -155,4 +155,4 @@ Feature: update loyalty card in Trusted channel
 
     Examples:
       |status_code_returned| error_message                     |error_slug        |merchant| request_payload|
-      |409                  |A loyalty card with this account_id has already been added in another wallet, but the key credential does not match.|CONFLICT| SquareMeal |conflict|
+      |409                  |A loyalty card with this account_id has already been added in a wallet, but the key credential does not match.|CONFLICT| SquareMeal |conflict|

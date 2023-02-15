@@ -41,6 +41,35 @@ class IcelandCard:
         return payload
 
     @staticmethod
+    def add_field_only_transactions_membership_card_payload(invalid_request=None):
+        if invalid_request:
+            payload = {}
+        else:
+            TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS2_CARD)
+            payload = {
+                "account": {
+                    "add_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "card_number",
+                                "value": TestContext.card_number,
+                            }
+                        ]
+                    }
+                },
+                "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("iceland"),
+            }
+
+        logging.info(
+            "The Request for Add_field only with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_ADD
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
     def add_field_only_membership_card_payload_with_existing_id():
         payload = {
             "account": {
@@ -172,9 +201,17 @@ class IcelandCard:
             return payload
 
     @staticmethod
-    def add_and_authorise_transactions_card_payload():
-        TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS_CARD)
-        TestContext.last_name = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS_LAST_NAME)
+    def add_and_authorise_transactions_card_payload(card):
+        if card == "transactions and vouchers":
+            TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS_CARD)
+            TestContext.last_name = TestDataUtils.TEST_DATA.iceland_membership_card.get(
+                constants.TRANSACTIONS_LAST_NAME
+            )
+        elif card == "transaction2_card":
+            TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS2_CARD)
+            TestContext.last_name = TestDataUtils.TEST_DATA.iceland_membership_card.get(
+                constants.TRANSACTIONS2_LASTNAME
+            )
         TestContext.postcode = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS_POSTCODE)
 
         payload = {
@@ -288,9 +325,17 @@ class IcelandCard:
         return payload
 
     @staticmethod
-    def add_and_auth_field_only_membership_card_with_unauthorised_json():
-        TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS_CARD)
-        TestContext.last_name = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.UNAUTHORISED_LAST_NAME)
+    def add_and_auth_field_only_membership_card_with_unauthorised_json(membership_card=None):
+        if membership_card == "membership card":
+            TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS_CARD)
+            TestContext.last_name = TestDataUtils.TEST_DATA.iceland_membership_card.get(
+                constants.UNAUTHORISED_LAST_NAME
+            )
+        elif membership_card == "transaction2_unauth_card":
+            TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS2_CARD)
+            TestContext.last_name = TestDataUtils.TEST_DATA.iceland_membership_card.get(
+                constants.TRANSACTIONS2_UNAUTH_LASTNAME
+            )
         TestContext.postcode = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS_POSTCODE)
 
         payload = {
@@ -383,12 +428,108 @@ class IcelandCard:
         return payload
 
     @staticmethod
+    def authorise_field_only_transactions_membership_card_payload(invalid_data=None):
+        TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS2_CARD)
+        if invalid_data == "invalid_request":
+            payload = {}
+        elif invalid_data == "invalid_json":
+            payload = {
+                "account": {
+                    "add_fields": {
+                        "credentials": [{"credential_slug": "card_number", "value": TestContext.card_number}]
+                    },
+                    "authorise_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": '"last_name"',
+                                "value": TestDataUtils.TEST_DATA.iceland_membership_card.get(
+                                    constants.TRANSACTIONS2_LASTNAME
+                                ),
+                            },
+                            {
+                                "credential_slug": '"postcode"',
+                                "value": TestDataUtils.TEST_DATA.iceland_membership_card.get(
+                                    constants.TRANSACTIONS_POSTCODE
+                                ),
+                            },
+                        ]
+                    },
+                }
+            }
+        else:
+            payload = {
+                "account": {
+                    "add_fields": {
+                        "credentials": [{"credential_slug": "card_number", "value": TestContext.card_number}]
+                    },
+                    "authorise_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "last_name",
+                                "value": TestDataUtils.TEST_DATA.iceland_membership_card.get(
+                                    constants.TRANSACTIONS2_LASTNAME
+                                ),
+                            },
+                            {
+                                "credential_slug": "postcode",
+                                "value": TestDataUtils.TEST_DATA.iceland_membership_card.get(
+                                    constants.TRANSACTIONS_POSTCODE
+                                ),
+                            },
+                        ]
+                    },
+                },
+            }
+        logging.info(
+            "The Request for Authorise field only with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE.format(TestContext.current_scheme_account_id)
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
+    def authorise_field_only_unauthorised_json_payload():
+        TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS2_CARD)
+        payload = {
+            "account": {
+                "add_fields": {"credentials": [{"credential_slug": "card_number", "value": TestContext.card_number}]},
+                "authorise_fields": {
+                    "credentials": [
+                        {
+                            "credential_slug": "last_name",
+                            "value": TestDataUtils.TEST_DATA.iceland_membership_card.get(
+                                constants.TRANSACTIONS2_UNAUTH_LASTNAME
+                            ),
+                        },
+                        {
+                            "credential_slug": "postcode",
+                            "value": TestDataUtils.TEST_DATA.iceland_membership_card.get(
+                                constants.TRANSACTIONS_POSTCODE
+                            ),
+                        },
+                    ]
+                },
+            },
+        }
+        logging.info(
+            "The Request for Authorise field only with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE.format(TestContext.current_scheme_account_id)
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
     def add_and_register_membership_card(email=None, invalid_request=None):
         faker = Faker()
         if invalid_request:
             payload = {}
         else:
             # TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_CARD)
+
             payload = {
                 "account": {
                     "add_fields": {
@@ -403,7 +544,12 @@ class IcelandCard:
                         "credentials": [
                             {"credential_slug": "title", "value": constants.TITLE},
                             {"credential_slug": "first_name", "value": faker.name()},
-                            {"credential_slug": "last_name", "value": faker.name()},
+                            {
+                                "credential_slug": "last_name",
+                                "value": TestDataUtils.TEST_DATA.iceland_membership_card.get(
+                                    constants.REGISTER_LASTNAME
+                                ),
+                            },
                             {"credential_slug": "date_of_birth", "value": constants.DATE_OF_BIRTH},
                             {"credential_slug": "email", "value": email},
                             {"credential_slug": "phone", "value": faker.phone_number()},

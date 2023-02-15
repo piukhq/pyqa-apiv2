@@ -80,17 +80,17 @@ Feature: View Wallets overview
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform POST request to add and authorise "<merchant>" membership card with transaction2_card
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
-    And I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
+    And I perform POST request to add and auth "<merchant>" transaction2_unauth_card with "unauthorised" with "202"
     And For bink_user2 I perform GET Wallet_overview
     Then I see a <status_code_returned>
     And Wallet_overview fields are correctly populated for unauthorised LC of <merchant>
     When For bink_user I perform GET Wallet_overview
     Then I see a <status_code_returned>
-    And All Wallet_overview fields are correctly populated for <merchant>
+    Then Wallet_overview fields are correctly populated for <merchant> when lc_in_non_tc
     Examples:
       | merchant      | status_code_returned|payment_card_provider|
       |Wasabi        | 200                  |master              |

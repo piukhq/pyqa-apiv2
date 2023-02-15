@@ -9,7 +9,6 @@ Feature: Add and authorise a loyalty card into Trusted channel
   @add_and_auth_tc @sandbox_regression
   Scenario Outline: Trusted channel adds loyalty card into wallet
     Given I am a squaremeal user
-#    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     When I perform POST request to add trusted channel "<merchant>" loyalty card
     Then I see a 201
     And verify that for squaremeal_user data stored in after "<journey_type>" journey for "<merchant>"
@@ -23,7 +22,7 @@ Feature: Add and authorise a loyalty card into Trusted channel
     Then I see a 200
     Then Wallet_by_card_id fields are correctly populated for <merchant> when lc_in_only_tc
     When For squaremeal_user I perform GET transaction for loyalty card with unauthorised for <merchant>
-#    And For squaremeal_user I perform GET balance for loyalty card with unauthorised for <merchant>
+    And For squaremeal_user I perform GET balance for loyalty card with unauthorised for <merchant>
     And For squaremeal_user I perform GET voucher for loyalty card with unauthorised for <merchant>
 
     Examples:
@@ -63,6 +62,34 @@ Feature: Add and authorise a loyalty card into Trusted channel
     Examples:
       | merchant    | status_code_returned | error_message             | error_slug    |
       | SquareMeal  | 401                  | Supplied token is invalid | INVALID_TOKEN |
+
+    @add_trusted_conflict @sandbox_regression
+  Scenario Outline: 409 Conflict scenario for add trusted card
+    Given I am a squaremeal user
+    When I perform POST request to add trusted channel "<merchant>" loyalty card
+    Then I see a 201
+    When I perform POST request to add trusted channel "<merchant>" loyalty card with "email2" with "409"
+    Then I see a 409
+    Then I see a "<error_message>" error message
+    And I see a "<error_slug>" error slug
+    When I perform POST request to add trusted channel "<merchant>" loyalty card with "merchantid2" with "409"
+    Then I see a 409
+    Then I see a "<error_message2>" error message
+    And I see a "<error_slug>" error slug
+
+    Examples:
+      | merchant     | error_message                                                                                                 |error_message2                                                                                                | error_slug|
+      | SquareMeal   | A loyalty card with this account_id has already been added in a wallet, but the key credential does not match.|A loyalty card with this key credential has already been added in a wallet, but the account_id does not match.|CONFLICT   |
+
+  @add_trusted_forbidden @sandbox_regression
+  Scenario Outline: 403 forbidden when POST trusted add by non trusted user
+    Given I am a Lloyds user
+    When I perform POST request to add trusted channel "<merchant>" loyalty card
+    Then I see a 403
+
+    Examples:
+      | merchant     |
+      | SquareMeal   |
 
   @add_and_auth_ntc_in_tc @sandbox_regression
   Scenario Outline: Trusted channel adds loyalty card into wallet which already exists in Non trusted channel
