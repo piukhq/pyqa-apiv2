@@ -49,3 +49,7 @@ class TestContext:
     flag_encrypt = ""
     channel_name = ""
     environ = ""
+    """Variable used for transaction matching"""
+    mid= ""
+
+

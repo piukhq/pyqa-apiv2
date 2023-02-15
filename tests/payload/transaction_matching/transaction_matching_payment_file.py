@@ -210,7 +210,7 @@ class TransactionMatchingPaymentFileDetails:
     def get_mastercard_auth_data(mid):
         return {
             "amount": TestTransactionMatchingContext.transaction_matching_amount,
-            "currency_code": TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.CURRENCY),
+            "currency_code": TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.CURRENCY_CODE),
             "mid": mid,
             "payment_card_token": PaymentCardTestData.get_data("master").get(constants.TOKEN),
             "third_party_id": base64.b64encode(uuid.uuid4().bytes).decode()[:9],
