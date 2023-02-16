@@ -1,5 +1,5 @@
 # Created by bularaghavan at 05/10/2021
-@membership_card_register @membership_cards
+@membership_card_register @membership_cards @put_register_np
 Feature: Register a loyalty card
   As a Bink user
   I want to add registration credentials to an existing Store card,
@@ -10,7 +10,8 @@ Feature: Register a loyalty card
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add <merchant> membership card before registration_success register
-    And I perform PUT request to register "<merchant>" above wallet only membership card
+    Then I see a 201
+    When I perform PUT request to register "<merchant>" above wallet only membership card
     Then I see a <status_code_returned>
     And verify that for bink_user data stored in after "<journey_type>" journey for "<merchant>"
 
@@ -23,8 +24,10 @@ Feature: Register a loyalty card
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add <merchant> membership card before registration_success register
-    And I perform PUT request to register "<merchant>" above wallet only membership card
-    And I perform PUT request to register "<merchant>" above wallet only membership card again
+    Then I see a 201
+    When I perform PUT request to register "<merchant>" above wallet only membership card
+    Then I see a 202
+    When I perform PUT request to register "<merchant>" above wallet only membership card again
     Then I see a  <status_code_returned>
     And I see a "<error_message>" error message
     And I see a "<error_slug>" error slug
@@ -94,45 +97,80 @@ Feature: Register a loyalty card
   Scenario Outline: Add existing card again into different wallet via put register
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add <merchant> membership card before registration_success register
-    And I perform PUT request to register "<merchant>" above wallet only membership card
     And I perform POST request to add a new "master" payment account to wallet
-    And For bink_user I perform GET Wallet
+    And I perform POST request to add <merchant> membership card before registration_success register
+    Then I see a 201
+    When I perform PUT request to register <merchant> with registration_success membership card
+    Then I see a <status_code_returned>
+    When For bink_user I perform GET Wallet
     Then Verify Wallet fields for <merchant> with registration_success
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
+    And I perform POST request to add a new "master" payment account to wallet
     And I perform POST request to add "<merchant>" membership card already registered
-    And I perform PUT request to register "<merchant>" above wallet only membership card again
+    Then I see a 200
+    When I perform PUT request to register <merchant> with registration_success membership card
     Then I see a <status_code_returned>
-    And I see a "<error_message>" error message
-    And I see a "<error_slug>" error slug
+    When For bink_user2 I perform GET Wallet
+    Then Verify Wallet fields for <merchant> with registration_success
     When For bink_user I perform GET Wallet
     Then Verify Wallet fields for <merchant> with registration_success
 
 
     Examples:
-      | merchant | status_code_returned | error_message                                                                                          | error_slug         |
-      | Iceland  | 409                  | Card is already registered. Use PUT /loyalty_cards/{loyalty_card_id}/authorise to authorise this card in your wallet, or to update authorisation credentials. | ALREADY_REGISTERED |
+      | merchant | status_code_returned |
+      | Iceland  | 202                  |
 
 
   @put_register_failed_multi_wallet @bink_regression_api2 @trusted
   Scenario Outline: Wallet1 add then register failed, wallet2 add then register same card with correct details
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add <merchant> membership card before <scheme_state> register
-    And I perform PUT request to register <merchant> with <scheme_state> membership card
     And I perform POST request to add a new "master" payment account to wallet
-    And I perform GET Wallet
+    And I perform POST request to add <merchant> membership card before <scheme_state> register
+    Then I see a 201
+    When I perform PUT request to register <merchant> with <scheme_state> membership card
+    Then I see a 202
+    When For bink_user I perform GET Wallet
     Then Verify Wallet fields for <merchant> with <scheme_state>
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add a new "master" payment account to wallet
-    And I perform POST request to add "<merchant>" membership card already registered
-    And I perform PUT request to register "<merchant>" above wallet only membership card again
+    And I perform POST request to add <merchant> membership card before registration_success register
+    Then I see a 200
+    When I perform PUT request to register <merchant> with registration_success membership card
+    Then I see a 202
     When For bink_user2 I perform GET Wallet
     Then Verify Wallet fields for <merchant> with registration_success
     When For bink_user I perform GET Wallet
     Then Verify Wallet fields for <merchant> with registration_failed
+
+
+    Examples:
+      | merchant | scheme_state      |
+      | Iceland  |registration_failed|
+
+
+  @put_register_failed_multi_wallet @bink_regression_api2 @trusted @testnpnn
+  Scenario Outline: Wallet1 add then register valid, wallet2 add then register same card with invalid details
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add a new "master" payment account to wallet
+    And I perform POST request to add <merchant> membership card before registration_success register
+    Then I see a 201
+    When I perform PUT request to register "<merchant>" above wallet only membership card
+    Then I see a 202
+    When I am in Bink channel to get b2b token for second user
+    And I perform POST token request for token type "b2b" to get access token for second user
+    And I perform POST request to add a new "master" payment account to wallet
+    And I perform POST request to add <merchant> membership card before <scheme_state> register
+    Then I see a 200
+    When I perform PUT request to register <merchant> with <scheme_state> membership card
+    Then I see a 202
+    When For bink_user2 I perform GET Wallet
+    Then Verify Wallet fields for <merchant> with registration_failed
+    When For bink_user I perform GET Wallet
+    Then Verify Wallet fields for <merchant> with registration_success
 
 
     Examples:
