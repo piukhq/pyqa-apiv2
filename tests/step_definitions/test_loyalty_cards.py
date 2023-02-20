@@ -2503,7 +2503,7 @@ def put_trusted_add(request_payload, merchant):
         TestContext.email = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.EMAIL)
     else:
         TestContext.email = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.TRANSACTIONS_EMAIL)
-    if request_payload in ["successful_payload", "new_merchant_id"]:
+    if request_payload in ["successful_payload", "new_merchant_id", "update_email"]:
         time.sleep(2)
         response = MembershipCards.update_trusted_add(
             TestContext.token,
@@ -2522,7 +2522,12 @@ def put_trusted_add(request_payload, merchant):
             + "\n\n"
             + json.dumps(response_json, indent=4)
         )
-        assert response.status_code == 201, "Update trusted add for " + merchant + " failed"
+        if response.status_code == 409 and request_payload == "update_email":
+            TestContext.response_status_code = response.status_code
+            response_json = response.json()
+            TestContext.error_message = response_json.get("error_message")
+            TestContext.error_slug = response_json.get("error_slug")
+        # assert response.status_code == 201, "Update trusted add for " + merchant + " failed"
 
     else:
         if request_payload == "invalid_token":

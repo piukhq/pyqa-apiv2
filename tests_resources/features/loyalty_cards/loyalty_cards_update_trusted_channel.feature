@@ -98,7 +98,7 @@ Feature: update loyalty card in Trusted channel
 
 
 
-  @put_manual_credential_tc @fix
+  @put_manual_credential_tc
   Scenario Outline: PUT Add_Credential_2 in TC wallet after Add_Credential_1 in wallet 1 and in wallet 2 and Add_Credential_2 does not exist in any other wallet
       Given I am in Bink channel to get b2b token
       When I perform POST token request for token type "b2b" to get access token
@@ -140,8 +140,8 @@ Feature: update loyalty card in Trusted channel
 
 
 
-  @put_tc_conflict @invalid
-  Scenario Outline: Verify conflict request payload
+  @put_tc_conflict_update_merchant_id @invalid
+  Scenario Outline: Verify conflict when merchant id is updated and merchant id is already linked with other card
     Given I am a halifax user
     When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     Then I see a 202
@@ -156,3 +156,34 @@ Feature: update loyalty card in Trusted channel
     Examples:
       |status_code_returned| error_message                     |error_slug        |merchant| request_payload|
       |409                  |A loyalty card with this account_id has already been added in a wallet, but the key credential does not match.|CONFLICT| SquareMeal |conflict|
+
+
+  @put_tc_conflict_update_email @invalid
+  Scenario Outline: Verify conflict when email is updated and email is already linked with other card and merchant id
+    Given I am a halifax user
+    When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    Then I see a 202
+    Given I am a squaremeal user
+    When I perform POST request to add trusted channel "<merchant>" loyalty card
+    Then I see a 201
+    When I perform put request with <request_payload> to update trusted_add for <merchant>
+    Then I see a <status_code_returned>
+    And I see a "<error_message>" error message
+    And I see a "<error_slug>" error slug
+
+    Examples:
+      |status_code_returned| error_message                     |error_slug        |merchant| request_payload|
+      |409                  |A loyalty card with this key credential has already been added in a wallet, but the account_id does not match.|CONFLICT| SquareMeal |update_email|
+
+
+    @put_tc_email_update
+    Scenario Outline: Verify email is updated successfully
+    Given I am a squaremeal user
+    When I perform POST request to add trusted channel "<merchant>" loyalty card
+    Then I see a <status_code_returned>
+    When I perform put request with <request_payload> to update trusted_add for <merchant>
+    Then I see a <status_code_returned>
+
+      Examples:
+      |status_code_returned|merchant|request_payload|
+      |201                 |SquareMeal|update_email |
