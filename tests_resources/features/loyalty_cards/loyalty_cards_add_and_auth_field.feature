@@ -32,10 +32,10 @@ Feature: Add and authorise a loyalty card
 
     Examples:
       | merchant      | status_code_returned | journey_type      |
-      | Iceland       | 200                  | add_and_authorise |
-      | Wasabi        | 200                  | add_and_authorise |
-      | SquareMeal    | 200                  | add_and_authorise |
-      | Trenette      | 200                  | add_and_authorise |
+      | Iceland       | 409                  | add_and_authorise |
+      | Wasabi        | 409                  | add_and_authorise |
+      | SquareMeal    | 409                  | add_and_authorise |
+      | Trenette      | 409                  | add_and_authorise |
 
   @invalid_field_bad_request_add_authorise @bink_regression_api2 @sandbox_regression
   Scenario Outline: Add field journey with Bad request for add and authorise
