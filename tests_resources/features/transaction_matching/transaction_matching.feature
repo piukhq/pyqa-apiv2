@@ -16,4 +16,4 @@ Feature: Merchant SquareMeal - Ensure a customer can use Bink's Transaction Matc
 
     Examples:
    | merchant  | payment_card_provider|     mid       |payment_card_transaction      |
-   | SquareMeal|  visa                |  29047531     |visaauthspotting              |
+   | SquareMeal|  visa                |  29047531     |visa-auth-spotting              |

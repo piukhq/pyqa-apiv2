@@ -7,7 +7,7 @@ import pytz
 from pytest_bdd import parsers, scenarios, then, when
 
 from tests.helpers.test_context import TestContext
-from tests.requests.transaction_matching_payment_cards import  TransactionMatching
+from tests.requests.transaction_matching_payment_cards1 import  TransactionMatching
 from tests.step_definitions import test_loyalty_cards, test_paymentcard_account
 from tests.helpers.test_transaction_matching_context import TestTransactionMatchingContext
 from tests.helpers.database.query_harmonia import QueryHarmonia
@@ -33,9 +33,9 @@ def add_membership_card(merchant):
 @when(parsers.parse('I send matching {payment_card_transaction} {mid} Authorisation'))
 def import_payment_file(payment_card_transaction, mid):
     logging.info(mid)
-    # response = TransactionMatching.import_payment_file(payment_card_transaction,mid)
+    TestContext.mid = mid
     response = TransactionMatching.import_payment_file(payment_card_transaction)
-    TestContext.mid=mid
+
     response_json = response.json()
     logging.info("The response of POST/import Payment File is: \n\n" + json.dumps(response_json, indent=4))
     assert response.status_code == 201 or 200, "Payment file is not successful"
