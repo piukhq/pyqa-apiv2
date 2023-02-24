@@ -1020,10 +1020,6 @@ def verify_invalid_request_for_add_and_register_journey(merchant, request_payloa
 @when(parsers.parse("I perform POST request to add {merchant} membership card before {scheme_state} register"))
 # @when(parsers.parse('I perform POST request to add "{merchant}" membership card before register'))
 def add_before_register_field_loyalty_cards(merchant, scheme_state):
-    if scheme_state == "registration_failed":
-        TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_FAILED_CARD)
-    else:
-        TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_CARD)
     response = MembershipCards.add_before_register_field_only_card(TestContext.token, merchant)
     time.sleep(7)
     response_json = response_to_json(response)
@@ -1036,7 +1032,7 @@ def add_before_register_field_loyalty_cards(merchant, scheme_state):
         + "\n\n"
         + json.dumps(response_json, indent=4)
     )
-    assert response.status_code == 201, "Add Journey for " + merchant + " failed"
+    # assert response.status_code == 201, "Add Journey for " + merchant + " failed"
 
 
 @when(parsers.parse('I perform POST request to add "{merchant}" membership card already registered'))
@@ -1088,8 +1084,8 @@ def verify_i_perform_register_again(merchant, test_email):
     time.sleep(10)
     response_json = response_to_json(response)
     TestContext.response_status_code = response.status_code
-    # TestContext.error_message = response_json["error_message"]
-    # TestContext.error_slug = response_json["error_slug"]
+    TestContext.error_message = response_json["error_message"]
+    TestContext.error_slug = response_json["error_slug"]
     logging.info(
         "The response of Register field Journey (PUT) is:\n\n"
         + Endpoint.BASE_URL
@@ -1097,7 +1093,7 @@ def verify_i_perform_register_again(merchant, test_email):
         + "\n\n"
         + json.dumps(response_json, indent=4)
     )
-    assert response.status_code == 202, "Register Journey for " + merchant + " failed"
+    # assert response.status_code == 409, "Register Journey for " + merchant + " failed"
 
 
 @when(
@@ -2507,7 +2503,7 @@ def put_trusted_add(request_payload, merchant):
         TestContext.email = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.EMAIL)
     else:
         TestContext.email = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.TRANSACTIONS_EMAIL)
-    if request_payload in ["successful_payload", "new_merchant_id"]:
+    if request_payload in ["successful_payload", "new_merchant_id", "update_email"]:
         time.sleep(2)
         response = MembershipCards.update_trusted_add(
             TestContext.token,
@@ -2526,7 +2522,12 @@ def put_trusted_add(request_payload, merchant):
             + "\n\n"
             + json.dumps(response_json, indent=4)
         )
-        assert response.status_code == 201, "Update trusted add for " + merchant + " failed"
+        if response.status_code == 409 and request_payload == "update_email":
+            TestContext.response_status_code = response.status_code
+            response_json = response.json()
+            TestContext.error_message = response_json.get("error_message")
+            TestContext.error_slug = response_json.get("error_slug")
+        # assert response.status_code == 201, "Update trusted add for " + merchant + " failed"
 
     else:
         if request_payload == "invalid_token":

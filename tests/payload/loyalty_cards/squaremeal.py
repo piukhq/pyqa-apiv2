@@ -575,6 +575,22 @@ class SquareMealCard:
                     },
                 }
             }
+        elif request_payload == "update_email":
+            payload = {
+                "account": {
+                    "authorise_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "email",
+                                "value": email,
+                            }
+                        ]
+                    },
+                    "merchant_fields": {
+                        "account_id": TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.MERCHANT_ID),
+                    },
+                }
+            }
         else:
             payload = {}
             logging.info("payload for" + request_payload + "is not defined:")
