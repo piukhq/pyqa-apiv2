@@ -3,6 +3,7 @@ import logging
 import time
 
 from pytest_bdd import parsers, scenarios, then, when
+
 from tests.requests.transaction_matching_payment_cards import TransactionMatching
 from tests.step_definitions import test_loyalty_cards, test_paymentcard_account
 
