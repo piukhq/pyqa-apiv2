@@ -10,10 +10,11 @@ Feature: Merchant SquareMeal - Ensure a customer can use Bink's Transaction Matc
     Given I am a squaremeal user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     When I perform POST request to add and authorise "<merchant>" membership card
+    And  And I perform GET Wallet
     When I send matching <payment_card_transaction> <mid> Authorisation
-#   Then I verify "<payment_card_transaction>","<mid>" and "auth_code" is spotted and exported
+    Then I verify "<payment_card_transaction>","<mid>" and "auth_code" is spotted and exported
 
 
     Examples:
    | merchant  | payment_card_provider|     mid       |payment_card_transaction      |
-   | SquareMeal|  visa                |  29047531     |visa-auth-spotting              |
+   | SquareMeal|  visa                |  29047531     |visa-auth-spotting            |

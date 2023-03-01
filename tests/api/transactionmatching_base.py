@@ -1,19 +1,21 @@
 import json
 import requests
-import config
+import config_txmatching
+import logging
 
 
-class TransactionMatching_Endpoint:
+class TransactionMatchingEndpoint:
     TRANSACTION_MATCHING_BASE_URL = ""
     TRANSACTION_MATCHING_BASE_URL_ZEPHYRUS = ""
 
     @staticmethod
     def set_environment(env):
-        TransactionMatching_Endpoint.TRANSACTION_MATCHING_BASE_URL = getattr(
-            config, env.upper()
+        TransactionMatchingEndpoint.TRANSACTION_MATCHING_BASE_URL = getattr(
+            config_txmatching, env.upper()
         ).transaction_matching_base_url
-        TransactionMatching_Endpoint.TRANSACTION_MATCHING_BASE_URL_ZEPHYRUS = getattr(
-            config, env.upper()
+        logging.info(TransactionMatchingEndpoint.TRANSACTION_MATCHING_BASE_URL)
+        TransactionMatchingEndpoint.TRANSACTION_MATCHING_BASE_URL_ZEPHYRUS = getattr(
+            config_txmatching, env.upper()
         ).transaction_matching_base_url_zephyrus
 
     @staticmethod
