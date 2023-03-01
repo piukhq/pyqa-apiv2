@@ -2,7 +2,7 @@ import logging
 
 import psycopg2
 
-from settings import HERMES_DATABASE_URI, HARMONIA_DATABASE_URI
+from settings import HARMONIA_DATABASE_URI, HERMES_DATABASE_URI
 from tests.helpers.test_data_utils import TestDataUtils
 
 

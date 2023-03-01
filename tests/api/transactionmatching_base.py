@@ -1,7 +1,9 @@
 import json
-import requests
-import config_txmatching
 import logging
+
+import requests
+
+import config_txmatching
 
 
 class TransactionMatchingEndpoint:
