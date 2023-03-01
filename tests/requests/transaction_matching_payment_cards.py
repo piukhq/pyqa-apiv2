@@ -6,7 +6,7 @@ from tests.helpers.database.query_harmonia import QueryHarmonia
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_transaction_matching_context import TestTransactionMatchingContext
 from tests.api.base import Endpoint
-from tests.payload.transaction_matching.transaction_matching_payment_file import TransactionMatchingPaymentFileDetails, \
+from tests.payload.transaction_matching.transaction_matching_payment_file import TransactionMatchingPaymentFileDetails,\
     get_data_to_import
 
 
@@ -32,20 +32,21 @@ class TransactionMatching:
         """ This function will decide which way( API, Blob storage etc.,) the Payment Transaction needs to be
          imported into Harmonia"""
 
-        switcher = {
-            "visa-auth-spotting": TransactionMatching.get_visa_spotting_merchant_auth_file(TestContext.mid),
-            # "amexsettlement": TransactionMatching.get_master_auth_csv(TestContext.mid),
-            # "amexauthspotting":TransactionMatching.get_amex_auth_spotting_file(TestContext.mid),
-        }
-        return switcher.get(transaction_type)
+        # switcher = {
+        #     "visa-auth-spotting": TransactionMatching.get_visa_spotting_merchant_auth_file(TestContext.mid),
+        #     # "amexsettlement": TransactionMatching.get_master_auth_csv(TestContext.mid),
+        #     # "amexauthspotting":TransactionMatching.get_amex_auth_spotting_file(TestContext.mid),
+        # }
+        # return switcher.get(transaction_type)
+        match transaction_type:
+            case "visa-auth-spotting": return TransactionMatching.get_visa_spotting_merchant_auth_file(TestContext.mid)
+            # case "amex-settlement": TransactionMatching.get_master_auth_csv(TestContext.mid)
 
     @staticmethod
     def exported_transaction(transaction_type):
-        """ This function will decide which way( API, Blob storage etc.,) the Payment Transaction needs to be
-         imported into Harmonia"""
-        switcher = {
-            "visa-auth-spotting": QueryHarmonia.fetch_spotted_transaction_count(
-                TestTransactionMatchingContext.transaction_id),
-            # "master-settlement-spotting": TransactionMatching.get_master_auth_csv(TestContext.mid),
-        }
-        return switcher.get(transaction_type)
+        """ This function will return the exported transactions"""
+
+        match transaction_type:
+            case "visa-auth-spotting": return QueryHarmonia.fetch_spotted_transaction_count(
+                TestTransactionMatchingContext.transaction_id)
+            # case _ : return "default function"

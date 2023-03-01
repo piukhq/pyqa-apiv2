@@ -1,18 +1,18 @@
-@transactionMatching @square_meal
+@txm @square_meal
 Feature: Merchant SquareMeal - Ensure a customer can use Bink's Transaction Matching features
   As a customer
   I shopped at a Bink PLL partner that uses transaction matching
   So I can offer a near real time transaction matching service to merchants.
 
-  @transactionMatchingSquareMeal @bink_regression @sanity @test
+  @transactionMatchingSquareMeal @bink_regression @sanity @bink_regression_api2 @test
     Scenario Outline: Verify transaction streaming for squareMeal
 
     Given I am a squaremeal user
-    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    When I perform POST request to add and authorise "<merchant>" membership card
+    When I perform POST request to add a new <payment_card_provider> payment account to wallet
+    When I perform POST request to add and authorise <merchant> membership card
     And  And I perform GET Wallet
     When I send matching <payment_card_transaction> <mid> Authorisation
-    Then I verify "<payment_card_transaction>","<mid>" and "auth_code" is spotted and exported
+    Then I verify <payment_card_transaction>,<mid> is spotted and exported
 
 
     Examples:

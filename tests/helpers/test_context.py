@@ -50,6 +50,4 @@ class TestContext:
     channel_name = ""
     environ = ""
     """Variable used for transaction matching"""
-    mid= ""
-
-
+    mid = ""

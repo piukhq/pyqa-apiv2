@@ -1,16 +1,11 @@
 import json
 import logging
 import time
-from datetime import datetime
-
-import pytz
 from pytest_bdd import parsers, scenarios, then, when
 
 from tests.helpers.test_context import TestContext
 from tests.requests.transaction_matching_payment_cards import TransactionMatching
 from tests.step_definitions import test_loyalty_cards, test_paymentcard_account
-from tests.helpers.test_transaction_matching_context import TestTransactionMatchingContext
-from tests.helpers.database.query_harmonia import QueryHarmonia
 
 scenarios("transaction_matching/")
 
@@ -19,14 +14,14 @@ scenarios("transaction_matching/")
 
 @when(
     parsers.parse(
-        'I perform POST request to add a {payment_status} "{payment_card_provider}" ' "payment account to wallet"
+        'I perform POST request to add a {payment_status} {payment_card_provider} ' "payment account to wallet"
     )
 )
 def add_payment_card(payment_card_provider, payment_status):
     test_paymentcard_account.add_payment_account(payment_card_provider, payment_status)
 
 
-@when(parsers.parse('I perform POST request to add and authorise "{merchant}" membership card'))
+@when(parsers.parse('I perform POST request to add and authorise {merchant} membership card'))
 def add_membership_card(merchant):
     test_loyalty_cards.verify_add_and_auth(merchant)
 
@@ -47,8 +42,8 @@ def import_payment_file(payment_card_transaction, mid):
     return response_json
 
 
-@then(parsers.parse('I verify "{payment_card_transaction}","{mid}" and "{auth_code}" is spotted and exported'))
-def verify_exported_transaction(payment_card_transaction, mid, auth_code):
+@then(parsers.parse('I verify {payment_card_transaction},{mid} is spotted and exported'))
+def verify_exported_transaction(payment_card_transaction, mid):
 
     spotted_transaction_count = TransactionMatching.exported_transaction(payment_card_transaction)
     assert spotted_transaction_count.count == 1, "Transaction not spotted and the status is not exported"
