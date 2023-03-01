@@ -1,6 +1,7 @@
 import json
 import logging
 import time
+
 from pytest_bdd import parsers, scenarios, then, when
 
 from tests.helpers.test_context import TestContext
@@ -14,24 +15,24 @@ scenarios("transaction_matching/")
 
 @when(
     parsers.parse(
-        'I perform POST request to add a {payment_status} {payment_card_provider} ' "payment account to wallet"
+        "I perform POST request to add a {payment_status} {payment_card_provider} " "payment account to wallet"
     )
 )
 def add_payment_card(payment_card_provider, payment_status):
     test_paymentcard_account.add_payment_account(payment_card_provider, payment_status)
 
 
-@when(parsers.parse('I perform POST request to add and authorise {merchant} membership card'))
+@when(parsers.parse("I perform POST request to add and authorise {merchant} membership card"))
 def add_membership_card(merchant):
     test_loyalty_cards.verify_add_and_auth(merchant)
 
 
-@when(parsers.parse('And I perform GET {wallet}'))
+@when(parsers.parse("And I perform GET {wallet}"))
 def verify_wallet(wallet, env, channel):
     test_loyalty_cards.verify_wallet(wallet, env, channel)
 
 
-@when(parsers.parse('I send matching {payment_card_transaction} {mid} Authorisation'))
+@when(parsers.parse("I send matching {payment_card_transaction} {mid} Authorisation"))
 def import_payment_file(payment_card_transaction, mid):
     TestContext.mid = mid
     response = TransactionMatching.import_payment_file(payment_card_transaction)
@@ -42,9 +43,8 @@ def import_payment_file(payment_card_transaction, mid):
     return response_json
 
 
-@then(parsers.parse('I verify {payment_card_transaction},{mid} is spotted and exported'))
+@then(parsers.parse("I verify {payment_card_transaction},{mid} is spotted and exported"))
 def verify_exported_transaction(payment_card_transaction, mid):
-
     spotted_transaction_count = TransactionMatching.exported_transaction(payment_card_transaction)
     assert spotted_transaction_count.count == 1, "Transaction not spotted and the status is not exported"
     logging.info(f"The Transaction got spotted and exported : '{spotted_transaction_count.count}'")

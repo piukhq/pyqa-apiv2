@@ -1,15 +1,17 @@
 import random
 import string
+import typing as t
 import uuid
+
+from datetime import date, datetime
+
 from pytz import timezone
+
+import tests.helpers.constants as constants
 
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_helpers import PaymentCardTestData
-import tests.helpers.constants as constants
 from tests.helpers.test_transaction_matching_context import TestTransactionMatchingContext
-from datetime import date
-from datetime import datetime
-import typing as t
 
 WidthField = t.Tuple[t.Any, int]
 
@@ -30,7 +32,6 @@ def get_data_to_import():
 
 
 class TransactionMatchingPaymentFileDetails:
-
     @staticmethod
     def get_random_alphanumeric_string(length):
         letters_and_digits = string.ascii_letters + string.digits
