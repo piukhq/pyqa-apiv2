@@ -32,6 +32,10 @@ def get_db_credentials(variable):
     return TestDataUtils.TEST_DATA.db_details.get(variable)
 
 
+def get_harmonia_credentails(variable):
+    return TestDataUtils.TEST_DATA.harmonia_db_details.get(variable)
+
+
 def execute_query_fetch_one(connection, query):
     cursor = connection.cursor()
     cursor.execute(query)

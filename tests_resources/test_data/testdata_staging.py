@@ -2233,6 +2233,13 @@ db_details = {
     "database": "hermes",
 }
 
+harmonia_db_details = {
+    "user": "common@bink-uksouth-staging-common",
+    "password": "",
+    "host": "127.0.0.1",
+    "port": "5432",
+    "database": "harmonia",
+}
 # ---------------------------------------------USER ACCOUNTS ---------------------------------------------------- #
 
 bink_user_accounts = {
