@@ -14,6 +14,7 @@ import config
 
 from tests import api
 from tests.api.base import Endpoint
+from tests.api.transactionmatching_base import TransactionMatchingEndpoint
 from tests.helpers import constants
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
@@ -127,6 +128,7 @@ def encryption(pytestconfig):
 @pytest.fixture(scope="session", autouse=True)
 def set_environment(env):
     Endpoint.set_environment(env)
+    TransactionMatchingEndpoint.set_environment(env)
     # logging.getLogger().setLevel(level=logging.ERROR)
     logging.info("Environment Setup ready")
     TestDataUtils.set_test_data(env)

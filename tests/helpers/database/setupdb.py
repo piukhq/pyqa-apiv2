@@ -2,7 +2,7 @@ import logging
 
 import psycopg2
 
-from settings import HERMES_DATABASE_URI
+from settings import HARMONIA_DATABASE_URI, HERMES_DATABASE_URI
 from tests.helpers.test_data_utils import TestDataUtils
 
 
@@ -14,6 +14,17 @@ def connect_db():
 
     except Exception as error:
         raise Exception(f"Error while connecting to Hermes '{str(error)}'")
+    return connection
+
+
+def connect_harmonia_db():
+    """Connect to Harmonia"""
+    try:
+        connection = psycopg2.connect(HARMONIA_DATABASE_URI)
+        logging.info("Connected to Harmonia")
+
+    except Exception as error:
+        raise Exception(f"Error while connecting to Harmonia '{str(error)}'")
     return connection
 
 
