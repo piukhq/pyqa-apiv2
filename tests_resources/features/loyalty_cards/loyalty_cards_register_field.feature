@@ -1,5 +1,5 @@
 # Created by bularaghavan at 05/10/2021
-@membership_card_register @membership_cards @put_register_np
+@membership_card_register @membership_cards
 Feature: Register a loyalty card
   As a Bink user
   I want to add registration credentials to an existing Store card,
@@ -11,7 +11,7 @@ Feature: Register a loyalty card
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add <merchant> membership card before registration_success register
     Then I see a 201
-    When I perform PUT request to register "<merchant>" above wallet only membership card
+    When I perform PUT request to register <merchant> with registration_success membership card
     Then I see a <status_code_returned>
     And verify that for bink_user data stored in after "<journey_type>" journey for "<merchant>"
 
@@ -25,7 +25,7 @@ Feature: Register a loyalty card
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add <merchant> membership card before registration_success register
     Then I see a 201
-    When I perform PUT request to register "<merchant>" above wallet only membership card
+    When I perform PUT request to register <merchant> with registration_success membership card
     Then I see a 202
     When I perform PUT request to register "<merchant>" above wallet only membership card again
     Then I see a  <status_code_returned>
@@ -84,7 +84,7 @@ Feature: Register a loyalty card
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add <merchant> membership card before registration_success register
-    And I perform PUT request to register "<merchant>" above wallet only membership card
+    And I perform PUT request to register <merchant> with registration_success membership card
     Then I see a <status_code_returned>
     And verify that for bink_user data stored in after "<journey_type>" journey for "<merchant>"
 
@@ -151,14 +151,14 @@ Feature: Register a loyalty card
       | Iceland  |registration_failed|
 
 
-  @put_register_failed_multi_wallet @bink_regression_api2 @trusted @testnpnn
+  @put_register_failed_multi_wallet @bink_regression_api2 @trusted
   Scenario Outline: Wallet1 add then register valid, wallet2 add then register same card with invalid details
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "master" payment account to wallet
     And I perform POST request to add <merchant> membership card before registration_success register
     Then I see a 201
-    When I perform PUT request to register "<merchant>" above wallet only membership card
+    When I perform PUT request to register <merchant> with registration_success membership card
     Then I see a 202
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
