@@ -133,7 +133,6 @@ def verify_loyalty_card_into_database(journey_type, merchant):
         )
 
     elif journey_type == "add_and_authorise" or journey_type == "add_and_register":
-
         scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
         assert scheme_account.id == TestContext.current_scheme_account_id, journey_type + "in database is not success"
 
@@ -273,7 +272,6 @@ def verify_loyalty_card_into_database_trusted(user, journey_type, merchant):
             print("scheme ac status", scheme_account.status)
 
     elif journey_type == "pll":
-
         scheme_account = QueryHermes.fetch_pll_user_link(journey_type, TestContext.extid)
         assert (
             scheme_account.active_link is True
@@ -326,7 +324,6 @@ def verify_pll_links_payment_account(journey_type2):
 
 
 def json_compare(actual_field, expected_field, paths=None):
-
     compare = DeepDiff(
         actual_field,
         expected_field,
@@ -1053,7 +1050,7 @@ def add_already_register_card(merchant):
     # assert response.status_code == 201, "Add Journey for " + merchant + " failed"
 
 
-@when(parsers.parse('I perform PUT request to register "{merchant}" above wallet only membership card'))
+# @when(parsers.parse('I perform PUT request to register "{merchant}" above wallet only membership card'))
 @when(parsers.parse("I perform PUT request to register {merchant} with {scheme_state} membership card"))
 def verify_register_post_membership_card(merchant, scheme_state, test_email):
     if scheme_state == "registration_failed":
