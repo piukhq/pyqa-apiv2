@@ -234,6 +234,7 @@ wallet_info = {
                     "issued_date": None,
                     "expiry_date": None,
                     "redeemed_date": None,
+                    "conversion_date": None,
                 },
                 {
                     "state": "issued",
@@ -252,6 +253,7 @@ wallet_info = {
                     "issued_date": "1591787076",
                     "expiry_date": "1924819200",
                     "redeemed_date": None,
+                    "conversion_date": None,
                 },
                 {
                     "state": "cancelled",
@@ -271,6 +273,7 @@ wallet_info = {
                     "issued_date": "1591787076",
                     "expiry_date": "1644491076",
                     "redeemed_date": None,
+                    "conversion_date": None,
                 },
             ],
             "card": {
@@ -928,6 +931,7 @@ wallet_info_by_card_id = {
                 "issued_date": None,
                 "expiry_date": None,
                 "redeemed_date": None,
+                "conversion_date": None,
             },
             {
                 "state": "issued",
@@ -946,6 +950,7 @@ wallet_info_by_card_id = {
                 "issued_date": "1591787076",
                 "expiry_date": "1924819200",
                 "redeemed_date": None,
+                "conversion_date": None,
             },
             {
                 "state": "cancelled",
@@ -965,6 +970,7 @@ wallet_info_by_card_id = {
                 "issued_date": "1591787076",
                 "expiry_date": "1644491076",
                 "redeemed_date": None,
+                "conversion_date": None,
             },
         ],
         "card": {
