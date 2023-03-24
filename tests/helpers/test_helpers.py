@@ -5,6 +5,7 @@ from tests.payload.loyalty_cards.iceland import IcelandCard
 from tests.payload.loyalty_cards.squaremeal import SquareMealCard
 from tests.payload.loyalty_cards.trenette import TrenetteCard
 from tests.payload.loyalty_cards.wasabi import WasabiCard
+from tests.payload.loyalty_cards.viator import ViatorCard
 
 
 class PaymentCardTestData:
@@ -195,6 +196,7 @@ class Merchant:
             "Wasabi": WasabiCard,
             "SquareMeal": SquareMealCard,
             "Trenette": TrenetteCard,
+            "Viator": ViatorCard
         }
         return switcher.get(merchant)
 
