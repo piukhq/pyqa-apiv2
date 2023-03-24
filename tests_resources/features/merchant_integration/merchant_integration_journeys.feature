@@ -1,5 +1,5 @@
 # Created by njames on 22/03/2023
-Feature: Basic Merchant Integration Journies
+Feature: Basic Merchant Integration Journeys
   As a Bank user
   I want check all Loyalty card features
   so that I am able to benefit from the Bink functionality
