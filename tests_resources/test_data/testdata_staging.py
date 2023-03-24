@@ -261,7 +261,8 @@ wallet_info = {
                     "state": "inprogress",
                     "earn_type": "stamps",
                     "reward_text": "Free Meal",
-                    "headline": "Spend £7.00 or more to get a stamp. Collect 7 stamps to get a Meal "
+                    "headline": "Spend £7.00 or more to get a stamp."
+                    "Collect 7 stamps to get a Meal "
                     "Voucher of up to £7 off your next meal.",
                     "voucher_code": None,
                     "barcode_type": None,
@@ -270,7 +271,8 @@ wallet_info = {
                     "target_value": "7",
                     "prefix": None,
                     "suffix": "stamps",
-                    "body_text": "Spend £7.00 or more to get a stamp. Collect 7 stamps to get a Meal "
+                    "body_text": "Spend £7.00 or more to get a stamp."
+                    "Collect 7 stamps to get a Meal "
                     "Voucher of up to £7 off your next meal.",
                     "terms_and_conditions": "https://policies.staging.gb.bink.com/wasabi/tc.html",
                     "issued_date": None,
@@ -727,7 +729,10 @@ wallet_info = {
                     "target_value": "200",
                     "prefix": "£",
                     "suffix": None,
-                    "body_text": "You've earned a Viator reward. All you need to do now is wait for your code to show here after 10 days (just to allow for any returns to register in our system). Use your Viator discount reward at checkout on your next purchase.",
+                    "body_text": "You've earned a Viator reward."
+                    "All you need to do now is wait for your code to show "
+                    "here after 10 days (just to allow for any returns to register"
+                    "in our system). Use your Viator discount reward at checkout on your next purchase.",
                     "terms_and_conditions": "https://policies.staging.gb.bink.com/Viator/rewardtc.html",
                     "issued_date": "1678147200",
                     "expiry_date": None,
@@ -761,7 +766,8 @@ wallet_info = {
                 {
                     "id": 1412,
                     "type": 7,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Viator_Barclays_Promotional_Image.png",
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "Viator_Barclays_Promotional_Image.png",
                     "description": "Viator Promotion",
                     "encoding": "png",
                 },
@@ -1548,7 +1554,10 @@ wallet_info_by_card_id = {
                 "target_value": "200",
                 "prefix": "£",
                 "suffix": None,
-                "body_text": "You've earned a Viator reward. All you need to do now is wait for your code to show here after 10 days (just to allow for any returns to register in our system). Use your Viator discount reward at checkout on your next purchase.",
+                "body_text": "You've earned a Viator reward. "
+                "All you need to do now is wait for your code to show "
+                "here after 10 days (just to allow for any returns to register in our system). "
+                "Use your Viator discount reward at checkout on your next purchase.",
                 "terms_and_conditions": "https://policies.staging.gb.bink.com/Viator/rewardtc.html",
                 "issued_date": "1678147200",
                 "expiry_date": None,
@@ -1582,7 +1591,8 @@ wallet_info_by_card_id = {
             {
                 "id": 1412,
                 "type": 7,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Viator_Barclays_Promotional_Image.png",
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/ "
+                "Viator_Barclays_Promotional_Image.png",
                 "description": "Viator Promotion",
                 "encoding": "png",
             },
