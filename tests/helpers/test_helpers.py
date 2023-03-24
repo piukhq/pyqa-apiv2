@@ -4,6 +4,7 @@ from tests.payload.loyalty_cards.harvey_nichols import HarveyNicholsCard
 from tests.payload.loyalty_cards.iceland import IcelandCard
 from tests.payload.loyalty_cards.squaremeal import SquareMealCard
 from tests.payload.loyalty_cards.trenette import TrenetteCard
+from tests.payload.loyalty_cards.viator import ViatorCard
 from tests.payload.loyalty_cards.wasabi import WasabiCard
 
 
@@ -80,7 +81,6 @@ class TestData:
 
     @staticmethod
     def get_expected_journey_fields_json(loyalty_scheme, env, channel=None):
-
         merchant_key = TestData.get_merchant_key(loyalty_scheme)
         mem_plan_path = TestData.get_mem_plan_path(env)
 
@@ -104,7 +104,6 @@ class TestData:
 
     @staticmethod
     def get_expected_loyalty_plan_by_id_json(loyalty_scheme, env, channel=None):
-
         merchant_key = TestData.get_merchant_key(loyalty_scheme)
         mem_plan_path = TestData.get_loyalty_plan_by_id_path(env)
 
@@ -112,7 +111,6 @@ class TestData:
 
     @staticmethod
     def get_expected_all_loyalty_plans_json(env, channel=None):
-
         mem_plan_path = TestData.get_loyalty_plan_by_id_path(env)
 
         return mem_plan_path + "/loyalty_plans_all" + ".json"
@@ -129,7 +127,6 @@ class TestData:
 
     @staticmethod
     def get_expected_view_join_wallet_json(env, channel=None):
-
         wallet_path = TestData.get_wallet_path(env)
         return wallet_path + "/view_wallet" + "_join.json"
 
@@ -195,6 +192,7 @@ class Merchant:
             "Wasabi": WasabiCard,
             "SquareMeal": SquareMealCard,
             "Trenette": TrenetteCard,
+            "Viator": ViatorCard,
         }
         return switcher.get(merchant)
 

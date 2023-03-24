@@ -15,6 +15,8 @@ so that I am aware and have visibility of the vouchers that have been concluded 
     Examples:
       | merchant      | status_code_returned |
       | Wasabi        | 200                  |
+      | Viator        | 200                  |
+
 
    @vouchers_invalid_token @bink_regression_api2 @sandbox_regression
    Scenario Outline: Verify invalid token scenario for get loyalty card vouchers
