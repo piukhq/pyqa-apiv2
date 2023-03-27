@@ -1589,7 +1589,7 @@ wallet_info_by_card_id = {
             {
                 "id": 1412,
                 "type": 7,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/ "
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
                 "Viator_Barclays_Promotional_Image.png",
                 "description": "Viator Promotion",
                 "encoding": "png",
