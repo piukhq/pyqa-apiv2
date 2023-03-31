@@ -2,7 +2,7 @@ import logging
 
 import psycopg2
 
-from settings import HARMONIA_DATABASE_URI, HERMES_DATABASE_URI
+from settings import HARMONIA_DATABASE_URI, HERMES_DATABASE_URI, SNOWSTORM_DATABASE_URI
 from tests.helpers.test_data_utils import TestDataUtils
 
 
@@ -25,6 +25,17 @@ def connect_harmonia_db():
 
     except Exception as error:
         raise Exception(f"Error while connecting to Harmonia '{str(error)}'")
+    return connection
+
+
+def connect_snowstorm_db():
+    """Connect to Snowstorm"""
+    try:
+        connection = psycopg2.connect(SNOWSTORM_DATABASE_URI)
+        logging.info("Connected to Snowstorm")
+
+    except Exception as error:
+        raise Exception(f"Error while connecting to Snowstorm '{str(error)}'")
     return connection
 
 

@@ -2512,6 +2512,22 @@ scheme_status = {
     "invalid_credentials": 403,
 }
 
+# -------------------------------------------EVENTS---------------------------------------------------------- #
+
+event_info = {
+    "origin": "channel",
+    "channel_bink": "com.bink.wallet",
+    "channel_lloyds": "com.lloydsqa.api2",
+    "channel_halifax": "com.halifax.api2",
+    "channel_bos": "com.bos.api2",
+    "status": 1,
+}
+
+event_type = {
+    "user_created": "user.created",
+    "user_deleted": "user.deleted",
+}
+
 # ------------------------------------------ DB DETAILS ---------------------------------------------------- #
 
 db_details = {
