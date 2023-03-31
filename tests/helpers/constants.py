@@ -23,7 +23,7 @@ LLOYDS_EMAIL = "lloyds_email"
 LLOYDS_EXTERNAL_ID = "lloyds_external_id"
 
 """Event Details"""
-ORIGIN = "origin",
+ORIGIN = ("origin",)
 CHANNEL_BINK = "channel_bink"
 CHANNEL_LLOYDS = "channel_lloyds"
 CHANNEL_HALIFAX = "channel_halifax"
