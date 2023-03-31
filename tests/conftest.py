@@ -475,8 +475,14 @@ def get_lloyds_user(lloyds_external_id, lloyds_test_email):
         + api.ENDPOINT_TOKEN
         + "\n\n"
         + json.dumps(response_json, indent=4)
+        + "\n"
         + "External Id"
+        + "\n"
         + lloyds_external_id
+        + "\n"
+        + "User Email"
+        + "\n"
+        + lloyds_test_email
     )
     assert response.status_code == 200, "/token Journey failed to get access token"
     TestContext.all_users["lloyds_user"] = TestContext.token
@@ -507,8 +513,14 @@ def get_bos_user(bos_external_id, bos_test_email):
         + api.ENDPOINT_TOKEN
         + "\n\n"
         + json.dumps(response_json, indent=4)
+        + "\n"
         + "External Id"
+        + "\n"
         + bos_external_id
+        + "\n"
+        + "User Email"
+        + "\n"
+        + bos_test_email
     )
     assert response.status_code == 200, "/token Journey failed to get access token"
     TestContext.all_users["bos_user"] = TestContext.token
@@ -538,8 +550,14 @@ def get_halifax_user(halifax_external_id, halifax_test_email):
         + api.ENDPOINT_TOKEN
         + "\n\n"
         + json.dumps(response_json, indent=4)
+        + "\n\n"
         + "External Id"
+        + "\n"
         + halifax_external_id
+        + "\n"
+        + "User Email"
+        + "\n"
+        + halifax_test_email
     )
     assert response.status_code == 200, "/token Journey failed to get access token"
     TestContext.all_users["halifax_user"] = TestContext.token
@@ -570,8 +588,14 @@ def get_squaremeal_user(squaremeal_external_id, squaremeal_test_email):
         + api.ENDPOINT_TOKEN
         + "\n\n"
         + json.dumps(response_json, indent=4)
+        + "\n\n"
         + "External Id"
+        + "\n"
         + squaremeal_external_id
+        + "\n"
+        + "User Email"
+        + "\n"
+        + squaremeal_test_email
     )
     assert response.status_code == 200, "/token Journey failed to get access token"
     TestContext.all_users["squaremeal_user"] = TestContext.token

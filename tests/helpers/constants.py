@@ -22,6 +22,15 @@ B2B_EXTERNAL_ID2 = "b2b_external_id2"
 LLOYDS_EMAIL = "lloyds_email"
 LLOYDS_EXTERNAL_ID = "lloyds_external_id"
 
+"""Event Details"""
+ORIGIN = "origin",
+CHANNEL_BINK = "channel_bink"
+CHANNEL_LLOYDS = "channel_lloyds"
+CHANNEL_HALIFAX = "channel_halifax"
+CHANNEL_BOS = "channel_bos"
+STATUS = "status"
+USER_CREATED = "user_created"
+
 """ Contants for Add journey"""
 ID = "id"
 SLOW_JOIN_ID = "slow_join_id"
