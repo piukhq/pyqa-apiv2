@@ -88,7 +88,7 @@ Feature: Add and register a loyalty card
       | Iceland  | 401                  | Supplied token is invalid | INVALID_TOKEN |
 
 
-  @add_and_register_success_multi_wallet @bink_regression_api2 @trusted @testnp1402
+  @add_and_register_success_multi_wallet @bink_regression_api2 @trusted
   Scenario Outline: add and register success in wallet1 then add and register success in wallet2
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -110,7 +110,7 @@ Feature: Add and register a loyalty card
       | merchant |
       | Iceland  |
 
-  @register_failed_card_multi_wallet @bink_regression_api2 @trusted @testnp1402
+  @register_failed_card_multi_wallet @bink_regression_api2 @trusted
   Scenario Outline: add and register failed in wallet1 then add and register success in wallet2
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -132,7 +132,7 @@ Feature: Add and register a loyalty card
       | Iceland  | registration_failed|
 
 
-  @register_success_failed_multi_wallet @bink_regression_api2 @trusted @testnp1402
+  @register_success_failed_multi_wallet @bink_regression_api2 @trusted @failedtest
   Scenario Outline: add and register success in wallet1 then add and register failed in wallet2
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -154,7 +154,7 @@ Feature: Add and register a loyalty card
       | Iceland  | registration_failed|
 
 
-  @register_failed_failed_multi_wallet @bink_regression_api2 @trusted @testnp1402
+  @register_failed_failed_multi_wallet @bink_regression_api2 @trusted @testfailed
   Scenario Outline: add and register failed in wallet1 then add and register failed in wallet2
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token

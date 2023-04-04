@@ -2061,10 +2061,18 @@ def verify_state_slug_desc(Wallet, merchant, scheme_state):
             wallet_response["loyalty_cards"][0]["id"] == TestContext.current_scheme_account_id
         ), "account id does not match"
         for wallet_key in TestDataUtils.TEST_DATA.register_scheme_status[scheme_state].keys():
-            assert (
-                wallet_response["loyalty_cards"][0][wallet_key]
-                == TestDataUtils.TEST_DATA.register_scheme_status[scheme_state][wallet_key]
-            ), f"{wallet_key} do not match"
+            if wallet_key not in ["card"]:
+                assert (
+                    wallet_response["loyalty_cards"][0][wallet_key]
+                    == TestDataUtils.TEST_DATA.register_scheme_status[scheme_state][wallet_key]
+                ), f"{wallet_key} do not match"
+            else:
+                for card_key in TestDataUtils.TEST_DATA.register_scheme_status[scheme_state]["card"].keys():
+                    assert (
+                        wallet_response["loyalty_cards"][0]["card"][card_key]
+                        == TestDataUtils.TEST_DATA.register_scheme_status[scheme_state]["card"][card_key]
+                    ), f"{card_key} do not match"
+
     elif Wallet == "Wallet" and scheme_state == "registration_success":
         print(f"starting response comparison in {Wallet} when scheme state is {scheme_state}")
         assert (

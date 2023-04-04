@@ -2587,7 +2587,7 @@ register_scheme_status = {
         "transactions": [],
         "vouchers": [],
         "card": {
-            "barcode": None,
+            # "barcode": None,
             "barcode_type": 0,
             "card_number": "6633204006543210000",
             "colour": "#d50724",

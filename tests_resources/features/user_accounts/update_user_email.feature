@@ -41,7 +41,7 @@ Feature: Update email feature
        |Could not validate fields | FIELD_VALIDATION_ERROR  | invalid_request  | 422         |
 
 
-   @update_email_invalid_json @bink_regression_api2
+   @update_email_invalid_json
    Scenario Outline: Email Update with Invalid Json
       Given I am a Lloyds user
       When I perform POST request to update email with "<request_payload>" with "<status_code>"
