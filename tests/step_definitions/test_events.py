@@ -15,6 +15,7 @@ from tests.helpers.test_context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
 from tests.helpers.test_helpers import TestData
 from tests.requests.loyalty_cards import MembershipCards
+from tests.requests.service import CustomerAccount
 from tests.step_definitions import test_paymentcard_account
 
 scenarios("events/")
@@ -2629,4 +2630,19 @@ def verify_loyalty_card_into_event_database(user, journey_type):
             and event_record.json["external_user_ref"] == TestContext.extid
             and event_record.json["channel"] == TestDataUtils.TEST_DATA.event_info.get(constants.CHANNEL_LLOYDS)
         )
+    elif journey_type == "user_deleted":
+        event_record = QuerySnowstorm.fetch_event(journey_type, TestContext.extid)
+        print(event_record)
+        assert (
+            event_record.event_type == TestDataUtils.TEST_DATA.event_type.get(constants.USER_DELETED)
+            and event_record.json["external_user_ref"] == TestContext.extid
+            and event_record.json["channel"] == TestDataUtils.TEST_DATA.event_info.get(constants.CHANNEL_LLOYDS)
+        )
     return event_record
+
+
+@then(parsers.parse("I perform DELETE request to delete single user successfully"))
+def delete_user_successfully(channel, env):
+    response = CustomerAccount.delete_user(TestContext.token)
+    assert response.status_code == 202, "The user deletion is not successful"
+    logging.info("User is deleted successfully from the system")
