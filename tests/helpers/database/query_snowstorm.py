@@ -35,11 +35,21 @@ def get_user_created_event(journey_type, external_id):
     if journey_type == "":
         logging.info("Scheme did not attach to the wallet")
     elif TestContext.environ == "staging":
-        query_event_record = (
-            """SELECT id, event_date_time, event_type, json
-                       FROM snowstorm.public.events
-                       WHERE event_type = 'user.created'
-                       AND json ->> 'external_user_ref' = '%s'"""
-            % external_id
-        )
+        if journey_type == "user_created":
+            query_event_record = (
+                """SELECT id, event_date_time, event_type, json
+                           FROM snowstorm.public.events
+                           WHERE event_type = 'user.created'
+                           AND json ->> 'external_user_ref' = '%s'"""
+                % external_id
+            )
+        elif journey_type == "user_deleted":
+            query_event_record = (
+                """SELECT id, event_date_time, event_type, json
+                               FROM snowstorm.public.events
+                               WHERE event_type = 'user.deleted'
+                               AND json ->> 'external_user_ref' = '%s'"""
+                % external_id
+            )
+
     return query_event_record

@@ -132,7 +132,7 @@ Feature: Add and register a loyalty card
       | Iceland  | registration_failed|
 
 
-  @register_success_failed_multi_wallet @bink_regression_api2 @trusted @failedtest
+  @register_success_failed_multi_wallet @bink_regression_api2 @trusted
   Scenario Outline: add and register success in wallet1 then add and register failed in wallet2
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -154,7 +154,7 @@ Feature: Add and register a loyalty card
       | Iceland  | registration_failed|
 
 
-  @register_failed_failed_multi_wallet @bink_regression_api2 @trusted @testfailed
+  @register_failed_failed_multi_wallet @bink_regression_api2 @trusted
   Scenario Outline: add and register failed in wallet1 then add and register failed in wallet2
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token

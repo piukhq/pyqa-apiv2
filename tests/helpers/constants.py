@@ -30,6 +30,7 @@ CHANNEL_HALIFAX = "channel_halifax"
 CHANNEL_BOS = "channel_bos"
 STATUS = "status"
 USER_CREATED = "user_created"
+USER_DELETED = "user_deleted"
 
 """ Contants for Add journey"""
 ID = "id"
