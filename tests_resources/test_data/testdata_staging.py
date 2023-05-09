@@ -2505,7 +2505,7 @@ membership_plan_id = {
     "merchant_not_exists": 9999,
     "Bink Test Scheme": 132,  # suspended loyalty plan
     "Wallis": 131,  # inactive loyalty plan
-    "the_works": 294
+    "the_works": 294,
 }
 
 scheme_status = {
