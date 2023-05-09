@@ -64,22 +64,6 @@ class TestData:
         """Generate the merchant key based on the
         merchant value from bdd feature file"""
 
-        # switcher = {
-        #     "Iceland": "iceland",
-        #     "HarveyNichols": "harvey_nichols",
-        #     "SquareMeal": "square_meal",
-        #     "FatFace": "fat_face",
-        #     "Wasabi": "wasabi",
-        #     "WHSmith": "whsmith",
-        #     "Merchant_not_exists": "merchant_not_exists",
-        #     "Wallis": "Wallis",
-        #     "Bink Test Scheme": "Bink Test Scheme",
-        #     "Asos": "asos",
-        #     "Trenette": "trenette",
-        #     "Viator": "viator",
-        # }
-        # return switcher.get(merchant)
-
         match merchant:
             case "Iceland":
                 return "iceland"
