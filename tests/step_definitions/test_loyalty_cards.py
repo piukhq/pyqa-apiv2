@@ -17,6 +17,7 @@ from tests.requests.loyalty_cards import MembershipCards
 from tests.step_definitions import test_paymentcard_account
 
 scenarios("loyalty_cards/")
+scenarios("merchant_integration/")
 
 """Step definitions - Add_field Journey (store card only) """
 

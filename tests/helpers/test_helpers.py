@@ -3,6 +3,7 @@ from tests.helpers.test_data_utils import TestDataUtils
 from tests.payload.loyalty_cards.harvey_nichols import HarveyNicholsCard
 from tests.payload.loyalty_cards.iceland import IcelandCard
 from tests.payload.loyalty_cards.squaremeal import SquareMealCard
+from tests.payload.loyalty_cards.the_works import TheWorks
 from tests.payload.loyalty_cards.trenette import TrenetteCard
 from tests.payload.loyalty_cards.viator import ViatorCard
 from tests.payload.loyalty_cards.wasabi import WasabiCard
@@ -63,21 +64,25 @@ class TestData:
         """Generate the merchant key based on the
         merchant value from bdd feature file"""
 
-        switcher = {
-            "Iceland": "iceland",
-            "HarveyNichols": "harvey_nichols",
-            "SquareMeal": "square_meal",
-            "FatFace": "fat_face",
-            "Wasabi": "wasabi",
-            "WHSmith": "whsmith",
-            "Merchant_not_exists": "merchant_not_exists",
-            "Wallis": "Wallis",
-            "Bink Test Scheme": "Bink Test Scheme",
-            "Asos": "asos",
-            "Trenette": "trenette",
-            "Viator": "viator",
-        }
-        return switcher.get(merchant)
+        match merchant:
+            case "Iceland":
+                return "iceland"
+            case "Wasabi":
+                return "wasabi"
+            case "SquareMeal":
+                return "square_meal"
+            case "Trenette":
+                return "trenette"
+            case "Viator":
+                return "viator"
+            case "HarveyNichols":
+                return "harvey_nichols"
+            case "Bink Test Scheme":
+                return "Bink Test Scheme"
+            case "Merchant_not_exists":
+                return "merchant_not_exists"
+            case "The_Works":
+                return "the_works"
 
     @staticmethod
     def get_expected_journey_fields_json(loyalty_scheme, env, channel=None):
@@ -186,15 +191,21 @@ class Merchant:
         """Get merchant class object based on the merchnat name from BDD feature file
         Each merchant class contains payload for membership_cads end point"""
 
-        switcher = {
-            "HarveyNichols": HarveyNicholsCard,
-            "Iceland": IcelandCard,
-            "Wasabi": WasabiCard,
-            "SquareMeal": SquareMealCard,
-            "Trenette": TrenetteCard,
-            "Viator": ViatorCard,
-        }
-        return switcher.get(merchant)
+        match merchant:
+            case "HarveyNicholsCard":
+                return HarveyNicholsCard
+            case "Iceland":
+                return IcelandCard
+            case "Wasabi":
+                return WasabiCard
+            case "SquareMeal":
+                return SquareMealCard
+            case "Trenette":
+                return TrenetteCard
+            case "Viator":
+                return ViatorCard
+            case "The_Works":
+                return TheWorks
 
     @staticmethod
     def get_scheme_cred_main_ans(merchant):
