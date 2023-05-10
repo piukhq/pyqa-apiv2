@@ -153,23 +153,23 @@ Feature: Register a loyalty card
 
   @put_register_failed_multi_wallet @bink_regression_api2 @trusted
   Scenario Outline: Wallet1 add then register valid, wallet2 add then register same card with invalid details
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add a new "master" payment account to wallet
+    Given I am a Lloyds user
+    When I perform POST request to add a new "master" payment account to wallet
     And I perform POST request to add <merchant> membership card before registration_success register
     Then I see a 201
     When I perform PUT request to register <merchant> with registration_success membership card
     Then I see a 202
-    When I am in Bink channel to get b2b token for second user
-    And I perform POST token request for token type "b2b" to get access token for second user
+    Given I am a halifax user
+    When I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add a new "master" payment account to wallet
     And I perform POST request to add <merchant> membership card before <scheme_state> register
     Then I see a 200
     When I perform PUT request to register <merchant> with <scheme_state> membership card
     Then I see a 202
-    When For bink_user2 I perform GET Wallet
+    When For halifax_user I perform GET Wallet
     Then Verify Wallet fields for <merchant> with registration_failed
-    When For bink_user I perform GET Wallet
+    Given I am a Lloyds user
+    When For lloyds_user I perform GET Wallet
     Then Verify Wallet fields for <merchant> with registration_success
 
 
