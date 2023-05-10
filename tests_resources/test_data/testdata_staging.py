@@ -219,6 +219,10 @@ trenette_membership_card = {
     "transaction_currency": "stamps",
 }
 
+the_works = {
+    "card_num": "",
+    "email": "",
+}
 # ----------------------------------------LOYALTY CARD 1 wallet    ---------------------------------------- #
 
 # Wallet_info can have card details of different merchants and each merchant can have multiple loyalty cards.
@@ -2501,6 +2505,7 @@ membership_plan_id = {
     "merchant_not_exists": 9999,
     "Bink Test Scheme": 132,  # suspended loyalty plan
     "Wallis": 131,  # inactive loyalty plan
+    "the_works": 294,
 }
 
 scheme_status = {
