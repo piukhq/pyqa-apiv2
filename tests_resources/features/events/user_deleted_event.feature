@@ -6,12 +6,8 @@ Feature: Add and authorise a loyalty card
   so that this Business Event can be written to ClickHouse for validation
 
 
-  @user_deleted_event @bink_regression_api2
-  Scenario Outline: Verify event for user created
+  @user_deleted_event @bink_regression_api2 @event
+  Scenario: Verify event for user deleted
     Given I am a Lloyds user
     Then I perform DELETE request to delete single user successfully
-    Then verify that for lloyds_user the event created in database after <journey_type>
-
-    Examples:
-    |  journey_type  |
-    | user_deleted   |
+    And I verify that user_deleted event is created for lloyds_user

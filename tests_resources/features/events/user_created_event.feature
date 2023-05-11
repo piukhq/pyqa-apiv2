@@ -5,13 +5,9 @@ Feature: Add and authorise a loyalty card
   I want to see an Event logged when a user is created
   so that this Business Event can be written to ClickHouse for validation
 
-  @user_created_event @bink_regression_api2 @sandbox_regression
-  Scenario Outline: Verify event for user created
+  @user_created_event @bink_regression_api2 @sandbox_regression @event
+  Scenario: Verify event for user created
     Given I am a Lloyds user
-    Then verify that for lloyds_user the event created in database after <journey_type>
-
-    Examples:
-    |  journey_type  |
-    | user_created   |
+    Then I verify that user_created event is created for lloyds_user
 
 
