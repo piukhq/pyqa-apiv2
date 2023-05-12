@@ -53,7 +53,8 @@
 		"plan_register_info": null,
 		"join_incentive": null,
 		"category": "Food & Drink",
-		"tiers": []
+		"tiers": [],
+		"forgotten_password_url": null
 	},
 	"journey_fields": {
 		"join_fields": {

@@ -80,6 +80,8 @@ class TestData:
                 return "harvey_nichols"
             case "Bink Test Scheme":
                 return "Bink Test Scheme"
+            case "Wallis":
+                return "Wallis"
             case "Merchant_not_exists":
                 return "merchant_not_exists"
             case "The_Works":

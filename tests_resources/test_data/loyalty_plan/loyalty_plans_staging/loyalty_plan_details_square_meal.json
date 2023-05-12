@@ -15,14 +15,15 @@
 			"description": "Bronze"
 		},
 		{
-			"name": "Tier 3",
-			"description": "Gold"
-		},
-		{
 			"name": "Tier 2",
 			"description": "Silver"
+		},
+		{
+			"name": "Tier 3",
+			"description": "Gold"
 		}
 	],
+	"forgotten_password_url": null,
 	"images": [
 		{
 			"id": 1328,
