@@ -9,6 +9,7 @@ from tests.payload.loyalty_cards.viator import ViatorCard
 from tests.payload.loyalty_cards.wasabi import WasabiCard
 from tests_resources.test_data.get_wallet.loyalty_card_wasabi import WasabiResponse
 
+
 class PaymentCardTestData:
     """This function is for future use - when more testing in payment cards"""
 
@@ -198,6 +199,7 @@ class TestData:
             # "payment_account" : PaymentAccountResponse
         }
         return switcher.get(merchant)
+
 
 class Merchant:
     @staticmethod

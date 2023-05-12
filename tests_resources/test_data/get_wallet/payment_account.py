@@ -1,5 +1,4 @@
 class PaymentAccountResponse:
-
     @staticmethod
     def wallet_payment_account():
         wallet_payment_account = {
