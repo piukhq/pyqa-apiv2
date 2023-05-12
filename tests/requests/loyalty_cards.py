@@ -6,7 +6,6 @@ from tests.requests.encryption import encrypted_payload_token
 
 
 class MembershipCards(Endpoint):
-
     # ---------------------------------------- Add Journey---------------------------------------------------
     #   @staticmethod
     #   def add_field_only_card(token, merchant, invalid_request=None):

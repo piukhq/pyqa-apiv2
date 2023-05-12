@@ -2620,15 +2620,15 @@ def put_trusted_add(request_payload, merchant):
 @then(parsers.parse("I verify that {journey_type} event is created for {user}"))
 def verify_loyalty_card_into_event_database(user, journey_type):
     TestContext.extid = TestContext.external_id[user]
-    time.sleep(5)
+    time.sleep(25)
 
-    event_record = QuerySnowstorm.fetch_event(journey_type, TestContext.extid)
-    print(event_record)
+    event_record = QuerySnowstorm.fetch_event(TestDataUtils.TEST_DATA.event_type.get(journey_type), TestContext.extid)
+    logging.info(str(event_record))
     logging.info(TestDataUtils.TEST_DATA.event_type.get(journey_type))
     assert (
-            event_record.event_type == TestDataUtils.TEST_DATA.event_type.get(journey_type)
-            and event_record.json["external_user_ref"] == TestContext.extid
-            and event_record.json["channel"] == TestDataUtils.TEST_DATA.event_info.get(constants.CHANNEL_LLOYDS)
+        event_record.event_type == TestDataUtils.TEST_DATA.event_type.get(journey_type)
+        and event_record.json["external_user_ref"] == TestContext.extid
+        and event_record.json["channel"] == TestDataUtils.TEST_DATA.event_info.get(constants.CHANNEL_LLOYDS)
     )
     return event_record
 

@@ -148,7 +148,6 @@ class QueryHermes:
 
 
 def get_query(journey_type, scheme_account_id):
-
     if journey_type == "":
         logging.info("Scheme didnt attached to the wallet")
     elif TestContext.environ == "staging":
@@ -167,7 +166,6 @@ def get_query(journey_type, scheme_account_id):
 
 
 def get_link_status_query(journey_type, external_id):
-
     if journey_type == "":
         logging.info("Scheme didnt attached to the wallet")
     elif TestContext.environ == "staging":
@@ -192,7 +190,6 @@ def get_link_status_query(journey_type, external_id):
 
 
 def get_pll_user_query(journey_type, external_id):
-
     if journey_type == "":
         logging.info("Scheme didnt attached to the wallet")
     elif TestContext.environ == "staging":

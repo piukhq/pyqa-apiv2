@@ -2531,6 +2531,9 @@ event_info = {
 event_type = {
     "user_created": "user.created",
     "user_deleted": "user.deleted",
+    "lc_join_request": "lc.join.request",
+    "lc_status_change": "lc.statuschange",
+    "lc_join_success": "lc.join.success",
 }
 
 # ------------------------------------------ DB DETAILS ---------------------------------------------------- #
