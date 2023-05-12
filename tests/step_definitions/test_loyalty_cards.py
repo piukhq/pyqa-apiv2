@@ -1704,6 +1704,7 @@ def join_scheme(join, merchant, test_email):
     time.sleep(8)
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")
+    TestContext.current_scheme_plan = response_json.get("loyalty_plan_id")
     TestContext.response_status_code = response.status_code
     logging.info(
         "The response of Join Journey (POST) for "

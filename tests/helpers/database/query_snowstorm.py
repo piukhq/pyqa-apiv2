@@ -35,45 +35,9 @@ def get_user_created_event(journey_type, external_id):
     if journey_type == "":
         logging.info("Scheme did not attach to the wallet")
     elif TestContext.environ == "staging":
-        if journey_type == "user.created":
-            query_event_record = (
-                """SELECT id, event_date_time, event_type, json
-                           FROM snowstorm.public.events
-                           WHERE event_type = 'user.created'
-                           AND json ->> 'external_user_ref' = '%s'"""
-                % external_id
-            )
-        elif journey_type == "user.deleted":
-            query_event_record = (
-                """SELECT id, event_date_time, event_type, json
-                               FROM snowstorm.public.events
-                               WHERE event_type = 'user.deleted'
-                               AND json ->> 'external_user_ref' = '%s'"""
-                % external_id
-            )
-        elif journey_type == "lc.join.request":
-            query_event_record = (
-                """SELECT id, event_date_time, event_type, json
-                               FROM snowstorm.public.events
-                               WHERE event_type = 'lc.join.request'
-                               AND json ->> 'external_user_ref' = '%s'ORDER BY event_date_time DESC"""
-                % external_id
-            )
-        elif journey_type == "lc.statuschange":
-            query_event_record = (
-                """SELECT id, event_date_time, event_type, json
-                               FROM snowstorm.public.events
-                               WHERE event_type = 'lc.statuschange'
-                               AND json ->> 'external_user_ref' = '%s'ORDER BY event_date_time DESC"""
-                % external_id
-            )
-        elif journey_type == "lc.join.success":
-            query_event_record = (
-                """SELECT id, event_date_time, event_type, json
-                               FROM snowstorm.public.events
-                               WHERE event_type = 'lc.join.success'
-                               AND json ->> 'external_user_ref' = '%s'ORDER BY event_date_time DESC"""
-                % external_id
-            )
+        query_event_record = f"""SELECT id, event_date_time, event_type, json
+                                   FROM snowstorm.public.events
+                                   WHERE event_type = '{journey_type}'
+                                   AND json ->> 'external_user_ref' = '{external_id}' ORDER BY event_date_time DESC"""
 
     return query_event_record

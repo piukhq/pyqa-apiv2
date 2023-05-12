@@ -2620,15 +2620,34 @@ def put_trusted_add(request_payload, merchant):
 @then(parsers.parse("I verify that {journey_type} event is created for {user}"))
 def verify_loyalty_card_into_event_database(user, journey_type):
     TestContext.extid = TestContext.external_id[user]
-    time.sleep(25)
-
+    time.sleep(5)
+    logging.info(TestDataUtils.TEST_DATA.event_type.get(journey_type))
     event_record = QuerySnowstorm.fetch_event(TestDataUtils.TEST_DATA.event_type.get(journey_type), TestContext.extid)
     logging.info(str(event_record))
-    logging.info(TestDataUtils.TEST_DATA.event_type.get(journey_type))
+
     assert (
         event_record.event_type == TestDataUtils.TEST_DATA.event_type.get(journey_type)
         and event_record.json["external_user_ref"] == TestContext.extid
         and event_record.json["channel"] == TestDataUtils.TEST_DATA.event_info.get(constants.CHANNEL_LLOYDS)
+        and event_record.json["email"] == TestContext.email
+    )
+    return event_record
+
+
+@then(parsers.parse("I verify {journey_type} loyalty scheme event is created for {user}"))
+def verify_scheme_into_event_database(user, journey_type):
+    TestContext.extid = TestContext.external_id[user]
+    time.sleep(5)
+    logging.info(TestDataUtils.TEST_DATA.event_type.get(journey_type))
+    event_record = QuerySnowstorm.fetch_event(TestDataUtils.TEST_DATA.event_type.get(journey_type), TestContext.extid)
+    logging.info(str(event_record))
+
+    assert (
+        event_record.event_type == TestDataUtils.TEST_DATA.event_type.get(journey_type)
+        and event_record.json["external_user_ref"] == TestContext.extid
+        and event_record.json["channel"] == TestDataUtils.TEST_DATA.event_info.get(constants.CHANNEL_LLOYDS)
+        and event_record.json["email"] == TestContext.email
+        and event_record.json["scheme_account_id"] == TestContext.current_scheme_account_id
     )
     return event_record
 

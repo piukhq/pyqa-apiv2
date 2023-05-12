@@ -32,6 +32,9 @@ pendulum = {version="*", index="pypi"}
 pytz = "*"
 paramiko = "*"
 soteria = "*"
+flake8 = "*"
+black = "*"
+isort = "*"
 
 [dev-packages]
 flake8 = "*"
