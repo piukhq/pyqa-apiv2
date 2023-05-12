@@ -10,6 +10,7 @@
 	"join_incentive": "Placeholder Enrol Incentive",
 	"category": "Household",
 	"tiers": [],
+	"forgotten_password_url": "https://www.iceland.co.uk/bonus-card/my-bonus-card/forgotten-password/",
 	"images": [
 		{
 			"id": 374,

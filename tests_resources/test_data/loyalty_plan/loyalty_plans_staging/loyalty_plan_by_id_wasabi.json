@@ -26,12 +26,12 @@
 	},
 	"images": [
 		{
-			"id": 1319,
-			"type": 2,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_5_CVAeqUv_naFzo9T.png",
-			"description": "Wasabi Test Offer",
+			"id": 1296,
+			"type": 0,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
+			"description": "Wasabi Hero",
 			"encoding": "png",
-			"order": 1
+			"order": 5
 		},
 		{
 			"id": 1297,
@@ -42,12 +42,12 @@
 			"order": 0
 		},
 		{
-			"id": 1296,
-			"type": 0,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
-			"description": "Wasabi Hero",
+			"id": 1319,
+			"type": 2,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_5_CVAeqUv_naFzo9T.png",
+			"description": "Wasabi Test Offer",
 			"encoding": "png",
-			"order": 5
+			"order": 1
 		},
 		{
 			"id": 1324,
@@ -69,7 +69,8 @@
 		"plan_register_info": null,
 		"join_incentive": null,
 		"category": "Food & Drink",
-		"tiers": []
+		"tiers": [],
+		"forgotten_password_url": null
 	},
 	"journey_fields": {
 		"join_fields": {
@@ -194,6 +195,10 @@
 	},
 	"content": [
 		{
+			"column": "Voucher_Redeemed_Detail",
+			"value": "Your FREE meal voucher was redeemed."
+		},
+		{
 			"column": "Voucher_Expired_Detail",
 			"value": "Your FREE meal voucher has expired."
 		},
@@ -202,24 +207,20 @@
 			"value": "EVERYONE GETS £7 OFF IN WASABI CLUB!"
 		},
 		{
-			"column": "Voucher_Issued_Detail",
-			"value": "Show your Wasabi Club reward code in store to redeem £7 off your next meal."
-		},
-		{
-			"column": "Enrol_Help_Text",
-			"value": "Please enter your details to register with the retailer. We won’t save or store any of the information you provide or edit."
-		},
-		{
 			"column": "Voucher_Inprogress_Detail",
 			"value": "Spend £7.00 or more to get a stamp. Collect 7 stamps to get a Meal Voucher of up to £7 off your next meal."
 		},
 		{
-			"column": "Voucher_Redeemed_Detail",
-			"value": "Your FREE meal voucher was redeemed."
+			"column": "Voucher_Issued_Detail",
+			"value": "Show your Wasabi Club reward code in store to redeem £7 off your next meal."
 		},
 		{
 			"column": "Voucher_Cancelled_Detail",
 			"value": "Your voucher has been cancelled. If you believe we have made a mistake please contact enquiries@wasabi.uk.com."
+		},
+		{
+			"column": "Enrol_Help_Text",
+			"value": "Please enter your details to register with the retailer. We won’t save or store any of the information you provide or edit."
 		}
 	]
 }
