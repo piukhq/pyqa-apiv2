@@ -528,7 +528,7 @@ class IcelandCard:
         if invalid_request:
             payload = {}
         else:
-            # TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_CARD)
+            TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_CARD)
 
             payload = {
                 "account": {

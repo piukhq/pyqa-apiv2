@@ -222,6 +222,10 @@ trenette_membership_card = {
 the_works = {
     "card_num": "",
     "email": "",
+    "register_card": "",
+    "register_account_already_exists": "fail",
+    "register_card_already_registered": "failhhtp",
+    "register_invalid_card_number": "hhasd"
 }
 # ----------------------------------------LOYALTY CARD 1 wallet    ---------------------------------------- #
 
