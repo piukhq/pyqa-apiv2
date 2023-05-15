@@ -1700,7 +1700,7 @@ def update_scheme_status(status):
 def join_scheme(join, merchant, test_email):
     if join == "identical_join":
         test_email = TestDataUtils.TEST_DATA.join_emails.get(constants.IDENTICAL_JOIN)
-    response = MembershipCards.join_field(TestContext.token, merchant, test_email,None, join)
+    response = MembershipCards.join_field(TestContext.token, merchant, test_email, None, join)
     time.sleep(8)
     response_json = response_to_json(response)
     logging.info("response_json data :: %s", response_json)

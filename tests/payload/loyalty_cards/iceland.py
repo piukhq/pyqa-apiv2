@@ -713,7 +713,7 @@ class IcelandCard:
         return payload
 
     @staticmethod
-    def join_journey(email=None, request_payload=None,join_type=None):
+    def join_journey(email=None, request_payload=None, join_type=None):
         faker = Faker()
         if request_payload == "invalid_request":
             payload = {}
