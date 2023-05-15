@@ -12,7 +12,6 @@ from tests.helpers.test_data_utils import TestDataUtils
 class TheWorks:
     @staticmethod
     def join_journey(email=None, request_payload=None, join_type=None):
-
         faker = Faker()
         last_name = faker.name()
         if request_payload == "invalid_request":
@@ -33,7 +32,6 @@ class TheWorks:
             }
 
         else:
-
             if not join_type:
                 last_name = faker.name()
             else:
@@ -56,7 +54,6 @@ class TheWorks:
                     },
                 },
                 "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("the_works"),
-
             }
 
             logging.info(
