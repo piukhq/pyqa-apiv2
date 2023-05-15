@@ -247,14 +247,6 @@ def verify_loyalty_card_into_database_trusted(user, journey_type, merchant):
             or TestDataUtils.TEST_DATA.scheme_status.get(constants.ENROL_FAILED)
         )
 
-    # elif journey_type == "join_http_failed":
-    #     scheme_account = QueryHermes.fetch_ubiquity_schemeaccountentry(journey_type, TestContext.extid)
-    #     assert (
-    #             scheme_account.id == TestContext.current_scheme_account_id
-    #             and scheme_account.link_status is TestDataUtils.TEST_DATA.scheme_status.get(constants.ENROL_FAILED)
-    #             or TestDataUtils.TEST_DATA.scheme_status.get(constants.ENROL_FAILED)
-    #     )
-
     elif journey_type == "account_already_exists":
         scheme_account = QueryHermes.fetch_ubiquity_schemeaccountentry(journey_type, TestContext.extid)
         assert (
