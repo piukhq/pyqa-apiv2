@@ -239,13 +239,21 @@ def verify_loyalty_card_into_database_trusted(user, journey_type, merchant):
             and scheme_account.link_status == TestDataUtils.TEST_DATA.scheme_status.get(constants.WALLET_ONLY)
         )
 
-    elif journey_type == "join_failed":
+    elif journey_type == "join_failed" or journey_type == "join_http_failed":
         scheme_account = QueryHermes.fetch_ubiquity_schemeaccountentry(journey_type, TestContext.extid)
         assert (
             scheme_account.id == TestContext.current_scheme_account_id
             and scheme_account.link_status is TestDataUtils.TEST_DATA.scheme_status.get(constants.ENROL_FAILED)
             or TestDataUtils.TEST_DATA.scheme_status.get(constants.ENROL_FAILED)
         )
+
+    # elif journey_type == "join_http_failed":
+    #     scheme_account = QueryHermes.fetch_ubiquity_schemeaccountentry(journey_type, TestContext.extid)
+    #     assert (
+    #             scheme_account.id == TestContext.current_scheme_account_id
+    #             and scheme_account.link_status is TestDataUtils.TEST_DATA.scheme_status.get(constants.ENROL_FAILED)
+    #             or TestDataUtils.TEST_DATA.scheme_status.get(constants.ENROL_FAILED)
+    #     )
 
     elif journey_type == "account_already_exists":
         scheme_account = QueryHermes.fetch_ubiquity_schemeaccountentry(journey_type, TestContext.extid)
@@ -1700,10 +1708,12 @@ def update_scheme_status(status):
 def join_scheme(join, merchant, test_email):
     if join == "identical_join":
         test_email = TestDataUtils.TEST_DATA.join_emails.get(constants.IDENTICAL_JOIN)
-    response = MembershipCards.join_field(TestContext.token, merchant, test_email)
+    response = MembershipCards.join_field(TestContext.token, merchant, test_email,None, join)
     time.sleep(8)
     response_json = response_to_json(response)
+    logging.info("response_json data :: %s", response_json)
     TestContext.current_scheme_account_id = response_json.get("id")
+    logging.info("TestContext.current_scheme_account_id :: %s", TestContext.current_scheme_account_id)
     TestContext.response_status_code = response.status_code
     logging.info(
         "The response of Join Journey (POST) for "

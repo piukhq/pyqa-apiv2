@@ -63,9 +63,9 @@ master_payment_card = {
 invalid_token = {
     "invalid_token1": "bearer invalid_token",
     "expired_token": "bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6ImFjY2Vzcy1zZWNyZXQtMSJ9.eyJ1c2VyX2lkIjoy"
-    "Mzg3NywiY2hhbm5lbCI6ImNvbS5iYXJjbGF5cy5ibWIiLCJzdWIiOjIzODc3LCJleHAiOjE2MzEyOTE3MjYsImlhdCI6M"
-    "TYzMTI5MDgyNX0.2LfB5dNuweArdz5j-ecXds4mepaeG65h3JA0vC-Mfeilv6C0IWVnfEK_K9_xrJDUhLD7f094rC1L7th"
-    "5g4vJoQ",
+                     "Mzg3NywiY2hhbm5lbCI6ImNvbS5iYXJjbGF5cy5ibWIiLCJzdWIiOjIzODc3LCJleHAiOjE2MzEyOTE3MjYsImlhdCI6M"
+                     "TYzMTI5MDgyNX0.2LfB5dNuweArdz5j-ecXds4mepaeG65h3JA0vC-Mfeilv6C0IWVnfEK_K9_xrJDUhLD7f094rC1L7th"
+                     "5g4vJoQ",
 }
 # ----------------------------------------LOYALTY CARDs    --------------------------------------------------- #
 iceland_membership_card = {
@@ -222,6 +222,9 @@ trenette_membership_card = {
 the_works = {
     "card_num": "",
     "email": "",
+    "email_exists" : "emailexists",
+    "enrol_fail": "fail",
+    "failhttp_error": "failhttperror"
 }
 # ----------------------------------------LOYALTY CARD 1 wallet    ---------------------------------------- #
 
@@ -266,7 +269,7 @@ wallet_info = {
                     "earn_type": "stamps",
                     "reward_text": "Free Meal",
                     "headline": "Spend £7.00 or more to get a stamp. Collect 7 stamps to get a Meal "
-                    "Voucher of up to £7 off your next meal.",
+                                "Voucher of up to £7 off your next meal.",
                     "voucher_code": None,
                     "barcode_type": None,
                     "progress_display_text": "6/7 stamps",
@@ -275,7 +278,7 @@ wallet_info = {
                     "prefix": None,
                     "suffix": "stamps",
                     "body_text": "Spend £7.00 or more to get a stamp. Collect 7 stamps to get a Meal "
-                    "Voucher of up to £7 off your next meal.",
+                                 "Voucher of up to £7 off your next meal.",
                     "terms_and_conditions": "https://policies.staging.gb.bink.com/wasabi/tc.html",
                     "issued_date": None,
                     "expiry_date": None,
@@ -314,7 +317,7 @@ wallet_info = {
                     "prefix": None,
                     "suffix": "stamps",
                     "body_text": "Your voucher has been cancelled. "
-                    "If you believe we have made a mistake please contact enquiries@wasabi.uk.com.",
+                                 "If you believe we have made a mistake please contact enquiries@wasabi.uk.com.",
                     "terms_and_conditions": "https://policies.staging.gb.bink.com/wasabi/tc.html",
                     "issued_date": "1591787076",
                     "expiry_date": "1644491076",
@@ -356,7 +359,7 @@ wallet_info = {
                     "id": 1319,
                     "type": 2,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Offer_tile_5_CVAeqUv_naFzo9T.png",
+                           "Offer_tile_5_CVAeqUv_naFzo9T.png",
                     "description": "Wasabi Test Offer",
                     "encoding": "png",
                 },
@@ -483,7 +486,7 @@ wallet_info = {
                     "id": 1398,
                     "type": 7,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "PromotionsIcelandBonusCard1968x732.png",
+                           "PromotionsIcelandBonusCard1968x732.png",
                     "description": "Promo_Text_1",
                     "encoding": "png",
                 },
@@ -561,7 +564,7 @@ wallet_info = {
                     "id": 1187,
                     "type": 8,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Harvey_Nichols_Card_4_Black.png",
+                           "Harvey_Nichols_Card_4_Black.png",
                     "description": "Black Tier",
                     "encoding": "png",
                 },
@@ -569,7 +572,7 @@ wallet_info = {
                     "id": 1184,
                     "type": 8,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Harvey_Nichols_Card_1_Silver.png",
+                           "Harvey_Nichols_Card_1_Silver.png",
                     "description": "Silver Tier",
                     "encoding": "png",
                 },
@@ -577,7 +580,7 @@ wallet_info = {
                     "id": 1185,
                     "type": 8,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Harvey_Nichols_Card_2_Gold.png",
+                           "Harvey_Nichols_Card_2_Gold.png",
                     "description": "Gold Tier",
                     "encoding": "png",
                 },
@@ -585,7 +588,7 @@ wallet_info = {
                     "id": 1186,
                     "type": 8,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Harvey_Nichols_Card_3_Platinum.png",
+                           "Harvey_Nichols_Card_3_Platinum.png",
                     "description": "Platinum Tier",
                     "encoding": "png",
                 },
@@ -593,7 +596,7 @@ wallet_info = {
                     "id": 1304,
                     "type": 2,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Harvey_Nichols_Rewards_square_oct_02.jpg",
+                           "Harvey_Nichols_Rewards_square_oct_02.jpg",
                     "description": "Harvey Nichols Rewards",
                     "encoding": "jpg",
                 },
@@ -601,7 +604,7 @@ wallet_info = {
                     "id": 575,
                     "type": 0,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Harvey_Nichols_Card_0_TIER_UNKNOWN.png",
+                           "Harvey_Nichols_Card_0_TIER_UNKNOWN.png",
                     "description": "Harvey Nichols Hero",
                     "encoding": "png",
                 },
@@ -732,9 +735,9 @@ wallet_info = {
                     "prefix": "£",
                     "suffix": None,
                     "body_text": "You've earned a Viator reward. "
-                    "All you need to do now is wait for your code to show "
-                    "here after 10 days (just to allow for any returns to register "
-                    "in our system). Use your Viator discount reward at checkout on your next purchase.",
+                                 "All you need to do now is wait for your code to show "
+                                 "here after 10 days (just to allow for any returns to register "
+                                 "in our system). Use your Viator discount reward at checkout on your next purchase.",
                     "terms_and_conditions": "https://policies.staging.gb.bink.com/Viator/rewardtc.html",
                     "issued_date": "1678147200",
                     "expiry_date": None,
@@ -769,7 +772,7 @@ wallet_info = {
                     "id": 1412,
                     "type": 7,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Viator_Barclays_Promotional_Image.png",
+                           "Viator_Barclays_Promotional_Image.png",
                     "description": "Viator Promotion",
                     "encoding": "png",
                 },
@@ -790,7 +793,7 @@ wallet_info = {
                     "id": 2,
                     "type": 0,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Mastercard-Payment_1goHQYv.png",
+                           "Mastercard-Payment_1goHQYv.png",
                     "description": "Mastercard Hero",
                     "encoding": "png",
                 },
@@ -798,7 +801,7 @@ wallet_info = {
                     "id": 32,
                     "type": 2,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Mastercard_pricelesscities_heathrow.png",
+                           "Mastercard_pricelesscities_heathrow.png",
                     "description": "MasterCard Offer Stay - Heathrow",
                     "encoding": "png",
                 },
@@ -813,7 +816,7 @@ wallet_info = {
                     "id": 28,
                     "type": 2,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Mastercard_pricelesscities_moreoffers.png",
+                           "Mastercard_pricelesscities_moreoffers.png",
                     "description": "MasterCard Offer 6 - More Offers",
                     "encoding": "png",
                 },
@@ -821,7 +824,7 @@ wallet_info = {
                     "id": 40,
                     "type": 2,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Mastercard_pricelesscities_loungepass.png",
+                           "Mastercard_pricelesscities_loungepass.png",
                     "description": "MasterCard Offer Stay - Lounge",
                     "encoding": "png",
                 },
@@ -829,7 +832,7 @@ wallet_info = {
                     "id": 27,
                     "type": 2,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Mastercard_pricelesscities_liberty.png",
+                           "Mastercard_pricelesscities_liberty.png",
                     "description": "MasterCard Offer Shop - Liberty",
                     "encoding": "png",
                 },
@@ -837,7 +840,7 @@ wallet_info = {
                     "id": 39,
                     "type": 2,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Mastercard_pricelesscities_market.png",
+                           "Mastercard_pricelesscities_market.png",
                     "description": "MasterCard Offer Play - Markets",
                     "encoding": "png",
                 },
@@ -845,7 +848,7 @@ wallet_info = {
                     "id": 53,
                     "type": 2,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "10773378_MDemand_WFP_BINK_Tile.png",
+                           "10773378_MDemand_WFP_BINK_Tile.png",
                     "description": "World Food Programme",
                     "encoding": "png",
                 },
@@ -960,7 +963,7 @@ wallet_overview_info = {
                     "id": 575,
                     "type": 0,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Harvey_Nichols_Card_0_TIER_UNKNOWN.png",
+                           "Harvey_Nichols_Card_0_TIER_UNKNOWN.png",
                     "description": "Harvey Nichols Hero",
                     "encoding": "png",
                 }
@@ -1056,7 +1059,7 @@ wallet_overview_info = {
                     "id": 2,
                     "type": 0,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Mastercard-Payment_1goHQYv.png",
+                           "Mastercard-Payment_1goHQYv.png",
                     "description": "Mastercard Hero",
                     "encoding": "png",
                 }
@@ -1103,7 +1106,7 @@ wallet_info_by_card_id = {
                 "earn_type": "stamps",
                 "reward_text": "Free Meal",
                 "headline": "Spend £7.00 or more to get a stamp. Collect 7 stamps to get a Meal "
-                "Voucher of up to £7 off your next meal.",
+                            "Voucher of up to £7 off your next meal.",
                 "voucher_code": None,
                 "barcode_type": None,
                 "progress_display_text": "6/7 stamps",
@@ -1112,7 +1115,7 @@ wallet_info_by_card_id = {
                 "prefix": None,
                 "suffix": "stamps",
                 "body_text": "Spend £7.00 or more to get a stamp. Collect 7 stamps to get a Meal "
-                "Voucher of up to £7 off your next meal.",
+                             "Voucher of up to £7 off your next meal.",
                 "terms_and_conditions": "https://policies.staging.gb.bink.com/wasabi/tc.html",
                 "issued_date": None,
                 "expiry_date": None,
@@ -1151,7 +1154,7 @@ wallet_info_by_card_id = {
                 "prefix": None,
                 "suffix": "stamps",
                 "body_text": "Your voucher has been cancelled. "
-                "If you believe we have made a mistake please contact enquiries@wasabi.uk.com.",
+                             "If you believe we have made a mistake please contact enquiries@wasabi.uk.com.",
                 "terms_and_conditions": "https://policies.staging.gb.bink.com/wasabi/tc.html",
                 "issued_date": "1591787076",
                 "expiry_date": "1644491076",
@@ -1317,7 +1320,7 @@ wallet_info_by_card_id = {
                 "id": 1398,
                 "type": 7,
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                "PromotionsIcelandBonusCard1968x732.png",
+                       "PromotionsIcelandBonusCard1968x732.png",
                 "description": "Promo_Text_1",
                 "encoding": "png",
             },
@@ -1414,7 +1417,7 @@ wallet_info_by_card_id = {
                 "id": 1186,
                 "type": 8,
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                "Harvey_Nichols_Card_3_Platinum.png",
+                       "Harvey_Nichols_Card_3_Platinum.png",
                 "description": "Platinum Tier",
                 "encoding": "png",
             },
@@ -1422,7 +1425,7 @@ wallet_info_by_card_id = {
                 "id": 1304,
                 "type": 2,
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                "Harvey_Nichols_Rewards_square_oct_02.jpg",
+                       "Harvey_Nichols_Rewards_square_oct_02.jpg",
                 "description": "Harvey Nichols Rewards",
                 "encoding": "jpg",
             },
@@ -1430,7 +1433,7 @@ wallet_info_by_card_id = {
                 "id": 575,
                 "type": 0,
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                "Harvey_Nichols_Card_0_TIER_UNKNOWN.png",
+                       "Harvey_Nichols_Card_0_TIER_UNKNOWN.png",
                 "description": "Harvey Nichols Hero",
                 "encoding": "png",
             },
@@ -1557,9 +1560,9 @@ wallet_info_by_card_id = {
                 "prefix": "£",
                 "suffix": None,
                 "body_text": "You've earned a Viator reward. "
-                "All you need to do now is wait for your code to show "
-                "here after 10 days (just to allow for any returns to register in our system). "
-                "Use your Viator discount reward at checkout on your next purchase.",
+                             "All you need to do now is wait for your code to show "
+                             "here after 10 days (just to allow for any returns to register in our system). "
+                             "Use your Viator discount reward at checkout on your next purchase.",
                 "terms_and_conditions": "https://policies.staging.gb.bink.com/Viator/rewardtc.html",
                 "issued_date": "1678147200",
                 "expiry_date": None,
@@ -1594,7 +1597,7 @@ wallet_info_by_card_id = {
                 "id": 1412,
                 "type": 7,
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                "Viator_Barclays_Promotional_Image.png",
+                       "Viator_Barclays_Promotional_Image.png",
                 "description": "Viator Promotion",
                 "encoding": "png",
             },
@@ -1614,7 +1617,7 @@ unauth_wallet_info = {
                 "state": "unauthorised",
                 "slug": "AUTHORISATION_FAILED",
                 "description": "We're unable to verify the Loyalty Card details provided. "
-                "Please re-enter your details and try again.",
+                               "Please re-enter your details and try again.",
             },
             "balance": {
                 "updated_at": None,
@@ -1661,7 +1664,7 @@ unauth_wallet_info = {
                     "id": 1319,
                     "type": 2,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Offer_tile_5_CVAeqUv_naFzo9T.png",
+                           "Offer_tile_5_CVAeqUv_naFzo9T.png",
                     "description": "Wasabi Test Offer",
                     "encoding": "png",
                 },
@@ -1691,7 +1694,7 @@ unauth_wallet_info = {
                 "state": "unauthorised",
                 "slug": "AUTHORISATION_FAILED",
                 "description": "We're unable to verify the Loyalty Card details provided. "
-                "Please re-enter your details and try again.",
+                               "Please re-enter your details and try again.",
             },
             "balance": {
                 "updated_at": None,
@@ -1773,7 +1776,7 @@ unauth_wallet_info = {
                     "id": 1398,
                     "type": 7,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "PromotionsIcelandBonusCard1968x732.png",
+                           "PromotionsIcelandBonusCard1968x732.png",
                     "description": "Promo_Text_1",
                     "encoding": "png",
                 },
@@ -1795,7 +1798,7 @@ unauth_wallet_info = {
                     "id": 2,
                     "type": 0,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Mastercard-Payment_1goHQYv.png",
+                           "Mastercard-Payment_1goHQYv.png",
                     "description": "Mastercard Hero",
                     "encoding": "png",
                 },
@@ -1803,7 +1806,7 @@ unauth_wallet_info = {
                     "id": 32,
                     "type": 2,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Mastercard_pricelesscities_heathrow.png",
+                           "Mastercard_pricelesscities_heathrow.png",
                     "description": "MasterCard Offer Stay - Heathrow",
                     "encoding": "png",
                 },
@@ -1818,7 +1821,7 @@ unauth_wallet_info = {
                     "id": 28,
                     "type": 2,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Mastercard_pricelesscities_moreoffers.png",
+                           "Mastercard_pricelesscities_moreoffers.png",
                     "description": "MasterCard Offer 6 - More Offers",
                     "encoding": "png",
                 },
@@ -1826,7 +1829,7 @@ unauth_wallet_info = {
                     "id": 40,
                     "type": 2,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Mastercard_pricelesscities_loungepass.png",
+                           "Mastercard_pricelesscities_loungepass.png",
                     "description": "MasterCard Offer Stay - Lounge",
                     "encoding": "png",
                 },
@@ -1834,7 +1837,7 @@ unauth_wallet_info = {
                     "id": 27,
                     "type": 2,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Mastercard_pricelesscities_liberty.png",
+                           "Mastercard_pricelesscities_liberty.png",
                     "description": "MasterCard Offer Shop - Liberty",
                     "encoding": "png",
                 },
@@ -1842,7 +1845,7 @@ unauth_wallet_info = {
                     "id": 39,
                     "type": 2,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Mastercard_pricelesscities_market.png",
+                           "Mastercard_pricelesscities_market.png",
                     "description": "MasterCard Offer Play - Markets",
                     "encoding": "png",
                 },
@@ -1850,7 +1853,7 @@ unauth_wallet_info = {
                     "id": 53,
                     "type": 2,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "10773378_MDemand_WFP_BINK_Tile.png",
+                           "10773378_MDemand_WFP_BINK_Tile.png",
                     "description": "World Food Programme",
                     "encoding": "png",
                 },
@@ -1871,7 +1874,7 @@ unauth_wallet_overview_info = {
                 "state": "unauthorised",
                 "slug": "AUTHORISATION_FAILED",
                 "description": "We're unable to verify the Loyalty Card details provided."
-                " Please re-enter your details and try again.",
+                               " Please re-enter your details and try again.",
             },
             "balance": {
                 "updated_at": None,
@@ -1913,7 +1916,7 @@ unauth_wallet_overview_info = {
                 "state": "unauthorised",
                 "slug": "AUTHORISATION_FAILED",
                 "description": "We're unable to verify the Loyalty Card details provided. "
-                "Please re-enter your details and try again.",
+                               "Please re-enter your details and try again.",
             },
             "balance": {
                 "updated_at": None,
@@ -1958,7 +1961,7 @@ unauth_wallet_overview_info = {
                     "id": 2,
                     "type": 0,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Mastercard-Payment_1goHQYv.png",
+                           "Mastercard-Payment_1goHQYv.png",
                     "description": "Mastercard Hero",
                     "encoding": "png",
                 },
@@ -1966,7 +1969,7 @@ unauth_wallet_overview_info = {
                     "id": 32,
                     "type": 2,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Mastercard_pricelesscities_heathrow.png",
+                           "Mastercard_pricelesscities_heathrow.png",
                     "description": "MasterCard Offer Stay - Heathrow",
                     "encoding": "png",
                 },
@@ -1981,7 +1984,7 @@ unauth_wallet_overview_info = {
                     "id": 28,
                     "type": 2,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Mastercard_pricelesscities_moreoffers.png",
+                           "Mastercard_pricelesscities_moreoffers.png",
                     "description": "MasterCard Offer 6 - More Offers",
                     "encoding": "png",
                 },
@@ -1989,7 +1992,7 @@ unauth_wallet_overview_info = {
                     "id": 40,
                     "type": 2,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Mastercard_pricelesscities_loungepass.png",
+                           "Mastercard_pricelesscities_loungepass.png",
                     "description": "MasterCard Offer Stay - Lounge",
                     "encoding": "png",
                 },
@@ -1997,7 +2000,7 @@ unauth_wallet_overview_info = {
                     "id": 27,
                     "type": 2,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Mastercard_pricelesscities_liberty.png",
+                           "Mastercard_pricelesscities_liberty.png",
                     "description": "MasterCard Offer Shop - Liberty",
                     "encoding": "png",
                 },
@@ -2005,7 +2008,7 @@ unauth_wallet_overview_info = {
                     "id": 39,
                     "type": 2,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Mastercard_pricelesscities_market.png",
+                           "Mastercard_pricelesscities_market.png",
                     "description": "MasterCard Offer Play - Markets",
                     "encoding": "png",
                 },
@@ -2013,7 +2016,7 @@ unauth_wallet_overview_info = {
                     "id": 53,
                     "type": 2,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "10773378_MDemand_WFP_BINK_Tile.png",
+                           "10773378_MDemand_WFP_BINK_Tile.png",
                     "description": "World Food Programme",
                     "encoding": "png",
                 },
@@ -2033,7 +2036,7 @@ unauth_wallet_info_by_card_id = {
             "state": "unauthorised",
             "slug": "AUTHORISATION_FAILED",
             "description": "We're unable to verify the Loyalty Card details provided. "
-            "Please re-enter your details and try again.",
+                           "Please re-enter your details and try again.",
         },
         "balance": {
             "updated_at": None,
@@ -2096,7 +2099,7 @@ unauth_wallet_info_by_card_id = {
             "state": "unauthorised",
             "slug": "AUTHORISATION_FAILED",
             "description": "We're unable to verify the Loyalty Card details provided. "
-            "Please re-enter your details and try again.",
+                           "Please re-enter your details and try again.",
         },
         "balance": {
             "updated_at": None,
@@ -2178,7 +2181,7 @@ unauth_wallet_info_by_card_id = {
                 "id": 1398,
                 "type": 7,
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                "PromotionsIcelandBonusCard1968x732.png",
+                       "PromotionsIcelandBonusCard1968x732.png",
                 "description": "Promo_Text_1",
                 "encoding": "png",
             },
@@ -2372,7 +2375,7 @@ lc2_wallet_info = {
                 "id": 1398,
                 "type": 7,
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                "PromotionsIcelandBonusCard1968x732.png",
+                       "PromotionsIcelandBonusCard1968x732.png",
                 "description": "Promo_Text_1",
                 "encoding": "png",
             },
@@ -2488,7 +2491,6 @@ lc2_wallet_overview_info = {
         ],
     },
 }
-
 
 # ----------------------------------------MEMBERSHIP PLAN IDs   ----------------------------------------------- #
 
@@ -2747,7 +2749,7 @@ Join_Scheme_status = {
                 "id": 1398,
                 "type": 7,
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                "PromotionsIcelandBonusCard1968x732.png",
+                       "PromotionsIcelandBonusCard1968x732.png",
                 "description": "Promo_Text_1",
                 "encoding": "png",
             },
@@ -2761,7 +2763,7 @@ Join_Scheme_status = {
             "state": "failed",
             "slug": "JOIN_FAILED",
             "description": "The retailer has not been able to accept your request at this time. "
-            "Please remove the request and try again.",
+                           "Please remove the request and try again.",
         },
         "card": {
             "barcode": None,
@@ -2795,7 +2797,7 @@ Join_Scheme_status = {
             "state": "failed",
             "slug": "ACCOUNT_ALREADY_EXISTS",
             "description": "A Loyalty Card matching the entered credentials already exists. "
-            "Please add this Loyalty Card to your wallet.",
+                           "Please add this Loyalty Card to your wallet.",
         },
         "balance": {
             "updated_at": None,

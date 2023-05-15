@@ -19,6 +19,7 @@ class TestContext:
     payment_status = ""
     response_json = ""
     response_status_code = ""
+    join_type = ""
     token = ""
     first_wallet_token = ""
     second_wallet_token = ""
