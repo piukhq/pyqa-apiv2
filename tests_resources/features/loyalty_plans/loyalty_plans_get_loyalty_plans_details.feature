@@ -16,10 +16,9 @@ Feature: View Loyalty Plan by id
       | Iceland             | 200         |
       | Wasabi              | 200         |
       | SquareMeal          | 200         |
-      | Asos                | 200         |
       | Trenette            | 200         |
-  #    | Viator              | 200         |
-  #    | HarveyNichols       | 200         |
+      | Viator              | 200         |
+
 
   @loyalty_plan_details_invalid_token @invalid_token @bink_regression_api2 @sandbox_regression
   Scenario Outline: Verify loyalty plan details gives correct error messages with invalid token
@@ -33,7 +32,6 @@ Feature: View Loyalty Plan by id
       | Iceland        | 401         | Supplied token is invalid | INVALID_TOKEN |
       | Wasabi         | 401         | Supplied token is invalid | INVALID_TOKEN |
       | SquareMeal     | 401         | Supplied token is invalid | INVALID_TOKEN |
-      | Asos           | 401         | Supplied token is invalid | INVALID_TOKEN |
       | Trenette       | 401         | Supplied token is invalid | INVALID_TOKEN |
       | Viator         | 401         | Supplied token is invalid | INVALID_TOKEN |
   #    | HarveyNichols  | 401         | Supplied token is invalid | INVALID_TOKEN |

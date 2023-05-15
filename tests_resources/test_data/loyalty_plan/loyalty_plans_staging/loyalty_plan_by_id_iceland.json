@@ -30,6 +30,22 @@
 	},
 	"images": [
 		{
+			"id": 1070,
+			"type": 5,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_ref1.jpg",
+			"description": "Iceland Reference",
+			"encoding": "jpg",
+			"order": 1
+		},
+		{
+			"id": 1302,
+			"type": 2,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Pizza.jpg",
+			"description": "Iceland Offer - Pizza",
+			"encoding": "jpg",
+			"order": 1
+		},
+		{
 			"id": 373,
 			"type": 4,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland-asset.png",
@@ -46,17 +62,17 @@
 			"order": 2
 		},
 		{
-			"id": 1302,
-			"type": 2,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Pizza.jpg",
-			"description": "Iceland Offer - Pizza",
-			"encoding": "jpg",
-			"order": 1
+			"id": 1234,
+			"type": 0,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
+			"description": "Iceland Slimming World hero card",
+			"encoding": "png",
+			"order": 0
 		},
 		{
-			"id": 1070,
+			"id": 1071,
 			"type": 5,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_ref1.jpg",
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref2.jpg",
 			"description": "Iceland Reference",
 			"encoding": "jpg",
 			"order": 1
@@ -78,28 +94,12 @@
 			"order": 0
 		},
 		{
-			"id": 1071,
-			"type": 5,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref2.jpg",
-			"description": "Iceland Reference",
-			"encoding": "jpg",
-			"order": 1
-		},
-		{
 			"id": 1072,
 			"type": 5,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref3.jpg",
 			"description": "Iceland Reference",
 			"encoding": "jpg",
 			"order": 1
-		},
-		{
-			"id": 1234,
-			"type": 0,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
-			"description": "Iceland Slimming World hero card",
-			"encoding": "png",
-			"order": 0
 		}
 	],
 	"plan_details": {
@@ -113,7 +113,8 @@
 		"plan_register_info": "You have added a temporary card. You’ll need to register it to enjoy the full benefits of the programme.",
 		"join_incentive": "Placeholder Enrol Incentive",
 		"category": "Household",
-		"tiers": []
+		"tiers": [],
+		"forgotten_password_url": "https://www.iceland.co.uk/bonus-card/my-bonus-card/forgotten-password/"
 	},
 	"journey_fields": {
 		"join_fields": {
@@ -488,7 +489,7 @@
 						"display_label": "Bonus card number",
 						"validation": "^(63320400)[0-9]{11}$",
 						"validation_description": null,
-					"description": "Card number / first 19 barcode digits",
+						"description": "Card number / first 19 barcode digits",
 						"credential_slug": "card_number",
 						"type": "text",
 						"is_sensitive": false,

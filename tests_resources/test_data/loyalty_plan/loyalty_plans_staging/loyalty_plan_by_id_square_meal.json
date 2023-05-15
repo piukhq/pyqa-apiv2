@@ -75,18 +75,19 @@
 		"category": "Food & Drink",
 		"tiers": [
 			{
-				"name": "Tier 2",
-				"description": "Silver"
-			},
-			{
 				"name": "Tier 3",
 				"description": "Gold"
 			},
 			{
 				"name": "Tier 1",
 				"description": "Bronze"
+			},
+			{
+				"name": "Tier 2",
+				"description": "Silver"
 			}
-		]
+		],
+		"forgotten_password_url": null
 	},
 	"journey_fields": {
 		"join_fields": {
