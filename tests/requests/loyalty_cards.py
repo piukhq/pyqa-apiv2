@@ -164,7 +164,7 @@ class MembershipCards(Endpoint):
         return Endpoint.BASE_URL + api.ENDPOINT_MEMBERSHIP_CARDS_JOIN_FAILED.format(scheme_account_id)
 
     @staticmethod
-    def join_field(token, merchant, email, request_payload=None):
+    def join_field(token, merchant, email, request_payload=None, join_type=None):
         url = MembershipCards.get_join_url()
         header = Endpoint.request_header(token)
         encrypt_header = Endpoint.encrypt_header(token)
@@ -174,7 +174,10 @@ class MembershipCards(Endpoint):
                 data = encrypted_payload_token(payload)
                 return Endpoint.call_payload(url, encrypt_header, "POST", data)
             elif TestContext.flag_encrypt == "false":
-                payload = Merchant.get_merchant(merchant).join_journey(email)
+                if join_type:
+                    payload = Merchant.get_merchant(merchant).join_journey(email, None, join_type)
+                else:
+                    payload = Merchant.get_merchant(merchant).join_journey(email)
                 return Endpoint.call(url, header, "POST", payload)
         else:
             payload = Merchant.get_merchant(merchant).join_journey(email, request_payload)

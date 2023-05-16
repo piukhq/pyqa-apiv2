@@ -222,7 +222,11 @@ trenette_membership_card = {
 the_works = {
     "card_num": "",
     "email": "",
+    "email_exists": "emailexists",
+    "enrol_fail": "fail",
+    "failhttp_error": "failhttperror",
 }
+
 # ----------------------------------------LOYALTY CARD 1 wallet    ---------------------------------------- #
 
 # Wallet_info can have card details of different merchants and each merchant can have multiple loyalty cards.
@@ -2488,7 +2492,6 @@ lc2_wallet_overview_info = {
         ],
     },
 }
-
 
 # ----------------------------------------MEMBERSHIP PLAN IDs   ----------------------------------------------- #
 
