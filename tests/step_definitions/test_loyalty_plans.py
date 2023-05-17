@@ -45,7 +45,7 @@ def verify_is_in_wallet_loyalty_plan_by_id(loyalty_scheme, env, channel):
     assert response_json["is_in_wallet"] is False
 
 
-@when(parsers.parse('I perform GET request to view "{loyalty_scheme}" loyalty plan by id'))
+@when(parsers.parse('I perform GET request to view and compare "{loyalty_scheme}" loyalty plan by id'))
 def verify_get_loyalty_plan_by_id(loyalty_scheme, env, channel):
     response = MembershipPlans.get_loyalty_plan_by_id(TestContext.token, loyalty_scheme)
     TestContext.response_status_code = response.status_code
@@ -73,7 +73,7 @@ def verify_get_loyalty_plan_by_id(loyalty_scheme, env, channel):
     # TestContext.actual_loyalty_plan_by_id_field = response.json()
 
 
-@when(parsers.parse('I perform GET request to view "{loyalty_scheme}" loyalty plan details'))
+@when(parsers.parse('I perform GET request to view and compare "{loyalty_scheme}" loyalty plan details'))
 def verify_get_loyalty_plan_details(loyalty_scheme, env, channel):
     response = MembershipPlans.get_loyalty_plan_details(TestContext.token, loyalty_scheme)
     TestContext.response_status_code = response.status_code

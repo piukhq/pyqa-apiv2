@@ -19,6 +19,7 @@ Feature: view journey fields
       | SquareMeal     | 200         |
       | Trenette       | 200         |
       | Viator         | 200         |
+   #  | The_Works      | 200         |
 
 
   @membership_plan @invalid_token @bink_regression_api2 @sandbox_regression
@@ -35,6 +36,7 @@ Feature: view journey fields
       | SquareMeal     | 401         | Supplied token is invalid | INVALID_TOKEN |
       | Trenette       | 401         | Supplied token is invalid | INVALID_TOKEN |
       | Viator         | 401         | Supplied token is invalid | INVALID_TOKEN |
+      | The_Works      | 401         | Supplied token is invalid | INVALID_TOKEN |
 
   @membership_plan @invalid_resource @bink_regression_api2 @sandbox_regression
   Scenario Outline: Verify Resource specified could not be found

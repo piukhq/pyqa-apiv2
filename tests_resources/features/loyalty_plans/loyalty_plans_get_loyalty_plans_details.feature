@@ -8,7 +8,7 @@ Feature: View Loyalty Plan by id
   @loyalty_plan_details_success @journey_type @bink_regression_api2 @sandbox_regression
   Scenario Outline: View Loyalty Plan Details
     Given I am a Lloyds user
-    When I perform GET request to view "<loyalty_scheme>" loyalty plan details
+    When I perform GET request to view and compare "<loyalty_scheme>" loyalty plan details
     Then I verify the <status_code> for loyalty plan
 
     Examples:
@@ -18,7 +18,7 @@ Feature: View Loyalty Plan by id
       | SquareMeal          | 200         |
       | Trenette            | 200         |
       | Viator              | 200         |
-
+  #   | The_Works           | 200         |
 
   @loyalty_plan_details_invalid_token @invalid_token @bink_regression_api2 @sandbox_regression
   Scenario Outline: Verify loyalty plan details gives correct error messages with invalid token
@@ -34,7 +34,7 @@ Feature: View Loyalty Plan by id
       | SquareMeal     | 401         | Supplied token is invalid | INVALID_TOKEN |
       | Trenette       | 401         | Supplied token is invalid | INVALID_TOKEN |
       | Viator         | 401         | Supplied token is invalid | INVALID_TOKEN |
-  #    | HarveyNichols  | 401         | Supplied token is invalid | INVALID_TOKEN |
+      | The_Works      | 401         | Supplied token is invalid | INVALID_TOKEN |
 
   @loyalty_plan_details_invalid_resource @invalid_resource @bink_regression_api2 @sandbox_regression
   Scenario Outline: Verify loyalty plan details gives correct error messages with invalid loyalty scheme
