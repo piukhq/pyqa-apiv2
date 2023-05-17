@@ -6,6 +6,7 @@ class TestContext:
     extid = ""
     access_token = ""
     token_type = ""
+    current_scheme_plan = ""
     refresh_token_type = ""
     current_payment_card_id = ""
     second_payment_card_id = ""

@@ -77,7 +77,6 @@ class JWE:
         kid: str = None,
         compact: bool = True,
     ) -> str:
-
         if public_key_pem:
             self.public_key = self._get_key_from_pem(public_key_pem)
 
