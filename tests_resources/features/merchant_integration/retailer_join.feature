@@ -4,14 +4,14 @@ Feature: Basic Merchant Integration Journeys
   I want check all Loyalty card features
   so that I am able to benefit from the Bink functionality
 
-  @retail @join
+  @retail @join1
   Scenario Outline: Join to a Loyalty Scheme
-    Given I am a bos user
+    Given I am a Lloyds user
     When I perform POST request to join "<merchant>" membership card
     Then I see a <status_code_returned>
     When I perform GET Wallet
 #    Then Verify Wallet fields for <merchant> with join_success
-    Then verify that for bos_user data stored in after "<journey_type>" journey for "<merchant>"
+    Then verify that for Lloyds data stored in after "<journey_type>" journey for "<merchant>"
 
 
     Examples:
