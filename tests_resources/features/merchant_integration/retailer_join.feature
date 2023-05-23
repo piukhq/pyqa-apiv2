@@ -17,3 +17,20 @@ Feature: Basic Merchant Integration Journeys
     Examples:
       | merchant  | status_code_returned |journey_type|
       | The_Works | 202                  |join        |
+
+
+  @retail_join_failed
+  Scenario Outline: retailer fails to join requests
+    Given I am a bos user
+    When I perform POST request to <journey_type> "<merchant>" membership card
+    Then I see a <status_code_returned>
+    When I perform GET Wallet
+#    Then Verify Wallet fields for <merchant> with account_already_exists
+    Then verify that for bos_user data stored in after "<journey_type>" journey for "<merchant>"
+
+
+    Examples:
+      | merchant      | status_code_returned |journey_type          |
+      | The_Works         | 202              |account_already_exists|
+      | The_Works         | 202              |join_failed           |
+      | The_Works         | 202              |join_http_failed      |

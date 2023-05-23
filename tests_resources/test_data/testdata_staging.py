@@ -222,11 +222,11 @@ trenette_membership_card = {
 the_works = {
     "card_num": "",
     "email": "",
-    "register_card": "",
-    "register_account_already_exists": "fail",
-    "register_card_already_registered": "failhhtp",
-    "register_invalid_card_number": "hhasd"
+    "email_exists": "emailexists",
+    "enrol_fail": "fail",
+    "failhttp_error": "failhttperror",
 }
+
 # ----------------------------------------LOYALTY CARD 1 wallet    ---------------------------------------- #
 
 # Wallet_info can have card details of different merchants and each merchant can have multiple loyalty cards.
@@ -2493,7 +2493,6 @@ lc2_wallet_overview_info = {
     },
 }
 
-
 # ----------------------------------------MEMBERSHIP PLAN IDs   ----------------------------------------------- #
 
 membership_plan_id = {
@@ -2535,6 +2534,9 @@ event_info = {
 event_type = {
     "user_created": "user.created",
     "user_deleted": "user.deleted",
+    "lc_join_request": "lc.join.request",
+    "lc_status_change": "lc.statuschange",
+    "lc_join_success": "lc.join.success",
 }
 
 # ------------------------------------------ DB DETAILS ---------------------------------------------------- #

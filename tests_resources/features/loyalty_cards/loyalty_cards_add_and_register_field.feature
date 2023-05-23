@@ -17,20 +17,6 @@ Feature: Add and register a loyalty card
       | merchant | status_code_returned | journey_type     |
       | Iceland  | 202                  | add_and_register |
 
-#  @scheme_is_pending_add_and_auth @bink_regression_api2
-#  Scenario Outline: Add and register field journey where scheme is in pending
-#    Given I am a Bink user
-#    When I perform POST request <type> add and register for <merchant>
-#    And I update the membership card to "<status>" pending in DB
-#    And I perform POST request to add and register "<merchant>" membership card where membership card is in pending
-#    Then I see a <status_code_returned>
-#    And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
-#    When I update the membership card to "<status_changed>" pending in DB
-#    And I perform DELETE request to delete the "<merchant>" membership card
-#    Examples:
-#      | merchant | status_code_returned | journey_type     | status |
-#      | Iceland  | 200                  | add_and_register | 0      |
-
   @add_and_register_existing_field @bink_regression_api2
   Scenario Outline: Add existing card again into wallet for add and register
     Given I am in Bink channel to get b2b token
@@ -134,25 +120,23 @@ Feature: Add and register a loyalty card
 
   @register_success_failed_multi_wallet @bink_regression_api2 @trusted
   Scenario Outline: add and register success in wallet1 then add and register failed in wallet2
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request add and register for <merchant>
+    Given I am a Lloyds user
+    When I perform POST request add and register for <merchant>
     And I perform POST request to add a new "master" payment account to wallet
-    And For bink_user I perform GET Wallet
+    And For lloyds_user I perform GET Wallet
     Then Verify Wallet fields for <merchant> with registration_success
-    When I am in Bink channel to get b2b token for second user
-    And I perform POST token request for token type "b2b" to get access token for second user
-    And I perform POST request to result failed add and register for <merchant>
+    Given I am a halifax user
+    When I perform POST request to result failed add and register for <merchant>
     And I perform POST request to add a new "master" payment account to wallet
-    And For bink_user2 I perform GET Wallet
+    And For halifax_user I perform GET Wallet
     Then Verify Wallet fields for <merchant> with <scheme_state>
-    When For bink_user I perform GET Wallet
+    Given I am a Lloyds user
+    When For lloyds_user I perform GET Wallet
     Then Verify Wallet fields for <merchant> with registration_success
 
     Examples:
       | merchant |  scheme_state      |
       | Iceland  | registration_failed|
-
 
   @register_failed_failed_multi_wallet @bink_regression_api2 @trusted
   Scenario Outline: add and register failed in wallet1 then add and register failed in wallet2

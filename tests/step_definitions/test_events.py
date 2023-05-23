@@ -2617,27 +2617,41 @@ def put_trusted_add(request_payload, merchant):
     return response
 
 
-@then(parsers.parse("verify that for {user} the event created in database after {journey_type}"))
-def verify_loyalty_card_into_event_database(user, journey_type):
+@then(parsers.parse("I verify that {journey_type} event is created for {user}"))
+def verify_loyalty_card_into_event_database(journey_type, user):
     TestContext.extid = TestContext.external_id[user]
     time.sleep(5)
+    logging.info(TestDataUtils.TEST_DATA.event_type.get(journey_type))
+    event_record = QuerySnowstorm.fetch_event(TestDataUtils.TEST_DATA.event_type.get(journey_type), TestContext.extid)
+    logging.info(str(event_record))
 
-    if journey_type == "user_created":
-        event_record = QuerySnowstorm.fetch_event(journey_type, TestContext.extid)
-        print(event_record)
-        assert (
-            event_record.event_type == TestDataUtils.TEST_DATA.event_type.get(constants.USER_CREATED)
-            and event_record.json["external_user_ref"] == TestContext.extid
-            and event_record.json["channel"] == TestDataUtils.TEST_DATA.event_info.get(constants.CHANNEL_LLOYDS)
-        )
-    elif journey_type == "user_deleted":
-        event_record = QuerySnowstorm.fetch_event(journey_type, TestContext.extid)
-        print(event_record)
-        assert (
-            event_record.event_type == TestDataUtils.TEST_DATA.event_type.get(constants.USER_DELETED)
-            and event_record.json["external_user_ref"] == TestContext.extid
-            and event_record.json["channel"] == TestDataUtils.TEST_DATA.event_info.get(constants.CHANNEL_LLOYDS)
-        )
+    assert (
+        event_record.event_type == TestDataUtils.TEST_DATA.event_type.get(journey_type)
+        and event_record.json["external_user_ref"] == TestContext.extid
+        and event_record.json["channel"] == TestDataUtils.TEST_DATA.event_info.get(constants.CHANNEL_LLOYDS)
+        and event_record.json["email"] == TestContext.email
+    )
+    return event_record
+
+
+@then(parsers.parse("I verify {journey_type} loyalty scheme event is created for {user}"))
+def verify_scheme_into_event_database(journey_type, user):
+    if user == "lloyds_user":
+        channel = TestDataUtils.TEST_DATA.event_info.get(constants.CHANNEL_LLOYDS)
+    elif user == "halifax_user":
+        channel = TestDataUtils.TEST_DATA.event_info.get(constants.CHANNEL_HALIFAX)
+    TestContext.extid = TestContext.external_id[user]
+    time.sleep(5)
+    logging.info(TestDataUtils.TEST_DATA.event_type.get(journey_type))
+    event_record = QuerySnowstorm.fetch_event(TestDataUtils.TEST_DATA.event_type.get(journey_type), TestContext.extid)
+    logging.info(str(event_record))
+    assert (
+        event_record.event_type == TestDataUtils.TEST_DATA.event_type.get(journey_type)
+        and event_record.json["external_user_ref"] == TestContext.extid
+        and event_record.json["channel"] == channel
+        and event_record.json["email"] == TestContext.email
+        and event_record.json["scheme_account_id"] == TestContext.current_scheme_account_id
+    )
     return event_record
 
 
