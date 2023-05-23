@@ -7,7 +7,9 @@ from tests.payload.loyalty_cards.the_works import TheWorks
 from tests.payload.loyalty_cards.trenette import TrenetteCard
 from tests.payload.loyalty_cards.viator import ViatorCard
 from tests.payload.loyalty_cards.wasabi import WasabiCard
+from tests_resources.test_data.get_wallet.loyalty_card_iceland import IcelandResponse
 from tests_resources.test_data.get_wallet.loyalty_card_wasabi import WasabiResponse
+from tests_resources.test_data.get_wallet.payment_account import PaymentAccountResponse
 
 
 class PaymentCardTestData:
@@ -191,16 +193,23 @@ class TestData:
     def get_merchant_response(merchant):
         """This function will select the correct test data file for the merchant"""
 
-        switcher = {
-            # "HarveyNichols": HarveyNicholsResponse,
-            # "Iceland": IcelandResponse,
-            "Wasabi": WasabiResponse,
-            # "SquareMeal": SquareMealResponse,
-            # "Trenette": TrenetteResponse,
-            # "Viator": ViatorResponse,
-            # "payment_account" : PaymentAccountResponse
-        }
-        return switcher.get(merchant)
+        match merchant:
+            # case "HarveyNichols":
+            #     return HarveyNicholsResponse
+            case "Iceland":
+                return IcelandResponse
+            case "Wasabi":
+                return WasabiResponse
+            # case "SquareMeal":
+            #     return SquareMealResponse
+            # case "Trenette":
+            #     return TrenetteResponse
+            # case "Viator":
+            #     return ViatorResponse
+            # case "The_Works":
+            #     return TheWorks
+            case "payment_account":
+                return PaymentAccountResponse
 
 
 class Merchant:
