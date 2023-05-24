@@ -197,7 +197,7 @@ def verify_loyalty_card_into_database(journey_type, merchant):
 
 
 #  Trusted channel database change
-@then(parsers.parse('verify that for {user} data stored in after "{journey_type}" journey for "{merchant}"'))
+@then(parsers.parse('verify that for {user} data stored in after {journey_type} journey for "{merchant}"'))
 def verify_loyalty_card_into_database_trusted(user, journey_type, merchant):
     TestContext.extid = TestContext.external_id[user]
     time.sleep(5)
@@ -272,14 +272,23 @@ def verify_loyalty_card_into_database_trusted(user, journey_type, merchant):
             )
             print("scheme ac status", scheme_account.status)
 
-    elif journey_type == "pll":
-        scheme_account = QueryHermes.fetch_pll_user_link(journey_type, TestContext.extid)
-        assert (
-            scheme_account.active_link is True
-            and scheme_account.scheme_account_id == TestContext.current_scheme_account_id
-            and scheme_account.payment_card_account_id == TestContext.current_payment_card_id
-        )
-    return scheme_account
+    elif journey_type == "pll_active" or journey_type == "pll_inactive":
+        if journey_type == "pll_active":
+            scheme_account = QueryHermes.fetch_pll_user_link(journey_type, TestContext.extid)
+            assert (
+                scheme_account.active_link is True
+                and scheme_account.scheme_account_id == TestContext.current_scheme_account_id
+                and scheme_account.payment_card_account_id == TestContext.current_payment_card_id
+            )
+        else:
+            scheme_account = QueryHermes.fetch_pll_user_link(journey_type, TestContext.extid)
+            assert (
+                scheme_account.active_link is False
+                and scheme_account.scheme_account_id == TestContext.current_scheme_account_id
+                and scheme_account.payment_card_account_id == TestContext.current_payment_card_id
+            )
+
+        return scheme_account
 
 
 @then(parsers.parse('verify the payment data stored in DB after "{journey_type2}" journey for "{merchant}"'))

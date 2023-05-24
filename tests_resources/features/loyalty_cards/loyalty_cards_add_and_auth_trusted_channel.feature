@@ -167,9 +167,9 @@ Feature: Add and authorise a loyalty card into Trusted channel
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add trusted channel "<merchant>" loyalty card
     Then I see a <status_code_returned>
-    And verify the data stored in DB after "<journey_type>" journey for "<merchant>"
+    And verify that for squaremeal_user data stored in after "<journey_type>" journey for "<merchant>"
 
     Examples:
       | payment_card_provider | merchant   | status_code_returned | journey_type |
-      | master                | SquareMeal | 201                  | pll          |
+      | master                | SquareMeal | 201                  | pll_active   |
 

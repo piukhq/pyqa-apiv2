@@ -106,4 +106,4 @@ Feature: Authorise a loyalty card
 
     Examples:
       | payment_card_provider | merchant | status_code_returned | journey_type |
-      | master                | Iceland  | 202                  | pll          |
+      | master                | Iceland  | 202                  | pll_active   |
