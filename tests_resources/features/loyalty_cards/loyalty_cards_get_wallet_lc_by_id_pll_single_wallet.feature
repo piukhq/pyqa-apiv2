@@ -14,10 +14,11 @@ Feature: View Wallet by loyalty card id
     And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
+    And verify that for bink_user data stored in after pll_active journey for "<merchant>"
 
      Examples:
-     | merchant | status_code_returned|payment_card_provider|state|slug                     |description |
-     | Wasabi   | 200                 | master              |active|null                    |null       |
+     | merchant | status_code_returned|payment_card_provider|state|slug  |description |
+     | Wasabi   | 200                 | master              |active|null |null        |
 
   @wallet_loyaltycard_pll_status2 @bink_regression_api2
   Scenario Outline: Verify wallet loyalty card by id pll links for inactive payment account and authorised loyalty card
@@ -28,6 +29,7 @@ Feature: View Wallet by loyalty card id
     And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
+    And verify that for bink_user data stored in after pll_inactive journey for "<merchant>"
 
      Examples:
      | merchant | status_code_returned|payment_card_provider|state     |slug                     |description                                                     |
@@ -42,9 +44,10 @@ Feature: View Wallet by loyalty card id
     And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
+    And verify that for bink_user data stored in after pll_inactive journey for "<merchant>"
 
      Examples:
-     | merchant | request_payload | status_code | status_code_returned| payment_card_provider | state    | slug                        | description                                                      |
+     | merchant | request_payload | status_code | status_code_returned| payment_card_provider | state    | slug                        | description                                                       |
      | Wasabi   | unauthorised    | 202         | 200                 | master                | inactive | LOYALTY_CARD_NOT_AUTHORISED | The Loyalty Card is not authorised so no PLL link can be created. |
 
   @wallet_loyaltycard_pll_status4 @bink_regression_api2
@@ -56,6 +59,7 @@ Feature: View Wallet by loyalty card id
     And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
+    And verify that for bink_user data stored in after pll_inactive journey for "<merchant>"
 
      Examples:
      | merchant | request_payload | status_code | status_code_returned | payment_card_provider | state    | slug                                      | description                                                                                   |

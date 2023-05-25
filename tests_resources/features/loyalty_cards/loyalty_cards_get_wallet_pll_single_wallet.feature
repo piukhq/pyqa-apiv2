@@ -15,10 +15,11 @@ Feature: View single wallet pll
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' for loyalty card PLL links in the Wallet
     And I can see '<state>','<slug>' and '<description>' for payment accounts PLL links in the Wallet
+    And verify that for bink_user data stored in after pll_active journey for "<merchant>"
 
      Examples:
-     | merchant | status_code_returned|payment_card_provider|state|slug                     |description |
-     | Wasabi   | 200                 | master              |active|null                    |null       |
+     | merchant | status_code_returned|payment_card_provider|state|slug |description |
+     | Wasabi   | 200                 | master              |active|null|null       |
 
   @wallet_pll_status2 @bink_regression_api2 @sandbox_regression
   Scenario Outline: Verify wallet pll links for inactive payment account and authorised loyalty card
@@ -30,6 +31,7 @@ Feature: View single wallet pll
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' for loyalty card PLL links in the Wallet
     And I can see '<state>','<slug>' and '<description>' for payment accounts PLL links in the Wallet
+    And verify that for bink_user data stored in after pll_inactive journey for "<merchant>"
 
      Examples:
      | merchant | status_code_returned|payment_card_provider|state     |slug                     |description                                                     |
@@ -45,6 +47,7 @@ Feature: View single wallet pll
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' for loyalty card PLL links in the Wallet
     And I can see '<state>','<slug>' and '<description>' for payment accounts PLL links in the Wallet
+    And verify that for bink_user data stored in after pll_inactive journey for "<merchant>"
 
      Examples:
      | merchant | request_payload | status_code | status_code_returned | payment_card_provider | state    | slug                        | description                                                      |
@@ -60,6 +63,7 @@ Feature: View single wallet pll
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' for loyalty card PLL links in the Wallet
     And I can see '<state>','<slug>' and '<description>' for payment accounts PLL links in the Wallet
+    And verify that for bink_user data stored in after pll_inactive journey for "<merchant>"
 
      Examples:
      | merchant | request_payload | status_code | status_code_returned | payment_card_provider | state    | slug                                      | description                                                                                   |
