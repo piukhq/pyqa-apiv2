@@ -16,6 +16,7 @@
 			"id": 1322,
 			"type": 3,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/binksweetshop-icon.png",
+			"cta_url": null,
 			"description": "Bink Sweet Rewards Icon",
 			"encoding": "png",
 			"order": 0

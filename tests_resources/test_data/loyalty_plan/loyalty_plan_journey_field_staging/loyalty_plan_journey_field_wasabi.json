@@ -12,6 +12,7 @@
 				"type": "text",
 				"is_sensitive": false,
 				"is_scannable": false,
+				"is_optional": false,
 				"choice": [],
 				"alternative": null
 			},
@@ -25,6 +26,7 @@
 				"type": "text",
 				"is_sensitive": false,
 				"is_scannable": false,
+				"is_optional": false,
 				"choice": [],
 				"alternative": null
 			},
@@ -38,6 +40,7 @@
 				"type": "text",
 				"is_sensitive": false,
 				"is_scannable": false,
+				"is_optional": false,
 				"choice": [],
 				"alternative": null
 			},
@@ -51,6 +54,7 @@
 				"type": "date",
 				"is_sensitive": false,
 				"is_scannable": false,
+				"is_optional": false,
 				"choice": [],
 				"alternative": null
 			}
@@ -93,6 +97,7 @@
 				"type": "text",
 				"is_sensitive": false,
 				"is_scannable": false,
+				"is_optional": false,
 				"choice": [],
 				"alternative": null
 			}
@@ -112,6 +117,7 @@
 				"type": "text",
 				"is_sensitive": false,
 				"is_scannable": false,
+				"is_optional": false,
 				"choice": [],
 				"alternative": null
 			}

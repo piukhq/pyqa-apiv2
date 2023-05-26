@@ -26,18 +26,20 @@
 	},
 	"images": [
 		{
-			"id": 1401,
-			"type": 0,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/ASOS_Hero_06042022.png",
-			"description": "ASOS Hero",
+			"id": 1399,
+			"type": 3,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/App_icon.png",
+			"cta_url": null,
+			"description": "ASOS icon",
 			"encoding": "png",
 			"order": 0
 		},
 		{
-			"id": 1399,
-			"type": 3,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/App_icon.png",
-			"description": "ASOS icon",
+			"id": 1401,
+			"type": 0,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/ASOS_Hero_06042022.png",
+			"cta_url": null,
+			"description": "ASOS Hero",
 			"encoding": "png",
 			"order": 0
 		}
@@ -53,7 +55,8 @@
 		"plan_register_info": null,
 		"join_incentive": null,
 		"category": "Retail",
-		"tiers": []
+		"tiers": [],
+		"forgotten_password_url": null
 	},
 	"journey_fields": {
 		"join_fields": {
@@ -68,6 +71,7 @@
 					"type": "text",
 					"is_sensitive": false,
 					"is_scannable": false,
+					"is_optional": false,
 					"choice": [],
 					"alternative": null
 				},
@@ -81,6 +85,7 @@
 					"type": "text",
 					"is_sensitive": false,
 					"is_scannable": false,
+					"is_optional": false,
 					"choice": [],
 					"alternative": null
 				},
@@ -94,6 +99,7 @@
 					"type": "text",
 					"is_sensitive": false,
 					"is_scannable": false,
+					"is_optional": false,
 					"choice": [],
 					"alternative": null
 				},
@@ -107,6 +113,7 @@
 					"type": "text",
 					"is_sensitive": false,
 					"is_scannable": false,
+					"is_optional": false,
 					"choice": [],
 					"alternative": null
 				}
@@ -142,6 +149,7 @@
 					"type": "text",
 					"is_sensitive": false,
 					"is_scannable": false,
+					"is_optional": false,
 					"choice": [],
 					"alternative": null
 				}
@@ -161,6 +169,7 @@
 					"type": "text",
 					"is_sensitive": false,
 					"is_scannable": false,
+					"is_optional": false,
 					"choice": [],
 					"alternative": null
 				}
@@ -171,12 +180,20 @@
 	},
 	"content": [
 		{
-			"column": "Voucher_Issued_Detail",
-			"value": "You've earned a reward with ASOS EXTRA! Now all you need to do is wait 42 days (to allow for any returns you make to register on our system) and your ASOS EXTRA rewards will show up here, ready for you to make the most of. You can enter your code at checkout under Promo/Student Code or Voucher."
+			"column": "Voucher_Inprogress_Detail",
+			"value": "Spend £100 to get a £10 voucher"
 		},
 		{
 			"column": "Voucher_Cancelled_Detail",
 			"value": "Your ASOS EXTRA gift voucher has been cancelled."
+		},
+		{
+			"column": "Voucher_Redeemed_Detail",
+			"value": "Your ASOS EXTRA gift voucher was redeemed."
+		},
+		{
+			"column": "Voucher_Issued_Detail",
+			"value": "You've earned a reward with ASOS EXTRA! Now all you need to do is wait 42 days (to allow for any returns you make to register on our system) and your ASOS EXTRA rewards will show up here, ready for you to make the most of. You can enter your code at checkout under Promo/Student Code or Voucher."
 		},
 		{
 			"column": "Enrol_Help_Text",
@@ -185,14 +202,6 @@
 		{
 			"column": "Voucher_Expired_Detail",
 			"value": "Your ASOS EXTRA gift voucher has expired."
-		},
-		{
-			"column": "Voucher_Inprogress_Detail",
-			"value": "Spend £100 to get a £10 voucher"
-		},
-		{
-			"column": "Voucher_Redeemed_Detail",
-			"value": "Your ASOS EXTRA gift voucher was redeemed."
 		}
 	]
 }

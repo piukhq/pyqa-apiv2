@@ -49,26 +49,28 @@
 				{
 					"order": 3,
 					"display_label": "First name",
-					"validation": null,
+					"validation": "^(((?=.{1,100}$)[A-Za-z-\\u00C0-\\u00FF'])+\\s*){1,4}$",
 					"validation_description": null,
 					"description": "Enter first name",
 					"credential_slug": "first_name",
 					"type": "text",
 					"is_sensitive": false,
 					"is_scannable": false,
+					"is_optional": false,
 					"choice": [],
 					"alternative": null
 				},
 				{
 					"order": 4,
 					"display_label": "Last name",
-					"validation": null,
+					"validation": "^(((?=.{1,100}$)[A-Za-z-\\u00C0-\\u00FF'])+\\s*){1,4}$",
 					"validation_description": null,
 					"description": "Enter last name",
 					"credential_slug": "last_name",
 					"type": "text",
 					"is_sensitive": false,
 					"is_scannable": false,
+					"is_optional": false,
 					"choice": [],
 					"alternative": null
 				},
@@ -82,6 +84,7 @@
 					"type": "text",
 					"is_sensitive": false,
 					"is_scannable": false,
+					"is_optional": false,
 					"choice": [],
 					"alternative": null
 				}
@@ -116,26 +119,28 @@
 				{
 					"order": 3,
 					"display_label": "First name",
-					"validation": null,
+					"validation": "^(((?=.{1,100}$)[A-Za-z-\\u00C0-\\u00FF'])+\\s*){1,4}$",
 					"validation_description": null,
 					"description": "Enter first name",
 					"credential_slug": "first_name",
 					"type": "text",
 					"is_sensitive": false,
 					"is_scannable": false,
+					"is_optional": false,
 					"choice": [],
 					"alternative": null
 				},
 				{
 					"order": 4,
 					"display_label": "Last name",
-					"validation": null,
+					"validation": "^(((?=.{1,100}$)[A-Za-z-\\u00C0-\\u00FF'])+\\s*){1,4}$",
 					"validation_description": null,
 					"description": "Enter last name",
 					"credential_slug": "last_name",
 					"type": "text",
 					"is_sensitive": false,
 					"is_scannable": false,
+					"is_optional": false,
 					"choice": [],
 					"alternative": null
 				},
@@ -149,6 +154,7 @@
 					"type": "text",
 					"is_sensitive": false,
 					"is_scannable": false,
+					"is_optional": false,
 					"choice": [],
 					"alternative": null
 				}
@@ -183,13 +189,14 @@
 				{
 					"order": 2,
 					"display_label": "Barcode",
-					"validation": "^633884.*",
+					"validation": "^(633884)[0-9]{16}$",
 					"validation_description": null,
 					"description": null,
 					"credential_slug": "barcode",
 					"type": "text",
 					"is_sensitive": false,
 					"is_scannable": true,
+					"is_optional": false,
 					"choice": [],
 					"alternative": {
 						"order": 2,
@@ -201,6 +208,7 @@
 						"type": "text",
 						"is_sensitive": false,
 						"is_scannable": false,
+						"is_optional": false,
 						"choice": []
 					}
 				}
