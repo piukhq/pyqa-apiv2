@@ -336,25 +336,12 @@ wallet_info = {
             "reward_available": True,
             "images": [
                 {
-                    "id": 1297,
-                    "type": 3,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
-                    "description": "Wasabi Icon",
-                    "encoding": "png",
-                },
-                {
                     "id": 1324,
                     "type": 7,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Promo_1968x732.png",
                     "description": "Wasabi Promotion 1",
                     "encoding": "png",
-                },
-                {
-                    "id": 1296,
-                    "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
-                    "description": "Wasabi Hero",
-                    "encoding": "png",
+                    "cta_url": None,
                 },
                 {
                     "id": 1319,
@@ -363,6 +350,23 @@ wallet_info = {
                     "Offer_tile_5_CVAeqUv_naFzo9T.png",
                     "description": "Wasabi Test Offer",
                     "encoding": "png",
+                    "cta_url": "https://www.wasabi.uk.com/find-a-wasabi",
+                },
+                {
+                    "id": 1297,
+                    "type": 3,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
+                    "description": "Wasabi Icon",
+                    "encoding": "png",
+                    "cta_url": None,
+                },
+                {
+                    "id": 1296,
+                    "type": 0,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
+                    "description": "Wasabi Hero",
+                    "encoding": "png",
+                    "cta_url": None,
                 },
             ],
         }
@@ -433,6 +437,7 @@ wallet_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
                     "description": "Iceland Icon",
                     "encoding": "png",
+                    "cta_url": None,
                 },
                 {
                     "id": 373,
@@ -440,6 +445,7 @@ wallet_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland-asset.png",
                     "description": "Iceland Asset",
                     "encoding": "png",
+                    "cta_url": None,
                 },
                 {
                     "id": 1070,
@@ -447,6 +453,7 @@ wallet_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_ref1.jpg",
                     "description": "Iceland Reference",
                     "encoding": "jpg",
+                    "cta_url": None,
                 },
                 {
                     "id": 1071,
@@ -454,6 +461,7 @@ wallet_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref2.jpg",
                     "description": "Iceland Reference",
                     "encoding": "jpg",
+                    "cta_url": None,
                 },
                 {
                     "id": 1072,
@@ -461,6 +469,7 @@ wallet_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref3.jpg",
                     "description": "Iceland Reference",
                     "encoding": "jpg",
+                    "cta_url": None,
                 },
                 {
                     "id": 1234,
@@ -468,6 +477,7 @@ wallet_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
                     "description": "Iceland Slimming World hero card",
                     "encoding": "png",
+                    "cta_url": None,
                 },
                 {
                     "id": 1303,
@@ -475,6 +485,7 @@ wallet_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Greggs.jpg",
                     "description": "Iceland Offer - Greggs",
                     "encoding": "jpg",
+                    "cta_url": "https://www.iceland.co.uk/frozen/frozen-pies/greggs",
                 },
                 {
                     "id": 1302,
@@ -482,6 +493,7 @@ wallet_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Pizza.jpg",
                     "description": "Iceland Offer - Pizza",
                     "encoding": "jpg",
+                    "cta_url": "https://www.iceland.co.uk/frozen/pizza-and-garlic-bread/wood-fired-pizzas",
                 },
                 {
                     "id": 1398,
@@ -490,124 +502,7 @@ wallet_info = {
                     "PromotionsIcelandBonusCard1968x732.png",
                     "description": "Promo_Text_1",
                     "encoding": "png",
-                },
-            ],
-        }
-    ],
-    "HarveyNichols": [
-        {
-            # "id": 143753,
-            "loyalty_plan_id": 124,
-            "loyalty_plan_name": "Rewards by Harvey Nichols",
-            "is_fully_pll_linked": True,
-            "pll_linked_payment_accounts": 1,
-            "total_payment_accounts": 1,
-            "status": {"state": "authorised", "slug": None, "description": None},
-            "balance": {
-                # "updated_at": 1647610241,
-                "current_display_value": "123456 pts",
-                "loyalty_currency_name": "points",
-                "prefix": None,
-                "suffix": "pts",
-                "current_value": "123456",
-                "target_value": None,
-            },
-            "transactions": [
-                {
-                    # "id": "304829",
-                    "timestamp": 1536080100,
-                    "description": "Test transaction: 2 items",
-                    "display_value": "-50 pts",
-                },
-                {
-                    # "id": "304830",
-                    "timestamp": 1536046510,
-                    "description": "Test transaction: 1 item",
-                    "display_value": "10 pts",
-                },
-                {
-                    # "id": "304828",
-                    "timestamp": 1536012345,
-                    "description": "Test transaction: 5 items",
-                    "display_value": "200 pts",
-                },
-                {
-                    # "id": "304827",
-                    "timestamp": 1533211890,
-                    "description": "Test transaction: 3 items",
-                    "display_value": "-100 pts",
-                },
-                {
-                    # "id": "304826",
-                    "timestamp": 1530455055,
-                    "description": "Test transaction: 1 item",
-                    "display_value": "20 pts",
-                },
-            ],
-            "vouchers": [],
-            "card": {
-                "barcode": "9000000000003",
-                "barcode_type": 7,
-                "card_number": "9000000000003",
-                "colour": "#000000",
-                "text_colour": "#bfc68c",
-            },
-            "reward_available": False,
-            "images": [
-                {
-                    "id": 660,
-                    "type": 3,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Logo.png",
-                    "description": "Harvey Nichols Icon",
-                    "encoding": "png",
-                },
-                {
-                    "id": 1187,
-                    "type": 8,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Harvey_Nichols_Card_4_Black.png",
-                    "description": "Black Tier",
-                    "encoding": "png",
-                },
-                {
-                    "id": 1184,
-                    "type": 8,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Harvey_Nichols_Card_1_Silver.png",
-                    "description": "Silver Tier",
-                    "encoding": "png",
-                },
-                {
-                    "id": 1185,
-                    "type": 8,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Harvey_Nichols_Card_2_Gold.png",
-                    "description": "Gold Tier",
-                    "encoding": "png",
-                },
-                {
-                    "id": 1186,
-                    "type": 8,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Harvey_Nichols_Card_3_Platinum.png",
-                    "description": "Platinum Tier",
-                    "encoding": "png",
-                },
-                {
-                    "id": 1304,
-                    "type": 2,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Harvey_Nichols_Rewards_square_oct_02.jpg",
-                    "description": "Harvey Nichols Rewards",
-                    "encoding": "jpg",
-                },
-                {
-                    "id": 575,
-                    "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Harvey_Nichols_Card_0_TIER_UNKNOWN.png",
-                    "description": "Harvey Nichols Hero",
-                    "encoding": "png",
+                    "cta_url": None,
                 },
             ],
         }
@@ -666,6 +561,7 @@ wallet_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
                     "description": "SquareMeal Icon",
                     "encoding": "png",
+                    "cta_url": None,
                 },
                 {
                     "id": 1331,
@@ -673,6 +569,7 @@ wallet_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
                     "description": "SquareMeal Bronze Tier 1",
                     "encoding": "png",
+                    "cta_url": None,
                 },
             ],
         }
@@ -761,6 +658,7 @@ wallet_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Logo1-280x280.png",
                     "description": "Viator icon",
                     "encoding": "png",
+                    "cta_url": None,
                 },
                 {
                     "id": 1409,
@@ -768,6 +666,7 @@ wallet_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Loyalty_Card_V2_1312x800.png",
                     "description": "Viator Hero",
                     "encoding": "png",
+                    "cta_url": None,
                 },
                 {
                     "id": 1412,
@@ -776,6 +675,7 @@ wallet_info = {
                     "Viator_Barclays_Promotional_Image.png",
                     "description": "Viator Promotion",
                     "encoding": "png",
+                    "cta_url": None,
                 },
             ],
         }
@@ -892,6 +792,7 @@ wallet_overview_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
                     "description": "Wasabi Hero",
                     "encoding": "png",
+                    "cta_url": None,
                 }
             ],
         }
@@ -929,44 +830,7 @@ wallet_overview_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
                     "description": "Iceland Slimming World hero card",
                     "encoding": "png",
-                }
-            ],
-        }
-    ],
-    "HarveyNichols": [
-        {
-            # "id": 154318,
-            "loyalty_plan_id": 124,
-            "loyalty_plan_name": "Rewards by Harvey Nichols",
-            "is_fully_pll_linked": True,
-            "pll_linked_payment_accounts": 1,
-            "total_payment_accounts": 1,
-            "status": {"state": "authorised", "slug": None, "description": None},
-            "balance": {
-                # "updated_at": 1651056068,
-                "current_display_value": "123456 pts",
-                "loyalty_currency_name": "points",
-                "prefix": None,
-                "suffix": "pts",
-                "current_value": "123456",
-                "target_value": None,
-            },
-            "card": {
-                "barcode": "9000000000003",
-                "barcode_type": 7,
-                "card_number": "9000000000003",
-                "colour": "#000000",
-                "text_colour": "#bfc68c",
-            },
-            "reward_available": False,
-            "images": [
-                {
-                    "id": 575,
-                    "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Harvey_Nichols_Card_0_TIER_UNKNOWN.png",
-                    "description": "Harvey Nichols Hero",
-                    "encoding": "png",
+                    "cta_url": None,
                 }
             ],
         }
@@ -1004,6 +868,7 @@ wallet_overview_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
                     "description": "SquareMeal Bronze Tier 1",
                     "encoding": "png",
+                    "cta_url": None,
                 }
             ],
         }
@@ -1041,6 +906,7 @@ wallet_overview_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Loyalty_Card_V2_1312x800.png",
                     "description": "Viator Hero",
                     "encoding": "png",
+                    "cta_url": None,
                 }
             ],
         }
@@ -1173,25 +1039,12 @@ wallet_info_by_card_id = {
         "reward_available": True,
         "images": [
             {
-                "id": 1297,
-                "type": 3,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
-                "description": "Wasabi Icon",
-                "encoding": "png",
-            },
-            {
                 "id": 1324,
                 "type": 7,
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Promo_1968x732.png",
                 "description": "Wasabi Promotion 1",
                 "encoding": "png",
-            },
-            {
-                "id": 1296,
-                "type": 0,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
-                "description": "Wasabi Hero",
-                "encoding": "png",
+                "cta_url": None,
             },
             {
                 "id": 1319,
@@ -1199,6 +1052,23 @@ wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_5_CVAeqUv_naFzo9T.png",
                 "description": "Wasabi Test Offer",
                 "encoding": "png",
+                "cta_url": "https://www.wasabi.uk.com/find-a-wasabi",
+            },
+            {
+                "id": 1297,
+                "type": 3,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
+                "description": "Wasabi Icon",
+                "encoding": "png",
+                "cta_url": None,
+            },
+            {
+                "id": 1296,
+                "type": 0,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
+                "description": "Wasabi Hero",
+                "encoding": "png",
+                "cta_url": None,
             },
         ],
     },
@@ -1267,6 +1137,7 @@ wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
                 "description": "Iceland Icon",
                 "encoding": "png",
+                "cta_url": None,
             },
             {
                 "id": 373,
@@ -1274,6 +1145,7 @@ wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland-asset.png",
                 "description": "Iceland Asset",
                 "encoding": "png",
+                "cta_url": None,
             },
             {
                 "id": 1070,
@@ -1281,6 +1153,7 @@ wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_ref1.jpg",
                 "description": "Iceland Reference",
                 "encoding": "jpg",
+                "cta_url": None,
             },
             {
                 "id": 1071,
@@ -1288,6 +1161,7 @@ wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref2.jpg",
                 "description": "Iceland Reference",
                 "encoding": "jpg",
+                "cta_url": None,
             },
             {
                 "id": 1072,
@@ -1295,6 +1169,7 @@ wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref3.jpg",
                 "description": "Iceland Reference",
                 "encoding": "jpg",
+                "cta_url": None,
             },
             {
                 "id": 1234,
@@ -1302,6 +1177,7 @@ wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
                 "description": "Iceland Slimming World hero card",
                 "encoding": "png",
+                "cta_url": None,
             },
             {
                 "id": 1303,
@@ -1309,6 +1185,7 @@ wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Greggs.jpg",
                 "description": "Iceland Offer - Greggs",
                 "encoding": "jpg",
+                "cta_url": "https://www.iceland.co.uk/frozen/frozen-pies/greggs",
             },
             {
                 "id": 1302,
@@ -1316,6 +1193,7 @@ wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Pizza.jpg",
                 "description": "Iceland Offer - Pizza",
                 "encoding": "jpg",
+                "cta_url": "https://www.iceland.co.uk/frozen/pizza-and-garlic-bread/wood-fired-pizzas",
             },
             {
                 "id": 1398,
@@ -1324,119 +1202,7 @@ wallet_info_by_card_id = {
                 "PromotionsIcelandBonusCard1968x732.png",
                 "description": "Promo_Text_1",
                 "encoding": "png",
-            },
-        ],
-    },
-    "HarveyNichols": {
-        # "id": 143753,
-        "loyalty_plan_id": 124,
-        "loyalty_plan_name": "Rewards by Harvey Nichols",
-        "is_fully_pll_linked": True,
-        "pll_linked_payment_accounts": 1,
-        "total_payment_accounts": 1,
-        "status": {"state": "authorised", "slug": None, "description": None},
-        "balance": {
-            # "updated_at": 1647610241,
-            "current_display_value": "123456 pts",
-            "loyalty_currency_name": "points",
-            "prefix": None,
-            "suffix": "pts",
-            "current_value": "123456",
-            "target_value": None,
-        },
-        "transactions": [
-            {
-                # "id": "304829",
-                "timestamp": 1536080100,
-                "description": "Test transaction: 2 items",
-                "display_value": "-50 pts",
-            },
-            {
-                # "id": "304830",
-                "timestamp": 1536046510,
-                "description": "Test transaction: 1 item",
-                "display_value": "10 pts",
-            },
-            {
-                # "id": "304828",
-                "timestamp": 1536012345,
-                "description": "Test transaction: 5 items",
-                "display_value": "200 pts",
-            },
-            {
-                # "id": "304827",
-                "timestamp": 1533211890,
-                "description": "Test transaction: 3 items",
-                "display_value": "-100 pts",
-            },
-            {
-                # "id": "304826",
-                "timestamp": 1530455055,
-                "description": "Test transaction: 1 item",
-                "display_value": "20 pts",
-            },
-        ],
-        "vouchers": [],
-        "card": {
-            "barcode": "9000000000003",
-            "barcode_type": 7,
-            "card_number": "9000000000003",
-            "colour": "#000000",
-            "text_colour": "#bfc68c",
-        },
-        "reward_available": False,
-        "images": [
-            {
-                "id": 660,
-                "type": 3,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Logo.png",
-                "description": "Harvey Nichols Icon",
-                "encoding": "png",
-            },
-            {
-                "id": 1187,
-                "type": 8,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_4_Black.png",
-                "description": "Black Tier",
-                "encoding": "png",
-            },
-            {
-                "id": 1184,
-                "type": 8,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_1_Silver.png",
-                "description": "Silver Tier",
-                "encoding": "png",
-            },
-            {
-                "id": 1185,
-                "type": 8,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Harvey_Nichols_Card_2_Gold.png",
-                "description": "Gold Tier",
-                "encoding": "png",
-            },
-            {
-                "id": 1186,
-                "type": 8,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                "Harvey_Nichols_Card_3_Platinum.png",
-                "description": "Platinum Tier",
-                "encoding": "png",
-            },
-            {
-                "id": 1304,
-                "type": 2,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                "Harvey_Nichols_Rewards_square_oct_02.jpg",
-                "description": "Harvey Nichols Rewards",
-                "encoding": "jpg",
-            },
-            {
-                "id": 575,
-                "type": 0,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                "Harvey_Nichols_Card_0_TIER_UNKNOWN.png",
-                "description": "Harvey Nichols Hero",
-                "encoding": "png",
+                "cta_url": None,
             },
         ],
     },
@@ -1493,6 +1259,7 @@ wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
                 "description": "SquareMeal Icon",
                 "encoding": "png",
+                "cta_url": None,
             },
             {
                 "id": 1331,
@@ -1500,6 +1267,7 @@ wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
                 "description": "SquareMeal Bronze Tier 1",
                 "encoding": "png",
+                "cta_url": None,
             },
         ],
     },
@@ -1586,6 +1354,7 @@ wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Logo1-280x280.png",
                 "description": "Viator icon",
                 "encoding": "png",
+                "cta_url": None,
             },
             {
                 "id": 1409,
@@ -1593,6 +1362,7 @@ wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Loyalty_Card_V2_1312x800.png",
                 "description": "Viator Hero",
                 "encoding": "png",
+                "cta_url": None,
             },
             {
                 "id": 1412,
@@ -1601,6 +1371,7 @@ wallet_info_by_card_id = {
                 "Viator_Barclays_Promotional_Image.png",
                 "description": "Viator Promotion",
                 "encoding": "png",
+                "cta_url": None,
             },
         ],
     },
@@ -1641,18 +1412,29 @@ unauth_wallet_info = {
             "reward_available": False,
             "images": [
                 {
-                    "id": 1297,
-                    "type": 3,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
-                    "description": "Wasabi Icon",
-                    "encoding": "png",
-                },
-                {
                     "id": 1324,
                     "type": 7,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Promo_1968x732.png",
                     "description": "Wasabi Promotion 1",
                     "encoding": "png",
+                    "cta_url": None,
+                },
+                {
+                    "id": 1319,
+                    "type": 2,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/"
+                    "schemes/Offer_tile_5_CVAeqUv_naFzo9T.png",
+                    "description": "Wasabi Test Offer",
+                    "encoding": "png",
+                    "cta_url": "https://www.wasabi.uk.com/find-a-wasabi",
+                },
+                {
+                    "id": 1297,
+                    "type": 3,
+                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
+                    "description": "Wasabi Icon",
+                    "encoding": "png",
+                    "cta_url": None,
                 },
                 {
                     "id": 1296,
@@ -1660,14 +1442,7 @@ unauth_wallet_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
                     "description": "Wasabi Hero",
                     "encoding": "png",
-                },
-                {
-                    "id": 1319,
-                    "type": 2,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                    "Offer_tile_5_CVAeqUv_naFzo9T.png",
-                    "description": "Wasabi Test Offer",
-                    "encoding": "png",
+                    "cta_url": None,
                 },
             ],
             # "pll_links": [
@@ -1723,6 +1498,7 @@ unauth_wallet_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
                     "description": "Iceland Icon",
                     "encoding": "png",
+                    "cta_url": None,
                 },
                 {
                     "id": 373,
@@ -1730,6 +1506,7 @@ unauth_wallet_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland-asset.png",
                     "description": "Iceland Asset",
                     "encoding": "png",
+                    "cta_url": None,
                 },
                 {
                     "id": 1070,
@@ -1737,6 +1514,7 @@ unauth_wallet_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_ref1.jpg",
                     "description": "Iceland Reference",
                     "encoding": "jpg",
+                    "cta_url": None,
                 },
                 {
                     "id": 1071,
@@ -1744,6 +1522,7 @@ unauth_wallet_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref2.jpg",
                     "description": "Iceland Reference",
                     "encoding": "jpg",
+                    "cta_url": None,
                 },
                 {
                     "id": 1072,
@@ -1751,6 +1530,7 @@ unauth_wallet_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref3.jpg",
                     "description": "Iceland Reference",
                     "encoding": "jpg",
+                    "cta_url": None,
                 },
                 {
                     "id": 1234,
@@ -1758,6 +1538,7 @@ unauth_wallet_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
                     "description": "Iceland Slimming World hero card",
                     "encoding": "png",
+                    "cta_url": None,
                 },
                 {
                     "id": 1303,
@@ -1765,6 +1546,7 @@ unauth_wallet_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Greggs.jpg",
                     "description": "Iceland Offer - Greggs",
                     "encoding": "jpg",
+                    "cta_url": "https://www.iceland.co.uk/frozen/frozen-pies/greggs",
                 },
                 {
                     "id": 1302,
@@ -1772,6 +1554,7 @@ unauth_wallet_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Pizza.jpg",
                     "description": "Iceland Offer - Pizza",
                     "encoding": "jpg",
+                    "cta_url": "https://www.iceland.co.uk/frozen/pizza-and-garlic-bread/wood-fired-pizzas",
                 },
                 {
                     "id": 1398,
@@ -1780,6 +1563,7 @@ unauth_wallet_info = {
                     "PromotionsIcelandBonusCard1968x732.png",
                     "description": "Promo_Text_1",
                     "encoding": "png",
+                    "cta_url": None,
                 },
             ],
         }
@@ -1901,6 +1685,7 @@ unauth_wallet_overview_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
                     "description": "Wasabi Hero",
                     "encoding": "png",
+                    "cta_url": None,
                 }
             ],
         }
@@ -1943,6 +1728,7 @@ unauth_wallet_overview_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
                     "description": "Iceland Slimming World hero card",
                     "encoding": "png",
+                    "cta_url": None,
                 }
             ],
         }
@@ -2060,25 +1846,12 @@ unauth_wallet_info_by_card_id = {
         "reward_available": False,
         "images": [
             {
-                "id": 1297,
-                "type": 3,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
-                "description": "Wasabi Icon",
-                "encoding": "png",
-            },
-            {
                 "id": 1324,
                 "type": 7,
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Promo_1968x732.png",
                 "description": "Wasabi Promotion 1",
                 "encoding": "png",
-            },
-            {
-                "id": 1296,
-                "type": 0,
-                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
-                "description": "Wasabi Hero",
-                "encoding": "png",
+                "cta_url": None,
             },
             {
                 "id": 1319,
@@ -2086,6 +1859,23 @@ unauth_wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Offer_tile_5_CVAeqUv_naFzo9T.png",
                 "description": "Wasabi Test Offer",
                 "encoding": "png",
+                "cta_url": "https://www.wasabi.uk.com/find-a-wasabi",
+            },
+            {
+                "id": 1297,
+                "type": 3,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
+                "description": "Wasabi Icon",
+                "encoding": "png",
+                "cta_url": None,
+            },
+            {
+                "id": 1296,
+                "type": 0,
+                "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
+                "description": "Wasabi Hero",
+                "encoding": "png",
+                "cta_url": None,
             },
         ],
     },
@@ -2128,6 +1918,7 @@ unauth_wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
                 "description": "Iceland Icon",
                 "encoding": "png",
+                "cta_url": None,
             },
             {
                 "id": 373,
@@ -2135,6 +1926,7 @@ unauth_wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland-asset.png",
                 "description": "Iceland Asset",
                 "encoding": "png",
+                "cta_url": None,
             },
             {
                 "id": 1070,
@@ -2142,6 +1934,7 @@ unauth_wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_ref1.jpg",
                 "description": "Iceland Reference",
                 "encoding": "jpg",
+                "cta_url": None,
             },
             {
                 "id": 1071,
@@ -2149,6 +1942,7 @@ unauth_wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref2.jpg",
                 "description": "Iceland Reference",
                 "encoding": "jpg",
+                "cta_url": None,
             },
             {
                 "id": 1072,
@@ -2156,6 +1950,7 @@ unauth_wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref3.jpg",
                 "description": "Iceland Reference",
                 "encoding": "jpg",
+                "cta_url": None,
             },
             {
                 "id": 1234,
@@ -2163,6 +1958,7 @@ unauth_wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
                 "description": "Iceland Slimming World hero card",
                 "encoding": "png",
+                "cta_url": None,
             },
             {
                 "id": 1303,
@@ -2170,6 +1966,7 @@ unauth_wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Greggs.jpg",
                 "description": "Iceland Offer - Greggs",
                 "encoding": "jpg",
+                "cta_url": "https://www.iceland.co.uk/frozen/frozen-pies/greggs",
             },
             {
                 "id": 1302,
@@ -2177,6 +1974,7 @@ unauth_wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Pizza.jpg",
                 "description": "Iceland Offer - Pizza",
                 "encoding": "jpg",
+                "cta_url": "https://www.iceland.co.uk/frozen/pizza-and-garlic-bread/wood-fired-pizzas",
             },
             {
                 "id": 1398,
@@ -2185,6 +1983,7 @@ unauth_wallet_info_by_card_id = {
                 "PromotionsIcelandBonusCard1968x732.png",
                 "description": "Promo_Text_1",
                 "encoding": "png",
+                "cta_url": None,
             },
         ],
     },
@@ -2247,6 +2046,7 @@ lc2_wallet_info = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
                 "description": "SquareMeal Icon",
                 "encoding": "png",
+                "cta_url": None,
             },
             {
                 "id": 1331,
@@ -2254,6 +2054,7 @@ lc2_wallet_info = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
                 "description": "SquareMeal Bronze Tier 1",
                 "encoding": "png",
+                "cta_url": None,
             },
         ],
     },
@@ -2322,6 +2123,7 @@ lc2_wallet_info = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
                 "description": "Iceland Icon",
                 "encoding": "png",
+                "cta_url": None,
             },
             {
                 "id": 373,
@@ -2329,6 +2131,7 @@ lc2_wallet_info = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland-asset.png",
                 "description": "Iceland Asset",
                 "encoding": "png",
+                "cta_url": None,
             },
             {
                 "id": 1070,
@@ -2336,6 +2139,7 @@ lc2_wallet_info = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_ref1.jpg",
                 "description": "Iceland Reference",
                 "encoding": "jpg",
+                "cta_url": None,
             },
             {
                 "id": 1071,
@@ -2343,6 +2147,7 @@ lc2_wallet_info = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref2.jpg",
                 "description": "Iceland Reference",
                 "encoding": "jpg",
+                "cta_url": None,
             },
             {
                 "id": 1072,
@@ -2350,6 +2155,7 @@ lc2_wallet_info = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref3.jpg",
                 "description": "Iceland Reference",
                 "encoding": "jpg",
+                "cta_url": None,
             },
             {
                 "id": 1234,
@@ -2357,6 +2163,7 @@ lc2_wallet_info = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
                 "description": "Iceland Slimming World hero card",
                 "encoding": "png",
+                "cta_url": None,
             },
             {
                 "id": 1303,
@@ -2364,6 +2171,7 @@ lc2_wallet_info = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Greggs.jpg",
                 "description": "Iceland Offer - Greggs",
                 "encoding": "jpg",
+                "cta_url": "https://www.iceland.co.uk/frozen/frozen-pies/greggs",
             },
             {
                 "id": 1302,
@@ -2371,6 +2179,7 @@ lc2_wallet_info = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Pizza.jpg",
                 "description": "Iceland Offer - Pizza",
                 "encoding": "jpg",
+                "cta_url": "https://www.iceland.co.uk/frozen/pizza-and-garlic-bread/wood-fired-pizzas",
             },
             {
                 "id": 1398,
@@ -2379,6 +2188,7 @@ lc2_wallet_info = {
                 "PromotionsIcelandBonusCard1968x732.png",
                 "description": "Promo_Text_1",
                 "encoding": "png",
+                "cta_url": None,
             },
         ],
     },
@@ -2394,6 +2204,7 @@ lc2_only_in_tc = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
                     "description": "SquareMeal Icon",
                     "encoding": "png",
+                    "cta_url": None,
                 },
                 {
                     "id": 1330,
@@ -2401,6 +2212,7 @@ lc2_only_in_tc = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Hero.png",
                     "description": "SquareMeal Hero",
                     "encoding": "png",
+                    "cta_url": None,
                 },
             ]
         }
@@ -2414,6 +2226,7 @@ lc2_only_in_tc = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Hero.png",
                     "description": "SquareMeal Hero",
                     "encoding": "png",
+                    "cta_url": None,
                 }
             ]
         }
@@ -2453,6 +2266,7 @@ lc2_wallet_overview_info = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
                 "description": "SquareMeal Bronze Tier 1",
                 "encoding": "png",
+                "cta_url": None,
             }
         ],
     },
@@ -2488,6 +2302,7 @@ lc2_wallet_overview_info = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
                 "description": "Iceland Slimming World hero card",
                 "encoding": "png",
+                "cta_url": None,
             }
         ],
     },
@@ -2699,6 +2514,7 @@ Join_Scheme_status = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
                 "description": "Iceland Icon",
                 "encoding": "png",
+                "cta_url": None,
             },
             {
                 "id": 373,
@@ -2706,6 +2522,7 @@ Join_Scheme_status = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland-asset.png",
                 "description": "Iceland Asset",
                 "encoding": "png",
+                "cta_url": None,
             },
             {
                 "id": 1070,
@@ -2713,6 +2530,7 @@ Join_Scheme_status = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_ref1.jpg",
                 "description": "Iceland Reference",
                 "encoding": "jpg",
+                "cta_url": None,
             },
             {
                 "id": 1071,
@@ -2720,6 +2538,7 @@ Join_Scheme_status = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref2.jpg",
                 "description": "Iceland Reference",
                 "encoding": "jpg",
+                "cta_url": None,
             },
             {
                 "id": 1072,
@@ -2727,6 +2546,7 @@ Join_Scheme_status = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref3.jpg",
                 "description": "Iceland Reference",
                 "encoding": "jpg",
+                "cta_url": None,
             },
             {
                 "id": 1234,
@@ -2734,6 +2554,7 @@ Join_Scheme_status = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
                 "description": "Iceland Slimming World hero card",
                 "encoding": "png",
+                "cta_url": None,
             },
             {
                 "id": 1303,
@@ -2741,6 +2562,7 @@ Join_Scheme_status = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Greggs.jpg",
                 "description": "Iceland Offer - Greggs",
                 "encoding": "jpg",
+                "cta_url": "https://www.iceland.co.uk/frozen/frozen-pies/greggs",
             },
             {
                 "id": 1302,
@@ -2748,14 +2570,16 @@ Join_Scheme_status = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Pizza.jpg",
                 "description": "Iceland Offer - Pizza",
                 "encoding": "jpg",
+                "cta_url": "https://www.iceland.co.uk/frozen/pizza-and-garlic-bread/wood-fired-pizzas",
             },
             {
                 "id": 1398,
                 "type": 7,
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
-                "PromotionsIcelandBonusCard1968x732.png",
+                       "PromotionsIcelandBonusCard1968x732.png",
                 "description": "Promo_Text_1",
                 "encoding": "png",
+                "cta_url": None,
             },
         ],
     },
@@ -2830,6 +2654,7 @@ Join_Scheme_status = {
             "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
             "description": "Iceland Slimming World hero card",
             "encoding": "png",
+            "cta_url": None,
         }
     ],
 }

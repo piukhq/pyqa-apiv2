@@ -16,6 +16,7 @@
 			"id": 1297,
 			"type": 3,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
+			"cta_url": null,
 			"description": "Wasabi Icon",
 			"encoding": "png",
 			"order": 0

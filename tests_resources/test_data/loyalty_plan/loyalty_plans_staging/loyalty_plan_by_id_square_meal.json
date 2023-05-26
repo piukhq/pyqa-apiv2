@@ -22,9 +22,19 @@
 	},
 	"images": [
 		{
+			"id": 1331,
+			"type": 8,
+			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
+			"cta_url": null,
+			"description": "SquareMeal Bronze Tier 1",
+			"encoding": "png",
+			"order": 0
+		},
+		{
 			"id": 1333,
 			"type": 8,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Gold_Tier_3.png",
+			"cta_url": null,
 			"description": "SquareMeal Gold Tier 3",
 			"encoding": "png",
 			"order": 0
@@ -33,6 +43,7 @@
 			"id": 1328,
 			"type": 3,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
+			"cta_url": null,
 			"description": "SquareMeal Icon",
 			"encoding": "png",
 			"order": 0
@@ -41,6 +52,7 @@
 			"id": 1330,
 			"type": 0,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Hero.png",
+			"cta_url": null,
 			"description": "SquareMeal Hero",
 			"encoding": "png",
 			"order": 0
@@ -49,15 +61,8 @@
 			"id": 1332,
 			"type": 8,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Silver_Tier_2.png",
+			"cta_url": null,
 			"description": "SquareMeal Silver Tier 2",
-			"encoding": "png",
-			"order": 0
-		},
-		{
-			"id": 1331,
-			"type": 8,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
-			"description": "SquareMeal Bronze Tier 1",
 			"encoding": "png",
 			"order": 0
 		}
@@ -75,12 +80,12 @@
 		"category": "Food & Drink",
 		"tiers": [
 			{
-				"name": "Tier 3",
-				"description": "Gold"
-			},
-			{
 				"name": "Tier 1",
 				"description": "Bronze"
+			},
+			{
+				"name": "Tier 3",
+				"description": "Gold"
 			},
 			{
 				"name": "Tier 2",
@@ -102,6 +107,7 @@
 					"type": "text",
 					"is_sensitive": false,
 					"is_scannable": false,
+					"is_optional": false,
 					"choice": [],
 					"alternative": null
 				},
@@ -115,6 +121,7 @@
 					"type": "text",
 					"is_sensitive": false,
 					"is_scannable": false,
+					"is_optional": false,
 					"choice": [],
 					"alternative": null
 				},
@@ -128,6 +135,7 @@
 					"type": "text",
 					"is_sensitive": false,
 					"is_scannable": false,
+					"is_optional": false,
 					"choice": [],
 					"alternative": null
 				},
@@ -141,6 +149,7 @@
 					"type": "sensitive",
 					"is_sensitive": true,
 					"is_scannable": false,
+					"is_optional": false,
 					"choice": [],
 					"alternative": null
 				}
@@ -184,6 +193,7 @@
 					"type": "text",
 					"is_sensitive": false,
 					"is_scannable": false,
+					"is_optional": false,
 					"choice": [],
 					"alternative": null
 				},
@@ -197,6 +207,7 @@
 					"type": "sensitive",
 					"is_sensitive": true,
 					"is_scannable": false,
+					"is_optional": false,
 					"choice": [],
 					"alternative": null
 				}
