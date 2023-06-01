@@ -90,7 +90,7 @@ Feature: Register a loyalty card
 
     Examples:
       | payment_card_provider | merchant | status_code_returned | journey_type |
-      | master                | Iceland  | 202                  | pll          |
+      | master                | Iceland  | 202                  | pll_active   |
 
 
   @put_register_multi_wallet @bink_regression_api2 @trusted

@@ -29,6 +29,7 @@
 			"id": 1322,
 			"type": 3,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/binksweetshop-icon.png",
+			"cta_url": null,
 			"description": "Bink Sweet Rewards Icon",
 			"encoding": "png",
 			"order": 0
@@ -37,6 +38,7 @@
 			"id": 1321,
 			"type": 0,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/binksweetshop-hero.png",
+			"cta_url": null,
 			"description": "Bink Sweet Rewards Hero",
 			"encoding": "png",
 			"order": 0
@@ -69,6 +71,7 @@
 					"type": "text",
 					"is_sensitive": false,
 					"is_scannable": false,
+					"is_optional": false,
 					"choice": [],
 					"alternative": null
 				},
@@ -82,6 +85,7 @@
 					"type": "text",
 					"is_sensitive": false,
 					"is_scannable": false,
+					"is_optional": false,
 					"choice": [],
 					"alternative": null
 				},
@@ -95,6 +99,7 @@
 					"type": "text",
 					"is_sensitive": false,
 					"is_scannable": false,
+					"is_optional": false,
 					"choice": [],
 					"alternative": null
 				}
@@ -102,17 +107,17 @@
 			"plan_documents": [
 				{
 					"order": 0,
-					"name": "Retailer terms & conditions",
-					"url": "https://policies.gb.bink.com/trenette/tc.html",
-					"description": "I accept the",
-					"is_acceptance_required": true
-				},
-				{
-					"order": 0,
 					"name": "Bink Sweet Shop privacy policy",
 					"url": "https://policies.gb.bink.com/trenette/pp.html",
 					"description": "I have read the",
 					"is_acceptance_required": false
+				},
+				{
+					"order": 0,
+					"name": "Retailer terms & conditions",
+					"url": "https://policies.gb.bink.com/trenette/tc.html",
+					"description": "I accept the",
+					"is_acceptance_required": true
 				}
 			],
 			"consents": []
@@ -130,6 +135,7 @@
 					"type": "text",
 					"is_sensitive": false,
 					"is_scannable": false,
+					"is_optional": false,
 					"choice": [],
 					"alternative": null
 				}
@@ -149,6 +155,7 @@
 					"type": "text",
 					"is_sensitive": false,
 					"is_scannable": false,
+					"is_optional": false,
 					"choice": [],
 					"alternative": null
 				}

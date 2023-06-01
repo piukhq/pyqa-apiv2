@@ -10,11 +10,13 @@
 	"join_incentive": null,
 	"category": "Retail",
 	"tiers": [],
+	"forgotten_password_url": null,
 	"images": [
 		{
 			"id": 1399,
 			"type": 3,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/App_icon.png",
+			"cta_url": null,
 			"description": "ASOS icon",
 			"encoding": "png",
 			"order": 0

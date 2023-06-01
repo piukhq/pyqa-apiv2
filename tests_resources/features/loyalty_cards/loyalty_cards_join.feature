@@ -76,7 +76,7 @@ Feature: Add and register a loyalty card
 
     Examples:
       | payment_card_provider | merchant | status_code_returned | journey_type |
-      | master                | Iceland  | 202                  | pll          |
+      | master                | Iceland  | 202                  | pll_active   |
 
 
   @identical_joins @bink_regression_api2
