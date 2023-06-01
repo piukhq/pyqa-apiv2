@@ -32,11 +32,11 @@ Feature: Basic Merchant Integration Journeys
 
 
   @register_field @bink_regression_api2
-  Scenario Outline: Register field journey only
+  Scenario Outline: Register to a Loyalty Scheme (Ghost Card) - Error Handling
     Given I am a bos user
     When I perform POST request to add and register for <merchant> with <invalid_data>
     Then I see a <status_code_returned>
-#    Then verify that for bos_user data stored in after "<journey_type>" journey for "<merchant>"
+    Then verify that for bos_user data stored in after "<journey_type>" journey for "<merchant>"
 
 
     Examples:
