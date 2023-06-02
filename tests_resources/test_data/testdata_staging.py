@@ -2352,6 +2352,7 @@ event_type = {
     "lc_join_request": "lc.join.request",
     "lc_status_change": "lc.statuschange",
     "lc_join_success": "lc.join.success",
+    "lc_join_failed": "lc.join.failed",
 }
 
 # ------------------------------------------ DB DETAILS ---------------------------------------------------- #
