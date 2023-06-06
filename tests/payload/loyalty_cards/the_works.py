@@ -22,7 +22,7 @@ class TheWorks:
                 "account": {
                     "join_fields": {
                         "credentials": [
-                            {"credential_slug": "first_name", "value": faker.name()},
+                            {"credential_slug": '"first_name"', "value": faker.name()},
                             {"credential_slug": "last_name", "value": faker.name()},
                             {"credential_slug": "email", "value": email},
                         ],
@@ -78,7 +78,7 @@ class TheWorks:
                 last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(constants.REGISTER_ACCOUNT_ALREADY_EXISTS)
             elif invalid_data == "card_already_registered":
                 last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(constants.REGISTER_CARD_ALREADY_REGISTERED)
-            elif invalid_data == "invalid_card_num":
+            elif invalid_data == "join_failed":
                 last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(constants.REGISTER_INVALID_CARD_NUMBER)
 
             payload = {

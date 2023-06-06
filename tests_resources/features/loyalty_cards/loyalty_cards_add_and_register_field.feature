@@ -96,11 +96,11 @@ Feature: Add and register a loyalty card
       | merchant |
       | Iceland  |
 
-  @register_failed_card_multi_wallet @bink_regression_api2 @trusted
+  @register_failed_card_multi_wallet @bink_regression_api2 @trusted @chk
   Scenario Outline: add and register failed in wallet1 then add and register success in wallet2
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to result failed add and register for <merchant>
+    And I perform POST request to result "failed" add and register for <merchant>
     And I perform POST request to add a new "master" payment account to wallet
     And For bink_user I perform GET Wallet
     Then Verify Wallet fields for <merchant> with <scheme_state>
@@ -118,7 +118,7 @@ Feature: Add and register a loyalty card
       | Iceland  | registration_failed|
 
 
-  @register_success_failed_multi_wallet @bink_regression_api2 @trusted
+  @register_success_failed_multi_wallet @bink_regression_api2 @trusted @chk
   Scenario Outline: add and register success in wallet1 then add and register failed in wallet2
     Given I am a Lloyds user
     When I perform POST request add and register for <merchant>
@@ -126,7 +126,7 @@ Feature: Add and register a loyalty card
     And For lloyds_user I perform GET Wallet
     Then Verify Wallet fields for <merchant> with registration_success
     Given I am a halifax user
-    When I perform POST request to result failed add and register for <merchant>
+    When I perform POST request to result "failed" add and register for <merchant>
     And I perform POST request to add a new "master" payment account to wallet
     And For halifax_user I perform GET Wallet
     Then Verify Wallet fields for <merchant> with <scheme_state>
@@ -138,17 +138,17 @@ Feature: Add and register a loyalty card
       | merchant |  scheme_state      |
       | Iceland  | registration_failed|
 
-  @register_failed_failed_multi_wallet @bink_regression_api2 @trusted
+  @register_failed_failed_multi_wallet @bink_regression_api2 @trusted @chk
   Scenario Outline: add and register failed in wallet1 then add and register failed in wallet2
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to result failed add and register for <merchant>
+    And I perform POST request to result "failed" add and register for <merchant>
     And I perform POST request to add a new "master" payment account to wallet
     And For bink_user I perform GET Wallet
     Then Verify Wallet fields for <merchant> with <scheme_state>
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
-    And I perform POST request to result failed add and register for <merchant>
+    And I perform POST request to result "failed" add and register for <merchant>
     And I perform POST request to add a new "master" payment account to wallet
     And For bink_user2 I perform GET Wallet
     Then Verify Wallet fields for <merchant> with <scheme_state>

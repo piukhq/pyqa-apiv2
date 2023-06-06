@@ -145,7 +145,7 @@ class MembershipCards(Endpoint):
                 data = encrypted_payload_token(payload)
                 return Endpoint.call_payload(url, encrypt_header, "POST", data)
             elif TestContext.flag_encrypt == "false":
-                payload = Merchant.get_merchant(merchant).add_and_register_membership_card(email, None,invalid_data)
+                payload = Merchant.get_merchant(merchant).add_and_register_membership_card(email, None, invalid_data)
                 return Endpoint.call(url, header, "POST", payload)
         else:
             payload = Merchant.get_merchant(merchant).add_and_register_membership_card(email, invalid_request)

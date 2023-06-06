@@ -51,9 +51,7 @@ TRANSACTIONS2_UNAUTH_LASTNAME = "transactions2_unauth_lastname"
 REGISTER_CARD = "register_card"
 REGISTER_FAILED_CARD = "register_failed_card"
 REGISTER_FAILED_EMAIL = "register_failed_email"
-REGISTER_ACCOUNT_ALREADY_EXISTS = "register_account_already_exists"
 REGISTER_CARD_ALREADY_REGISTERED = "register_card_already_registered"
-REGISTER_INVALID_CARD_NUMBER = "register_invalid_card_number"
 
 
 TRANSACTIONS_CARD = "transactions_card"

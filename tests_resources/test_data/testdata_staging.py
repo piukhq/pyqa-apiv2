@@ -225,6 +225,8 @@ the_works = {
     "email_exists": "emailexists",
     "enrol_fail": "fail",
     "failhttp_error": "failhttperror",
+    "register_account_already_exists": "cardnoexists",
+
 }
 
 # ----------------------------------------LOYALTY CARD 1 wallet    ---------------------------------------- #
