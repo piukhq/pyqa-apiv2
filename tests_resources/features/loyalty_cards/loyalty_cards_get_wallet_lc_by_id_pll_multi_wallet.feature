@@ -1,5 +1,5 @@
 # Created by bularaghavan on 26/09/2022
-@membership_cards_pll  @pll_get_wallet_lc_id_multi @trusted @bink_regression_api2 @membership_cards
+@membership_cards_pll @pll_get_wallet_lc_id_multi @trusted @bink_regression_api2 @membership_cards
 Feature: View multi wallet loyalty card by id  pll
   As a Bink user
   I want to see the Status of the PLL Link between a given loyalty card and payment card in my given wallet
@@ -7,20 +7,19 @@ Feature: View multi wallet loyalty card by id  pll
 
   @multi_wallet_loyaltycard_pll_status1 @sandbox_regression
   Scenario Outline: Verify wallet loyalty card by id pll links for active payment account and authorised loyalty card for multi wallet loyalty card by id
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    Given I am a halifax user
+    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card
-    When I am in Bink channel to get b2b token for second user
-    And I perform POST token request for token type "b2b" to get access token for second user
-    And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
+    Given I am a Lloyds user
+    When I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
     And I perform POST request to add and authorise "<merchant>" membership card
-    And For bink_user I perform GET Wallet_by_card_id
+    And For halifax_user I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
-    When For bink_user2 I perform GET Wallet_by_card_id
+    When For lloyds_user I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
+    And verify that for halifax_user data stored in after pll_active journey for "<merchant>"
 
      Examples:
      | merchant | status_code_returned|payment_card_provider|state|slug                     |description |
@@ -28,20 +27,19 @@ Feature: View multi wallet loyalty card by id  pll
 
     @multi_wallet_loyaltycard_pll_status1b @sandbox_regression
   Scenario Outline: Verify pll links for pending payment account and authorised loyalty card for multi wallet loyalty card by id
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    Given I am a bos user
+    When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And I perform POST request to add a pending "<payment_card_provider>" payment account to wallet
-    When I am in Bink channel to get b2b token for second user
-    And I perform POST token request for token type "b2b" to get access token for second user
-    And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
+    Given I am a halifax user
+    When I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And For bink_user I perform GET Wallet_by_card_id
+    And For bos_user I perform GET Wallet_by_card_id
     Then I see a 200
     And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
-    When For bink_user2 I perform GET Wallet_by_card_id
+    When For halifax_user I perform GET Wallet_by_card_id
     Then I see a 200
     And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
+    And verify that for halifax_user data stored in after pll_inactive journey for "<merchant>"
 
      Examples:
      | merchant |payment_card_provider|state  |slug                     |description                                                                        |
@@ -50,20 +48,20 @@ Feature: View multi wallet loyalty card by id  pll
 
   @multi_wallet_loyaltycard_pll_status2 @sandbox_regression
   Scenario Outline: Verify pll links for inactive payment account and authorised loyalty card for multi wallet loyalty card by id
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    Given I am a Lloyds user
+    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card
-    And I am in Bink channel to get b2b token for second user
-    And I perform POST token request for token type "b2b" to get access token for second user
-    And I perform POST request to add a duplicate "<payment_card_provider>" payment account to wallet
+    Then verify that for lloyds_user data stored in after pll_active journey for "<merchant>"
+    Given I am a halifax user
+    When I perform POST request to add a duplicate "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card
-    And For bink_user I perform GET Wallet_by_card_id
+    And For lloyds_user I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
-    When For bink_user2 I perform GET Wallet_by_card_id
+    When For halifax_user I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state2>','<slug2>' and '<description2>' in PLL links for Wallet loyalty card by id
+    And verify that for halifax_user data stored in after pll_inactive journey for "<merchant>"
 
      Examples:
      | merchant | status_code_returned|payment_card_provider|state |state2     |slug|slug2                     |description|description2                                                     |
@@ -71,20 +69,21 @@ Feature: View multi wallet loyalty card by id  pll
 
    @multi_wallet_loyaltycard_pll_status3 @sandbox_regression
   Scenario Outline: Verify pll links for active payment account and unauthorised loyalty card for multi wallet loyalty card by id
-     Given I am in Bink channel to get b2b token
-     When I perform POST token request for token type "b2b" to get access token
-     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+     Given I am a bos user
+     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
      And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-     And For bink_user I perform GET Wallet_by_card_id
+     Then verify that for bos_user data stored in after pll_active journey for "<merchant>"
+     When For bos_user I perform GET Wallet_by_card_id
      Then I see a <status_code_returned>
      And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
      Given I am a Lloyds user
      When I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
      And I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
+     Then verify that for lloyds_user data stored in after pll_active journey for "<merchant>"
      When For lloyds_user I perform GET Wallet_by_card_id
      Then I see a <status_code_returned>
      And I can see '<state2>','<slug2>' and '<description2>' in PLL links for Wallet loyalty card by id
-     When For bink_user I perform GET Wallet_by_card_id
+     When For bos_user I perform GET Wallet_by_card_id
      Then I see a <status_code_returned>
      And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
 
@@ -94,22 +93,24 @@ Feature: View multi wallet loyalty card by id  pll
 
   @multi_wallet_loyaltycard_pll_status4 @sandbox_regression
   Scenario Outline: Verify pll links for inactive payment account and unauthorised loyalty card for multi wallet loyalty card by id
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    Given I am a Lloyds user
+    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And For bink_user I perform GET Wallet_by_card_id
+    Then verify that for lloyds_user data stored in after pll_active journey for "<merchant>"
+    When For lloyds_user I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
-    Given I am a Lloyds user
+    Given I am a halifax user
     When I perform POST request to add a duplicate "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
-    And For lloyds_user I perform GET Wallet_by_card_id
+    Then verify that for halifax_user data stored in after pll_inactive journey for "<merchant>"
+    When For halifax_user I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state2>','<slug2>' and '<description2>' in PLL links for Wallet loyalty card by id
-    When For bink_user I perform GET Wallet_by_card_id
+    When For lloyds_user I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
+
 
      Examples:
      | merchant |status_code_returned | payment_card_provider |state |  state2    |slug   |slug2                                      |description| description2                                                                                  |
@@ -121,7 +122,8 @@ Feature: View multi wallet loyalty card by id  pll
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card
-    And For bink_user I perform GET Wallet_by_card_id
+    Then verify that for bink_user data stored in after pll_active journey for "<merchant>"
+    When For bink_user I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state1>','<slug1>' and '<description1>' in PLL links for Wallet loyalty card by id
     When I am in Bink channel to get b2b token for second user
@@ -131,6 +133,7 @@ Feature: View multi wallet loyalty card by id  pll
     When For bink_user2 I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state2>','<slug2>' and '<description2>' in PLL links for Wallet loyalty card by id
+    And verify that for bink_user2 data stored in after pll_inactive journey for "<merchant>"
   #  When For bink_user I perform GET Wallet_by_card_id
   #  Then I see a <status_code_returned>
   #  And I can see '<state1>','<slug1>' and '<description1>' in PLL links for Wallet loyalty card by id
@@ -145,7 +148,8 @@ Feature: View multi wallet loyalty card by id  pll
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card
-    And For bink_user I perform GET Wallet_by_card_id
+    Then verify that for bink_user data stored in after pll_active journey for "<merchant>"
+    When For bink_user I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state1>','<slug1>' and '<description1>' in PLL links for Wallet loyalty card by id
     Given I am a Lloyds user
@@ -154,6 +158,7 @@ Feature: View multi wallet loyalty card by id  pll
     When For lloyds_user I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state2>','<slug2>' and '<description2>' in PLL links for Wallet loyalty card by id
+    And verify that for lloyds_user data stored in after pll_inactive journey for "<merchant>"
   #  When For bink_user I perform GET Wallet_by_card_id
   #  Then I see a <status_code_returned>
   #  And I can see '<state1>','<slug1>' and '<description1>' in PLL links for Wallet loyalty card by id
@@ -164,18 +169,20 @@ Feature: View multi wallet loyalty card by id  pll
 
      @multi_wallet_loyaltycard_pll_status6 @sandbox_regression
   Scenario Outline: Verify pending payment status in two channels for multi wallet loyalty card by id
-    Given I am a Lloyds user
-    When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform POST request to add a pending "<payment_card_provider>" payment account to wallet
-    Given I am a halifax user
-    When I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
-    And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
-    And For lloyds_user I perform GET Wallet_by_card_id
-    Then I see a 200
-    And I can see '<state1>','<slug1>' and '<description1>' in PLL links for Wallet loyalty card by id
-    When For halifax_user I perform GET Wallet_by_card_id
-    Then I see a 200
-    And I can see '<state2>','<slug2>' and '<description2>' in PLL links for Wallet loyalty card by id
+     Given I am a Lloyds user
+     When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+     And I perform POST request to add a pending "<payment_card_provider>" payment account to wallet
+     Then verify that for lloyds_user data stored in after pll_inactive journey for "<merchant>"
+     Given I am a halifax user
+     When I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
+     And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
+     Then verify that for halifax_user data stored in after pll_inactive journey for "<merchant>"
+     When For lloyds_user I perform GET Wallet_by_card_id
+     Then I see a 200
+     And I can see '<state1>','<slug1>' and '<description1>' in PLL links for Wallet loyalty card by id
+     When For halifax_user I perform GET Wallet_by_card_id
+     Then I see a 200
+     And I can see '<state2>','<slug2>' and '<description2>' in PLL links for Wallet loyalty card by id
 
      Examples:
      | merchant | payment_card_provider |state1            | slug1                   |description1                                                                        | state2   | slug2                       | description2                                                      |
