@@ -11,8 +11,7 @@ Feature: View multi wallet pll
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     Given I am a Lloyds user
-    When I perform POST token request for token type "b2b" to get access token for second user
-    And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
+    When I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And For halifax_user I perform GET Wallet
     Then I see a <status_code_returned>
@@ -58,8 +57,7 @@ Feature: View multi wallet pll
     When I perform POST request to add a duplicate "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     Given I am a halifax user
-    When I perform POST token request for token type "b2b" to get access token for second user
-    And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
+    When I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And For lloyds_user I perform GET Wallet
     Then I see a <status_code_returned>

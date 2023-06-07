@@ -1,5 +1,5 @@
 # Created by bularaghavan on 26/09/2022
-@membership_cards_pll  @pll_get_wallet_multi @pll_get_wallet_lc_id_multi @trusted @bink_regression_api2 @membership_cards
+@membership_cards_pll @pll_get_wallet_lc_id_multi @trusted @bink_regression_api2 @membership_cards
 Feature: View multi wallet loyalty card by id  pll
   As a Bink user
   I want to see the Status of the PLL Link between a given loyalty card and payment card in my given wallet
@@ -11,8 +11,7 @@ Feature: View multi wallet loyalty card by id  pll
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card
     Given I am a Lloyds user
-    When I perform POST token request for token type "b2b" to get access token for second user
-    And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
+    When I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
     And I perform POST request to add and authorise "<merchant>" membership card
     And For halifax_user I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
@@ -32,8 +31,7 @@ Feature: View multi wallet loyalty card by id  pll
     When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And I perform POST request to add a pending "<payment_card_provider>" payment account to wallet
     Given I am a halifax user
-    When I perform POST token request for token type "b2b" to get access token for second user
-    And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
+    When I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And For bos_user I perform GET Wallet_by_card_id
     Then I see a 200
@@ -55,8 +53,7 @@ Feature: View multi wallet loyalty card by id  pll
     And I perform POST request to add and authorise "<merchant>" membership card
     Then verify that for lloyds_user data stored in after pll_active journey for "<merchant>"
     Given I am a halifax user
-    When I perform POST token request for token type "b2b" to get access token for second user
-    And I perform POST request to add a duplicate "<payment_card_provider>" payment account to wallet
+    When I perform POST request to add a duplicate "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card
     And For lloyds_user I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
