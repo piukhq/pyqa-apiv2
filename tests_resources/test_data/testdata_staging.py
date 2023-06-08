@@ -2357,6 +2357,7 @@ event_type = {
     "lc_auth_success": "lc.auth.success",
     "lc_add_auth_request": "lc.addandauth.request",
     "lc_add_auth_success": "lc.addandauth.success",
+    "lc_add_auth_failed": "lc.addandauth.failed",
 }
 
 # ------------------------------------------ DB DETAILS ---------------------------------------------------- #
