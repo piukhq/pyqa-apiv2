@@ -469,7 +469,7 @@ def get_lloyds_user(lloyds_external_id, lloyds_test_email):
     TestContext.refresh_token_type = response_json.get("refresh_token")
     TestContext.token = TestContext.token_type + " " + TestContext.access_token
     TestContext.response_status_code = response.status_code
-    TestContext.email = lloyds_test_email
+    TestContext.email = TestContext.user_email = lloyds_test_email
     logging.info(
         "The response of B2B token (POST) for lloyds is:\n\n"
         + Endpoint.BASE_URL
@@ -545,7 +545,7 @@ def get_halifax_user(halifax_external_id, halifax_test_email):
     TestContext.refresh_token_type = response_json.get("refresh_token")
     TestContext.token = TestContext.token_type + " " + TestContext.access_token
     TestContext.response_status_code = response.status_code
-    TestContext.email = halifax_test_email
+    TestContext.email = TestContext.user_email = halifax_test_email
     logging.info(
         "The response of B2B token (POST) for halifax is:\n\n"
         + Endpoint.BASE_URL

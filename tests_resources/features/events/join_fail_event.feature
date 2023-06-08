@@ -1,4 +1,5 @@
 # Created by rupalpatel at 01/06/2023
+@events
 Feature: Verify event for join fail for loyalty card
   As a DM Administrator
   I want to see an event logged when a user joined failed scheme
