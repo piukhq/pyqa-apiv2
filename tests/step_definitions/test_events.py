@@ -263,7 +263,7 @@ def verify_loyalty_card_into_database_trusted(user, journey_type, merchant):
                 scheme_account.id == TestContext.current_scheme_account_id
                 and scheme_account.link_status == TestDataUtils.TEST_DATA.scheme_status.get(constants.FAILED_VALIDATION)
             )
-            print("scheme ac status", scheme_account.status)
+            # print("scheme ac status", scheme_account.status)
         elif merchant == "Iceland":
             scheme_account = QueryHermes.fetch_ubiquity_schemeaccountentry(journey_type, TestContext.extid)
             assert (
@@ -2649,7 +2649,7 @@ def verify_scheme_into_event_database(journey_type, user):
         event_record.event_type == TestDataUtils.TEST_DATA.event_type.get(journey_type)
         and event_record.json["external_user_ref"] == TestContext.extid
         and event_record.json["channel"] == channel
-        and event_record.json["email"] == TestContext.email
+        and event_record.json["email"] == TestContext.user_email
         and event_record.json["scheme_account_id"] == TestContext.current_scheme_account_id
     )
     return event_record
