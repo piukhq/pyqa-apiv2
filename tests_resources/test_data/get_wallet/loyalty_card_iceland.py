@@ -649,6 +649,7 @@ class IcelandResponse:
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
                     "description": "Iceland Icon",
                     "encoding": "png",
+                    "cta_url": None,
                 },
                 {
                     "id": 373,
@@ -656,6 +657,7 @@ class IcelandResponse:
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland-asset.png",
                     "description": "Iceland Asset",
                     "encoding": "png",
+                    "cta_url": None,
                 },
                 {
                     "id": 1070,
@@ -663,6 +665,7 @@ class IcelandResponse:
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_ref1.jpg",
                     "description": "Iceland Reference",
                     "encoding": "jpg",
+                    "cta_url": None,
                 },
                 {
                     "id": 1071,
@@ -670,6 +673,7 @@ class IcelandResponse:
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref2.jpg",
                     "description": "Iceland Reference",
                     "encoding": "jpg",
+                    "cta_url": None,
                 },
                 {
                     "id": 1072,
@@ -677,6 +681,7 @@ class IcelandResponse:
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref3.jpg",
                     "description": "Iceland Reference",
                     "encoding": "jpg",
+                    "cta_url": None,
                 },
                 {
                     "id": 1234,
@@ -684,6 +689,7 @@ class IcelandResponse:
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
                     "description": "Iceland Slimming World hero card",
                     "encoding": "png",
+                    "cta_url": None,
                 },
                 {
                     "id": 1303,
@@ -691,6 +697,7 @@ class IcelandResponse:
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Greggs.jpg",
                     "description": "Iceland Offer - Greggs",
                     "encoding": "jpg",
+                    "cta_url": "https://www.iceland.co.uk/frozen/frozen-pies/greggs",
                 },
                 {
                     "id": 1302,
@@ -698,6 +705,7 @@ class IcelandResponse:
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Pizza.jpg",
                     "description": "Iceland Offer - Pizza",
                     "encoding": "jpg",
+                    "cta_url": "https://www.iceland.co.uk/frozen/pizza-and-garlic-bread/wood-fired-pizzas",
                 },
                 {
                     "id": 1398,
@@ -706,6 +714,7 @@ class IcelandResponse:
                     "PromotionsIcelandBonusCard1968x732.png",
                     "description": "Promo_Text_1",
                     "encoding": "png",
+                    "cta_url": None,
                 },
             ],
         }
