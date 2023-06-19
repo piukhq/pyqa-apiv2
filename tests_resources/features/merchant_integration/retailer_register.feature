@@ -4,7 +4,7 @@ Feature: Basic Merchant Integration Journeys
   I want check all Loyalty card features
   so that I am able to benefit from the Bink functionality
 
-  @register
+  @register @chk1
   Scenario Outline: Register to a Loyalty Scheme (Ghost Card)
     Given I am a bos user
     When I perform POST request add and register for <merchant>

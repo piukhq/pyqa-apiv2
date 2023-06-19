@@ -37,11 +37,12 @@ class TheWorks:
                 last_name = faker.name()
             else:
                 if join_type == "account_already_exists":
-                    last_name = TestDataUtils.TEST_DATA.the_works.get(constants.JOIN_ACCOUNT_ALREADY_EXIST)
+                    last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
+                        constants.JOIN_ACCOUNT_ALREADY_EXIST)
                 elif join_type == "join_failed":
-                    last_name = TestDataUtils.TEST_DATA.the_works.get(constants.JOIN_FAILED)
+                    last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(constants.JOIN_FAILED)
                 elif join_type == "join_http_failed":
-                    last_name = TestDataUtils.TEST_DATA.the_works.get(constants.FAILHTTP_ERROR)
+                    last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(constants.FAILHTTP_ERROR)
 
             payload = {
                 "account": {
@@ -70,16 +71,19 @@ class TheWorks:
     def add_and_register_membership_card(email=None, invalid_request=None, invalid_data=None):
         faker = Faker()
         TestContext.card_number = TestDataUtils.TEST_DATA.the_works_membership_card.get(constants.REGISTER_CARD)
-
+        last_name = faker.name()
         if invalid_request:
             payload = {}
         else:
             if invalid_data == "account_already_exists":
-                last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(constants.REGISTER_ACCOUNT_ALREADY_EXISTS)
+                last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
+                    constants.REGISTER_ACCOUNT_ALREADY_EXISTS)
             elif invalid_data == "card_already_registered":
-                last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(constants.REGISTER_CARD_ALREADY_REGISTERED)
+                last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
+                    constants.REGISTER_CARD_ALREADY_REGISTERED)
             elif invalid_data == "join_failed":
-                last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(constants.REGISTER_INVALID_CARD_NUMBER)
+                last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
+                    constants.REGISTER_INVALID_CARD_NUMBER)
 
             payload = {
                 "account": {

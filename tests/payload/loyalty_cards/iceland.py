@@ -523,7 +523,7 @@ class IcelandCard:
         return payload
 
     @staticmethod
-    def add_and_register_membership_card(email=None, invalid_request=None, invalid_data = None):
+    def add_and_register_membership_card(email=None, invalid_request=None, invalid_data=None):
         faker = Faker()
         if invalid_request:
             payload = {}
