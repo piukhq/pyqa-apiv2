@@ -30,6 +30,7 @@ class TestContext:
     error_message = ""
     error_slug = ""
     email = ""
+    user_email = ""
     card_number = ""
     last_name = ""
     postcode = ""
