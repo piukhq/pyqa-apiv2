@@ -205,7 +205,6 @@ the_works_membership_card = {
     "enrol_fail": "fail",
     "failhttp_error": "failhttperror",
     "register_account_already_exists": "cardnoexists",
-
 }
 
 

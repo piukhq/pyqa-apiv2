@@ -38,7 +38,8 @@ class TheWorks:
             else:
                 if join_type == "account_already_exists":
                     last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
-                        constants.JOIN_ACCOUNT_ALREADY_EXIST)
+                        constants.JOIN_ACCOUNT_ALREADY_EXIST
+                    )
                 elif join_type == "join_failed":
                     last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(constants.JOIN_FAILED)
                 elif join_type == "join_http_failed":
@@ -77,13 +78,16 @@ class TheWorks:
         else:
             if invalid_data == "account_already_exists":
                 last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
-                    constants.REGISTER_ACCOUNT_ALREADY_EXISTS)
+                    constants.REGISTER_ACCOUNT_ALREADY_EXISTS
+                )
             elif invalid_data == "card_already_registered":
                 last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
-                    constants.REGISTER_CARD_ALREADY_REGISTERED)
+                    constants.REGISTER_CARD_ALREADY_REGISTERED
+                )
             elif invalid_data == "join_failed":
                 last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
-                    constants.REGISTER_INVALID_CARD_NUMBER)
+                    constants.REGISTER_INVALID_CARD_NUMBER
+                )
 
             payload = {
                 "account": {
