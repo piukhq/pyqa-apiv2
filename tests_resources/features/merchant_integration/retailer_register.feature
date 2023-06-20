@@ -17,18 +17,18 @@ Feature: Basic Merchant Integration Journeys
       | The_Works | 202                  | add_and_register |
 
 
-#   @register
-#  Scenario Outline: PUT Register to a Loyalty Scheme (Ghost Card)
-#    Given I am a bos user
-#    When I perform POST request to add <merchant> membership card before registration_success register
-#    When I perform PUT request to register <merchant> with registration_success membership card
-#    Then I see a <status_code_returned>
-#    Then verify that for bos_user data stored in after "<journey_type>" journey for "<merchant>"
-#
-#
-#    Examples:
-#      | merchant  | status_code_returned |journey_type            |
-#      | The_Works | 202                  |add_and_register        |
+   @register
+  Scenario Outline: PUT Register to a Loyalty Scheme (Ghost Card)
+    Given I am a bos user
+    When I perform POST request to add <merchant> membership card before registration_success register
+    When I perform PUT request to register <merchant> with registration_success membership card
+    Then I see a <status_code_returned>
+    Then verify that for bos_user data stored in after "<journey_type>" journey for "<merchant>"
+
+
+    Examples:
+      | merchant  | status_code_returned |journey_type            |
+      | The_Works | 202                  |add_and_register        |
 
 
   @register_field @bink_regression_api2 @chk1

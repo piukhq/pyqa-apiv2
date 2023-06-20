@@ -125,3 +125,72 @@ class TheWorks:
             + json.dumps(payload, indent=4)
         )
         return payload
+
+    @staticmethod
+    def add_field_before_register_membership_card_payload(invalid_request=None):
+        if invalid_request:
+            payload = {}
+        else:
+            TestContext.card_number = TestDataUtils.TEST_DATA.the_works_membership_card.get(constants.REGISTER_CARD)
+            payload = {
+                "account": {
+                    "add_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "card_number",
+                                "value": TestContext.card_number,
+                            }
+                        ]
+                    }
+                },
+                "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("the_works"),
+            }
+
+        logging.info(
+            "The Request for Add_field only with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_ADD
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
+    def register_field_only_membership_card_payload(email=None, invalid_data=None):
+        faker = Faker()
+        if invalid_data == "invalid_request":
+            payload = {}
+        elif invalid_data == "invalid_json":
+            payload = {
+                "account": {
+                    "register_ghost_card_fields": {
+                        "credentials": [
+                            {"credential_slug": "first_name", "value": faker.name()},
+                            {"credential_slug": "last_name", "value": faker.name()},
+                            {"credential_slug": "email", "value": email},
+                        ],
+                        "consents": [{"consent_slug": "email_marketing", "value": constants.CONSENT}],
+                    }
+                }
+            }
+        else:
+            payload = {
+                "account": {
+                    "register_ghost_card_fields": {
+                        "credentials": [
+                            {"credential_slug": "first_name", "value": faker.name()},
+                            {"credential_slug": "last_name", "value": faker.name()},
+                            {"credential_slug": "email", "value": email},
+                        ],
+                        "consents": [{"consent_slug": "email_marketing", "value": constants.CONSENT}],
+                    }
+                }
+            }
+        logging.info(
+            "The Request for Register field only with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_REGISTER.format(TestContext.current_scheme_account_id)
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
