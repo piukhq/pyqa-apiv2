@@ -1,5 +1,5 @@
 # Created by njames on 22/03/2023
-  @the_works_join
+  @the_works_join @bink_regression_api2
 Feature: Basic Merchant Integration Journeys
   As a Bank user
   I want check all Loyalty card features
