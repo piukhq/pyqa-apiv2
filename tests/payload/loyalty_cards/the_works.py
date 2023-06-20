@@ -38,12 +38,14 @@ class TheWorks:
             else:
                 if join_type == "account_already_exists":
                     last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
-                        constants.JOIN_ACCOUNT_ALREADY_EXIST
+                        constants.JOIN_REGISTER_ACCOUNT_ALREADY_EXISTS_EMAIL
                     )
                 elif join_type == "join_failed":
-                    last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(constants.JOIN_FAILED)
+                    last_name = TestDataUtils.TEST_DATA.the_works_membership_card.\
+                        get(constants.JOIN_REGISTER_NON_RETRYABLE_ERROR)
                 elif join_type == "join_http_failed":
-                    last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(constants.FAILHTTP_ERROR)
+                    last_name = TestDataUtils.TEST_DATA.the_works_membership_card.\
+                        get(constants.JOIN_REGISTER_NON_RETRYABLE_HTTP_ERROR)
 
             payload = {
                 "account": {
@@ -78,15 +80,19 @@ class TheWorks:
         else:
             if invalid_data == "account_already_exists":
                 last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
-                    constants.REGISTER_ACCOUNT_ALREADY_EXISTS
+                    constants.JOIN_REGISTER_ACCOUNT_ALREADY_EXISTS_EMAIL
                 )
             elif invalid_data == "card_already_registered":
                 last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
-                    constants.REGISTER_CARD_ALREADY_REGISTERED
+                    constants.REGISTER_ACCOUNT_EXISTS_CARDNUM
                 )
-            elif invalid_data == "join_failed":
+            elif invalid_data == "ghost_card_registration_failed_non_retryable_http_error":
                 last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
-                    constants.REGISTER_INVALID_CARD_NUMBER
+                    constants.JOIN_REGISTER_NON_RETRYABLE_HTTP_ERROR
+                )
+            elif invalid_data == "ghost_card_registration_failed_non_retryable_other_errors":
+                last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
+                    constants.JOIN_REGISTER_NON_RETRYABLE_ERROR
                 )
 
             payload = {
