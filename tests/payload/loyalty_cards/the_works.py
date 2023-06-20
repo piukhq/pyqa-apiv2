@@ -41,11 +41,13 @@ class TheWorks:
                         constants.JOIN_REGISTER_ACCOUNT_ALREADY_EXISTS_EMAIL
                     )
                 elif join_type == "join_failed":
-                    last_name = TestDataUtils.TEST_DATA.the_works_membership_card.\
-                        get(constants.JOIN_REGISTER_NON_RETRYABLE_ERROR)
+                    last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
+                        constants.JOIN_REGISTER_NON_RETRYABLE_ERROR
+                    )
                 elif join_type == "join_http_failed":
-                    last_name = TestDataUtils.TEST_DATA.the_works_membership_card.\
-                        get(constants.JOIN_REGISTER_NON_RETRYABLE_HTTP_ERROR)
+                    last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
+                        constants.JOIN_REGISTER_NON_RETRYABLE_HTTP_ERROR
+                    )
 
             payload = {
                 "account": {

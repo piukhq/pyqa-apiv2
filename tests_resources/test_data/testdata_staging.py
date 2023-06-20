@@ -204,7 +204,6 @@ the_works_membership_card = {
     "register_account_already_exists_cardnum": "cardnumberexists",
     "join_register_non_retryable_error": "opnotpermitted",
     "join_register_non_retryable_http_error": "failhttperror",
-
 }
 
 
