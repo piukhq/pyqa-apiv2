@@ -1554,11 +1554,9 @@ def i_perform_post_add_and_authorise_membership_card_which_is_exist_already(merc
     assert response.status_code == 409, "Add only then add and authorise Journey for " + merchant + " failed"
 
 
-@when(parsers.parse("I perform POST request to result failed add and register for {merchant}"))
-def failed_add_and_register_field(merchant, test_email):
-    test_email = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_FAILED_EMAIL)
-    TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_CARD)
-    response = MembershipCards.add_and_register_field(TestContext.token, merchant, test_email)
+@when(parsers.parse('I perform POST request to result "{invalid_register}" add and register for {merchant}'))
+def failed_add_and_register_field(merchant, invalid_register, test_email):
+    response = MembershipCards.add_and_register_field(TestContext.token, merchant, test_email, None, invalid_register)
     time.sleep(8)
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")

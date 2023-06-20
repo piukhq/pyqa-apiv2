@@ -197,12 +197,14 @@ trenette_membership_card = {
     "transaction_currency": "stamps",
 }
 
-the_works = {
+the_works_membership_card = {
     "card_num": "",
+    "register_card": "6338844992910000029726",
     "email": "",
     "email_exists": "emailexists",
     "enrol_fail": "fail",
     "failhttp_error": "failhttperror",
+    "register_account_already_exists": "cardnoexists",
 }
 
 

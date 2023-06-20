@@ -523,12 +523,14 @@ class IcelandCard:
         return payload
 
     @staticmethod
-    def add_and_register_membership_card(email=None, invalid_request=None):
+    def add_and_register_membership_card(email=None, invalid_request=None, invalid_data=None):
         faker = Faker()
         if invalid_request:
             payload = {}
+
         else:
-            # TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_CARD)
+            email = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_FAILED_EMAIL)
+            TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_CARD)
 
             payload = {
                 "account": {

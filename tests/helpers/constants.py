@@ -51,6 +51,9 @@ TRANSACTIONS2_UNAUTH_LASTNAME = "transactions2_unauth_lastname"
 REGISTER_CARD = "register_card"
 REGISTER_FAILED_CARD = "register_failed_card"
 REGISTER_FAILED_EMAIL = "register_failed_email"
+REGISTER_CARD_ALREADY_REGISTERED = "register_card_already_registered"
+
+
 TRANSACTIONS_CARD = "transactions_card"
 TRANSACTIONS_LAST_NAME = "transactions_card_last_name"
 UNAUTHORISED_LAST_NAME = "unauthorised_last_name"

@@ -6,6 +6,7 @@ from faker import Faker
 from tests import api
 from tests.api.base import Endpoint
 from tests.helpers import constants
+from tests.helpers.test_context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
 
 
@@ -21,7 +22,7 @@ class TheWorks:
                 "account": {
                     "join_fields": {
                         "credentials": [
-                            {"credential_slug": "first_name", "value": faker.name()},
+                            {"credential_slug": '"first_name"', "value": faker.name()},
                             {"credential_slug": "last_name", "value": faker.name()},
                             {"credential_slug": "email", "value": email},
                         ],
@@ -36,11 +37,13 @@ class TheWorks:
                 last_name = faker.name()
             else:
                 if join_type == "account_already_exists":
-                    last_name = TestDataUtils.TEST_DATA.the_works.get(constants.JOIN_ACCOUNT_ALREADY_EXIST)
+                    last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
+                        constants.JOIN_ACCOUNT_ALREADY_EXIST
+                    )
                 elif join_type == "join_failed":
-                    last_name = TestDataUtils.TEST_DATA.the_works.get(constants.JOIN_FAILED)
+                    last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(constants.JOIN_FAILED)
                 elif join_type == "join_http_failed":
-                    last_name = TestDataUtils.TEST_DATA.the_works.get(constants.FAILHTTP_ERROR)
+                    last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(constants.FAILHTTP_ERROR)
 
             payload = {
                 "account": {
@@ -63,4 +66,125 @@ class TheWorks:
                 + "\n\n"
                 + json.dumps(payload, indent=4)
             )
+        return payload
+
+    @staticmethod
+    def add_and_register_membership_card(email=None, invalid_request=None, invalid_data=None):
+        faker = Faker()
+        TestContext.card_number = TestDataUtils.TEST_DATA.the_works_membership_card.get(constants.REGISTER_CARD)
+        last_name = faker.name()
+        if invalid_request:
+            payload = {}
+        else:
+            if invalid_data == "account_already_exists":
+                last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
+                    constants.REGISTER_ACCOUNT_ALREADY_EXISTS
+                )
+            elif invalid_data == "card_already_registered":
+                last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
+                    constants.REGISTER_CARD_ALREADY_REGISTERED
+                )
+            elif invalid_data == "join_failed":
+                last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
+                    constants.REGISTER_INVALID_CARD_NUMBER
+                )
+
+            payload = {
+                "account": {
+                    "add_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "card_number",
+                                "value": TestContext.card_number,
+                            }
+                        ]
+                    },
+                    "register_ghost_card_fields": {
+                        "credentials": [
+                            {"credential_slug": "email", "value": email},
+                            {"credential_slug": "first_name", "value": faker.name()},
+                            {"credential_slug": "last_name", "value": last_name},
+                        ],
+                        "consents": [{"consent_slug": "email_marketing", "value": constants.CONSENT}],
+                    },
+                },
+                "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("the_works"),
+            }
+
+        logging.info(
+            "The Request for Add_and_register with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_REGISTER
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
+    def add_field_before_register_membership_card_payload(invalid_request=None):
+        if invalid_request:
+            payload = {}
+        else:
+            TestContext.card_number = TestDataUtils.TEST_DATA.the_works_membership_card.get(constants.REGISTER_CARD)
+            payload = {
+                "account": {
+                    "add_fields": {
+                        "credentials": [
+                            {
+                                "credential_slug": "card_number",
+                                "value": TestContext.card_number,
+                            }
+                        ]
+                    }
+                },
+                "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("the_works"),
+            }
+
+        logging.info(
+            "The Request for Add_field only with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_ADD
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
+    def register_field_only_membership_card_payload(email=None, invalid_data=None):
+        faker = Faker()
+        if invalid_data == "invalid_request":
+            payload = {}
+        elif invalid_data == "invalid_json":
+            payload = {
+                "account": {
+                    "register_ghost_card_fields": {
+                        "credentials": [
+                            {"credential_slug": "first_name", "value": faker.name()},
+                            {"credential_slug": "last_name", "value": faker.name()},
+                            {"credential_slug": "email", "value": email},
+                        ],
+                        "consents": [{"consent_slug": "email_marketing", "value": constants.CONSENT}],
+                    }
+                }
+            }
+        else:
+            payload = {
+                "account": {
+                    "register_ghost_card_fields": {
+                        "credentials": [
+                            {"credential_slug": "first_name", "value": faker.name()},
+                            {"credential_slug": "last_name", "value": faker.name()},
+                            {"credential_slug": "email", "value": email},
+                        ],
+                        "consents": [{"consent_slug": "email_marketing", "value": constants.CONSENT}],
+                    }
+                }
+            }
+        logging.info(
+            "The Request for Register field only with :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_REGISTER.format(TestContext.current_scheme_account_id)
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
         return payload

@@ -135,7 +135,7 @@ class MembershipCards(Endpoint):
         return Endpoint.call_payload(url, header, "PUT", payload)
 
     @staticmethod
-    def add_and_register_field(token, merchant, email, invalid_request=None):
+    def add_and_register_field(token, merchant, email, invalid_request=None, invalid_data=None):
         url = MembershipCards.get_add_and_register_url()
         header = Endpoint.request_header(token)
         encrypt_header = Endpoint.encrypt_header(token)
@@ -145,7 +145,7 @@ class MembershipCards(Endpoint):
                 data = encrypted_payload_token(payload)
                 return Endpoint.call_payload(url, encrypt_header, "POST", data)
             elif TestContext.flag_encrypt == "false":
-                payload = Merchant.get_merchant(merchant).add_and_register_membership_card(email)
+                payload = Merchant.get_merchant(merchant).add_and_register_membership_card(email, None, invalid_data)
                 return Endpoint.call(url, header, "POST", payload)
         else:
             payload = Merchant.get_merchant(merchant).add_and_register_membership_card(email, invalid_request)
