@@ -200,11 +200,10 @@ trenette_membership_card = {
 the_works_membership_card = {
     "card_num": "",
     "register_card": "6338844992910000029726",
-    "email": "",
-    "email_exists": "emailexists",
-    "enrol_fail": "fail",
-    "failhttp_error": "failhttperror",
-    "register_account_already_exists": "cardnoexists",
+    "jon_register_account_already_exists_email": "emailexists",
+    "register_account_already_exists_cardnum": "cardnumberexists",
+    "join_register_non_retryable_error": "opnotpermitted",
+    "join_register_non_retryable_http_error": "failhttperror",
 }
 
 
@@ -233,6 +232,7 @@ scheme_status = {
     "enrol_failed": 901,
     "account_already_exist": 445,
     "invalid_credentials": 403,
+    "ghost_card_registration_failed": 902,
 }
 
 # -------------------------------------------EVENTS---------------------------------------------------------- #

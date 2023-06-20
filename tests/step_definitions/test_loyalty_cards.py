@@ -247,14 +247,24 @@ def verify_loyalty_card_into_database_trusted(user, journey_type, merchant):
             or TestDataUtils.TEST_DATA.scheme_status.get(constants.ENROL_FAILED)
         )
 
-    elif journey_type == "account_already_exists":
+    # elif journey_type in ['account_already_exists', 'card_already_registered']:
+    elif journey_type == "account_already_exists" or "card_already_registered":
         scheme_account = QueryHermes.fetch_ubiquity_schemeaccountentry(journey_type, TestContext.extid)
         assert (
             scheme_account.id == TestContext.current_scheme_account_id
             and scheme_account.link_status is TestDataUtils.TEST_DATA.scheme_status.get(constants.ACCOUNT_ALREADY_EXIST)
             or TestDataUtils.TEST_DATA.scheme_status.get(constants.ACCOUNT_ALREADY_EXIST)
         )
-
+    elif (
+        journey_type == "ghost_card_registration_failed_non_retryable_http_error"
+        or "ghost_card_registration_failed_non_retryable_other_errors"
+    ):
+        scheme_account = QueryHermes.fetch_ubiquity_schemeaccountentry(journey_type, TestContext.extid)
+        assert (
+            scheme_account.id == TestContext.current_scheme_account_id
+            and scheme_account.link_status is TestDataUtils.TEST_DATA.scheme_status.get(constants.ACCOUNT_ALREADY_EXIST)
+            or TestDataUtils.TEST_DATA.scheme_status.get(constants.GHOST_CARD_REGISTRATION_FAILED)
+        )
     elif journey_type == "unauthorised":
         if merchant == "Wasabi":
             scheme_account = QueryHermes.fetch_ubiquity_schemeaccountentry(journey_type, TestContext.extid)
@@ -1589,14 +1599,9 @@ def add_and_register_field(merchant, test_email):
     assert response.status_code == 202, "Add and Register Journey for " + merchant + " failed"
 
 
-@when(
-    parsers.parse(
-        'I perform POST request to add and register "{merchant}" membership card where ' "membership card is in pending"
-    )
-)
-def add_and_register_field_for_in_pending_state_scheme(merchant, test_email):
-    time.sleep(4)
-    response = MembershipCards.add_and_register_field(TestContext.token, merchant, test_email)
+@when(parsers.parse("I perform POST request to add and register {merchant} {journey_type}"))
+def add_and_register_error_handling(merchant, journey_type, test_email):
+    response = MembershipCards.add_and_register_field(TestContext.token, merchant, test_email, None, journey_type)
     response_json = response_to_json(response)
     logging.info(response_json)
     # TestContext.current_scheme_account_id = response_json.get("id")

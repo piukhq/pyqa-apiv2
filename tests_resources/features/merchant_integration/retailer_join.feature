@@ -1,10 +1,11 @@
 # Created by njames on 22/03/2023
+  @the_works_join @bink_regression_api2
 Feature: Basic Merchant Integration Journeys
   As a Bank user
   I want check all Loyalty card features
   so that I am able to benefit from the Bink functionality
 
-  @retail @join1
+
   Scenario Outline: Join to a Loyalty Scheme
     Given I am a Lloyds user
     When I perform POST request to join "<merchant>" membership card
@@ -19,7 +20,6 @@ Feature: Basic Merchant Integration Journeys
       | The_Works | 202                  |join        |
 
 
-  @retail_join_failed
   Scenario Outline: retailer fails to join requests
     Given I am a bos user
     When I perform POST request to <journey_type> "<merchant>" membership card
