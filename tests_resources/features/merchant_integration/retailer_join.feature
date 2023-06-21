@@ -12,7 +12,7 @@ Feature: Basic Merchant Integration Journeys
     Then I see a <status_code_returned>
     When I perform GET Wallet
 #    Then Verify Wallet fields for <merchant> with join_success
-    Then verify that for lloyds_user data stored in after "<journey_type>" journey for "<merchant>"
+    Then verify that for lloyds_user data stored in after <journey_type> journey for "<merchant>"
 
     Examples:
       | merchant  | status_code_returned |journey_type|
@@ -25,7 +25,7 @@ Feature: Basic Merchant Integration Journeys
     Then I see a <status_code_returned>
     When I perform GET Wallet
 #    Then Verify Wallet fields for <merchant> with account_already_exists
-    Then verify that for bos_user data stored in after "<journey_type>" journey for "<merchant>"
+    Then verify that for bos_user data stored in after <journey_type> journey for "<merchant>"
 
 
     Examples:
