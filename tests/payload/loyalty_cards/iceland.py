@@ -529,7 +529,8 @@ class IcelandCard:
             payload = {}
 
         else:
-            email = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_FAILED_EMAIL)
+            if invalid_data:
+                email = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_FAILED_EMAIL)
             TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_CARD)
 
             payload = {
