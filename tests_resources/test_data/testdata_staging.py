@@ -198,13 +198,21 @@ trenette_membership_card = {
 }
 
 the_works_membership_card = {
-    "card_num": "",
+    "card_num": "6338849749210000002622",
+    "points": 3,
+    "currency": "stamps",
+    "description": "",
+    "transactions": "4",
+    "transaction_status": "active",
+    "transaction_currency": "stamps",
     "register_card": "6338844992910000029726",
     "jon_register_account_already_exists_email": "emailexists",
     "register_account_already_exists_cardnum": "cardnumberexists",
     "join_register_non_retryable_error": "opnotpermitted",
     "join_register_non_retryable_http_error": "failhttperror",
-}
+    "invalid_card_number": "633884102938475600011",
+    "unknown_card_number": "633884564738291000022",
+    }
 
 
 # ----------------------------------------MEMBERSHIP PLAN IDs   ----------------------------------------------- #

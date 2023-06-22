@@ -924,10 +924,9 @@ def verify_invalid_request_for_add_and_auth_journey(merchant, membership_card, r
         TestContext.response_status_code = response.status_code
         TestContext.error_message = response_json["error_message"]
         TestContext.error_slug = response_json["error_slug"]
-    elif request_payload == "unauthorised":
+    elif request_payload == "unauthorised" or request_payload == "invalid_cardnumber" or request_payload == "unknown_cardnumber":
         response = MembershipCards.add_and_auth_field_with_unauthorised_json(
-            TestContext.token, merchant, membership_card
-        )
+            TestContext.token, merchant, membership_card, request_payload)
         response_json = response_to_json(response)
         logging.info(response_json)
         TestContext.response_status_code = response.status_code

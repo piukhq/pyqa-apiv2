@@ -238,11 +238,11 @@ class MembershipCards(Endpoint):
         return Endpoint.call_payload(url, header, "POST", payload)
 
     @staticmethod
-    def add_and_auth_field_with_unauthorised_json(token, merchant, membership_card):
+    def add_and_auth_field_with_unauthorised_json(token, merchant, membership_card, request_payload):
         url = MembershipCards.get_add_and_authorise_url()
         header = Endpoint.request_header(token)
         payload = Merchant.get_merchant(merchant).add_and_auth_field_only_membership_card_with_unauthorised_json(
-            membership_card
+            membership_card, request_payload
         )
         return Endpoint.call(url, header, "POST", payload)
 
