@@ -16,7 +16,7 @@ from tests.helpers.test_data_utils import TestDataUtils
 from tests.helpers.test_helpers import TestData
 from tests.requests.loyalty_cards import MembershipCards
 from tests.requests.service import CustomerAccount
-from tests.step_definitions import test_paymentcard_account
+from tests.step_definitions import test_loyalty_cards, test_paymentcard_account
 
 scenarios("events/")
 
@@ -925,37 +925,40 @@ def verify_invalid_request_for_add_journey(merchant, request_payload, status_cod
         'with "{request_payload}" with "{status_code}"'
     )
 )
-def verify_invalid_request_for_add_and_auth_journey(merchant, membership_card, request_payload, status_code):
-    if request_payload == "invalid_request":
-        response = MembershipCards.add_and_authorise_card(TestContext.token, merchant, request_payload)
-        response_json = response_to_json(response)
-        TestContext.response_status_code = response.status_code
-        TestContext.error_message = response_json["error_message"]
-        TestContext.error_slug = response_json["error_slug"]
-    elif request_payload == "invalid_json":
-        response = MembershipCards.add_and_auth_field_with_invalid_json(TestContext.token, merchant)
-        response_json = response_to_json(response)
-        TestContext.response_status_code = response.status_code
-        TestContext.error_message = response_json["error_message"]
-        TestContext.error_slug = response_json["error_slug"]
-    elif request_payload == "unauthorised":
-        response = MembershipCards.add_and_auth_field_with_unauthorised_json(
-            TestContext.token, merchant, membership_card
-        )
-        response_json = response_to_json(response)
-        logging.info(response_json)
-        TestContext.response_status_code = response.status_code
-        TestContext.current_scheme_account_id = response_json.get("id")
-
-    logging.info(
-        "The response of Invalid Journey (POST) for Add and Auth field:\n \n"
-        + Endpoint.BASE_URL
-        + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_AUTHORISE
-        + "\n\n"
-        + json.dumps(response_json, indent=4)
+def event_verify_invalid_request_for_add_and_auth_journey(merchant, membership_card, request_payload, status_code):
+    test_loyalty_cards.verify_invalid_request_for_add_and_auth_journey(
+        merchant, membership_card, request_payload, status_code
     )
-
-    assert TestContext.response_status_code == int(status_code), "Invalid request for " + merchant + " failed"
+    # if request_payload == "invalid_request":
+    #     response = MembershipCards.add_and_authorise_card(TestContext.token, merchant, request_payload)
+    #     response_json = response_to_json(response)
+    #     TestContext.response_status_code = response.status_code
+    #     TestContext.error_message = response_json["error_message"]
+    #     TestContext.error_slug = response_json["error_slug"]
+    # elif request_payload == "invalid_json":
+    #     response = MembershipCards.add_and_auth_field_with_invalid_json(TestContext.token, merchant)
+    #     response_json = response_to_json(response)
+    #     TestContext.response_status_code = response.status_code
+    #     TestContext.error_message = response_json["error_message"]
+    #     TestContext.error_slug = response_json["error_slug"]
+    # elif request_payload == "unauthorised" or request_payload == "journey_type":
+    #     response = MembershipCards.add_and_auth_field_with_unauthorised_json(
+    #         TestContext.token, merchant, membership_card
+    #     )
+    #     response_json = response_to_json(response)
+    #     logging.info(response_json)
+    #     TestContext.response_status_code = response.status_code
+    #     TestContext.current_scheme_account_id = response_json.get("id")
+    #
+    # logging.info(
+    #     "The response of Invalid Journey (POST) for Add and Auth field:\n \n"
+    #     + Endpoint.BASE_URL
+    #     + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_AUTHORISE
+    #     + "\n\n"
+    #     + json.dumps(response_json, indent=4)
+    # )
+    #
+    # assert TestContext.response_status_code == int(status_code), "Invalid request for " + merchant + " failed"
 
 
 # def verify_invalid_request_for_add_and_auth_journey(merchant, request_payload, status_code):

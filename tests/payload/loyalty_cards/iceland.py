@@ -325,7 +325,7 @@ class IcelandCard:
         return payload
 
     @staticmethod
-    def add_and_auth_field_only_membership_card_with_unauthorised_json(membership_card=None):
+    def add_and_auth_field_only_membership_card_with_unauthorised_json(membership_card=None, request_payload=None):
         if membership_card == "membership card":
             TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS_CARD)
             TestContext.last_name = TestDataUtils.TEST_DATA.iceland_membership_card.get(
