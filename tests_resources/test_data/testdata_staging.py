@@ -212,7 +212,7 @@ the_works_membership_card = {
     "join_register_non_retryable_http_error": "failhttperror",
     "invalid_card_number": "633884102938475600011",
     "unknown_card_number": "633884564738291000022",
-    }
+}
 
 
 # ----------------------------------------MEMBERSHIP PLAN IDs   ----------------------------------------------- #
