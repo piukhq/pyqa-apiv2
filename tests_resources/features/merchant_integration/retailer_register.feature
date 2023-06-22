@@ -10,7 +10,7 @@ Feature: Basic Merchant Integration Journeys
     Given I am a bos user
     When I perform POST request add and register for <merchant>
     Then I see a <status_code_returned>
-    Then verify that for bos_user data stored in after "<journey_type>" journey for "<merchant>"
+    Then verify that for bos_user data stored in after <journey_type> journey for "<merchant>"
 
 
     Examples:
@@ -23,7 +23,7 @@ Feature: Basic Merchant Integration Journeys
     When I perform POST request to add <merchant> membership card before registration_success register
     When I perform PUT request to register <merchant> with registration_success membership card
     Then I see a <status_code_returned>
-    Then verify that for bos_user data stored in after "<journey_type>" journey for "<merchant>"
+    Then verify that for bos_user data stored in after <journey_type> journey for "<merchant>"
 
 
     Examples:
@@ -35,7 +35,7 @@ Feature: Basic Merchant Integration Journeys
     Given I am a bos user
     When I perform POST request to add and register <merchant> <journey_type>
     Then I see a <status_code_returned>
-    Then verify that for bos_user data stored in after "<journey_type>" journey for "<merchant>"
+    Then verify that for bos_user data stored in after <journey_type> journey for "<merchant>"
 
 
     Examples:

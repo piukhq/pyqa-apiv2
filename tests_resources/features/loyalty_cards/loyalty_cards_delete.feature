@@ -11,13 +11,13 @@ Feature: Delete a loyalty card
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add and authorise "<merchant>" membership card
     Then I perform DELETE request to delete the "<merchant>" membership card
-    And verify that for bink_user data stored in after "<journey_type>" journey for "<merchant>"
+    And verify that for bink_user data stored in after <journey_type> journey for "<merchant>"
     And I see a <status_code_returned>
 
     Examples:
-      | merchant | status_code_returned |journey_type|
-      | Iceland  | 202                  |delete      |
-      | Wasabi   | 202                  |delete      |
+      | merchant | status_code_returned | journey_type |
+      | Iceland  | 202                  | delete       |
+      | Wasabi   | 202                  | delete       |
 
   @delete_add_loyalty_card @bink_regression_api2 @sandbox_regression
   Scenario Outline: Delete Add loyalty card
@@ -25,13 +25,13 @@ Feature: Delete a loyalty card
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add "<merchant>" membership card
     Then I perform DELETE request to delete the "<merchant>" membership card
-    And verify that for bink_user data stored in after "<journey_type>" journey for "<merchant>"
+    And verify that for bink_user data stored in after <journey_type> journey for "<merchant>"
     And I see a <status_code_returned>
 
     Examples:
-      | merchant | status_code_returned |journey_type|
-      | Iceland  | 202                  |delete      |
-      | Wasabi   | 202                  |delete      |
+      | merchant | status_code_returned | journey_type |
+      | Iceland  | 202                  | delete       |
+      | Wasabi   | 202                  | delete       |
 
 
   @sending_invalid_token_delete @bink_regression_api2 @sandbox_regression
@@ -117,8 +117,8 @@ Feature: Delete a loyalty card
       | Wasabi   | Could not validate fields | FIELD_VALIDATION_ERROR | 422                  |
 
 
-    @multi_wallet_delete @bink_regression_api2 @trusted
-    Scenario Outline: Add and auth lc in two wallets and delete the card from one wallet
+  @multi_wallet_delete @bink_regression_api2 @trusted
+  Scenario Outline: Add and auth lc in two wallets and delete the card from one wallet
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
@@ -155,6 +155,6 @@ Feature: Delete a loyalty card
     And For bink_user I perform GET voucher for loyalty card with authorised for <merchant>
 
     Examples:
-      | merchant |payment_card_provider| journey_type     |status_code_returned |
-      | Wasabi   |master               | authorise_field  |202                  |
-      | Iceland  |master               | authorise_field  |202                  |
+      | merchant | payment_card_provider | journey_type    | status_code_returned |
+      | Wasabi   | master                | authorise_field | 202                  |
+      | Iceland  | master                | authorise_field | 202                  |
