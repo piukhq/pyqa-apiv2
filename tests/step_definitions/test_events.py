@@ -925,10 +925,10 @@ def verify_invalid_request_for_add_journey(merchant, request_payload, status_cod
         'with "{request_payload}" with "{status_code}"'
     )
 )
-def event_verify_invalid_request_for_add_and_auth_journey(merchant, membership_card,
-                                                          request_payload, status_code):
-    test_loyalty_cards.verify_invalid_request_for_add_and_auth_journey(merchant, membership_card,
-                                                                       request_payload, status_code)
+def event_verify_invalid_request_for_add_and_auth_journey(merchant, membership_card, request_payload, status_code):
+    test_loyalty_cards.verify_invalid_request_for_add_and_auth_journey(
+        merchant, membership_card, request_payload, status_code
+    )
     # if request_payload == "invalid_request":
     #     response = MembershipCards.add_and_authorise_card(TestContext.token, merchant, request_payload)
     #     response_json = response_to_json(response)
