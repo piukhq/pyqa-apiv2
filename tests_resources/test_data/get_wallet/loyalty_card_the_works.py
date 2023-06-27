@@ -130,8 +130,8 @@ class TheWorksResponse:
                 "state": "unauthorised",
                 "slug": "VALIDATION_ERROR",
                 "description": "We can’t link your card as some details don’t match what the retailer has."
-                               " Please check your details and enter them into the form again. If this doesn’t work, "
-                               "please speak to the retailer, or re-join their loyalty scheme in Loyalty Plus.",
+                " Please check your details and enter them into the form again. If this doesn’t work, "
+                "please speak to the retailer, or re-join their loyalty scheme in Loyalty Plus.",
             },
             "balance": {
                 "updated_at": None,
@@ -185,8 +185,8 @@ class TheWorksResponse:
                 "state": "unauthorised",
                 "slug": "VALIDATION_ERROR",
                 "description": "We can’t link your card as some details don’t match what the retailer has. "
-                               "Please check your details and enter them into the form again. If this doesn’t work, "
-                               "please speak to the retailer, or re-join their loyalty scheme in Loyalty Plus.",
+                "Please check your details and enter them into the form again. If this doesn’t work, "
+                "please speak to the retailer, or re-join their loyalty scheme in Loyalty Plus.",
             },
             "balance": {
                 "updated_at": None,
@@ -282,7 +282,7 @@ class TheWorksResponse:
                 "state": "failed",
                 "slug": "ACCOUNT_NOT_REGISTERED",
                 "description": "The Loyalty Card has not yet been registered. "
-                               "Please register the card with the retailer.",
+                "Please register the card with the retailer.",
             },
             "balance": {
                 "updated_at": None,
