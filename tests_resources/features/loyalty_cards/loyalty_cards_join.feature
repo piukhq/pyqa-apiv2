@@ -122,3 +122,4 @@ Feature: Add and register a loyalty card
     Examples:
       | merchant      | status_code_returned |
       | Iceland       | 202                  |
+      | The_Works     | 202                  |

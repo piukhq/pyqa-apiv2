@@ -120,6 +120,7 @@ Feature: Register a loyalty card
     Examples:
       | merchant | status_code_returned |
       | Iceland  | 202                  |
+      |The_Works | 202                   |
 
 
   @put_register_failed_multi_wallet @bink_regression_api2 @trusted
@@ -149,6 +150,7 @@ Feature: Register a loyalty card
     Examples:
       | merchant | scheme_state      |
       | Iceland  |registration_failed|
+     |The_Works | registration_failed |
 
 
   @put_register_failed_multi_wallet @bink_regression_api2 @trusted
@@ -176,3 +178,4 @@ Feature: Register a loyalty card
     Examples:
       | merchant | scheme_state      |
       | Iceland  |registration_failed|
+      |The_Works | registration_failed |
