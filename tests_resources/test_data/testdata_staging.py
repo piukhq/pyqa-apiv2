@@ -268,6 +268,12 @@ event_type = {
     "lc_add_auth_failed": "lc.addandauth.failed",
 }
 
+consent_slug = {
+    "Wasabi": "EmailOptin",
+    "Iceland": "marketing_opt_in",
+    "SquareMeal": "Subscription",
+}
+
 # ------------------------------------------ DB DETAILS ---------------------------------------------------- #
 
 db_details = {
