@@ -298,7 +298,7 @@ class SquareMealCard:
         return payload
 
     @staticmethod
-    def add_and_auth_field_only_membership_card_with_unauthorised_json(card=None):
+    def add_and_auth_field_only_membership_card_with_unauthorised_json(card=None, request_payload=None):
         TestContext.email = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.EMAIL)
         TestContext.password = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.INVALID_PASSWORD)
         payload = {

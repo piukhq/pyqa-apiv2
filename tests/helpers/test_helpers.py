@@ -9,6 +9,7 @@ from tests.payload.loyalty_cards.viator import ViatorCard
 from tests.payload.loyalty_cards.wasabi import WasabiCard
 from tests_resources.test_data.get_wallet.loyalty_card_iceland import IcelandResponse
 from tests_resources.test_data.get_wallet.loyalty_card_squaremeal import SquareMealResponse
+from tests_resources.test_data.get_wallet.loyalty_card_the_works import TheWorksResponse
 from tests_resources.test_data.get_wallet.loyalty_card_viator import ViatorResponse
 from tests_resources.test_data.get_wallet.loyalty_card_wasabi import WasabiResponse
 from tests_resources.test_data.get_wallet.payment_account import PaymentAccountResponse
@@ -206,8 +207,8 @@ class TestData:
             #     return TrenetteResponse
             case "Viator":
                 return ViatorResponse
-            # case "The_Works":
-            #     return TheWorks
+            case "The_Works":
+                return TheWorksResponse
             case "payment_account":
                 return PaymentAccountResponse
 

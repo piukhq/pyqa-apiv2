@@ -31,8 +31,8 @@ Feature: View Wallets
     Examples:
       | merchant      | status_code_returned|payment_card_provider|
       |Wasabi        | 200                  |master              |
-      |Iceland        |200                  |master               |
-#      |HarveyNichols  |200                  |master               |
+      |Iceland       |200                  |master               |
+      |The_Works    |200                  |master               |
 
 
   @wallet_multi_channel_lc_then_payment @add_and_auth_multi_channel
@@ -88,7 +88,7 @@ Feature: View Wallets
       | merchant      | status_code_returned|payment_card_provider|request_payload | status_code|
       |Wasabi        | 200                  |master              |unauthorised     | 202        |
       |Iceland        |200                  |master               | unauthorised  | 202        |
-#      |HarveyNichols  |200                  |master               | unauthorised  | 202        |
+      |The_Works      |200                  |master               | unauthorised  | 202        |
 
 
   @add_and_auth_multi_wallet @bink_regression_api2

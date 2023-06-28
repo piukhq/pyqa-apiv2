@@ -1039,12 +1039,12 @@ def add_already_register_card(merchant):
 
 
 # @when(parsers.parse('I perform PUT request to register "{merchant}" above wallet only membership card'))
-@when(parsers.parse("I perform PUT request to register {merchant} with {scheme_state} membership card"))
-def verify_register_post_membership_card(merchant, scheme_state, test_email):
-    if scheme_state == "registration_failed":
-        test_email = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_FAILED_EMAIL)
+@when(parsers.parse("I perform PUT request to register {merchant} with {invalid_data} membership card"))
+def verify_register_post_membership_card(merchant, invalid_data, test_email):
+    # if scheme_state == "registration_failed":
+    #     test_email = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_FAILED_EMAIL)
     response = MembershipCards.register_field_only_card(
-        TestContext.token, merchant, test_email, TestContext.current_scheme_account_id
+        TestContext.token, merchant, test_email, TestContext.current_scheme_account_id, invalid_data
     )
     time.sleep(7)
     response_json = response_to_json(response)
@@ -1565,7 +1565,7 @@ def i_perform_post_add_and_authorise_membership_card_which_is_exist_already(merc
 
 
 @when(parsers.parse('I perform POST request to result "{invalid_register}" add and register for {merchant}'))
-def failed_add_and_register_field(merchant, invalid_register, test_email):
+def failed_add_and_register_field(invalid_register, merchant, test_email):
     response = MembershipCards.add_and_register_field(TestContext.token, merchant, test_email, None, invalid_register)
     time.sleep(8)
     response_json = response_to_json(response)

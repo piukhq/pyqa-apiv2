@@ -8,7 +8,7 @@ Feature: Basic Merchant Integration Journeys
   @add_auth_journey
   Scenario Outline: Works Add Journey
     Given I am a bos user
-    When I perform POST request to add and authorise "<merchant>" membership card
+    When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     Then I see a <status_code_returned>
     When I perform GET Wallet
     Then verify that for bos_user data stored in after "<journey_type>" journey for "<merchant>"

@@ -76,27 +76,26 @@ class TheWorks:
     def add_and_register_membership_card(email=None, invalid_request=None, invalid_data=None):
         faker = Faker()
         TestContext.card_number = TestDataUtils.TEST_DATA.the_works_membership_card.get(constants.REGISTER_CARD)
-        last_name = faker.name()
+        TestContext.last_name = faker.name()
         if invalid_request:
             payload = {}
         else:
             if invalid_data == "account_already_exists":
-                last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
+                TestContext.last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
                     constants.JOIN_REGISTER_ACCOUNT_ALREADY_EXISTS_EMAIL
                 )
             elif invalid_data == "card_already_registered":
-                last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
+                TestContext.last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
                     constants.REGISTER_ACCOUNT_EXISTS_CARDNUM
                 )
             elif invalid_data == "ghost_card_registration_failed_non_retryable_http_error":
-                last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
+                TestContext.last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
                     constants.JOIN_REGISTER_NON_RETRYABLE_HTTP_ERROR
                 )
             elif invalid_data == "ghost_card_registration_failed_non_retryable_other_errors":
-                last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
+                TestContext.last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
                     constants.JOIN_REGISTER_NON_RETRYABLE_ERROR
                 )
-
             payload = {
                 "account": {
                     "add_fields": {
@@ -111,7 +110,7 @@ class TheWorks:
                         "credentials": [
                             {"credential_slug": "email", "value": email},
                             {"credential_slug": "first_name", "value": faker.name()},
-                            {"credential_slug": "last_name", "value": last_name},
+                            {"credential_slug": "last_name", "value": TestContext.last_name},
                         ],
                         "consents": [{"consent_slug": "email_marketing", "value": constants.CONSENT}],
                     },
@@ -160,6 +159,7 @@ class TheWorks:
     @staticmethod
     def register_field_only_membership_card_payload(email=None, invalid_data=None):
         faker = Faker()
+        TestContext.last_name = faker.name()
         if invalid_data == "invalid_request":
             payload = {}
         elif invalid_data == "invalid_json":
@@ -176,12 +176,16 @@ class TheWorks:
                 }
             }
         else:
+            if invalid_data == "registration_failed":
+                TestContext.last_name = TestContext.last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
+                    constants.JOIN_REGISTER_NON_RETRYABLE_HTTP_ERROR
+                )
             payload = {
                 "account": {
                     "register_ghost_card_fields": {
                         "credentials": [
                             {"credential_slug": "first_name", "value": faker.name()},
-                            {"credential_slug": "last_name", "value": faker.name()},
+                            {"credential_slug": "last_name", "value": TestContext.last_name},
                             {"credential_slug": "email", "value": email},
                         ],
                         "consents": [{"consent_slug": "email_marketing", "value": constants.CONSENT}],
@@ -198,7 +202,7 @@ class TheWorks:
         return payload
 
     @staticmethod
-    def add_and_authorise_membership_card_payload():
+    def add_and_authorise_transactions_card_payload(card=None):
         value = TestDataUtils.TEST_DATA.the_works_membership_card.get(constants.CARD_NUM)
 
         payload = {
@@ -223,7 +227,7 @@ class TheWorks:
 
     @staticmethod
     def add_and_auth_field_only_membership_card_with_unauthorised_json(membership_card=None, request_payload=None):
-        if request_payload == "invalid_cardnumber":
+        if request_payload == "invalid_cardnumber" or "unauthorised":
             TestContext.card_number = TestDataUtils.TEST_DATA.the_works_membership_card.get(
                 constants.INVALID_CARD_NUMBER
             )

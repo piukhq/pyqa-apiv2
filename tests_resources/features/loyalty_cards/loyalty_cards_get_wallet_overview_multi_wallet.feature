@@ -25,6 +25,7 @@ Feature: View Wallets overview
       | merchant      | status_code_returned|payment_card_provider|
       |Wasabi        | 200                  |master              |
       |Iceland        |200                  |master               |
+      |The_Works        |200                  |master               |
 #      |HarveyNichols  |200                  |master               |
 
 
@@ -49,6 +50,7 @@ Feature: View Wallets overview
       | merchant      | status_code_returned|payment_card_provider|request_payload | status_code|
       |Wasabi        | 200                  |master              |unauthorised     | 202        |
       |Iceland        |200                  |master               | unauthorised  | 202        |
+       |The_Works        |200                  |master               | unauthorised  | 202        |
 #      |HarveyNichols  |200                  |master               | unauthorised  | 202        |
 
 
