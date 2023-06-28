@@ -1,5 +1,5 @@
 # Created by srikalyanikotha at 20/06/2023
- @twks
+@the_works_add
 Feature: Basic Merchant Integration Journeys
   As a Bank user
   I want add a loyalty card to my wallet
@@ -14,11 +14,11 @@ Feature: Basic Merchant Integration Journeys
     Then verify that for bos_user data stored in after "<journey_type>" journey for "<merchant>"
 
     Examples:
-      | merchant      | status_code_returned | journey_type      |
-      | The_Works     | 202                  | add_and_authorise |
+      | merchant  | status_code_returned | journey_type      |
+      | The_Works | 202                  | add_and_authorise |
 
 
-    @add_auth_failed_journey
+  @add_auth_failed_journey
   Scenario Outline: Add_Auth journey with failed Credentials_The Works
     Given I am a bos user
     When I perform POST request to add and auth "<merchant>" membership card with "<invalid_add_fields>" with "202"
@@ -26,7 +26,21 @@ Feature: Basic Merchant Integration Journeys
     When I perform GET Wallet
     Then verify that for bos_user data stored in after "<journey_type>" journey for "<merchant>"
 
-  Examples:
-      | merchant      | status_code_returned| invalid_add_fields    | journey_type|
-      | The_Works     | 202                 | invalid_cardnumber | add_and_authorise |
-      | The_Works     | 202                 | unknown_cardnumber | add_and_authorise |
+    Examples:
+      | merchant  | status_code_returned | invalid_add_fields | journey_type      |
+      | The_Works | 202                  | invalid_cardnumber | add_and_authorise |
+      | The_Works | 202                  | unknown_cardnumber | add_and_authorise |
+
+
+  @view_transactions
+  Scenario Outline: Get Loyalty card transactions
+    Given I am in Bink channel to get b2b token
+    When I perform POST token request for token type "b2b" to get access token
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform GET Wallet
+    And For bink_user I perform GET transaction for loyalty card with authorised for <merchant>
+    Then I see a <status_code_returned>
+
+    Examples:
+      | merchant  | status_code_returned |
+      | The_Works | 200                  |
