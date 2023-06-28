@@ -177,7 +177,7 @@ class TheWorks:
             }
         else:
             if invalid_data == "registration_failed":
-                TestContext.last_name = TestContext.last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
+                TestContext.last_name = TestDataUtils.TEST_DATA.the_works_membership_card.get(
                     constants.JOIN_REGISTER_NON_RETRYABLE_HTTP_ERROR
                 )
             payload = {
