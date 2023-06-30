@@ -508,6 +508,7 @@ def get_bos_user(bos_external_id, bos_test_email):
     TestContext.refresh_token_type = response_json.get("refresh_token")
     TestContext.token = TestContext.token_type + " " + TestContext.access_token
     TestContext.response_status_code = response.status_code
+    TestContext.user_email = bos_test_email
     logging.info(
         "The response of B2B token (POST) for bos is:\n\n"
         + Endpoint.BASE_URL
