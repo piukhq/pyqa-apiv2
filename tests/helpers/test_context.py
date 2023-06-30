@@ -52,3 +52,6 @@ class TestContext:
     flag_encrypt = ""
     channel_name = ""
     environ = ""
+
+    """Variable for event"""
+    event_record = ()

@@ -267,6 +267,9 @@ event_type = {
     "lc_add_auth_request": "lc.addandauth.request",
     "lc_add_auth_success": "lc.addandauth.success",
     "lc_add_auth_failed": "lc.addandauth.failed",
+    "lc_register_request": "lc.register.request",
+    "lc_register_success": "lc.register.success",
+    "lc_register_failed": "lc.register.failed",
 }
 
 consent_slug = {

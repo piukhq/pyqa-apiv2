@@ -1748,7 +1748,7 @@ def join_with_invalid_token(merchant, test_email):
 
 
 @when(parsers.parse('I perform {scheme_state} POST request to join "{merchant}" membership card'))
-def fail_join_scheme(merchant, scheme_state):
+def fail_join_scheme(scheme_state, merchant):
     if scheme_state == "enrol_failed":
         response = MembershipCards.join_field(
             TestContext.token, merchant, TestDataUtils.TEST_DATA.join_emails.get(constants.ID)
