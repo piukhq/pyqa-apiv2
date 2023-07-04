@@ -250,8 +250,11 @@ event_info = {
     "origin": "channel",
     "channel_bink": "com.bink.wallet",
     "channel_lloyds": "com.lloydsqa.api2",
+    "client_id_lloyds": "LkVR4URcysf22a10Jpm3QXVmSGD8neUwgLo7JBSKtDxlV8zZJr",
     "channel_halifax": "com.halifax.api2",
+    "client_id_halifax": "MIwOHVa2qUAdxyXn5o4n7lA6ZM38N9NOXsXS0zSCYWPoDq4rw7",
     "channel_bos": "com.bos.api2",
+    "client_id_bos": "NnZn3Tu2dpNF5sbgypk0RKNiwrVK68b7Aq2JyYcLvIwGYm5QoB",
     "status": 1,
 }
 
@@ -270,6 +273,7 @@ event_type = {
     "lc_register_request": "lc.register.request",
     "lc_register_success": "lc.register.success",
     "lc_register_failed": "lc.register.failed",
+    "pll_link_statuschange": "pll_link.statuschange",
 }
 
 consent_slug = {
