@@ -273,7 +273,7 @@ event_type = {
     "lc_register_request": "lc.register.request",
     "lc_register_success": "lc.register.success",
     "lc_register_failed": "lc.register.failed",
-    "pll_link_statuschange": "pll_link.statuschange"
+    "pll_link_statuschange": "pll_link.statuschange",
 }
 
 consent_slug = {
