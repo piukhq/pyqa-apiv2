@@ -29,6 +29,7 @@ class TestContext:
     third_token = ""
     error_message = ""
     error_slug = ""
+    event_slug = ""
     email = ""
     user_email = ""
     card_number = ""

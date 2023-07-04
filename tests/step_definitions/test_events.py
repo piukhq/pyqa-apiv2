@@ -8,7 +8,7 @@ from tests.helpers.database.query_snowstorm import QuerySnowstorm
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
 from tests.requests.service import CustomerAccount
-from tests.step_definitions import test_loyalty_cards
+from tests.step_definitions import test_loyalty_cards, test_paymentcard_account
 
 scenarios("events/")
 
@@ -60,6 +60,20 @@ def authorise_post_membership_card(merchant):
 @when(parsers.parse('I perform {scheme_state} POST request to join "{merchant}" membership card'))
 def fail_join_scheme(scheme_state, merchant):
     test_loyalty_cards.fail_join_scheme(scheme_state, merchant)
+
+
+@when(
+    parsers.parse(
+        'I perform POST request to add a {payment_status} "{payment_card_provider}" payment account to wallet'
+    )
+)
+def add_payment_card_event(payment_card_provider, payment_status):
+    test_paymentcard_account.add_payment_account(payment_card_provider, payment_status)
+
+
+@when(parsers.parse('I perform POST request to add existing payment card "{payment_card_provider}" second wallet'))
+def event_add_existing_payment_cardpayment_card_provider(payment_card_provider):
+    test_paymentcard_account.add_existing_payment_card_in_another_wallet(payment_card_provider)
 
 
 @when(parsers.parse('I perform POST request to {join} "{merchant}" membership card'))
@@ -157,3 +171,53 @@ def verify_register_post_membership_card(merchant, invalid_data, test_email):
 @when(parsers.parse('I perform POST request to result "{invalid_register}" add and register for {merchant}'))
 def failed_add_and_register_field(invalid_register, merchant, test_email):
     test_loyalty_cards.failed_add_and_register_field(invalid_register, merchant, test_email)
+
+
+@then(
+    parsers.parse(
+        "I verify {journey_type} pll event is created for {user} for status {from_state}"
+        " to {to_state} and slug {slug}"
+    )
+)
+def pll_link_status_change_event(journey_type, user, from_state, to_state, slug):
+    match user:
+        case "lloyds_user":
+            channel = TestDataUtils.TEST_DATA.event_info.get(constants.CLIENT_ID_LLOYDS)
+        case "halifax_user":
+            channel = TestDataUtils.TEST_DATA.event_info.get(constants.CLIENT_ID_HALIFAX)
+        case "bos_user":
+            channel = TestDataUtils.TEST_DATA.event_info.get(constants.CLIENT_ID_BOS)
+    TestContext.extid = TestContext.external_id[user]
+    if slug == "null":
+        TestContext.event_slug = ""
+    else:
+        TestContext.event_slug = slug
+    time.sleep(8)
+    logging.info(TestDataUtils.TEST_DATA.event_type.get(journey_type))
+    TestContext.event_record = QuerySnowstorm.fetch_pll_event(
+        TestDataUtils.TEST_DATA.event_type.get(journey_type), TestContext.extid, TestContext.event_slug
+    )
+    logging.info(str(TestContext.event_record))
+    assert TestContext.event_record.event_type == TestDataUtils.TEST_DATA.event_type.get(
+        journey_type
+    ), "event type do not match"
+    assert TestContext.event_record.json["external_user_ref"] == TestContext.extid, "external_user_ref do not match"
+    assert TestContext.event_record.json["channel"] == channel, "channel do not match"
+    assert TestContext.event_record.json["email"] == TestContext.user_email, "email do not match"
+    assert (
+        TestContext.event_record.json["scheme_account_id"] == TestContext.current_scheme_account_id
+    ), "scheme_account_id do not match"
+    if slug == "null":
+        assert TestContext.event_record.json["slug"] == "", "slug do not match"
+    else:
+        assert TestContext.event_record.json["slug"] == slug, "slug do not match"
+    if from_state == "null":
+        assert TestContext.event_record.json["from_state"] is None, "from_state do not match"
+    else:
+        assert TestContext.event_record.json["from_state"] == int(from_state), "from_state do not match"
+    if to_state == "null":
+        assert TestContext.event_record.json["to_state"] is None, "to_state do not match"
+    else:
+        assert TestContext.event_record.json["to_state"] == int(to_state), "to_state do not match"
+
+    return TestContext.event_record
