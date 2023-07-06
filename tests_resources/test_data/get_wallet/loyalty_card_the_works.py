@@ -9,45 +9,45 @@ class TheWorksResponse:
             "total_payment_accounts": 1,
             "status": {"state": "authorised", "slug": None, "description": None},
             "balance": {
-                # "updated_at": 1687875577,
-                "current_display_value": "300 pts",
+                # "updated_at": 1688658362,
+                "current_display_value": "60 pts",
                 "loyalty_currency_name": "points",
                 "prefix": None,
                 "suffix": "pts",
-                "current_value": "300",
-                "target_value": None,
+                "current_value": "60",
+                "target_value": None
             },
             "transactions": [
                 {
-                    # "id": "737884",
+                    # "id": "750316",
                     "timestamp": 1687190168,
                     "description": "Available balance: £0.00",
-                    "display_value": "25 pts",
+                    "display_value": "5 pts"
                 },
                 {
-                    # "id": "737885",
+                    # "id": "750317",
                     "timestamp": 1687188672,
                     "description": "Available balance: £0.00",
-                    "display_value": "5 pts",
+                    "display_value": "25 pts"
                 },
                 {
-                    # "id": "737886",
+                    # "id": "750318",
                     "timestamp": 1687182362,
                     "description": "Available balance: £0.00",
-                    "display_value": "15 pts",
+                    "display_value": "15 pts"
                 },
                 {
-                    # "id": "737887",
+                    # "id": "750319",
                     "timestamp": 1687176061,
                     "description": "Available balance: £0.00",
-                    "display_value": "10 pts",
+                    "display_value": "10 pts"
                 },
                 {
-                    # "id": "737888",
+                    # "id": "750320",
                     "timestamp": 1687171741,
                     "description": "Available balance: £0.00",
-                    "display_value": "5 pts",
-                },
+                    "display_value": "5 pts"
+                }
             ],
             "vouchers": [],
             "card": {
@@ -89,13 +89,13 @@ class TheWorksResponse:
             "total_payment_accounts": 1,
             "status": {"state": "authorised", "slug": None, "description": None},
             "balance": {
-                # "updated_at": 1687875577,
-                "current_display_value": "300 pts",
+                # "updated_at": 1688658362,
+                "current_display_value": "60 pts",
                 "loyalty_currency_name": "points",
                 "prefix": None,
                 "suffix": "pts",
-                "current_value": "300",
-                "target_value": None,
+                "current_value": "60",
+                "target_value": None
             },
             "card": {
                 "barcode": "6338849749210000002622",
@@ -130,8 +130,8 @@ class TheWorksResponse:
                 "state": "unauthorised",
                 "slug": "VALIDATION_ERROR",
                 "description": "We can’t link your card as some details don’t match what the retailer has."
-                " Please check your details and enter them into the form again. If this doesn’t work, "
-                "please speak to the retailer, or re-join their loyalty scheme in Loyalty Plus.",
+                               " Please check your details and enter them into the form again. If this doesn’t work, "
+                               "please speak to the retailer, or re-join their loyalty scheme in Loyalty Plus.",
             },
             "balance": {
                 "updated_at": None,
@@ -185,8 +185,8 @@ class TheWorksResponse:
                 "state": "unauthorised",
                 "slug": "VALIDATION_ERROR",
                 "description": "We can’t link your card as some details don’t match what the retailer has. "
-                "Please check your details and enter them into the form again. If this doesn’t work, "
-                "please speak to the retailer, or re-join their loyalty scheme in Loyalty Plus.",
+                               "Please check your details and enter them into the form again. If this doesn’t work, "
+                               "please speak to the retailer, or re-join their loyalty scheme in Loyalty Plus.",
             },
             "balance": {
                 "updated_at": None,
@@ -282,7 +282,7 @@ class TheWorksResponse:
                 "state": "failed",
                 "slug": "ACCOUNT_NOT_REGISTERED",
                 "description": "The Loyalty Card has not yet been registered. "
-                "Please register the card with the retailer.",
+                               "Please register the card with the retailer.",
             },
             "balance": {
                 "updated_at": None,

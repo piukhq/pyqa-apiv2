@@ -79,7 +79,9 @@ Feature: Add and register a loyalty card
       | master                | Iceland  | 202                  | pll_active   |
 
 
-  @identical_joins @bink_regression_api2
+#    The scenario is not working due to a bug in API reflector. Retail team has it in their backlog
+#    https://hellobink.atlassian.net/browse/RET-2152
+  @identical_joins
   Scenario Outline: merchant fails to identify duplicate join requests
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
