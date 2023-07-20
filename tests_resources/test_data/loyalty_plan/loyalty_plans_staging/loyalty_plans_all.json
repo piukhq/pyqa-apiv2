@@ -213,7 +213,7 @@
 				"type": 0,
 				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Hero.png",
 				"cta_url": null,
-				"description": "SquareMeal Hero",
+				"description": "SquareMeal Loyalty Card",
 				"encoding": "png",
 				"order": 0
 			},
@@ -231,7 +231,7 @@
 				"type": 8,
 				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Silver_Tier_2.png",
 				"cta_url": null,
-				"description": "SquareMeal Silver Tier 2",
+				"description": "SquareMeal Silver Tier Loyalty Card",
 				"encoding": "png",
 				"order": 0
 			}
@@ -446,7 +446,7 @@
 				"type": 3,
 				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
 				"cta_url": null,
-				"description": "Iceland Icon",
+				"description": "Iceland Logo",
 				"encoding": "png",
 				"order": 0
 			},
@@ -1006,7 +1006,7 @@
 				"type": 3,
 				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Logo1-280x280.png",
 				"cta_url": null,
-				"description": "Viator icon",
+				"description": "Viator Logo",
 				"encoding": "png",
 				"order": 0
 			},
@@ -1015,7 +1015,7 @@
 				"type": 0,
 				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Loyalty_Card_V2_1312x800.png",
 				"cta_url": null,
-				"description": "Viator Hero",
+				"description": "Viator Loyalty Card",
 				"encoding": "png",
 				"order": 0
 			},
