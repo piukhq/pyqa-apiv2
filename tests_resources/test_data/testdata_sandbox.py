@@ -431,7 +431,7 @@ wallet_info = {
                     "id": 1234,
                     "type": 0,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
-                    "description": "Iceland Slimming World hero card",
+                    "description": "Iceland Loyalty Card",
                     "encoding": "png",
                 },
                 {
@@ -730,7 +730,7 @@ wallet_overview_info = {
                     "id": 1234,
                     "type": 0,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
-                    "description": "Iceland Slimming World hero card",
+                    "description": "Iceland Loyalty Card",
                     "encoding": "png",
                 }
             ],
@@ -1018,7 +1018,7 @@ wallet_info_by_card_id = {
                 "id": 1234,
                 "type": 0,
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
-                "description": "Iceland Slimming World hero card",
+                "description": "Iceland Loyalty Card",
                 "encoding": "png",
             },
             {

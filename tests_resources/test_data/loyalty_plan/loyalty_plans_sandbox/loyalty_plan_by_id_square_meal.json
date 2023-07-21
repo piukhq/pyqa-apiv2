@@ -33,7 +33,7 @@
             "id": 671,
             "type": 8,
             "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
-            "description": "SquareMeal Bronze Tier 1",
+            "description": "SquareMeal Bronze Tier Loyalty Card",
             "encoding": "png",
             "order": 0
         },
@@ -41,7 +41,7 @@
             "id": 668,
             "type": 3,
             "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
-            "description": "SquareMeal Icon",
+            "description": "SquareMeal Logo",
             "encoding": "png",
             "order": 0
         },
@@ -57,7 +57,7 @@
             "id": 673,
             "type": 8,
             "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/SquareMeal_Gold_Tier_3.png",
-            "description": "SquareMeal Gold Tier 3",
+            "description": "SquareMeal Gold Tier Loyalty Card",
             "encoding": "png",
             "order": 0
         },
