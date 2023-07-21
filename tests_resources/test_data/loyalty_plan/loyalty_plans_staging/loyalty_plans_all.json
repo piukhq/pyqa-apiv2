@@ -195,7 +195,7 @@
 				"type": 8,
 				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Gold_Tier_3.png",
 				"cta_url": null,
-				"description": "SquareMeal Gold Tier 3",
+				"description": "SquareMeal Gold Tier Loyalty Card",
 				"encoding": "png",
 				"order": 0
 			},
@@ -204,7 +204,7 @@
 				"type": 8,
 				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
 				"cta_url": null,
-				"description": "SquareMeal Bronze Tier 1",
+				"description": "SquareMeal Bronze Tier Loyalty Card",
 				"encoding": "png",
 				"order": 0
 			},
@@ -222,7 +222,7 @@
 				"type": 3,
 				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
 				"cta_url": null,
-				"description": "SquareMeal Icon",
+				"description": "SquareMeal Logo",
 				"encoding": "png",
 				"order": 0
 			},
@@ -428,7 +428,7 @@
 				"type": 0,
 				"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
 				"cta_url": null,
-				"description": "Iceland Slimming World hero card",
+				"description": "Iceland Loyalty Card",
 				"encoding": "png",
 				"order": 0
 			},
