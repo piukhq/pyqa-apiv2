@@ -118,7 +118,7 @@ class SquareMealResponse:
             "reward_available": False,
             "images": [
                 {
-                    "id":   1328,
+                    "id": 1328,
                     "type": 3,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
                     "description": "SquareMeal Logo",
