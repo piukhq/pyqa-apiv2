@@ -30,7 +30,7 @@
 			"type": 3,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Logo1-280x280.png",
 			"cta_url": null,
-			"description": "Viator icon",
+			"description": "Viator Logo",
 			"encoding": "png",
 			"order": 0
 		},
@@ -48,7 +48,7 @@
 			"type": 0,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Loyalty_Card_V2_1312x800.png",
 			"cta_url": null,
-			"description": "Viator Hero",
+			"description": "Viator Loyalty Card",
 			"encoding": "png",
 			"order": 0
 		}
