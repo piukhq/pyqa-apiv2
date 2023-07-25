@@ -17,7 +17,7 @@
             "type": "python",
             "request": "launch",
             "module": "pytest",
-            "args": ["--env", "staging"],
+            "args": ["--channel", "bink", "--env", "staging"],
             "justMyCode": true
         }
     ]
