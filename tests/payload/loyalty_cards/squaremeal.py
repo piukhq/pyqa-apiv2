@@ -1,5 +1,6 @@
 import json
 import logging
+import uuid
 
 from faker import Faker
 
@@ -553,7 +554,7 @@ class SquareMealCard:
                         ]
                     },
                     "merchant_fields": {
-                        "account_id": "new_identifier",
+                        "account_id": f"{uuid.uuid4()}",
                     },
                 }
             }
