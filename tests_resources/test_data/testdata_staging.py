@@ -215,7 +215,15 @@ the_works_membership_card = {
     "transactions_card": "6338849749210000002622",
 }
 
-
+itsu_membership_card = {
+    "card_num": "9988776655",
+    # "jon_register_account_already_exists_email": "emailexists",
+    # "join_register_non_retryable_error": "opnotpermitted",
+    # "join_register_non_retryable_http_error": "failhttperror",
+    "invalid_card_number": "0099887766",
+    "unknown_card_number": "0009998887",
+    # "transactions_card": "6338849749210000002622",
+}
 # ----------------------------------------MEMBERSHIP PLAN IDs   ----------------------------------------------- #
 
 membership_plan_id = {
@@ -232,6 +240,7 @@ membership_plan_id = {
     "Bink Test Scheme": 132,  # suspended loyalty plan
     "Wallis": 131,  # inactive loyalty plan
     "the_works": 294,
+    "itsu": 295,
 }
 
 scheme_status = {

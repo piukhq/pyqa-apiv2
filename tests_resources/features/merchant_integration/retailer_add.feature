@@ -16,10 +16,11 @@ Feature: Basic Merchant Integration Journeys
     Examples:
       | merchant  | status_code_returned | journey_type      |
       | The_Works | 202                  | add_and_authorise |
+      | itsu      | 202                  | add_and_authorise |
 
 
   @add_auth_failed_journey
-  Scenario Outline: Add_Auth journey with failed Credentials_The Works
+  Scenario Outline: Add_Auth journey with failed Credentials
     Given I am a bos user
     When I perform POST request to add and auth "<merchant>" membership card with "<invalid_add_fields>" with "202"
     Then I see a <status_code_returned>
@@ -30,17 +31,19 @@ Feature: Basic Merchant Integration Journeys
       | merchant  | status_code_returned | invalid_add_fields | journey_type      |
       | The_Works | 202                  | invalid_cardnumber | add_and_authorise |
       | The_Works | 202                  | unknown_cardnumber | add_and_authorise |
+      | itsu      | 202                  | invalid_cardnumber | add_and_authorise |
+      | itsu      | 202                  | unknown_cardnumber | add_and_authorise |
 
 
-  @view_transactions
-  Scenario Outline: Get Loyalty card transactions
+
+  Scenario Outline: Get Loyalty card vouchers
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET Wallet
-    And For bink_user I perform GET transaction for loyalty card with authorised for <merchant>
+    And For bink_user I perform GET voucher for loyalty card with authorised for <merchant>
     Then I see a <status_code_returned>
 
     Examples:
-      | merchant  | status_code_returned |
-      | The_Works | 200                  |
+      | merchant      | status_code_returned |
+      | itsu        | 200                  |
+

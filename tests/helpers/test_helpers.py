@@ -2,12 +2,14 @@ from tests.helpers import constants
 from tests.helpers.test_data_utils import TestDataUtils
 from tests.payload.loyalty_cards.harvey_nichols import HarveyNicholsCard
 from tests.payload.loyalty_cards.iceland import IcelandCard
+from tests.payload.loyalty_cards.itsu import Itsu
 from tests.payload.loyalty_cards.squaremeal import SquareMealCard
 from tests.payload.loyalty_cards.the_works import TheWorks
 from tests.payload.loyalty_cards.trenette import TrenetteCard
 from tests.payload.loyalty_cards.viator import ViatorCard
 from tests.payload.loyalty_cards.wasabi import WasabiCard
 from tests_resources.test_data.get_wallet.loyalty_card_iceland import IcelandResponse
+from tests_resources.test_data.get_wallet.loyalty_card_itsu import ItsuResponse
 from tests_resources.test_data.get_wallet.loyalty_card_squaremeal import SquareMealResponse
 from tests_resources.test_data.get_wallet.loyalty_card_the_works import TheWorksResponse
 from tests_resources.test_data.get_wallet.loyalty_card_viator import ViatorResponse
@@ -209,6 +211,8 @@ class TestData:
                 return ViatorResponse
             case "The_Works":
                 return TheWorksResponse
+            case "itsu":
+                return ItsuResponse
             case "payment_account":
                 return PaymentAccountResponse
 
@@ -234,6 +238,8 @@ class Merchant:
                 return ViatorCard
             case "The_Works":
                 return TheWorks
+            case "itsu":
+                return Itsu
 
     @staticmethod
     def get_scheme_cred_main_ans(merchant):
