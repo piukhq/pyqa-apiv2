@@ -396,8 +396,9 @@ wallet_info = {
                     "id": 374,
                     "type": 3,
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
-                    "description": "Iceland Icon",
+                    "description": "Iceland Logo",
                     "encoding": "png",
+                    "cta_url": None,
                 },
                 {
                     "id": 373,
@@ -405,6 +406,7 @@ wallet_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland-asset.png",
                     "description": "Iceland Asset",
                     "encoding": "png",
+                    "cta_url": None,
                 },
                 {
                     "id": 1070,
@@ -412,6 +414,7 @@ wallet_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_ref1.jpg",
                     "description": "Iceland Reference",
                     "encoding": "jpg",
+                    "cta_url": None,
                 },
                 {
                     "id": 1071,
@@ -419,6 +422,7 @@ wallet_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref2.jpg",
                     "description": "Iceland Reference",
                     "encoding": "jpg",
+                    "cta_url": None,
                 },
                 {
                     "id": 1072,
@@ -426,6 +430,7 @@ wallet_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref3.jpg",
                     "description": "Iceland Reference",
                     "encoding": "jpg",
+                    "cta_url": None,
                 },
                 {
                     "id": 1234,
@@ -440,6 +445,7 @@ wallet_info = {
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Greggs.jpg",
                     "description": "Iceland Offer - Greggs",
                     "encoding": "jpg",
+                    "cta_url": "https://www.iceland.co.uk/frozen/frozen-pies/greggs",
                 },
                 {
                     "id": 1302,
@@ -983,8 +989,9 @@ wallet_info_by_card_id = {
                 "id": 374,
                 "type": 3,
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
-                "description": "Iceland Icon",
+                "description": "Iceland Logo",
                 "encoding": "png",
+                "cta_url": None,
             },
             {
                 "id": 373,
@@ -999,6 +1006,7 @@ wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_ref1.jpg",
                 "description": "Iceland Reference",
                 "encoding": "jpg",
+                "cta_url": None,
             },
             {
                 "id": 1071,
@@ -1006,6 +1014,7 @@ wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref2.jpg",
                 "description": "Iceland Reference",
                 "encoding": "jpg",
+                "cta_url": None,
             },
             {
                 "id": 1072,
@@ -1013,6 +1022,7 @@ wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref3.jpg",
                 "description": "Iceland Reference",
                 "encoding": "jpg",
+                "cta_url": None,
             },
             {
                 "id": 1234,
@@ -1027,6 +1037,7 @@ wallet_info_by_card_id = {
                 "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Greggs.jpg",
                 "description": "Iceland Offer - Greggs",
                 "encoding": "jpg",
+                "cta_url": "https://www.iceland.co.uk/frozen/frozen-pies/greggs",
             },
             {
                 "id": 1302,

@@ -1,0 +1,21 @@
+{
+    "python.linting.mypyEnabled": true,
+    "python.linting.enabled": true,
+    "cucumberautocomplete.steps": [
+        "tests/step_definitions/*.py",
+        "**/conftest.py"
+    ],
+    "cucumberautocomplete.strictGherkinCompletion": true,
+    "cucumberautocomplete.customParameters": [
+        {
+            "parameter": "(parse(",
+            "value": "("
+        },
+        {
+            "parameter": "(parsers.parse(",
+            "value": "("
+        },
+    ],
+    "cucumberautocomplete.stepsInvariants": true,
+    "cucumberautocomplete.onTypeFormat": true,
+}

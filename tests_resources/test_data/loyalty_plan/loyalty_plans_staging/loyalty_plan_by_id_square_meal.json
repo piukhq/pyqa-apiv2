@@ -53,7 +53,7 @@
 			"type": 0,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Hero.png",
 			"cta_url": null,
-			"description": "SquareMeal Hero",
+			"description": "SquareMeal Loyalty Card",
 			"encoding": "png",
 			"order": 0
 		},
@@ -62,7 +62,7 @@
 			"type": 8,
 			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Silver_Tier_2.png",
 			"cta_url": null,
-			"description": "SquareMeal Silver Tier 2",
+			"description": "SquareMeal Silver Tier Loyalty Card",
 			"encoding": "png",
 			"order": 0
 		}

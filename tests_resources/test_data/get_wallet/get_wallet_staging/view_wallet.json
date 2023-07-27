@@ -36,28 +36,32 @@
 					"type": 4,
 					"url": "schemes/iceland-asset.png",
 					"description": "Iceland Asset",
-					"encoding": "png"
+					"encoding": "png",
+					"cta_url": null
 				},
 				{
 					"id": 1070,
 					"type": 5,
 					"url": "schemes/Iceland_ref1.jpg",
 					"description": "Iceland Reference",
-					"encoding": "jpg"
+					"encoding": "jpg",
+					"cta_url": null
 				},
 				{
 					"id": 1071,
 					"type": 5,
 					"url": "schemes/iceland_ref2.jpg",
 					"description": "Iceland Reference",
-					"encoding": "jpg"
+					"encoding": "jpg",
+					"cta_url": null
 				},
 				{
 					"id": 1072,
 					"type": 5,
 					"url": "schemes/iceland_ref3.jpg",
 					"description": "Iceland Reference",
-					"encoding": "jpg"
+					"encoding": "jpg",
+					"cta_url": null
 				},
 				{
 					"id": 1234,
@@ -71,14 +75,16 @@
 					"type": 2,
 					"url": "schemes/Iceland_Offer_Greggs.jpg",
 					"description": "Iceland Offer - Greggs",
-					"encoding": "jpg"
+					"encoding": "jpg",
+					"cta_url": "https://www.iceland.co.uk/frozen/frozen-pies/greggs"
 				},
 				{
 					"id": 1302,
 					"type": 2,
 					"url": "schemes/Iceland_Offer_Pizza.jpg",
 					"description": "Iceland Offer - Pizza",
-					"encoding": "jpg"
+					"encoding": "jpg",
+					"cta_url": "https://www.iceland.co.uk/frozen/pizza-and-garlic-bread/wood-fired-pizzas"
 				}
 			]
 		}
@@ -313,28 +319,32 @@
 					"type": 4,
 					"url": "schemes/iceland-asset.png",
 					"description": "Iceland Asset",
-					"encoding": "png"
+					"encoding": "png",
+					"cta_url": null
 				},
 				{
 					"id": 1070,
 					"type": 5,
 					"url": "schemes/Iceland_ref1.jpg",
 					"description": "Iceland Reference",
-					"encoding": "jpg"
+					"encoding": "jpg",
+					"cta_url": null
 				},
 				{
 					"id": 1071,
 					"type": 5,
 					"url": "schemes/iceland_ref2.jpg",
 					"description": "Iceland Reference",
-					"encoding": "jpg"
+					"encoding": "jpg",
+					"cta_url": null
 				},
 				{
 					"id": 1072,
 					"type": 5,
 					"url": "schemes/iceland_ref3.jpg",
 					"description": "Iceland Reference",
-					"encoding": "jpg"
+					"encoding": "jpg",
+					"cta_url": null
 				},
 				{
 					"id": 1234,
@@ -348,14 +358,16 @@
 					"type": 2,
 					"url": "schemes/Iceland_Offer_Greggs.jpg",
 					"description": "Iceland Offer - Greggs",
-					"encoding": "jpg"
+					"encoding": "jpg",
+					"cta_url": "https://www.iceland.co.uk/frozen/frozen-pies/greggs"
 				},
 				{
 					"id": 1302,
 					"type": 2,
 					"url": "schemes/Iceland_Offer_Pizza.jpg",
 					"description": "Iceland Offer - Pizza",
-					"encoding": "jpg"
+					"encoding": "jpg",
+					"cta_url": "https://www.iceland.co.uk/frozen/pizza-and-garlic-bread/wood-fired-pizzas"
 				}
 			],
 			"pll_links": [
