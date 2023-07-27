@@ -36,7 +36,7 @@ class ItsuResponse:
                     "issued_date": None,
                     "expiry_date": None,
                     "redeemed_date": None,
-                    "conversion_date": None
+                    "conversion_date": None,
                 },
                 {
                     "state": "redeemed",
@@ -55,7 +55,7 @@ class ItsuResponse:
                     "issued_date": "1685009490",
                     "expiry_date": "1905983940",
                     "redeemed_date": "1687269540",
-                    "conversion_date": None
+                    "conversion_date": None,
                 },
                 {
                     "state": "expired",
@@ -74,15 +74,28 @@ class ItsuResponse:
                     "issued_date": "1685009490",
                     "expiry_date": "1687737540",
                     "redeemed_date": None,
-                    "conversion_date": None
+                    "conversion_date": None,
                 },
-                dict(state="issued", earn_type="stamps", reward_text="Free dish, snack, or drink", headline="Earned",
-                     voucher_code="----------", barcode_type=None, progress_display_text="7/7 butterflies",
-                     current_value="7", target_value="7", prefix=None, suffix="butterflies",
-                     body_text="Congrats! You've earned a free itsu dish, snack or drink. Simply download the itsu "
-                               "app from the Google Play Store or App Store to redeem.",
-                     terms_and_conditions="https://policies.staging.gb.bink.com/itsu/tc.html", issued_date="1684750290",
-                     expiry_date="1905638340", redeemed_date=None, conversion_date=None),
+                dict(
+                    state="issued",
+                    earn_type="stamps",
+                    reward_text="Free dish, snack, or drink",
+                    headline="Earned",
+                    voucher_code="----------",
+                    barcode_type=None,
+                    progress_display_text="7/7 butterflies",
+                    current_value="7",
+                    target_value="7",
+                    prefix=None,
+                    suffix="butterflies",
+                    body_text="Congrats! You've earned a free itsu dish, snack or drink. Simply download the itsu "
+                    "app from the Google Play Store or App Store to redeem.",
+                    terms_and_conditions="https://policies.staging.gb.bink.com/itsu/tc.html",
+                    issued_date="1684750290",
+                    expiry_date="1905638340",
+                    redeemed_date=None,
+                    conversion_date=None,
+                ),
                 {
                     "state": "issued",
                     "earn_type": "stamps",
@@ -96,14 +109,13 @@ class ItsuResponse:
                     "prefix": None,
                     "suffix": "butterflies",
                     "body_text": "Congrats! You've earned a free itsu dish, snack or drink. Simply download the itsu "
-                                 "app from the Google Play Store or App Store to redeem.",
+                    "app from the Google Play Store or App Store to redeem.",
                     "terms_and_conditions": "https://policies.staging.gb.bink.com/itsu/tc.html",
                     "issued_date": "1683902926",
                     "expiry_date": "1916956800",
                     "redeemed_date": None,
-                    "conversion_date": None
-                }
-
+                    "conversion_date": None,
+                },
             ],
             "card": {
                 "barcode": None,
@@ -120,7 +132,7 @@ class ItsuResponse:
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/itsu_Hero.png",
                     "description": "itsu Loyalty Card",
                     "encoding": "png",
-                    "cta_url": None
+                    "cta_url": None,
                 },
                 {
                     "id": 1417,
@@ -128,8 +140,8 @@ class ItsuResponse:
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/itsu_Icon.png",
                     "description": "itsu Logo",
                     "encoding": "png",
-                    "cta_url": None
-                }
+                    "cta_url": None,
+                },
             ],
         }
         return wallet_info
@@ -167,7 +179,7 @@ class ItsuResponse:
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/itsu_Hero.png",
                     "description": "itsu Loyalty Card",
                     "encoding": "png",
-                    "cta_url": None
+                    "cta_url": None,
                 }
             ],
         }
@@ -214,7 +226,7 @@ class ItsuResponse:
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/itsu_Hero.png",
                     "description": "itsu Loyalty Card",
                     "encoding": "png",
-                    "cta_url": None
+                    "cta_url": None,
                 },
                 {
                     "id": 1417,
@@ -222,7 +234,7 @@ class ItsuResponse:
                     "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/itsu_Icon.png",
                     "description": "itsu Logo",
                     "encoding": "png",
-                    "cta_url": None
+                    "cta_url": None,
                 },
             ],
         }
