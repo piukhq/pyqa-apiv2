@@ -9,10 +9,8 @@ from tests.helpers.test_data_utils import TestDataUtils
 
 
 class Itsu:
-
     @staticmethod
     def add_and_authorise_transactions_card_payload(card_type=None):
-
         card_num = TestDataUtils.TEST_DATA.itsu_membership_card.get(constants.CARD_NUM)
 
         payload = {
@@ -38,13 +36,9 @@ class Itsu:
     @staticmethod
     def add_and_auth_field_only_membership_card_with_unauthorised_json(membership_card=None, request_payload=None):
         if request_payload == "invalid_cardnumber" or "unauthorised":
-            TestContext.card_number = TestDataUtils.TEST_DATA.itsu_membership_card.get(
-                constants.INVALID_CARD_NUMBER
-            )
+            TestContext.card_number = TestDataUtils.TEST_DATA.itsu_membership_card.get(constants.INVALID_CARD_NUMBER)
         elif request_payload == "unknown_cardnumber":
-            TestContext.card_number = TestDataUtils.TEST_DATA.itsu_membership_card.get(
-                constants.UNKNOWN_CARD_NUMBER
-            )
+            TestContext.card_number = TestDataUtils.TEST_DATA.itsu_membership_card.get(constants.UNKNOWN_CARD_NUMBER)
 
         payload = {
             "account": {
