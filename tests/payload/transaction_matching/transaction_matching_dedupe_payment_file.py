@@ -1,6 +1,6 @@
+import random
 import string
 import uuid
-import random
 
 from tests.helpers import constants
 from tests.helpers.test_context import TestContext
