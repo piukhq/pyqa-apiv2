@@ -61,7 +61,7 @@ def import_master_matching_settlement_text(mid):
 
 def upload_mastercard_settlement_file_into_blob(file_name, mid, path):
     """Pass the path inside the Harmonia import container
-     for settlement and refund files to this function"""
+    for settlement and refund files to this function"""
     """Print the file content"""
     f = open(file_name.name, "r")
     file_contents = f.read()
@@ -70,9 +70,7 @@ def upload_mastercard_settlement_file_into_blob(file_name, mid, path):
     """Upload master card settlement file (.csv) into blob storage"""
     merchant_container = "mastercard"
     bbs = BlobServiceClient.from_connection_string(BLOB_STORAGE_DSN)
-    blob_client = bbs.get_blob_client(
-        path, merchant_container + f"{file_name.name}"
-    )
+    blob_client = bbs.get_blob_client(path, merchant_container + f"{file_name.name}")
     with open(file_name.name, "rb") as settlement_file:
         blob_client.upload_blob(settlement_file, content_settings=ContentSettings(content_type="text/plain"))
         logging.info(
@@ -395,20 +393,16 @@ def verify_streaming_spotting_refund_transactions():
     Query harmonia using created date, amount and mid as transaction_id will be dynamically generated
     for refund transactions"""
     t = str(TestTransactionMatchingContext.created_at)
-    form = '%Y-%m-%dT%H:%M:%S.%f%z'
+    form = "%Y-%m-%dT%H:%M:%S.%f%z"
     utc_time = datetime.strptime(t, form)
     created_at = utc_time.astimezone(pytz.UTC)
     matched_count = QueryHarmonia.fetch_match_refund_transaction_count(
-            TestTransactionMatchingContext.transaction_matching_amount,
-            TestTransactionMatchingContext.mid,
-            created_at
+        TestTransactionMatchingContext.transaction_matching_amount, TestTransactionMatchingContext.mid, created_at
     )
     assert matched_count.count == 1, "Transaction not spotted and the status is not exported"
     logging.info(f"No. of Refund Transactions got spotted and exported : '{matched_count.count}'")
     matched_transaction = QueryHarmonia.fetch_refund_transaction_details(
-        TestTransactionMatchingContext.transaction_matching_amount,
-        TestTransactionMatchingContext.mid,
-        created_at
+        TestTransactionMatchingContext.transaction_matching_amount, TestTransactionMatchingContext.mid, created_at
     )
     return matched_transaction
 
@@ -416,16 +410,14 @@ def verify_streaming_spotting_refund_transactions():
 def verify_the_works_master_spotting_refund_transactions():
     """Merchant the works has transaction_id in mastercard refund file,
     which is same as transaction_id in settlement file. So need to fetch harmonia with
-     transaction id & refund amount to get the unique record """
+     transaction id & refund amount to get the unique record"""
     matched_count = QueryHarmonia.fetch_match_transaction_count(
-        TestTransactionMatchingContext.transaction_id,
-        TestTransactionMatchingContext.transaction_matching_amount
+        TestTransactionMatchingContext.transaction_id, TestTransactionMatchingContext.transaction_matching_amount
     )
     assert matched_count.count == 1, "Transaction not spotted and the status is not exported"
     logging.info(f"No. of The woks refund Transactions got spotted and exported : '{matched_count.count}'")
     matched_transaction = QueryHarmonia.fetch_transaction_details(
-        TestTransactionMatchingContext.transaction_id,
-        TestTransactionMatchingContext.transaction_matching_amount
+        TestTransactionMatchingContext.transaction_id, TestTransactionMatchingContext.transaction_matching_amount
     )
     return matched_transaction
 

@@ -4,6 +4,8 @@ import uuid
 import base64
 from decimal import Decimal
 from pytz import timezone
+
+from tests.helpers.test_context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
 from tests.helpers.test_helpers import PaymentCardTestData
 import tests.helpers.constants as constants
@@ -44,7 +46,7 @@ class TransactionMatchingPaymentFileDetails:
         """create json for  Transaction Matching Visa Auth"""
         return {
             "CardId": TransactionMatchingPaymentFileDetails.get_random_alphanumeric_string(48),
-            "ExternalUserId": PaymentCardTestData.get_data("visa").get(constants.TOKEN),
+            "ExternalUserId": TestContext.payment_card_token,
             "MessageElementsCollection": [
                 {"Key": "Transaction.MerchantCardAcceptorId", "Value": mid},
                 {"Key": "Transaction.MerchantAcquirerBin", "Value": "3423432"},
@@ -105,7 +107,7 @@ class TransactionMatchingPaymentFileDetails:
 
         return {
             "CardId": TransactionMatchingPaymentFileDetails.get_random_alphanumeric_string(48),
-            "ExternalUserId": PaymentCardTestData.get_data("visa").get(constants.TOKEN),
+            "ExternalUserId": TestContext.payment_card_token,
             "MessageElementsCollection": [
                 {"Key": "Transaction.MerchantCardAcceptorId", "Value": mid},
                 {"Key": "Transaction.MerchantAcquirerBin", "Value": "3423432"},
@@ -170,7 +172,7 @@ class TransactionMatchingPaymentFileDetails:
             "amount": TestTransactionMatchingContext.transaction_matching_amount,
             "currency_code": TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.CURRENCY),
             "mid": mid,
-            "payment_card_token": PaymentCardTestData.get_data("master").get(constants.TOKEN),
+            "payment_card_token": TestContext.payment_card_token,
             "third_party_id": base64.b64encode(uuid.uuid4().bytes).decode()[:9],
             "time": TestTransactionMatchingContext.transaction_matching_currentTimeStamp,
         }
@@ -178,7 +180,7 @@ class TransactionMatchingPaymentFileDetails:
     @staticmethod
     def get_master_settlement_txt_file(mid):
         """Create Mastercard Settlement Text file for Transaction Matching"""
-        payment_card_token = PaymentCardTestData.get_data("master").get(constants.TOKEN)
+        payment_card_token = TestContext.payment_card_token
         amount = str(TestTransactionMatchingContext.transaction_matching_amount * 100).zfill(12)
         third_part_id = base64.b64encode(uuid.uuid4().bytes).decode()[:9]
         file_name = "mastercard-tgx2-settlement.txt"
@@ -207,7 +209,7 @@ class TransactionMatchingPaymentFileDetails:
     def get_amex_auth_data(mid):
         return {
             "approval_code": str(random.randint(100000, 999999))[-6:],
-            "cm_alias": PaymentCardTestData.get_data("amex").get(constants.TOKEN),
+            "cm_alias": TestContext.payment_card_token,
             "merchant_number": mid,
             "offer_id": "0",
             "transaction_amount": str(TestTransactionMatchingContext.transaction_matching_amount),
@@ -220,7 +222,7 @@ class TransactionMatchingPaymentFileDetails:
     def get_amex_settlement_data(mid):
         return {
             "approvalCode": str(random.randint(100000, 999999))[-6:],
-            "cardToken": PaymentCardTestData.get_data("amex").get(constants.TOKEN),
+            "cardToken": TestContext.payment_card_token,
             "currencyCode": "840",
             "dpan": PaymentCardTestData.get_data("amex").get(constants.FIRST_SIX_DIGITS)
             + "XXXXX"
@@ -245,7 +247,7 @@ class TransactionMatchingPaymentFileDetails:
             )
         return {
             "CardId": TestTransactionMatchingContext.transaction_id,
-            "ExternalUserId": PaymentCardTestData.get_data("visa").get(constants.TOKEN),
+            "ExternalUserId": TestContext.payment_card_token,
             "MessageElementsCollection": [
                 {"Key": "Transaction.MerchantCardAcceptorId", "Value": mid},
                 {"Key": "Transaction.MerchantAcquirerBin", "Value": "3423432"},
@@ -303,7 +305,7 @@ class TransactionMatchingPaymentFileDetails:
 
         return {
             "CardId": transaction_id,
-            "ExternalUserId": PaymentCardTestData.get_data("visa").get(constants.TOKEN),
+            "ExternalUserId": TestContext.payment_card_token,
             "MessageElementsCollection": [
                 {"Key": "Transaction.MerchantCardAcceptorId", "Value": mid},
                 {"Key": "Transaction.MerchantAcquirerBin", "Value": "3423432"},
@@ -365,7 +367,7 @@ class TransactionMatchingPaymentFileDetails:
 
         return {
             "CardId": TestTransactionMatchingContext.transaction_id,
-            "ExternalUserId": PaymentCardTestData.get_data("visa").get(constants.TOKEN),
+            "ExternalUserId": TestContext.payment_card_token,
             "MessageElementsCollection": [
                 {"Key": "ReturnTransaction.CardAcceptorIdCode", "Value": mid},
                 {"Key": "ReturnTransaction.AcquirerBIN", "Value": "3423432"},
@@ -461,7 +463,7 @@ class TransactionMatchingPaymentFileDetails:
             "amount": random.choice(range(1, 20)) / 100,
             "currency_code": "GBP",
             "mid": mid,
-            "payment_card_token": PaymentCardTestData.get_data("master").get(constants.TOKEN),
+            "payment_card_token": TestContext.payment_card_token,
             "third_party_id": third_party_id,
             "time": TestTransactionMatchingContext.current_time_stamp,
         }
@@ -469,7 +471,7 @@ class TransactionMatchingPaymentFileDetails:
     @staticmethod
     def get_master_settlement_spotting_txt_file(mid):
         """Pass below data to create master_settlement_spotting_txt_file"""
-        payment_card_token = PaymentCardTestData.get_data("master").get(constants.TOKEN)
+        payment_card_token = TestContext.payment_card_token
         TestTransactionMatchingContext.transaction_matching_amount = random.choice(range(1, 10))
         amount = str(TestTransactionMatchingContext.transaction_matching_amount).zfill(12)
         auth_code = random.randint(100000, 999999)
@@ -490,7 +492,7 @@ class TransactionMatchingPaymentFileDetails:
         mid = mid
         TestTransactionMatchingContext.transaction_matching_id = uuid.uuid4()
         TestTransactionMatchingContext.auth_code = random.randint(100000, 999999)
-        payment_card_token = PaymentCardTestData.get_data("master").get(constants.TOKEN)
+        payment_card_token = TestContext.payment_card_token
         amount = str(-abs(TestTransactionMatchingContext.transaction_matching_amount)).zfill(12)
         TestTransactionMatchingContext.transaction_matching_amount = str(
             -abs(TestTransactionMatchingContext.transaction_matching_amount)
@@ -545,7 +547,7 @@ class TransactionMatchingPaymentFileDetails:
         """Pass below data to create master_refund_spotting_txt_file.
         Unlike other merchant's master refund payment file for The-works master refund file contain
         transaction_id of the corresponding settlement file"""
-        payment_card_token = PaymentCardTestData.get_data("master").get(constants.TOKEN)
+        payment_card_token = TestContext.payment_card_token
         amount = str(-abs(TestTransactionMatchingContext.transaction_matching_amount)).zfill(12)
         auth_code = random.randint(100000, 999999)
         third_party_id = TestTransactionMatchingContext.third_party_id
@@ -565,7 +567,7 @@ class TransactionMatchingPaymentFileDetails:
         )
         return {
             "approval_code": str(TestTransactionMatchingContext.approval_code),
-            "cm_alias": PaymentCardTestData.get_data("amex").get(constants.TOKEN),
+            "cm_alias": TestContext.payment_card_token,
             "merchant_number": mid,
             "offer_id": "0",
             "transaction_amount": str(TestTransactionMatchingContext.spend_amount),
@@ -587,7 +589,7 @@ class TransactionMatchingPaymentFileDetails:
         )
         return {
             "approvalCode": str(TestTransactionMatchingContext.approval_code),
-            "cardToken": PaymentCardTestData.get_data("amex").get(constants.TOKEN),
+            "cardToken": TestContext.payment_card_token,
             "currencyCode": "840",
             "dpan": PaymentCardTestData.get_data("amex").get(constants.FIRST_SIX_DIGITS)
             + "XXXXX"
@@ -617,7 +619,7 @@ class TransactionMatchingPaymentFileDetails:
         )
         return {
             "approvalCode": str(TestTransactionMatchingContext.approval_code),
-            "cardToken": PaymentCardTestData.get_data("amex").get(constants.TOKEN),
+            "cardToken": TestContext.payment_card_token,
             "currencyCode": "840",
             "dpan": PaymentCardTestData.get_data("amex").get(constants.FIRST_SIX_DIGITS)
             + "XXXXX"

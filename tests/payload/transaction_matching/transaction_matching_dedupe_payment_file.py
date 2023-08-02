@@ -3,6 +3,7 @@ import uuid
 import random
 
 from tests.helpers import constants
+from tests.helpers.test_context import TestContext
 from tests.helpers.test_helpers import PaymentCardTestData
 from tests.helpers.test_transaction_matching_context import TestTransactionMatchingContext
 
@@ -12,7 +13,7 @@ def import_visa_settle_matching_dedupe_json(mid):
     TestTransactionMatchingContext.transaction_id = get_random_alphanumeric_string(48)
     return {
         "CardId": get_random_alphanumeric_string(48),
-        "ExternalUserId": PaymentCardTestData.get_data("visa").get(constants.TOKEN),
+        "ExternalUserId": TestContext.payment_card_token,
         "MessageElementsCollection": [
             {"Key": "Transaction.MerchantCardAcceptorId", "Value": mid},
             {"Key": "Transaction.MerchantAcquirerBin", "Value": "3423432"},

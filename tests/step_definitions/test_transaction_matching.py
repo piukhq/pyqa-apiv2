@@ -4,29 +4,48 @@ from pytest_bdd import (
     when,
     parsers,
 )
-
 import json
 import logging
 import time
-
-from tests import api
-from tests.api.base import Endpoint
 from tests.helpers.database.query_harmonia import QueryHarmonia
-import tests.step_definitions.test_payment_cards as test_payment_cards
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_transaction_matching_context import TestTransactionMatchingContext
-from tests.requests.membership_cards import MembershipCards
-from tests.step_definitions import test_membership_cards
 from tests.requests.transaction_matching_merchant_requests import upload_retailer_file_into_blob
+from tests.step_definitions import test_loyalty_cards, test_paymentcard_account
 from tests.requests.transaction_matching_payment_requests import (
     import_payment_file_into_harmonia,
     import_payment_file_with_duplicate_txn,
     verify_exported_transaction,
     verify_deduped_transaction,
 )
-from tests.step_definitions.test_membership_cards import response_to_json
 
 scenarios("transaction_matching/")
+
+"""Step definitions - Transaction Matching """
+
+
+@when(
+    parsers.parse(
+        "I perform POST request to add a {payment_status} {payment_card_provider} " "payment account to wallet"
+    )
+)
+def add_payment_card(payment_card_provider, payment_status):
+    test_paymentcard_account.add_payment_account(payment_card_provider, payment_status)
+
+
+@when(parsers.parse("I perform POST request to add and authorise {merchant} membership card"))
+def add_membership_card(merchant):
+    test_loyalty_cards.verify_add_and_auth(merchant)
+
+
+@when(parsers.parse('I perform POST request to add and authorise "{merchant}" membership card with {card}'))
+def verify_add_and_auth_transactions(merchant, card):
+    test_loyalty_cards.verify_add_and_auth_transactions(merchant, card)
+
+
+@when(parsers.parse("And I perform GET {wallet}"))
+def verify_wallet(wallet, env, channel):
+    test_loyalty_cards.verify_wallet(wallet, env, channel)
 
 
 @when(parsers.parse("I send Payment Transaction File with {payment_card_transaction} {mid}"))
@@ -39,6 +58,7 @@ def import_payment_file(payment_card_transaction, mid):
         response_json = response.json()
         logging.info("The response of POST/import Payment File is: \n\n" + json.dumps(response_json, indent=4))
         assert response.status_code == 201 or 200, "Payment file import is not successful"
+        """The export time is different for various retailers"""
         time.sleep(60)
     except AttributeError:
         if response is None:
@@ -46,6 +66,10 @@ def import_payment_file(payment_card_transaction, mid):
                 "The Master Card Settlement Transaction Text file is uploaded to blob. "
                 "Waiting for transaction to be exported"
             )
+
+
+"""Dedupe transactions before exporting
+this is currently a requirement for the works only"""
 
 
 @when(parsers.parse("I send Payment File with a duplicate transaction using {payment_card_transaction} and {mid}"))
@@ -59,6 +83,8 @@ def import_payment_file_with_duplicate_transaction(payment_card_transaction, mid
         response_json = response.json()
         logging.info("The response of POST/import Payment File is: \n\n" + json.dumps(response_json, indent=4))
         assert response.status_code == 201 or 200, "Payment file import is not successful"
+        """Master card File import or Retailer Transaction File import can
+        take up to a minute to transfer from blob storage to harmonia"""
         time.sleep(60)
     except AttributeError:
         if response is None:
@@ -155,54 +181,13 @@ def verify_transaction_not_spotted():
     logging.info(f" Transaction not spotted and the status is not exported: '{spotted_transaction_count.count}'")
 
 
-@then(parsers.parse("I verify transaction is imported into the import_transaction table"))
-def verify_transaction_is_imported():
-    imported_transaction_count = QueryHarmonia.fetch_imported_transaction_count(
-        TestTransactionMatchingContext.transaction_id
-    )
-    assert imported_transaction_count.count == 1, "The Transaction is not imported into the import_transaction table"
-    logging.info(f" Transaction is imported into the import_transaction table: '{imported_transaction_count}'")
-
-
-@when(parsers.parse('I perform POST request to add "{payment_card_provider}" payment card to wallet'))
-def add_transaction_paymentCard(payment_card_provider):
-    """Function call to get_membership_cards in test_membership_cards"""
-    test_payment_cards.add_payment_card(payment_card_provider)
-
-
-@when("I perform the GET request to verify the payment card has been added successfully to the wallet")
-def get_transaction_paymentCard():
-    test_payment_cards.verify_payment_card_added()
-
-
-@when(parsers.parse('I perform POST request to add & auto link "{merchant}" membership card'))
-def post_transaction_add_and_link(merchant):
-    test_membership_cards.add_and_link_membership_card(merchant)
-
-
-@when(parsers.parse("I perform POST request to add & auto link {merchant} membership card for {txn_matching_testing}"))
-def transaction_add_and_link(merchant, txn_matching_testing):
-    response = MembershipCards.add_card_auto_link(TestContext.token, merchant, txn_matching_testing)
-    response_json = response_to_json(response)
-    TestContext.current_scheme_account_id = response_json.get("id")
-    TestContext.response = response
-    logging.info(
-        "The response of Add&Link Journey (POST) is:\n\n"
-        + Endpoint.BASE_URL
-        + api.ENDPOINT_AUTO_LINK_PAYMENT_AND_MEMBERSHIP_CARD
-        + "\n\n"
-        + json.dumps(response_json, indent=4)
-    )
-
-
-@then(
-    parsers.parse(
-        'I perform GET request to verify the "{merchant}" membershipcard is added & linked successfully '
-        "in the wallet"
-    )
-)
-def get_transaction_matching_add_and_link(merchant):
-    test_membership_cards.verify_add_and_link_membership_card(merchant)
+# @then(parsers.parse("I verify transaction is imported into the import_transaction table"))
+# def verify_transaction_is_imported():
+#     imported_transaction_count = QueryHarmonia.fetch_imported_transaction_count(
+#         TestTransactionMatchingContext.transaction_id
+#     )
+#     assert imported_transaction_count.count == 1, "The Transaction is not imported into the import_transaction table"
+#     logging.info(f" Transaction is imported into the import_transaction table: '{imported_transaction_count}'")
 
 
 @when(
