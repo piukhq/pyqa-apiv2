@@ -1,11 +1,11 @@
-@tm @the_works
+@tm @the_works @bink_regression_api2
 
 Feature: Merchant The Work - Ensure a customer can use Bink's Transaction Matching features
   As a customer
   I shopped at a Bink PLL partner that uses transaction matching
   So I can offer a near real time transaction matching service to merchants.
 
-  @sanity @sanity_bmb
+
   Scenario: Verify transaction spotting for TheWorks using Visa E2E
 
     Given I am a bos user
@@ -18,7 +18,6 @@ Feature: Merchant The Work - Ensure a customer can use Bink's Transaction Matchi
     When I send Payment Transaction File with visa-refund-spotting-e2e and MID as works0001
     Then I verify the reward transaction is exported using transaction-spotting
 
-  @sanity @sanity_bmb
   Scenario: Verify transaction spotting for TheWorks using Amex E2E
 
     Given I am a bos user
@@ -30,7 +29,6 @@ Feature: Merchant The Work - Ensure a customer can use Bink's Transaction Matchi
     When I send Payment Transaction File with amex-refund-spotting and MID as works0003
     Then I verify the reward transaction is exported using transaction-spotting
 
-    @sanity @sanity_bmb
     Scenario: Verify transaction spotting for TheWorks using Master E2E
 
     Given I am a bos user
@@ -42,7 +40,6 @@ Feature: Merchant The Work - Ensure a customer can use Bink's Transaction Matchi
     When I send Payment Transaction File with master-refund-spotting-the-works and MID as works0002
     Then I verify the reward transaction is exported using transaction-spotting-refund-the-works
 
-  @sanity @sanity_bmb @chk1
   Scenario Outline: Verify transaction spotting for TheWorks _ dedupe
 
     Given I am a bos user
