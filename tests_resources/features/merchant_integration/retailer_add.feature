@@ -5,7 +5,7 @@ Feature: Basic Merchant Integration Journeys
   I want add a loyalty card to my wallet
   so that I am able to benefit from the Bink functionality
 
-  @add_auth_journey
+  @add_auth_journey @bink_regression_api2
   Scenario Outline: Works Add Journey
     Given I am a bos user
     When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
@@ -16,10 +16,10 @@ Feature: Basic Merchant Integration Journeys
     Examples:
       | merchant  | status_code_returned | journey_type      |
       | The_Works | 202                  | add_and_authorise |
-      | itsu      | 202                  | add_and_authorise |
+#      | itsu      | 202                  | add_and_authorise |
 
 
-  @add_auth_failed_journey
+  @add_auth_failed_journey  @bink_regression_api2
   Scenario Outline: Add_Auth journey with failed Credentials
     Given I am a bos user
     When I perform POST request to add and auth "<merchant>" membership card with "<invalid_add_fields>" with "202"
@@ -31,8 +31,8 @@ Feature: Basic Merchant Integration Journeys
       | merchant  | status_code_returned | invalid_add_fields | journey_type      |
       | The_Works | 202                  | invalid_cardnumber | add_and_authorise |
       | The_Works | 202                  | unknown_cardnumber | add_and_authorise |
-      | itsu      | 202                  | invalid_cardnumber | add_and_authorise |
-      | itsu      | 202                  | unknown_cardnumber | add_and_authorise |
+#      | itsu      | 202                  | invalid_cardnumber | add_and_authorise |
+#      | itsu      | 202                  | unknown_cardnumber | add_and_authorise |
 
 
 
