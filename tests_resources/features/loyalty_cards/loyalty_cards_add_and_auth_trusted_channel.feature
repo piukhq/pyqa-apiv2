@@ -91,7 +91,7 @@ Feature: Add and authorise a loyalty card into Trusted channel
       | merchant     |
       | SquareMeal   |
 
-  @add_and_auth_ntc_in_tc @sandbox_regression
+  @add_and_auth_ntc_in_tc @sandbox_regression @this
   Scenario Outline: Trusted channel adds loyalty card into wallet which already exists in Non trusted channel
     Given I am a halifax user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet

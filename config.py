@@ -15,6 +15,7 @@ if "KUBERNETES_SERVICE_HOST" in environ:
     TRUSTED = EnvironmentDetails(base_url="http://angelia-api", test_data=testdata_staging)
     SANDBOX = EnvironmentDetails(base_url="http://angelia-api", test_data=testdata_sandbox)
 else:
+    LOCAL = EnvironmentDetails(base_url="http://localhost:9100", test_data=testdata_staging)
     DEV = EnvironmentDetails(base_url="https://api.dev.gb.bink.com", test_data=testdata_dev)
     STAGING = EnvironmentDetails(base_url="https://api.staging.gb.bink.com", test_data=testdata_staging)
     TRUSTED = EnvironmentDetails(base_url="https://tc.staging.gb.bink.com", test_data=testdata_staging)

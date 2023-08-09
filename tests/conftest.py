@@ -82,7 +82,6 @@ def pytest_html_report_title(report):
 #     # if re.search(r'^(GITLAB_|CI_)', k): for git lab related extra table contents
 #     request.config._metadata.update({"Test Environment": env.upper(), "Channel": channel.upper()})
 
-
 """Reading inputs from terminal"""
 
 
