@@ -183,17 +183,15 @@ def verify_transaction_not_spotted():
 #     imported_transaction_count = QueryHarmonia.fetch_imported_transaction_count(
 #         TestTransactionMatchingContext.transaction_id
 #     )
-#     assert imported_transaction_count.count == 1, "The Transaction is not imported into the import_transaction table"
+#     assert impod_transaction_count.count == 1, "The Transaction is not imported into the import_transaction table"
 #     logging.info(f" Transaction is imported into the import_transaction table: '{imported_transaction_count}'")
 
 
 @when(
     parsers.parse(
-        "I send Retailer Transaction File with {merchant_container} " "{payment_card_provider} {mid} {card_identity}"
+        'Send Retailer Transaction File with "{retailer_scheme}" "{payment_card_provider}" and "{retailer_location_id}"'
     )
 )
-def import_merchant_file(merchant_container, payment_card_provider, mid, card_identity):
-    if merchant_container == "scheme/iceland/":
-        upload_retailer_file_into_blob(merchant_container, payment_card_provider, mid, card_identity)
-    elif merchant_container == "scheme/itsu/":
-        upload_retailer_file_into_blob(merchant_container, payment_card_provider, mid, card_identity)
+def import_merchant_file(retailer_scheme: str, payment_card_provider: str, retailer_location_id: str) -> None:
+
+    upload_retailer_file_into_blob(retailer_scheme, payment_card_provider, retailer_location_id)

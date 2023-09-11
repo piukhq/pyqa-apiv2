@@ -1,6 +1,6 @@
 import csv
 import random
-import uuid
+import string
 
 from datetime import datetime
 from decimal import Decimal
@@ -12,32 +12,8 @@ from tests.helpers.test_helpers import PaymentCardTestData
 from tests.helpers.test_transaction_matching_context import TestTransactionMatchingContext
 
 
-def create_iceland_merchant_file_csv(output, payment_card_provider, mid, card_identity):
-    """This function creates Iceland Merchant CSV File"""
-    merchant_writer = csv.writer(output, delimiter=",", quotechar='"', quoting=csv.QUOTE_MINIMAL)
-    merchant_writer.writerow(TestTransactionMatchingContext.iceland_file_header)
-    get_new_filedata_import("iceland_retailer_file")
-    merchant_writer.writerow(
-        [
-            PaymentCardTestData.get_data(payment_card_provider).get(constants.FIRST_SIX_DIGITS),
-            PaymentCardTestData.get_data(payment_card_provider).get(constants.LAST_FOUR_DIGITS),
-            "01/80",
-            "3",
-            card_identity,
-            mid,
-            TestTransactionMatchingContext.transaction_matching_currentTimeStamp,
-            TestTransactionMatchingContext.transaction_matching_amount,
-            "GBP",
-            ".00",
-            "GBP",
-            TestTransactionMatchingContext.retailer_transaction_id,
-            TestTransactionMatchingContext.transaction_matching_auth_code,
-        ]
-    )
-
-
-def get_new_filedata_import(file_name):
-    TestTransactionMatchingContext.retailer_transaction_id = uuid.uuid4()
+def get_retailer_file_data_import(file_name: str) -> None:
+    TestTransactionMatchingContext.retailer_transaction_id = get_transaction_id(48)
     TestTransactionMatchingContext.transaction_matching_auth_code = random.randint(100000, 999999)
     TestTransactionMatchingContext.transaction_matching_amount = int(Decimal(str(random.choice(range(10, 1000)))))
     TestTransactionMatchingContext.transaction_matching_currentTimeStamp = datetime.now(
@@ -46,11 +22,19 @@ def get_new_filedata_import(file_name):
     TestTransactionMatchingContext.file_name = file_name + datetime.now().strftime("%Y%m%d-%H%M%S") + ".csv"
 
 
-def create_itsu_merchant_file_csv(output, payment_card_provider, card_identity, retailer_location_id):
-    """This function creates Iceland Merchant CSV File"""
+def get_transaction_id(length: int) -> str:
+    letters_and_digits = string.ascii_letters + string.digits
+    result_str = "".join((random.choice(letters_and_digits) for i in range(length)))
+    return result_str
+
+
+def create_retailer_csv(output: any, payment_card_provider: str, retailer_location_id: str) -> None:
+    """This function creates itsu retailer CSV File,
+    and this needs to be updated if any other retailer comes up with Transaction Matching"""
     merchant_writer = csv.writer(output, delimiter=",", quotechar='"', quoting=csv.QUOTE_MINIMAL)
     merchant_writer.writerow(TestTransactionMatchingContext.itsu_file_header)
-    get_new_filedata_import("itsu_retailer_file")
+    get_retailer_file_data_import("itsu_retailer_file")
+    card_identity = payment_card_provider.lower()
     merchant_writer.writerow(
         [
             TestTransactionMatchingContext.retailer_transaction_id,

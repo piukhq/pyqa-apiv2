@@ -216,13 +216,9 @@ the_works_membership_card = {
 }
 
 itsu_membership_card = {
-    "card_num": "9988776655",
-    # "jon_register_account_already_exists_email": "emailexists",
-    # "join_register_non_retryable_error": "opnotpermitted",
-    # "join_register_non_retryable_http_error": "failhttperror",
+    "card_num": "1406495756",
     "invalid_card_number": "0099887766",
     "unknown_card_number": "0009998887",
-    # "transactions_card": "6338849749210000002622",
 }
 # ----------------------------------------MEMBERSHIP PLAN IDs   ----------------------------------------------- #
 

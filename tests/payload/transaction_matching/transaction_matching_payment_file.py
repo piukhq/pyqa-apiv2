@@ -59,7 +59,7 @@ class TransactionMatchingPaymentFileDetails:
                 },
                 {
                     "Key": "Transaction.VipTransactionId",
-                    "Value": TransactionMatchingPaymentFileDetails.get_random_alphanumeric_string(48),
+                    "Value": TestTransactionMatchingContext.retailer_transaction_id,
                 },
                 {"Key": "Transaction.VisaMerchantName", "Value": ""},
                 {"Key": "Transaction.VisaMerchantId", "Value": ""},
@@ -72,8 +72,8 @@ class TransactionMatchingPaymentFileDetails:
                     "Value": TestTransactionMatchingContext.transaction_matching_amount / 100,
                 },
                 {"Key": "Transaction.MerchantLocalPurchaseDate", "Value": str(date.today())},
-                {"Key": "Transaction.MerchantGroup.0.Name", "Value": "ICELAND-BONUS-CARD"},
-                {"Key": "Transaction.MerchantGroup.0.ExternalId", "Value": "Iceland"},
+                {"Key": "Transaction.MerchantGroup.0.Name", "Value": "ITSU"},
+                {"Key": "Transaction.MerchantGroup.0.ExternalId", "Value": "itsu"},
                 {"Key": "Transaction.AuthCode", "Value": TestTransactionMatchingContext.transaction_matching_auth_code},
                 {
                     "Key": "Transaction.PanLastFour",
@@ -120,7 +120,7 @@ class TransactionMatchingPaymentFileDetails:
                 },
                 {
                     "Key": "Transaction.VipTransactionId",
-                    "Value": TransactionMatchingPaymentFileDetails.get_random_alphanumeric_string(48),
+                    "Value": TestTransactionMatchingContext.retailer_transaction_id,
                 },
                 {"Key": "Transaction.VisaMerchantName", "Value": ""},
                 {"Key": "Transaction.VisaMerchantId", "Value": ""},
