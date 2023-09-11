@@ -1,6 +1,8 @@
 import json
 import logging
 
+from faker import Faker
+
 from tests import api
 from tests.api.base import Endpoint
 from tests.helpers import constants
@@ -54,6 +56,40 @@ class Itsu:
             "The Request for Add_and_Auth journey with :\n"
             + Endpoint.BASE_URL
             + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_AUTHORISE
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
+    @staticmethod
+    def join_journey(email=None, request_payload=None, join_type=None):
+        faker = Faker()
+        last_name = faker.name()
+        if request_payload == "invalid_request":
+            payload = {}
+        if not join_type:
+            last_name = faker.name()
+        else:
+            """Add itsu Join error journies when data is set up in API reflector"""
+        payload = {
+            "account": {
+                "join_fields": {
+                    "credentials": [
+                        {"credential_slug": "first_name", "value": faker.name()},
+                        {"credential_slug": "last_name", "value": last_name},
+                        {"credential_slug": "email", "value": email},
+                        {"credential_slug": "password", "value": "Loyalty102"},
+                    ],
+                    "consents": [{"consent_slug": "hasAgreedToReceiveMarketing", "value": constants.CONSENT}],
+                },
+            },
+            "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("itsu"),
+        }
+
+        logging.info(
+            "The Request for Join journey is :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_JOIN
             + "\n\n"
             + json.dumps(payload, indent=4)
         )
