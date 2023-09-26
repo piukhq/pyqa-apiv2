@@ -318,8 +318,7 @@ wallet_info = {
                 {
                     "id": 1319,
                     "type": 2,
-                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/"
-                    "Offer_tile_5_CVAeqUv_naFzo9T.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/" "Offer_tile_5_CVAeqUv_naFzo9T.png",
                     "description": "Wasabi Test Offer",
                     "encoding": "png",
                 },
@@ -541,24 +540,21 @@ wallet_info = {
                 {
                     "id": 1187,
                     "type": 8,
-                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/"
-                    "Harvey_Nichols_Card_4_Black.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/" "Harvey_Nichols_Card_4_Black.png",
                     "description": "Black Tier",
                     "encoding": "png",
                 },
                 {
                     "id": 1184,
                     "type": 8,
-                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/"
-                    "Harvey_Nichols_Card_1_Silver.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/" "Harvey_Nichols_Card_1_Silver.png",
                     "description": "Silver Tier",
                     "encoding": "png",
                 },
                 {
                     "id": 1185,
                     "type": 8,
-                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/"
-                    "Harvey_Nichols_Card_2_Gold.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/" "Harvey_Nichols_Card_2_Gold.png",
                     "description": "Gold Tier",
                     "encoding": "png",
                 },
@@ -602,8 +598,7 @@ wallet_info = {
                 {
                     "id": 2,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/"
-                    "Mastercard-Payment_1goHQYv.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/" "Mastercard-Payment_1goHQYv.png",
                     "description": "Mastercard Hero",
                     "encoding": "png",
                 },
@@ -794,8 +789,7 @@ wallet_overview_info = {
                 {
                     "id": 2,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/"
-                    "Mastercard-Payment_1goHQYv.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/" "Mastercard-Payment_1goHQYv.png",
                     "description": "Mastercard Hero",
                     "encoding": "png",
                 }
@@ -1152,8 +1146,7 @@ wallet_info_by_card_id = {
             {
                 "id": 1186,
                 "type": 8,
-                "url": "https://api.staging.gb.bink.com/content/hermes/schemes/"
-                "Harvey_Nichols_Card_3_Platinum.png",
+                "url": "https://api.staging.gb.bink.com/content/hermes/schemes/" "Harvey_Nichols_Card_3_Platinum.png",
                 "description": "Platinum Tier",
                 "encoding": "png",
             },

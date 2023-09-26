@@ -13,8 +13,7 @@ class PaymentAccountResponse:
                 {
                     "id": 2,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/"
-                    "Mastercard-Payment_1goHQYv.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/" "Mastercard-Payment_1goHQYv.png",
                     "description": "Mastercard Hero",
                     "encoding": "png",
                 },
@@ -92,8 +91,7 @@ class PaymentAccountResponse:
                 {
                     "id": 2,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/"
-                    "Mastercard-Payment_1goHQYv.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/" "Mastercard-Payment_1goHQYv.png",
                     "description": "Mastercard Hero",
                     "encoding": "png",
                 }

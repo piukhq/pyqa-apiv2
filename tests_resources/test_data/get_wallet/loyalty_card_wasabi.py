@@ -114,8 +114,7 @@ class WasabiResponse:
                 {
                     "id": 1319,
                     "type": 2,
-                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/"
-                    "Offer_tile_5_CVAeqUv_naFzo9T.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/" "Offer_tile_5_CVAeqUv_naFzo9T.png",
                     "description": "Wasabi Test Offer",
                     "encoding": "png",
                     "cta_url": "https://www.wasabi.uk.com/find-a-wasabi",
@@ -225,8 +224,7 @@ class WasabiResponse:
                 {
                     "id": 1319,
                     "type": 2,
-                    "url": "https://api.staging.gb.bink.com/content/hermes/"
-                    "schemes/Offer_tile_5_CVAeqUv_naFzo9T.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/" "schemes/Offer_tile_5_CVAeqUv_naFzo9T.png",
                     "description": "Wasabi Test Offer",
                     "encoding": "png",
                     "cta_url": "https://www.wasabi.uk.com/find-a-wasabi",
