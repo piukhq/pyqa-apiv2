@@ -13,7 +13,7 @@ class PaymentAccountResponse:
                 {
                     "id": 2,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/"
                     "Mastercard-Payment_1goHQYv.png",
                     "description": "Mastercard Hero",
                     "encoding": "png",
@@ -21,7 +21,7 @@ class PaymentAccountResponse:
                 {
                     "id": 32,
                     "type": 2,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/"
                     "Mastercard_pricelesscities_heathrow.png",
                     "description": "MasterCard Offer Stay - Heathrow",
                     "encoding": "png",
@@ -29,14 +29,14 @@ class PaymentAccountResponse:
                 {
                     "id": 35,
                     "type": 2,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Mastercard_qkr_app.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Mastercard_qkr_app.png",
                     "description": "Master Offer 7 - Qkr",
                     "encoding": "png",
                 },
                 {
                     "id": 28,
                     "type": 2,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/"
                     "Mastercard_pricelesscities_moreoffers.png",
                     "description": "MasterCard Offer 6 - More Offers",
                     "encoding": "png",
@@ -44,7 +44,7 @@ class PaymentAccountResponse:
                 {
                     "id": 40,
                     "type": 2,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/"
                     "Mastercard_pricelesscities_loungepass.png",
                     "description": "MasterCard Offer Stay - Lounge",
                     "encoding": "png",
@@ -52,7 +52,7 @@ class PaymentAccountResponse:
                 {
                     "id": 27,
                     "type": 2,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/"
                     "Mastercard_pricelesscities_liberty.png",
                     "description": "MasterCard Offer Shop - Liberty",
                     "encoding": "png",
@@ -60,7 +60,7 @@ class PaymentAccountResponse:
                 {
                     "id": 39,
                     "type": 2,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/"
                     "Mastercard_pricelesscities_market.png",
                     "description": "MasterCard Offer Play - Markets",
                     "encoding": "png",
@@ -68,7 +68,7 @@ class PaymentAccountResponse:
                 {
                     "id": 53,
                     "type": 2,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/"
                     "10773378_MDemand_WFP_BINK_Tile.png",
                     "description": "World Food Programme",
                     "encoding": "png",
@@ -92,7 +92,7 @@ class PaymentAccountResponse:
                 {
                     "id": 2,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/"
                     "Mastercard-Payment_1goHQYv.png",
                     "description": "Mastercard Hero",
                     "encoding": "png",

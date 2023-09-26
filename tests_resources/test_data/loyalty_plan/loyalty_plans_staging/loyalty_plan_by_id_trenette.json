@@ -28,7 +28,7 @@
 		{
 			"id": 1322,
 			"type": 3,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/binksweetshop-icon.png",
+			"url": "https://api.staging.gb.bink.com/content/hermes/schemes/binksweetshop-icon.png",
 			"cta_url": null,
 			"description": "Bink Sweet Rewards Icon",
 			"encoding": "png",
@@ -37,7 +37,7 @@
 		{
 			"id": 1321,
 			"type": 0,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/binksweetshop-hero.png",
+			"url": "https://api.staging.gb.bink.com/content/hermes/schemes/binksweetshop-hero.png",
 			"cta_url": null,
 			"description": "Bink Sweet Rewards Hero",
 			"encoding": "png",

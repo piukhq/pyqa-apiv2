@@ -51,7 +51,7 @@ class SquareMealResponse:
                 {
                     "id": 1328,
                     "type": 3,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/SquareMeal_Icon.png",
                     "description": "SquareMeal Logo",
                     "encoding": "png",
                     "cta_url": None,
@@ -59,7 +59,7 @@ class SquareMealResponse:
                 {
                     "id": 1331,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
                     "description": "SquareMeal Bronze Tier Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,
@@ -120,7 +120,7 @@ class SquareMealResponse:
                 {
                     "id": 1328,
                     "type": 3,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/SquareMeal_Icon.png",
                     "description": "SquareMeal Logo",
                     "encoding": "png",
                     "cta_url": None,
@@ -128,7 +128,7 @@ class SquareMealResponse:
                 {
                     "id": 1331,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
                     "description": "SquareMeal Bronze Tier Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,
@@ -168,7 +168,7 @@ class SquareMealResponse:
                 {
                     "id": 1331,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
                     "description": "SquareMeal Bronze Tier Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,
@@ -208,7 +208,7 @@ class SquareMealResponse:
                 {
                     "id": 1331,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
                     "description": "SquareMeal Bronze Tier Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,
@@ -250,7 +250,7 @@ class SquareMealResponse:
                 {
                     "id": 1328,
                     "type": 3,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/SquareMeal_Icon.png",
                     "description": "SquareMeal Logo",
                     "encoding": "png",
                     "cta_url": None,
@@ -258,7 +258,7 @@ class SquareMealResponse:
                 {
                     "id": 1330,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Hero.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/SquareMeal_Hero.png",
                     "description": "SquareMeal Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,
@@ -298,7 +298,7 @@ class SquareMealResponse:
                 {
                     "id": 1330,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Hero.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/SquareMeal_Hero.png",
                     "description": "SquareMeal Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,
@@ -345,7 +345,7 @@ class SquareMealResponse:
                 {
                     "id": 1328,
                     "type": 3,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/SquareMeal_Icon.png",
                     "description": "SquareMeal Logo",
                     "encoding": "png",
                     "cta_url": None,
@@ -353,7 +353,7 @@ class SquareMealResponse:
                 {
                     "id": 1330,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Hero.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/SquareMeal_Hero.png",
                     "description": "SquareMeal Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,

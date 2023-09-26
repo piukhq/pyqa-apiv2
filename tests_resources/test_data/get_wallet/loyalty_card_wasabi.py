@@ -106,7 +106,7 @@ class WasabiResponse:
                 {
                     "id": 1324,
                     "type": 7,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Promo_1968x732.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Wasabi_Promo_1968x732.png",
                     "description": "Wasabi Promotion 1",
                     "encoding": "png",
                     "cta_url": None,
@@ -114,7 +114,7 @@ class WasabiResponse:
                 {
                     "id": 1319,
                     "type": 2,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/"
                     "Offer_tile_5_CVAeqUv_naFzo9T.png",
                     "description": "Wasabi Test Offer",
                     "encoding": "png",
@@ -123,7 +123,7 @@ class WasabiResponse:
                 {
                     "id": 1297,
                     "type": 3,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Wasabi_Logo.png",
                     "description": "Wasabi Icon",
                     "encoding": "png",
                     "cta_url": None,
@@ -131,7 +131,7 @@ class WasabiResponse:
                 {
                     "id": 1296,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Wasabi_Card.png",
                     "description": "Wasabi Hero",
                     "encoding": "png",
                     "cta_url": None,
@@ -171,7 +171,7 @@ class WasabiResponse:
                 {
                     "id": 1296,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Wasabi_Card.png",
                     "description": "Wasabi Hero",
                     "encoding": "png",
                     "cta_url": None,
@@ -217,7 +217,7 @@ class WasabiResponse:
                 {
                     "id": 1324,
                     "type": 7,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Promo_1968x732.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Wasabi_Promo_1968x732.png",
                     "description": "Wasabi Promotion 1",
                     "encoding": "png",
                     "cta_url": None,
@@ -225,7 +225,7 @@ class WasabiResponse:
                 {
                     "id": 1319,
                     "type": 2,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/"
+                    "url": "https://api.staging.gb.bink.com/content/hermes/"
                     "schemes/Offer_tile_5_CVAeqUv_naFzo9T.png",
                     "description": "Wasabi Test Offer",
                     "encoding": "png",
@@ -234,7 +234,7 @@ class WasabiResponse:
                 {
                     "id": 1297,
                     "type": 3,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Wasabi_Logo.png",
                     "description": "Wasabi Icon",
                     "encoding": "png",
                     "cta_url": None,
@@ -242,7 +242,7 @@ class WasabiResponse:
                 {
                     "id": 1296,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Wasabi_Card.png",
                     "description": "Wasabi Hero",
                     "encoding": "png",
                     "cta_url": None,
@@ -297,7 +297,7 @@ class WasabiResponse:
                 {
                     "id": 1296,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Wasabi_Card.png",
                     "description": "Wasabi Hero",
                     "encoding": "png",
                     "cta_url": None,

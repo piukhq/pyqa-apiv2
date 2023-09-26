@@ -62,7 +62,7 @@ class TheWorksResponse:
                 {
                     "id": 1414,
                     "type": 3,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/The_Works_Icon.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/The_Works_Icon.png",
                     "description": "The Works Logo",
                     "encoding": "png",
                     "cta_url": None,
@@ -70,7 +70,7 @@ class TheWorksResponse:
                 {
                     "id": 1415,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/The_Works_Hero_jel2vZz.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/The_Works_Hero_jel2vZz.png",
                     "description": "The Works Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,
@@ -109,7 +109,7 @@ class TheWorksResponse:
                 {
                     "id": 1415,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/The_Works_Hero_jel2vZz.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/The_Works_Hero_jel2vZz.png",
                     "description": "The Works Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,
@@ -156,7 +156,7 @@ class TheWorksResponse:
                 {
                     "id": 1414,
                     "type": 3,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/The_Works_Icon.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/The_Works_Icon.png",
                     "description": "The Works Logo",
                     "encoding": "png",
                     "cta_url": None,
@@ -164,7 +164,7 @@ class TheWorksResponse:
                 {
                     "id": 1415,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/The_Works_Hero_jel2vZz.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/The_Works_Hero_jel2vZz.png",
                     "description": "The Works Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,
@@ -209,7 +209,7 @@ class TheWorksResponse:
                 {
                     "id": 1415,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/The_Works_Hero_jel2vZz.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/The_Works_Hero_jel2vZz.png",
                     "description": "The Works Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,
@@ -250,7 +250,7 @@ class TheWorksResponse:
                 {
                     "id": 1414,
                     "type": 3,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/The_Works_Icon.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/The_Works_Icon.png",
                     "description": "The Works Logo",
                     "encoding": "png",
                     "cta_url": None,
@@ -258,7 +258,7 @@ class TheWorksResponse:
                 {
                     "id": 1415,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/The_Works_Hero_jel2vZz.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/The_Works_Hero_jel2vZz.png",
                     "description": "The Works Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,
@@ -307,7 +307,7 @@ class TheWorksResponse:
                 {
                     "id": 1414,
                     "type": 3,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/The_Works_Icon.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/The_Works_Icon.png",
                     "description": "The Works Logo",
                     "encoding": "png",
                     "cta_url": None,
@@ -315,7 +315,7 @@ class TheWorksResponse:
                 {
                     "id": 1415,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/The_Works_Hero_jel2vZz.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/The_Works_Hero_jel2vZz.png",
                     "description": "The Works Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,
@@ -356,7 +356,7 @@ class TheWorksResponse:
                 {
                     "id": 1414,
                     "type": 3,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/The_Works_Icon.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/The_Works_Icon.png",
                     "description": "The Works Logo",
                     "encoding": "png",
                     "cta_url": None,
@@ -364,7 +364,7 @@ class TheWorksResponse:
                 {
                     "id": 1415,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/The_Works_Hero_jel2vZz.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/The_Works_Hero_jel2vZz.png",
                     "description": "The Works Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,

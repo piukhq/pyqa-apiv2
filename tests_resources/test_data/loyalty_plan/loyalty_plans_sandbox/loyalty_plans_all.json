@@ -33,7 +33,7 @@
             {
                 "id": 373,
                 "type": 4,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/iceland-asset.png",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/iceland-asset.png",
                 "description": null,
                 "encoding": "png",
                 "order": 0
@@ -41,7 +41,7 @@
             {
                 "id": 674,
                 "type": 7,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Iceland_Promo.jpeg",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/Iceland_Promo.jpeg",
                 "description": "Iceland Promotion 2",
                 "encoding": "jpeg",
                 "order": 0
@@ -49,7 +49,7 @@
             {
                 "id": 545,
                 "type": 1,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/iceland-300x197.jpg",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/iceland-300x197.jpg",
                 "description": "Iceland Test Banner",
                 "encoding": "jpg",
                 "order": 1
@@ -57,7 +57,7 @@
             {
                 "id": 645,
                 "type": 2,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Pizza.jpg",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/Iceland_Offer_Pizza.jpg",
                 "description": "Iceland Offer - Pizza",
                 "encoding": "jpg",
                 "order": 1
@@ -65,7 +65,7 @@
             {
                 "id": 546,
                 "type": 6,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/iceland-300x197_pxucuAx.jpg",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/iceland-300x197_pxucuAx.jpg",
                 "description": "Iceland Test Personal Offer",
                 "encoding": "jpg",
                 "order": 1
@@ -73,7 +73,7 @@
             {
                 "id": 644,
                 "type": 2,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Greggs.jpg",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/Iceland_Offer_Greggs.jpg",
                 "description": "Iceland Offer - Greggs",
                 "encoding": "jpg",
                 "order": 2
@@ -81,7 +81,7 @@
             {
                 "id": 374,
                 "type": 3,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/Iceland_Logo.png",
                 "description": "Iceland Icon",
                 "encoding": "png",
                 "order": 0
@@ -89,7 +89,7 @@
             {
                 "id": 372,
                 "type": 0,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/Iceland_Card.png",
                 "description": "Iceland Hero Image",
                 "encoding": "png",
                 "order": 0
@@ -97,7 +97,7 @@
             {
                 "id": 521,
                 "type": 5,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/iceland_ref3.jpg",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/iceland_ref3.jpg",
                 "description": "Iceland Reference",
                 "encoding": "jpg",
                 "order": 1
@@ -105,7 +105,7 @@
             {
                 "id": 623,
                 "type": 9,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Iceland_NLO5KcV.png",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/Iceland_NLO5KcV.png",
                 "description": "Iceland Alternative Hero",
                 "encoding": "png",
                 "order": 0
@@ -543,7 +543,7 @@
             {
                 "id": 641,
                 "type": 9,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Wasabi_Alternate_Hero.png",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/Wasabi_Alternate_Hero.png",
                 "description": "Wasabi Alternative Hero",
                 "encoding": "png",
                 "order": 0
@@ -551,7 +551,7 @@
             {
                 "id": 642,
                 "type": 3,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/Wasabi_Logo.png",
                 "description": "Wasabi Icon",
                 "encoding": "png",
                 "order": 0
@@ -559,7 +559,7 @@
             {
                 "id": 643,
                 "type": 0,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/Wasabi_Card.png",
                 "description": "Wasabi Hero",
                 "encoding": "png",
                 "order": 0
@@ -567,7 +567,7 @@
             {
                 "id": 658,
                 "type": 7,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Wasabi_Promo_1968x732.png",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/Wasabi_Promo_1968x732.png",
                 "description": "Wasabi Promotion 1",
                 "encoding": "png",
                 "order": 0
@@ -751,7 +751,7 @@
             {
                 "id": 669,
                 "type": 9,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/SquareMeal_Alternative_Hero.png",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/SquareMeal_Alternative_Hero.png",
                 "description": "SquareMeal Alternative Hero",
                 "encoding": "png",
                 "order": 0
@@ -759,7 +759,7 @@
             {
                 "id": 670,
                 "type": 0,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/SquareMeal_Hero.png",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/SquareMeal_Hero.png",
                 "description": "SquareMeal Hero",
                 "encoding": "png",
                 "order": 0
@@ -767,7 +767,7 @@
             {
                 "id": 671,
                 "type": 8,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
                 "description": "SquareMeal Bronze Tier Loyalty Card",
                 "encoding": "png",
                 "order": 0
@@ -775,7 +775,7 @@
             {
                 "id": 672,
                 "type": 8,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/SquareMeal_Silver_Tier_2.png",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/SquareMeal_Silver_Tier_2.png",
                 "description": "SquareMeal Silver Tier 2",
                 "encoding": "png",
                 "order": 0
@@ -783,7 +783,7 @@
             {
                 "id": 673,
                 "type": 8,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/SquareMeal_Gold_Tier_3.png",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/SquareMeal_Gold_Tier_3.png",
                 "description": "SquareMeal Gold Tier Loyalty Card",
                 "encoding": "png",
                 "order": 0
@@ -791,7 +791,7 @@
             {
                 "id": 668,
                 "type": 3,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/SquareMeal_Icon.png",
                 "description": "SquareMeal Logo",
                 "encoding": "png",
                 "order": 0
@@ -963,7 +963,7 @@
             {
                 "id": 680,
                 "type": 9,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/ASOS_alternative_hero.png",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/ASOS_alternative_hero.png",
                 "description": "ASOS alternative hero",
                 "encoding": "png",
                 "order": 0
@@ -971,7 +971,7 @@
             {
                 "id": 678,
                 "type": 0,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/ASOS_Hero_06042022.png",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/ASOS_Hero_06042022.png",
                 "description": "ASOS Hero",
                 "encoding": "png",
                 "order": 0
@@ -979,7 +979,7 @@
             {
                 "id": 679,
                 "type": 3,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/App_icon.png",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/App_icon.png",
                 "description": "ASOS icon",
                 "encoding": "png",
                 "order": 0
@@ -1163,7 +1163,7 @@
             {
                 "id": 666,
                 "type": 3,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/trenette-icon.png",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/trenette-icon.png",
                 "description": "Trenette Icon",
                 "encoding": "png",
                 "order": 0
@@ -1171,7 +1171,7 @@
             {
                 "id": 667,
                 "type": 9,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/trenette-alternative-hero.png",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/trenette-alternative-hero.png",
                 "description": "Trenette Alternative Hero",
                 "encoding": "png",
                 "order": 0
@@ -1179,7 +1179,7 @@
             {
                 "id": 665,
                 "type": 0,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/trenette-hero.png",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/trenette-hero.png",
                 "description": "Trenette Hero Banner",
                 "encoding": "png",
                 "order": 0

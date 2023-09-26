@@ -28,7 +28,7 @@
         {
             "id": 680,
             "type": 9,
-            "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/ASOS_alternative_hero.png",
+            "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/ASOS_alternative_hero.png",
             "description": "ASOS alternative hero",
             "encoding": "png",
             "order": 0
@@ -36,7 +36,7 @@
         {
             "id": 679,
             "type": 3,
-            "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/App_icon.png",
+            "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/App_icon.png",
             "description": "ASOS icon",
             "encoding": "png",
             "order": 0
@@ -44,7 +44,7 @@
         {
             "id": 678,
             "type": 0,
-            "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/ASOS_Hero_06042022.png",
+            "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/ASOS_Hero_06042022.png",
             "description": "ASOS Hero",
             "encoding": "png",
             "order": 0

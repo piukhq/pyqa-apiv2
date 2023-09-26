@@ -24,7 +24,7 @@
         {
             "id": 669,
             "type": 9,
-            "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/SquareMeal_Alternative_Hero.png",
+            "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/SquareMeal_Alternative_Hero.png",
             "description": "SquareMeal Alternative Hero",
             "encoding": "png",
             "order": 0
@@ -32,7 +32,7 @@
         {
             "id": 671,
             "type": 8,
-            "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
+            "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/SquareMeal_Bronze_Tier_1.png",
             "description": "SquareMeal Bronze Tier Loyalty Card",
             "encoding": "png",
             "order": 0
@@ -40,7 +40,7 @@
         {
             "id": 668,
             "type": 3,
-            "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
+            "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/SquareMeal_Icon.png",
             "description": "SquareMeal Logo",
             "encoding": "png",
             "order": 0
@@ -48,7 +48,7 @@
         {
             "id": 672,
             "type": 8,
-            "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/SquareMeal_Silver_Tier_2.png",
+            "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/SquareMeal_Silver_Tier_2.png",
             "description": "SquareMeal Silver Tier 2",
             "encoding": "png",
             "order": 0
@@ -56,7 +56,7 @@
         {
             "id": 673,
             "type": 8,
-            "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/SquareMeal_Gold_Tier_3.png",
+            "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/SquareMeal_Gold_Tier_3.png",
             "description": "SquareMeal Gold Tier Loyalty Card",
             "encoding": "png",
             "order": 0
@@ -64,7 +64,7 @@
         {
             "id": 670,
             "type": 0,
-            "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/SquareMeal_Hero.png",
+            "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/SquareMeal_Hero.png",
             "description": "SquareMeal Hero",
             "encoding": "png",
             "order": 0

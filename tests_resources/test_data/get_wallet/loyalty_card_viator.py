@@ -81,7 +81,7 @@ class ViatorResponse:
                 {
                     "id": 1411,
                     "type": 3,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Logo1-280x280.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Logo1-280x280.png",
                     "description": "Viator Logo",
                     "encoding": "png",
                     "cta_url": None,
@@ -89,7 +89,7 @@ class ViatorResponse:
                 {
                     "id": 1409,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Loyalty_Card_V2_1312x800.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Loyalty_Card_V2_1312x800.png",
                     "description": "Viator Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,
@@ -97,7 +97,7 @@ class ViatorResponse:
                 {
                     "id": 1412,
                     "type": 7,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/"
                     "Viator_Barclays_Promotional_Image.png",
                     "description": "Viator Promotion",
                     "encoding": "png",
@@ -138,7 +138,7 @@ class ViatorResponse:
                 {
                     "id": 1409,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Loyalty_Card_V2_1312x800.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Loyalty_Card_V2_1312x800.png",
                     "description": "Viator Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,
@@ -184,28 +184,28 @@ class ViatorResponse:
                 {
                     "id": 1297,
                     "type": 3,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Wasabi_Logo.png",
                     "description": "Wasabi Icon",
                     "encoding": "png",
                 },
                 {
                     "id": 1324,
                     "type": 7,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Promo_1968x732.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Wasabi_Promo_1968x732.png",
                     "description": "Wasabi Promotion 1",
                     "encoding": "png",
                 },
                 {
                     "id": 1296,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Wasabi_Card.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Wasabi_Card.png",
                     "description": "Wasabi Hero",
                     "encoding": "png",
                 },
                 {
                     "id": 1319,
                     "type": 2,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/"
                     "Offer_tile_5_CVAeqUv_naFzo9T.png",
                     "description": "Wasabi Test Offer",
                     "encoding": "png",

@@ -28,7 +28,7 @@
 		{
 			"id": 1399,
 			"type": 3,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/App_icon.png",
+			"url": "https://api.staging.gb.bink.com/content/hermes/schemes/App_icon.png",
 			"cta_url": null,
 			"description": "ASOS icon",
 			"encoding": "png",
@@ -37,7 +37,7 @@
 		{
 			"id": 1401,
 			"type": 0,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/ASOS_Hero_06042022.png",
+			"url": "https://api.staging.gb.bink.com/content/hermes/schemes/ASOS_Hero_06042022.png",
 			"cta_url": null,
 			"description": "ASOS Hero",
 			"encoding": "png",
