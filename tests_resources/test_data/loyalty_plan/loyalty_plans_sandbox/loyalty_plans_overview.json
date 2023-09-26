@@ -7,7 +7,7 @@
             {
                 "id": 374,
                 "type": 3,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/Iceland_Logo.png",
                 "description": "Iceland Icon",
                 "encoding": "png",
                 "order": 0
@@ -28,7 +28,7 @@
             {
                 "id": 642,
                 "type": 3,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Wasabi_Logo.png",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/Wasabi_Logo.png",
                 "description": "Wasabi Icon",
                 "encoding": "png",
                 "order": 0
@@ -49,7 +49,7 @@
             {
                 "id": 668,
                 "type": 3,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/SquareMeal_Icon.png",
                 "description": "SquareMeal Logo",
                 "encoding": "png",
                 "order": 0
@@ -70,7 +70,7 @@
             {
                 "id": 679,
                 "type": 3,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/App_icon.png",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/App_icon.png",
                 "description": "ASOS icon",
                 "encoding": "png",
                 "order": 0
@@ -91,7 +91,7 @@
             {
                 "id": 666,
                 "type": 3,
-                "url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/trenette-icon.png",
+                "url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/trenette-icon.png",
                 "description": "Trenette Icon",
                 "encoding": "png",
                 "order": 0

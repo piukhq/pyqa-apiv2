@@ -15,7 +15,7 @@
 		{
 			"id": 374,
 			"type": 3,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
+			"url": "https://api.staging.gb.bink.com/content/hermes/schemes/Iceland_Logo.png",
 			"cta_url": null,
 			"description": "Iceland Logo",
 			"encoding": "png",

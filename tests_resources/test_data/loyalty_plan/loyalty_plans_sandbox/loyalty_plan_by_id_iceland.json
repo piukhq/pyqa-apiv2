@@ -32,7 +32,7 @@
 		{
 			"id": 645,
 			"type": 2,
-			"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Pizza.jpg",
+			"url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/Iceland_Offer_Pizza.jpg",
 			"description": "Iceland Offer - Pizza",
 			"encoding": "jpg",
 			"order": 1
@@ -40,7 +40,7 @@
 		{
 			"id": 644,
 			"type": 2,
-			"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Greggs.jpg",
+			"url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/Iceland_Offer_Greggs.jpg",
 			"description": "Iceland Offer - Greggs",
 			"encoding": "jpg",
 			"order": 2
@@ -48,7 +48,7 @@
 		{
 			"id": 546,
 			"type": 6,
-			"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/iceland-300x197_pxucuAx.jpg",
+			"url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/iceland-300x197_pxucuAx.jpg",
 			"description": "Iceland Test Personal Offer",
 			"encoding": "jpg",
 			"order": 1
@@ -56,7 +56,7 @@
 		{
 			"id": 674,
 			"type": 7,
-			"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Iceland_Promo.jpeg",
+			"url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/Iceland_Promo.jpeg",
 			"description": "Iceland Promotion 2",
 			"encoding": "jpeg",
 			"order": 0
@@ -64,7 +64,7 @@
 		{
 			"id": 374,
 			"type": 3,
-			"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
+			"url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/Iceland_Logo.png",
 			"description": "Iceland Icon",
 			"encoding": "png",
 			"order": 0
@@ -72,7 +72,7 @@
 		{
 			"id": 372,
 			"type": 0,
-			"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
+			"url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/Iceland_Card.png",
 			"description": "Iceland Hero Image",
 			"encoding": "png",
 			"order": 0
@@ -80,7 +80,7 @@
 		{
 			"id": 521,
 			"type": 5,
-			"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/iceland_ref3.jpg",
+			"url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/iceland_ref3.jpg",
 			"description": "Iceland Reference",
 			"encoding": "jpg",
 			"order": 1
@@ -88,7 +88,7 @@
 		{
 			"id": 623,
 			"type": 9,
-			"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/Iceland_NLO5KcV.png",
+			"url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/Iceland_NLO5KcV.png",
 			"description": "Iceland Alternative Hero",
 			"encoding": "png",
 			"order": 0
@@ -96,7 +96,7 @@
 		{
 			"id": 545,
 			"type": 1,
-			"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/iceland-300x197.jpg",
+			"url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/iceland-300x197.jpg",
 			"description": "Iceland Test Banner",
 			"encoding": "jpg",
 			"order": 1
@@ -104,7 +104,7 @@
 		{
 			"id": 373,
 			"type": 4,
-			"url": "https://sit.sandbox.gb.bink.com/content/media/hermes/schemes/iceland-asset.png",
+			"url": "https://sit.sandbox.gb.bink.com/content/hermes/schemes/iceland-asset.png",
 			"description": null,
 			"encoding": "png",
 			"order": 0

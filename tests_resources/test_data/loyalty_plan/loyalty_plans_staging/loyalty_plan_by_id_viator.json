@@ -28,7 +28,7 @@
         {
             "id": 1409,
             "type": 0,
-            "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Loyalty_Card_V2_1312x800.png",
+            "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Loyalty_Card_V2_1312x800.png",
             "cta_url": null,
             "description": "Viator Loyalty Card",
             "encoding": "png",
@@ -37,7 +37,7 @@
         {
             "id": 1412,
             "type": 7,
-            "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Viator_Barclays_Promotional_Image.png",
+            "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Viator_Barclays_Promotional_Image.png",
             "cta_url": null,
             "description": "Viator Promotion",
             "encoding": "png",
@@ -46,7 +46,7 @@
         {
             "id": 1411,
             "type": 3,
-            "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Logo1-280x280.png",
+            "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Logo1-280x280.png",
             "cta_url": null,
             "description": "Viator Logo",
             "encoding": "png",

@@ -28,7 +28,7 @@
 		{
 			"id": 1328,
 			"type": 3,
-			"url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/SquareMeal_Icon.png",
+			"url": "https://api.staging.gb.bink.com/content/hermes/schemes/SquareMeal_Icon.png",
 			"cta_url": null,
 			"description": "SquareMeal Logo",
 			"encoding": "png",

@@ -129,7 +129,7 @@ class ItsuResponse:
                 {
                     "id": 1416,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/itsu_Hero.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/itsu_Hero.png",
                     "description": "itsu Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,
@@ -137,7 +137,7 @@ class ItsuResponse:
                 {
                     "id": 1417,
                     "type": 3,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/itsu_Icon.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/itsu_Icon.png",
                     "description": "itsu Logo",
                     "encoding": "png",
                     "cta_url": None,
@@ -176,7 +176,7 @@ class ItsuResponse:
                 {
                     "id": 1416,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/itsu_Hero.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/itsu_Hero.png",
                     "description": "itsu Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,
@@ -223,7 +223,7 @@ class ItsuResponse:
                 {
                     "id": 1416,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/itsu_Hero.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/itsu_Hero.png",
                     "description": "itsu Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,
@@ -231,7 +231,7 @@ class ItsuResponse:
                 {
                     "id": 1417,
                     "type": 3,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/itsu_Icon.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/itsu_Icon.png",
                     "description": "itsu Logo",
                     "encoding": "png",
                     "cta_url": None,
@@ -276,7 +276,7 @@ class ItsuResponse:
                 {
                     "id": 1416,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/itsu_Hero.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/itsu_Hero.png",
                     "description": "itsu Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,

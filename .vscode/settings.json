@@ -1,5 +1,5 @@
 {
-    "python.linting.mypyEnabled": true,
+    "python.linting.mypyEnabled": false,
     "python.linting.enabled": true,
     "cucumberautocomplete.steps": [
         "tests/step_definitions/*.py",
@@ -18,4 +18,5 @@
     ],
     "cucumberautocomplete.stepsInvariants": true,
     "cucumberautocomplete.onTypeFormat": true,
+    "python.linting.flake8Enabled": true,
 }

@@ -63,7 +63,7 @@ class IcelandResponse:
                 {
                     "id": 374,
                     "type": 3,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Iceland_Logo.png",
                     "description": "Iceland Logo",
                     "encoding": "png",
                     "cta_url": None,
@@ -71,7 +71,7 @@ class IcelandResponse:
                 {
                     "id": 373,
                     "type": 4,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland-asset.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/iceland-asset.png",
                     "description": "Iceland Asset",
                     "encoding": "png",
                     "cta_url": None,
@@ -79,7 +79,7 @@ class IcelandResponse:
                 {
                     "id": 1070,
                     "type": 5,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_ref1.jpg",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Iceland_ref1.jpg",
                     "description": "Iceland Reference",
                     "encoding": "jpg",
                     "cta_url": None,
@@ -87,7 +87,7 @@ class IcelandResponse:
                 {
                     "id": 1071,
                     "type": 5,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref2.jpg",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/iceland_ref2.jpg",
                     "description": "Iceland Reference",
                     "encoding": "jpg",
                     "cta_url": None,
@@ -95,7 +95,7 @@ class IcelandResponse:
                 {
                     "id": 1072,
                     "type": 5,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref3.jpg",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/iceland_ref3.jpg",
                     "description": "Iceland Reference",
                     "encoding": "jpg",
                     "cta_url": None,
@@ -103,7 +103,7 @@ class IcelandResponse:
                 {
                     "id": 1234,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Iceland_Card.png",
                     "description": "Iceland Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,
@@ -111,7 +111,7 @@ class IcelandResponse:
                 {
                     "id": 1303,
                     "type": 2,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Greggs.jpg",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Iceland_Offer_Greggs.jpg",
                     "description": "Iceland Offer - Greggs",
                     "encoding": "jpg",
                     "cta_url": "https://www.iceland.co.uk/frozen/frozen-pies/greggs",
@@ -119,7 +119,7 @@ class IcelandResponse:
                 {
                     "id": 1302,
                     "type": 2,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Pizza.jpg",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Iceland_Offer_Pizza.jpg",
                     "description": "Iceland Offer - Pizza",
                     "encoding": "jpg",
                     "cta_url": "https://www.iceland.co.uk/frozen/pizza-and-garlic-bread/wood-fired-pizzas",
@@ -127,7 +127,7 @@ class IcelandResponse:
                 {
                     "id": 1398,
                     "type": 7,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/"
                     "PromotionsIcelandBonusCard1968x732.png",
                     "description": "Promo_Text_1",
                     "encoding": "png",
@@ -201,7 +201,7 @@ class IcelandResponse:
                 {
                     "id": 374,
                     "type": 3,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Iceland_Logo.png",
                     "description": "Iceland Logo",
                     "encoding": "png",
                     "cta_url": None,
@@ -209,7 +209,7 @@ class IcelandResponse:
                 {
                     "id": 373,
                     "type": 4,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland-asset.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/iceland-asset.png",
                     "description": "Iceland Asset",
                     "encoding": "png",
                     "cta_url": None,
@@ -217,7 +217,7 @@ class IcelandResponse:
                 {
                     "id": 1070,
                     "type": 5,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_ref1.jpg",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Iceland_ref1.jpg",
                     "description": "Iceland Reference",
                     "encoding": "jpg",
                     "cta_url": None,
@@ -225,7 +225,7 @@ class IcelandResponse:
                 {
                     "id": 1071,
                     "type": 5,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref2.jpg",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/iceland_ref2.jpg",
                     "description": "Iceland Reference",
                     "encoding": "jpg",
                     "cta_url": None,
@@ -233,7 +233,7 @@ class IcelandResponse:
                 {
                     "id": 1072,
                     "type": 5,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref3.jpg",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/iceland_ref3.jpg",
                     "description": "Iceland Reference",
                     "encoding": "jpg",
                     "cta_url": None,
@@ -241,7 +241,7 @@ class IcelandResponse:
                 {
                     "id": 1234,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Iceland_Card.png",
                     "description": "Iceland Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,
@@ -249,7 +249,7 @@ class IcelandResponse:
                 {
                     "id": 1303,
                     "type": 2,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Greggs.jpg",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Iceland_Offer_Greggs.jpg",
                     "description": "Iceland Offer - Greggs",
                     "encoding": "jpg",
                     "cta_url": "https://www.iceland.co.uk/frozen/frozen-pies/greggs",
@@ -257,7 +257,7 @@ class IcelandResponse:
                 {
                     "id": 1302,
                     "type": 2,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Pizza.jpg",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Iceland_Offer_Pizza.jpg",
                     "description": "Iceland Offer - Pizza",
                     "encoding": "jpg",
                     "cta_url": "https://www.iceland.co.uk/frozen/pizza-and-garlic-bread/wood-fired-pizzas",
@@ -265,7 +265,7 @@ class IcelandResponse:
                 {
                     "id": 1398,
                     "type": 7,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/"
                     "PromotionsIcelandBonusCard1968x732.png",
                     "description": "Promo_Text_1",
                     "encoding": "png",
@@ -306,7 +306,7 @@ class IcelandResponse:
                 {
                     "id": 1234,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Iceland_Card.png",
                     "description": "Iceland Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,
@@ -346,7 +346,7 @@ class IcelandResponse:
                 {
                     "id": 1234,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Iceland_Card.png",
                     "description": "Iceland Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,
@@ -393,7 +393,7 @@ class IcelandResponse:
                 {
                     "id": 374,
                     "type": 3,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Iceland_Logo.png",
                     "description": "Iceland Logo",
                     "encoding": "png",
                     "cta_url": None,
@@ -401,7 +401,7 @@ class IcelandResponse:
                 {
                     "id": 373,
                     "type": 4,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland-asset.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/iceland-asset.png",
                     "description": "Iceland Asset",
                     "encoding": "png",
                     "cta_url": None,
@@ -409,7 +409,7 @@ class IcelandResponse:
                 {
                     "id": 1070,
                     "type": 5,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_ref1.jpg",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Iceland_ref1.jpg",
                     "description": "Iceland Reference",
                     "encoding": "jpg",
                     "cta_url": None,
@@ -417,7 +417,7 @@ class IcelandResponse:
                 {
                     "id": 1071,
                     "type": 5,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref2.jpg",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/iceland_ref2.jpg",
                     "description": "Iceland Reference",
                     "encoding": "jpg",
                     "cta_url": None,
@@ -425,7 +425,7 @@ class IcelandResponse:
                 {
                     "id": 1072,
                     "type": 5,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref3.jpg",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/iceland_ref3.jpg",
                     "description": "Iceland Reference",
                     "encoding": "jpg",
                     "cta_url": None,
@@ -433,7 +433,7 @@ class IcelandResponse:
                 {
                     "id": 1234,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Iceland_Card.png",
                     "description": "Iceland Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,
@@ -441,7 +441,7 @@ class IcelandResponse:
                 {
                     "id": 1303,
                     "type": 2,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Greggs.jpg",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Iceland_Offer_Greggs.jpg",
                     "description": "Iceland Offer - Greggs",
                     "encoding": "jpg",
                     "cta_url": "https://www.iceland.co.uk/frozen/frozen-pies/greggs",
@@ -449,7 +449,7 @@ class IcelandResponse:
                 {
                     "id": 1302,
                     "type": 2,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Pizza.jpg",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Iceland_Offer_Pizza.jpg",
                     "description": "Iceland Offer - Pizza",
                     "encoding": "jpg",
                     "cta_url": "https://www.iceland.co.uk/frozen/pizza-and-garlic-bread/wood-fired-pizzas",
@@ -457,7 +457,7 @@ class IcelandResponse:
                 {
                     "id": 1398,
                     "type": 7,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/"
                     "PromotionsIcelandBonusCard1968x732.png",
                     "description": "Promo_Text_1",
                     "encoding": "png",
@@ -503,7 +503,7 @@ class IcelandResponse:
                 {
                     "id": 1234,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Iceland_Card.png",
                     "description": "Iceland Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,
@@ -646,7 +646,7 @@ class IcelandResponse:
                 {
                     "id": 374,
                     "type": 3,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Logo.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Iceland_Logo.png",
                     "description": "Iceland Logo",
                     "encoding": "png",
                     "cta_url": None,
@@ -654,7 +654,7 @@ class IcelandResponse:
                 {
                     "id": 373,
                     "type": 4,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland-asset.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/iceland-asset.png",
                     "description": "Iceland Asset",
                     "encoding": "png",
                     "cta_url": None,
@@ -662,7 +662,7 @@ class IcelandResponse:
                 {
                     "id": 1070,
                     "type": 5,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_ref1.jpg",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Iceland_ref1.jpg",
                     "description": "Iceland Reference",
                     "encoding": "jpg",
                     "cta_url": None,
@@ -670,7 +670,7 @@ class IcelandResponse:
                 {
                     "id": 1071,
                     "type": 5,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref2.jpg",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/iceland_ref2.jpg",
                     "description": "Iceland Reference",
                     "encoding": "jpg",
                     "cta_url": None,
@@ -678,7 +678,7 @@ class IcelandResponse:
                 {
                     "id": 1072,
                     "type": 5,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/iceland_ref3.jpg",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/iceland_ref3.jpg",
                     "description": "Iceland Reference",
                     "encoding": "jpg",
                     "cta_url": None,
@@ -686,7 +686,7 @@ class IcelandResponse:
                 {
                     "id": 1234,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Card.png",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Iceland_Card.png",
                     "description": "Iceland Loyalty Card",
                     "encoding": "png",
                     "cta_url": None,
@@ -694,7 +694,7 @@ class IcelandResponse:
                 {
                     "id": 1303,
                     "type": 2,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Greggs.jpg",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Iceland_Offer_Greggs.jpg",
                     "description": "Iceland Offer - Greggs",
                     "encoding": "jpg",
                     "cta_url": "https://www.iceland.co.uk/frozen/frozen-pies/greggs",
@@ -702,7 +702,7 @@ class IcelandResponse:
                 {
                     "id": 1302,
                     "type": 2,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/Iceland_Offer_Pizza.jpg",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Iceland_Offer_Pizza.jpg",
                     "description": "Iceland Offer - Pizza",
                     "encoding": "jpg",
                     "cta_url": "https://www.iceland.co.uk/frozen/pizza-and-garlic-bread/wood-fired-pizzas",
@@ -710,7 +710,7 @@ class IcelandResponse:
                 {
                     "id": 1398,
                     "type": 7,
-                    "url": "https://api.staging.gb.bink.com/content/media/hermes/schemes/"
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/"
                     "PromotionsIcelandBonusCard1968x732.png",
                     "description": "Promo_Text_1",
                     "encoding": "png",
