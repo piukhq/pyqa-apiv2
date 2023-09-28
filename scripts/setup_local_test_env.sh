@@ -92,6 +92,21 @@ git pull --ff-only origin master
 
 echo "- (Angelia) Synching .env and pipenv..."
 echo "$ANGELIA_ENV_FILE" > .env && pipenv sync --dev
+
+
+# Bank-tools
+cd $directory
+if [[ ! -d "bank-tools" ]] ; then
+  echo "- Cloning bank-tools..." && git clone "git@github.com:binkhq/bank-tools.git"
+  fi
+
+cd bank-tools
+
+echo "- (Angelia) Checking out and updating master branch..."
+git fetch
+git checkout updates
+git pull --ff-only origin updates
+
 }
 
 run_services() {
@@ -105,5 +120,5 @@ if [[ $RUN = "services" ]]; then
     run_services
 else
     setup_projects
-    # run_services
+    run_services
 fi
