@@ -63,7 +63,7 @@ class ViatorResponse:
                     "issued_date": "1695808823",
                     "expiry_date": "1695600000",
                     "redeemed_date": None,
-                    "conversion_date": None
+                    "conversion_date": None,
                 },
             ],
             "card": {
