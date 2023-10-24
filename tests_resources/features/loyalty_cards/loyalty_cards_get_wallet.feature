@@ -33,9 +33,12 @@ Feature: View Wallet
     And Wallet fields are correctly populated for unauthorised LC of <merchant>
 
     Examples:
-      | merchant      | status_code_returned|payment_card_provider|
-      |Wasabi        | 200                  |master              |
-      |Iceland        |200                  |master               |
+        | merchant      | status_code_returned|payment_card_provider|
+        | Wasabi         | 200                  |master              |
+        |Iceland        |200                   |master              |
+        | Viator        |  200                 | amex               |
+        | Stonegate     |  200                 | amex               |
+ 
 
 #  @view_my_wallet_put_invalid @sandbox_regression
 #  Scenario Outline: View my wallet after authorising lc with invalid credentials

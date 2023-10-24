@@ -16,7 +16,7 @@ Feature: Verify event for join fail for loyalty card
 
     Examples:
       | merchant | journey_type | scheme_state |
-      | Iceland  | join_failed  | enrol_failed |
+      | Viator  | join_failed  | enrol_failed |
 
 
   @multi_wallet_joins_fail_event @bink_regression_api2 @join_fail_event
@@ -37,4 +37,4 @@ Feature: Verify event for join fail for loyalty card
 
     Examples:
       | scheme_state | merchant |journey_type|
-      | enrol_failed | Iceland  |join_failed |
+      | enrol_failed | Viator  |join_failed |

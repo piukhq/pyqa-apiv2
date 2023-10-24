@@ -76,6 +76,4 @@ Feature: Add a loyalty card
 
     Examples:
       | merchant | status_code_returned | error_message             | error_slug    |
-      | Iceland  | 401                  | Supplied token is invalid | INVALID_TOKEN |
-      | Wasabi   | 401                  | Supplied token is invalid | INVALID_TOKEN |
       | Trenette | 401                  | Supplied token is invalid | INVALID_TOKEN |

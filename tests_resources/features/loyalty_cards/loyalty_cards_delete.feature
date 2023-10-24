@@ -16,8 +16,7 @@ Feature: Delete a loyalty card
 
     Examples:
       | merchant | status_code_returned | journey_type |
-      | Iceland  | 202                  | delete       |
-      | Wasabi   | 202                  | delete       |
+      | The_Works  | 202                  | delete       |
 
   @delete_add_loyalty_card @bink_regression_api2 @sandbox_regression
   Scenario Outline: Delete Add loyalty card
@@ -30,8 +29,7 @@ Feature: Delete a loyalty card
 
     Examples:
       | merchant | status_code_returned | journey_type |
-      | Iceland  | 202                  | delete       |
-      | Wasabi   | 202                  | delete       |
+      | The_Works  | 202                  | delete       |
 
 
   @sending_invalid_token_delete @bink_regression_api2 @sandbox_regression
@@ -47,8 +45,7 @@ Feature: Delete a loyalty card
 
     Examples:
       | merchant | status_code_returned | error_message             | error_slug    |
-      | Iceland  | 401                  | Supplied token is invalid | INVALID_TOKEN |
-      | Wasabi   | 401                  | Supplied token is invalid | INVALID_TOKEN |
+      | SquareMeal  | 401                  | Supplied token is invalid | INVALID_TOKEN |
 
   @sending_invalid_token_for_add_delete @bink_regression_api2 @sandbox_regression
   Scenario Outline: Sending invalid token with bearer prefix in header for delete journey (Unauthorized with add journey)
@@ -63,8 +60,7 @@ Feature: Delete a loyalty card
 
     Examples:
       | merchant | status_code_returned | error_message             | error_slug    |
-      | Iceland  | 401                  | Supplied token is invalid | INVALID_TOKEN |
-      | Wasabi   | 401                  | Supplied token is invalid | INVALID_TOKEN |
+      | The_Works  | 401                  | Supplied token is invalid | INVALID_TOKEN |
 
   @resource_specified_not_found @bink_regression_api2 @sandbox_regression
   Scenario Outline: Resource specified could not be found in delete journey
@@ -81,8 +77,7 @@ Feature: Delete a loyalty card
 
     Examples:
       | merchant | status_code_returned | error_message                       | error_slug         |
-      | Iceland  | 404                  | Could not find this account or card | RESOURCE_NOT_FOUND |
-      | Wasabi   | 404                  | Could not find this account or card | RESOURCE_NOT_FOUND |
+      | Viator  | 404                  | Could not find this account or card | RESOURCE_NOT_FOUND |
 
 #  @multiple_wallet_delete @bink_regression_api2
 #  Scenario Outline: Delete journey in multiple wallet
@@ -113,8 +108,7 @@ Feature: Delete a loyalty card
 
     Examples:
       | merchant | error_message             | error_slug             | status_code_returned |
-      | Iceland  | Could not validate fields | FIELD_VALIDATION_ERROR | 422                  |
-      | Wasabi   | Could not validate fields | FIELD_VALIDATION_ERROR | 422                  |
+      | Viator  | Could not validate fields | FIELD_VALIDATION_ERROR | 422                  |
 
 
   @multi_wallet_delete @bink_regression_api2 @trusted
@@ -156,5 +150,4 @@ Feature: Delete a loyalty card
 
     Examples:
       | merchant | payment_card_provider | journey_type    | status_code_returned |
-      | Wasabi   | master                | authorise_field | 202                  |
-      | Iceland  | master                | authorise_field | 202                  |
+      | Viator   | master                | authorise_field | 202                  |

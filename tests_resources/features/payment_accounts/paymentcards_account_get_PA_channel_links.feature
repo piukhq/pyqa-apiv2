@@ -4,7 +4,6 @@ Feature: Provide Payment Card Channel Transparency to Trusted Channels
   As a trusted channel, I want to know which channel(s) a given loyalty card has payment cards linked in
   so that users are informed which channel(s) they need to go to, to manage their payment cards.
 
-
   @tc_pay_ac_channel_links
   Scenario Outline: Single wallet channel transparency in Trusted channel
     Given I am a squaremeal user

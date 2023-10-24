@@ -17,8 +17,6 @@ Feature: Verify event for join loyalty card
 
     Examples:
       | merchant   |
-      | Iceland    |
-      | Wasabi     |
       | SquareMeal |
 
   @multi_wallet_joins_event @bink_regression_api2 @event
