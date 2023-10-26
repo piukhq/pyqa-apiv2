@@ -129,7 +129,7 @@ Feature: View multi wallet loyalty card by id  pll
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
-    And I perform POST request to add and autho rise "<merchant>" membership card with transactions and vouchers
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     When For bink_user2 I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state2>','<slug2>' and '<description2>' in PLL links for Wallet loyalty card by id

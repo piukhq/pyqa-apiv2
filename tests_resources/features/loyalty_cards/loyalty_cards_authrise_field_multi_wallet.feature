@@ -45,7 +45,7 @@ Feature: Authorise a loyalty card
 
     Examples:
       | merchant |payment_card_provider |journey_type     |
-      | SquareMeal   |master                 |authorise_field |
+      | Wasabi   |master                 |authorise_field |
    #   | Iceland  |master                 |authorise_field |
 
   # add and auth wallet 1 with good credentials
@@ -87,7 +87,7 @@ Feature: Authorise a loyalty card
 
     Examples:
       | merchant |payment_card_provider|request_payload|
-      | SquareMeal   |master               |unauthorised   |
+      | Wasabi   |master               |unauthorised   |
   #    | Iceland  |master               |unauthorised   |
 
     # add and auth wallet 1 with bad credentials
@@ -131,7 +131,7 @@ Feature: Authorise a loyalty card
 
     Examples:
       | merchant |payment_card_provider|request_payload|
-      | SquareMeal   |master               |unauthorised   |
+      | Wasabi   |master               |unauthorised   |
   #   #| Iceland  |master               |  202                  |unauthorised   |
 
     # add and auth wallet 1 with good credentials
@@ -177,7 +177,7 @@ Feature: Authorise a loyalty card
 
     Examples:
       | merchant |payment_card_provider|request_payload|
-      | SquareMeal   |master               |unauthorised   |
+      | Wasabi   |master               |unauthorised   |
    #   | Iceland  |master              |unauthorised   |
 
     # add and auth wallet 1 with Add_Credential_1 and good credentials
@@ -212,7 +212,7 @@ Feature: Authorise a loyalty card
       And For bink_user2 I perform GET voucher for loyalty card with authorised for <merchant>
     Examples:
       | merchant   |payment_card_provider|
-      | SquareMeal     |master               |
+      | Wasabi     |master               |
 
 
     # add and auth wallet 1 with Add_Credential_1 and good credentials
@@ -245,4 +245,5 @@ Feature: Authorise a loyalty card
 
     Examples:
       | merchant  |payment_card_provider|
-      | SquareMeal    |master               |
+      | Wasabi    |master               |
+

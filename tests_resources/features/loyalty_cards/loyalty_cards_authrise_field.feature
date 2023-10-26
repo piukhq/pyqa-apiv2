@@ -16,7 +16,7 @@ Feature: Authorise a loyalty card
 
     Examples:
       | merchant | journey_type    | status_code_returned |
-      | SquareMeal  | authorise_field | 202                  |
+      | Iceland  | authorise_field | 202                  |
       | Wasabi   | authorise_field | 202                  |
 
   @authorise_existing_field @bink_regression_api2 @sandbox_regression
@@ -59,7 +59,8 @@ Feature: Authorise a loyalty card
 
     Examples:
       | merchant | error_message             | error_slug             | request_payload | status_code |
-      | SquareMeal  | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
+      | Iceland  | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
+      | Wasabi   | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
 
   @sending_invalid_token @bink_regression_api2 @sandbox_regression
   Scenario Outline: Sending invalid token with bearer prefix in header for authorise journey (Unauthorized)

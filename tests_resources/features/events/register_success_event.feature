@@ -17,7 +17,7 @@ Feature: Verify event for register loyalty card
 
     Examples:
       | merchant   |
-      | The_Works    |
+      | Iceland    |
 
 
   @put_register_event @bink_regression_api2 @event
@@ -33,7 +33,7 @@ Feature: Verify event for register loyalty card
 
     Examples:
       | merchant   |
-      | The_Works    |
+      | Iceland    |
 
 
   @multi_wallet_register_event @bink_regression_api2 @event
@@ -55,7 +55,7 @@ Feature: Verify event for register loyalty card
 
     Examples:
       | merchant   |
-      | The_Works    |
+      | Iceland    |
 
 
   @multi_wallet_register_event @bink_regression_api2 @event
@@ -76,7 +76,7 @@ Feature: Verify event for register loyalty card
 
     Examples:
       | merchant   |
-      | The_Works    |
+      | Iceland    |
 
 
   @multi_wallet_register_event @bink_regression_api2 @event
@@ -97,7 +97,7 @@ Feature: Verify event for register loyalty card
 
     Examples:
       | merchant   |
-      | The_Works    |
+      | Iceland    |
 
   @put_register_event @bink_regression_api2 @event
   Scenario Outline: Verify event is generated when on put register in multi-wallet
@@ -120,7 +120,7 @@ Feature: Verify event for register loyalty card
 
     Examples:
       | merchant   |
-      | The_Works    |
+      | Iceland    |
 
 
   @put_register_event @bink_regression_api2 @event
@@ -143,7 +143,7 @@ Feature: Verify event for register loyalty card
 
     Examples:
       | merchant   |
-      | The_Works    |
+      | Iceland    |
 
 
   @put_register_event @bink_regression_api2 @event
@@ -166,4 +166,5 @@ Feature: Verify event for register loyalty card
 
     Examples:
       | merchant   |
-      | The_Works    |
+      | Iceland    |
+
