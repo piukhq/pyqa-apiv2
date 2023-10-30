@@ -1,17 +1,27 @@
 {
-	"company_name": "The Works",
-	"plan_name": "Together Rewards",
-	"plan_label": "Card",
-	"plan_url": "https://www.theworks.co.uk/page/together-rewards.html",
-	"plan_summary": "Plan Summary copy is still to be confirmed with The Works",
-	"plan_description": "Plan Description copy is still to be confirmed with The Works",
-	"redeem_instructions": "Barcode instructions copy is still to be confirmed with The Works",
-	"plan_register_info": "You have added a temporary card. You’ll need to register it to enjoy the full benefits of the programme.",
-	"join_incentive": null,
-	"category": "Household",
-	"tiers": [],
-	"forgotten_password_url": null,
-	"images": [],
-	"colour": "#000000",
-	"text_colour": null
+    "company_name": "The Works",
+    "plan_name": "Together Rewards",
+    "plan_label": "Card",
+    "plan_url": "https://www.theworks.co.uk/page/together-rewards.html",
+    "plan_summary": "Earn 5 points for every \u00a31 spent in-store or online. Every three months we will convert your points into vouchers giving you 5p back for every full \u00a31 spent! You can spend these vouchers on all your favourite things at The Works in-store or online.",
+    "plan_description": "Whether you are looking for an inspirational read, crafting a new masterpiece, or entertaining the kids with some good old-fashioned fun and games, get more from your shop by earning 5 points for every full \u00a31 you spend in-store and online. To get going just share your name and email address. Shop and save in-store or online. What do points mean? Vouchers! The Works will convert your points into redeemable vouchers for you four times a year to spend on all your favourite things!",
+    "redeem_instructions": "At checkout, simply show this barcode as you normally would with your physical card to redeem vouchers.",
+    "plan_register_info": "You have added a temporary card. You\u2019ll need to register it to enjoy the full benefits of the programme.",
+    "join_incentive": null,
+    "category": "Household",
+    "tiers": [],
+    "forgotten_password_url": null,
+    "images": [
+        {
+            "id": 1414,
+            "type": 3,
+            "url": "https://api.staging.gb.bink.com/content/hermes/schemes/The_Works_Icon.png",
+            "cta_url": null,
+            "description": "The Works Logo",
+            "encoding": "png",
+            "order": 0
+        }
+    ],
+    "colour": "#fff200",
+    "text_colour": "#FFFFFF"
 }

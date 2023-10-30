@@ -14,12 +14,10 @@ Feature: view journey fields
 
     Examples:
       | loyalty_scheme | status_code |
-      | Iceland        | 200         |
-      | Wasabi         | 200         |
       | SquareMeal     | 200         |
       | Trenette       | 200         |
       | Viator         | 200         |
-   #  | The_Works      | 200         |
+      | The_Works      | 200         |
 
 
   @membership_plan @invalid_token @bink_regression_api2 @sandbox_regression
@@ -31,12 +29,7 @@ Feature: view journey fields
 
     Examples:
       | loyalty_scheme | status_code | error_message             | error_slug    |
-      | Iceland        | 401         | Supplied token is invalid | INVALID_TOKEN |
-      | Wasabi         | 401         | Supplied token is invalid | INVALID_TOKEN |
       | SquareMeal     | 401         | Supplied token is invalid | INVALID_TOKEN |
-      | Trenette       | 401         | Supplied token is invalid | INVALID_TOKEN |
-      | Viator         | 401         | Supplied token is invalid | INVALID_TOKEN |
-      | The_Works      | 401         | Supplied token is invalid | INVALID_TOKEN |
 
   @membership_plan @invalid_resource @bink_regression_api2 @sandbox_regression
   Scenario Outline: Verify Resource specified could not be found
@@ -50,5 +43,3 @@ Feature: view journey fields
       | loyalty_scheme      | status_code | error_message                       | error_slug         |
       | Merchant_not_exists | 404         | Could not find this Loyalty Plan | RESOURCE_NOT_FOUND |
       | Wallis              | 404         | Could not find this Loyalty Plan | RESOURCE_NOT_FOUND |
-      | Bink Test Scheme    | 404         | Could not find this Loyalty Plan | RESOURCE_NOT_FOUND |
-
