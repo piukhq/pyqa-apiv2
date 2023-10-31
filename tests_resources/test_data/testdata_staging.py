@@ -282,28 +282,10 @@ event_type = {
 }
 
 consent_slug = {
-    "Wasabi": "EmailOptin",
-    "Iceland": "marketing_opt_in",
+    "The_Works": "email_marketing",
     "SquareMeal": "Subscription",
 }
 
-# ------------------------------------------ DB DETAILS ---------------------------------------------------- #
-
-db_details = {
-    "user": "common@bink-uksouth-staging-common",
-    "password": "",
-    "host": "127.0.0.1",
-    "port": "5432",
-    "database": "hermes",
-}
-
-harmonia_db_details = {
-    "user": "common@bink-uksouth-staging-common",
-    "password": "",
-    "host": "127.0.0.1",
-    "port": "5432",
-    "database": "harmonia",
-}
 # ---------------------------------------------USER ACCOUNTS ---------------------------------------------------- #
 
 bink_user_accounts = {
