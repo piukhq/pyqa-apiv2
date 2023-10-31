@@ -5,7 +5,7 @@ Feature: Verify event for join loyalty card
   I want to see an event logged when a user joined scheme
   so that this Business Event can be written to ClickHouse for validation
 
-  @user_join_event @bink_regression_api2 @event
+  @user_join_event @bink_regression_api2 @event @test123
   Scenario Outline: Verify event generate for user join scheme
     Given I am a Lloyds user
     When I perform POST request to join "<merchant>" membership card
@@ -17,9 +17,7 @@ Feature: Verify event for join loyalty card
 
     Examples:
       | merchant   |
-      | Iceland    |
-      | Wasabi     |
-      | SquareMeal |
+      | The_Works     |
 
   @multi_wallet_joins_event @bink_regression_api2 @event
   Scenario: Verify event generate for join requests in multiwallet
