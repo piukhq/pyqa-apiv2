@@ -16,7 +16,7 @@ Feature: Verify event for register failed loyalty card
 
     Examples:
       | merchant   |
-      | Iceland    |
+      | The_Works    |
 
 
   @put_register_failed_event @bink_regression_api2 @event
@@ -31,7 +31,7 @@ Feature: Verify event for register failed loyalty card
 
     Examples:
       | merchant   |
-      | Iceland    |
+      | The_Works    |
 
 
   @multi_wallet_register_event @bink_regression_api2 @event
@@ -51,7 +51,7 @@ Feature: Verify event for register failed loyalty card
 
     Examples:
       | merchant   |
-      | Iceland    |
+      | The_Works    |
 
 
 
@@ -74,4 +74,4 @@ Feature: Verify event for register failed loyalty card
 
     Examples:
       | merchant   |
-      | Iceland    |
+      | The_Works    |
