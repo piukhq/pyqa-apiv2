@@ -14,8 +14,6 @@ Feature: Add and authorise a loyalty card
 
     Examples:
       | merchant      | status_code_returned | journey_type      |
-      | Iceland       | 202                  | add_and_authorise |
-      | Wasabi        | 202                  | add_and_authorise |
       | SquareMeal    | 202                  | add_and_authorise |
       | Trenette      | 202                  | add_and_authorise |
   #   | HarveyNichols | 202                  | add_and_authorise |
@@ -32,8 +30,6 @@ Feature: Add and authorise a loyalty card
 
     Examples:
       | merchant      | status_code_returned | journey_type      |
-      | Iceland       | 409                  | add_and_authorise |
-      | Wasabi        | 409                  | add_and_authorise |
       | SquareMeal    | 409                  | add_and_authorise |
       | Trenette      | 409                  | add_and_authorise |
 
@@ -47,8 +43,6 @@ Feature: Add and authorise a loyalty card
 
     Examples:
       | merchant    | error_message             | error_slug             | request_payload | status_code |
-      | Iceland     | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
-      | Wasabi      | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
       | SquareMeal  | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
       | Trenette    | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
 
@@ -62,8 +56,6 @@ Feature: Add and authorise a loyalty card
 
     Examples:
       | merchant     | error_message | error_slug        | request_payload | status_code |
-      | Iceland      | Invalid JSON  | MALFORMED_REQUEST | invalid_json    | 400         |
-      | Wasabi       | Invalid JSON  | MALFORMED_REQUEST | invalid_json    | 400         |
       | SquareMeal   | Invalid JSON  | MALFORMED_REQUEST | invalid_json    | 400         |
       | Trenette     | Invalid JSON  | MALFORMED_REQUEST | invalid_json    | 400         |
 
@@ -77,8 +69,6 @@ Feature: Add and authorise a loyalty card
 
     Examples:
       | merchant     | status_code_returned | error_message             | error_slug    |
-      | Iceland      | 401                  | Supplied token is invalid | INVALID_TOKEN |
-      | Wasabi       | 401                  | Supplied token is invalid | INVALID_TOKEN |
       | SquareMeal   | 401                  | Supplied token is invalid | INVALID_TOKEN |
       | Trenette     | 401                  | Supplied token is invalid | INVALID_TOKEN |
 
@@ -109,7 +99,6 @@ Feature: Add and authorise a loyalty card
 
     Examples:
       | merchant    | status_code_returned | error_message                                                                                                    | error_slug         |
-      | Iceland     | 409                  |Card already authorised. Use PUT /loyalty_cards/{loyalty_card_id}/authorise to modify authorisation credentials.  | ALREADY_AUTHORISED |
       | SquareMeal  | 409                  |Card already authorised. Use PUT /loyalty_cards/{loyalty_card_id}/authorise to modify authorisation credentials.  | ALREADY_AUTHORISED |
       | Trenette    | 409                  |Card already authorised. Use PUT /loyalty_cards/{loyalty_card_id}/authorise to modify authorisation credentials.  | ALREADY_AUTHORISED |
 
@@ -123,7 +112,5 @@ Feature: Add and authorise a loyalty card
 
     Examples:
       | payment_card_provider | merchant   | status_code_returned | journey_type |
-      | master                | Iceland    | 202                  | pll_active   |
-      | master                | Wasabi     | 202                  | pll_active   |
       | master                | SquareMeal | 202                  | pll_active   |
       | master                | Trenette   | 202                  | pll_active  |
