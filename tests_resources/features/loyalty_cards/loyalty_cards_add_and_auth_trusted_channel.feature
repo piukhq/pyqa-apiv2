@@ -172,4 +172,3 @@ Feature: Add and authorise a loyalty card into Trusted channel
     Examples:
       | payment_card_provider | merchant   | status_code_returned | journey_type |
       | master                | SquareMeal | 201                  | pll_active   |
-
