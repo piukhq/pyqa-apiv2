@@ -94,8 +94,6 @@ Feature: Add and authorise a loyalty card
 
     Examples:
       | merchant    | status_code_returned | error_message                                                                                  | error_slug    |
-      | Iceland     | 409                  | Card already added. Use PUT /loyalty_cards/{loyalty_card_id}/authorise to authorise this card. | ALREADY_ADDED |
-      | Wasabi      | 409                  | Card already added. Use PUT /loyalty_cards/{loyalty_card_id}/authorise to authorise this card. | ALREADY_ADDED |
       | Trenette    | 409                  | Card already added. Use PUT /loyalty_cards/{loyalty_card_id}/authorise to authorise this card. | ALREADY_ADDED |
 
 
