@@ -10,9 +10,9 @@ Feature: Verify event for pll status change
   Scenario: Verify events for pll link status change for add and auth success
     Given I am a Lloyds user
     When I perform POST request to add a new "master" payment account to wallet
-    And I perform POST request to add "The_Works" membership card
-    And I perform PUT request to authorise "The_Works" above wallet only membership card
-    Then verify that for lloyds_user data stored in after authorise_field journey for "The_Works"
+    And I perform POST request to add "Viator" membership card
+    And I perform PUT request to authorise "Viator" above wallet only membership card
+    Then verify that for lloyds_user data stored in after authorise_field journey for "Viator"
     And I verify pll_link_statuschange pll event is created for lloyds_user for status null to 0 and slug LOYALTY_CARD_PENDING
     And I verify pll_link_statuschange pll event is created for lloyds_user for status 0 to 1 and slug null
 
@@ -31,7 +31,7 @@ Feature: Verify event for pll status change
   Scenario: Verify events for pll link status change for join success
     Given I am a halifax user
     When I perform POST request to add a new "master" payment account to wallet
-    And I perform POST request to join "The_Works" membership card
+    And I perform POST request to join "Viator" membership card
     Then I verify pll_link_statuschange pll event is created for halifax_user for status null to 0 and slug LOYALTY_CARD_PENDING
     And I verify pll_link_statuschange pll event is created for halifax_user for status 0 to 1 and slug null
 
@@ -40,7 +40,7 @@ Feature: Verify event for pll status change
   Scenario: Verify events for pll link status change for join failure
     Given I am a halifax user
     When I perform POST request to add a new "master" payment account to wallet
-    And I perform enrol_failed POST request to join "The_Works" membership card
+    And I perform enrol_failed POST request to join "Viator" membership card
     Then I verify pll_link_statuschange pll event is created for halifax_user for status null to 0 and slug LOYALTY_CARD_PENDING
     And I verify pll_link_statuschange pll event is created for halifax_user for status 0 to 2 and slug LOYALTY_CARD_NOT_AUTHORISED
 
@@ -49,7 +49,7 @@ Feature: Verify event for pll status change
   Scenario: Verify events for pll link status change for register success
     Given I am a Lloyds user
     When I perform POST request to add a new "master" payment account to wallet
-    And I perform POST request add and register for The_Works
+    And I perform POST request add and register for Viator
     Then I verify pll_link_statuschange pll event is created for lloyds_user for status null to 0 and slug LOYALTY_CARD_PENDING
     And I verify pll_link_statuschange pll event is created for lloyds_user for status 0 to 1 and slug null
 
@@ -58,8 +58,8 @@ Feature: Verify event for pll status change
   Scenario: Verify events for pll link status change for register failure
     Given I am a Lloyds user
     When I perform POST request to add a new "master" payment account to wallet
-    And I perform POST request to add The_Works membership card before registration_failed register
-    And I perform PUT request to register The_Works with registration_failed membership card
+    And I perform POST request to add Viator membership card before registration_failed register
+    And I perform PUT request to register Viator with registration_failed membership card
     Then I verify pll_link_statuschange pll event is created for lloyds_user for status null to 0 and slug LOYALTY_CARD_PENDING
     And I verify pll_link_statuschange pll event is created for lloyds_user for status 0 to 2 and slug LOYALTY_CARD_NOT_AUTHORISED
 
@@ -67,15 +67,15 @@ Feature: Verify event for pll status change
   Scenario: Verify events for pll link status change after deleting loyalty card
     Given I am a Lloyds user
     When I perform POST request to add a new "master" payment account to wallet
-    And I perform POST request to add and authorise "The_Works" membership card
-    Then I perform DELETE request to delete the "The_Works" membership card
+    And I perform POST request to add and authorise "Viator" membership card
+    Then I perform DELETE request to delete the "Viator" membership card
     And I verify pll_link_statuschange pll event is created for lloyds_user for status 1 to null and slug null
 
   @pc_remove_plllink_statuschange @bink_regression_api2
   Scenario: Verify events for pll link status change after deleting payment card
     Given I am a Lloyds user
     When I perform POST request to add a new "master" payment account to wallet
-    And I perform POST request to add and authorise "The_Works" membership card
+    And I perform POST request to add and authorise "Viator" membership card
     Then I perform DELETE request to delete "master" the payment card
     And I verify pll_link_statuschange pll event is created for lloyds_user for status 1 to null and slug null
 
@@ -83,12 +83,12 @@ Feature: Verify event for pll status change
   Scenario: Verify event generate for  add and auth success in multiwallet
     Given I am a Lloyds user
     When I perform POST request to add a new "master" payment account to wallet
-    And I perform POST request to add and authorise "The_Works" membership card
+    And I perform POST request to add and authorise "Viator" membership card
     Then I verify pll_link_statuschange pll event is created for lloyds_user for status null to 0 and slug LOYALTY_CARD_PENDING
     And I verify pll_link_statuschange pll event is created for lloyds_user for status 0 to 1 and slug null
 
     Given I am a halifax user
     When I perform POST request to add existing payment card "master" second wallet
-    And I perform POST request to add and authorise "The_Works" membership card
+    And I perform POST request to add and authorise "Viator" membership card
     Then I verify pll_link_statuschange pll event is created for halifax_user for status null to 0 and slug LOYALTY_CARD_PENDING
     And I verify pll_link_statuschange pll event is created for halifax_user for status 0 to 1 and slug null

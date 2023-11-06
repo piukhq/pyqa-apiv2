@@ -8,24 +8,24 @@ Feature: Verify event for add and after authorise loyalty card
   @auth_success_event @bink_regression_api2 @event
   Scenario: Verify events for add and after authorise field journey only
     Given I am a Lloyds user
-    When I perform POST request to add "The_Works" membership card
-    And I perform PUT request to authorise "The_Works" above wallet only membership card
+    When I perform POST request to add "Viator" membership card
+    And I perform PUT request to authorise "Viator" above wallet only membership card
     Then I verify lc_auth_request loyalty scheme event is created for lloyds_user
     And I verify lc_auth_success loyalty scheme event is created for lloyds_user
-    And verify that for lloyds_user data stored in after "authorise_field" journey for "The_Works"
+    And verify that for lloyds_user data stored in after "authorise_field" journey for "Viator"
 
   @multi_wallet_auth_event @bink_regression_api2 @event
   Scenario: Verify event generate for add and after authorise requests in multiwallet
     Given I am a Lloyds user
-    When I perform POST request to add "The_Works" membership card
-    And I perform PUT request to authorise "The_Works" above wallet only membership card
-    Then verify that for lloyds_user data stored in after "add_and_authorise" journey for "The_Works"
+    When I perform POST request to add "Viator" membership card
+    And I perform PUT request to authorise "Viator" above wallet only membership card
+    Then verify that for lloyds_user data stored in after "add_and_authorise" journey for "Viator"
     And I verify lc_auth_request loyalty scheme event is created for lloyds_user
     And I verify lc_auth_success loyalty scheme event is created for lloyds_user
 
     Given I am a halifax user
-    When I perform POST request to add "The_Works" membership card
-    And I perform PUT request to authorise "The_Works" above wallet only membership card
-    Then verify that for halifax_user data stored in after "add_and_authorise" journey for "The_Works"
+    When I perform POST request to add "Viator" membership card
+    And I perform PUT request to authorise "Viator" above wallet only membership card
+    Then verify that for halifax_user data stored in after "add_and_authorise" journey for "Viator"
     And I verify lc_auth_request loyalty scheme event is created for halifax_user
     And I verify lc_auth_success loyalty scheme event is created for halifax_user

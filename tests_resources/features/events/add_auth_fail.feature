@@ -9,8 +9,8 @@ Feature: Verify event for add and authorise fail loyalty card
   Scenario: Verify events for add and auth field journey with unauthorised loyalty card
     Given I am a Lloyds user
     Then I verify that user_created event is created for lloyds_user
-    When I perform POST request to add and auth "The_Works" membership card with "unauthorised" with "202"
-    Then verify that for lloyds_user data stored in after "unauthorised" journey for "The_Works"
+    When I perform POST request to add and auth "Viator" membership card with "unauthorised" with "202"
+    Then verify that for lloyds_user data stored in after "unauthorised" journey for "Viator"
     And I verify lc_add_auth_request loyalty scheme event is created for lloyds_user
     And I verify lc_status_change loyalty scheme event is created for lloyds_user
     And I verify lc_add_auth_failed loyalty scheme event is created for lloyds_user
@@ -19,15 +19,15 @@ Feature: Verify event for add and authorise fail loyalty card
   Scenario: Verify event generate for fail add and auth requests in multiwallet
     Given I am a Lloyds user
     Then I verify that user_created event is created for lloyds_user
-    When I perform POST request to add and auth "The_Works" membership card with "unauthorised" with "202"
-    Then verify that for lloyds_user data stored in after "unauthorised" journey for "The_Works"
+    When I perform POST request to add and auth "Viator" membership card with "unauthorised" with "202"
+    Then verify that for lloyds_user data stored in after "unauthorised" journey for "Viator"
     And I verify lc_add_auth_request loyalty scheme event is created for lloyds_user
     And I verify lc_status_change loyalty scheme event is created for lloyds_user
     And I verify lc_add_auth_failed loyalty scheme event is created for lloyds_user
 
     Given I am a halifax user
-    When I perform POST request to add and auth "The_Works" membership card with "unauthorised" with "202"
-    Then verify that for halifax_user data stored in after "unauthorised" journey for "The_Works"
+    When I perform POST request to add and auth "Viator" membership card with "unauthorised" with "202"
+    Then verify that for halifax_user data stored in after "unauthorised" journey for "Viator"
     And I verify lc_add_auth_request loyalty scheme event is created for halifax_user
     And I verify lc_status_change loyalty scheme event is created for halifax_user
     And I verify lc_add_auth_failed loyalty scheme event is created for halifax_user
