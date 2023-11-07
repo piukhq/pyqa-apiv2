@@ -280,9 +280,8 @@ class TheWorksResponse:
             "total_payment_accounts": 1,
             "status": {
                 "state": "failed",
-                "slug": "ACCOUNT_NOT_REGISTERED",
-                "description": "The Loyalty Card has not yet been registered. "
-                "Please register the card with the retailer.",
+                "slug": "REGISTRATION_FAILED",
+                "description": "The retailer couldn't process your request, so we can't register your details. To help fix this, check the card number, select 'Remove loyalty card', then start again. If it still doesn't work, please speak to the retailer.",
             },
             "balance": {
                 "updated_at": None,

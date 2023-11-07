@@ -258,7 +258,7 @@ class ViatorCard:
         return payload
 
     @staticmethod
-    def add_and_auth_field_only_membership_card_with_unauthorised_json(membership_card=None):
+    def add_and_auth_field_only_membership_card_with_unauthorised_json(membership_card=None, request_payload=None):
         TestContext.card_number = TestDataUtils.TEST_DATA.viator_membership_card.get(constants.TRANSACTIONS_CARD)
         TestContext.email = TestDataUtils.TEST_DATA.viator_membership_card.get(constants.UNAUTHORISED_EMAIL)
         payload = {
