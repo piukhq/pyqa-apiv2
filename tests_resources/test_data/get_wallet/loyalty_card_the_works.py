@@ -281,7 +281,9 @@ class TheWorksResponse:
             "status": {
                 "state": "failed",
                 "slug": "REGISTRATION_FAILED",
-                "description": "The retailer couldn't process your request, so we can't register your details. To help fix this, check the card number, select 'Remove loyalty card', then start again. If it still doesn't work, please speak to the retailer.",
+                "description": "The retailer couldn't process your request, so we can't"
+                "register your details. To help fix this, check the card number, select"
+                "'Remove loyalty card', then start again. If it still doesn't work, please speak to the retailer.",
             },
             "balance": {
                 "updated_at": None,
