@@ -23,7 +23,7 @@ Feature: View multi wallet loyalty card by id  pll
 
      Examples:
      | merchant | status_code_returned|payment_card_provider|state|slug                     |description |
-     | Wasabi   | 200                 | master              |active|null                    |null       |
+     | Viator   | 200                 | master              |active|null                    |null       |
 
     @multi_wallet_loyaltycard_pll_status1b @sandbox_regression
   Scenario Outline: Verify pll links for pending payment account and authorised loyalty card for multi wallet loyalty card by id
@@ -43,7 +43,7 @@ Feature: View multi wallet loyalty card by id  pll
 
      Examples:
      | merchant |payment_card_provider|state  |slug                     |description                                                                        |
-     | Wasabi   | master              |pending|PAYMENT_ACCOUNT_PENDING  |When the Payment Account becomes active, the PLL link will automatically go active.|
+     | Viator   | master              |pending|PAYMENT_ACCOUNT_PENDING  |When the Payment Account becomes active, the PLL link will automatically go active.|
 
 
   @multi_wallet_loyaltycard_pll_status2 @sandbox_regression
@@ -65,7 +65,7 @@ Feature: View multi wallet loyalty card by id  pll
 
      Examples:
      | merchant | status_code_returned|payment_card_provider|state |state2     |slug|slug2                     |description|description2                                                     |
-     | Wasabi   | 200                 |master               |active|inactive   |null|PAYMENT_ACCOUNT_INACTIVE  |null       |The Payment Account is not active so no PLL link can be created. |
+     | Viator   | 200                 |master               |active|inactive   |null|PAYMENT_ACCOUNT_INACTIVE  |null       |The Payment Account is not active so no PLL link can be created. |
 
    @multi_wallet_loyaltycard_pll_status3 @sandbox_regression
   Scenario Outline: Verify pll links for active payment account and unauthorised loyalty card for multi wallet loyalty card by id
@@ -89,7 +89,7 @@ Feature: View multi wallet loyalty card by id  pll
 
      Examples:
      | merchant | status_code_returned | payment_card_provider |state | slug |  description|state2  | slug2                      |description2                                                     |
-     | Wasabi   | 200                   | master               |active| null |  null       |inactive|LOYALTY_CARD_NOT_AUTHORISED |The Loyalty Card is not authorised so no PLL link can be created.|
+     | Viator   | 200                   | master               |active| null |  null       |inactive|LOYALTY_CARD_NOT_AUTHORISED |The Loyalty Card is not authorised so no PLL link can be created.|
 
   @multi_wallet_loyaltycard_pll_status4 @sandbox_regression
   Scenario Outline: Verify pll links for inactive payment account and unauthorised loyalty card for multi wallet loyalty card by id
@@ -114,7 +114,7 @@ Feature: View multi wallet loyalty card by id  pll
 
      Examples:
      | merchant |status_code_returned | payment_card_provider |state |  state2    |slug   |slug2                                      |description| description2                                                                                  |
-     | Wasabi   | 200                 | master                |active| inactive   |null   |PAYMENT_ACCOUNT_AND_LOYALTY_CARD_INACTIVE  |null       | The Payment Account and Loyalty Card are not active/authorised so no PLL link can be created. |
+     | Viator   | 200                 | master                |active| inactive   |null   |PAYMENT_ACCOUNT_AND_LOYALTY_CARD_INACTIVE  |null       | The Payment Account and Loyalty Card are not active/authorised so no PLL link can be created. |
 
   @multi_wallet_loyaltycard_pll_status5a @UC_same_channel @ubiquity_collision @sandbox_regression
   Scenario Outline: UC for multi wallet lc by id users in same channels
@@ -140,7 +140,7 @@ Feature: View multi wallet loyalty card by id  pll
 
      Examples:
      | merchant | status_code_returned | payment_card_provider |state1 | slug1 |description1 | state2  | slug2              | description2                                                                               |
-     | Wasabi   | 200                  | visa                  |active | null  |null         |inactive |UBIQUITY_COLLISION  | There is already a Loyalty Card from the same Loyalty Plan linked to this Payment Account. |
+     | Viator   | 200                  | visa                  |active | null  |null         |inactive |UBIQUITY_COLLISION  | There is already a Loyalty Card from the same Loyalty Plan linked to this Payment Account. |
 
   @multi_wallet_loyaltycard_pll_status5b @UC_different_channels @ubiquity_collision @sandbox_regression
   Scenario Outline: UC for multi wallet lc by id users in different channels
@@ -165,7 +165,7 @@ Feature: View multi wallet loyalty card by id  pll
 
     Examples:
      | merchant | status_code_returned | payment_card_provider |state1 | slug1 |description1 | state2  | slug2              | description2                                                                               |
-     | Wasabi   | 200                  | visa                  |active | null  |null         |inactive |UBIQUITY_COLLISION  | There is already a Loyalty Card from the same Loyalty Plan linked to this Payment Account. |
+     | Viator   | 200                  | visa                  |active | null  |null         |inactive |UBIQUITY_COLLISION  | There is already a Loyalty Card from the same Loyalty Plan linked to this Payment Account. |
 
      @multi_wallet_loyaltycard_pll_status6 @sandbox_regression
   Scenario Outline: Verify pending payment status in two channels for multi wallet loyalty card by id
@@ -186,7 +186,7 @@ Feature: View multi wallet loyalty card by id  pll
 
      Examples:
      | merchant | payment_card_provider |state1            | slug1                   |description1                                                                        | state2   | slug2                       | description2                                                      |
-     | Wasabi   | visa                  |pending           | PAYMENT_ACCOUNT_PENDING |When the Payment Account becomes active, the PLL link will automatically go active. |inactive  |LOYALTY_CARD_NOT_AUTHORISED  | The Loyalty Card is not authorised so no PLL link can be created. |
+     | Viator   | visa                  |pending           | PAYMENT_ACCOUNT_PENDING |When the Payment Account becomes active, the PLL link will automatically go active. |inactive  |LOYALTY_CARD_NOT_AUTHORISED  | The Loyalty Card is not authorised so no PLL link can be created. |
 
 
     @multi_wallet_lcbyid_delete_lc_pll @sandbox_regression
@@ -215,7 +215,7 @@ Feature: View multi wallet loyalty card by id  pll
 
      Examples:
      | merchant | status_code_returned | payment_card_provider |state  |slug |description  |status_code_returned2|error_message                      |error_slug        |
-     | Wasabi   | 200                   | master                |active |null |null         |404                  |Could not find this account or card|RESOURCE_NOT_FOUND|
+     | Viator   | 200                   | master                |active |null |null         |404                  |Could not find this account or card|RESOURCE_NOT_FOUND|
 
   @multi_wallet_lcbyid_delete_pc_pll @sandbox_regression
    Scenario Outline: No PLL link in get wallet loyalty card by id when payment card deleted from single wallet
@@ -241,4 +241,4 @@ Feature: View multi wallet loyalty card by id  pll
 
      Examples:
      | merchant |  status_code_returned | payment_card_provider |state  |slug |description  |
-     | Wasabi   | 200                   | master                |active |null |null         |
+     | Viator   | 200                   | master                |active |null |null         |

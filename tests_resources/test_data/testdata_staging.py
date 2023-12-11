@@ -118,6 +118,7 @@ harvey_nichols_membership_card = {
 
 join_emails = {
     "id": "joininprogress@testbink.com",
+    "join_fail_id": "emailexists@testbink.com",
     "slow_join_id": "slowjoin@testbink.com",
     "success_email": "pytest+success@bink.com",
     "identical_join": "identicaljoin@bink.com",
