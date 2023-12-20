@@ -46,7 +46,6 @@ Feature: Authorise a loyalty card
     Examples:
       | merchant |payment_card_provider |journey_type     |
       | Wasabi   |master                 |authorise_field |
-   #   | Iceland  |master                 |authorise_field |
 
   # add and auth wallet 1 with good credentials
   # Get wallet 1 has authorised details. Also balance vouchers and transactions returned
@@ -88,7 +87,6 @@ Feature: Authorise a loyalty card
     Examples:
       | merchant |payment_card_provider|request_payload|
       | Wasabi   |master               |unauthorised   |
-  #    | Iceland  |master               |unauthorised   |
 
     # add and auth wallet 1 with bad credentials
   # Get wallet 1 has unauthorised details .Also balance vouchers and transactions null
@@ -132,7 +130,6 @@ Feature: Authorise a loyalty card
     Examples:
       | merchant |payment_card_provider|request_payload|
       | Wasabi   |master               |unauthorised   |
-  #   #| Iceland  |master               |  202                  |unauthorised   |
 
     # add and auth wallet 1 with good credentials
     # Get wallet 1 has authorised details. Also balance vouchers and transactions returned
@@ -178,7 +175,6 @@ Feature: Authorise a loyalty card
     Examples:
       | merchant |payment_card_provider|request_payload|
       | Wasabi   |master               |unauthorised   |
-   #   | Iceland  |master              |unauthorised   |
 
     # add and auth wallet 1 with Add_Credential_1 and good credentials
     # Get wallet 1 has authorised details. Also balance vouchers and transactions returned
@@ -246,4 +242,3 @@ Feature: Authorise a loyalty card
     Examples:
       | merchant  |payment_card_provider|
       | Wasabi    |master               |
-

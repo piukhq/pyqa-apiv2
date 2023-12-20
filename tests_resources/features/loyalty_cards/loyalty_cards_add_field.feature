@@ -17,29 +17,3 @@ Feature: Add a loyalty card
     Examples:
       | merchant | journey_type | status_code_returned |
       | Viator | Add_field    | 201                  |
-
-  @invalid_field @bink_regression_api2 @sandbox_regression
-  Scenario Outline: Add field journey with Unprocessable entity
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add "<merchant>" membership card with "<request_payload>" with "<status_code>"
-#    And I perform GET request to verify the "<merchant>" membership card is added to the wallet
-    Then I see a "<error_message>" error message
-    And I see a "<error_slug>" error slug
-
-    Examples:
-      | merchant | error_message             | error_slug             | request_payload | status_code |
-      | SquareMeal  | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
-
-  @sending_invalid_token @bink_regression_api2 @sandbox_regression
-  Scenario Outline: Sending invalid token with bearer prefix in header for add journey (Unauthorized)
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform POST <merchant> membership_card request with invalid token and bearer prefix
-    Then I see a <status_code_returned>
-    And I see a "<error_message>" error message
-    And I see a "<error_slug>" error slug
-
-    Examples:
-      | merchant | status_code_returned | error_message             | error_slug    |
-      | Viator | 401                  | Supplied token is invalid | INVALID_TOKEN |

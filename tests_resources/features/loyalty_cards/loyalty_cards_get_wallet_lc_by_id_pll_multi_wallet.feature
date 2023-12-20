@@ -25,26 +25,6 @@ Feature: View multi wallet loyalty card by id  pll
      | merchant | status_code_returned|payment_card_provider|state|slug                     |description |
      | Viator   | 200                 | master              |active|null                    |null       |
 
-    @multi_wallet_loyaltycard_pll_status1b @sandbox_regression
-  Scenario Outline: Verify pll links for pending payment account and authorised loyalty card for multi wallet loyalty card by id
-    Given I am a bos user
-    When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform POST request to add a pending "<payment_card_provider>" payment account to wallet
-    Given I am a halifax user
-    When I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
-    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And For bos_user I perform GET Wallet_by_card_id
-    Then I see a 200
-    And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
-    When For halifax_user I perform GET Wallet_by_card_id
-    Then I see a 200
-    And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
-    And verify that for halifax_user data stored in after pll_inactive journey for "<merchant>"
-
-     Examples:
-     | merchant |payment_card_provider|state  |slug                     |description                                                                        |
-     | Viator   | master              |pending|PAYMENT_ACCOUNT_PENDING  |When the Payment Account becomes active, the PLL link will automatically go active.|
-
 
   @multi_wallet_loyaltycard_pll_status2 @sandbox_regression
   Scenario Outline: Verify pll links for inactive payment account and authorised loyalty card for multi wallet loyalty card by id

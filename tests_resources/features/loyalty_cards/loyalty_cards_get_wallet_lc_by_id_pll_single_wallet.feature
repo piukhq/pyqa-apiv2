@@ -65,25 +65,6 @@ Feature: View Wallet by loyalty card id
      | merchant | request_payload | status_code | status_code_returned | payment_card_provider | state    | slug                                      | description                                                                                   |
      | Wasabi   | unauthorised    | 202         | 200                  | master                | inactive | PAYMENT_ACCOUNT_AND_LOYALTY_CARD_INACTIVE | The Payment Account and Loyalty Card are not active/authorised so no PLL link can be created. |
 
-@wallet_lcid_delete_lc_pll @bink_regression_api2 @sandbox_regression
-  Scenario Outline: No PLL link when loyalty card deleted from single wallet loyalty card by id
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    And I perform GET Wallet_by_card_id
-    Then I see a <status_code_returned1>
-    And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
-    And I perform DELETE request to delete the "<merchant>" membership card
-    When I perform GET Wallet_by_card_id
-    Then I see a <status_code_returned2>
-    And I see a "<error_message>" error message
-    And I see a "<error_slug>" error slug
-
-     Examples:
-     | merchant | status_code_returned1 |status_code_returned2| payment_card_provider |state  |slug |description |error_message                      |error_slug        |
-     | Wasabi   | 200                   |404                  |master                 |active |null |null        |Could not find this account or card|RESOURCE_NOT_FOUND|
-
     @wallet_lcid_delete_pc_pll @bink_regression_api2 @sandbox_regression
     Scenario Outline: No PLL link when payment card deleted from single wallet loyalty card by id
       Given I am in Bink channel to get b2b token

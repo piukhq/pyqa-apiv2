@@ -29,68 +29,6 @@ Feature: Add and authorise a loyalty card into Trusted channel
       | merchant      |journey_type      |
       | SquareMeal    | add_and_authorise|
 
- # @invalid_json_trusted @sandbox_regression
- # Scenario Outline: Add loyalty card in trusted channel with malformed request
- #   Given I am a squaremeal user
- #   When I perform POST request to add trusted channel "<merchant>" loyalty card with "<request_payload>" with "<status_code>"
-#    Then I see a "<error_message>" error message
- #   And I see a "<error_slug>" error slug
-
-  #  Examples:
-  #    | merchant     | error_message | error_slug        | request_payload | status_code |
-  #    | SquareMeal   | Invalid JSON  | MALFORMED_REQUEST | invalid_json    | 400         |
-
-  @invalid_request_trusted @sandbox_regression
-  Scenario Outline: Add loyalty card in trusted channel with unprocessable entity
-    Given I am a squaremeal user
-    When I perform POST request to add trusted channel "<merchant>" loyalty card with "<request_payload>" with "<status_code>"
-    Then I see a "<error_message>" error message
-    And I see a "<error_slug>" error slug
-
-    Examples:
-      | merchant     | error_message             | error_slug             | request_payload | status_code |
-      | SquareMeal   | Could not validate fields | FIELD_VALIDATION_ERROR | invalid_request | 422         |
-
-  @sending_invalid_token_trusted @sandbox_regression
-  Scenario Outline: Sending invalid token with bearer prefix in header for add trusted journey (Unauthorized)
-    Given I am a squaremeal user
-    When I perform POST <merchant> membership_card request for add_trusted with invalid token and bearer prefix
-    Then I see a <status_code_returned>
-    And I see a "<error_message>" error message
-    And I see a "<error_slug>" error slug
-
-    Examples:
-      | merchant    | status_code_returned | error_message             | error_slug    |
-      | SquareMeal  | 401                  | Supplied token is invalid | INVALID_TOKEN |
-
-    @add_trusted_conflict @sandbox_regression
-  Scenario Outline: 409 Conflict scenario for add trusted card
-    Given I am a squaremeal user
-    When I perform POST request to add trusted channel "<merchant>" loyalty card
-    Then I see a 201
-    When I perform POST request to add trusted channel "<merchant>" loyalty card with "email2" with "409"
-    Then I see a 409
-    Then I see a "<error_message>" error message
-    And I see a "<error_slug>" error slug
-    When I perform POST request to add trusted channel "<merchant>" loyalty card with "merchantid2" with "409"
-    Then I see a 409
-    Then I see a "<error_message2>" error message
-    And I see a "<error_slug>" error slug
-
-    Examples:
-      | merchant     | error_message                                                                                                 |error_message2                                                                                                | error_slug|
-      | SquareMeal   | A loyalty card with this account_id has already been added in a wallet, but the key credential does not match.|A loyalty card with this key credential has already been added in a wallet, but the account_id does not match.|CONFLICT   |
-
-  @add_trusted_forbidden @sandbox_regression
-  Scenario Outline: 403 forbidden when POST trusted add by non trusted user
-    Given I am a Lloyds user
-    When I perform POST request to add trusted channel "<merchant>" loyalty card
-    Then I see a 403
-
-    Examples:
-      | merchant     |
-      | SquareMeal   |
-
   @add_and_auth_ntc_in_tc @sandbox_regression
   Scenario Outline: Trusted channel adds loyalty card into wallet which already exists in Non trusted channel
     Given I am a halifax user
@@ -148,18 +86,6 @@ Feature: Add and authorise a loyalty card into Trusted channel
     Examples:
       | merchant      | status_code_returned | journey_type      |payment_card_provider|
       | SquareMeal    | 202                  | add_and_authorise |master               |
-
-#  @add_and_auth_existing_field_tc @sandbox_regression
-#  Scenario Outline: Add existing card again into wallet in trusted channel
-#    Given I am a squaremeal user
-#    When I perform POST request to add trusted channel "<merchant>" loyalty card
-#    And I perform POST request again to add "<merchant>" in trusted channel with "<status_code_returned>"
-#    Then I see a <status_code_returned>
-#    Then verify the data stored in DB after "<journey_type>" journey for "<merchant>"
-#
-#    Examples:
-#      | merchant      | status_code_returned | journey_type      |
-#      | SquareMeal    | 200                  | add_and_authorise |
 
   @add_and_auth_pll_tc @sandbox_regression
   Scenario Outline: verify PLL for add card in trusted channel

@@ -16,8 +16,7 @@ Feature: Authorise a loyalty card
 
     Examples:
       | merchant | journey_type    | status_code_returned |
-      | Iceland  | authorise_field | 202                  |
-      | Wasabi   | authorise_field | 202                  |
+      | Viator   | authorise_field  |202                  |
 
   @authorise_existing_field @bink_regression_api2 @sandbox_regression
   Scenario Outline: Authorise existing card again into wallet
@@ -31,8 +30,7 @@ Feature: Authorise a loyalty card
 
     Examples:
       | merchant | journey_type    | status_code_returned |
-      | Iceland  | authorise_field | 200                  |
-      | Wasabi   | authorise_field | 200                  |
+      | Viator   | authorise_field | 200                  |
 
 
   @auth_pll @bink_regression_api2 @sandbox_regression
@@ -47,4 +45,4 @@ Feature: Authorise a loyalty card
 
     Examples:
       | payment_card_provider | merchant | status_code_returned | journey_type |
-      | master                | Iceland  | 202                  | pll_active   |
+      | master                | Viator  | 202                  | pll_active   |
