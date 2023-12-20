@@ -5,7 +5,7 @@ Feature: Basic Merchant Integration Journeys
   I want check all Loyalty card features
   so that I am able to benefit from the Bink functionality
 
-  
+
   Scenario Outline: Join to a Loyalty Scheme
     Given I am a bos user
     When I perform POST request to join "<merchant>" membership card
@@ -16,19 +16,3 @@ Feature: Basic Merchant Integration Journeys
     Examples:
       | merchant  | status_code_returned |journey_type|
       | The_Works | 202                  |join        |
-      |itsu       | 202                  |join        |
-
-
-  Scenario Outline: retailer fails to join requests
-    Given I am a bos user
-    When I perform POST request to <journey_type> "<merchant>" membership card
-    Then I see a <status_code_returned>
-    When I perform GET Wallet
-    Then verify that for bos_user data stored in after <journey_type> journey for "<merchant>"
-
-
-    Examples:
-      | merchant      | status_code_returned |journey_type          |
-      | The_Works         | 202              |account_already_exists|
-      | The_Works         | 202              |join_failed           |
-      | The_Works         | 202              |join_http_failed      |

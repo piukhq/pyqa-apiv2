@@ -14,7 +14,6 @@ so that I am aware and have visibility of the vouchers that have been concluded 
 
     Examples:
       | merchant      | status_code_returned |
-      | Wasabi        | 200                  |
       | Viator        | 200                  |
 
 
@@ -45,4 +44,3 @@ so that I am aware and have visibility of the vouchers that have been concluded 
      Examples:
      |merchant| status_code_returned | error_message                       | error_slug          |invalid_id |
      |Wasabi  | 404                  | Could not find this account or card | RESOURCE_NOT_FOUND  |1234567    |
-

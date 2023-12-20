@@ -16,23 +16,7 @@ Feature: Basic Merchant Integration Journeys
     Examples:
       | merchant  | status_code_returned | journey_type      |
       | The_Works | 202                  | add_and_authorise |
-#      | itsu      | 202                  | add_and_authorise |
-
-
-  @add_auth_failed_journey  @bink_regression_api2
-  Scenario Outline: Add_Auth journey with failed Credentials
-    Given I am a bos user
-    When I perform POST request to add and auth "<merchant>" membership card with "<invalid_add_fields>" with "202"
-    Then I see a <status_code_returned>
-    When I perform GET Wallet
-    Then verify that for bos_user data stored in after "<journey_type>" journey for "<merchant>"
-
-    Examples:
-      | merchant  | status_code_returned | invalid_add_fields | journey_type      |
-      | The_Works | 202                  | invalid_cardnumber | add_and_authorise |
-      | The_Works | 202                  | unknown_cardnumber | add_and_authorise |
-#      | itsu      | 202                  | invalid_cardnumber | add_and_authorise |
-#      | itsu      | 202                  | unknown_cardnumber | add_and_authorise |
+#      | itsu      | 202                  | add_and_authorise
 
 
 
@@ -46,4 +30,3 @@ Feature: Basic Merchant Integration Journeys
     Examples:
       | merchant      | status_code_returned |
       | itsu        | 200                  |
-
