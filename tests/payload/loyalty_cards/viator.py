@@ -292,89 +292,6 @@ class ViatorCard:
         )
         return payload
 
-    # @staticmethod
-    # def add_and_authorise_field_loyalty_card_payload(invalid_data=None):
-    #     TestContext.card_number = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM)
-    #     if invalid_data == "invalid_request":
-    #         payload = {}
-    #     elif invalid_data == "invalid_json":
-    #         TestContext.email = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.EMAIL)
-    #         payload = {
-    #         "account": {
-    #             "add_fields": {
-    #                 "credentials": [
-    #                     {
-    #                         "credential_slug": "'card_number'",
-    #                         "value": TestContext.card_number,
-    #                     }
-    #                 ]
-    #             },
-    #             "authorise_fields": {
-    #                 "credentials": [
-    #                     {
-    #                         "credential_slug": "'email'",
-    #                         "value": TestContext.email,
-    #                     }
-    #                 ]
-    #             },
-    #         },
-    #         "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi"),
-    #     }
-    #     elif invalid_data == "unauthorised":
-    #         TestContext.email = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.UNAUTHORISED_EMAIL)
-    #         payload = {
-    #             "account": {
-    #                 "add_fields": {
-    #                     "credentials": [
-    #                         {
-    #                             "credential_slug": "card_number",
-    #                             "value": TestContext.card_number,
-    #                         }
-    #                     ]
-    #                 },
-    #                 "authorise_fields": {
-    #                     "credentials": [
-    #                         {
-    #                             "credential_slug": "email",
-    #                             "value": TestContext.email,
-    #                         }
-    #                     ]
-    #                 },
-    #             },
-    #         }
-    #     else:
-    #         TestContext.email = TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.EMAIL)
-    #         payload = {
-    #             "account": {
-    #                 "add_fields": {
-    #                     "credentials": [
-    #                         {
-    #                             "credential_slug": "card_number",
-    #                             "value": TestContext.card_number,
-    #                         }
-    #                     ]
-    #                 },
-    #                 "authorise_fields": {
-    #                     "credentials": [
-    #                         {
-    #                             "credential_slug": "email",
-    #                             "value": TestContext.email,
-    #                         }
-    #                     ]
-    #                 },
-    #             },
-    #             "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi"),
-    #         }
-    #
-    #     logging.info(
-    #         "The Request for Authorise field only with :\n"
-    #         + Endpoint.BASE_URL
-    #         + api.ENDPOINT_MEMBERSHIP_CARDS_AUTHORISE.format(TestContext.current_scheme_account_id)
-    #         + "\n\n"
-    #         + json.dumps(payload, indent=4)
-    #     )
-    #     return payload
-
     @staticmethod
     def authorise_field_only_membership_card_payload(invalid_data=None):
         TestContext.card_number = TestDataUtils.TEST_DATA.viator_membership_card.get(constants.CARD_NUM)
@@ -568,7 +485,7 @@ class ViatorCard:
                             {"credential_slug": "date_of_birth", "value": "01/01/2000"},
                             {"credential_slug": "email", "value": email},
                         ],
-                        "consents": [{"consent_slug": "EmailOptin", "value": constants.CONSENT}],
+                        "consents": [{"consent_slug": "bpl-viator", "value": constants.CONSENT}],
                     },
                 },
                 "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("viator"),
