@@ -1,11 +1,11 @@
 [[source]]
-url = "https://269fdc63-af3d-4eca-8101-8bddc22d6f14:b694b5b1-f97e-49e4-959e-f3c202e3ab91@pypi.gb.bink.com/simple"
-name = "bink-pypi"
+name = "pypi"
+url = "https://pypi.org/simple"
 verify_ssl = true
 
 [[source]]
-url = "https://pypi.org/simple"
-name = "pypi"
+name = "azure"
+url = "https://:lkzedq5xrttrobhxf6liuqefz4pzb5hp6m6wnjygjr5qhqo4phua@pkgs.dev.azure.com/binkhq/_packaging/binkhq/pypi/simple/"
 verify_ssl = true
 
 [packages]
@@ -24,7 +24,7 @@ apscheduler = "*"
 azure-storage-blob = "*"
 azure-identity = "*"
 azure-keyvault-secrets = "*"
-shared-config-storage = "*"
+shared-config-storage = {version = "*", index = "azure"}
 pytest-html = "*"
 deepdiff = "*"
 jwcrypto = "*"
