@@ -5,7 +5,7 @@ verify_ssl = true
 
 [[source]]
 name = "azure"
-url = "https://:lkzedq5xrttrobhxf6liuqefz4pzb5hp6m6wnjygjr5qhqo4phua@pkgs.dev.azure.com/binkhq/_packaging/binkhq/pypi/simple/"
+url = "https://jeff:lkzedq5xrttrobhxf6liuqefz4pzb5hp6m6wnjygjr5qhqo4phua@pkgs.dev.azure.com/binkhq/_packaging/binkhq/pypi/simple/"
 verify_ssl = true
 
 [packages]
