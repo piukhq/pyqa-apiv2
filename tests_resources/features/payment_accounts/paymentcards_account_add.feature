@@ -1,5 +1,5 @@
 # Created by rupalpatel at 16/07/2021
-@paymentcard_account_add @paymentcard_account @ch
+@paymentcard_account_add @paymentcard_account
 Feature: As a Bink User
   I want to be able to add my payment card account to my bink wallet
   So that I can start to earn rewards when I use my payment card
@@ -21,7 +21,7 @@ Feature: As a Bink User
       | amex                  | 201                  |
       | visa                  | 201                  |
 
-  @enrol_existing_paymentcard @bink_regression_api2 @sandbox_regression
+  @enrol_existing_paymentcard @bink_regression_api2 @sandbox_regression @temp
   Scenario Outline: Replace expiry_month,expiry_year,name_on_card,card_nickname into payment card
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token

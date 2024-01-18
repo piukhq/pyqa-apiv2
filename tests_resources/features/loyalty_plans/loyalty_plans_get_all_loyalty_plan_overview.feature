@@ -5,7 +5,7 @@ Feature: View Loyalty Plans Overview
  I want to see an overview of the loyalty plans available
  so that I can display this on the front end without having to call the larger GET /loyalty_plans endpoint
 
-  @loyalty_plans_overview_success @bink_regression_api2 @sandbox_regression
+  @loyalty_plans_overview_success @bink_regression_api2 @sandbox_regression  @temp
   Scenario Outline: View loyalty plans overview
     Given I am a Lloyds user
     When I perform GET request to view loyalty plans overview
