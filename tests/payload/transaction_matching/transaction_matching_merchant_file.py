@@ -9,7 +9,9 @@ from pytz import timezone
 
 from tests.helpers import constants
 from tests.helpers.test_helpers import PaymentCardTestData
-from tests.helpers.test_transaction_matching_context import TestTransactionMatchingContext
+from tests.helpers.test_transaction_matching_context import (
+    TestTransactionMatchingContext,
+)
 
 
 def get_retailer_file_data_import(file_name: str) -> None:

@@ -18,7 +18,13 @@ from tests.helpers.vault.channel_vault import KeyType
 
 
 class PaymentCardDetails:
-    FIELDS_TO_ENCRYPT = ("first_six_digits", "last_four_digits", "month", "year", "hash")
+    FIELDS_TO_ENCRYPT = (
+        "first_six_digits",
+        "last_four_digits",
+        "month",
+        "year",
+        "hash",
+    )
     #
     # @staticmethod
     # def add_payment_card_payload_encrypted(card_provider):

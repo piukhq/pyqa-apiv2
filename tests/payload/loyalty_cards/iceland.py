@@ -382,7 +382,12 @@ class IcelandCard:
             payload = {
                 "account": {
                     "add_fields": {
-                        "credentials": [{"credential_slug": "card_number", "value": TestContext.card_number}]
+                        "credentials": [
+                            {
+                                "credential_slug": "card_number",
+                                "value": TestContext.card_number,
+                            }
+                        ]
                     },
                     "authorise_fields": {
                         "credentials": [
@@ -402,7 +407,12 @@ class IcelandCard:
             payload = {
                 "account": {
                     "add_fields": {
-                        "credentials": [{"credential_slug": "card_number", "value": TestContext.card_number}]
+                        "credentials": [
+                            {
+                                "credential_slug": "card_number",
+                                "value": TestContext.card_number,
+                            }
+                        ]
                     },
                     "authorise_fields": {
                         "credentials": [
@@ -436,7 +446,12 @@ class IcelandCard:
             payload = {
                 "account": {
                     "add_fields": {
-                        "credentials": [{"credential_slug": "card_number", "value": TestContext.card_number}]
+                        "credentials": [
+                            {
+                                "credential_slug": "card_number",
+                                "value": TestContext.card_number,
+                            }
+                        ]
                     },
                     "authorise_fields": {
                         "credentials": [
@@ -460,7 +475,12 @@ class IcelandCard:
             payload = {
                 "account": {
                     "add_fields": {
-                        "credentials": [{"credential_slug": "card_number", "value": TestContext.card_number}]
+                        "credentials": [
+                            {
+                                "credential_slug": "card_number",
+                                "value": TestContext.card_number,
+                            }
+                        ]
                     },
                     "authorise_fields": {
                         "credentials": [
@@ -494,7 +514,14 @@ class IcelandCard:
         TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.TRANSACTIONS2_CARD)
         payload = {
             "account": {
-                "add_fields": {"credentials": [{"credential_slug": "card_number", "value": TestContext.card_number}]},
+                "add_fields": {
+                    "credentials": [
+                        {
+                            "credential_slug": "card_number",
+                            "value": TestContext.card_number,
+                        }
+                    ]
+                },
                 "authorise_fields": {
                     "credentials": [
                         {
@@ -553,16 +580,30 @@ class IcelandCard:
                                     constants.REGISTER_LASTNAME
                                 ),
                             },
-                            {"credential_slug": "date_of_birth", "value": constants.DATE_OF_BIRTH},
+                            {
+                                "credential_slug": "date_of_birth",
+                                "value": constants.DATE_OF_BIRTH,
+                            },
                             {"credential_slug": "email", "value": email},
                             {"credential_slug": "phone", "value": faker.phone_number()},
-                            {"credential_slug": "address_1", "value": faker.building_number()},
-                            {"credential_slug": "address_2", "value": faker.street_address()},
+                            {
+                                "credential_slug": "address_1",
+                                "value": faker.building_number(),
+                            },
+                            {
+                                "credential_slug": "address_2",
+                                "value": faker.street_address(),
+                            },
                             {"credential_slug": "town_city", "value": faker.city()},
                             {"credential_slug": "county", "value": faker.country()},
                             {"credential_slug": "postcode", "value": faker.postcode()},
                         ],
-                        "consents": [{"consent_slug": "marketing_opt_in", "value": constants.CONSENT}],
+                        "consents": [
+                            {
+                                "consent_slug": "marketing_opt_in",
+                                "value": constants.CONSENT,
+                            }
+                        ],
                     },
                 },
                 "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("iceland"),
@@ -599,16 +640,30 @@ class IcelandCard:
                             {"credential_slug": "'title'", "value": constants.TITLE},
                             {"credential_slug": "first_name", "value": faker.name()},
                             {"credential_slug": "last_name", "value": faker.name()},
-                            {"credential_slug": "date_of_birth", "value": constants.DATE_OF_BIRTH},
+                            {
+                                "credential_slug": "date_of_birth",
+                                "value": constants.DATE_OF_BIRTH,
+                            },
                             {"credential_slug": "email", "value": email},
                             {"credential_slug": "phone", "value": "07796511290"},
-                            {"credential_slug": "address_1", "value": faker.building_number()},
-                            {"credential_slug": "address_2", "value": faker.street_address()},
+                            {
+                                "credential_slug": "address_1",
+                                "value": faker.building_number(),
+                            },
+                            {
+                                "credential_slug": "address_2",
+                                "value": faker.street_address(),
+                            },
                             {"credential_slug": "town_city", "value": faker.city()},
                             {"credential_slug": "county", "value": faker.country()},
                             {"credential_slug": "postcode", "value": faker.postcode()},
                         ],
-                        "consents": [{"consent_slug": "marketing_opt_in", "value": constants.CONSENT}],
+                        "consents": [
+                            {
+                                "consent_slug": "marketing_opt_in",
+                                "value": constants.CONSENT,
+                            }
+                        ],
                     },
                 },
                 "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("iceland"),
@@ -666,16 +721,30 @@ class IcelandCard:
                             {"credential_slug": "'title'", "value": constants.TITLE},
                             {"credential_slug": "first_name", "value": faker.name()},
                             {"credential_slug": "last_name", "value": faker.name()},
-                            {"credential_slug": "date_of_birth", "value": constants.DATE_OF_BIRTH},
+                            {
+                                "credential_slug": "date_of_birth",
+                                "value": constants.DATE_OF_BIRTH,
+                            },
                             {"credential_slug": "email", "value": email},
                             {"credential_slug": "phone", "value": faker.phone_number()},
-                            {"credential_slug": "address_1", "value": faker.building_number()},
-                            {"credential_slug": "address_2", "value": faker.street_address()},
+                            {
+                                "credential_slug": "address_1",
+                                "value": faker.building_number(),
+                            },
+                            {
+                                "credential_slug": "address_2",
+                                "value": faker.street_address(),
+                            },
                             {"credential_slug": "town_city", "value": faker.city()},
                             {"credential_slug": "county", "value": faker.country()},
                             {"credential_slug": "postcode", "value": faker.postcode()},
                         ],
-                        "consents": [{"consent_slug": "marketing_opt_in", "value": constants.CONSENT}],
+                        "consents": [
+                            {
+                                "consent_slug": "marketing_opt_in",
+                                "value": constants.CONSENT,
+                            }
+                        ],
                     }
                 }
             }
@@ -695,16 +764,30 @@ class IcelandCard:
                                     constants.REGISTER_LASTNAME
                                 ),
                             },
-                            {"credential_slug": "date_of_birth", "value": constants.DATE_OF_BIRTH},
+                            {
+                                "credential_slug": "date_of_birth",
+                                "value": constants.DATE_OF_BIRTH,
+                            },
                             {"credential_slug": "email", "value": email},
                             {"credential_slug": "phone", "value": faker.phone_number()},
-                            {"credential_slug": "address_1", "value": faker.building_number()},
-                            {"credential_slug": "address_2", "value": faker.street_address()},
+                            {
+                                "credential_slug": "address_1",
+                                "value": faker.building_number(),
+                            },
+                            {
+                                "credential_slug": "address_2",
+                                "value": faker.street_address(),
+                            },
                             {"credential_slug": "town_city", "value": faker.city()},
                             {"credential_slug": "county", "value": faker.country()},
                             {"credential_slug": "postcode", "value": faker.postcode()},
                         ],
-                        "consents": [{"consent_slug": "marketing_opt_in", "value": constants.CONSENT}],
+                        "consents": [
+                            {
+                                "consent_slug": "marketing_opt_in",
+                                "value": constants.CONSENT,
+                            }
+                        ],
                     }
                 }
             }
@@ -730,16 +813,30 @@ class IcelandCard:
                             {"credential_slug": '"title"', "value": constants.TITLE},
                             {"credential_slug": '"first_name"', "value": faker.name()},
                             {"credential_slug": '"last_name"', "value": faker.name()},
-                            {"credential_slug": "'date_of_birth'", "value": constants.DATE_OF_BIRTH},
+                            {
+                                "credential_slug": "'date_of_birth'",
+                                "value": constants.DATE_OF_BIRTH,
+                            },
                             {"credential_slug": "email", "value": email},
                             {"credential_slug": "phone", "value": faker.phone_number()},
-                            {"credential_slug": "address_1", "value": faker.building_number()},
-                            {"credential_slug": "address_2", "value": faker.street_address()},
+                            {
+                                "credential_slug": "address_1",
+                                "value": faker.building_number(),
+                            },
+                            {
+                                "credential_slug": "address_2",
+                                "value": faker.street_address(),
+                            },
                             {"credential_slug": "town_city", "value": faker.city()},
                             {"credential_slug": "county", "value": faker.country()},
                             {"credential_slug": "postcode", "value": faker.postcode()},
                         ],
-                        "consents": [{"consent_slug": "marketing_opt_in", "value": constants.CONSENT}],
+                        "consents": [
+                            {
+                                "consent_slug": "marketing_opt_in",
+                                "value": constants.CONSENT,
+                            }
+                        ],
                     },
                 },
                 "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("iceland"),
@@ -752,16 +849,30 @@ class IcelandCard:
                             {"credential_slug": "title", "value": constants.TITLE},
                             {"credential_slug": "first_name", "value": faker.name()},
                             {"credential_slug": "last_name", "value": faker.name()},
-                            {"credential_slug": "date_of_birth", "value": constants.DATE_OF_BIRTH},
+                            {
+                                "credential_slug": "date_of_birth",
+                                "value": constants.DATE_OF_BIRTH,
+                            },
                             {"credential_slug": "email", "value": email},
                             {"credential_slug": "phone", "value": faker.phone_number()},
-                            {"credential_slug": "address_1", "value": faker.building_number()},
-                            {"credential_slug": "address_2", "value": faker.street_address()},
+                            {
+                                "credential_slug": "address_1",
+                                "value": faker.building_number(),
+                            },
+                            {
+                                "credential_slug": "address_2",
+                                "value": faker.street_address(),
+                            },
                             {"credential_slug": "town_city", "value": faker.city()},
                             {"credential_slug": "county", "value": faker.country()},
                             {"credential_slug": "postcode", "value": faker.postcode()},
                         ],
-                        "consents": [{"consent_slug": "marketing_opt_in", "value": constants.CONSENT}],
+                        "consents": [
+                            {
+                                "consent_slug": "marketing_opt_in",
+                                "value": constants.CONSENT,
+                            }
+                        ],
                     },
                 },
                 "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("iceland"),

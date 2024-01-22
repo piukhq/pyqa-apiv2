@@ -5,7 +5,9 @@ import uuid
 from tests.helpers import constants
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_helpers import PaymentCardTestData
-from tests.helpers.test_transaction_matching_context import TestTransactionMatchingContext
+from tests.helpers.test_transaction_matching_context import (
+    TestTransactionMatchingContext,
+)
 
 
 def import_visa_settle_matching_dedupe_json(mid):
@@ -34,7 +36,10 @@ def import_visa_settle_matching_dedupe_json(mid):
             {"Key": "Transaction.USDAmount", "Value": "5.00"},
             {"Key": "Transaction.MerchantLocalPurchaseDate", "Value": "2023-06-19"},
             {"Key": "Transaction.MerchantGroup.0.Name", "Value": "SPOTTING-MERCHANT"},
-            {"Key": "Transaction.MerchantGroup.0.ExternalId", "Value": "Spotting Merchant"},
+            {
+                "Key": "Transaction.MerchantGroup.0.ExternalId",
+                "Value": "Spotting Merchant",
+            },
             {"Key": "Transaction.AuthCode", "Value": random.randint(100000, 999999)},
             {
                 "Key": "Transaction.PanLastFour",

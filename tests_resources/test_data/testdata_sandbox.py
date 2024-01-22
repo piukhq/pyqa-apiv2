@@ -45,7 +45,6 @@ master_payment_card = {
     "expiry_year": "12",
     "name_on_card": "master_sandbox_test",
     "card_nickname": "master_sandbox_test_nick",
-    "card_nickname": "master_sandbox_test_nick",
     "issuer": "HSBC",
     "issuer_updated": "LLOYDS",
     "token": "pytest24011",

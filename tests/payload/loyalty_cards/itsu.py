@@ -46,7 +46,10 @@ class Itsu:
             "account": {
                 "add_fields": {
                     "credentials": [
-                        {"credential_slug": "card_number", "value": TestContext.card_number},
+                        {
+                            "credential_slug": "card_number",
+                            "value": TestContext.card_number,
+                        },
                     ]
                 }
             },
@@ -80,7 +83,12 @@ class Itsu:
                         {"credential_slug": "email", "value": email},
                         {"credential_slug": "password", "value": "Loyalty102"},
                     ],
-                    "consents": [{"consent_slug": "hasAgreedToReceiveMarketing", "value": constants.CONSENT}],
+                    "consents": [
+                        {
+                            "consent_slug": "hasAgreedToReceiveMarketing",
+                            "value": constants.CONSENT,
+                        }
+                    ],
                 },
             },
             "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("itsu"),

@@ -195,7 +195,9 @@ def pll_link_status_change_event(journey_type, user, from_state, to_state, slug)
     time.sleep(8)
     logging.info(TestDataUtils.TEST_DATA.event_type.get(journey_type))
     TestContext.event_record = QuerySnowstorm.fetch_pll_event(
-        TestDataUtils.TEST_DATA.event_type.get(journey_type), TestContext.extid, TestContext.event_slug
+        TestDataUtils.TEST_DATA.event_type.get(journey_type),
+        TestContext.extid,
+        TestContext.event_slug,
     )
     logging.info(str(TestContext.event_record))
     assert TestContext.event_record.event_type == TestDataUtils.TEST_DATA.event_type.get(

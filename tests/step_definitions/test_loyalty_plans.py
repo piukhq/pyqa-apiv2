@@ -180,29 +180,48 @@ def json_compare(actual_membership_plan_journey_field, expected_membership_plan_
     """This function will compare two Json objects using json_diff and
     create a third json with comparison results"""
 
-    json.dump(actual_membership_plan_journey_field, open(constants.JSON_DIFF_ACTUAL_JSON, "w"), indent=4)
-    json.dump(expected_membership_plan_journey_field, open(constants.JSON_DIFF_EXPECTED_JSON, "w"), indent=4)
+    json.dump(
+        actual_membership_plan_journey_field,
+        open(constants.JSON_DIFF_ACTUAL_JSON, "w"),
+        indent=4,
+    )
+    json.dump(
+        expected_membership_plan_journey_field,
+        open(constants.JSON_DIFF_EXPECTED_JSON, "w"),
+        indent=4,
+    )
 
     engine = DeepDiff(
-        open(constants.JSON_DIFF_ACTUAL_JSON, "r"), open(constants.JSON_DIFF_EXPECTED_JSON, "r"), ignore_order=True
+        open(constants.JSON_DIFF_ACTUAL_JSON, "r"),
+        open(constants.JSON_DIFF_EXPECTED_JSON, "r"),
+        ignore_order=True,
     )
     return engine
 
 
 def json_compare_loyalty(actual_loyalty_plan_by_id_field, expected_loyalty_plan_by_id_field):
-    compare = DeepDiff(actual_loyalty_plan_by_id_field, expected_loyalty_plan_by_id_field, ignore_order=True)
+    compare = DeepDiff(
+        actual_loyalty_plan_by_id_field,
+        expected_loyalty_plan_by_id_field,
+        ignore_order=True,
+    )
     return compare
 
 
 def json_compare_loyalty_overview(actual_loyalty_plans_overview, expected_loyalty_plans_overview):
-    compare = DeepDiff(actual_loyalty_plans_overview, expected_loyalty_plans_overview, ignore_order=True)
+    compare = DeepDiff(
+        actual_loyalty_plans_overview,
+        expected_loyalty_plans_overview,
+        ignore_order=True,
+    )
     return compare
 
 
 @then(parsers.parse('I can see the journey fields of that merchant "{loyalty_scheme}"'))
 def verify_journey_field_type(loyalty_scheme):
     difference = json_compare(
-        TestContext.actual_membership_plan_journey_field, TestContext.expected_membership_plan_journey_field
+        TestContext.actual_membership_plan_journey_field,
+        TestContext.expected_membership_plan_journey_field,
     )
     if json.dumps(difference) != "{}":
         logging.info(
@@ -221,7 +240,8 @@ def verify_journey_field_type(loyalty_scheme):
 @then(parsers.parse('I can see the loyalty plan fields of that merchant "{loyalty_scheme}"'))
 def verify_loyalty_plan_fields_by_id(loyalty_scheme):
     difference = json_compare_loyalty(
-        TestContext.actual_loyalty_plan_by_id_field, TestContext.expected_loyalty_plan_by_id_field
+        TestContext.actual_loyalty_plan_by_id_field,
+        TestContext.expected_loyalty_plan_by_id_field,
     )
     if json.dumps(difference) != "{}":
         logging.info(
@@ -248,7 +268,8 @@ def verify_success_loyalty_plan_field(status_code):
 @when(parsers.parse('I perform GET request to view journey field for "{loyalty_scheme}" for invalid token'))
 def verify_journey_field_invalid_token(loyalty_scheme):
     response = MembershipPlans.get_membership_plan_journey_field(
-        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN), loyalty_scheme
+        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN),
+        loyalty_scheme,
     )
 
     TestContext.response_status_code = response.status_code
@@ -280,7 +301,8 @@ def verify_loyalty_plan_overview_invalid_token():
 @when(parsers.parse('I perform GET request to view "{loyalty_scheme}" loyalty plan by id with invalid token'))
 def verify_loyalty_plan_fields_invalid_token(loyalty_scheme):
     response = MembershipPlans.get_loyalty_plan_by_id(
-        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN), loyalty_scheme
+        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN),
+        loyalty_scheme,
     )
 
     TestContext.response_status_code = response.status_code
@@ -296,7 +318,8 @@ def verify_loyalty_plan_fields_invalid_token(loyalty_scheme):
 @when(parsers.parse('I perform GET request to view "{loyalty_scheme}" loyalty plan details with invalid token'))
 def verify_loyalty_plan_details_invalid_token(loyalty_scheme):
     response = MembershipPlans.get_loyalty_plan_details(
-        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN), loyalty_scheme
+        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN),
+        loyalty_scheme,
     )
 
     TestContext.response_status_code = response.status_code
@@ -372,7 +395,10 @@ def verify_invalid_resource_for_loyalty_plan(loyalty_scheme):
 
 @then("I verify all plans appeared correctly")
 def verify_plans_in_lloyds():
-    difference = json_compare(TestContext.expected_all_loyalty_plans_field, TestContext.actual_all_loyalty_plans_field)
+    difference = json_compare(
+        TestContext.expected_all_loyalty_plans_field,
+        TestContext.actual_all_loyalty_plans_field,
+    )
     if json.dumps(difference) != "{}":
         logging.info(
             "The expected and actual all membership plans of has following differences"

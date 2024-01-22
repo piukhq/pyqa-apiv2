@@ -2,10 +2,10 @@ import io
 import logging
 
 from azure.storage.blob import BlobServiceClient
-
-from settings import BLOB_STORAGE_DSN
 from tests.helpers.test_transaction_matching_context import TestTransactionMatchingContext
 from tests.payload.transaction_matching.transaction_matching_merchant_file import create_retailer_csv
+
+from settings import BLOB_STORAGE_DSN
 
 
 def upload_retailer_file_into_blob(

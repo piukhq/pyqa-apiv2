@@ -590,7 +590,11 @@ class IcelandResponse:
             "is_fully_pll_linked": False,
             "pll_linked_payment_accounts": 0,
             "total_payment_accounts": 1,
-            "status": {"state": "pending", "slug": "REGISTRATION_IN_PROGRESS", "description": None},
+            "status": {
+                "state": "pending",
+                "slug": "REGISTRATION_IN_PROGRESS",
+                "description": None,
+            },
             "balance": {
                 "updated_at": None,
                 "current_display_value": None,
@@ -748,7 +752,11 @@ class IcelandResponse:
             # "loyalty_card_id": 193506,
             "loyalty_plan_id": 105,
             "loyalty_plan_name": "Iceland Bonus Card",
-            "status": {"state": "pending", "slug": "JOIN_IN_PROGRESS", "description": None},
+            "status": {
+                "state": "pending",
+                "slug": "JOIN_IN_PROGRESS",
+                "description": None,
+            },
             "card": {
                 "barcode": None,
                 "barcode_type": 0,
