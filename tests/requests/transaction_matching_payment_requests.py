@@ -6,13 +6,10 @@ import time
 from datetime import datetime
 
 import pytz
-
-from azure.storage.blob import BlobServiceClient, ContentSettings
-
 import tests.api as api
 import tests.payload.transaction_matching.transaction_matching_dedupe_payment_file as dedupe_payment_file
 
-from settings import BLOB_STORAGE_DSN
+from azure.storage.blob import BlobServiceClient, ContentSettings
 from tests.api.base import Endpoint
 from tests.api.transactionmatching_base import TransactionMatchingEndpoint
 from tests.helpers.database.query_harmonia import QueryHarmonia
@@ -21,6 +18,8 @@ from tests.payload.transaction_matching.transaction_matching_payment_file import
     TransactionMatchingPaymentFileDetails,
     get_data_to_import,
 )
+
+from settings import BLOB_STORAGE_DSN
 
 
 def import_visa_matching_auth_json(mid):
@@ -399,12 +398,16 @@ def verify_streaming_spotting_refund_transactions():
     utc_time = datetime.strptime(t, form)
     created_at = utc_time.astimezone(pytz.UTC)
     matched_count = QueryHarmonia.fetch_match_refund_transaction_count(
-        TestTransactionMatchingContext.transaction_matching_amount, TestTransactionMatchingContext.mid, created_at
+        TestTransactionMatchingContext.transaction_matching_amount,
+        TestTransactionMatchingContext.mid,
+        created_at,
     )
     assert matched_count.count == 1, "Transaction not spotted and the status is not exported"
     logging.info(f"No. of Refund Transactions got spotted and exported : '{matched_count.count}'")
     matched_transaction = QueryHarmonia.fetch_refund_transaction_details(
-        TestTransactionMatchingContext.transaction_matching_amount, TestTransactionMatchingContext.mid, created_at
+        TestTransactionMatchingContext.transaction_matching_amount,
+        TestTransactionMatchingContext.mid,
+        created_at,
     )
     return matched_transaction
 
@@ -414,12 +417,14 @@ def verify_the_works_master_spotting_refund_transactions():
     which is same as transaction_id in settlement file. So need to fetch harmonia with
      transaction id & refund amount to get the unique record"""
     matched_count = QueryHarmonia.fetch_match_transaction_count(
-        TestTransactionMatchingContext.transaction_id, TestTransactionMatchingContext.transaction_matching_amount
+        TestTransactionMatchingContext.transaction_id,
+        TestTransactionMatchingContext.transaction_matching_amount,
     )
     assert matched_count.count == 1, "Transaction not spotted and the status is not exported"
     logging.info(f"No. of The woks refund Transactions got spotted and exported : '{matched_count.count}'")
     matched_transaction = QueryHarmonia.fetch_transaction_details(
-        TestTransactionMatchingContext.transaction_id, TestTransactionMatchingContext.transaction_matching_amount
+        TestTransactionMatchingContext.transaction_id,
+        TestTransactionMatchingContext.transaction_matching_amount,
     )
     return matched_transaction
 

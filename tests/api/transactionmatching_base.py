@@ -22,7 +22,10 @@ class TransactionMatchingEndpoint:
 
     @staticmethod
     def request_header_mastercard():
-        header = {"Content-Type": "application/json", "Authorization": "token F616CE5C88744DD52DB628FAD8B3D"}
+        header = {
+            "Content-Type": "application/json",
+            "Authorization": "token F616CE5C88744DD52DB628FAD8B3D",
+        }
         return header
 
     @staticmethod
@@ -36,7 +39,10 @@ class TransactionMatchingEndpoint:
 
     @staticmethod
     def request_register_amex():
-        header = {"Content-Type": "application/json", "Cookie": "sessionid=ir8ojeq2hssh0cjoihofyitctpt46dk7"}
+        header = {
+            "Content-Type": "application/json",
+            "Cookie": "sessionid=ir8ojeq2hssh0cjoihofyitctpt46dk7",
+        }
         return header
 
     @staticmethod

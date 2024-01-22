@@ -149,7 +149,7 @@ def verify_loyalty_card_into_database(journey_type, merchant):
         assert (
             scheme_account.id == TestContext.current_scheme_account_id
             and scheme_account.status == TestDataUtils.TEST_DATA.scheme_status.get(constants.ACTIVE)
-        ), (journey_type + " in database is not success")
+        ), journey_type + " in database is not success"
 
     elif journey_type == "add_field_then_add_auth":
         scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
@@ -230,7 +230,7 @@ def verify_loyalty_card_into_database_trusted(user, journey_type, merchant):
         assert (
             scheme_account.id == TestContext.current_scheme_account_id
             and scheme_account.link_status == TestDataUtils.TEST_DATA.scheme_status.get(constants.ACTIVE)
-        ), (journey_type + " in database is not success")
+        ), journey_type + " in database is not success"
 
     elif journey_type == "add_field_then_add_auth":
         scheme_account = QueryHermes.fetch_ubiquity_schemeaccountentry(journey_type, TestContext.extid)
@@ -366,7 +366,10 @@ def verify_get_wallet_fields(Wallet, merchant):
         assert (
             wallet_response["loyalty_cards"][0]["id"] == TestContext.current_scheme_account_id
         ), "account id does not match"
-        print("expected response np", TestData.get_merchant_response(merchant).wallet_response())
+        print(
+            "expected response np",
+            TestData.get_merchant_response(merchant).wallet_response(),
+        )
         for wallet_key in TestData.get_merchant_response(merchant).wallet_response().keys():
             if wallet_key not in ["balance", "transactions", "vouchers", "images"]:
                 assert (
@@ -468,10 +471,12 @@ def verify_get_wallet_fields(Wallet, merchant):
                         == TestData.get_merchant_response(merchant).wallet_response()["balance"][balance_key]
                     ), f"{balance_key} do not match"
         compare_two_lists(
-            wallet_response["vouchers"], TestData.get_merchant_response(merchant).wallet_response()["vouchers"]
+            wallet_response["vouchers"],
+            TestData.get_merchant_response(merchant).wallet_response()["vouchers"],
         )
         compare_two_lists(
-            wallet_response["images"], TestData.get_merchant_response(merchant).wallet_response()["images"]
+            wallet_response["images"],
+            TestData.get_merchant_response(merchant).wallet_response()["images"],
         )
 
 
@@ -495,7 +500,8 @@ def verify_wallet_overview_pll(pll_linked_payment_accounts, total_payment_accoun
 def verify_voucher_field(env, channel, merchant):
     voucher_response = TestContext.actual_view_wallet_field
     compare_two_lists(
-        voucher_response["vouchers"], TestData.get_merchant_response(merchant).wallet_response()["vouchers"]
+        voucher_response["vouchers"],
+        TestData.get_merchant_response(merchant).wallet_response()["vouchers"],
     )
 
 
@@ -518,7 +524,11 @@ def verify_loyalty_card_balance(env, channel, user, loyalty_card_status, merchan
             difference = json_compare(
                 response_json["balance"],
                 TestData.get_merchant_response(merchant).lc2_wallet_response()["balance"],
-                paths=["root['updated_at']", "root['current_display_value']", "root['current_value']"],
+                paths=[
+                    "root['updated_at']",
+                    "root['current_display_value']",
+                    "root['current_value']",
+                ],
             )
         else:
             difference = json_compare(
@@ -528,7 +538,8 @@ def verify_loyalty_card_balance(env, channel, user, loyalty_card_status, merchan
             )
     elif loyalty_card_status == "unauthorised":
         difference = json_compare(
-            response_json["balance"], TestData.get_merchant_response(merchant).wallet_unauth_response()["balance"]
+            response_json["balance"],
+            TestData.get_merchant_response(merchant).wallet_unauth_response()["balance"],
         )
 
     if difference:
@@ -546,7 +557,8 @@ def verify_loyalty_card_balance(env, channel, user, loyalty_card_status, merchan
 @when(parsers.parse('I perform GET request to view loyalty card balance for "{merchant}" with invalid token'))
 def verify_loyalty_card_invalid_token_balance(env, channel, merchant):
     response = MembershipCards.get_loyalty_balance(
-        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN), TestContext.current_scheme_account_id
+        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN),
+        TestContext.current_scheme_account_id,
     )
     response_json = response_to_json(response)
     TestContext.response_status_code = response.status_code
@@ -602,7 +614,13 @@ def verify_loyalty_card_transactions(env, channel, user, loyalty_card_status, me
             difference = json_compare(
                 response_json["transactions"],
                 TestData.get_merchant_response(merchant).wallet_response()["transactions"],
-                paths=["root[0]['id']", "root[1]['id']", "root[2]['id']", "root[3]['id']", "root[4]['id']"],
+                paths=[
+                    "root[0]['id']",
+                    "root[1]['id']",
+                    "root[2]['id']",
+                    "root[3]['id']",
+                    "root[4]['id']",
+                ],
             )
             if difference:
                 logging.info(
@@ -621,7 +639,8 @@ def verify_loyalty_card_transactions(env, channel, user, loyalty_card_status, me
 @when(parsers.parse('I perform GET request to view loyalty card transactions for "{merchant}" with invalid token'))
 def verify_loyalty_card_invalid_token_transactions(env, channel, merchant):
     response = MembershipCards.get_loyalty_transactions(
-        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN), TestContext.current_scheme_account_id
+        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN),
+        TestContext.current_scheme_account_id,
     )
     response_json = response_to_json(response)
     TestContext.response_status_code = response.status_code
@@ -672,7 +691,8 @@ def verify_loyalty_card_vouchers(env, channel, user, loyalty_card_status, mercha
     )
     if loyalty_card_status == "authorised":
         difference = json_compare(
-            response_json["vouchers"], TestData.get_merchant_response(merchant).wallet_response()["vouchers"]
+            response_json["vouchers"],
+            TestData.get_merchant_response(merchant).wallet_response()["vouchers"],
         )
         if difference:
             logging.info(
@@ -691,7 +711,8 @@ def verify_loyalty_card_vouchers(env, channel, user, loyalty_card_status, mercha
 @when(parsers.parse('I perform GET request to view loyalty card voucher with invalid token for "{merchant}"'))
 def verify_loyalty_card_invalid_token_vouchers(env, channel, merchant):
     response = MembershipCards.get_loyalty_vouchers(
-        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN), TestContext.current_scheme_account_id
+        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN),
+        TestContext.current_scheme_account_id,
     )
     response_json = response_to_json(response)
     TestContext.response_status_code = response.status_code
@@ -1044,7 +1065,11 @@ def verify_register_post_membership_card(merchant, invalid_data, test_email):
     # if scheme_state == "registration_failed":
     #     test_email = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_FAILED_EMAIL)
     response = MembershipCards.register_field_only_card(
-        TestContext.token, merchant, test_email, TestContext.current_scheme_account_id, invalid_data
+        TestContext.token,
+        merchant,
+        test_email,
+        TestContext.current_scheme_account_id,
+        invalid_data,
     )
     time.sleep(7)
     response_json = response_to_json(response)
@@ -1089,7 +1114,11 @@ def verify_i_perform_register_again(merchant, test_email):
 def verify_register_invalid_data(merchant, test_email, request_payload, status_code):
     if request_payload == "invalid_request":
         response = MembershipCards.register_field_only_card(
-            TestContext.token, merchant, test_email, TestContext.current_scheme_account_id, request_payload
+            TestContext.token,
+            merchant,
+            test_email,
+            TestContext.current_scheme_account_id,
+            request_payload,
         )
         response_json = response_to_json(response)
         TestContext.response_status_code = response.status_code
@@ -1104,7 +1133,11 @@ def verify_register_invalid_data(merchant, test_email, request_payload, status_c
         )
     elif request_payload == "invalid_json":
         response = MembershipCards.register_field_with_invalid_json(
-            TestContext.token, merchant, test_email, TestContext.current_scheme_account_id, request_payload
+            TestContext.token,
+            merchant,
+            test_email,
+            TestContext.current_scheme_account_id,
+            request_payload,
         )
         response_json = response_to_json(response)
         TestContext.response_status_code = response.status_code
@@ -1309,7 +1342,9 @@ def verify_add_and_auth_invalid_token_request(merchant, endpoint):
 )
 def verify_add_and_register_invalid_token_request(merchant, test_email):
     response = MembershipCards.add_and_register_field(
-        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN), merchant, test_email
+        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN),
+        merchant,
+        test_email,
     )
 
     TestContext.response_status_code = response.status_code
@@ -1408,7 +1443,10 @@ def verify_invalid_token_bearer_prefix_for_authorise_membership_card(merchant):
 def verify_authorise_invalid_request(merchant, request_payload, status_code):
     if request_payload == "invalid_request":
         response = MembershipCards.authorise_field_only_card(
-            TestContext.token, merchant, TestContext.current_scheme_account_id, request_payload
+            TestContext.token,
+            merchant,
+            TestContext.current_scheme_account_id,
+            request_payload,
         )
         response_json = response_to_json(response)
         TestContext.response_status_code = response.status_code
@@ -1424,7 +1462,10 @@ def verify_authorise_invalid_request(merchant, request_payload, status_code):
 
     elif request_payload == "invalid_json":
         response = MembershipCards.authorise_field_with_existing_field(
-            TestContext.token, merchant, TestContext.current_scheme_account_id, request_payload
+            TestContext.token,
+            merchant,
+            TestContext.current_scheme_account_id,
+            request_payload,
         )
         response_json = response_to_json(response)
         TestContext.response_status_code = response.status_code
@@ -1459,7 +1500,8 @@ def verify_authorise_invalid_request(merchant, request_payload, status_code):
 @then(parsers.parse('I perform DELETE request to delete the "{merchant}" membership card with invalid token'))
 def verify_delete_invalid_token(merchant):
     response = MembershipCards.delete_scheme_account(
-        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN), TestContext.current_scheme_account_id
+        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN),
+        TestContext.current_scheme_account_id,
     )
 
     TestContext.response_status_code = response.status_code
@@ -1685,7 +1727,10 @@ def join_scheme(join, merchant, test_email):
     response_json = response_to_json(response)
     logging.info("response_json data :: %s", response_json)
     TestContext.current_scheme_account_id = response_json.get("id")
-    logging.info("TestContext.current_scheme_account_id :: %s", TestContext.current_scheme_account_id)
+    logging.info(
+        "TestContext.current_scheme_account_id :: %s",
+        TestContext.current_scheme_account_id,
+    )
     TestContext.current_scheme_plan = response_json.get("loyalty_plan_id")
     TestContext.response_status_code = response.status_code
     logging.info(
@@ -1728,7 +1773,9 @@ def perform_join_with_bad_request(merchant, request_payload, status_code, test_e
 @when(parsers.parse('I perform POST request to join "{merchant}" with invalid token'))
 def join_with_invalid_token(merchant, test_email):
     response = MembershipCards.join_field(
-        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN), merchant, test_email
+        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN),
+        merchant,
+        test_email,
     )
 
     TestContext.response_status_code = response.status_code
@@ -1751,7 +1798,9 @@ def join_with_invalid_token(merchant, test_email):
 def fail_join_scheme(scheme_state, merchant):
     if scheme_state == "enrol_failed":
         response = MembershipCards.join_field(
-            TestContext.token, merchant, TestDataUtils.TEST_DATA.join_emails.get(constants.ID)
+            TestContext.token,
+            merchant,
+            TestDataUtils.TEST_DATA.join_emails.get(constants.ID),
         )
         time.sleep(15)
     elif scheme_state == "join_success":
@@ -1763,7 +1812,9 @@ def fail_join_scheme(scheme_state, merchant):
         time.sleep(15)
     elif scheme_state == "asynchronous_join_in_progress":
         response = MembershipCards.join_field(
-            TestContext.token, merchant, TestDataUtils.TEST_DATA.join_emails.get(constants.SLOW_JOIN_ID)
+            TestContext.token,
+            merchant,
+            TestDataUtils.TEST_DATA.join_emails.get(constants.SLOW_JOIN_ID),
         )
 
     response_json = response_to_json(response)
@@ -1802,7 +1853,8 @@ def delete_failed_scheme_account(scheme_state, merchant):
 @when(parsers.parse('I perform DELETE request to delete the membership card for "{merchant}" with invalid token'))
 def delete_fail_scheme_with_invalid_token(merchant):
     response = MembershipCards.delete_fail_scheme_account(
-        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN), TestContext.current_scheme_account_id
+        TestDataUtils.TEST_DATA.invalid_token.get(constants.INVALID_TOKEN),
+        TestContext.current_scheme_account_id,
     )
 
     TestContext.response_status_code = response.status_code
@@ -1946,7 +1998,9 @@ def delete_failed_scheme_again():
 @when(parsers.parse('I perform POST request to join in progress "{merchant}" membership card'))
 def delete_join_in_progress_scheme(merchant):
     response = MembershipCards.join_field(
-        TestContext.token, merchant, TestDataUtils.TEST_DATA.join_emails.get(constants.SLOW_JOIN_ID)
+        TestContext.token,
+        merchant,
+        TestDataUtils.TEST_DATA.join_emails.get(constants.SLOW_JOIN_ID),
     )
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")
@@ -1982,7 +2036,12 @@ def verify_state_slug_desc(Wallet, merchant, scheme_state):
                 wallet_response["joins"][0]["images"],
                 TestData.get_merchant_response(merchant).wallet_overview_response()["images"],
             )
-    elif scheme_state in ["join_success", "registration_success", "account_already_exists", "registration_failed"]:
+    elif scheme_state in [
+        "join_success",
+        "registration_success",
+        "account_already_exists",
+        "registration_failed",
+    ]:
         assert (
             wallet_response["loyalty_cards"][0]["id"] == TestContext.current_scheme_account_id
         ), "account id does not match"
@@ -2302,7 +2361,8 @@ def verify_get_wallet_lc_unauath(Wallet, merchant):
                 == TestData.get_merchant_response(merchant).wallet_unauth_response()["card"][card_key]
             ), f"{card_key} do not match"
         compare_two_lists(
-            wallet_response["images"], TestData.get_merchant_response(merchant).wallet_unauth_response()["images"]
+            wallet_response["images"],
+            TestData.get_merchant_response(merchant).wallet_unauth_response()["images"],
         )
 
 

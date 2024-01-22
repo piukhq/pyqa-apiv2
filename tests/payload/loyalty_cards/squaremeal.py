@@ -558,7 +558,11 @@ class SquareMealCard:
                     },
                 }
             }
-        elif request_payload in ["successful_payload", "invalid_scheme_account_id", "invalid_token"]:
+        elif request_payload in [
+            "successful_payload",
+            "invalid_scheme_account_id",
+            "invalid_token",
+        ]:
             payload = {
                 "account": {
                     "authorise_fields": {

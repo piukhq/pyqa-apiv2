@@ -11,6 +11,7 @@ import requests
 from azure.core.exceptions import HttpResponseError, ResourceNotFoundError, ServiceRequestError
 from azure.identity import DefaultAzureCredential
 from azure.keyvault.secrets import SecretClient
+from tests.helpers.test_context import TestContext
 
 from settings import (
     ACCESS_SECRET_NAME,
@@ -25,7 +26,6 @@ from settings import (
     VAULT_URL_SANDBOX,
     VAULT_URL_STAGING,
 )
-from tests.helpers.test_context import TestContext
 
 logger = logging.getLogger(__name__)
 loaded = False
@@ -230,7 +230,14 @@ def get_key(bundle_id, key_type: str):
         raise KeyVaultError(f"Unable to locate {key_type} in vault for bundle {bundle_id}") from e
 
 
-def create_bearer_token(sub=None, channel=None, utc_now=None, expire_in=900, prefix="bearer", algorithm="HS512"):
+def create_bearer_token(
+    sub=None,
+    channel=None,
+    utc_now=None,
+    expire_in=900,
+    prefix="bearer",
+    algorithm="HS512",
+):
     kid, secret = get_access_secret()
     if utc_now is None:
         iat = datetime.datetime.utcnow()
@@ -247,7 +254,14 @@ def create_bearer_token(sub=None, channel=None, utc_now=None, expire_in=900, pre
 
 
 def create_b2b_token(
-    key, sub=None, kid=None, email=None, utc_now=None, expire_in=30, prefix="bearer", algorithm="RS512"
+    key,
+    sub=None,
+    kid=None,
+    email=None,
+    utc_now=None,
+    expire_in=30,
+    prefix="bearer",
+    algorithm="RS512",
 ):
     if utc_now is None:
         iat = datetime.datetime.utcnow()

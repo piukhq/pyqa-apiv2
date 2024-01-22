@@ -34,7 +34,8 @@ class QuerySnowstorm:
         """Fetch the event using scheme account id"""
         connection = db.connect_snowstorm_db()
         record = db.execute_query_fetch_one(
-            connection, get_pll_status_change_event(journey_type, external_id, event_slug)
+            connection,
+            get_pll_status_change_event(journey_type, external_id, event_slug),
         )
 
         if record is None:

@@ -26,7 +26,12 @@ class TheWorks:
                             {"credential_slug": "last_name", "value": faker.name()},
                             {"credential_slug": "email", "value": email},
                         ],
-                        "consents": [{"consent_slug": "email_marketing", "value": constants.CONSENT}],
+                        "consents": [
+                            {
+                                "consent_slug": "email_marketing",
+                                "value": constants.CONSENT,
+                            }
+                        ],
                     },
                 },
                 "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("the_works"),
@@ -57,7 +62,12 @@ class TheWorks:
                             {"credential_slug": "last_name", "value": last_name},
                             {"credential_slug": "email", "value": email},
                         ],
-                        "consents": [{"consent_slug": "email_marketing", "value": constants.CONSENT}],
+                        "consents": [
+                            {
+                                "consent_slug": "email_marketing",
+                                "value": constants.CONSENT,
+                            }
+                        ],
                     },
                 },
                 "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("the_works"),
@@ -110,9 +120,17 @@ class TheWorks:
                         "credentials": [
                             {"credential_slug": "email", "value": email},
                             {"credential_slug": "first_name", "value": faker.name()},
-                            {"credential_slug": "last_name", "value": TestContext.last_name},
+                            {
+                                "credential_slug": "last_name",
+                                "value": TestContext.last_name,
+                            },
                         ],
-                        "consents": [{"consent_slug": "email_marketing", "value": constants.CONSENT}],
+                        "consents": [
+                            {
+                                "consent_slug": "email_marketing",
+                                "value": constants.CONSENT,
+                            }
+                        ],
                     },
                 },
                 "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("the_works"),
@@ -171,7 +189,12 @@ class TheWorks:
                             {"credential_slug": "last_name", "value": faker.name()},
                             {"credential_slug": "email", "value": email},
                         ],
-                        "consents": [{"consent_slug": "email_marketing", "value": constants.CONSENT}],
+                        "consents": [
+                            {
+                                "consent_slug": "email_marketing",
+                                "value": constants.CONSENT,
+                            }
+                        ],
                     }
                 }
             }
@@ -185,10 +208,18 @@ class TheWorks:
                     "register_ghost_card_fields": {
                         "credentials": [
                             {"credential_slug": "first_name", "value": faker.name()},
-                            {"credential_slug": "last_name", "value": TestContext.last_name},
+                            {
+                                "credential_slug": "last_name",
+                                "value": TestContext.last_name,
+                            },
                             {"credential_slug": "email", "value": email},
                         ],
-                        "consents": [{"consent_slug": "email_marketing", "value": constants.CONSENT}],
+                        "consents": [
+                            {
+                                "consent_slug": "email_marketing",
+                                "value": constants.CONSENT,
+                            }
+                        ],
                     }
                 }
             }
@@ -240,7 +271,10 @@ class TheWorks:
             "account": {
                 "add_fields": {
                     "credentials": [
-                        {"credential_slug": "card_number", "value": TestContext.card_number},
+                        {
+                            "credential_slug": "card_number",
+                            "value": TestContext.card_number,
+                        },
                     ]
                 }
             },

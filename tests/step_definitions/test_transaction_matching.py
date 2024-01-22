@@ -6,8 +6,12 @@ from pytest_bdd import parsers, scenarios, then, when
 
 from tests.helpers.database.query_harmonia import QueryHarmonia
 from tests.helpers.test_context import TestContext
-from tests.helpers.test_transaction_matching_context import TestTransactionMatchingContext
-from tests.requests.transaction_matching_merchant_requests import upload_retailer_file_into_blob
+from tests.helpers.test_transaction_matching_context import (
+    TestTransactionMatchingContext,
+)
+from tests.requests.transaction_matching_merchant_requests import (
+    upload_retailer_file_into_blob,
+)
 from tests.requests.transaction_matching_payment_requests import (
     import_payment_file_into_harmonia,
     import_payment_file_with_duplicate_txn,
@@ -193,5 +197,4 @@ def verify_transaction_not_spotted():
     )
 )
 def import_merchant_file(retailer_scheme: str, payment_card_provider: str, retailer_location_id: str) -> None:
-
     upload_retailer_file_into_blob(retailer_scheme, payment_card_provider, retailer_location_id)

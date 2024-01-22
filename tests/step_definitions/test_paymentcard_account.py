@@ -85,7 +85,12 @@ def verify_payment_account_added_in_wallet(payment_card_provider):
 )
 def verify_replace_value(payment_card_provider, expiry_month, expiry_year, name_on_card, card_nickname):
     response = PaymentCards.add_existing_payment_card(
-        TestContext.token, payment_card_provider, expiry_month, expiry_year, name_on_card, card_nickname
+        TestContext.token,
+        payment_card_provider,
+        expiry_month,
+        expiry_year,
+        name_on_card,
+        card_nickname,
     )
     response_json = response_to_json(response)
     time.sleep(2)
@@ -135,7 +140,8 @@ def verify_error_message(error_message, error_slug):
 @when(parsers.parse("I perform POST {payment_card_provider} payment_account request with invalid token"))
 def verify_incorrect_token(payment_card_provider):
     response = PaymentCards.add_new_payment_card(
-        PaymentCardTestData.get_data(payment_card_provider).get(constants.TOKEN_2), payment_card_provider
+        PaymentCardTestData.get_data(payment_card_provider).get(constants.TOKEN_2),
+        payment_card_provider,
     )
     TestContext.response_status_code = response.status_code
     response_json = response.json()
@@ -160,7 +166,8 @@ def verify_incorrect_token(payment_card_provider):
 )
 def verify_invalid_token_bearer_prefix(payment_card_provider):
     response = PaymentCards.add_new_payment_card(
-        PaymentCardTestData.get_data(payment_card_provider).get(constants.TOKEN_PREFIX), payment_card_provider
+        PaymentCardTestData.get_data(payment_card_provider).get(constants.TOKEN_PREFIX),
+        payment_card_provider,
     )
     TestContext.response_status_code = response.status_code
     response_json = response.json()
@@ -259,7 +266,12 @@ def delete_payment_account_from_another_wallet(payment_card_provider):
 def verify_different_detail(payment_card_provider, expiry_month, expiry_year, name_on_card, card_nickname):
     #   setup_second_token()
     response = PaymentCards.add_existing_payment_card(
-        TestContext.token, payment_card_provider, expiry_month, expiry_year, name_on_card, card_nickname
+        TestContext.token,
+        payment_card_provider,
+        expiry_month,
+        expiry_year,
+        name_on_card,
+        card_nickname,
     )
     response_json = response_to_json(response)
     TestContext.second_payment_card_id = response_json.get("id")
@@ -287,7 +299,8 @@ def verify_delete_status_code(status_code):
 @then(parsers.parse('I perform DELETE request to delete "{payment_card_provider}" the payment card with invalid token'))
 def verify_invalid_token_for_delete_call(payment_card_provider):
     response = PaymentCards.delete_payment_card(
-        PaymentCardTestData.get_data(payment_card_provider).get(constants.TOKEN_2), TestContext.current_payment_card_id
+        PaymentCardTestData.get_data(payment_card_provider).get(constants.TOKEN_2),
+        TestContext.current_payment_card_id,
     )
     TestContext.response_status_code = response.status_code
     response_json = response.json()
@@ -343,7 +356,10 @@ def verify_invalid_token_with_bearer_prefix_delete_call(payment_card_provider):
 )
 def update_payment_account(update_field, payment_card_provider):
     response = PaymentCards.update_payment_card(
-        TestContext.token, payment_card_provider, update_field, TestContext.current_payment_card_id
+        TestContext.token,
+        payment_card_provider,
+        update_field,
+        TestContext.current_payment_card_id,
     )
     TestContext.response_status_code = response.status_code
     time.sleep(2)
@@ -400,7 +416,8 @@ def verify_update_field_payment_account(payment_card_provider, update_field):
 @when(parsers.parse("I perform PATCH {payment_card_provider} payment_account request with invalid token"))
 def verify_patch_payment_account_with_invalid_token(payment_card_provider):
     response = PaymentCards.update_payment_card(
-        PaymentCardTestData.get_data(payment_card_provider).get(constants.TOKEN_2), payment_card_provider
+        PaymentCardTestData.get_data(payment_card_provider).get(constants.TOKEN_2),
+        payment_card_provider,
     )
     TestContext.response_status_code = response.status_code
     response_json = response.json()

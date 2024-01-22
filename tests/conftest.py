@@ -18,7 +18,11 @@ from tests.api.transactionmatching_base import TransactionMatchingEndpoint
 from tests.helpers import constants
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
-from tests.helpers.vault.channel_vault import create_b2b_token, create_bearer_token, get_private_key_secret
+from tests.helpers.vault.channel_vault import (
+    create_b2b_token,
+    create_bearer_token,
+    get_private_key_secret,
+)
 from tests.requests.loyalty_cards import MembershipCards
 from tests.requests.paymentcard_account import PaymentCards
 from tests.requests.service import CustomerAccount
@@ -87,9 +91,24 @@ def pytest_html_report_title(report):
 
 
 def pytest_addoption(parser):
-    parser.addoption("--channel", action="store", default="bink", help="Channel: can be bink or lloyds should pass")
-    parser.addoption("--env", action="store", default="dev", help="env : can be dev or staging or sandbox or prod")
-    parser.addoption("--encryption", action="store", default="false", help="encryption : can be true or false")
+    parser.addoption(
+        "--channel",
+        action="store",
+        default="bink",
+        help="Channel: can be bink or lloyds should pass",
+    )
+    parser.addoption(
+        "--env",
+        action="store",
+        default="dev",
+        help="env : can be dev or staging or sandbox or prod",
+    )
+    parser.addoption(
+        "--encryption",
+        action="store",
+        default="false",
+        help="encryption : can be true or false",
+    )
     parser.addoption(
         "--selected_merchant",
         action="store",
@@ -220,21 +239,24 @@ def login_user1(channel, env):
 
 def setup_token():
     TestContext.token = create_bearer_token(
-        sub=TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.USER_DETAIL), channel=config.BINK.bundle_id
+        sub=TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.USER_DETAIL),
+        channel=config.BINK.bundle_id,
     )
     return TestContext.token
 
 
 def setup_second_token():
     TestContext.second_token = create_bearer_token(
-        sub=TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.USER_DETAIL2), channel=config.BINK.bundle_id
+        sub=TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.USER_DETAIL2),
+        channel=config.BINK.bundle_id,
     )
     return TestContext.second_token
 
 
 def setup_third_token():
     TestContext.third_token = create_bearer_token(
-        sub=TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.USER_DETAIL3), channel=config.BINK.bundle_id
+        sub=TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.USER_DETAIL3),
+        channel=config.BINK.bundle_id,
     )
     return TestContext.third_token
 
@@ -382,9 +404,13 @@ def delete_all_loyalty_card():
     wallet_response = TestContext.actual_view_wallet_field
     for i in range(len(wallet_response["payment_accounts"][0]["pll_links"])):
         response = MembershipCards.delete_scheme_account(
-            TestContext.token, wallet_response["payment_accounts"][0]["pll_links"][i]["loyalty_card_id"]
+            TestContext.token,
+            wallet_response["payment_accounts"][0]["pll_links"][i]["loyalty_card_id"],
         )
-        print("wallet", wallet_response["payment_accounts"][0]["pll_links"][i]["loyalty_card_id"])
+        print(
+            "wallet",
+            wallet_response["payment_accounts"][0]["pll_links"][i]["loyalty_card_id"],
+        )
         TestContext.response_status_code = response.status_code
         try:
             if response.status_code == 202:
@@ -458,7 +484,10 @@ def get_lloyds_user(lloyds_external_id, lloyds_test_email):
     # user_email = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EMAIL)
     # external_id = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EXTERNAL_ID)
     TestContext.b2btoken = create_b2b_token(
-        key=key_secret, sub=lloyds_external_id, kid=config.LLOYDS.kid, email=lloyds_test_email
+        key=key_secret,
+        sub=lloyds_external_id,
+        kid=config.LLOYDS.kid,
+        email=lloyds_test_email,
     )
 
     response = Token_b2b.post_b2b_with_grant_type(TestContext.b2btoken, "b2b")
@@ -536,7 +565,10 @@ def get_halifax_user(halifax_external_id, halifax_test_email):
     # user_email = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EMAIL)
     # external_id = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EXTERNAL_ID)
     TestContext.b2btoken = create_b2b_token(
-        key=key_secret, sub=halifax_external_id, kid=config.HALIFAX.kid, email=halifax_test_email
+        key=key_secret,
+        sub=halifax_external_id,
+        kid=config.HALIFAX.kid,
+        email=halifax_test_email,
     )
     response = Token_b2b.post_b2b_with_grant_type(TestContext.b2btoken, "b2b")
     time.sleep(1)
@@ -574,7 +606,10 @@ def get_squaremeal_user(squaremeal_external_id, squaremeal_test_email):
     # user_email = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EMAIL)
     # external_id = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EXTERNAL_ID)
     TestContext.b2btoken = create_b2b_token(
-        key=key_secret, sub=squaremeal_external_id, kid=config.SQUAREMEAL.kid, email=squaremeal_test_email
+        key=key_secret,
+        sub=squaremeal_external_id,
+        kid=config.SQUAREMEAL.kid,
+        email=squaremeal_test_email,
     )
 
     response = Token_b2b.post_b2b_with_grant_type(TestContext.b2btoken, "b2b")

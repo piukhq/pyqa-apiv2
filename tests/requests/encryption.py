@@ -86,7 +86,11 @@ class JWE:
             "typ": "JWE",
             "kid": self.public_key.thumbprint(),
         }
-        jwe_token = crypto_jwe.JWE(payload.encode("utf-8"), recipient=self.public_key, protected=protected_header)
+        jwe_token = crypto_jwe.JWE(
+            payload.encode("utf-8"),
+            recipient=self.public_key,
+            protected=protected_header,
+        )
         return jwe_token.serialize(compact=compact)
 
 
@@ -147,7 +151,11 @@ def gen_vault_key_obj(channel_slug, priv, pub, mins_to_expire=60 * 24, paths=Tru
 
     azure_kid = f"jwe-{channel_slug.removeprefix('com.').replace('.', '-')}-{base32_encode(jwe_kid)}"
     expiry = datetime.now() + timedelta(minutes=mins_to_expire)
-    value = {"public_key": pub_key_pem, "private_key": priv_key_pem, "expires_at": expiry.timestamp()}
+    value = {
+        "public_key": pub_key_pem,
+        "private_key": priv_key_pem,
+        "expires_at": expiry.timestamp(),
+    }
 
     print(
         "FOR TESTING PURPOSES OR LOCAL USE ONLY\nAzure secret name:"
