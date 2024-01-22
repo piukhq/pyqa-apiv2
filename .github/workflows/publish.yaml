@@ -9,7 +9,7 @@ jobs:
     uses: binkhq/actions/.github/workflows/python_build.yaml@master
     with:
       python_version: "3.11"
-      application_name: ${{ github.event.repository.name }}
+      application_name: pyqa-apiv2
       application_version: ${{ github.ref_name }}
     secrets: inherit
   release:
