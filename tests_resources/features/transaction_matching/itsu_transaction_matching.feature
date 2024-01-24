@@ -1,4 +1,4 @@
-@itsu @bink_regression_api2
+@itsu
 
 Feature: As a Bink user I want Bink to match and export my payment transactions to my itsu retailer transaction so that I am able to earn stamps and rewards via PLL.
 # This Service Integration Suite contains end-to-end tests for Transaction Matching for itsu using Visa
@@ -6,8 +6,6 @@ Feature: As a Bink user I want Bink to match and export my payment transactions 
 # itsu Transactionmatching checks around Payment amount (export iff amount >=5) should
 # be handled in component level
 
-
-  @e2e1
   Scenario: Verify transaction spotting for itsu using Visa E2E
 
     Given I am a bos user
@@ -20,5 +18,3 @@ Feature: As a Bink user I want Bink to match and export my payment transactions 
     When I send Payment Transaction File with visa-settlement-matching and MID as 554196505480673
     # When I send Payment Transaction File with visa-refund-spotting-e2e and MID as 554196505480673
     Then I verify the reward transaction is exported using transaction_matching
-
-  

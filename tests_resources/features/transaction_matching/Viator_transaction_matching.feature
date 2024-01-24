@@ -8,7 +8,7 @@ Feature: Merchant VIATOR - Ensure a customer can use Bink's Transaction Matching
 
      Given I am a bos user
     When I perform POST request to add a new <payment_card_provider> payment account to wallet
-    When I perform POST request to add and authorise "The_Works" membership card with transactions and vouchers
+    When I perform POST request to add and authorise "Viator" membership card with transactions and vouchers
     And  And I perform GET Wallet
     When I send Payment Transaction File with <payment_card_transaction> <mid>
     Then I verify the reward transaction is exported using transaction-spotting
@@ -27,7 +27,7 @@ Feature: Merchant VIATOR - Ensure a customer can use Bink's Transaction Matching
 
     Given I am a bos user
     When I perform POST request to add a new <payment_card_provider> payment account to wallet
-    When I perform POST request to add and authorise "The_Works" membership card with transactions and vouchers
+    When I perform POST request to add and authorise "Viator" membership card with transactions and vouchers
     And  And I perform GET Wallet
     When I send Payment Transaction File with <payment_card_transaction> <mid>
     Then I verify transaction is not streamed and exported
@@ -48,11 +48,9 @@ Feature: Merchant VIATOR - Ensure a customer can use Bink's Transaction Matching
 
     Given I am a bos user
     When I perform POST request to add a new visa payment account to wallet
-    When I perform POST request to add and authorise "The_Works" membership card with transactions and vouchers
+    When I perform POST request to add and authorise "Viator" membership card with transactions and vouchers
     And  And I perform GET Wallet
     When I send Payment Transaction File with master-settlement-spotting and MID as 020150514
     Then I verify the reward transaction is exported using transaction-spotting
     When I send Payment Transaction File with master-refund-spotting and MID as 020150514
     Then I verify the reward transaction is exported using transaction-spotting-refund
-
-
