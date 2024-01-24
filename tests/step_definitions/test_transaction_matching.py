@@ -49,7 +49,7 @@ def verify_wallet(wallet, env, channel):
     test_loyalty_cards.verify_wallet(wallet, env, channel)
 
 
-@when(parsers.parse("I send Payment Transaction File with {payment_card_transaction} {mid}"))
+# @when(parsers.parse("I send Payment Transaction File with {payment_card_transaction} {mid}"))
 @when(parsers.parse("I send Payment Transaction File with {payment_card_transaction} and MID as {mid}"))
 def import_payment_file(payment_card_transaction, mid):
     print("mid is: " + mid)
@@ -62,7 +62,7 @@ def import_payment_file(payment_card_transaction, mid):
         logging.info("The response of POST/import Payment File is: \n\n" + json.dumps(response_json, indent=4))
         assert response.status_code == 201 or 200, "Payment file import is not successful"
         """The export time is different for various retailers"""
-        time.sleep(60)
+        # time.sleep(60)
     except AttributeError:
         if response is None:
             logging.info(

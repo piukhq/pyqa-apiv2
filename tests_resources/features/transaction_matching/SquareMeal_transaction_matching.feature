@@ -9,7 +9,7 @@ Feature: Merchant SquareMeal - Ensure a customer can use Bink's Transaction Matc
 
     Given I am a bos user
     When I perform POST request to add a new <payment_card_provider> payment account to wallet
-    When I perform POST request to add and authorise "The_Works" membership card with transactions and vouchers
+    When I perform POST request to add and authorise "SquareMeal" membership card with transactions and vouchers
     And  And I perform GET Wallet
     When I send Payment Transaction File with <payment_card_transaction> <mid>
     Then I verify the reward transaction is exported using transaction-streaming
@@ -27,7 +27,7 @@ Feature: Merchant SquareMeal - Ensure a customer can use Bink's Transaction Matc
   Scenario Outline: Verify transaction streaming for squaremeal negative scenario (invalid mid)
     Given I am a bos user
     When I perform POST request to add a new <payment_card_provider> payment account to wallet
-    When I perform POST request to add and authorise "The_Works" membership card with transactions and vouchers
+    When I perform POST request to add and authorise "SquareMeal" membership card with transactions and vouchers
     And  And I perform GET Wallet
     When I send Payment Transaction File with <payment_card_transaction> <mid>
     Then I verify transaction is not streamed and exported
@@ -42,7 +42,7 @@ Feature: Merchant SquareMeal - Ensure a customer can use Bink's Transaction Matc
     Scenario: Verify transaction SquareMeal MasterCard Transaction Streaming E2E(Settle, Refund)
      Given I am a bos user
     When I perform POST request to add a new visa payment account to wallet
-    When I perform POST request to add and authorise "The_Works" membership card with transactions and vouchers
+    When I perform POST request to add and authorise "SquareMeal" membership card with transactions and vouchers
     And  And I perform GET Wallet
     When I send Payment Transaction File with master-settlement-streaming and MID as 29047531
     Then I verify the reward transaction is exported using transaction-streaming
@@ -53,7 +53,7 @@ Feature: Merchant SquareMeal - Ensure a customer can use Bink's Transaction Matc
   Scenario Outline: Verify transaction streaming for squaremeal negative scenario(invalid payment card token)
     Given I am a bos user
     When I perform POST request to add a new <payment_card_provider> payment account to wallet
-    When I perform POST request to add and authorise "The_Works" membership card with transactions and vouchers
+    When I perform POST request to add and authorise "SquareMeal" membership card with transactions and vouchers
     And  And I perform GET Wallet
     When I send Payment Transaction File with <payment_card_transaction> <mid>
     Then I verify transaction is not streamed and exported
