@@ -28,7 +28,7 @@ def join(*args: WidthField) -> str:
 
 
 def get_data_to_import():
-    TestTransactionMatchingContext.transaction_matching_amount = random.choice(range(1, 20)) / 100
+    TestTransactionMatchingContext.transaction_matching_amount = random.choice(range(1, 20))
     TestTransactionMatchingContext.transaction_id = (
         TransactionMatchingPaymentFileDetails.get_random_alphanumeric_string(48)
     )

@@ -5,20 +5,21 @@ Feature: Merchant The Work - Ensure a customer can use Bink's Transaction Matchi
   I shopped at a Bink PLL partner that uses transaction matching
   So I can offer a near real time transaction matching service to merchants.
 
-
+   @fixme @bink_regression_api2
   Scenario: Verify transaction spotting for TheWorks using Visa E2E
 
     Given I am a bos user
     When I perform POST request to add a new visa payment account to wallet
     When I perform POST request to add and authorise "The_Works" membership card with transactions and vouchers
     And  And I perform GET Wallet
-    When I send Payment Transaction File with visa-auth-spotting-e2e and MID as works0001
-    When I send Payment Transaction File with visa-settlement-spotting-e2e and MID as works0001
+    When I send Payment Transaction File with visa-auth-spotting-e2e and MID as 1136668
+    When I send Payment Transaction File with visa-settlement-spotting-e2e and MID as 1136668
     Then I verify the reward transaction is exported using transaction-spotting
-    When I send Payment Transaction File with visa-refund-spotting-e2e and MID as works0001
+    When I send Payment Transaction File with visa-refund-spotting-e2e and MID as 1136668
     Then I verify the reward transaction is exported using transaction-spotting
 
-  Scenario: Verify transaction spotting for TheWorks using Amex E2E
+  #  Can not be tested as the Amex Mids are not available in staging
+    Scenario: Verify transaction spotting for TheWorks using Amex E2E
 
     Given I am a bos user
     When I perform POST request to add a new visa payment account to wallet
@@ -29,18 +30,19 @@ Feature: Merchant The Work - Ensure a customer can use Bink's Transaction Matchi
     When I send Payment Transaction File with amex-refund-spotting and MID as works0003
     Then I verify the reward transaction is exported using transaction-spotting
 
-    @fixme
+   @fixme @bink_regression_api2
     Scenario: Verify transaction spotting for TheWorks using Master E2E
 
     Given I am a bos user
     When I perform POST request to add a new visa payment account to wallet
     When I perform POST request to add and authorise "The_Works" membership card with transactions and vouchers
     And  And I perform GET Wallet
-    When I send Payment Transaction File with master-settlement-spotting and MID as works0002
-    Then I verify the reward transaction is exported using "transaction-spotting"
-    When I send Payment Transaction File with "master-refund-spotting-the-works" and MID as "works0002"
-    Then I verify the reward transaction is exported using "transaction-spotting-refund-the-works"
+    When I send Payment Transaction File with master-settlement-spotting and MID as 1136668
+    Then I verify the reward transaction is exported using transaction-spotting
+    When I send Payment Transaction File with master-refund-spotting-the-works and MID as 1136668
+    Then I verify the reward transaction is exported using transaction-spotting-refund-the-works
 
+    @fixme @bink_regression_api2
   Scenario Outline: Verify transaction spotting for TheWorks _ dedupe
 
     Given I am a bos user
@@ -52,4 +54,4 @@ Feature: Merchant The Work - Ensure a customer can use Bink's Transaction Matchi
     Examples:
 
       | payment_card_provider | mid       | payment_card_transaction |
-      | visa                  | works0001 | visa-settle-spotting     |
+      | visa                  | 1136668   | visa-settle-spotting     |

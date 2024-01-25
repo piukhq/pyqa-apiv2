@@ -36,33 +36,12 @@ def pytest_bdd_step_error(request, feature, scenario, step, step_func, step_func
     delete_payment_card()
     delete_user()
 
-
-# def pytest_bdd_before_step_call(request,feature,scenario,step,step_func,step_func_args):
-#     """Calledbeforestepfunctionisexecutedwithevaluatedarguments"""
-#     #print("pytest_bdd_before_step_callstep",step)
-#     #print("pytest_bdd_before_step_callstep_func",step_func)
-#     #print("pytest_bdd_before_step_callstep_func_args",step_func_args)
-#     #print("pytest_bdd_before_step_callselectmerchant",request.getfixturevalue('selected_merchant'))
-#     if request.getfixturevalue('selected_merchant').upper()!='ALL':
-#         if 'merchant' in step_func_args:
-#             print(step_func_args['merchant'])
-#             merchants_list = list((request.getfixturevalue('selected_merchant')).split())
-#             for this_merchant in merchants_list:
-#                 if this_merchant.upper() != (step_func_args['merchant']).upper():
-#                     pytest.skip(msg=f"merchant{step_func_args['merchant']}")
-
-
 def pytest_bdd_before_step_call(request, feature, scenario, step, step_func, step_func_args):
     """Called before step function is executed with evaluated arguments"""
-    # print("pytest_bdd_before_step_callstep",step)
-    # print("pytest_bdd_before_step_callstep_func",step_func)
-    # print("pytest_bdd_before_step_callstep_func_args",step_func_args)
-    # print("pytest_bdd_before_step_callselectmerchant",request.getfixturevalue('selected_merchant'))
+
     if request.getfixturevalue("selected_merchant").upper() != "ALL":
         if "merchant" in step_func_args:
-            # print(step_func_args["merchant"])
             merchants_list = request.getfixturevalue("selected_merchant").upper().split(",")
-            # print("merchants_list ", merchants_list)
             if (step_func_args["merchant"]).upper() not in merchants_list:
                 pytest.skip(msg=f"merchant{step_func_args['merchant']}")
 
@@ -76,15 +55,6 @@ def pytest_bdd_after_scenario():
 def pytest_html_report_title(report):
     """Customized title for html report"""
     report.title = "BANK API 2.0 Automation Result_Pytest_BDD"
-
-
-# @pytest.fixture(scope="session", autouse=True)
-# def configure_html_report_env(request, env, channel):
-#     """Delete existing data in the test report and add bink api execution details"""
-#     for ele in list(request.config._metadata.keys()):
-#         del request.config._metadata[ele]
-#     # if re.search(r'^(GITLAB_|CI_)', k): for git lab related extra table contents
-#     request.config._metadata.update({"Test Environment": env.upper(), "Channel": channel.upper()})
 
 
 """Reading inputs from terminal"""
@@ -216,20 +186,6 @@ def squaremeal_external_id():
 @given("I am a Bink user")
 def login_user(channel, env):
     setup_token()
-    # TestContext.channel_name = channel
-    # if channel == config.BINK.channel_name:
-    #     response = CustomerAccount.login_bink_user()
-    #     if response is not None:
-    #         try:
-    #             logging.info(f"POST Login response: {response.json()} ")
-    #             assert response.status_code == 200 and response.json().get(
-    #                 "email"
-    #             ) == TestDataUtils.TEST_DATA.bink_user_accounts.get(
-    #                 constants.USER_ID
-    #             ), "User login in Bink Channel is not successful"
-    #             return TestContext.token
-    #         except Exception as e:
-    #             logging.info(f"Gateway Timeout error :{e}")
 
 
 @given("I am a Bink Wallet user1")
@@ -321,8 +277,6 @@ def delete_scheme_account(merchant=None):
         TestContext.token, TestContext.current_scheme_account_id
     )
     TestContext.response_status_code = response_del_schemes.status_code
-    # response_del_schemes_1 = MembershipCards.delete_scheme_account(TestContext.token_channel_1,
-    #                                                                TestContext.scheme_account_id1)
     """Even if the scheme account is deleted, it is not updating DB so quickly
      so delay is required before next execution"""
     try:

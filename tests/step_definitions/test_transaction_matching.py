@@ -52,8 +52,7 @@ def verify_wallet(wallet, env, channel):
 # @when(parsers.parse("I send Payment Transaction File with {payment_card_transaction} {mid}"))
 @when(parsers.parse("I send Payment Transaction File with {payment_card_transaction} and MID as {mid}"))
 def import_payment_file(payment_card_transaction, mid):
-    print("mid is: " + mid)
-    print("payment_card_transaction is: " + payment_card_transaction)
+
     TestTransactionMatchingContext.mid = mid
     response = import_payment_file_into_harmonia(payment_card_transaction, mid)
     logging.info("Waiting for transaction to be exported")
