@@ -787,8 +787,6 @@ def verify_wallet(Wallet, env, channel):
 @when(parsers.parse("For {user} I perform GET {Wallet}"))
 def verify_user_wallet(user, Wallet, env, channel):
     TestContext.token = TestContext.all_users[user]
-    print("user", user)
-    print("payment id", TestContext.current_payment_card_id)
     time.sleep(5)
     if Wallet == "Wallet":
         response = MembershipCards.get_view_wallet(TestContext.token)
@@ -963,34 +961,6 @@ def verify_invalid_request_for_add_and_auth_journey(merchant, membership_card, r
     )
 
     assert TestContext.response_status_code == int(status_code), "Invalid request for " + merchant + " failed"
-
-
-# def verify_invalid_request_for_add_and_auth_journey(merchant, request_payload, status_code):
-#     if request_payload in ["invalid_request", "invalid_json"]:
-#         response = MembershipCards.add_and_authorise_card(TestContext.token, merchant, request_payload)
-#         response_json = response_to_json(response)
-#         TestContext.response_status_code = response.status_code
-#         TestContext.error_message = response_json["error_message"]
-#         TestContext.error_slug = response_json["error_slug"]
-#     elif request_payload == "unauthorised":
-#         journey_type = request_payload
-#         response = MembershipCards.add_and_authorise_card(TestContext.token, merchant, request_payload)
-#         response_json = response_to_json(response)
-#         logging.info(response_json)
-#         TestContext.response_status_code = response.status_code
-#         TestContext.current_scheme_account_id = response_json.get("id")
-#         verify_loyalty_card_into_database(journey_type, merchant)
-#
-#     logging.info(
-#         "The response of Invalid Journey (POST) for Add and Auth field:\n \n"
-#         + Endpoint.BASE_URL
-#         + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_AUTHORISE
-#         + "\n\n"
-#         + json.dumps(response_json, indent=4)
-#     )
-#
-#     assert TestContext.response_status_code == int(status_code), "Invalid request for " + merchant + " failed"
-
 
 @when(
     parsers.parse(
