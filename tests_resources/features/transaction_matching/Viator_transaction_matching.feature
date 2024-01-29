@@ -1,4 +1,4 @@
-@tm @viator
+@tm @viator @bink_regression_api2
 Feature: Merchant VIATOR - Ensure a customer can use Bink's Transaction Matching features
   As a customer
   I shopped at a Bink PLL partner that uses transaction matching

@@ -1,4 +1,4 @@
-@itsu
+@itsu @bink_regression_api2
 
 Feature: As a Bink user I want Bink to match and export my payment transactions to my itsu retailer transaction so that I am able to earn stamps and rewards via PLL.
 # This Service Integration Suite contains end-to-end tests for Transaction Matching for itsu using Visa
