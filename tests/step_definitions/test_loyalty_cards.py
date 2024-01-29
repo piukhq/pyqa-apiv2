@@ -591,7 +591,7 @@ def verify_loyalty_card_invalid_id_balance(env, channel, merchant, invalid_id):
     TestContext.error_slug = response_json.get("error_slug")
 
 
-@when(parsers.parse("For {user} I perform GET transaction for loyalty card with {loyalty_card_status} for {merchant}"))
+@when(parsers.parse("As a {user} I performed  GET transaction for {loyalty_card_status} {merchant} membership card"))
 def verify_loyalty_card_transactions(env, channel, user, loyalty_card_status, merchant):
     TestContext.token = TestContext.all_users[user]
     time.sleep(6)
@@ -787,8 +787,6 @@ def verify_wallet(Wallet, env, channel):
 @when(parsers.parse("For {user} I perform GET {Wallet}"))
 def verify_user_wallet(user, Wallet, env, channel):
     TestContext.token = TestContext.all_users[user]
-    print("user", user)
-    print("payment id", TestContext.current_payment_card_id)
     time.sleep(5)
     if Wallet == "Wallet":
         response = MembershipCards.get_view_wallet(TestContext.token)
@@ -963,34 +961,6 @@ def verify_invalid_request_for_add_and_auth_journey(merchant, membership_card, r
     )
 
     assert TestContext.response_status_code == int(status_code), "Invalid request for " + merchant + " failed"
-
-
-# def verify_invalid_request_for_add_and_auth_journey(merchant, request_payload, status_code):
-#     if request_payload in ["invalid_request", "invalid_json"]:
-#         response = MembershipCards.add_and_authorise_card(TestContext.token, merchant, request_payload)
-#         response_json = response_to_json(response)
-#         TestContext.response_status_code = response.status_code
-#         TestContext.error_message = response_json["error_message"]
-#         TestContext.error_slug = response_json["error_slug"]
-#     elif request_payload == "unauthorised":
-#         journey_type = request_payload
-#         response = MembershipCards.add_and_authorise_card(TestContext.token, merchant, request_payload)
-#         response_json = response_to_json(response)
-#         logging.info(response_json)
-#         TestContext.response_status_code = response.status_code
-#         TestContext.current_scheme_account_id = response_json.get("id")
-#         verify_loyalty_card_into_database(journey_type, merchant)
-#
-#     logging.info(
-#         "The response of Invalid Journey (POST) for Add and Auth field:\n \n"
-#         + Endpoint.BASE_URL
-#         + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_AUTHORISE
-#         + "\n\n"
-#         + json.dumps(response_json, indent=4)
-#     )
-#
-#     assert TestContext.response_status_code == int(status_code), "Invalid request for " + merchant + " failed"
-
 
 @when(
     parsers.parse(
@@ -1182,13 +1152,16 @@ def verify_invalid_token_bearer_prefix_for_register_membership_card(merchant, te
     assert response.status_code == 401, "Server error"
     return response
 
+@then(parsers.parse("I see a {status_code_returned}"))
+def verify_membership_card_status_code(status_code_returned):
+    assert TestContext.response_status_code == int(status_code_returned)
 
-@then(parsers.parse('I see a "{error_message}" error message'))
+@then(parsers.parse('I see a {error_message} error message'))
 def verify_error_message(error_message):
     assert TestContext.error_message == error_message, "Error Message didnt returned"
 
 
-@then(parsers.parse('I see a "{error_slug}" error slug'))
+@then(parsers.parse('I see a {error_slug} error slug'))
 def verify_error_slug(error_slug):
     assert TestContext.error_slug == error_slug, "Error Slug didnt returned"
 
@@ -1213,11 +1186,6 @@ def verify_invalid_token_bearer_prefix_for_membership_card(merchant):
 
     assert response.status_code == 401, "Server error"
     return response
-
-
-@then(parsers.parse("I see a {status_code_returned}"))
-def verify_membership_card_status_code(status_code_returned):
-    assert TestContext.response_status_code == int(status_code_returned)
 
 
 @then(parsers.parse("I see '{journey}' list appearing"))

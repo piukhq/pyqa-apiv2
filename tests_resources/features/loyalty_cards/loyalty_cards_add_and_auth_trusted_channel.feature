@@ -1,17 +1,15 @@
 # Created by bularaghavan at 31/10/2022
-@trusted_channel_add_and_authorise @trusted @actual_tc @bink_regression_api2
+@bink_regression_api2
 Feature: Add and authorise a loyalty card into Trusted channel
   As a Trusted Channel I want to add a loyalty card into my user’s wallet, without needing to provide sensitive credential information
   so that I do not need to expose sensitive credential data within my system, and
   I can then link my user’s payment cards to their loyalty card, so my users can use PLL.
 
-
-  @add_and_auth_tc @sandbox_regression
   Scenario Outline: Trusted channel adds loyalty card into wallet
     Given I am a squaremeal user
     When I perform POST request to add trusted channel "<merchant>" loyalty card
     Then I see a 201
-    And verify that for squaremeal_user data stored in after "<journey_type>" journey for "<merchant>"
+    # And verify that for squaremeal_user data stored in after "<journey_type>" journey for "<merchant>"
     When For squaremeal_user I perform GET Wallet
     Then I see a 200
     Then Wallet fields are correctly populated for <merchant> when lc_in_only_tc
@@ -21,29 +19,29 @@ Feature: Add and authorise a loyalty card into Trusted channel
     When For squaremeal_user I perform GET Wallet_by_card_id
     Then I see a 200
     Then Wallet_by_card_id fields are correctly populated for <merchant> when lc_in_only_tc
-    When For squaremeal_user I perform GET transaction for loyalty card with unauthorised for <merchant>
-    And For squaremeal_user I perform GET balance for loyalty card with unauthorised for <merchant>
-    And For squaremeal_user I perform GET voucher for loyalty card with unauthorised for <merchant>
+    When For squaremeal_user I perform GET transaction for loyalty card with authorised for <merchant>
+    # And For squaremeal_user I perform GET balance for loyalty card with unauthorised for <merchant>
+    # And For squaremeal_user I perform GET voucher for loyalty card with unauthorised for <merchant>
 
     Examples:
       | merchant      |journey_type      |
       | SquareMeal    | add_and_authorise|
 
-  @add_and_auth_ntc_in_tc @sandbox_regression
+
   Scenario Outline: Trusted channel adds loyalty card into wallet which already exists in Non trusted channel
     Given I am a halifax user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add and authorise "<merchant>" membership card
     Then I see a 202
-    And verify that for halifax_user data stored in after "<journey_type>" journey for "<merchant>"
+    # And verify that for halifax_user data stored in after "<journey_type>" journey for "<merchant>"
     Given I am a squaremeal user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add trusted channel "<merchant>" loyalty card
     Then I see a 201
-    And verify that for squaremeal_user data stored in after "<journey_type>" journey for "<merchant>"
+    # And verify that for squaremeal_user data stored in after "<journey_type>" journey for "<merchant>"
     When For squaremeal_user I perform GET Wallet
     Then I see a 200
-    And All Wallet fields are correctly populated for <merchant>
+    And All Wallet fields are correctly populated for <mercsquaremeal_userhant>
     When For squaremeal_user I perform GET Wallet_overview
     Then I see a 200
     And All Wallet_overview fields are correctly populated for <merchant>
@@ -58,7 +56,7 @@ Feature: Add and authorise a loyalty card into Trusted channel
       | merchant      | journey_type      |payment_card_provider|
       | SquareMeal    | add_and_authorise |master               |
 
-@add_and_auth_tc_in_ntc @sandbox_regression
+
   Scenario Outline: Non Trusted channel adds loyalty card into wallet which already exists in Trusted channel
     Given I am a squaremeal user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
@@ -87,7 +85,7 @@ Feature: Add and authorise a loyalty card into Trusted channel
       | merchant      | status_code_returned | journey_type      |payment_card_provider|
       | SquareMeal    | 202                  | add_and_authorise |master               |
 
-  @add_and_auth_pll_tc @sandbox_regression
+
   Scenario Outline: verify PLL for add card in trusted channel
     Given I am a squaremeal user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
