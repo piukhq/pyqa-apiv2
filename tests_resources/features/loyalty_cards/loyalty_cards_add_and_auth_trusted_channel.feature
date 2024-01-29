@@ -5,7 +5,6 @@ Feature: Add and authorise a loyalty card into Trusted channel
   so that I do not need to expose sensitive credential data within my system, and
   I can then link my user’s payment cards to their loyalty card, so my users can use PLL.
 
-@fixme
   Scenario Outline: Trusted channel adds loyalty card into wallet
     Given I am a squaremeal user
     When I perform POST request to add trusted channel "<merchant>" loyalty card

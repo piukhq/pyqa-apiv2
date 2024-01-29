@@ -31,22 +31,6 @@ def event_verify_invalid_request_for_add_and_auth_journey(merchant, membership_c
         merchant, membership_card, request_payload, status_code
     )
 
-
-# @then(parsers.parse('I see a "{error_message}" error message'))
-# def verify_error_message(error_message):
-#     assert TestContext.error_message == error_message, "Error Message didnt returned"
-
-
-# @then(parsers.parse('I see a "{error_slug}" error slug'))
-# def verify_error_slug(error_slug):
-#     assert TestContext.error_slug == error_slug, "Error Slug didnt returned"
-
-
-# @then(parsers.parse("I see a {status_code_returned}"))
-# def verify_membership_card_status_code(status_code_returned):
-#     assert TestContext.response_status_code == int(status_code_returned)
-
-
 @when(parsers.parse('I perform POST request to add and authorise "{merchant}" membership card'))
 def post_add_and_auth(merchant):
     test_loyalty_cards.verify_add_and_auth(merchant)

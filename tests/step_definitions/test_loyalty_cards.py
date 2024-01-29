@@ -591,7 +591,7 @@ def verify_loyalty_card_invalid_id_balance(env, channel, merchant, invalid_id):
     TestContext.error_slug = response_json.get("error_slug")
 
 
-@when(parsers.parse("For {user} I perform GET transaction for loyalty card with {loyalty_card_status} for {merchant}"))
+@when(parsers.parse("As a {user} I performed  GET transaction for {loyalty_card_status} {merchant} membership card"))
 def verify_loyalty_card_transactions(env, channel, user, loyalty_card_status, merchant):
     TestContext.token = TestContext.all_users[user]
     time.sleep(6)
@@ -1152,13 +1152,16 @@ def verify_invalid_token_bearer_prefix_for_register_membership_card(merchant, te
     assert response.status_code == 401, "Server error"
     return response
 
+@then(parsers.parse("I see a {status_code_returned}"))
+def verify_membership_card_status_code(status_code_returned):
+    assert TestContext.response_status_code == int(status_code_returned)
 
-@then(parsers.parse('I see a "{error_message}" error message'))
+@then(parsers.parse('I see a {error_message} error message'))
 def verify_error_message(error_message):
     assert TestContext.error_message == error_message, "Error Message didnt returned"
 
 
-@then(parsers.parse('I see a "{error_slug}" error slug'))
+@then(parsers.parse('I see a {error_slug} error slug'))
 def verify_error_slug(error_slug):
     assert TestContext.error_slug == error_slug, "Error Slug didnt returned"
 
@@ -1183,11 +1186,6 @@ def verify_invalid_token_bearer_prefix_for_membership_card(merchant):
 
     assert response.status_code == 401, "Server error"
     return response
-
-
-@then(parsers.parse("I see a {status_code_returned}"))
-def verify_membership_card_status_code(status_code_returned):
-    assert TestContext.response_status_code == int(status_code_returned)
 
 
 @then(parsers.parse("I see '{journey}' list appearing"))
