@@ -15,8 +15,8 @@ Feature: Delete User feature
       When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
       And I perform POST request to add and authorise "<merchant>" membership card using b2b token
       Then I see a <status_code_returned>
-      And verify that for bink_user data stored in after "<journey_type>" journey for "<merchant>"
-      And verify that for bink_user data stored in after "<journey_type2>" journey for "<merchant>"
+      And verify that for lloyds_user data stored in after "<journey_type>" journey for "<merchant>"
+      And verify that for lloyds_user data stored in after "<journey_type2>" journey for "<merchant>"
       And I perform DELETE request to delete user successfully
       And verify that the PLL links are deleted from the scheme account for "<journey_type2>"
 

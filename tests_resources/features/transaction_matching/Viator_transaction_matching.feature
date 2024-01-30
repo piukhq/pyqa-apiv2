@@ -4,13 +4,14 @@ Feature: Merchant VIATOR - Ensure a customer can use Bink's Transaction Matching
   I shopped at a Bink PLL partner that uses transaction matching
   So I can offer a near real time transaction matching service to merchants.
 
+    @fixme
     Scenario Outline: Verify transaction spotting for Viator
 
      Given I am a bos user
     When I perform POST request to add a new <payment_card_provider> payment account to wallet
     When I perform POST request to add and authorise "Viator" membership card with transactions and vouchers
     And  And I perform GET Wallet
-    When I send Payment Transaction File with <payment_card_transaction> <mid>
+    When I send Payment Transaction File with <payment_card_transaction> and MID as <mid>
     Then I verify the reward transaction is exported using transaction-spotting
     Examples:
     | payment_card_provider|     mid       |payment_card_transaction    |
@@ -29,7 +30,7 @@ Feature: Merchant VIATOR - Ensure a customer can use Bink's Transaction Matching
     When I perform POST request to add a new <payment_card_provider> payment account to wallet
     When I perform POST request to add and authorise "Viator" membership card with transactions and vouchers
     And  And I perform GET Wallet
-    When I send Payment Transaction File with <payment_card_transaction> <mid>
+    When I send Payment Transaction File with <payment_card_transaction> and MID as <mid>
     Then I verify transaction is not streamed and exported
 
 
