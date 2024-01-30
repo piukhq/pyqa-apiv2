@@ -11,7 +11,7 @@ Feature: Merchant SquareMeal - Ensure a customer can use Bink's Transaction Matc
     When I perform POST request to add a new <payment_card_provider> payment account to wallet
     When I perform POST request to add and authorise "SquareMeal" membership card with transactions and vouchers
     And  And I perform GET Wallet
-    When I send Payment Transaction File with <payment_card_transaction> <mid>
+    When I send Payment Transaction File with <payment_card_transaction> and MID as <mid>
     Then I verify the reward transaction is exported using transaction-streaming
     Examples:
       | payment_card_provider | mid        | payment_card_transaction    |
@@ -29,7 +29,7 @@ Feature: Merchant SquareMeal - Ensure a customer can use Bink's Transaction Matc
     When I perform POST request to add a new <payment_card_provider> payment account to wallet
     When I perform POST request to add and authorise "SquareMeal" membership card with transactions and vouchers
     And  And I perform GET Wallet
-    When I send Payment Transaction File with <payment_card_transaction> <mid>
+    When I send Payment Transaction File with <payment_card_transaction> and MID as <mid>
     Then I verify transaction is not streamed and exported
 
     Examples:
@@ -55,7 +55,7 @@ Feature: Merchant SquareMeal - Ensure a customer can use Bink's Transaction Matc
     When I perform POST request to add a new <payment_card_provider> payment account to wallet
     When I perform POST request to add and authorise "SquareMeal" membership card with transactions and vouchers
     And  And I perform GET Wallet
-    When I send Payment Transaction File with <payment_card_transaction> <mid>
+    When I send Payment Transaction File with <payment_card_transaction> and MID as <mid>
     Then I verify transaction is not streamed and exported
 
     Examples:
