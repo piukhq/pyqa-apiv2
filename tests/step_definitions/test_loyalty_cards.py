@@ -504,8 +504,7 @@ def verify_voucher_field(env, channel, merchant):
         TestData.get_merchant_response(merchant).wallet_response()["vouchers"],
     )
 
-
-@when(parsers.parse("For {user} I perform GET balance for loyalty card with {loyalty_card_status} for {merchant}"))
+@when(parsers.parse("As a {user} I performed GET balance for {loyalty_card_status} {merchant} membership card"))
 def verify_loyalty_card_balance(env, channel, user, loyalty_card_status, merchant):
     TestContext.token = TestContext.all_users[user]
     time.sleep(4)
