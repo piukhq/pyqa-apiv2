@@ -1,10 +1,10 @@
-@tm @square_meal @bink_regression_api2
+@tm @square_meal
 Feature: Merchant SquareMeal - Ensure a customer can use Bink's Transaction Matching features
   As a customer
   I shopped at a Bink PLL partner that uses transaction matching
   So I can offer a near real time transaction matching service to merchants.
 
-
+  @bink_regression_api2
   Scenario Outline: Verify transaction streaming for squareMeal
 
     Given I am a bos user
@@ -23,7 +23,7 @@ Feature: Merchant SquareMeal - Ensure a customer can use Bink's Transaction Matc
       | amex                  | 9449819796 | amex-settlement-streaming   |
       | amex                  | 9449819796 | amex-refund-streaming       |
 
-
+  @bink_regression_api2
   Scenario Outline: Verify transaction streaming for squaremeal negative scenario (invalid mid)
     Given I am a bos user
     When I perform POST request to add a new <payment_card_provider> payment account to wallet
@@ -49,7 +49,7 @@ Feature: Merchant SquareMeal - Ensure a customer can use Bink's Transaction Matc
     When I send Payment Transaction File with master-refund-spotting and MID as 29047531
     Then I verify the reward transaction is exported using transaction-streaming-refund
 
-
+  @bink_regression_api2
   Scenario Outline: Verify transaction streaming for squaremeal negative scenario(invalid payment card token)
     Given I am a bos user
     When I perform POST request to add a new <payment_card_provider> payment account to wallet
