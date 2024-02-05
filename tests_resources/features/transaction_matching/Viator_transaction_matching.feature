@@ -1,10 +1,10 @@
-@tm @viator @bink_regression_api2
+@tm @viator
 Feature: Merchant VIATOR - Ensure a customer can use Bink's Transaction Matching features
   As a customer
   I shopped at a Bink PLL partner that uses transaction matching
   So I can offer a near real time transaction matching service to merchants.
 
-
+    @bink_regression_api2
     Scenario Outline: Verify transaction spotting for Viator
 
      Given I am a bos user
@@ -23,7 +23,7 @@ Feature: Merchant VIATOR - Ensure a customer can use Bink's Transaction Matching
     |          amex        |  9602929481   |amex-settlement-spotting     |
     |          amex        |  9602929481   |amex-refund-spotting        |
 
-
+  @bink_regression_api2
   Scenario Outline: Verify transaction Spotting for viator negative scenario(invalid mid)
 
     Given I am a bos user
