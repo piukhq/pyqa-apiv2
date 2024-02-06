@@ -19,9 +19,8 @@ Feature: Add and authorise a loyalty card into Trusted channel
     When For squaremeal_user I perform GET Wallet_by_card_id
     Then I see a 200
     Then Wallet_by_card_id fields are correctly populated for <merchant> when lc_in_only_tc
-    When For squaremeal_user I perform GET transaction for loyalty card with authorised for <merchant>
-    # And For squaremeal_user I perform GET balance for loyalty card with unauthorised for <merchant>
-    # And For squaremeal_user I perform GET voucher for loyalty card with unauthorised for <merchant>
+    When As a squaremeal_user I performed  GET transaction for authorised <merchant> membership card
+    And As a squaremeal_user I performed GET balance for authorised <merchant> membership card
 
     Examples:
       | merchant      |journey_type      |
@@ -48,9 +47,8 @@ Feature: Add and authorise a loyalty card into Trusted channel
     When For squaremeal_user I perform GET Wallet_by_card_id
     Then I see a 200
     And All Wallet_by_card_id fields are correctly populated for <merchant>
-    When For squaremeal_user I perform GET transaction for loyalty card with authorised for <merchant>
-    And For squaremeal_user I perform GET balance for loyalty card with authorised for <merchant>
-    And For squaremeal_user I perform GET voucher for loyalty card with authorised for <merchant>
+    When As a squaremeal_user I performed  GET transaction for authorised <merchant> membership card
+    And As a squaremeal_user I performed GET balance for authorised <merchant> membership card
 
     Examples:
       | merchant      | journey_type      |payment_card_provider|
@@ -77,9 +75,6 @@ Feature: Add and authorise a loyalty card into Trusted channel
     When For lloyds_user I perform GET Wallet_by_card_id
     Then I see a 200
     And All Wallet_by_card_id fields are correctly populated for <merchant>
-    When For lloyds_user I perform GET transaction for loyalty card with authorised for <merchant>
-    And For lloyds_user I perform GET balance for loyalty card with authorised for <merchant>
-    And For lloyds_user I perform GET voucher for loyalty card with authorised for <merchant>
 
     Examples:
       | merchant      | status_code_returned | journey_type      |payment_card_provider|
