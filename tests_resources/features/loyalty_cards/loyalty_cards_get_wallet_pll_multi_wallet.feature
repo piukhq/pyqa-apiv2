@@ -138,7 +138,6 @@ Feature: View multi wallet pll
      | merchant | status_code_returned |payment_card_provider |state1 | slug1 |description1 | state2             | slug2              | description2                                                                               |
      | Viator   | 200                  |visa                  |active | null  |null         |inactive            |UBIQUITY_COLLISION  | There is already a Loyalty Card from the same Loyalty Plan linked to this Payment Account. |
 
-  @fixme
   Scenario Outline: Verify pending payment status in two channels
     Given I am a Lloyds user
     When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
