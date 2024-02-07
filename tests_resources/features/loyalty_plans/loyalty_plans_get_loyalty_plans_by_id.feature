@@ -1,5 +1,5 @@
 # Created by bularaghavan on 26/10/2021
-@bink_regression_api2 @fixme
+@bink_regression_api2
 Feature: View Loyalty Plan by id
  As a consuming channel
  I want to view a loyalty plan’s details available for my channel
