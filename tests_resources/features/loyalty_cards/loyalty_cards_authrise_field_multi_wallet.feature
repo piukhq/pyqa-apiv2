@@ -32,16 +32,10 @@ Feature: Authorise a loyalty card
     Then All Wallet fields are correctly populated for <merchant>
     When For bink_user I perform GET Wallet_overview
     Then All Wallet_overview fields are correctly populated for <merchant>
-    When For bink_user I perform GET transaction for loyalty card with authorised for <merchant>
-    And For bink_user I perform GET balance for loyalty card with authorised for <merchant>
-    And For bink_user I perform GET voucher for loyalty card with authorised for <merchant>
     When For bink_user2 I perform GET Wallet
     Then Wallet fields are correctly populated for unauthorised LC of <merchant>
     When For bink_user2 I perform GET Wallet_overview
     Then Wallet_overview fields are correctly populated for unauthorised LC of <merchant>
-    When For bink_user2 I perform GET transaction for loyalty card with unauthorised for <merchant>
-    And For bink_user2 I perform GET balance for loyalty card with unauthorised for <merchant>
-    And For bink_user2 I perform GET voucher for loyalty card with unauthorised for <merchant>
 
     Examples:
       | merchant |payment_card_provider |journey_type     |

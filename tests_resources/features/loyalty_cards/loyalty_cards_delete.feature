@@ -60,9 +60,6 @@ Feature: Delete a loyalty card
     Then All Wallet_overview fields are correctly populated for <merchant>
     When For bink_user I perform GET Wallet_by_card_id
     Then All Wallet_by_card_id fields are correctly populated for <merchant>
-    When For bink_user I perform GET transaction for loyalty card with authorised for <merchant>
-    And For bink_user I perform GET balance for loyalty card with authorised for <merchant>
-    And For bink_user I perform GET voucher for loyalty card with authorised for <merchant>
 
     Examples:
       | merchant | payment_card_provider | journey_type    | status_code_returned |

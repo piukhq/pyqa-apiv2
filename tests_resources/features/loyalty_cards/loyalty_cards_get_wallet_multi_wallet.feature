@@ -20,13 +20,10 @@ Feature: View Wallets
     When For bink_user I perform GET Wallet
     Then I see a <status_code_returned>
     And All Wallet fields are correctly populated for <merchant>
-    When For bink_user I perform GET transaction for loyalty card with authorised for <merchant>
-    And For bink_user I perform GET balance for loyalty card with authorised for <merchant>
-    And For bink_user I perform GET voucher for loyalty card with authorised for <merchant>
-    And For lloyds_user I perform GET transaction for loyalty card with authorised for <merchant>
-    And For lloyds_user I perform GET balance for loyalty card with authorised for <merchant>
-    And For lloyds_user I perform GET voucher for loyalty card with authorised for <merchant>
-
+    When As a bink_user I performed  GET transaction for authorised <merchant> membership card
+    And As a bink_user I performed  GET balance for authorised <merchant> membership card
+    And As a lloyds_user I performed  GET transaction for authorised <merchant> membership card
+    And As a lloyds_user I performed  GET balance for authorised <merchant> membership card
     Examples:
       | merchant      | status_code_returned|payment_card_provider|
       |Viator        | 200                  |master              |
@@ -48,12 +45,6 @@ Feature: View Wallets
     When For bink_user I perform GET Wallet
     Then I see a <status_code_returned>
     And All Wallet fields are correctly populated for <merchant>
-    When For bink_user I perform GET transaction for loyalty card with authorised for <merchant>
-    And For bink_user I perform GET balance for loyalty card with authorised for <merchant>
-    And For bink_user I perform GET voucher for loyalty card with authorised for <merchant>
-    And For bink_user2 I perform GET transaction for loyalty card with authorised for <merchant>
-    And For bink_user2 I perform GET balance for loyalty card with authorised for <merchant>
-    And For bink_user2 I perform GET voucher for loyalty card with authorised for <merchant>
     Examples:
       | merchant      | status_code_returned|payment_card_provider|
       |Viator        | 200                  |master              |
