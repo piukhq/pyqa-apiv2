@@ -105,7 +105,7 @@ Feature: update loyalty card in Trusted channel
    |conflict|
 
 
-    @fixme
+
     Scenario Outline: Verify email is updated successfully in trusted channel
     Given I am a squaremeal user
     When I perform POST request to add trusted channel "<merchant>" loyalty card
