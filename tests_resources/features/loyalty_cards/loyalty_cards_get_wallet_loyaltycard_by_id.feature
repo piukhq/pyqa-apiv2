@@ -1,5 +1,5 @@
 # Created by nehapatil on 22/02/2022
-@membership_cards_by_id @membership_cards @wallet
+@membership_cards_by_id @membership_cards
 Feature: View Wallet by loyalty card id
   As a Bink user
   I want to view details of single loyalty cards
@@ -11,7 +11,7 @@ Feature: View Wallet by loyalty card id
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    And I add and authorise "<merchant>" membership card with transactions and vouchers
     And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And All Wallet_by_card_id fields are correctly populated for <merchant>
@@ -55,7 +55,7 @@ Feature: View Wallet by loyalty card id
   Scenario Outline: Verify invalid token scenario for get Wallet loyalty card by id
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    And I add and authorise "<merchant>" membership card with transactions and vouchers
     And I perform GET request with <invalid> to view Wallet_by_card_id
     Then I see a <status_code_returned>
     And I see a "<error_message>" error message
@@ -71,7 +71,7 @@ Feature: View Wallet by loyalty card id
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    And I add and authorise "<merchant>" membership card with transactions and vouchers
     And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
@@ -85,7 +85,7 @@ Feature: View Wallet by loyalty card id
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a duplicate "<payment_card_provider>" payment account to wallet
-    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    And I add and authorise "<merchant>" membership card with transactions and vouchers
     And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
@@ -128,11 +128,11 @@ Feature: View Wallet by loyalty card id
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I perform POST request to add and authorise "<merchant>" membership card
+    And I add and authorise "<merchant>" membership card
     And I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
-    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    And I add and authorise "<merchant>" membership card with transactions and vouchers
     And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id

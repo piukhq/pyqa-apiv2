@@ -5,7 +5,6 @@ Feature: Basic Merchant Integration Journeys
   I want check all Loyalty card features
   so that I am able to benefit from the Bink functionality
 
-  @fixme
   Scenario Outline: Join to a Loyalty Scheme
     Given I am a bos user
     When I perform POST request to join "<merchant>" membership card

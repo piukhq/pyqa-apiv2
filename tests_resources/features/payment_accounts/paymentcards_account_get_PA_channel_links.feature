@@ -61,7 +61,7 @@ Feature: Provide Payment Card Channel Transparency to Trusted Channels
     Then verify response of get payment account channel links for <merchant>
     Given I am a Lloyds user
     When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
-    When I perform POST request to add and authorise "<merchant>" membership card
+    When I add and authorise "<merchant>" membership card
     Then I see a 202
     When For squaremeal_user I perform get payment_account_channel_links
     Then I see a <status_code_returned>
@@ -117,7 +117,7 @@ Feature: Provide Payment Card Channel Transparency to Trusted Channels
     Then verify response of get payment account channel links for <merchant>
     Given I am a Lloyds user
     When I perform POST request to add a <payment_status> "<payment_card_provider>" payment card to wallet
-    When I perform POST request to add and authorise "<merchant>" membership card
+    When I add and authorise "<merchant>" membership card
     Then I see a 202
     When For squaremeal_user I perform get payment_account_channel_links
     Then I see a <status_code_returned>
@@ -169,4 +169,3 @@ Feature: Provide Payment Card Channel Transparency to Trusted Channels
     Examples:
       | payment_card_provider | merchant | status_code_returned |
       | master                | SquareMeal| 200                 |
-

@@ -8,7 +8,7 @@ Feature: Add and authorise a loyalty card
   @bink_regression_api2
   Scenario Outline: Add and authorise field journey
     Given I am a Lloyds user
-    When I perform POST request to add and authorise "<merchant>" membership card
+    When I add and authorise "<merchant>" membership card
     Then I see a <status_code_returned>
     And verify that for lloyds_user data stored in after "<journey_type>" journey for "<merchant>"
 
