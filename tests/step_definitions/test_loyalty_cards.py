@@ -10,6 +10,7 @@ from tests.api.base import Endpoint
 from tests.conftest import response_to_json, setup_third_token
 from tests.helpers import constants
 from tests.helpers.database.query_hermes import QueryHermes
+from tests.helpers.database.query_snowstorm import QuerySnowstorm
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
 from tests.helpers.test_helpers import TestData
