@@ -1,11 +1,10 @@
 # Created by rupalpatel at 06/10/2021
- @membership_cards
+  @membership_cards @bink_regression_api2
 Feature: Add and register a loyalty card
   As a Bink user
   I want to register a ghost loyalty card with the loyalty plan
   so that I can use the Bink functionality with the loyalty card
 
-  @bink_regression_api2
   Scenario Outline: add and register success in wallet1 then add and register success in wallet2
     Given I am a halifax user
     When I perform POST request add and register for <merchant>
@@ -24,7 +23,7 @@ Feature: Add and register a loyalty card
       | merchant |
       |The_Works |
 
-  @bink_regression_api2
+
   Scenario Outline: add and register failed in wallet1 then add and register success in wallet2
     Given I am a halifax user
     When I perform POST request to result "<journey_type>" add and register for <merchant>

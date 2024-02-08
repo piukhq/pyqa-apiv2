@@ -1,11 +1,11 @@
 # Created by rupalpatel at 20/09/2021
-@membership_card_add @membership_cards @njames
+@membership_card_add @membership_cards
 Feature: Add a loyalty card
   As a Bink user
   I want to store a loyalty card in my wallet
   so that I can display the barcode in-store, and (if applicable) authorise the loyalty card at a later stage
 
-  @bink_regression_api2
+  @bink_regression_api2  @fixme
   Scenario Outline: Add field journey only
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token

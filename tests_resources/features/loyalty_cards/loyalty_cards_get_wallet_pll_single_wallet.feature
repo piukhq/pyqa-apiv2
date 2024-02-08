@@ -10,7 +10,7 @@ Feature: View single wallet pll
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    And I add and authorise "<merchant>" membership card with transactions and vouchers
     And I perform GET Wallet
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' for loyalty card PLL links in the Wallet
@@ -26,7 +26,7 @@ Feature: View single wallet pll
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a duplicate "<payment_card_provider>" payment account to wallet
-    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    And I add and authorise "<merchant>" membership card with transactions and vouchers
     And I perform GET Wallet
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' for loyalty card PLL links in the Wallet
@@ -74,7 +74,7 @@ Feature: View single wallet pll
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    And I add and authorise "<merchant>" membership card with transactions and vouchers
     And I perform GET Wallet
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' for loyalty card PLL links in the Wallet
@@ -92,7 +92,7 @@ Feature: View single wallet pll
       Given I am in Bink channel to get b2b token
       When I perform POST token request for token type "b2b" to get access token
       And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-      And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+      And I add and authorise "<merchant>" membership card with transactions and vouchers
       And I perform GET Wallet
       Then I see a <status_code_returned>
       And I can see '<state>','<slug>' and '<description>' for loyalty card PLL links in the Wallet

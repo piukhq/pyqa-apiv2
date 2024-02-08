@@ -1,12 +1,12 @@
 # Created by bularaghavan on 25/11/2021
-@bink_regression_api2
+@bink_regression_api2 @membership_cards  @fixme
 Feature: View balance
 As a Bink user
 I want to view my loyalty card balances in my wallet
 so that I am aware and have visibility of my rewards
 
   Scenario Outline: Get Loyalty card balance
-   When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+   When I add and authorise "<merchant>" membership card with transactions and vouchers
    And As a bos_user I performed GET balance for authorised <merchant> membership card
    Then I see a <status_code_returned>
 

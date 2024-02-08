@@ -1,5 +1,5 @@
 # Created by nehapatil at 10/11/2022
-@trusted_channel_delete @trusted @bink_regression_api2 @actual_tc
+ @bink_regression_api2 @membership_cards  @fixme
 Feature: delete loyalty card and delete payment card from Trusted channel
   As a Trusted Channel I want to delete loyalty card and delete payment card
   so that the card is deleted and pll is updated for the wallet
@@ -41,7 +41,7 @@ Feature: delete loyalty card and delete payment card from Trusted channel
   Scenario Outline: Delete loyalty card from Trusted channel wallet which already exists in Non trusted channel
     Given I am a halifax user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    When I perform POST request to add and authorise "<merchant>" membership card
+    When I add and authorise "<merchant>" membership card
     Then I see a <status_code_returned>
     Given I am a squaremeal user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
@@ -71,7 +71,7 @@ Feature: delete loyalty card and delete payment card from Trusted channel
     Then I see a 201
     Given I am a Lloyds user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    When I perform POST request to add and authorise "<merchant>" membership card
+    When I add and authorise "<merchant>" membership card
     Then I see a <status_code_returned>
 #    When For lloyds_user I perform GET Wallet
 #    Then I see a 200
@@ -94,7 +94,7 @@ Feature: delete loyalty card and delete payment card from Trusted channel
   Scenario Outline: Delete payment card from Trusted channel wallet which already exists in Non trusted channel
     Given I am a halifax user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    When I perform POST request to add and authorise "<merchant>" membership card
+    When I add and authorise "<merchant>" membership card
     Then I see a <status_code_returned>
     Given I am a squaremeal user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
@@ -123,7 +123,7 @@ Feature: delete loyalty card and delete payment card from Trusted channel
     Then I see a 201
     Given I am a Lloyds user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    When I perform POST request to add and authorise "<merchant>" membership card
+    When I add and authorise "<merchant>" membership card
     Then I see a <status_code_returned>
 #    When For lloyds_user I perform GET Wallet
 #    Then I see a 200

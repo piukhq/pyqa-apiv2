@@ -11,10 +11,10 @@ Feature: View Wallets overview
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    And I add and authorise "<merchant>" membership card with transactions and vouchers
     Given I am a Lloyds user
     When I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
-    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    And I add and authorise "<merchant>" membership card with transactions and vouchers
     And For lloyds_user I perform GET Wallet_overview
     Then I see a <status_code_returned>
     And All Wallet_overview fields are correctly populated for <merchant>
@@ -59,11 +59,11 @@ Feature: View Wallets overview
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    And I add and authorise "<merchant>" membership card with transactions and vouchers
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
-    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    And I add and authorise "<merchant>" membership card with transactions and vouchers
     And For bink_user2 I perform GET Wallet_overview
     Then I see a <status_code_returned>
     And All Wallet_overview fields are correctly populated for <merchant>
@@ -82,7 +82,7 @@ Feature: View Wallets overview
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I perform POST request to add and authorise "<merchant>" membership card with transaction2_card
+    And I add and authorise "<merchant>" membership card with transaction2_card
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
@@ -109,7 +109,7 @@ Feature: View Wallets overview
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
-    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    And I add and authorise "<merchant>" membership card with transactions and vouchers
     When For bink_user2 I perform GET Wallet_overview
     Then I see a <status_code_returned>
     And All Wallet_overview fields are correctly populated for <merchant>
@@ -131,7 +131,7 @@ Feature: View Wallets overview
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
-    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    And I add and authorise "<merchant>" membership card with transactions and vouchers
     And For lloyds_user I perform GET Wallet_overview
     Then I see a <status_code_returned>
     And Wallet_overview fields are correctly populated for unauthorised LC of <merchant>

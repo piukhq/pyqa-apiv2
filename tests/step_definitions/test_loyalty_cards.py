@@ -10,6 +10,7 @@ from tests.api.base import Endpoint
 from tests.conftest import response_to_json, setup_third_token
 from tests.helpers import constants
 from tests.helpers.database.query_hermes import QueryHermes
+from tests.helpers.database.query_snowstorm import QuerySnowstorm
 from tests.helpers.test_context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
 from tests.helpers.test_helpers import TestData
@@ -18,6 +19,7 @@ from tests.step_definitions import test_paymentcard_account
 
 scenarios("loyalty_cards/")
 scenarios("merchant_integration/")
+scenarios("events/")
 
 """Step definitions - Add_field Journey (store card only) """
 
@@ -1197,7 +1199,7 @@ def verify_wallet_join(journey):
         assert TestContext.response_payment_account == []
 
 
-@when(parsers.parse('I perform POST request to add and authorise "{merchant}" membership card'))
+@when(parsers.parse('I add and authorise "{merchant}" membership card'))
 def verify_add_and_auth(merchant):
     response = MembershipCards.add_and_authorise_card(TestContext.token, merchant)
     response_json = response_to_json(response)
@@ -2656,3 +2658,107 @@ def put_trusted_add(request_payload, merchant):
         TestContext.error_message = response_json.get("error_message")
         TestContext.error_slug = response_json.get("error_slug")
     return response
+
+
+
+
+
+# """"Events realted step definitions"""
+
+@then(
+    parsers.parse(
+        "I verify {journey_type} pll event is created for {user} for status {from_state}"
+        " to {to_state} and slug {slug}"
+    )
+)
+def pll_link_status_change_event(journey_type, user, from_state, to_state, slug):
+    match user:
+        case "lloyds_user":
+            channel = TestDataUtils.TEST_DATA.event_info.get(constants.CLIENT_ID_LLOYDS)
+        case "halifax_user":
+            channel = TestDataUtils.TEST_DATA.event_info.get(constants.CLIENT_ID_HALIFAX)
+        case "bos_user":
+            channel = TestDataUtils.TEST_DATA.event_info.get(constants.CLIENT_ID_BOS)
+    TestContext.extid = TestContext.external_id[user]
+    if slug == "null":
+        TestContext.event_slug = ""
+    else:
+        TestContext.event_slug = slug
+    time.sleep(8)
+    logging.info(TestDataUtils.TEST_DATA.event_type.get(journey_type))
+    TestContext.event_record = QuerySnowstorm.fetch_pll_event(
+        TestDataUtils.TEST_DATA.event_type.get(journey_type),
+        TestContext.extid,
+        TestContext.event_slug,
+    )
+    logging.info(str(TestContext.event_record))
+    assert TestContext.event_record.event_type == TestDataUtils.TEST_DATA.event_type.get(
+        journey_type
+    ), "event type do not match"
+    assert TestContext.event_record.json["external_user_ref"] == TestContext.extid, "external_user_ref do not match"
+    assert TestContext.event_record.json["channel"] == channel, "channel do not match"
+    assert TestContext.event_record.json["email"] == TestContext.user_email, "email do not match"
+    assert (
+        TestContext.event_record.json["scheme_account_id"] == TestContext.current_scheme_account_id
+    ), "scheme_account_id do not match"
+    if slug == "null":
+        assert TestContext.event_record.json["slug"] == "", "slug do not match"
+    else:
+        assert TestContext.event_record.json["slug"] == slug, "slug do not match"
+    if from_state == "null":
+        assert TestContext.event_record.json["from_state"] is None, "from_state do not match"
+    else:
+        assert TestContext.event_record.json["from_state"] == int(from_state), "from_state do not match"
+    if to_state == "null":
+        assert TestContext.event_record.json["to_state"] is None, "to_state do not match"
+    else:
+        assert TestContext.event_record.json["to_state"] == int(to_state), "to_state do not match"
+
+    return TestContext.event_record
+
+@then(parsers.parse("I verify that {journey_type} event is created for {user}"))
+def verify_loyalty_card_into_event_database(journey_type, user):
+    TestContext.extid = TestContext.external_id[user]
+    time.sleep(5)
+    logging.info(TestDataUtils.TEST_DATA.event_type.get(journey_type))
+    event_record = QuerySnowstorm.fetch_event(TestDataUtils.TEST_DATA.event_type.get(journey_type), TestContext.extid)
+    logging.info(str(event_record))
+
+    assert (
+        event_record.event_type == TestDataUtils.TEST_DATA.event_type.get(journey_type)
+        and event_record.json["external_user_ref"] == TestContext.extid
+        and event_record.json["channel"] == TestDataUtils.TEST_DATA.event_info.get(constants.CHANNEL_LLOYDS)
+        and event_record.json["email"] == TestContext.email
+    )
+    return event_record
+
+
+@then(parsers.parse("I verify {journey_type} loyalty scheme event is created for {user}"))
+def verify_scheme_into_event_database(journey_type, user):
+    match user:
+        case "lloyds_user":
+            channel = TestDataUtils.TEST_DATA.event_info.get(constants.CHANNEL_LLOYDS)
+        case "halifax_user":
+            channel = TestDataUtils.TEST_DATA.event_info.get(constants.CHANNEL_HALIFAX)
+        case "bos_user":
+            channel = TestDataUtils.TEST_DATA.event_info.get(constants.CHANNEL_BOS)
+        case "bink_user":
+            channel = TestDataUtils.TEST_DATA.event_info.get(constants.CHANNEL_BINk)
+    TestContext.extid = TestContext.external_id[user]
+    time.sleep(5)
+    logging.info(TestDataUtils.TEST_DATA.event_type.get(journey_type))
+    TestContext.event_record = QuerySnowstorm.fetch_event(
+        TestDataUtils.TEST_DATA.event_type.get(journey_type), TestContext.extid
+    )
+    logging.info(str(TestContext.event_record))
+    assert TestContext.event_record.event_type == TestDataUtils.TEST_DATA.event_type.get(
+        journey_type
+    ), "event type do not match"
+    assert TestContext.event_record.json["external_user_ref"] == TestContext.extid, "external_user_ref do not match"
+    assert TestContext.event_record.json["channel"] == channel, "channel do not match"
+    assert TestContext.event_record.json["email"] == TestContext.user_email, "email do not match"
+    assert (
+        TestContext.event_record.json["scheme_account_id"] == TestContext.current_scheme_account_id
+    ), "scheme_account_id do not match"
+
+    return TestContext.event_record
