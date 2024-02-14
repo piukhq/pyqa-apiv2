@@ -237,10 +237,5 @@
         },
         "authorise_fields": null
     },
-    "content": [
-        {
-            "column": "Enrol_Help_Text",
-            "value": "Please enter your details to register with the retailer. We won\u2019t save or store any of the information you provide or edit."
-        }
-    ]
+    "content": []
 }

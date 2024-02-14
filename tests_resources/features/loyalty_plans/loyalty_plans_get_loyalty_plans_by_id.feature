@@ -5,6 +5,7 @@ Feature: View Loyalty Plan by id
  I want to view a loyalty plan’s details available for my channel
  so that I can display this to users on the front end
 
+
   Scenario Outline: View Loyalty Plan by id
     Given I am a Lloyds user
     When I perform GET request to view and compare "<loyalty_scheme>" loyalty plan by id

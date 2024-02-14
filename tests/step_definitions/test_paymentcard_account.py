@@ -624,7 +624,7 @@ def verify_get_pa_channel_links(merchant):
                 logging.info(f"response of get/payment_account_channel_links for loyalty card {i} is completed")
 
 
-@when(parsers.parse('I perform POST request to add and authorise "{merchant}" membership card'))
+@when(parsers.parse('I add and authorise "{merchant}" membership card'))
 def non_tc_add_and_auth(merchant):
     test_loyalty_cards.verify_add_and_auth(merchant)
 
