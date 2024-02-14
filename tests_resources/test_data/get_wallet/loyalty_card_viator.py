@@ -147,8 +147,8 @@ class ViatorResponse:
     @staticmethod
     def wallet_unauth_response():
         unauth_wallet_info = {
-            "loyalty_plan_id": 281,
-            "loyalty_plan_name": "Wasabi Club",
+            "loyalty_plan_id": 292,
+            "loyalty_plan_name": "Viator Discounts",
             "is_fully_pll_linked": False,
             "pll_linked_payment_accounts": 0,
             "total_payment_accounts": 1,
@@ -156,7 +156,7 @@ class ViatorResponse:
                 "state": "unauthorised",
                 "slug": "AUTHORISATION_FAILED",
                 "description": "We're unable to verify the Loyalty Card details provided. "
-                "Please re-enter your details and try again.",
+                 "Please re-enter your details and try again."
             },
             "balance": {
                 "updated_at": None,
@@ -173,39 +173,36 @@ class ViatorResponse:
                 "barcode": None,
                 "barcode_type": None,
                 # "card_number": "1048172996",
-                "colour": "#ccd400",
-                "text_colour": "#000000",
+                "colour": "#246b6c",
+                "text_colour": "#FFFFFF",
             },
             "reward_available": False,
             "images": [
                 {
-                    "id": 1297,
+                   "id": 1411,
                     "type": 3,
-                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Wasabi_Logo.png",
-                    "description": "Wasabi Icon",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Logo1-280x280.png",
+                    "description": "Viator Logo",
                     "encoding": "png",
+                    "cta_url": None,
                 },
                 {
-                    "id": 1324,
-                    "type": 7,
-                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Wasabi_Promo_1968x732.png",
-                    "description": "Wasabi Promotion 1",
-                    "encoding": "png",
-                },
-                {
-                    "id": 1296,
+                    "id": 1409,
                     "type": 0,
-                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Wasabi_Card.png",
-                    "description": "Wasabi Hero",
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Loyalty_Card_V2_1312x800.png",
+                    "description": "Viator Loyalty Card",
                     "encoding": "png",
+                    "cta_url": None,
                 },
                 {
-                    "id": 1319,
-                    "type": 2,
-                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/" "Offer_tile_5_CVAeqUv_naFzo9T.png",
-                    "description": "Wasabi Test Offer",
+                    "id": 1412,
+                    "type": 7,
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Viator_Barclays_Promotional_Image.png",
+                    "description": "Viator Promotion",
                     "encoding": "png",
+                    "cta_url": None,
                 },
+
             ],
             # "pll_links": [
             # 	{
@@ -220,3 +217,77 @@ class ViatorResponse:
             # ]
         }
         return unauth_wallet_info
+
+    @staticmethod
+    def wallet_overview_unauth_response():
+        unauth_wallet_overview_info = {
+             "loyalty_plan_id": 292,
+            "loyalty_plan_name": "Viator Discounts",
+            "is_fully_pll_linked": False,
+            "pll_linked_payment_accounts": 0,
+            "total_payment_accounts": 1,
+            "status": {
+                "state": "unauthorised",
+                "slug": "AUTHORISATION_FAILED",
+                "description": "We're unable to verify the Loyalty Card details provided. "
+                 "Please re-enter your details and try again."
+            },
+            "balance": {
+                "updated_at": None,
+                "current_display_value": None,
+                "loyalty_currency_name": None,
+                "prefix": None,
+                "suffix": None,
+                "current_value": None,
+                "target_value": None,
+            },
+            "transactions": [],
+            "vouchers": [],
+            "card": {
+                "barcode": None,
+                "barcode_type": None,
+                # "card_number": "1048172996",
+                "colour": "#246b6c",
+                "text_colour": "#FFFFFF",
+            },
+            "reward_available": False,
+            "images": [
+                {
+                   "id": 1411,
+                    "type": 3,
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Logo1-280x280.png",
+                    "description": "Viator Logo",
+                    "encoding": "png",
+                    "cta_url": None,
+                },
+                {
+                    "id": 1409,
+                    "type": 0,
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Loyalty_Card_V2_1312x800.png",
+                    "description": "Viator Loyalty Card",
+                    "encoding": "png",
+                    "cta_url": None,
+                },
+                {
+                    "id": 1412,
+                    "type": 7,
+                    "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Viator_Barclays_Promotional_Image.png",
+                    "description": "Viator Promotion",
+                    "encoding": "png",
+                    "cta_url": None,
+                },
+
+            ],
+            # "pll_links": [
+            # 	{
+            # 		"payment_account_id": 113304,
+            # 		"payment_scheme": "Mastercard",
+            # 		"status": {
+            # 			"state": "inactive",
+            # 			"slug": "LOYALTY_CARD_NOT_AUTHORISED",
+            # 			"description": "The Loyalty Card is not authorised so no PLL link can be created."
+            # 		}
+            # 	}
+            # ]
+        }
+        return unauth_wallet_overview_info

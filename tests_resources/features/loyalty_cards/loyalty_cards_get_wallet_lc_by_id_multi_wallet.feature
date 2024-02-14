@@ -10,10 +10,10 @@ Feature: View Wallet by LC id in different channel
 
     Given I am a bos user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     Given I am a Lloyds user
     When I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
-    And I add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And For lloyds_user I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And All Wallet_by_card_id fields are correctly populated for <merchant>
@@ -54,7 +54,7 @@ Feature: View Wallet by LC id in different channel
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
-    And I add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And For bink_user2 I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And All Wallet_by_card_id fields are correctly populated for <merchant>
@@ -73,7 +73,7 @@ Feature: View Wallet by LC id in different channel
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
-    And I add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And For lloyds_user I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And Wallet_by_card_id fields are correctly populated for unauthorised LC of <merchant>

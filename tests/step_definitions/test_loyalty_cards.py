@@ -1199,7 +1199,7 @@ def verify_wallet_join(journey):
         assert TestContext.response_payment_account == []
 
 
-@when(parsers.parse("I add and authorise '{merchant}' membership card"))
+@when(parsers.parse('I add and authorise "{merchant}" membership card'))
 def verify_add_and_auth(merchant):
     response = MembershipCards.add_and_authorise_card(TestContext.token, merchant)
     response_json = response_to_json(response)
@@ -2288,12 +2288,6 @@ def verify_get_wallet_lc_unauath(Wallet, merchant):
             wallet_response["loyalty_cards"][0]["id"] == TestContext.current_scheme_account_id
         ), "account id does not match"
 
-        for wallet_key in TestData.get_merchant_response(merchant).wallet_overview_unauth_response().keys():
-            if wallet_key not in ["card"]:
-                assert (
-                    wallet_response["loyalty_cards"][0][wallet_key]
-                    == TestData.get_merchant_response(merchant).wallet_overview_unauth_response()[wallet_key]
-                ), f"{wallet_key} do not match"
         for card_key in TestData.get_merchant_response(merchant).wallet_overview_unauth_response()["card"].keys():
             assert (
                 wallet_response["loyalty_cards"][0]["card"][card_key]

@@ -11,7 +11,7 @@ Feature: View Wallet
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And I perform GET Wallet
     Then I see a <status_code_returned>
     And All Wallet fields are correctly populated for <merchant>
