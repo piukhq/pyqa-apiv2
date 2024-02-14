@@ -1,5 +1,5 @@
 # Created by bularaghavan on 01/12/2021
-@membership_cards_vouchers @membership_cards  @fixme
+@membership_cards_vouchers @membership_cards
 Feature: View Vouchers
 As a Bink user I want to view my loyalty card vouchers in my wallet
 so that I am aware and have visibility of the vouchers that have been concluded with my loyalty card

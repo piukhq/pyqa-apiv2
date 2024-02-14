@@ -1,5 +1,5 @@
 # Created by bularagahavan 26/09/2022
- @membership_cards  @fixme
+ @membership_cards
 Feature: Authorise a loyalty card
   As a Bink user
   I want add an ‘Engage' or 'PLL’ type loyalty card to my wallet

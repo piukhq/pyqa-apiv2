@@ -30,9 +30,9 @@ def update_user_email(test_email):
     )
 
 
-@when(parsers.parse('I perform POST request to add and authorise "{merchant}" membership card using b2b token'))
+@when(parsers.parse('I add and authorise "{merchant}" membership card'))
 def verify_add_and_auth_b2b(merchant):
-    test_loyalty_cards.verify_add_and_auth_b2b(merchant)
+    test_loyalty_cards.verify_add_and_auth(merchant)
 
 
 @then(parsers.parse('verify the data stored in DB after "{journey_type}" journey for "{merchant}"'))

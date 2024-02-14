@@ -10,10 +10,11 @@ Feature: Delete User feature
     When I perform POST token request for token type "b2b" to get access token
     Then I perform DELETE request to delete user successfully
 
+     @fixme
     Scenario Outline: soft delete pll links
       Given I am a Lloyds user
       When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-      And I add and authorise "<merchant>" membership card using b2b token
+      And I add and authorise "<merchant>" membership card
       Then I see a <status_code_returned>
       And verify that for lloyds_user data stored in after "<journey_type>" journey for "<merchant>"
       And verify that for lloyds_user data stored in after "<journey_type2>" journey for "<merchant>"

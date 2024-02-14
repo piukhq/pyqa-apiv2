@@ -1,5 +1,5 @@
 # Created by bularaghavan on 01/12/2021
-@bink_regression_api2 @membership_cards  @fixme
+@bink_regression_api2 @membership_cards
 Feature: View transactions
 As a Bink user
 I want to view my loyalty card transactions in my wallet so that I am aware and have visibility of the transactions that have been concluded with my loyalty card

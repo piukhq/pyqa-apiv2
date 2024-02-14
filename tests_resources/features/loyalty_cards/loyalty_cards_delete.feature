@@ -1,5 +1,5 @@
 # Created by rupalpatel at 01/10/2021
-@bink_regression_api2 @membership_cards  @fixme
+@bink_regression_api2 @membership_cards
 Feature: Delete a loyalty card
   As a Bink user
   I want to delete a loyalty card from my wallet
