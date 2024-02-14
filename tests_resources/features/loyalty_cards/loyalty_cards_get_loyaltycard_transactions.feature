@@ -6,7 +6,7 @@ I want to view my loyalty card transactions in my wallet so that I am aware and 
 
   Scenario Outline: Get Loyalty card transactions
     Given I am a bos user
-    When I add and authorise "<merchant>" membership card with transactions and vouchers
+    When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And As a bos_user I performed  GET transaction for authorised <merchant> membership card
     Then I see a 200
     Examples:

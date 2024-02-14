@@ -230,7 +230,7 @@ membership_plan_id = {
     "square_meal": 286,
     "whsmith": 280,
     "asos": 288,
-    "wasabi": 281,
+    # "wasabi": 281,
     "trenette": 284,
     "viator": 292,
     "merchant_not_exists": 9999,

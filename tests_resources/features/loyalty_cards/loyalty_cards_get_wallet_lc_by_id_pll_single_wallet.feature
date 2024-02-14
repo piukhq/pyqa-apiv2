@@ -10,7 +10,7 @@ Feature: View Wallet by loyalty card id
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
@@ -25,7 +25,7 @@ Feature: View Wallet by loyalty card id
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a duplicate "<payment_card_provider>" payment account to wallet
-    And I add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
@@ -70,7 +70,7 @@ Feature: View Wallet by loyalty card id
       Given I am in Bink channel to get b2b token
       When I perform POST token request for token type "b2b" to get access token
       And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-      And I add and authorise "<merchant>" membership card with transactions and vouchers
+      And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
       And I perform GET Wallet_by_card_id
       Then I see a <status_code_returned>
       And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id

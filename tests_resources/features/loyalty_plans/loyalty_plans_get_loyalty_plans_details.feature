@@ -1,11 +1,10 @@
 # Created by bularaghavan on 14/03/2022
-@loyalty_plan_details @loyalty_plans
+@bink_regression_api2
 Feature: View Loyalty Plan by id
  As a consuming channel
  I want to retrieve the details of a given loyalty plan
  so that I can present these to a user, should they want to find out more, as well as so that I do not have to call the whole loyalty_plan endpoint for this information
 
-  @loyalty_plan_details_success @journey_type @bink_regression_api2 @sandbox_regression
   Scenario Outline: View Loyalty Plan Details
     Given I am a Lloyds user
     When I perform GET request to view and compare "<loyalty_scheme>" loyalty plan details
@@ -18,7 +17,6 @@ Feature: View Loyalty Plan by id
       | Viator              | 200         |
       | The_Works           | 200         |
 
-  @loyalty_plan_details_invalid_token @invalid_token @bink_regression_api2 @sandbox_regression
   Scenario Outline: Verify loyalty plan details gives correct error messages with invalid token
     Given I am a Lloyds user
     When I perform GET request to view "<loyalty_scheme>" loyalty plan details with invalid token
@@ -29,7 +27,6 @@ Feature: View Loyalty Plan by id
       | loyalty_scheme | status_code | error_message             | error_slug    |
       | Viator         | 401         | Supplied token is invalid | INVALID_TOKEN |
 
-  @loyalty_plan_details_invalid_resource @invalid_resource @bink_regression_api2 @sandbox_regression
   Scenario Outline: Verify loyalty plan details gives correct error messages with invalid loyalty scheme
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token

@@ -26,15 +26,6 @@
     },
     "images": [
         {
-            "id": 1412,
-            "type": 7,
-            "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Viator_Barclays_Promotional_Image.png",
-            "cta_url": null,
-            "description": "Viator Promotion",
-            "encoding": "png",
-            "order": 1
-        },
-        {
             "id": 1409,
             "type": 0,
             "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Loyalty_Card_V2_1312x800.png",
@@ -51,6 +42,15 @@
             "description": "Viator Logo",
             "encoding": "png",
             "order": 0
+        },
+        {
+            "id": 1412,
+            "type": 7,
+            "url": "https://api.staging.gb.bink.com/content/hermes/schemes/Viator_Barclays_Promotional_Image.png",
+            "cta_url": null,
+            "description": "Viator Promotion",
+            "encoding": "png",
+            "order": 1
         }
     ],
     "plan_details": {
@@ -194,34 +194,5 @@
             "consents": []
         }
     },
-    "content": [
-        {
-            "column": "Voucher_Issued_Detail",
-            "value": "You've earned a Viator reward! \u200bAll you need to do now is wait for your code to show here after 10 days (just to allow for any returns to register in our system). Use your Viator discount reward at checkout on your next purchase."
-        },
-        {
-            "column": "Promo_Text_1",
-            "value": "Get 10% off your next purchase with Viator."
-        },
-        {
-            "column": "Voucher_Inprogress_Detail",
-            "value": "Spend \u00a3150 to get a 10% off Viator voucher code."
-        },
-        {
-            "column": "Voucher_Redeemed_Detail",
-            "value": "Your Viator discount was redeemed."
-        },
-        {
-            "column": "Voucher_Cancelled_Detail",
-            "value": "Your Viator discount has been cancelled."
-        },
-        {
-            "column": "Voucher_Expired_Detail",
-            "value": "Your Viator discount has expired."
-        },
-        {
-            "column": "Enrol_Help_Text",
-            "value": "Please enter your details to register with the retailer. We won\u2019t save or store any of the information you provide or edit."
-        }
-    ]
+    "content": []
 }

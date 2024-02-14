@@ -6,7 +6,7 @@ Feature: update loyalty card in Trusted channel
 
   Scenario Outline: PUT Add_Credential_2 in tc wallet after Add_Credential_1 in tc wallet and Add_Credential_2 exists in another wallet
       Given I am a halifax user
-      When I add and authorise "<merchant>" membership card with transactions and vouchers
+      When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
       Then I see a 202
       Given I am a squaremeal user
       When I perform POST request to add trusted channel "<merchant>" loyalty card
@@ -45,7 +45,7 @@ Feature: update loyalty card in Trusted channel
 
   Scenario Outline: PUT Add_Credential_2 in wallet 2 after Add_Credential_1 in wallet 1 and in wallet 2 and Add_Credential_2 exists in another wallet
       Given I am a halifax user
-      When I add and authorise "<merchant>" membership card with transactions and vouchers
+      When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
       Then I see a 202
       Given I am in Bink channel to get b2b token
       When I perform POST token request for token type "b2b" to get access token

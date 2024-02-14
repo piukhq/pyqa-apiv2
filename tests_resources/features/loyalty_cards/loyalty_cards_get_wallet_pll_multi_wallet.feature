@@ -9,10 +9,10 @@ Feature: View multi wallet pll
   Scenario Outline: Verify pll links for active payment account and authorised loyalty card for multi wallets
     Given I am a halifax user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     Given I am a Lloyds user
     When I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
-    And I add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And For halifax_user I perform GET Wallet
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' for loyalty card PLL links in the Wallet
@@ -31,10 +31,10 @@ Feature: View multi wallet pll
   Scenario Outline: Verify pll links for pending payment account and authorised loyalty card for multi wallets
     Given I am a bos user
     When I perform POST request to add a pending "<payment_card_provider>" payment account to wallet
-    And I add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     Given I am a Lloyds user
     When I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
-    And I add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And For bos_user I perform GET Wallet
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' for loyalty card PLL links in the Wallet
@@ -53,10 +53,10 @@ Feature: View multi wallet pll
   Scenario Outline: Verify pll links for inactive payment account and authorised loyalty card for multi wallets
     Given I am a Lloyds user
     When I perform POST request to add a duplicate "<payment_card_provider>" payment account to wallet
-    And I add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     Given I am a halifax user
     When I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
-    And I add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And For lloyds_user I perform GET Wallet
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' for loyalty card PLL links in the Wallet
@@ -75,7 +75,7 @@ Feature: View multi wallet pll
 
     Given I am a bos user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     Given I am a Lloyds user
     When I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
     And I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
@@ -98,7 +98,7 @@ Feature: View multi wallet pll
 
     Given I am a bos user
     When I perform POST request to add a duplicate "<payment_card_provider>" payment account to wallet
-    And I add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     Given I am a Lloyds user
     When I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
     And I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
@@ -122,7 +122,7 @@ Feature: View multi wallet pll
     And I add and authorise "<merchant>" membership card
     Given I am a Lloyds user
     When I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
-    And I add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And For halifax_user I perform GET Wallet
     Then I see a <status_code_returned>
     And I can see '<state1>','<slug1>' and '<description1>' for loyalty card PLL links in the Wallet
@@ -140,7 +140,7 @@ Feature: View multi wallet pll
 
   Scenario Outline: Verify pending payment status in two channels
     Given I am a Lloyds user
-    When I add and authorise "<merchant>" membership card with transactions and vouchers
+    When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And I perform POST request to add a pending "<payment_card_provider>" payment account to wallet
     Given I am a halifax user
     When I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
@@ -183,11 +183,11 @@ Feature: View multi wallet pll
 
   Scenario Outline: Verify pending payment status in two channels
     Given I am a Lloyds user
-    When I add and authorise "<merchant>" membership card with transactions and vouchers
+    When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     Then verify that for lloyds_user data stored in after pll_active journey for "<merchant>"
     Given I am a halifax user
-    When I add and authorise "<merchant>" membership card with transactions and vouchers
+    When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And I perform POST request to add a pending "<payment_card_provider>" payment account to wallet
     And For lloyds_user I perform GET Wallet
     Then I see a <status_code_returned>
@@ -207,14 +207,14 @@ Feature: View multi wallet pll
    Scenario Outline: PLL link when loyalty card deleted from multiple wallet
       Given I am a Lloyds user
       When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-      And I add and authorise "<merchant>" membership card with transactions and vouchers
+      And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
       And For lloyds_user I perform GET Wallet
       Then I see a <status_code_returned>
       And I can see '<state>','<slug>' and '<description>' for loyalty card PLL links in the Wallet
       And I can see '<state>','<slug>' and '<description>' for payment accounts PLL links in the Wallet
       Given I am a halifax user
       When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-      And I add and authorise "<merchant>" membership card with transactions and vouchers
+      And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
       When For halifax_user I perform GET Wallet
       Then I see a <status_code_returned>
       And I can see '<state>','<slug>' and '<description>' for loyalty card PLL links in the Wallet
@@ -235,14 +235,14 @@ Feature: View multi wallet pll
    Scenario Outline: PLL link when payment account deleted from multiple wallet
       Given I am a halifax user
       When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-      And I add and authorise "<merchant>" membership card with transactions and vouchers
+      And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
       And For halifax_user I perform GET Wallet
       Then I see a <status_code_returned>
       And I can see '<state>','<slug>' and '<description>' for loyalty card PLL links in the Wallet
       And I can see '<state>','<slug>' and '<description>' for payment accounts PLL links in the Wallet
       Given I am a Lloyds user
       When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-      And I add and authorise "<merchant>" membership card with transactions and vouchers
+      And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
       When For lloyds_user I perform GET Wallet
       Then I see a <status_code_returned>
       And I can see '<state>','<slug>' and '<description>' for loyalty card PLL links in the Wallet

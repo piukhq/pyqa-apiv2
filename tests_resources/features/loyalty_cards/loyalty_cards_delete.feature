@@ -5,6 +5,7 @@ Feature: Delete a loyalty card
   I want to delete a loyalty card from my wallet
   because it is no longer relevant or needed
 
+
   Scenario Outline: Delete add and authorise
     Given I am a bos user
     When I add and authorise "<merchant>" membership card
@@ -14,7 +15,7 @@ Feature: Delete a loyalty card
 
     Examples:
       | merchant | status_code_returned |journey_type|
-      | The_Works   | 202                  | delete       |
+      | Viator   | 202                  | delete       |
 
   Scenario Outline: Delete Add loyalty card
     Given I am a bos user
@@ -31,14 +32,15 @@ Feature: Delete a loyalty card
   Scenario Outline: Add and auth lc in two wallets and delete the card from one wallet
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
-    And I add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     Then I see a <status_code_returned>
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     Then verify that for bink_user data stored in after "<journey_type>" journey for "<merchant>"
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
-    When I add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    # When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     Then I see a <status_code_returned>
     When For bink_user I perform GET Wallet
     Then All Wallet fields are correctly populated for <merchant>

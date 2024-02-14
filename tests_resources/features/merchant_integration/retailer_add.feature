@@ -8,7 +8,7 @@ Feature: Basic Merchant Integration Journeys
   @add_auth_journey @bink_regression_api2
   Scenario Outline: Works Add Journey
     Given I am a bos user
-    When I add and authorise "<merchant>" membership card with transactions and vouchers
+    When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     Then I see a <status_code_returned>
     When I perform GET Wallet
     Then verify that for bos_user data stored in after "<journey_type>" journey for "<merchant>"
@@ -23,7 +23,7 @@ Feature: Basic Merchant Integration Journeys
   Scenario Outline: Get Loyalty card vouchers
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
-    And I add and authorise "<merchant>" membership card with transactions and vouchers
+    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
     And For bink_user I perform GET voucher for loyalty card with authorised for <merchant>
     Then I see a <status_code_returned>
 
