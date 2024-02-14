@@ -1,5 +1,5 @@
 # Created by bularaghavan on 25/11/2021
-@bink_regression_api2 @membership_cards  @fixme
+@bink_regression_api2 @membership_cards
 Feature: View balance
 As a Bink user
 I want to view my loyalty card balances in my wallet

@@ -1199,7 +1199,7 @@ def verify_wallet_join(journey):
         assert TestContext.response_payment_account == []
 
 
-@when(parsers.parse('I add and authorise "{merchant}" membership card'))
+@when(parsers.parse("I add and authorise '{merchant}' membership card"))
 def verify_add_and_auth(merchant):
     response = MembershipCards.add_and_authorise_card(TestContext.token, merchant)
     response_json = response_to_json(response)
@@ -1216,7 +1216,7 @@ def verify_add_and_auth(merchant):
     assert response.status_code == 202, "Add and authorise Journey for " + merchant + " failed"
 
 
-@when(parsers.parse('I perform POST request to add and authorise "{merchant}" membership card using b2b token'))
+@when(parsers.parse('I add and authorise "{merchant}" membership card using b2b token'))
 def verify_add_and_auth_b2b(merchant):
     response = MembershipCards.add_and_authorise_card(TestContext.token, merchant)
     response_json = response_to_json(response)
