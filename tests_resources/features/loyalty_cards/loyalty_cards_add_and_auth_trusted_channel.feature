@@ -26,6 +26,7 @@ Feature: Add and authorise a loyalty card into Trusted channel
       | SquareMeal    | add_and_authorise|
 
    # card number missing https://hellobink.atlassian.net/browse/WAL-2853
+
   Scenario Outline: Trusted channel adds loyalty card into wallet which already exists in Non trusted channel
     Given I am a halifax user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet

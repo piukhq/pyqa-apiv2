@@ -8,7 +8,7 @@ so that I am aware and have visibility of the vouchers that have been concluded 
   Scenario Outline: Get Loyalty card vouchers
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    When I add membership card with transactions and vouchers for "<merchant>"
     And For bink_user I perform GET voucher for loyalty card with authorised for <merchant>
     Then I see a <status_code_returned>
 
