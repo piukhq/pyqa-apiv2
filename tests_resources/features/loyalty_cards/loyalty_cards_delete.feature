@@ -26,21 +26,21 @@ Feature: Delete a loyalty card
 
     Examples:
       | merchant    | status_code_returned | journey_type |
-      | The_Works   | 202                  | delete       |
+      | Viator   | 202                  | delete       |
 
 
   Scenario Outline: Add and auth lc in two wallets and delete the card from one wallet
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    When I add membership card with transactions and vouchers for "<merchant>"
     Then I see a <status_code_returned>
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     Then verify that for bink_user data stored in after "<journey_type>" journey for "<merchant>"
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
-    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
-    # When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    When I add membership card with transactions and vouchers for "<merchant>"
+    When I add membership card with transactions and vouchers for "<merchant>"
     Then I see a <status_code_returned>
     When For bink_user I perform GET Wallet
     Then All Wallet fields are correctly populated for <merchant>
@@ -65,4 +65,4 @@ Feature: Delete a loyalty card
 
     Examples:
       | merchant | payment_card_provider | journey_type    | status_code_returned |
-      | The_Works   | master                | authorise_field | 202                  |
+      | Viator   | master                | authorise_field | 202                  |

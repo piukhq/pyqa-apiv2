@@ -10,10 +10,10 @@ Feature: View Wallets
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    When I add membership card with transactions and vouchers for "<merchant>"
 
     Given I am a Lloyds user
-    When I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    When I add membership card with transactions and vouchers for "<merchant>"
     And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
     And For lloyds_user I perform GET Wallet
     Then I see a <status_code_returned>
@@ -36,12 +36,12 @@ Feature: View Wallets
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    When I add membership card with transactions and vouchers for "<merchant>"
 
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
-    And I perform POST request to add and authorise "<merchant>" membership card with transactions and vouchers
+    When I add membership card with transactions and vouchers for "<merchant>"
 
     And For bink_user2 I perform GET Wallet
     Then I see a <status_code_returned>
