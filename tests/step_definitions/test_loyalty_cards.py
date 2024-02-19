@@ -928,11 +928,10 @@ def verify_invalid_request_for_add_journey(merchant, request_payload, status_cod
 
 @when(
     parsers.parse(
-        'add and auth "{merchant}" {membership_card} '
-        'with "{request_payload}" with "{status_code}"'
+        'add and auth "{merchant}" membership card with "{request_payload}" with "{status_code}"'
     )
 )
-def verify_invalid_request_for_add_and_auth_journey(merchant, membership_card, request_payload, status_code):
+def verify_invalid_request_for_add_and_auth_journey(merchant, request_payload, status_code):
     if request_payload == "invalid_request":
         response = MembershipCards.add_and_authorise_card(TestContext.token, merchant, request_payload)
         response_json = response_to_json(response)
@@ -947,7 +946,7 @@ def verify_invalid_request_for_add_and_auth_journey(merchant, membership_card, r
         TestContext.error_slug = response_json["error_slug"]
     elif request_payload == "unauthorised" or "invalid_cardnumber" or "unknown_cardnumber":
         response = MembershipCards.add_and_auth_field_with_unauthorised_json(
-            TestContext.token, merchant, membership_card, request_payload
+            TestContext.token, merchant, request_payload
         )
         response_json = response_to_json(response)
         logging.info(response_json)

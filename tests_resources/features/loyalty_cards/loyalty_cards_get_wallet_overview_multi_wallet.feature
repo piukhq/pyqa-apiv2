@@ -28,12 +28,12 @@ Feature: View Wallets overview
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    # And do add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
+    And do add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
     When I add membership card with transactions and vouchers for "<merchant>"
     Given I am a Lloyds user
     When I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
     When I add membership card with transactions and vouchers for "<merchant>"
-    # And do add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
+    And do add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
     And For lloyds_user I perform GET Wallet_overview
     Then I see a <status_code_returned>
     And Wallet_overview fields are correctly populated for unauthorised LC of <merchant>
