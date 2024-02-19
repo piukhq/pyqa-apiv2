@@ -40,7 +40,6 @@ def add_field_loyalty_cards(merchant):
     )
 
 
-# @when(parsers.parse('I perform POST request to add "{merchant}" membership card with transactions and vouchers'))
 @when(parsers.parse('I add membership card with transactions and vouchers for "{merchant}"'))
 def add_field_loyalty_cards_transactions(merchant):
     time.sleep(1)
@@ -1157,12 +1156,12 @@ def verify_invalid_token_bearer_prefix_for_register_membership_card(merchant, te
 def verify_membership_card_status_code(status_code_returned):
     assert TestContext.response_status_code == int(status_code_returned)
 
-@then(parsers.parse('I see a {error_message} error message'))
+@then(parsers.parse('I see a "{error_message}" error message'))
 def verify_error_message(error_message):
     assert TestContext.error_message == error_message, "Error Message didnt returned"
 
 
-@then(parsers.parse('I see a {error_slug} error slug'))
+@then(parsers.parse('I see a "{error_slug}" error slug'))
 def verify_error_slug(error_slug):
     assert TestContext.error_slug == error_slug, "Error Slug didnt returned"
 
