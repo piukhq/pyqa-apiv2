@@ -32,11 +32,10 @@ Feature: Register a loyalty card
       | payment_card_provider | merchant | status_code_returned | journey_type |
       | master                | The_Works  | 202                  | pll_active   |
 
-
   Scenario Outline: Add existing card again into different wallet via put register
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
-    # And I perform POST request to add a new "master" payment account to wallet
+    And I perform POST request to add a new "master" payment account to wallet
     And I perform POST request to add <merchant> membership card before registration_success register
     Then I see a 201
     When I perform PUT request to register <merchant> with registration_success membership card
