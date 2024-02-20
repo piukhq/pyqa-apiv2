@@ -12,7 +12,7 @@ Feature: Authorise a loyalty card
   # Get wallet 1 has authorised details. Also balance vouchers and transactions returned
   # Get wallet 2 has unauthorised details .Also balance vouchers and transactions null
   @bink_regression_api2
-  # @fixme
+
   Scenario Outline: PUT with valid cred in wallet 1 and invalid cred in wallet 2
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token

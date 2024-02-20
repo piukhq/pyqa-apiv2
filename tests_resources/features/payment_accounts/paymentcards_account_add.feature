@@ -4,7 +4,6 @@ Feature: As a Bink User
   I want to be able to add my payment card account to my bink wallet
   So that I can start to earn rewards when I use my payment card
 
-
   @enrol_new_paymentcard @bink_regression_api2 @sandbox_regression
   Scenario Outline: Enrol new payment card
     Given I am in Bink channel to get b2b token

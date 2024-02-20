@@ -5,6 +5,7 @@ Feature: Add and register a loyalty card
   I want to register a ghost loyalty card with the loyalty plan
   so that I can use the Bink functionality with the loyalty card
 
+
   Scenario Outline: add and register success in wallet1 then add and register success in wallet2
     Given I am a halifax user
     When I perform POST request add and register for <merchant>
@@ -22,7 +23,6 @@ Feature: Add and register a loyalty card
     Examples:
       | merchant |
       |The_Works |
-
 
   Scenario Outline: add and register failed in wallet1 then add and register success in wallet2
     Given I am a halifax user

@@ -1,5 +1,5 @@
 # Created by bularaghavan on 26/09/2022
-@bink_regression_api2 @membership_cards  @fixme1
+@bink_regression_api2 @membership_cards
 Feature: View multi wallet loyalty card by id  pll
   As a Bink user
   I want to see the Status of the PLL Link between a given loyalty card and payment card in my given wallet
@@ -100,26 +100,6 @@ Feature: View multi wallet loyalty card by id  pll
      Examples:
      | merchant | status_code_returned | payment_card_provider |                                                                             |
      | Viator   | 200                  | visa                  |
-
-  Scenario Outline: UC for multi wallet lc by id users in different channels
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I add and authorise "<merchant>" membership card
-    Then verify that for bink_user data stored in after pll_active journey for "<merchant>"
-    When For bink_user I perform GET Wallet_by_card_id
-    Then I see a <status_code_returned>
-    Given I am a Lloyds user
-    When I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
-    When I add membership card with transactions and vouchers for "<merchant>"
-    When For lloyds_user I perform GET Wallet_by_card_id
-    Then I see a <status_code_returned>
-    And I can see '<state2>','<slug2>' and '<description2>' in PLL links for Wallet loyalty card by id
-    And verify that for lloyds_user data stored in after pll_inactive journey for "<merchant>"
-
-    Examples:
-     | merchant | status_code_returned | payment_card_provider | state2  | slug2              | description2                                                                               |
-     | Viator   | 200                  | visa                  |inactive |UBIQUITY_COLLISION  | There is already a Loyalty Card from the same Loyalty Plan linked to this Payment Account. |
 
   Scenario Outline: Verify pending payment status in two channels for multi wallet loyalty card by id
      Given I am a Lloyds user

@@ -16,6 +16,7 @@ Feature: View Loyalty Plan by id
       | SquareMeal          | 200         |
       | Viator              | 200         |
       | The_Works           | 200         |
+      | itsu                | 200         |
 
   Scenario Outline: Verify is_in_wallet field for Loyalty Plan by id
     Given I am a Lloyds user
@@ -28,6 +29,7 @@ Feature: View Loyalty Plan by id
       | SquareMeal          | 200         |
       | Viator              | 200         |
       | The_Works           | 200         |
+      | itsu                | 200         |
 
   Scenario Outline: Verify loyalty plan by id gives correct error messages with invalid token
     Given I am a Lloyds user
