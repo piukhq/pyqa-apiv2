@@ -107,7 +107,7 @@ Feature: View multi wallet loyalty card by id  pll
      And I perform POST request to add a pending "<payment_card_provider>" payment account to wallet
      Then verify that for lloyds_user data stored in after pll_inactive journey for "<merchant>"
      Given I am a halifax user
-     When I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
+     When add and auth "<merchant>" membership card with "unauthorised" with "202"
      And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
      Then verify that for halifax_user data stored in after pll_inactive journey for "<merchant>"
      When For lloyds_user I perform GET Wallet_by_card_id

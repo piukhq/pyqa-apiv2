@@ -24,7 +24,7 @@ Feature: View Wallet
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    And I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
+And add and auth "<merchant>" membership card with "unauthorised" with "202"
     And I perform GET Wallet
     Then I see a <status_code_returned>
     And Wallet fields are correctly populated for unauthorised LC of <merchant>
