@@ -105,7 +105,7 @@ Feature: Provide Payment Card Channel Transparency to Trusted Channels
     Then verify response of get payment account channel links for <merchant>
     Given I am a Lloyds user
     When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
-    When I perform POST request to add and auth "<merchant>" membership card with "unauthorised" with "202"
+    When add and auth "<merchant>" membership card with "unauthorised" with "202"
     When For squaremeal_user I perform get payment_account_channel_links
     Then I see a <status_code_returned>
     Then verify response of get payment account channel links for <merchant>
