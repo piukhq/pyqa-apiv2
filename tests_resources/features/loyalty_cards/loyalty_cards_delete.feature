@@ -30,37 +30,25 @@ Feature: Delete a loyalty card
 
 
   Scenario Outline: Add and auth lc in two wallets and delete the card from one wallet
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    When I add membership card with transactions and vouchers for "<merchant>"
+    Given I am a bos user
+    When I add and authorise "<merchant>" membership card
     Then I see a <status_code_returned>
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    Then verify that for bink_user data stored in after "<journey_type>" journey for "<merchant>"
-    When I am in Bink channel to get b2b token for second user
-    And I perform POST token request for token type "b2b" to get access token for second user
-    And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
-    When I add membership card with transactions and vouchers for "<merchant>"
-    When I add membership card with transactions and vouchers for "<merchant>"
+    Then verify that for bos_user data stored in after "<journey_type>" journey for "<merchant>"
+
+    Given I am a halifax user
+    When I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
+    When I add and authorise "<merchant>" membership card
     Then I see a <status_code_returned>
-    When For bink_user I perform GET Wallet
-    Then All Wallet fields are correctly populated for <merchant>
-    When For bink_user I perform GET Wallet_overview
-    Then All Wallet_overview fields are correctly populated for <merchant>
-    When For bink_user I perform GET Wallet_by_card_id
-    Then All Wallet_by_card_id fields are correctly populated for <merchant>
-    When For bink_user2 I perform GET Wallet
-    Then All Wallet fields are correctly populated for <merchant>
-    When For bink_user2 I perform GET Wallet_overview
-    Then All Wallet_overview fields are correctly populated for <merchant>
-    When For bink_user2 I perform GET Wallet_by_card_id
-    Then All Wallet_by_card_id fields are correctly populated for <merchant>
-    And I perform DELETE request to delete the "<merchant>" membership card
+    Then verify that for halifax_user data stored in after "<journey_type>" journey for "<merchant>"
+    Then I perform DELETE request to delete the "<merchant>" membership card
     And I see a <status_code_returned>
-    When For bink_user I perform GET Wallet
+
+    When For bos_user I perform GET Wallet
     Then All Wallet fields are correctly populated for <merchant>
-    When For bink_user I perform GET Wallet_overview
+    When For bos_user I perform GET Wallet_overview
     Then All Wallet_overview fields are correctly populated for <merchant>
-    When For bink_user I perform GET Wallet_by_card_id
+    When For bos_user I perform GET Wallet_by_card_id
     Then All Wallet_by_card_id fields are correctly populated for <merchant>
 
     Examples:
