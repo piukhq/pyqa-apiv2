@@ -8,7 +8,7 @@ class PaymentAccountResponse:
             "type": "debit",
             "currency_code": "GBP",
             "country": "GB",
-            "last_four_digits": "5844",
+            "last_four_digits": "5834",
             "images": [
                 {
                     "id": 2,
@@ -86,7 +86,7 @@ class PaymentAccountResponse:
             "type": "debit",
             "currency_code": "GBP",
             "country": "GB",
-            "last_four_digits": "5844",
+            "last_four_digits": "5834",
             "images": [
                 {
                     "id": 2,
