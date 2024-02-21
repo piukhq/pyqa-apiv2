@@ -17,6 +17,7 @@ Feature: view journey fields
       | Trenette       | 200         |
       | Viator         | 200         |
       | The_Works      | 200         |
+      | itsu           | 200         |
 
 
   Scenario Outline: Verify request does not have a valid token
