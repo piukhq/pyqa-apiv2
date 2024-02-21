@@ -49,7 +49,7 @@ Feature: View Wallet by LC id in different channel
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-And add and auth "<merchant>" membership card with "unauthorised" with "202"
+    And add and auth "<merchant>" membership card with "unauthorised" with "202"
     And For bink_user I perform GET Wallet_by_card_id
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
@@ -69,7 +69,7 @@ And add and auth "<merchant>" membership card with "unauthorised" with "202"
   Scenario Outline: View two wallet by LC id of different channel when LC1 is unauth and LC2 is auth
     Given I am a Lloyds user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-And add and auth "<merchant>" membership card with "unauthorised" with "202"
+    And add and auth "<merchant>" membership card with "unauthorised" with "202"
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet

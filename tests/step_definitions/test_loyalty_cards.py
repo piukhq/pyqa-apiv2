@@ -15,6 +15,7 @@ from tests.helpers.test_context import TestContext
 from tests.helpers.test_data_utils import TestDataUtils
 from tests.helpers.test_helpers import TestData
 from tests.requests.loyalty_cards import MembershipCards
+from tests.requests.service import CustomerAccount
 from tests.step_definitions import test_paymentcard_account
 
 scenarios("loyalty_cards/")
@@ -2761,3 +2762,10 @@ def verify_scheme_into_event_database(journey_type, user):
     ), "scheme_account_id do not match"
 
     return TestContext.event_record
+
+
+@then(parsers.parse("I perform DELETE request to delete single user successfully"))
+def delete_user_successfully(channel, env):
+    response = CustomerAccount.delete_user(TestContext.token)
+    assert response.status_code == 202, "The user deletion is not successful"
+    logging.info("User is deleted successfully from the system")

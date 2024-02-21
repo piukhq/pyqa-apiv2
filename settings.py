@@ -24,4 +24,5 @@ B2B_SQUAREMEAL_PRIVATE_KEY = env_var("B2B_SQUAREMEAL_PRIVATE_KEY", "api2-b2b-pri
 BLOB_STORAGE_DSN = env_var("BLOB_STORAGE_DSN")
 HERMES_DATABASE_URI = env_var("HERMES_DATABASE_URI","postgresql://warthog:elsJ1XgVizFhQmX5mIl8dz52@uksouth-staging-2o6h.postgres.database.azure.com/hermes?sslmode=require")
 HARMONIA_DATABASE_URI = env_var("HARMONIA_DATABASE_URI")
-SNOWSTORM_DATABASE_URI = env_var("SNOWSTORM_DATABASE_URI")
+SNOWSTORM_DATABASE_URI = env_var("SNOWSTORM_DATABASE_URI","postgresql://warthog:elsJ1XgVizFhQmX5mIl8dz52@127.0.0.1/snowstorm?sslmode=require")
+                                #  "postgresql://warthog:elsJ1XgVizFhQmX5mIl8dz52@uksouth-staging-2o6h.postgres.database.azure.com/snowstorm?sslmode=require")
