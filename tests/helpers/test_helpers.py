@@ -58,8 +58,6 @@ class TestData:
                 return "trenette"
             case "Viator":
                 return "viator"
-            case "HarveyNichols":
-                return "harvey_nichols"
             case "Bink Test Scheme":
                 return "Bink Test Scheme"
             case "Wallis":
@@ -68,6 +66,8 @@ class TestData:
                 return "merchant_not_exists"
             case "The_Works":
                 return "the_works"
+            case "itsu":
+                return "itsu"
 
     @staticmethod
     def get_expected_journey_fields_json(loyalty_scheme, env, channel=None):

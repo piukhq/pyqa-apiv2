@@ -6,7 +6,6 @@ Feature: Add and authorise a loyalty card
   so that this Business Event can be written to ClickHouse for validation
 
 
-  @fixme
   Scenario: Verify event for user deleted
     Given I am a Lloyds user
     Then I perform DELETE request to delete single user successfully

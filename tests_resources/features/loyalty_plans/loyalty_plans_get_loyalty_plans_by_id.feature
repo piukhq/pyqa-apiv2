@@ -18,6 +18,7 @@ Feature: View Loyalty Plan by id
       | The_Works           | 200         |
       | itsu                | 200         |
 
+
   Scenario Outline: Verify is_in_wallet field for Loyalty Plan by id
     Given I am a Lloyds user
     When I perform GET request to view "<loyalty_scheme>" loyalty plan by id and verify is_in_wallet field

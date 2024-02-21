@@ -1,0 +1,27 @@
+{
+    "company_name": "itsu",
+    "plan_name": "itsu loyalty",
+    "plan_label": "Account",
+    "plan_url": "https://www.itsu.com/loyalty/",
+    "plan_summary": "Sign up to itsu loyalty & collect butterflies for spending \u00a35 or more with a linked bank card. You'll get your first butterfly just for joining. Collect 7 & your next dish, drink or snack will be on itsu - it's that easy to eat beautiful for free.",
+    "plan_description": "Free items include any dish, snack, or drink (excluding sharing platters and alcohol). To redeem your free itsu, simply download the itsu app from the Play Store or App Store and scan your loyalty card in one of our stores. You can also redeem your free itsu via click & collect.",
+    "redeem_instructions": null,
+    "plan_register_info": null,
+    "join_incentive": null,
+    "category": "Food & Drink",
+    "tiers": [],
+    "forgotten_password_url": null,
+    "images": [
+        {
+            "id": 1417,
+            "type": 3,
+            "url": "https://api.staging.gb.bink.com/content/hermes/schemes/itsu_Icon.png",
+            "cta_url": null,
+            "description": "itsu Logo",
+            "encoding": "png",
+            "order": 0
+        }
+    ],
+    "colour": "#e70095",
+    "text_colour": null
+}
