@@ -124,56 +124,6 @@ class SquareMealCard:
         )
         return payload
 
-    # @staticmethod
-    # def add_field_only_membership_card_payload_with_existing_id(invalid_request=None):
-    #     if invalid_request:
-    #         payload = {}
-    #     else:
-    #         payload = {
-    #             "account": {
-    #                 "add_fields": {
-    #                     "credentials": [
-    #                         {
-    #                             "credential_slug": "card_number",
-    #                             "value": TestContext.card_number,
-    #                         }
-    #                     ]
-    #                 }
-    #             },
-    #             "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi"),
-    #         }
-    #     logging.info(
-    #         "The Request for Add_field only with :\n"
-    #         + Endpoint.BASE_URL
-    #         + api.ENDPOINT_MEMBERSHIP_CARDS_ADD
-    #         + "\n\n"
-    #         + json.dumps(payload, indent=4)
-    #     )
-    #     return payload
-
-    # @staticmethod
-    # def add_field_only_membership_card_with_invalid_json():
-    #     payload = {
-    #         "account": {
-    #             "add_fields": {
-    #                 "credentials": [
-    #                     {
-    #                         "credential_slug": "'card_number'",
-    #                         "value": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM),
-    #                     }
-    #                 ]
-    #             }
-    #         },
-    #         "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("wasabi"),
-    #     }
-    #     logging.info(
-    #         "The Request for Add_field only with :\n"
-    #         + Endpoint.BASE_URL
-    #         + api.ENDPOINT_MEMBERSHIP_CARDS_ADD
-    #         + "\n\n"
-    #         + json.dumps(payload, indent=4)
-    #     )
-    #     return payload
 
     @staticmethod
     def add_and_authorise_membership_card_payload(invalid_request=None):

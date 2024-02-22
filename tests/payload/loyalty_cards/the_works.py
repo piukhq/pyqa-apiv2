@@ -256,6 +256,31 @@ class TheWorks:
         )
         return payload
 
+
+    @staticmethod
+    def add_and_authorise_membership_card_payload(card=None):
+        value = TestDataUtils.TEST_DATA.the_works_membership_card.get(constants.CARD_NUM)
+
+        payload = {
+            "account": {
+                "add_fields": {
+                    "credentials": [
+                        {"credential_slug": "card_number", "value": value},
+                    ]
+                }
+            },
+            "loyalty_plan_id": TestDataUtils.TEST_DATA.membership_plan_id.get("the_works"),
+        }
+
+        logging.info(
+            "The Request for Add_and_Auth journey with for The_Works :\n"
+            + Endpoint.BASE_URL
+            + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_AUTHORISE
+            + "\n\n"
+            + json.dumps(payload, indent=4)
+        )
+        return payload
+
     @staticmethod
     def add_and_auth_field_only_membership_card_with_unauthorised_json(membership_card=None, request_payload=None):
         if request_payload == "invalid_cardnumber" or "unauthorised":
