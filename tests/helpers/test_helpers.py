@@ -1,6 +1,5 @@
 from tests.helpers import constants
 from tests.helpers.test_data_utils import TestDataUtils
-from tests.payload.loyalty_cards.harvey_nichols import HarveyNicholsCard
 from tests.payload.loyalty_cards.iceland import IcelandCard
 from tests.payload.loyalty_cards.itsu import Itsu
 from tests.payload.loyalty_cards.squaremeal import SquareMealCard
@@ -192,8 +191,6 @@ class Merchant:
         Each merchant class contains payload for membership_cads end point"""
 
         match merchant:
-            case "HarveyNicholsCard":
-                return HarveyNicholsCard
             case "Iceland":
                 return IcelandCard
             case "Wasabi":
