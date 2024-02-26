@@ -57,5 +57,6 @@ To set up this project on your local machine:
 # Scheduled Regression execution
 
 1.  The whole suite will run based on the cron job 0 20 * * 1-5 ( Monday to Friday at 8pm)
+    If any change needed in the schedule, update the same in gitops (https://github.com/binkhq/gitops/blob/master/overlays/uksouth-staging/olympus/pyqa-apiv2/cronjob.yaml)
 2.  And the results will be published on  [Alerts-QA]([url](https://teams.microsoft.com/l/channel/19%3A80a305fc779e4ec5a01a1796c21b3674%40thread.skype/Alerts%20-%20QA?groupId=bf220ac8-d509-474f-a568-148982784d19&tenantId=a6e2367a-92ea-4e5a-b565-723830bcc095)) teams channel
 3. The generic tag used for regression execution :_ '@bink_regression_api2'_
