@@ -36,7 +36,9 @@ To set up this project on your local machine:
 
 4. Run Database query from the test scripts:
    - Connect to Tailscale
-   - Set the env variable for DB (eg: HERMES_DATABASE_URI, HARMONIA_DATABASE_URI, SNOWSTORM_DATABASE_URI)
+   - Set the env variable for DB in the terminal
+     `set HERMES_DATABASE_URI $(kubectl get secret azure-postgres -o json | jq -r .data.url_hermes | base64 --decode)`
+     (Env varibalkes used: HERMES_DATABASE_URI, HARMONIA_DATABASE_URI, SNOWSTORM_DATABASE_URI)
    - Execute the tests as usual from local
 
 
