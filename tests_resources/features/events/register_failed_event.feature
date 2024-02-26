@@ -5,7 +5,7 @@ Feature: Verify event for register failed loyalty card
   I want to see an event logged when a user register into a scheme
   so that this Business Event can be written to ClickHouse for validation
 
-  @user_register_failed_event @bink_regression_api2 @event
+  @user_register_failed_event  @event
   Scenario Outline: Verify event is generated when register fails
     Given I am a Lloyds user
     When I perform POST request to result "failed" add and register for <merchant>

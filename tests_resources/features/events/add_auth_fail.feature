@@ -8,7 +8,7 @@ Feature: Verify event for add and authorise fail loyalty card
   Scenario: Verify events for add and auth field journey with unauthorised loyalty card
     Given I am a Lloyds user
     Then I verify that user_created event is created for lloyds_user
-    When add and auth "<merchant>" membership card with "unauthorised" with "202"
+    When add and auth "Viator" membership card with "unauthorised" with "202"
     Then verify that for lloyds_user data stored in after "unauthorised" journey for "Viator"
     And I verify lc_add_auth_request loyalty scheme event is created for lloyds_user
     And I verify lc_status_change loyalty scheme event is created for lloyds_user
@@ -17,7 +17,7 @@ Feature: Verify event for add and authorise fail loyalty card
   Scenario: Verify event generate for fail add and auth requests in multiwallet
     Given I am a Lloyds user
     Then I verify that user_created event is created for lloyds_user
-    When add and auth "<merchant>" membership card with "unauthorised" with "202"
+    When add and auth "Viator" membership card with "unauthorised" with "202"
     Then verify that for lloyds_user data stored in after "unauthorised" journey for "Viator"
     And I verify lc_add_auth_request loyalty scheme event is created for lloyds_user
     And I verify lc_status_change loyalty scheme event is created for lloyds_user

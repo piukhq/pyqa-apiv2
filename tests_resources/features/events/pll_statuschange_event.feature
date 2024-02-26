@@ -6,7 +6,6 @@ Feature: Verify event for pll status change
 
 
 # Will only run successfully after bug fix WAL-3150
-  @auth_success_plllink_statuschange
   Scenario: Verify events for pll link status change for add and auth success
     Given I am a Lloyds user
     When I perform POST request to add a new "master" payment account to wallet
