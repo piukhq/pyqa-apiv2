@@ -18,7 +18,7 @@ To set up this project on your local machine:
     `brew install azure-cli`
     `az login`
 
-# Running Tests from Local
+# Executing Tests from Local
 
 1. Test Execution:
     - Use `pytest` command
@@ -27,20 +27,21 @@ To set up this project on your local machine:
     - The default environment is staging and default channel is bink
 
 2. A few sample execution commands:
-    - pytest -m "add" --env staging                    : Execute Add Journey for all merchants in staging-bink
-    - pytest -m "add and viator" --env staging         : Execute Add Journey for Viator in staging-bink
-    - pytest -m "add and enrol"                        : Execute Add & Enrol Journey for all merchants in dev-bink
+    - pytest -m "add" --env staging                    : Execute Add Journey for all merchants in staging
+    - pytest -m "add and viator" --env staging         : Execute Add Journey for Viator in staging
+    - pytest -m "add and enrol"                        : Execute Add & Enrol Journey for all merchants in staging
 
 3. Commands used for nighly regression in bink in staging
     - pytest -m "bink_regression_api2.0" --env staging
 
-4. Run Database query into new server:
+4. Run Database query from the test scripts:
    - Connect to Tailscale
    - Set the env variable for DB (eg: HERMES_DATABASE_URI, HARMONIA_DATABASE_URI, SNOWSTORM_DATABASE_URI)
+   - Execute the tests as usual from local
 
 
 
-# Running inside Kubernetes
+# Executing tests from Kubernetes pods
 
 1. Create a new corn job  : `kubectl create job --from=cronjob/pyqa-apiv2 <jobname>`
 2. Execute the whole suite:
