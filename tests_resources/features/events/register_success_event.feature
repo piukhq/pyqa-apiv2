@@ -5,7 +5,7 @@ Feature: Verify event for register loyalty card
   I want to see an event logged when a user register into a scheme
   so that this Business Event can be written to ClickHouse for validation
 
-  @user_register_event @bink_regression_api2 @event
+  @user_register_event  @event
   Scenario Outline: Verify event is generated when a user registers into a scheme
     Given I am a Lloyds user
     When I perform POST request add and register for <merchant>
@@ -20,7 +20,7 @@ Feature: Verify event for register loyalty card
       | The_Works    |
 
 
-  @put_register_event @bink_regression_api2 @event
+  @put_register_event@event
   Scenario Outline: Verify event is generated when on put register
     Given I am a Lloyds user
     When I perform POST request to add <merchant> membership card before registration_success register
