@@ -11,7 +11,7 @@ Smoke testing & In- Sprint testing for all channels & merchants.
 This project requires an up-to-date version of Python 3
 It uses poetry to manage packages.
 To set up this project on your local machine:
-1. Clone it from this GitLab repository [QA GitLab](git@git.bink.com:QA/bink-api-v2-automation-suite.git)
+1. Clone the repo from GitHub (git@github.com:binkhq/bink-api-v2-automation-suite.git)
 2. Execute `poetry shell` ,  from the project's root directory to create the  virtual environment
 3. Execute `poetry install` to install depedndecies from pyproject.toml
 4. Install Azure CLI and login to Azure for Key Vault access
