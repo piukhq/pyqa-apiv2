@@ -23,7 +23,7 @@ To set up this project on your local machine:
 1. Test Execution:
     - Use `pytest` command
     - Use markers '-m' to filter tests by BDD tags
-    - Pass variables '--env' and '--channel' to set current environment and channel
+    - Pass variables '--env' to set current environment (defaulted to staging)
     - The default environment is staging and default channel is bink
 
 2. A few sample execution commands:
