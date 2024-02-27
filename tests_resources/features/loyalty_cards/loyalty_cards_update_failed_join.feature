@@ -6,7 +6,6 @@ Feature: Update failed join
   so that I do not have to remove the loyalty card and re-add
 
 
-  @bink_regression_api2
   Scenario Outline: Update same loyalty card which failed to join
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token

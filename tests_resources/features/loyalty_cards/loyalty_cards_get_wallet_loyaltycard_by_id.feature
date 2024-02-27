@@ -11,7 +11,7 @@ Feature: View Wallet by loyalty card id
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    When I add membership card with transactions and vouchers for "<merchant>"
+    When I add and authorise "<merchant>" membership card using b2b token
     And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And All Wallet_by_card_id fields are correctly populated for <merchant>

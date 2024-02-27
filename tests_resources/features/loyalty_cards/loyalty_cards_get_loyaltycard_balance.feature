@@ -6,7 +6,8 @@ I want to view my loyalty card balances in my wallet
 so that I am aware and have visibility of my rewards
 
   Scenario Outline: Get Loyalty card balance
-   When I add membership card with transactions and vouchers for "<merchant>"
+   Given I am a bos user
+   When I add and authorise "<merchant>" membership card
    And As a bos_user I performed GET balance for authorised <merchant> membership card
    Then I see a <status_code_returned>
 
