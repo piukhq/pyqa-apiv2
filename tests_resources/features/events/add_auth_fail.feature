@@ -24,7 +24,7 @@ Feature: Verify event for add and authorise fail loyalty card
     And I verify lc_add_auth_failed loyalty scheme event is created for lloyds_user
 
     Given I am a halifax user
-    When add and auth "<merchant>" membership card with "unauthorised" with "202"
+    When add and auth "Viator" membership card with "unauthorised" with "202"
     Then verify that for halifax_user data stored in after "unauthorised" journey for "Viator"
     And I verify lc_add_auth_request loyalty scheme event is created for halifax_user
     And I verify lc_status_change loyalty scheme event is created for halifax_user

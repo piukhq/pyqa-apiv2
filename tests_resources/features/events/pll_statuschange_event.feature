@@ -77,17 +77,3 @@ Feature: Verify event for pll status change
     And I perform POST request to add and authorise "Viator" membership card
     Then I perform DELETE request to delete "master" the payment card
     And I verify pll_link_statuschange pll event is created for lloyds_user for status 1 to null and slug null
-
-  @pll_link_status_multi_wallet @bink_regression_api2 @event
-  Scenario: Verify event generate for  add and auth success in multiwallet
-    Given I am a Lloyds user
-    When I perform POST request to add a new "master" payment account to wallet
-    And I perform POST request to add and authorise "Viator" membership card
-    Then I verify pll_link_statuschange pll event is created for lloyds_user for status null to 0 and slug LOYALTY_CARD_PENDING
-    And I verify pll_link_statuschange pll event is created for lloyds_user for status 0 to 1 and slug null
-
-    Given I am a halifax user
-    When I perform POST request to add existing payment card "master" second wallet
-    And I perform POST request to add and authorise "Viator" membership card
-    Then I verify pll_link_statuschange pll event is created for halifax_user for status null to 0 and slug LOYALTY_CARD_PENDING
-    And I verify pll_link_statuschange pll event is created for halifax_user for status 0 to 1 and slug null

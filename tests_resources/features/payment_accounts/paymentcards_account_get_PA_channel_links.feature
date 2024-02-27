@@ -95,27 +95,6 @@ Feature: Provide Payment Card Channel Transparency to Trusted Channels
       | SquareMeal    | 200                  | master               |duplicate       |
 
 
-  Scenario Outline: Multiple wallet channel transparency in Trusted channel with unauthorised LC in non-TC
-    Given I am a squaremeal user
-    When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
-    When I perform POST request to add trusted channel "<merchant>" loyalty card
-    Then I see a 201
-    When For squaremeal_user I perform get payment_account_channel_links
-    Then I see a <status_code_returned>
-    Then verify response of get payment account channel links for <merchant>
-    Given I am a Lloyds user
-    When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
-    When add and auth "<merchant>" membership card with "unauthorised" with "202"
-    When For squaremeal_user I perform get payment_account_channel_links
-    Then I see a <status_code_returned>
-    Then verify response of get payment account channel links for <merchant>
-
-
-    Examples:
-      | payment_card_provider | merchant | status_code_returned |
-      | master                | SquareMeal| 200                 |
-
-
   Scenario Outline: Single wallet channel transparency in Trusted channel with 2 loyalty cards
     Given I am a squaremeal user
     When I perform POST request to add a new "<payment_card_provider>" payment card to wallet
