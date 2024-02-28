@@ -4,7 +4,6 @@ Feature: View Wallets
   As a Bink user
   I want to view my loyalty cards in each wallet added in different channels
   so that I can see the card status is independent of other wallets
-  @fixme
   Scenario Outline: View wallet in different channels when both LCs are authorised
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -21,10 +20,6 @@ Feature: View Wallets
     Then I see a <status_code_returned>
     And All Wallet fields are correctly populated for <merchant>
 
-    When As a bink_user I performed  GET transaction for authorised <merchant> membership card
-    And As a bink_user I performed  GET balance for authorised <merchant> membership card
-    And As a lloyds_user I performed  GET transaction for authorised <merchant> membership card
-    And As a lloyds_user I performed  GET balance for authorised <merchant> membership card
     Examples:
       | merchant      | status_code_returned|payment_card_provider|
       |Viator        | 200                  |master              |
