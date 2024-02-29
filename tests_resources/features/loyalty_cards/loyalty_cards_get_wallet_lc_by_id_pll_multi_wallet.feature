@@ -43,7 +43,7 @@ Feature: View multi wallet loyalty card by id  pll
   Scenario Outline: Verify pll links for active payment account and unauthorised loyalty card for multi wallet loyalty card by id
      Given I am a bos user
      When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-     When I add membership card with transactions and vouchers for "<merchant>"
+     And I add and authorise "<merchant>" membership card
      Then verify that for bos_user data stored in after pll_active journey for "<merchant>"
      When For bos_user I perform GET Wallet_by_card_id
      Then I see a <status_code_returned>
@@ -64,7 +64,7 @@ Feature: View multi wallet loyalty card by id  pll
   Scenario Outline: Verify pll links for inactive payment account and unauthorised loyalty card for multi wallet loyalty card by id
     Given I am a Lloyds user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-    When I add membership card with transactions and vouchers for "<merchant>"
+    When I add and authorise "<merchant>" membership card
     Then verify that for lloyds_user data stored in after pll_active journey for "<merchant>"
     When For lloyds_user I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
@@ -92,7 +92,7 @@ Feature: View multi wallet loyalty card by id  pll
     When I am in Bink channel to get b2b token for second user
     And I perform POST token request for token type "b2b" to get access token for second user
     And I perform POST request to add existing payment card "<payment_card_provider>" to second wallet
-    When I add membership card with transactions and vouchers for "<merchant>"
+    When I add and authorise "<merchant>" membership card
     When For bink_user2 I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And verify that for bink_user2 data stored in after pll_inactive journey for "<merchant>"
@@ -103,7 +103,7 @@ Feature: View multi wallet loyalty card by id  pll
 
   Scenario Outline: Verify pending payment status in two channels for multi wallet loyalty card by id
      Given I am a Lloyds user
-     When I add membership card with transactions and vouchers for "<merchant>"
+     When I add and authorise "<merchant>" membership card
      And I perform POST request to add a pending "<payment_card_provider>" payment account to wallet
      Then verify that for lloyds_user data stored in after pll_inactive journey for "<merchant>"
      Given I am a halifax user
@@ -124,12 +124,12 @@ Feature: View multi wallet loyalty card by id  pll
       Given I am in Bink channel to get b2b token
       When I perform POST token request for token type "b2b" to get access token
       And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-      When I add membership card with transactions and vouchers for "<merchant>"
+      When I add and authorise "<merchant>" membership card
       And For bink_user I perform GET Wallet_by_card_id
       Then I see a <status_code_returned>
       Given I am a Lloyds user
       When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-      When I add membership card with transactions and vouchers for "<merchant>"
+      When I add and authorise "<merchant>" membership card
       And For lloyds_user I perform GET Wallet_by_card_id
       Then I see a <status_code_returned>
       And I perform DELETE request to delete the "<merchant>" membership card
@@ -149,12 +149,12 @@ Feature: View multi wallet loyalty card by id  pll
       Given I am in Bink channel to get b2b token
       When I perform POST token request for token type "b2b" to get access token
       And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-      When I add membership card with transactions and vouchers for "<merchant>"
+      When I add and authorise "<merchant>" membership card
       And For bink_user I perform GET Wallet_by_card_id
       Then I see a <status_code_returned>
       Given I am a Lloyds user
       When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
-      When I add membership card with transactions and vouchers for "<merchant>"
+      When I add and authorise "<merchant>" membership card
       And For lloyds_user I perform GET Wallet_by_card_id
       Then I see a <status_code_returned>
       And I perform DELETE request to delete "<payment_card_provider>" the payment card
