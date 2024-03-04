@@ -117,6 +117,7 @@ Feature: View multi wallet pll
      | merchant | status_code_returned | payment_card_provider |state   |slug                       |slug2                                      |description                                                     | description2                                                                                  |
      | Viator   | 200                  | master                |inactive|PAYMENT_ACCOUNT_INACTIVE   |PAYMENT_ACCOUNT_AND_LOYALTY_CARD_INACTIVE  |The Payment Account is not active so no PLL link can be created.| The Payment Account and Loyalty Card are not active/authorised so no PLL link can be created. |
 
+
   Scenario Outline: Verify pending payment status in two channels
     Given I am a Lloyds user
     When I add and authorise "<merchant>" membership card
@@ -136,7 +137,7 @@ Feature: View multi wallet pll
 
      Examples:
      | merchant | status_code_returned | payment_card_provider |state1 | slug1                   |description1                                                                        | state2   | slug2                       | description2                                                      |
-     | Wasabi   | 200                  | visa                  |pending| PAYMENT_ACCOUNT_PENDING |When the Payment Account becomes active, the PLL link will automatically go active. |inactive  |LOYALTY_CARD_NOT_AUTHORISED  | The Loyalty Card is not authorised so no PLL link can be created. |
+     | Viator   | 200                  | visa                  |pending| PAYMENT_ACCOUNT_PENDING |When the Payment Account becomes active, the PLL link will automatically go active. |inactive  |LOYALTY_CARD_NOT_AUTHORISED  | The Loyalty Card is not authorised so no PLL link can be created. |
 
 
   Scenario Outline: Verify PLL links for failed join scenario

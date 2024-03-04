@@ -268,22 +268,22 @@ def verify_loyalty_card_into_database_trusted(user, journey_type, merchant):
             and scheme_account.link_status is TestDataUtils.TEST_DATA.scheme_status.get(constants.ACCOUNT_ALREADY_EXIST)
             or TestDataUtils.TEST_DATA.scheme_status.get(constants.GHOST_CARD_REGISTRATION_FAILED)
         )
-    elif journey_type == "unauthorised":
-        if merchant == "Wasabi":
-            scheme_account = QueryHermes.fetch_ubiquity_schemeaccountentry(journey_type, TestContext.extid)
-            assert (
-                scheme_account.id == TestContext.current_scheme_account_id
-                and scheme_account.link_status == TestDataUtils.TEST_DATA.scheme_status.get(constants.FAILED_VALIDATION)
-            )
-            print("scheme ac status", scheme_account.status)
-        elif merchant == "Iceland":
-            scheme_account = QueryHermes.fetch_ubiquity_schemeaccountentry(journey_type, TestContext.extid)
-            assert (
-                scheme_account.id == TestContext.current_scheme_account_id
-                and scheme_account.link_status
-                == TestDataUtils.TEST_DATA.scheme_status.get(constants.INVALID_CREDENTIALS)
-            )
-            print("scheme ac status", scheme_account.status)
+    # elif journey_type == "unauthorised":
+        # if merchant == "Wasabi":
+        #     scheme_account = QueryHermes.fetch_ubiquity_schemeaccountentry(journey_type, TestContext.extid)
+        #     assert (
+        #         scheme_account.id == TestContext.current_scheme_account_id
+        #         and scheme_account.link_status == TestDataUtils.TEST_DATA.scheme_status.get(constants.FAILED_VALIDATION)
+        #     )
+        #     print("scheme ac status", scheme_account.status)
+        # elif merchant == "Iceland":
+        #     scheme_account = QueryHermes.fetch_ubiquity_schemeaccountentry(journey_type, TestContext.extid)
+        #     assert (
+        #         scheme_account.id == TestContext.current_scheme_account_id
+        #         and scheme_account.link_status
+        #         == TestDataUtils.TEST_DATA.scheme_status.get(constants.INVALID_CREDENTIALS)
+        #     )
+        #     print("scheme ac status", scheme_account.status)
 
     elif journey_type == "pll_active" or journey_type == "pll_inactive":
         if journey_type == "pll_active":

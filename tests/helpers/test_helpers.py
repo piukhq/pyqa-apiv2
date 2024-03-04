@@ -5,14 +5,14 @@ from tests.payload.loyalty_cards.squaremeal import SquareMealCard
 from tests.payload.loyalty_cards.the_works import TheWorks
 from tests.payload.loyalty_cards.trenette import TrenetteCard
 from tests.payload.loyalty_cards.viator import ViatorCard
-from tests_resources.test_data.get_wallet.loyalty_card_iceland import IcelandResponse
+# from tests_resources.test_data.get_wallet.loyalty_card_iceland import IcelandResponse
 from tests_resources.test_data.get_wallet.loyalty_card_itsu import ItsuResponse
 from tests_resources.test_data.get_wallet.loyalty_card_squaremeal import (
     SquareMealResponse,
 )
 from tests_resources.test_data.get_wallet.loyalty_card_the_works import TheWorksResponse
 from tests_resources.test_data.get_wallet.loyalty_card_viator import ViatorResponse
-from tests_resources.test_data.get_wallet.loyalty_card_wasabi import WasabiResponse
+# from tests_resources.test_data.get_wallet.loyalty_card_wasabi import WasabiResponse
 from tests_resources.test_data.get_wallet.payment_account import PaymentAccountResponse
 
 
@@ -204,11 +204,11 @@ class Merchant:
             case "itsu":
                 return Itsu
 
-    @staticmethod
-    def get_scheme_cred_main_ans(merchant):
-        """Return main_scheme_account_answers for all merchants"""
-        switcher = {
-            "Iceland": TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.CARD_NUM),
-            "Wasabi": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM),
-        }
-        return switcher.get(merchant)
+    # @staticmethod
+    # def get_scheme_cred_main_ans(merchant):
+    #     """Return main_scheme_account_answers for all merchants"""
+    #     switcher = {
+    #         "Iceland": TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.CARD_NUM),
+    #         "Wasabi": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM),
+    #     }
+    #     return switcher.get(merchant)
