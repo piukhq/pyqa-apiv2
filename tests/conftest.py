@@ -70,8 +70,8 @@ def pytest_addoption(parser):
     parser.addoption(
         "--env",
         action="store",
-        default="dev",
-        help="env : can be dev or staging or sandbox or prod",
+        default="staging",
+        help="env : can be staging or sandbox or prod",
     )
     parser.addoption(
         "--encryption",
@@ -83,7 +83,7 @@ def pytest_addoption(parser):
         "--selected_merchant",
         action="store",
         default="All",
-        help="selected_merchant: can be Wasabi or Iceland or HarveyNichols or combination e.g. Wasabi,Iceland",
+        help="selected_merchant: can be Viator or SquareMeal combination e.g. Viator,SquareMeal",
     )
 
 

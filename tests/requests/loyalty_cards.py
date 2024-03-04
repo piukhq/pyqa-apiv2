@@ -7,15 +7,6 @@ from tests.requests.encryption import encrypted_payload_token
 
 class MembershipCards(Endpoint):
     # ---------------------------------------- Add Journey---------------------------------------------------
-    #   @staticmethod
-    #   def add_field_only_card(token, merchant, invalid_request=None):
-    #       url = MembershipCards.get_add_url()
-    #       header = Endpoint.request_header(token)
-    #       if not invalid_request:
-    #           payload = Merchant.get_merchant(merchant).add_field_only_membership_card_payload()
-    #       else:
-    #          payload = Merchant.get_merchant(merchant).add_field_only_membership_card_payload(invalid_request)
-    #      return Endpoint.call(url, header, "POST", payload)
 
     @staticmethod
     def add_field_only_card(token, merchant, invalid_request=None):

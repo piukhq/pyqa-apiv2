@@ -1,6 +1,6 @@
 from os import environ
 
-from tests_resources.test_data import testdata_dev, testdata_sandbox, testdata_staging
+from tests_resources.test_data import testdata_sandbox, testdata_staging
 
 
 class EnvironmentDetails:
@@ -10,14 +10,14 @@ class EnvironmentDetails:
 
 
 if "KUBERNETES_SERVICE_HOST" in environ:
-    DEV = EnvironmentDetails(base_url="http://angelia-api", test_data=testdata_dev)
+    # DEV = EnvironmentDetails(base_url="http://angelia-api", test_data=testdata_dev)
     STAGING = EnvironmentDetails(base_url="http://angelia-api", test_data=testdata_staging)
-    TRUSTED = EnvironmentDetails(base_url="http://angelia-api", test_data=testdata_staging)
+    # TRUSTED = EnvironmentDetails(base_url="http://angelia-api", test_data=testdata_staging)
     SANDBOX = EnvironmentDetails(base_url="http://angelia-api", test_data=testdata_sandbox)
 else:
-    DEV = EnvironmentDetails(base_url="https://api.dev.gb.bink.com", test_data=testdata_dev)
+    # DEV = EnvironmentDetails(base_url="https://api.dev.gb.bink.com", test_data=testdata_dev)
     STAGING = EnvironmentDetails(base_url="https://api.staging.gb.bink.com", test_data=testdata_staging)
-    TRUSTED = EnvironmentDetails(base_url="https://tc.staging.gb.bink.com", test_data=testdata_staging)
+    # TRUSTED = EnvironmentDetails(base_url="https://tc.staging.gb.bink.com", test_data=testdata_staging)
     SANDBOX = EnvironmentDetails(base_url="https://lloyds-sit.sandbox.gb.bink.com", test_data=testdata_sandbox)
 
 
@@ -46,13 +46,13 @@ LLOYDS = ChannelDetails(
     organisation_id="",
 )
 
-BARCLAYS = ChannelDetails(
-    channel_name="barclays",
-    bundle_id="com.barclays.bmb",
-    client_id="lwhkGNn5FAXPCCcbIFrgZWk0i7Qolg5WBMFM4UYjZAbaOXQyq6",
-    kid="barclays-bink-regression",
-    organisation_id="",
-)
+# BARCLAYS = ChannelDetails(
+#     channel_name="barclays",
+#     bundle_id="com.barclays.bmb",
+#     client_id="lwhkGNn5FAXPCCcbIFrgZWk0i7Qolg5WBMFM4UYjZAbaOXQyq6",
+#     kid="barclays-bink-regression",
+#     organisation_id="",
+# )
 
 HALIFAX = ChannelDetails(
     channel_name="halifax",

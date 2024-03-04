@@ -1,12 +1,10 @@
 from tests.helpers import constants
 from tests.helpers.test_data_utils import TestDataUtils
-from tests.payload.loyalty_cards.iceland import IcelandCard
 from tests.payload.loyalty_cards.itsu import Itsu
 from tests.payload.loyalty_cards.squaremeal import SquareMealCard
 from tests.payload.loyalty_cards.the_works import TheWorks
 from tests.payload.loyalty_cards.trenette import TrenetteCard
 from tests.payload.loyalty_cards.viator import ViatorCard
-from tests.payload.loyalty_cards.wasabi import WasabiCard
 from tests_resources.test_data.get_wallet.loyalty_card_iceland import IcelandResponse
 from tests_resources.test_data.get_wallet.loyalty_card_itsu import ItsuResponse
 from tests_resources.test_data.get_wallet.loyalty_card_squaremeal import (
@@ -47,10 +45,10 @@ class TestData:
         merchant value from bdd feature file"""
 
         match merchant:
-            case "Iceland":
-                return "iceland"
-            case "Wasabi":
-                return "wasabi"
+            # case "Iceland":
+            #     return "iceland"
+            # case "Wasabi":
+            #     return "wasabi"
             case "SquareMeal":
                 return "square_meal"
             case "Trenette":
@@ -168,10 +166,10 @@ class TestData:
         """This function will select the correct test data file for the merchant"""
 
         match merchant:
-            case "Iceland":
-                return IcelandResponse
-            case "Wasabi":
-                return WasabiResponse
+            # case "Iceland":
+            #     return IcelandResponse
+            # case "Wasabi":
+            #     return WasabiResponse
             case "SquareMeal":
                 return SquareMealResponse
             case "Viator":
@@ -191,10 +189,10 @@ class Merchant:
         Each merchant class contains payload for membership_cads end point"""
 
         match merchant:
-            case "Iceland":
-                return IcelandCard
-            case "Wasabi":
-                return WasabiCard
+            # case "Iceland":
+            #     return IcelandCard
+            # case "Wasabi":
+            #     return WasabiCard
             case "SquareMeal":
                 return SquareMealCard
             case "Trenette":
