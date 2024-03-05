@@ -184,13 +184,6 @@ def verify_loyalty_card_into_database(journey_type, merchant):
                 and scheme_account.status == TestDataUtils.TEST_DATA.scheme_status.get(constants.FAILED_VALIDATION)
             )
             print("scheme ac status", scheme_account.status)
-        elif merchant == "Iceland":
-            scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
-            assert (
-                scheme_account.id == TestContext.current_scheme_account_id
-                and scheme_account.status == TestDataUtils.TEST_DATA.scheme_status.get(constants.INVALID_CREDENTIALS)
-            )
-            print("scheme ac status", scheme_account.status)
 
     elif journey_type == "pll":
         pll_links = [{"id": TestContext.current_payment_card_id, "active_link": True}]
@@ -268,22 +261,6 @@ def verify_loyalty_card_into_database_trusted(user, journey_type, merchant):
             and scheme_account.link_status is TestDataUtils.TEST_DATA.scheme_status.get(constants.ACCOUNT_ALREADY_EXIST)
             or TestDataUtils.TEST_DATA.scheme_status.get(constants.GHOST_CARD_REGISTRATION_FAILED)
         )
-    # elif journey_type == "unauthorised":
-        # if merchant == "Wasabi":
-        #     scheme_account = QueryHermes.fetch_ubiquity_schemeaccountentry(journey_type, TestContext.extid)
-        #     assert (
-        #         scheme_account.id == TestContext.current_scheme_account_id
-        #         and scheme_account.link_status == TestDataUtils.TEST_DATA.scheme_status.get(constants.FAILED_VALIDATION)
-        #     )
-        #     print("scheme ac status", scheme_account.status)
-        # elif merchant == "Iceland":
-        #     scheme_account = QueryHermes.fetch_ubiquity_schemeaccountentry(journey_type, TestContext.extid)
-        #     assert (
-        #         scheme_account.id == TestContext.current_scheme_account_id
-        #         and scheme_account.link_status
-        #         == TestDataUtils.TEST_DATA.scheme_status.get(constants.INVALID_CREDENTIALS)
-        #     )
-        #     print("scheme ac status", scheme_account.status)
 
     elif journey_type == "pll_active" or journey_type == "pll_inactive":
         if journey_type == "pll_active":
@@ -1595,7 +1572,7 @@ def failed_add_and_register_field(invalid_register, merchant, test_email):
 
 @when(parsers.parse("I perform POST request add and register for {merchant}"))
 def add_and_register_field(merchant, test_email):
-    TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_CARD)
+    # TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_CARD)
     response = MembershipCards.add_and_register_field(TestContext.token, merchant, test_email)
     time.sleep(8)
     response_json = response_to_json(response)
@@ -1663,7 +1640,6 @@ def add_existing_payment_card_in_another_wallet(payment_card_provider):
 
 @when(parsers.parse("I perform POST request {journey_type} again for {merchant}"))
 def add_and_register_with_existing_credential(journey_type, merchant, test_email):
-    # scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
     TestContext.card_number = TestContext.actual_view_wallet_field["loyalty_cards"][0]["card"]["card_number"]
     print("card number", TestContext.card_number)
     response = MembershipCards.add_and_register_field(TestContext.token, merchant, test_email)

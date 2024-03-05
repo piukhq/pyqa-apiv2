@@ -5,14 +5,12 @@ from tests.payload.loyalty_cards.squaremeal import SquareMealCard
 from tests.payload.loyalty_cards.the_works import TheWorks
 from tests.payload.loyalty_cards.trenette import TrenetteCard
 from tests.payload.loyalty_cards.viator import ViatorCard
-# from tests_resources.test_data.get_wallet.loyalty_card_iceland import IcelandResponse
 from tests_resources.test_data.get_wallet.loyalty_card_itsu import ItsuResponse
 from tests_resources.test_data.get_wallet.loyalty_card_squaremeal import (
     SquareMealResponse,
 )
 from tests_resources.test_data.get_wallet.loyalty_card_the_works import TheWorksResponse
 from tests_resources.test_data.get_wallet.loyalty_card_viator import ViatorResponse
-# from tests_resources.test_data.get_wallet.loyalty_card_wasabi import WasabiResponse
 from tests_resources.test_data.get_wallet.payment_account import PaymentAccountResponse
 
 
@@ -45,10 +43,6 @@ class TestData:
         merchant value from bdd feature file"""
 
         match merchant:
-            # case "Iceland":
-            #     return "iceland"
-            # case "Wasabi":
-            #     return "wasabi"
             case "SquareMeal":
                 return "square_meal"
             case "Trenette":
@@ -166,10 +160,6 @@ class TestData:
         """This function will select the correct test data file for the merchant"""
 
         match merchant:
-            # case "Iceland":
-            #     return IcelandResponse
-            # case "Wasabi":
-            #     return WasabiResponse
             case "SquareMeal":
                 return SquareMealResponse
             case "Viator":
@@ -189,10 +179,6 @@ class Merchant:
         Each merchant class contains payload for membership_cads end point"""
 
         match merchant:
-            # case "Iceland":
-            #     return IcelandCard
-            # case "Wasabi":
-            #     return WasabiCard
             case "SquareMeal":
                 return SquareMealCard
             case "Trenette":
@@ -203,12 +189,3 @@ class Merchant:
                 return TheWorks
             case "itsu":
                 return Itsu
-
-    # @staticmethod
-    # def get_scheme_cred_main_ans(merchant):
-    #     """Return main_scheme_account_answers for all merchants"""
-    #     switcher = {
-    #         "Iceland": TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.CARD_NUM),
-    #         "Wasabi": TestDataUtils.TEST_DATA.wasabi_membership_card.get(constants.CARD_NUM),
-    #     }
-    #     return switcher.get(merchant)

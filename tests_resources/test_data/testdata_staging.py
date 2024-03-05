@@ -11,7 +11,6 @@ visa_payment_card = {
     "last_four_digits": "4297",
     "first_six_digits": "424242",
     "fingerprint": "pytest2002",
-    # "provider": "VisaCard",
     "type": "debit",
     "country": "GB",
     "currency_code": "GBP",
@@ -67,55 +66,7 @@ invalid_token = {
     "TYzMTI5MDgyNX0.2LfB5dNuweArdz5j-ecXds4mepaeG65h3JA0vC-Mfeilv6C0IWVnfEK_K9_xrJDUhLD7f094rC1L7th"
     "5g4vJoQ",
 }
-# ----------------------------------------LOYALTY CARDs    --------------------------------------------------- #
-# iceland_membership_card = {
-#     "card_num": "6332040000300000003",
-#     # "register_card": "6332040000400000011",
-#     "unauthorised_last_name": "invalidlastname",
-#     "register_card": "6633204006543210000",
-#     "register_lastname": "ghostcard_success",
-#     "register_failed_card": "6332040065432156789",
-#     "register_failed_email": "generalerror@testbink.com",
-#     "transactions_card": "6332040000000000007",
-#     "barcode": "6332040000300000003",
-#     "transactions_card_last_name": "perfuser07",
-#     "transactions_postcode": "rg5 5aa",
-#     "transactions2_card": "6332040012312354321",
-#     "transactions2_lastname": "testuser",
-#     "transactions2_unauth_lastname": "error",
-#     "last_name": "perfuser03",
-#     "postcode": "mp6 0bb",
-#     "points": 123456,
-#     "currency": "GBP",
-#     "description": "Placeholder Balance Description",
-#     "transactions": "3",
-#     "transaction_status": "active",
-#     "transaction_currency": "GBP",
-# }
-
-# harvey_nichols_membership_card = {
-#     # "id": "andyjameshill@gmail.com",
-#     # "password": "BinkTest",
-#     # "card_num": "1000000962497",
-#     # "barcode": "1000000962497",
-#     # "points": 64,
-#     # "currency": "Points",
-#     # "description": "Placeholder Balance Description",
-#     # "transactions": "5",
-#     # "transaction_status": "active",
-#     # "transaction_currency": "Points",
-#     "id": "perfuser03@testbink.com",
-#     "password": "Password03",
-#     "card_num": "9000000000003",
-#     "barcode": "9000000000003",
-#     "points": 123456,
-#     "currency": "Points",
-#     "description": None,
-#     "transactions": "5",
-#     "transaction_status": "active",
-#     "transaction_currency": "Points",
-# }
-
+# ----------------------------------------LOYALTY CARDs    ---------------------------------------------------
 join_emails = {
     "id": "joininprogress@testbink.com",
     "join_fail_id": "emailexists@testbink.com",
@@ -123,23 +74,6 @@ join_emails = {
     "success_email": "pytest+success@bink.com",
     "identical_join": "identicaljoin@bink.com",
 }
-
-# wasabi_membership_card = {
-#     "card_num": "1048175295",
-#     # "transactions_card": "1048171268",
-#     # "transactions_email": "binktestuser10@wasabi.com",
-#     "transactions_card": "1048172996",
-#     "transactions_email": "binktestauto01@wasabi.com",
-#     "email": "binktestuser19@wasabi.com",
-#     "invalid_email": "fail@unknown.com",
-#     "unauthorised_email": "invalidemail@testbink.com",
-#     "points": 5,
-#     "currency": "stamps",
-#     "description": "",
-#     "transactions": "5",
-#     "transaction_status": "active",
-#     "transaction_currency": "stamps",
-# }
 
 square_meal_membership_card = {
     "card_num": "10050000",
@@ -224,13 +158,7 @@ itsu_membership_card = {
 # ----------------------------------------MEMBERSHIP PLAN IDs   ----------------------------------------------- #
 
 membership_plan_id = {
-    # "fat_face": 246,
-    # "harvey_nichols": 124,
-    # "iceland": 105,
     "square_meal": 286,
-    # "whsmith": 280,
-    # "asos": 288,
-    # "wasabi": 281,
     "trenette": 284,
     "viator": 292,
     "merchant_not_exists": 9999,

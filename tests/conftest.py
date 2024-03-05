@@ -252,8 +252,6 @@ def delete_first_wallet_scheme_account(merchant=None):
         TestContext.first_wallet_token, TestContext.first_wallet_scheme_account_id
     )
     TestContext.response_status_code = response_del_schemes.status_code
-    # response_del_schemes_1 = MembershipCards.delete_scheme_account(TestContext.token_channel_1,
-    #                                                                TestContext.scheme_account_id1)
     """Even if the scheme account is deleted, it is not updating DB so quickly
      so delay is required before next execution"""
     try:
@@ -435,8 +433,6 @@ def perform_post_b2b_with_user2(token_type):
 @given("I am a Lloyds user")
 def get_lloyds_user(lloyds_external_id, lloyds_test_email):
     key_secret = get_private_key_secret(config.LLOYDS.kid)
-    # user_email = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EMAIL)
-    # external_id = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EXTERNAL_ID)
     TestContext.b2btoken = create_b2b_token(
         key=key_secret,
         sub=lloyds_external_id,
@@ -477,8 +473,6 @@ def get_lloyds_user(lloyds_external_id, lloyds_test_email):
 @given("I am a bos user")
 def get_bos_user(bos_external_id, bos_test_email):
     key_secret = get_private_key_secret(config.BOS.kid)
-    # user_email = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EMAIL)
-    # external_id = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EXTERNAL_ID)
     TestContext.b2btoken = create_b2b_token(
         key=key_secret, sub=bos_external_id, kid=config.BOS.kid, email=bos_test_email
     )
@@ -516,8 +510,6 @@ def get_bos_user(bos_external_id, bos_test_email):
 @given("I am a halifax user")
 def get_halifax_user(halifax_external_id, halifax_test_email):
     key_secret = get_private_key_secret(config.HALIFAX.kid)
-    # user_email = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EMAIL)
-    # external_id = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EXTERNAL_ID)
     TestContext.b2btoken = create_b2b_token(
         key=key_secret,
         sub=halifax_external_id,
@@ -557,8 +549,6 @@ def get_halifax_user(halifax_external_id, halifax_test_email):
 @given("I am a squaremeal user")
 def get_squaremeal_user(squaremeal_external_id, squaremeal_test_email):
     key_secret = get_private_key_secret(config.SQUAREMEAL.kid)
-    # user_email = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EMAIL)
-    # external_id = TestDataUtils.TEST_DATA.bink_user_accounts.get(constants.LLOYDS_EXTERNAL_ID)
     TestContext.b2btoken = create_b2b_token(
         key=key_secret,
         sub=squaremeal_external_id,
