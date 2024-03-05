@@ -22,4 +22,4 @@ jobs:
     secrets: inherit
     strategy:
       matrix:
-        environment: [staging, production]
+        environment: [staging]
