@@ -2,17 +2,21 @@ from tests import api
 from tests.api.base import Endpoint
 from tests.payload.token_b2b.b2b_token import TokenB2BDetail
 
+import logging
+
 
 class Token_b2b(Endpoint):
     @staticmethod
     def post_b2b_with_grant_type(token, token_type):
         url = Token_b2b.get_add_url()
+        logging.info("URL for token B2B"+url)
         header = Endpoint.request_header(token)
         payload = TokenB2BDetail.post_b2btoken_with_grantype(token_type, scope="user")
         return Endpoint.call(url, header, "POST", payload)
 
     @staticmethod
     def get_add_url():
+        logging.info("URL for token B2B"+Endpoint.BASE_URL + api.ENDPOINT_TOKEN)
         return Endpoint.BASE_URL + api.ENDPOINT_TOKEN
 
     @staticmethod

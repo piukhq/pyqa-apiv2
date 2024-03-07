@@ -450,12 +450,13 @@ def get_lloyds_user(lloyds_external_id, lloyds_test_email):
     TestContext.access_token = response_json.get("access_token")
     TestContext.token_type = response_json.get("token_type")
     TestContext.refresh_token_type = response_json.get("refresh_token")
+    print(" token_type",   TestContext.token_type )
+    logging.info("token_type" +   TestContext.token_type )
 
     print(" access_token",   TestContext.access_token )
     logging.info("access_token" +   TestContext.access_token )
 
-    print(" token_type",   TestContext.token_type )
-    logging.info("token_type" +   TestContext.token_type )
+
 
     TestContext.token = TestContext.token_type + " " + TestContext.access_token
     TestContext.response_status_code = response.status_code
