@@ -7,7 +7,7 @@ Feature: Add and authorise a loyalty card
 
   @bink_regression_api2 @pyqa-ait
   Scenario Outline: Add and authorise field journey
-    Given I am a Lloyds user
+    Given I am a bos user
     When I add and authorise "<merchant>" membership card
     Then I see a <status_code_returned>
     And verify that for lloyds_user data stored in after "<journey_type>" journey for "<merchant>"

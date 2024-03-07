@@ -433,7 +433,6 @@ def perform_post_b2b_with_user2(token_type):
 @given("I am a Lloyds user")
 def get_lloyds_user(lloyds_external_id, lloyds_test_email):
     key_secret = get_private_key_secret(config.LLOYDS.kid)
-    print("key_secret", key_secret)
     logging.info("key_secret" + key_secret)
     TestContext.b2btoken = create_b2b_token(
         key=key_secret,
@@ -441,8 +440,7 @@ def get_lloyds_user(lloyds_external_id, lloyds_test_email):
         kid=config.LLOYDS.kid,
         email=lloyds_test_email,
     )
-    print(" TestContext.b2btoken",  TestContext.b2btoken)
-    logging.info("TestContext.b2btoken" +  TestContext.b2btoken)
+    logging.info("TestContext.b2btoken: " +  TestContext.b2btoken)
 
     response = Token_b2b.post_b2b_with_grant_type(TestContext.b2btoken, "b2b")
     time.sleep(1)
@@ -450,8 +448,8 @@ def get_lloyds_user(lloyds_external_id, lloyds_test_email):
     TestContext.access_token = response_json.get("access_token")
     TestContext.token_type = response_json.get("token_type")
     TestContext.refresh_token_type = response_json.get("refresh_token")
-    print(" token_type",   TestContext.token_type )
-    logging.info("token_type" +   TestContext.token_type )
+    print("token_type", TestContext.token_type )
+    logging.info("token_type" + TestContext.token_type )
 
     print(" access_token",   TestContext.access_token )
     logging.info("access_token" +   TestContext.access_token )
