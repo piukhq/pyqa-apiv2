@@ -10,7 +10,7 @@ Feature: Add and authorise a loyalty card
     Given I am a bos user
     When I add and authorise "<merchant>" membership card
     Then I see a <status_code_returned>
-    And verify that for lloyds_user data stored in after "<journey_type>" journey for "<merchant>"
+    And verify that for bos_user data stored in after "<journey_type>" journey for "<merchant>"
 
     Examples:
       | merchant      | status_code_returned | journey_type      |

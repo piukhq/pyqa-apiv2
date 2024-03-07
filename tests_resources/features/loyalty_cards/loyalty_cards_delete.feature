@@ -5,12 +5,12 @@ Feature: Delete a loyalty card
   I want to delete a loyalty card from my wallet
   because it is no longer relevant or needed
 
-
+  @pyqa-ait
   Scenario Outline: Delete add and authorise
-    Given I am a bos user
+    Given I am a halifax user
     When I add and authorise "<merchant>" membership card
     Then I perform DELETE request to delete the "<merchant>" membership card
-    And verify that for bos_user data stored in after <journey_type> journey for "<merchant>"
+    And verify that for halifax_user data stored in after <journey_type> journey for "<merchant>"
     And I see a <status_code_returned>
 
     Examples:
