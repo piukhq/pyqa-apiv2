@@ -93,7 +93,7 @@ class PaymentCards(Endpoint):
             try:
                 response_json = response.json()
                 if not response_json["status"] == PaymentCardTestData.get_data().get(constants.PAYMENT_CARD_STATUS):
-                    time.sleep(i)
+                    # time.sleep(1)
                     continue
                 else:
                     break

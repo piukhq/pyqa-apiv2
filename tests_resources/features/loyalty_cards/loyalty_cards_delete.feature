@@ -5,7 +5,6 @@ Feature: Delete a loyalty card
   I want to delete a loyalty card from my wallet
   because it is no longer relevant or needed
 
-  @pyqa-ait
   Scenario Outline: Delete add and authorise
     Given I am a halifax user
     When I add and authorise "<merchant>" membership card

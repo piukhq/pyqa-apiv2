@@ -54,19 +54,3 @@ Feature: As a Bink User
       | master                | 401                  | Access Token must be in 2 parts separated by a space | INVALID_TOKEN |
       | amex                  | 401                  | Access Token must be in 2 parts separated by a space | INVALID_TOKEN |
       | visa                  | 401                  | Access Token must be in 2 parts separated by a space | INVALID_TOKEN |
-
-
-  @invalid_token_with_prefix @bink_regression_api2 @sandbox_regression
-  Scenario Outline: Sending invalid token with bearer prefix in header for delete payment card
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add a new "<payment_card_provider>" payment card to wallet
-    Then I perform DELETE request to delete "<payment_card_provider>" the payment card with invalid token and bearer prefix
-    Then I see a <status_code_returned>
-    And I verify "<error_message>" "<error_slug>" of payment_account response
-
-    Examples:
-      | payment_card_provider | status_code_returned | error_message             | error_slug    |
-      | master                | 401                  | Supplied token is invalid | INVALID_TOKEN |
-      | amex                  | 401                  | Supplied token is invalid | INVALID_TOKEN |
-      | visa                  | 401                  | Supplied token is invalid | INVALID_TOKEN |

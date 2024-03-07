@@ -1,5 +1,5 @@
 # Created by rupalpatel at 10/09/2021
-@bink_regression_api2
+@bink_regression_api2 @membership_plans
 Feature: view journey fields
   As a Bink API Consumer
   I want to view the all the fields a user is required to fill in in order to complete all supported loyalty card journeys

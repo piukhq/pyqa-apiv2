@@ -27,7 +27,7 @@ scenarios("events/")
 
 @when(parsers.parse('I perform POST request to add "{merchant}" membership card'))
 def add_field_loyalty_cards(merchant):
-    time.sleep(1)
+    # time.sleep(1)
     response = MembershipCards.add_field_only_card(TestContext.token, merchant)
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")
@@ -43,7 +43,7 @@ def add_field_loyalty_cards(merchant):
 
 @when(parsers.parse('I add membership card with transactions and vouchers for "{merchant}"'))
 def add_field_loyalty_cards_transactions(merchant):
-    time.sleep(1)
+    # time.sleep(1)
     response = MembershipCards.add_field_only_card_transactions(TestContext.token, merchant)
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")
@@ -59,7 +59,7 @@ def add_field_loyalty_cards_transactions(merchant):
 
 @when(parsers.parse('I perform POST request to add trusted channel "{merchant}" loyalty card'))
 def add_field_loyalty_card_trusted(merchant):
-    time.sleep(1)
+    # time.sleep(1)
     response = MembershipCards.add_loyalty_card_trusted(TestContext.token, merchant)
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")
@@ -126,7 +126,7 @@ def verify_get_add_field_membership_cards(merchant):
 
 @then(parsers.parse('verify the data stored in DB after "{journey_type}" journey for "{merchant}"'))
 def verify_loyalty_card_into_database(journey_type, merchant):
-    time.sleep(5)
+    time.sleep(3)
 
     if journey_type == "Add_field":
         scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
@@ -147,7 +147,7 @@ def verify_loyalty_card_into_database(journey_type, merchant):
         ), "Delete in database is not success"
 
     elif journey_type == "authorise_field" or journey_type == "join" or journey_type == "register_field":
-        time.sleep(4)
+        # time.sleep(3)
         scheme_account = QueryHermes.fetch_scheme_account(journey_type, TestContext.current_scheme_account_id)
         assert (
             scheme_account.id == TestContext.current_scheme_account_id
@@ -196,7 +196,7 @@ def verify_loyalty_card_into_database(journey_type, merchant):
 @then(parsers.parse('verify that for {user} data stored in after {journey_type} journey for "{merchant}"'))
 def verify_loyalty_card_into_database_trusted(user, journey_type, merchant):
     TestContext.extid = TestContext.external_id[user]
-    time.sleep(5)
+    time.sleep(3)
 
     if journey_type == "Add_field":
         scheme_account = QueryHermes.fetch_ubiquity_schemeaccountentry(journey_type, TestContext.extid)
@@ -221,7 +221,7 @@ def verify_loyalty_card_into_database_trusted(user, journey_type, merchant):
         ), "Delete in database is not success"
 
     elif journey_type == "authorise_field" or journey_type == "join" or journey_type == "register_field":
-        time.sleep(4)
+        # time.sleep(3)
         scheme_account = QueryHermes.fetch_ubiquity_schemeaccountentry(journey_type, TestContext.extid)
         assert (
             scheme_account.id == TestContext.current_scheme_account_id
@@ -293,7 +293,7 @@ def verify_payment_card_into_database(journey_type2, merchant):
 
 @then(parsers.parse('verify that the PLL links are deleted from the scheme account for "{journey_type2}"'))
 def verify_pll_links_scheme_account(journey_type2):
-    time.sleep(5)
+    time.sleep(3)
     scheme_account = QueryHermes.fetch_scheme_account(journey_type2, TestContext.current_scheme_account_id)
     assert scheme_account.is_deleted is True
     assert scheme_account.id == TestContext.current_scheme_account_id
@@ -302,7 +302,7 @@ def verify_pll_links_scheme_account(journey_type2):
 
 @then(parsers.parse('verify that the PLL links are deleted from the payment account for "{journey_type2}"'))
 def verify_pll_links_payment_account(journey_type2):
-    time.sleep(5)
+    time.sleep(3)
     payment_account = QueryHermes.fetch_payment_account(TestContext.current_payment_card_id)
     assert payment_account.is_deleted is True
     assert payment_account.id == TestContext.current_payment_card_id
@@ -487,7 +487,7 @@ def verify_voucher_field(env, channel, merchant):
 @when(parsers.parse("As a {user} I performed GET balance for {loyalty_card_status} {merchant} membership card"))
 def verify_loyalty_card_balance(env, channel, user, loyalty_card_status, merchant):
     TestContext.token = TestContext.all_users[user]
-    time.sleep(4)
+    time.sleep(3)
     response = MembershipCards.get_loyalty_balance(TestContext.token, TestContext.current_scheme_account_id)
     response_json = response_to_json(response)
     TestContext.response_status_code = response.status_code
@@ -573,7 +573,7 @@ def verify_loyalty_card_invalid_id_balance(env, channel, merchant, invalid_id):
 @when(parsers.parse("As a {user} I performed  GET transaction for {loyalty_card_status} {merchant} membership card"))
 def verify_loyalty_card_transactions(env, channel, user, loyalty_card_status, merchant):
     TestContext.token = TestContext.all_users[user]
-    time.sleep(6)
+    time.sleep(3)
     response = MembershipCards.get_loyalty_transactions(TestContext.token, TestContext.current_scheme_account_id)
     response_json = response_to_json(response)
     TestContext.response_status_code = response.status_code
@@ -657,7 +657,7 @@ def verify_loyalty_card_invalid_id_transactions(env, channel, invalid_id, mercha
 @when(parsers.parse("For {user} I perform GET voucher for loyalty card with {loyalty_card_status} for {merchant}"))
 def verify_loyalty_card_vouchers(env, channel, user, loyalty_card_status, merchant):
     TestContext.token = TestContext.all_users[user]
-    time.sleep(6)
+    time.sleep(3)
     response = MembershipCards.get_loyalty_vouchers(TestContext.token, TestContext.current_scheme_account_id)
     response_json = response_to_json(response)
     TestContext.response_status_code = response.status_code
@@ -743,7 +743,7 @@ def verify_view_wallet(Wallet, env, channel):
 
 @when(parsers.parse("I perform GET {Wallet}"))
 def verify_wallet(Wallet, env, channel):
-    time.sleep(5)
+    time.sleep(3)
     if Wallet == "Wallet":
         response = MembershipCards.get_view_wallet(TestContext.token)
         logging.info("The response of get wallet is : \n" + json.dumps(response_to_json(response), indent=4))
@@ -766,7 +766,7 @@ def verify_wallet(Wallet, env, channel):
 @when(parsers.parse("For {user} I perform GET {Wallet}"))
 def verify_user_wallet(user, Wallet, env, channel):
     TestContext.token = TestContext.all_users[user]
-    time.sleep(5)
+    time.sleep(3)
     if Wallet == "Wallet":
         response = MembershipCards.get_view_wallet(TestContext.token)
         logging.info("The response of get wallet is : \n" + json.dumps(response_to_json(response), indent=4))
@@ -975,7 +975,7 @@ def verify_invalid_request_for_add_and_register_journey(merchant, request_payloa
 # @when(parsers.parse('I perform POST request to add "{merchant}" membership card before register'))
 def add_before_register_field_loyalty_cards(merchant, scheme_state):
     response = MembershipCards.add_before_register_field_only_card(TestContext.token, merchant)
-    time.sleep(7)
+    # time.sleep(7)
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")
     TestContext.response_status_code = response.status_code
@@ -993,7 +993,7 @@ def add_before_register_field_loyalty_cards(merchant, scheme_state):
 def add_already_register_card(merchant):
     TestContext.card_number = TestContext.actual_view_wallet_field["loyalty_cards"][0]["card"]["card_number"]
     response = MembershipCards.add_before_register_field_only_card(TestContext.token, merchant)
-    time.sleep(7)
+    time.sleep(3)
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")
     TestContext.response_status_code = response.status_code
@@ -1010,8 +1010,6 @@ def add_already_register_card(merchant):
 # @when(parsers.parse('I perform PUT request to register "{merchant}" above wallet only membership card'))
 @when(parsers.parse("I perform PUT request to register {merchant} with {invalid_data} membership card"))
 def verify_register_post_membership_card(merchant, invalid_data, test_email):
-    # if scheme_state == "registration_failed":
-    #     test_email = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_FAILED_EMAIL)
     response = MembershipCards.register_field_only_card(
         TestContext.token,
         merchant,
@@ -1019,7 +1017,7 @@ def verify_register_post_membership_card(merchant, invalid_data, test_email):
         TestContext.current_scheme_account_id,
         invalid_data,
     )
-    time.sleep(7)
+    time.sleep(3)
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")
     TestContext.response_status_code = response.status_code
@@ -1035,11 +1033,11 @@ def verify_register_post_membership_card(merchant, invalid_data, test_email):
 
 @when(parsers.parse('I perform PUT request to register "{merchant}" above wallet only membership card again'))
 def verify_i_perform_register_again(merchant, test_email):
-    time.sleep(3)
+    # time.sleep(3)
     response = MembershipCards.register_field_only_card(
         TestContext.token, merchant, test_email, TestContext.current_scheme_account_id
     )
-    time.sleep(10)
+    # time.sleep(3)
     response_json = response_to_json(response)
     TestContext.response_status_code = response.status_code
     TestContext.error_message = response_json["error_message"]
@@ -1212,7 +1210,7 @@ def verify_add_and_auth_b2b(merchant):
 
 @when(parsers.parse('request to add and authorise "{merchant}" membership card with {card}'))
 def verify_add_and_auth_transactions(merchant, card):
-    time.sleep(3)
+    # time.sleep(3)
     response = MembershipCards.add_and_authorise_transactions_card(TestContext.token, merchant, card)
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")
@@ -1234,7 +1232,7 @@ def verify_add_and_auth_transactions(merchant, card):
     )
 )
 def verify_add_and_auth_existing_membership_card(merchant, status_code_returned):
-    time.sleep(3)
+    # time.sleep(3)
     response = MembershipCards.add_and_authorise_card_with_existing_scheme(TestContext.token, merchant)
     response_json = response_to_json(response)
     # TestContext.current_scheme_account_id = response_json.get("id")
@@ -1312,7 +1310,7 @@ def verify_add_and_register_invalid_token_request(merchant, test_email):
 
 @when(parsers.parse('I perform PUT request to authorise "{merchant}" above wallet only membership card'))
 def verify_authorise_post_membership_card(merchant):
-    time.sleep(3)
+    # time.sleep(3)
     response = MembershipCards.authorise_field_only_card(
         TestContext.token, merchant, TestContext.current_scheme_account_id
     )
@@ -1335,7 +1333,7 @@ def verify_authorise_post_membership_card(merchant):
     )
 )
 def verify_authorise_post_membership_card_transactions(merchant):
-    time.sleep(3)
+    time.sleep(1)
     response = MembershipCards.authorise_field_only_card_transactions(
         TestContext.token, merchant, TestContext.current_scheme_account_id
     )
@@ -1491,7 +1489,7 @@ def verify_delete_request_with_payload(merchant):
 
 @when("I perform DELETE request to delete the membership card which is already deleted")
 def i_perform_delete_request_to_delete_the_mebership_card_which_is_deleted():
-    time.sleep(2)
+    time.sleep(1)
 
     response = MembershipCards.delete_scheme_account(TestContext.token, TestContext.current_scheme_account_id)
     TestContext.response_status_code = response.status_code
@@ -1512,7 +1510,7 @@ def i_perform_delete_request_to_delete_the_mebership_card_which_is_deleted():
 
 @when(parsers.parse('I perform PUT request to authorise "{merchant}" above wallet only membership card again'))
 def verify_i_perform_authorise_again(merchant):
-    time.sleep(3)
+    time.sleep(1)
     response = MembershipCards.authorise_field_only_card(
         TestContext.token, merchant, TestContext.current_scheme_account_id
     )
@@ -1556,7 +1554,7 @@ def i_perform_post_add_and_authorise_membership_card_which_is_exist_already(merc
 @when(parsers.parse('I perform POST request to result "{invalid_register}" add and register for {merchant}'))
 def failed_add_and_register_field(invalid_register, merchant, test_email):
     response = MembershipCards.add_and_register_field(TestContext.token, merchant, test_email, None, invalid_register)
-    time.sleep(8)
+    # time.sleep(8)
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")
     TestContext.response_status_code = response.status_code
@@ -1572,9 +1570,8 @@ def failed_add_and_register_field(invalid_register, merchant, test_email):
 
 @when(parsers.parse("I perform POST request add and register for {merchant}"))
 def add_and_register_field(merchant, test_email):
-    # TestContext.card_number = TestDataUtils.TEST_DATA.iceland_membership_card.get(constants.REGISTER_CARD)
     response = MembershipCards.add_and_register_field(TestContext.token, merchant, test_email)
-    time.sleep(8)
+    # time.sleep(8)
     response_json = response_to_json(response)
     TestContext.current_scheme_account_id = response_json.get("id")
     TestContext.response_status_code = response.status_code
@@ -1593,21 +1590,10 @@ def add_and_register_error_handling(merchant, journey_type, test_email):
     response = MembershipCards.add_and_register_field(TestContext.token, merchant, test_email, None, journey_type)
     response_json = response_to_json(response)
     logging.info(response_json)
-    # TestContext.current_scheme_account_id = response_json.get("id")
-    # TestContext.response_status_code = response.status_code
-    # logging.info(
-    #     "The response of Add and Register field Journey (POST) where scheme is in pending:\n\n"
-    #     + Endpoint.BASE_URL
-    #     + api.ENDPOINT_MEMBERSHIP_CARDS_ADD_AND_REGISTER
-    #     + "\n\n"
-    #     + json.dumps(response_json, indent=4)
-    # )
-    # assert response.status_code == 200, "Add and Register Journey which is in pending " + merchant + " failed"
-
 
 @when(parsers.parse('I perform POST request to add and authorise "{merchant}" with different auth credential'))
 def i_perform_post_with_different_credential(merchant):
-    time.sleep(4)
+    # time.sleep(5)
     response = MembershipCards.add_and_authorise_card_with_different_credential(TestContext.token, merchant)
     response_json = response_to_json(response)
     TestContext.response_status_code = response.status_code
@@ -1643,7 +1629,7 @@ def add_and_register_with_existing_credential(journey_type, merchant, test_email
     TestContext.card_number = TestContext.actual_view_wallet_field["loyalty_cards"][0]["card"]["card_number"]
     print("card number", TestContext.card_number)
     response = MembershipCards.add_and_register_field(TestContext.token, merchant, test_email)
-    time.sleep(8)
+    # time.sleep(8)
     response_json = response_to_json(response)
     TestContext.response_status_code = response.status_code
     TestContext.error_message = response_json.get("error_message")
@@ -1669,7 +1655,7 @@ def join_scheme(join, merchant, test_email):
     if join == "identical_join":
         test_email = TestDataUtils.TEST_DATA.join_emails.get(constants.IDENTICAL_JOIN)
     response = MembershipCards.join_field(TestContext.token, merchant, test_email, None, join)
-    time.sleep(8)
+    # time.sleep(8)
     response_json = response_to_json(response)
     logging.info("response_json data :: %s", response_json)
     TestContext.current_scheme_account_id = response_json.get("id")
@@ -1748,14 +1734,14 @@ def fail_join_scheme(scheme_state, merchant):
             merchant,
             TestDataUtils.TEST_DATA.join_emails.get(constants.ID),
         )
-        time.sleep(15)
+        time.sleep(3)
     elif scheme_state == "join_success":
         response = MembershipCards.join_field(
             TestContext.token,
             merchant,
             TestDataUtils.TEST_DATA.join_emails.get(constants.SUCCESS_EMAIL),
         )
-        time.sleep(15)
+        time.sleep(3)
     elif scheme_state == "asynchronous_join_in_progress":
         response = MembershipCards.join_field(
             TestContext.token,
@@ -1923,7 +1909,7 @@ def verify_empty_pc_lc_pll_status(Wallet):
 
 @when(parsers.parse("I perform DELETE request to delete the failed membership card which is already deleted"))
 def delete_failed_scheme_again():
-    time.sleep(4)
+    time.sleep(2)
     response = MembershipCards.delete_fail_scheme_account(TestContext.token, TestContext.current_scheme_account_id)
     TestContext.response_status_code = response.status_code
     response_json = response_to_json(response)
@@ -2108,7 +2094,7 @@ def verify_state_slug_desc(Wallet, merchant, scheme_state):
 @when(parsers.parse("I perform put request with {request_payload} to update failed join for {merchant}"))
 def verify_put_join_with_invalid(request_payload, merchant):
     if request_payload == "successful_payload":
-        time.sleep(2)
+        # time.sleep(2)
         response = MembershipCards.update_failed_join(
             TestContext.token,
             merchant,
@@ -2127,7 +2113,7 @@ def verify_put_join_with_invalid(request_payload, merchant):
             + json.dumps(response_json, indent=4)
         )
         assert response.status_code == 202, "Update failed join for " + merchant + " failed"
-        time.sleep(12)
+        # time.sleep(3)
 
     else:
         if request_payload == "invalid_token":
@@ -2522,7 +2508,7 @@ def put_trusted_add(request_payload, merchant):
     else:
         TestContext.email = TestDataUtils.TEST_DATA.square_meal_membership_card.get(constants.TRANSACTIONS_EMAIL)
     if request_payload in ["successful_payload", "new_merchant_id", "update_email"]:
-        time.sleep(2)
+        time.sleep(1)
         response = MembershipCards.update_trusted_add(
             TestContext.token,
             merchant,
@@ -2660,7 +2646,7 @@ def pll_link_status_change_event(journey_type, user, from_state, to_state, slug)
         TestContext.event_slug = ""
     else:
         TestContext.event_slug = slug
-    time.sleep(8)
+    time.sleep(2)
     logging.info(TestDataUtils.TEST_DATA.event_type.get(journey_type))
     TestContext.event_record = QuerySnowstorm.fetch_pll_event(
         TestDataUtils.TEST_DATA.event_type.get(journey_type),
@@ -2695,7 +2681,7 @@ def pll_link_status_change_event(journey_type, user, from_state, to_state, slug)
 @then(parsers.parse("I verify that {journey_type} event is created for {user}"))
 def verify_loyalty_card_into_event_database(journey_type, user):
     TestContext.extid = TestContext.external_id[user]
-    time.sleep(5)
+    time.sleep(2)
     logging.info(TestDataUtils.TEST_DATA.event_type.get(journey_type))
     event_record = QuerySnowstorm.fetch_event(TestDataUtils.TEST_DATA.event_type.get(journey_type), TestContext.extid)
     logging.info(str(event_record))
@@ -2721,7 +2707,7 @@ def verify_scheme_into_event_database(journey_type, user):
         case "bink_user":
             channel = TestDataUtils.TEST_DATA.event_info.get(constants.CHANNEL_BINk)
     TestContext.extid = TestContext.external_id[user]
-    time.sleep(5)
+    time.sleep(3)
     logging.info(TestDataUtils.TEST_DATA.event_type.get(journey_type))
     TestContext.event_record = QuerySnowstorm.fetch_event(
         TestDataUtils.TEST_DATA.event_type.get(journey_type), TestContext.extid

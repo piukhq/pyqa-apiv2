@@ -17,4 +17,4 @@ Feature: Update failed join
 
     Examples:
       | merchant      |
-      |Viator        |
+      |Viator         |

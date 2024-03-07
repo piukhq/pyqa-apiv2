@@ -5,7 +5,7 @@ Feature: Add and authorise a loyalty card
   I want add an ‘Engage' or 'PLL’ type loyalty card to my wallet
   so that I am able to benefit from the Bink functionality
 
-  @bink_regression_api2 @pyqa-ait
+  @bink_regression_api2
   Scenario Outline: Add and authorise field journey
     Given I am a bos user
     When I add and authorise "<merchant>" membership card

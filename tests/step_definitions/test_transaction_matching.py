@@ -87,7 +87,7 @@ def import_payment_file_with_duplicate_transaction(payment_card_transaction, mid
         assert response.status_code == 201 or 200, "Payment file import is not successful"
         """Master card File import or Retailer Transaction File import can
         take up to a minute to transfer from blob storage to harmonia"""
-        time.sleep(60)
+        time.sleep(30)
     except AttributeError:
         if response is None:
             logging.info(

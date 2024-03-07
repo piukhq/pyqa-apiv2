@@ -245,7 +245,7 @@ def response_to_json(response):
 
 @then(parsers.parse('I perform DELETE request to delete the first wallet "{merchant}" membership card'))
 def delete_first_wallet_scheme_account(merchant=None):
-    time.sleep(3)
+    # time.sleep(1)
     print("firsttoken", TestContext.first_wallet_token)
     print("schemeid", TestContext.first_wallet_scheme_account_id)
     response_del_schemes = MembershipCards.delete_scheme_account(
@@ -269,7 +269,7 @@ def delete_first_wallet_scheme_account(merchant=None):
 
 @then(parsers.parse('I perform DELETE request to delete the "{merchant}" membership card'))
 def delete_scheme_account(merchant=None):
-    time.sleep(3)
+    # time.sleep(1)
 
     response_del_schemes = MembershipCards.delete_scheme_account(
         TestContext.token, TestContext.current_scheme_account_id
@@ -293,7 +293,7 @@ def delete_scheme_account(merchant=None):
 @then(parsers.parse('I perform DELETE request to delete "{payment_card_provider}" the payment card'))
 @then("I perform DELETE request to delete the payment card which is already deleted")
 def delete_payment_card(payment_card_provider=None):
-    time.sleep(3)
+    # time.sleep(1)
 
     response = PaymentCards.delete_payment_card(TestContext.token, TestContext.current_payment_card_id)
     TestContext.response_status_code = response.status_code
@@ -312,7 +312,7 @@ def delete_payment_card(payment_card_provider=None):
 
 @then(parsers.parse('I perform DELETE request to delete the first wallet "{payment_card_provider}" the payment card'))
 def delete_payment_card_first_wallet(payment_card_provider=None):
-    time.sleep(3)
+    # time.sleep(1)
 
     response = PaymentCards.delete_payment_card(TestContext.first_wallet_token, TestContext.current_payment_card_id)
     TestContext.response_status_code = response.status_code
@@ -331,7 +331,7 @@ def delete_payment_card_first_wallet(payment_card_provider=None):
 
 @then("I perform DELETE request to delete all the payment cards")
 def delete_all_payment_card():
-    time.sleep(3)
+    # time.sleep(1)
     wallet_response = TestContext.actual_view_wallet_field
     print("wallet response", wallet_response)
     for i in range(len(wallet_response["payment_accounts"])):
@@ -352,7 +352,7 @@ def delete_all_payment_card():
 
 @then("I perform DELETE request to delete all the loyalty cards")
 def delete_all_loyalty_card():
-    time.sleep(3)
+    # time.sleep(1)
     wallet_response = TestContext.actual_view_wallet_field
     for i in range(len(wallet_response["payment_accounts"][0]["pll_links"])):
         response = MembershipCards.delete_scheme_account(
@@ -390,7 +390,7 @@ def set_up_client_token_for_b2b_user2():
 @when(parsers.parse('I perform POST token request for token type "{token_type}" to get access token'))
 def perform_post_b2b_with_user1(token_type):
     response = Token_b2b.post_b2b_with_grant_type(TestContext.b2btoken, token_type)
-    time.sleep(1)
+    # time.sleep(1)
     response_json = response_to_json(response)
     TestContext.access_token = response_json.get("access_token")
     TestContext.token_type = response_json.get("token_type")
@@ -412,7 +412,7 @@ def perform_post_b2b_with_user1(token_type):
 @when(parsers.parse('I perform POST token request for token type "{token_type}" to get access token for second user'))
 def perform_post_b2b_with_user2(token_type):
     response = Token_b2b.post_b2b_with_grant_type(TestContext.b2btoken, token_type)
-    time.sleep(1)
+    # time.sleep(1)
     response_json = response_to_json(response)
     TestContext.access_token = response_json.get("access_token")
     TestContext.token_type = response_json.get("token_type")
@@ -433,27 +433,18 @@ def perform_post_b2b_with_user2(token_type):
 @given("I am a Lloyds user")
 def get_lloyds_user(lloyds_external_id, lloyds_test_email):
     key_secret = get_private_key_secret(config.LLOYDS.kid)
-    logging.info("key_secret" + key_secret)
     TestContext.b2btoken = create_b2b_token(
         key=key_secret,
         sub=lloyds_external_id,
         kid=config.LLOYDS.kid,
         email=lloyds_test_email,
     )
-    logging.info("TestContext.b2btoken: " +  TestContext.b2btoken)
-
     response = Token_b2b.post_b2b_with_grant_type(TestContext.b2btoken, "b2b")
-    time.sleep(1)
+    # time.sleep(1)
     response_json = response_to_json(response)
     TestContext.access_token = response_json.get("access_token")
     TestContext.token_type = response_json.get("token_type")
     TestContext.refresh_token_type = response_json.get("refresh_token")
-    print("token_type", TestContext.token_type )
-    logging.info("token_type" + TestContext.token_type )
-
-    print(" access_token",   TestContext.access_token )
-    logging.info("access_token" +   TestContext.access_token )
-
 
 
     TestContext.token = TestContext.token_type + " " + TestContext.access_token
@@ -488,7 +479,7 @@ def get_bos_user(bos_external_id, bos_test_email):
     )
 
     response = Token_b2b.post_b2b_with_grant_type(TestContext.b2btoken, "b2b")
-    time.sleep(1)
+    # time.sleep(1)
     response_json = response_to_json(response)
     TestContext.access_token = response_json.get("access_token")
     TestContext.token_type = response_json.get("token_type")
@@ -527,7 +518,7 @@ def get_halifax_user(halifax_external_id, halifax_test_email):
         email=halifax_test_email,
     )
     response = Token_b2b.post_b2b_with_grant_type(TestContext.b2btoken, "b2b")
-    time.sleep(1)
+    # time.sleep(1)
     response_json = response_to_json(response)
     TestContext.access_token = response_json.get("access_token")
     TestContext.token_type = response_json.get("token_type")
@@ -567,7 +558,7 @@ def get_squaremeal_user(squaremeal_external_id, squaremeal_test_email):
     )
 
     response = Token_b2b.post_b2b_with_grant_type(TestContext.b2btoken, "b2b")
-    time.sleep(1)
+    # time.sleep(1)
     response_json = response_to_json(response)
     TestContext.access_token = response_json.get("access_token")
     TestContext.token_type = response_json.get("token_type")

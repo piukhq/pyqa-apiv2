@@ -27,7 +27,7 @@ def add_payment_account(payment_card_provider, payment_status):
     TestContext.payment_status = payment_status
     response = PaymentCards.add_new_payment_card(TestContext.token, payment_card_provider)
     TestContext.response_status_code = response.status_code
-    time.sleep(2)
+    # time.sleep(2)
     assert response.status_code == 201, f"Payment card addition for '{payment_card_provider}' is not successful"
     response_json = response_to_json(response)
     logging.info(
@@ -93,7 +93,7 @@ def verify_replace_value(payment_card_provider, expiry_month, expiry_year, name_
         card_nickname,
     )
     response_json = response_to_json(response)
-    time.sleep(2)
+    # time.sleep(2)
     assert response.status_code == 200 and TestContext.current_payment_card_id == response_json.get(
         "id"
     ), f"Payment card replacement '{payment_card_provider}' is not successful"
@@ -188,7 +188,7 @@ def verify_invalid_token_bearer_prefix(payment_card_provider):
 @when(parsers.parse('I perform POST request to add a new payment card by removing "{field}" field to wallet'))
 def verify_optional_field(field):
     payment_card_provider = "master"
-    time.sleep(3)
+    # time.sleep(3)
     if field == "optional":
         response = PaymentCards.add_payment_card_with_optional_field(TestContext.token, payment_card_provider)
         logging.info(response)
@@ -218,7 +218,7 @@ def add_existing_payment_card_in_another_wallet(payment_card_provider):
     response = PaymentCards.add_second_payment_card(TestContext.token, payment_card_provider)
     TestContext.response_status_code = response.status_code
     response_json = response_to_json(response)
-    time.sleep(3)
+    # time.sleep(3)
     assert response.status_code == 200 and TestContext.current_payment_card_id == TestContext.response_json.get(
         "id"
     ), f"Payment card addition for '{payment_card_provider}' is not successful"
@@ -275,7 +275,7 @@ def verify_different_detail(payment_card_provider, expiry_month, expiry_year, na
     )
     response_json = response_to_json(response)
     TestContext.second_payment_card_id = response_json.get("id")
-    time.sleep(4)
+    # time.sleep(4)
     assert response.status_code == 200 and TestContext.current_payment_card_id == TestContext.response_json.get(
         "id"
     ), f"Payment card replacement '{payment_card_provider}' is not successful"
@@ -331,7 +331,7 @@ def verify_invalid_token_with_bearer_prefix_delete_call(payment_card_provider):
         TestContext.current_payment_card_id,
     )
     logging.info(response)
-    time.sleep(3)
+    # time.sleep(3)
     TestContext.response_status_code = response.status_code
     response_json = response.json()
     logging.info(response_json)
@@ -362,7 +362,7 @@ def update_payment_account(update_field, payment_card_provider):
         TestContext.current_payment_card_id,
     )
     TestContext.response_status_code = response.status_code
-    time.sleep(2)
+    # time.sleep(2)
     if response.status_code == 200:
         assert response.status_code == 200, f"Payment card updation for '{update_field}' is not successful"
         response_json = response_to_json(response)
