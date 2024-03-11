@@ -4,8 +4,6 @@ Feature: As a Bink User
   I want to be able to delete my payment card account to my bink wallet
   So that I can start verify its deleted from my wallet
 
-
-  @delete_new_paymentcard @bink_regression_api2 @sandbox_regression
   Scenario Outline: Delete new payment card
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
@@ -22,8 +20,7 @@ Feature: As a Bink User
       | amex                  | 202         |
       | visa                  | 202         |
 
-  @already_deleted_paymentcard @bink_regression_api2 @sandbox_regression
-  Scenario Outline: Delete payment card which is already deleted from the wallet
+   Scenario Outline: Delete payment card which is already deleted from the wallet
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
     And I perform POST request to add a new "<payment_card_provider>" payment card to wallet
@@ -40,7 +37,7 @@ Feature: As a Bink User
       | amex                  | 202         | 404                  | Could not find this account or card | RESOURCE_NOT_FOUND  |
       | visa                  | 202         | 404                  | Could not find this account or card | RESOURCE_NOT_FOUND  |
 
-  @invalid_token @bink_regression_api2 @sandbox_regression
+
   Scenario Outline: Client does not have valid token
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token

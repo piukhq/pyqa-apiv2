@@ -5,7 +5,7 @@ Feature: As a Bink User
   so that I can keep my account upto date and customize it.
 
 
-  @patch_payment_account @bink_regression_api2 @sandbox_regression
+  @bink_regression_api2
   Scenario Outline: update payment card
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token
