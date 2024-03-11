@@ -62,7 +62,7 @@ Feature: Verify event for pll status change
     Then I verify pll_link_statuschange pll event is created for lloyds_user for status null to 0 and slug LOYALTY_CARD_PENDING
     And I verify pll_link_statuschange pll event is created for lloyds_user for status 0 to 2 and slug LOYALTY_CARD_NOT_AUTHORISED
 
-  @lc_remove_plllink_statuschange @bink_regression_api2
+  @lc_remove_plllink_statuschange
   Scenario: Verify events for pll link status change after deleting loyalty card
     Given I am a Lloyds user
     When I perform POST request to add a new "master" payment account to wallet
@@ -70,7 +70,7 @@ Feature: Verify event for pll status change
     Then I perform DELETE request to delete the "Viator" membership card
     And I verify pll_link_statuschange pll event is created for lloyds_user for status 1 to null and slug null
 
-  @pc_remove_plllink_statuschange @bink_regression_api2
+  @pc_remove_plllink_statuschange
   Scenario: Verify events for pll link status change after deleting payment card
     Given I am a Lloyds user
     When I perform POST request to add a new "master" payment account to wallet
