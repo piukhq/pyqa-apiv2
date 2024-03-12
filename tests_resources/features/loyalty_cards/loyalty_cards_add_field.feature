@@ -1,7 +1,7 @@
 # Created by rupalpatel at 20/09/2021
 @membership_cards
 Feature: Add a loyalty card
-  As a Bink user
+  As a BOS user
   I want to store a loyalty card in my wallet
   so that I can display the barcode in-store, and (if applicable) authorise the loyalty card at a later stage
 

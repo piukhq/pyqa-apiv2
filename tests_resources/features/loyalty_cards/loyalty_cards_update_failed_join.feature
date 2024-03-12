@@ -7,9 +7,8 @@ Feature: Update failed join
 
 
   Scenario Outline: Update same loyalty card which failed to join
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform enrol_failed POST request to join "<merchant>" membership card
+    Given I am a bos user
+    When I perform enrol_failed POST request to join "<merchant>" membership card
     And I perform put request with successful_payload to update failed join for <merchant>
     And I perform POST request to add a new "master" payment account to wallet
     And I perform GET Wallet

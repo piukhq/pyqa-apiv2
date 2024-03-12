@@ -22,6 +22,7 @@ B2B_HALIFAX_PRIVATE_KEY = env_var("B2B_HALIFAX_PRIVATE_KEY", "api2-b2b-private-k
 B2B_BOS_PRIVATE_KEY = env_var("B2B_BOS_PRIVATE_KEY", "api2-b2b-private-key-bos-regression")
 B2B_SQUAREMEAL_PRIVATE_KEY = env_var("B2B_SQUAREMEAL_PRIVATE_KEY", "api2-b2b-private-key-sqrmeal-regression")
 BLOB_STORAGE_DSN = env_var("BLOB_STORAGE_DSN")
-HERMES_DATABASE_URI = env_var("HERMES_DATABASE_URI")
+# HERMES_DATABASE_URI = env_var("HERMES_DATABASE_URI")
+HERMES_DATABASE_URI = env_var("HERMES_DATABASE_URI","postgresql://warthog:elsJ1XgVizFhQmX5mIl8dz52@uksouth-staging-2o6h.postgres.database.azure.com/hermes?sslmode=require")
 HARMONIA_DATABASE_URI = env_var("HARMONIA_DATABASE_URI")
 SNOWSTORM_DATABASE_URI = env_var("SNOWSTORM_DATABASE_URI")

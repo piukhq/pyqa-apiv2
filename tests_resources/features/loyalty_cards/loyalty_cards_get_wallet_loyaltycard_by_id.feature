@@ -8,9 +8,8 @@ Feature: View Wallet by loyalty card id
 
    @view_wallet_by_loyalty_card_id @bink_regression_api2
   Scenario Outline: View wallet loyalty card by id
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    Given I am a bos user
+    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     When I add and authorise "<merchant>" membership card using b2b token
     And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
@@ -22,9 +21,8 @@ Feature: View Wallet by loyalty card id
 
      @wallet_lcbyid_unauthorised @bink_regression_api2 @sandbox_regression
   Scenario Outline: Get wallet lc by id with unauthorised loyalty card
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    Given I am a Lloyds user
+    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And add and auth "<merchant>" membership card with "unauthorised" with "202"
     And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
@@ -37,9 +35,8 @@ Feature: View Wallet by loyalty card id
 
   @wallet_loyaltycard_pll_status3 @bink_regression_api2 @ubiquity_collision
   Scenario Outline: Verify wallet loyalty card by id pll links for active payment account and unauthorised loyalty card
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    Given I am a Lloyds user
+    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
     And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
@@ -51,9 +48,8 @@ Feature: View Wallet by loyalty card id
 
   @wallet_loyaltycard_pll_status4 @bink_regression_api2 @ubiquity_collision
   Scenario Outline: Verify wallet loyalty card by id pll links for inactive payment account and unauthorised loyalty card
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add a duplicate "<payment_card_provider>" payment account to wallet
+    Given I am a Lloyds user
+    When I perform POST request to add a duplicate "<payment_card_provider>" payment account to wallet
     And add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
     And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>

@@ -21,8 +21,7 @@ Feature: View Loyalty Plan by id
 
 
   Scenario Outline: Verify loyalty plan details gives correct error messages with invalid loyalty scheme
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
+    Given I am a bos user
     And I perform GET request to view "<loyalty_scheme>" loyalty plan details with invalid resource
     Then I verify the <status_code> for loyalty plan
     And I verify "<error_message>" "<error_slug>" in loyalty scheme response

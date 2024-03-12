@@ -7,14 +7,13 @@ Feature: View Wallet by loyalty card id
 
   @wallet_loyaltycard_pll_status1 @bink_regression_api2
   Scenario Outline: Verify wallet loyalty card by id pll links for active payment account and authorised loyalty card
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    Given I am a bos user
+    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     When I add and authorise "<merchant>" membership card
     And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
-    And verify that for bink_user data stored in after pll_active journey for "<merchant>"
+    And verify that for bos_user data stored in after pll_active journey for "<merchant>"
 
      Examples:
      | merchant | status_code_returned|payment_card_provider|state|slug  |description |
@@ -22,14 +21,13 @@ Feature: View Wallet by loyalty card id
 
   @wallet_loyaltycard_pll_status2 @bink_regression_api2
   Scenario Outline: Verify wallet loyalty card by id pll links for inactive payment account and authorised loyalty card
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add a duplicate "<payment_card_provider>" payment account to wallet
+    Given I am a bos user
+    When I perform POST request to add a duplicate "<payment_card_provider>" payment account to wallet
     When I add and authorise "<merchant>" membership card
     And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
-    And verify that for bink_user data stored in after pll_inactive journey for "<merchant>"
+    And verify that for bos_user data stored in after pll_inactive journey for "<merchant>"
 
      Examples:
      | merchant | status_code_returned|payment_card_provider|state     |slug                     |description                                                     |
@@ -37,14 +35,13 @@ Feature: View Wallet by loyalty card id
 
   @wallet_loyaltycard_pll_status3 @bink_regression_api2
   Scenario Outline: Verify wallet loyalty card by id pll links for active payment account and unauthorised loyalty card
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    Given I am a bos user
+    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
     And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
-    And verify that for bink_user data stored in after pll_inactive journey for "<merchant>"
+    And verify that for bos_user data stored in after pll_inactive journey for "<merchant>"
 
      Examples:
      | merchant | request_payload | status_code | status_code_returned| payment_card_provider | state    | slug                        | description                                                       |
@@ -52,14 +49,13 @@ Feature: View Wallet by loyalty card id
 
   @wallet_loyaltycard_pll_status4 @bink_regression_api2
   Scenario Outline: Verify wallet loyalty card by id pll links for inactive payment account and unauthorised loyalty card
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add a duplicate "<payment_card_provider>" payment account to wallet
+    Given I am a bos user
+    When I perform POST request to add a duplicate "<payment_card_provider>" payment account to wallet
     And add and auth "<merchant>" membership card with "<request_payload>" with "<status_code>"
     And I perform GET Wallet_by_card_id
     Then I see a <status_code_returned>
     And I can see '<state>','<slug>' and '<description>' in PLL links for Wallet loyalty card by id
-    And verify that for bink_user data stored in after pll_inactive journey for "<merchant>"
+    And verify that for bos_user data stored in after pll_inactive journey for "<merchant>"
 
      Examples:
      | merchant | request_payload | status_code | status_code_returned | payment_card_provider | state    | slug                                      | description                                                                                   |
@@ -69,7 +65,7 @@ Feature: View Wallet by loyalty card id
     Scenario Outline: No PLL link when payment card deleted from single wallet loyalty card by id
       Given I am in Bink channel to get b2b token
       When I perform POST token request for token type "b2b" to get access token
-      And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+      When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
       When I add and authorise "<merchant>" membership card
       And I perform GET Wallet_by_card_id
       Then I see a <status_code_returned>

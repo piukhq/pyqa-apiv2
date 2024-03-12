@@ -6,13 +6,12 @@ Feature: Register a loyalty card
   so that I can register the loyalty card with the merchant and enable the Bink functionality on the loyalty card
 
   Scenario Outline: Register field journey only
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add <merchant> membership card before registration_success register
+    Given I am a bos user
+    When I perform POST request to add <merchant> membership card before registration_success register
     Then I see a 201
     When I perform PUT request to register <merchant> with registration_success membership card
     Then I see a <status_code_returned>
-    And verify that for bink_user data stored in after "<journey_type>" journey for "<merchant>"
+    And verify that for bos_user data stored in after "<journey_type>" journey for "<merchant>"
 
     Examples:
       | merchant | status_code_returned | journey_type   |
@@ -20,38 +19,36 @@ Feature: Register a loyalty card
 
 
   Scenario Outline: verify PLL for update register
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    Given I am a bos user
+    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add <merchant> membership card before registration_success register
     And I perform PUT request to register <merchant> with registration_success membership card
     Then I see a <status_code_returned>
-    And verify that for bink_user data stored in after "<journey_type>" journey for "<merchant>"
+    And verify that for bos_user data stored in after "<journey_type>" journey for "<merchant>"
 
     Examples:
       | payment_card_provider | merchant | status_code_returned | journey_type |
       | master                | The_Works  | 202                  | pll_active   |
 
   Scenario Outline: Add existing card again into different wallet via put register
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add a new "master" payment account to wallet
+    Given I am a bos user
+    When I perform POST request to add a new "master" payment account to wallet
     And I perform POST request to add <merchant> membership card before registration_success register
     Then I see a 201
     When I perform PUT request to register <merchant> with registration_success membership card
     Then I see a <status_code_returned>
-    When For bink_user I perform GET Wallet
+    When For bos_user I perform GET Wallet
     Then Verify Wallet fields for <merchant> with registration_success
-    When I am in Bink channel to get b2b token for second user
-    And I perform POST token request for token type "b2b" to get access token for second user
-    And I perform POST request to add a new "master" payment account to wallet
+
+    Given I am a halifax user
+    When I perform POST request to add a new "master" payment account to wallet
     And I perform POST request to add "<merchant>" membership card already registered
     Then I see a 200
     When I perform PUT request to register <merchant> with registration_success membership card
     Then I see a <status_code_returned>
-    When For bink_user2 I perform GET Wallet
+    When For halifax_user I perform GET Wallet
     Then Verify Wallet fields for <merchant> with registration_success
-    When For bink_user I perform GET Wallet
+    When For bos_user I perform GET Wallet
     Then Verify Wallet fields for <merchant> with registration_success
 
 

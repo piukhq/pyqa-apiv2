@@ -7,12 +7,11 @@ Feature: Authorise a loyalty card
 
   @authorise_field @bink_regression_api2 @sandbox_regression
   Scenario Outline: Authorise field journey only
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add "<merchant>" membership card
+    Given I am a bos user
+    When I perform POST request to add "<merchant>" membership card
     And I perform PUT request to authorise "<merchant>" above wallet only membership card
     Then I see a <status_code_returned>
-    And verify that for bink_user data stored in after "<journey_type>" journey for "<merchant>"
+    And verify that for bos_user data stored in after "<journey_type>" journey for "<merchant>"
 
     Examples:
       | merchant | journey_type    | status_code_returned |
@@ -20,13 +19,12 @@ Feature: Authorise a loyalty card
 
   @authorise_existing_field @bink_regression_api2 @sandbox_regression
   Scenario Outline: Authorise existing card again into wallet
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add "<merchant>" membership card
+    Given I am a bos user
+    When I perform POST request to add "<merchant>" membership card
     And I perform PUT request to authorise "<merchant>" above wallet only membership card
     And I perform PUT request to authorise "<merchant>" above wallet only membership card again
     Then I see a <status_code_returned>
-    And verify that for bink_user data stored in after "<journey_type>" journey for "<merchant>"
+    And verify that for bos_user data stored in after "<journey_type>" journey for "<merchant>"
 
     Examples:
       | merchant | journey_type    | status_code_returned |
@@ -35,13 +33,12 @@ Feature: Authorise a loyalty card
 
   @auth_pll @bink_regression_api2 @sandbox_regression
   Scenario Outline: verify PLL for authorise
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
-    And I perform POST request to add a new "<payment_card_provider>" payment account to wallet
+    Given I am a bos user
+    When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
     And I perform POST request to add "<merchant>" membership card
     And I perform PUT request to authorise "<merchant>" above wallet only membership card
     Then I see a <status_code_returned>
-    And verify that for bink_user data stored in after "<journey_type>" journey for "<merchant>"
+    And verify that for bos_user data stored in after "<journey_type>" journey for "<merchant>"
 
     Examples:
       | payment_card_provider | merchant | status_code_returned | journey_type |

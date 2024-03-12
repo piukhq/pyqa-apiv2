@@ -31,8 +31,7 @@ Feature: view journey fields
       | SquareMeal     | 401         | Supplied token is invalid | INVALID_TOKEN |
 
   Scenario Outline: Verify Resource specified could not be found
-    Given I am in Bink channel to get b2b token
-    When I perform POST token request for token type "b2b" to get access token
+    Given I am a Lloyds user
     And I perform GET request to view journey field for "<loyalty_scheme>" for invalid resource
     Then I verify the <status_code> for journey field appeared
     And I verify "<error_message>" "<error_slug>" in loyalty scheme response
