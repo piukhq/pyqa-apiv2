@@ -33,7 +33,7 @@ Feature: view journey fields
 
   Scenario Outline: Verify Resource specified could not be found
     Given I am a Lloyds user
-    And I perform GET request to view journey field for "<loyalty_scheme>" for invalid resource
+    When I perform GET request to view journey field for "<loyalty_scheme>" for invalid resource
     Then I verify the <status_code> for journey field appeared
     And I verify "<error_message>" "<error_slug>" in loyalty scheme response
 
