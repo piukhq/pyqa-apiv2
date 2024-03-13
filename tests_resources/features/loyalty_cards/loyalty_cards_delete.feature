@@ -5,6 +5,7 @@ Feature: Delete a loyalty card
   I want to delete a loyalty card from my wallet
   because it is no longer relevant or needed
 
+  @sit
   Scenario Outline: Delete add and authorise
     Given I am a halifax user
     When I add and authorise "<merchant>" membership card
@@ -27,7 +28,7 @@ Feature: Delete a loyalty card
       | merchant    | status_code_returned | journey_type |
       | Viator   | 202                  | delete       |
 
-
+  @sit
   Scenario Outline: Add and auth lc in two wallets and delete the card from one wallet
     Given I am a bos user
     When I add and authorise "<merchant>" membership card

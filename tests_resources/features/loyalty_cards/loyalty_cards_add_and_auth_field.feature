@@ -5,7 +5,7 @@ Feature: Add and authorise a loyalty card
   I want add an ‘Engage' or 'PLL’ type loyalty card to my wallet
   so that I am able to benefit from the Bink functionality
 
-  @bink_regression_api2
+  @bink_regression_api2 @sit
   Scenario Outline: Add and authorise field journey
     Given I am a bos user
     When I add and authorise "<merchant>" membership card
@@ -15,3 +15,5 @@ Feature: Add and authorise a loyalty card
     Examples:
       | merchant      | status_code_returned | journey_type      |
       | SquareMeal    | 202                  | add_and_authorise |
+      | Viator        | 202                  | add_and_authorise |
+      | The_Works     | 202                  | add_and_authorise |

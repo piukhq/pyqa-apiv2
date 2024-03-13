@@ -5,6 +5,7 @@ Feature: view journey fields
   I want to view the all the fields a user is required to fill in in order to complete all supported loyalty card journeys
   so that I can display them to the user when required.
 
+  @sit
   Scenario Outline: Verify VIEW Loyalty Plans journey fields for loyalty scheme
     Given I am a Lloyds user
     When I perform GET request to view journey field for "<loyalty_scheme>"

@@ -5,7 +5,7 @@ Feature: View Loyalty Plan by id
  I want to view a loyalty plan’s details available for my channel
  so that I can display this to users on the front end
 
-
+    @sit
   Scenario Outline: View Loyalty Plan by id
     Given I am a Lloyds user
     When I perform GET request to view and compare "<loyalty_scheme>" loyalty plan by id
@@ -19,7 +19,7 @@ Feature: View Loyalty Plan by id
       | itsu                | 200         |
 
 
-  Scenario Outline: Verify is_in_wallet field for Loyalty Plan by id
+  Scenario Outline: Verify wallet field for Loyalty Plan by id
     Given I am a Lloyds user
     When I perform GET request to view "<loyalty_scheme>" loyalty plan by id and verify is_in_wallet field
     Then I verify the <status_code> for loyalty plan

@@ -5,7 +5,7 @@ Feature: Add and register a loyalty card
   I want to join a loyalty scheme
   so that I can use the Bink functionality with the relevant loyalty plan
 
-  @join_scheme @bink_regression_api2
+  @sit  @bink_regression_api2
   Scenario Outline: join journey
     Given I am a bos user
     When I perform POST request to join "<merchant>" membership card
@@ -17,7 +17,7 @@ Feature: Add and register a loyalty card
       | SquareMeal    | 202                  | join         |
 
 
-  @pll_join @bink_regression_api2
+   @bink_regression_api2
   Scenario Outline: verify PLL for join journey
     Given I am a bos user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet
@@ -30,7 +30,7 @@ Feature: Add and register a loyalty card
       | master                | Viator  | 202                  | pll_active   |
 
 
-  @multi_wallet_joins @bink_regression_api2
+  @sit @bink_regression_api2
   Scenario Outline: join requests in multiwallet
     Given I am a bos user
     When I perform POST request to add a new "master" payment account to wallet

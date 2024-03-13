@@ -5,7 +5,7 @@ Feature: Authorise a loyalty card
   I want add an ‘Engage' or 'PLL’ type loyalty card to my wallet
   so that I am able to benefit from the Bink functionality
 
-  @authorise_field @bink_regression_api2 @sandbox_regression
+  @sit @bink_regression_api2
   Scenario Outline: Authorise field journey only
     Given I am a bos user
     When I perform POST request to add "<merchant>" membership card
@@ -17,7 +17,7 @@ Feature: Authorise a loyalty card
       | merchant | journey_type    | status_code_returned |
       | Viator   | authorise_field  |202                  |
 
-  @authorise_existing_field @bink_regression_api2 @sandbox_regression
+  @authorise_existing_field @bink_regression_api2
   Scenario Outline: Authorise existing card again into wallet
     Given I am a bos user
     When I perform POST request to add "<merchant>" membership card
@@ -31,7 +31,7 @@ Feature: Authorise a loyalty card
       | Viator   | authorise_field | 200                  |
 
 
-  @auth_pll @bink_regression_api2 @sandbox_regression
+  @auth_pll @bink_regression_api2
   Scenario Outline: verify PLL for authorise
     Given I am a bos user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet

@@ -1,5 +1,5 @@
 # Created by bularaghavan at 17/01/2022
-@bink_regression_api2
+@bink_regression_api2 @sit
 Feature: Delete User feature
   As a Bink ‘B2B’ user
   I want to delete my Bink account because I no longer wish to be enrolled in the service

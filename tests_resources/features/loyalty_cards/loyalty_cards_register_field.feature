@@ -5,6 +5,7 @@ Feature: Register a loyalty card
   I want to add registration credentials to an existing Store card,
   so that I can register the loyalty card with the merchant and enable the Bink functionality on the loyalty card
 
+  @sit
   Scenario Outline: Register field journey only
     Given I am a bos user
     When I perform POST request to add <merchant> membership card before registration_success register
@@ -29,7 +30,7 @@ Feature: Register a loyalty card
     Examples:
       | payment_card_provider | merchant | status_code_returned | journey_type |
       | master                | The_Works  | 202                  | pll_active   |
-
+  @sit
   Scenario Outline: Add existing card again into different wallet via put register
     Given I am a bos user
     When I perform POST request to add a new "master" payment account to wallet

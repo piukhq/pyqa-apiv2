@@ -4,8 +4,8 @@ Feature: update loyalty card in Trusted channel
   As a Trusted Channel I want to update loyalty card
   so that the scheme account is updated and pll is updated for the wallet
 
-
-  Scenario Outline: PUT Add_Credential_2 in tc wallet after Add_Credential_1 in tc wallet and Add_Credential_2 exists in another wallet
+  @sit
+  Scenario Outline: Update Add_Credential_2 in trusted channel(tc) wallet after Add_Credential_1 in tc wallet and Add_Credential_2 exists in another wallet
       Given I am a halifax user
       When I add and authorise "<merchant>" membership card
       Then I see a 202
@@ -19,7 +19,7 @@ Feature: update loyalty card in Trusted channel
       | merchant   |
       | SquareMeal |
 
-
+    @sit
   Scenario Outline: Update merchant_identifier in TC wallet
       Given I am a squaremeal user
       When I perform POST request to add trusted channel "<merchant>" loyalty card
@@ -49,7 +49,7 @@ Feature: update loyalty card in Trusted channel
       | merchant   |
       | SquareMeal |
 
-
+   @sit
   Scenario Outline: PUT Add_Credential_2 in TC wallet after Add_Credential_1 in wallet 1 and in wallet 2 and Add_Credential_2 does not exist in any other wallet
       Given I am a halifax user
       When I add and authorise "<merchant>" membership card
@@ -70,7 +70,7 @@ Feature: update loyalty card in Trusted channel
       | merchant     |
       | SquareMeal   |
 
-
+      @sit
     Scenario Outline: Verify email is updated successfully in trusted channel
     Given I am a squaremeal user
     When I perform POST request to add trusted channel "<merchant>" loyalty card

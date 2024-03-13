@@ -5,7 +5,7 @@ Feature: delete loyalty card and delete payment card from Trusted channel
   so that the card is deleted and pll is updated for the wallet
 
 
-  @delete_loyalty_card_tc
+  @sit
   Scenario Outline: Delete loyalty card from Trusted channel wallet
     Given I am a squaremeal user
     When I perform POST request to add a new "<payment_card_provider>" payment account to wallet

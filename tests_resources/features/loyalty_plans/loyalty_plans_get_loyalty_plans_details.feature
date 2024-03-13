@@ -5,7 +5,7 @@ Feature: View Loyalty Plan by id
  I want to retrieve the details of a given loyalty plan
  so that I can present these to a user, should they want to find out more, as well as so that I do not have to call the whole loyalty_plan endpoint for this information
 
-
+  @sit
   Scenario Outline: View Loyalty Plan Details
     Given I am a Lloyds user
     When I perform GET request to view and compare "<loyalty_scheme>" loyalty plan details

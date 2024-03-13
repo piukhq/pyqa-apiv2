@@ -4,6 +4,7 @@ Feature: As a Bink User
   I want to be able to delete my payment card account to my bink wallet
   So that I can start verify its deleted from my wallet
 
+  @sit
   Scenario Outline: Delete new payment card
     Given I am in Bink channel to get b2b token
     When I perform POST token request for token type "b2b" to get access token

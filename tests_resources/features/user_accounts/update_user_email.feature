@@ -5,7 +5,7 @@ Feature: Update email feature
   I want to update my email address associated with my Bink account
   so that I can continue to use my Bink account with my preferred email address
 
-  @update_new_email @bink_regression_api2
+  @sit @bink_regression_api2
   Scenario Outline: Update to new email success
     Given I am a Lloyds user
     When I perform POST request to update email

@@ -1,4 +1,4 @@
-@bink_regression_api2 @membership_plans
+@bink_regression_api2 @membership_plans @sit
 Feature: View Loyalty Plans
  As a consuming channel
  I want view all available loyalty plans for my channel
